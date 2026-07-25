@@ -1,0 +1,22 @@
+# GungeonMate Flutter app (separate repo)
+gungeon_mate/
+
+# IDE
+.idea/
+
+# Cache
+cache_wikigg/
+
+# Build artifacts
+app-releases/
+
+# Scripts (GungeonMate tooling)
+scripts/
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Temp
+*.tmp
+*.bak

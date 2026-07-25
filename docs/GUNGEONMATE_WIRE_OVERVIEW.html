@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GungeonMate v1.8.0 - Wireframe & Mega Overview Dashboard</title>
+  <style>
+    :root {
+      --bg-color: #121214;
+      --card-color: #1a1a1f;
+      --wireframe-bg: #151518;
+      --accent-cyan: #00e5ff;
+      --accent-amber: #ffd740;
+      --accent-pink: #ff4081;
+      --accent-green: #00e676;
+      --accent-red: #ff5252;
+      --text-main: #f5f5f7;
+      --text-muted: #8a8a93;
+      --border-color: rgba(255, 255, 255, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      overflow-x: hidden;
+      padding: 24px;
+    }
+
+    h1, h2, h3, h4 {
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: 900;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      color: var(--accent-cyan);
+      text-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
+      display: inline-block;
+    }
+
+    header p {
+      color: var(--text-muted);
+      margin-top: 8px;
+      font-size: 0.95rem;
+    }
+
+    .main-grid {
+      display: grid;
+      grid-template-columns: 320px 1fr 340px;
+      gap: 24px;
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+
+    /* Sidebar Styling */
+    .sidebar {
+      background-color: var(--card-color);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      height: fit-content;
+    }
+
+    .sidebar h2 {
+      font-size: 1.1rem;
+      color: var(--accent-amber);
+      border-bottom: 2px solid var(--accent-amber);
+      padding-bottom: 6px;
+      margin-bottom: 12px;
+    }
+
+    .info-card {
+      background-color: rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+      padding: 12px;
+      border-left: 3px solid var(--accent-cyan);
+      font-size: 0.85rem;
+      line-height: 1.45;
+    }
+
+    .info-card.red {
+      border-left-color: var(--accent-red);
+    }
+
+    .info-card.green {
+      border-left-color: var(--accent-green);
+    }
+
+    .info-card.pink {
+      border-left-color: var(--accent-pink);
+    }
+
+    .info-card h4 {
+      margin-bottom: 6px;
+      font-size: 0.9rem;
+      color: #fff;
+    }
+
+    .bullet-list {
+      list-style-type: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 0.82rem;
+    }
+
+    .bullet-list li {
+      position: relative;
+      padding-left: 14px;
+      color: var(--text-main);
+    }
+
+    .bullet-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--accent-cyan);
+      font-weight: bold;
+    }
+
+    /* Center Wireframe Screen Wrapper */
+    .viewport-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .device-bezel {
+      width: 380px;
+      height: 760px;
+      background-color: #000;
+      border-radius: 40px;
+      padding: 12px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 1px 2px rgba(255,255,255,0.15) inset;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Camera Notch */
+    .device-bezel::before {
+      content: "";
+      position: absolute;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 25px;
+      background-color: #000;
+      border-bottom-left-radius: 16px;
+      border-bottom-right-radius: 16px;
+      z-index: 1000;
+    }
+
+    .device-screen {
+      width: 100%;
+      height: 100%;
+      background-color: var(--wireframe-bg);
+      border-radius: 30px;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    /* Screen Elements */
+    .status-bar {
+      height: 36px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 24px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-weight: bold;
+      margin-top: 4px;
+    }
+
+    .app-header {
+      padding: 10px 16px 4px 16px;
+    }
+
+    .gungeoneer-banner {
+      background-color: var(--card-color);
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      position: relative;
+    }
+
+    .banner-row-1 {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .avatar-wrapper {
+      width: 44px;
+      height: 44px;
+      background-color: rgba(0, 229, 255, 0.12);
+      border: 1.2px solid rgba(0, 229, 255, 0.35);
+      border-radius: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      position: relative;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .avatar-wrapper:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px rgba(0, 229, 255, 0.3);
+    }
+
+    .avatar-img {
+      width: 32px;
+      height: 32px;
+      image-rendering: pixelated;
+    }
+
+    .name-column {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .character-name {
+      font-size: 0.95rem;
+      font-weight: 900;
+      color: #fff;
+    }
+
+    /* Speech Bubble over portrait */
+    .speech-bubble {
+      position: absolute;
+      top: 60px;
+      left: 12px;
+      background-color: rgba(0, 229, 255, 0.15);
+      border: 1px solid rgba(0, 229, 255, 0.45);
+      padding: 6px 10px;
+      border-radius: 8px;
+      font-size: 0.72rem;
+      font-style: italic;
+      color: var(--accent-cyan);
+      font-weight: bold;
+      max-width: 220px;
+      z-index: 50;
+      display: none;
+      animation: fadeIn 0.2s ease-out;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    }
+
+    .speech-bubble::before {
+      content: "";
+      position: absolute;
+      top: -6px;
+      left: 14px;
+      border-width: 0 6px 6px 6px;
+      border-style: solid;
+      border-color: transparent transparent rgba(0, 229, 255, 0.45) transparent;
+    }
+
+    /* Stats Capsule Rows */
+    .capsule-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+    }
+
+    .capsule {
+      background-color: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 8px;
+      padding: 6px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .capsule.active-cool {
+      background-color: rgba(0, 229, 255, 0.06);
+      border-color: rgba(0, 229, 255, 0.3);
+    }
+
+    .capsule.active-curse {
+      background-color: rgba(255, 82, 82, 0.06);
+      border-color: rgba(255, 82, 82, 0.3);
+    }
+
+    .capsule-val {
+      font-size: 0.82rem;
+      font-weight: 900;
+    }
+
+    .capsule-val.cool { color: var(--accent-cyan); }
+    .capsule-val.curse { color: var(--accent-red); }
+
+    .capsule-lbl {
+      font-size: 0.55rem;
+      font-weight: 800;
+      color: var(--text-muted);
+    }
+
+    /* Tab switcher slot button */
+    .slot-bar {
+      display: flex;
+      background-color: rgba(0,0,0,0.25);
+      margin: 10px 16px;
+      padding: 4px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .slot-btn {
+      flex: 1;
+      padding: 6px;
+      text-align: center;
+      font-size: 0.72rem;
+      font-weight: 900;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .slot-btn.active {
+      background-color: var(--accent-cyan);
+      color: #000;
+    }
+
+    .slot-btn.inactive {
+      color: var(--text-muted);
+    }
+
+    /* Content Area with Gun & Items list */
+    .screen-content {
+      flex: 1;
+      padding: 0 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      overflow-y: auto;
+    }
+
+    .section-title {
+      font-size: 0.75rem;
+      color: var(--accent-amber);
+      margin-bottom: 4px;
+    }
+
+    .list-row {
+      background-color: var(--card-color);
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.04);
+      padding: 8px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+
+    .list-row-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .list-row-img {
+      width: 24px;
+      height: 24px;
+      image-rendering: pixelated;
+    }
+
+    .list-row-title {
+      font-size: 0.78rem;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .list-row-desc {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* Bottom sheets dialogue popout */
+    .dialogue-sheet {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 50%;
+      background-color: #141417;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      border-top: 2px solid var(--accent-cyan);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 100;
+      box-shadow: 0 -10px 30px rgba(0,0,0,0.8);
+      transform: translateY(100%);
+      transition: transform 0.3s cubic-bezier(0.1, 0.8, 0.25, 1);
+    }
+
+    .dialogue-sheet.open {
+      transform: translateY(0);
+    }
+
+    .sheet-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 8px;
+    }
+
+    .sheet-title {
+      font-size: 0.85rem;
+      color: var(--accent-cyan);
+      font-weight: bold;
+    }
+
+    .close-sheet {
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: bold;
+    }
+
+    .npc-area {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .npc-portrait {
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background-color: rgba(0,0,0,0.2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .npc-bubble {
+      flex: 1;
+      background-color: var(--card-color);
+      border: 1.5px solid var(--accent-cyan);
+      border-radius: 8px;
+      padding: 8px;
+      font-size: 0.72rem;
+      color: #fff;
+      line-height: 1.4;
+      position: relative;
+    }
+
+    .npc-bubble::before {
+      content: "";
+      position: absolute;
+      top: 14px;
+      left: -6px;
+      border-width: 6px 6px 6px 0;
+      border-style: solid;
+      border-color: transparent var(--accent-cyan) transparent transparent;
+    }
+
+    /* Typewriter speed sliders */
+    .controls-row {
+      background-color: rgba(0,0,0,0.2);
+      padding: 8px 12px;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .control-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.68rem;
+    }
+
+    .slider-container {
+      display: flex;
+      gap: 4px;
+    }
+
+    .speed-btn {
+      padding: 3px 6px;
+      background-color: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--text-muted);
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.58rem;
+    }
+
+    .speed-btn.active {
+      background-color: var(--accent-cyan);
+      color: #000;
+      border-color: var(--accent-cyan);
+      font-weight: bold;
+    }
+
+    /* Bottom Nav Bar */
+    .bottom-nav {
+      height: 56px;
+      border-top: 1px solid var(--border-color);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      background-color: var(--card-color);
+    }
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      color: var(--text-muted);
+    }
+
+    .nav-item.active {
+      color: var(--accent-cyan);
+    }
+
+    .nav-item span {
+      font-size: 0.62rem;
+      font-weight: 900;
+    }
+
+    /* Simulated Curious Cat Easter Egg overlay */
+    .cat-easter-egg {
+      position: absolute;
+      bottom: 80px;
+      right: -80px; /* Hidden off-screen */
+      width: 80px;
+      height: 80px;
+      z-index: 200;
+      image-rendering: pixelated;
+      pointer-events: none;
+      transition: right 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .cat-easter-egg.peek {
+      right: -25px; /* Partially peeking on-screen */
+      animation: catWiggle 2.5s infinite ease-in-out;
+    }
+
+    /* CSS animations */
+    @keyframes catWiggle {
+      0%, 100% { transform: rotate(0deg); }
+      50% { transform: rotate(-5deg); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Simulation Control Buttons */
+    .buttons-container {
+      display: flex;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .action-btn {
+      padding: 10px 18px;
+      background-color: var(--card-color);
+      border: 1px solid var(--accent-cyan);
+      color: var(--accent-cyan);
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      transition: all 0.2s;
+    }
+
+    .action-btn:hover {
+      background-color: var(--accent-cyan);
+      color: #000;
+      box-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
+    }
+
+    .action-btn.pink {
+      border-color: var(--accent-pink);
+      color: var(--accent-pink);
+    }
+
+    .action-btn.pink:hover {
+      background-color: var(--accent-pink);
+      color: #000;
+      box-shadow: 0 0 15px rgba(255, 64, 129, 0.4);
+    }
+
+    /* Smoke Blast poof simulation */
+    .poof-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: 300;
+      display: none;
+    }
+
+    .poof-particle {
+      position: absolute;
+      background-color: rgba(0, 229, 255, 0.3);
+      border: 1px solid var(--accent-cyan);
+      border-radius: 50%;
+      width: 10px;
+      height: 10px;
+      animation: poofOut 0.7s forwards ease-out;
+    }
+
+    @keyframes poofOut {
+      to {
+        transform: translate(var(--x), var(--y)) scale(2.5);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>GungeonMate v1.8.0</h1>
+    <p>Interactive System Wireframe & Mega Overview Dashboard</p>
+  </header>
+
+  <div class="main-grid">
+
+    <!-- Left Sidebar: Technical Stack -->
+    <div class="sidebar">
+      <h2>Technical Stack</h2>
+      
+      <div class="info-card">
+        <h4>Core Architecture</h4>
+        <p>Built with <strong>Flutter SDK</strong> using Dart. Provides full native execution speed and zero rendering latency.</p>
+      </div>
+
+      <div class="info-card green">
+        <h4>State Management</h4>
+        <p>Uses <strong>Provider / ChangeNotifier</strong> streams. Emits precise localized state ticks only when inventory or stats mutate.</p>
+      </div>
+
+      <div class="info-card pink">
+        <h4>Double-Buffered Save</h4>
+        <p>Utilizes multi-threaded isolates to save active runs asynchronously to SharedPreferences, complete with secondary fail-safe backups.</p>
+      </div>
+
+      <div class="info-card red">
+        <h4>Canvas Theme Render</h4>
+        <p>Custom visual engines (Drip, Wobble, Sheen) are calculated mathematically on Canvas. Requires 0MB of external asset footprints.</p>
+      </div>
+    </div>
+
+    <!-- Center Workspace: Phone Wireframe Simulator -->
+    <div class="viewport-container">
+      <div class="device-bezel">
+        <div class="device-screen">
+          
+          <!-- Status Bar -->
+          <div class="status-bar">
+            <span>9:41 AM</span>
+            <span>Ch. 3</span>
+            <span>100% 🔋</span>
+          </div>
+
+          <!-- Gungeoneer Header -->
+          <div class="app-header">
+            <div class="gungeoneer-banner">
+              <div class="banner-row-1">
+                <div class="avatar-wrapper" onclick="triggerAvatarQuote()">
+                  <img src="https://static.wikia.nocookie.net/enterthegungeon_gamepedia/images/0/01/Pilot_Idle.gif" class="avatar-img" alt="Pilot Portrait">
+                  <!-- Quick Speech Bubble -->
+                  <div class="speech-bubble" id="quoteBubble">
+                    "Trust me, I have a magnificent plan."
+                  </div>
+                </div>
+                <div class="name-column">
+                  <div class="character-name">THE PILOT</div>
+                </div>
+              </div>
+
+              <!-- Stats capsule rows -->
+              <div class="capsule-row">
+                <div class="capsule active-cool">
+                  <span class="capsule-val cool">+2.0</span>
+                  <span class="capsule-lbl">COOLNESS</span>
+                </div>
+                <div class="capsule active-curse">
+                  <span class="capsule-val curse">+1.0</span>
+                  <span class="capsule-lbl">CURSE</span>
+                </div>
+                <div class="capsule">
+                  <span class="capsule-val" style="color: #fff;">10%</span>
+                  <span class="capsule-lbl">CD RED</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Solo/Co-op Slot switch -->
+          <div class="slot-bar">
+            <div class="slot-btn active">HOST INVENTORY</div>
+            <div class="slot-btn inactive">CO-OP SLINK</div>
+          </div>
+
+          <!-- Collected Inventory List Content -->
+          <div class="screen-content">
+            <div>
+              <div class="section-title">ACTIVE WEAPONS</div>
+              <div class="list-row">
+                <div class="list-row-left">
+                  <img src="https://static.wikia.nocookie.net/enterthegungeon_gamepedia/images/1/1a/Rogue_Special.png" class="list-row-img" alt="Gun">
+                  <div>
+                    <div class="list-row-title">Rogue Special</div>
+                    <div class="list-row-desc">Starting Sidearm - Infinite Ammo</div>
+                  </div>
+                </div>
+                <div style="color: var(--accent-cyan); font-size: 0.72rem; font-weight: bold;">H: 100%</div>
+              </div>
+            </div>
+
+            <div>
+              <div class="section-title">PASSIVES & ITEMS</div>
+              <div class="list-row" style="position: relative;">
+                <div class="list-row-left" id="throneRow">
+                  <img src="https://static.wikia.nocookie.net/enterthegungeon_gamepedia/images/6/63/Cat_Bullet_King_Throne.png" class="list-row-img" alt="Cat Throne">
+                  <div>
+                    <div class="list-row-title">Cat Bullet King Throne</div>
+                    <div class="list-row-desc">Shoots bullets on roll & grants flight</div>
+                  </div>
+                </div>
+                <span style="color: var(--accent-amber); font-size: 0.7rem; font-weight: bold;">B-TIER</span>
+                <!-- Poof smoke effect simulation container -->
+                <div class="poof-container" id="poofContainer">
+                  <div class="poof-particle" style="--x: 15px; --y: -15px;"></div>
+                  <div class="poof-particle" style="--x: -15px; --y: 15px;"></div>
+                  <div class="poof-particle" style="--x: 20px; --y: 20px;"></div>
+                  <div class="poof-particle" style="--x: -20px; --y: -20px;"></div>
+                  <div class="poof-particle" style="--x: 0px; --y: -25px;"></div>
+                  <div class="poof-particle" style="--x: 0px; --y: 25px;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom dialogue sheet -->
+          <div class="dialogue-sheet" id="npcDialogueSheet">
+            <div class="sheet-header">
+              <span class="sheet-title">NPC CONVERSATION</span>
+              <span class="close-sheet" onclick="toggleNpcDialogue()">×</span>
+            </div>
+            <div class="npc-area">
+              <div class="npc-portrait">
+                <img src="https://static.wikia.nocookie.net/enterthegungeon_gamepedia/images/a/ac/Bello.gif" style="width: 38px; image-rendering: pixelated;" alt="Bello">
+              </div>
+              <div class="npc-bubble" id="npcText">
+                "Welcome to the shop, Gungeoneer. Bring me my secret curiosities and you'll get a permanent 30% discount!"
+              </div>
+            </div>
+            <div class="controls-row">
+              <div class="control-item">
+                <span style="color: var(--text-muted);">TYPEWRITER VELOCITY</span>
+                <div class="slider-container">
+                  <span class="speed-btn" onclick="setSpeed(this, 'Instant')">INSTANT</span>
+                  <span class="speed-btn" onclick="setSpeed(this, 'Fast')">FAST</span>
+                  <span class="speed-btn active" onclick="setSpeed(this, 'Normal')">NORMAL</span>
+                  <span class="speed-btn" onclick="setSpeed(this, 'Slow')">SLOW</span>
+                </div>
+              </div>
+              <div class="control-item">
+                <span style="color: var(--text-muted);">HAPTIC CLICKS</span>
+                <span style="color: var(--accent-green); font-weight: bold;">ON</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Navigation Bar -->
+          <div class="bottom-nav">
+            <div class="nav-item active">
+              <span>🎒 RUN</span>
+            </div>
+            <div class="nav-item">
+              <span>📖 BROWSE</span>
+            </div>
+            <div class="nav-item">
+              <span>⚙️ SETTINGS</span>
+            </div>
+          </div>
+
+          <!-- Curious Cat Easter Egg Peek Sprite -->
+          <img src="https://static.wikia.nocookie.net/enterthegungeon_gamepedia/images/6/63/Cat_Bullet_King_Throne.png" class="cat-easter-egg" id="curiousCat" alt="Cat Bullet King">
+
+        </div>
+      </div>
+
+      <!-- Action Simulation Keys -->
+      <div class="buttons-container">
+        <button class="action-btn" onclick="toggleNpcDialogue()">Toggle Bello Dialog</button>
+        <button class="action-btn pink" onclick="triggerCatPeekSim()">Simulate Cat Throne Peek</button>
+        <button class="action-btn" onclick="simulateSmokePoof()">Simulate Smoke Poof</button>
+      </div>
+    </div>
+
+    <!-- Right Sidebar: Feature Map -->
+    <div class="sidebar">
+      <h2>App Feature Map</h2>
+      
+      <div class="info-card">
+        <h4>Portraits Quote Engine</h4>
+        <p>Interactive Gungeoneer portraits play live character-lore commentaries upon tap with distinct micro-vibrations.</p>
+      </div>
+
+      <div class="info-card red">
+        <h4>Tuned Dialogue Controller</h4>
+        <p>Adjust typewriter speeds (from Instant to Slow) and haptics. Loads shopkeeper trees and delivery quest-discount trackers.</p>
+      </div>
+
+      <div class="info-card green">
+        <h4>Cat King Easter Egg</h4>
+        <p>Scanning co-op inventories registers the Cat Bullet King Throne and schedules dynamic, head-tilting peek actions.</p>
+      </div>
+
+      <div class="info-card amber">
+        <h4>Ammonomicon DB</h4>
+        <p>Enables full offline lookups, rich wikia descriptions, and nested cross-referenced back-link tags.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // Simulate Avatar quick dialogue bubbles
+    function triggerAvatarQuote() {
+      const quotes = [
+        "Never tell me the drop rates.",
+        "Trust me, I have a magnificent plan.",
+        "Just slide-roll, smile, and steal.",
+        "Is it hot here, or is it just my charisma?"
+      ];
+      const bubble = document.getElementById("quoteBubble");
+      const rand = Math.floor(Math.random() * quotes.length);
+      bubble.innerText = quotes[rand];
+      bubble.style.display = "block";
+      
+      setTimeout(() => {
+        bubble.style.display = "none";
+      }, 3000);
+    }
+
+    // Toggle bottom dialogue sheet drawer
+    function toggleNpcDialogue() {
+      const sheet = document.getElementById("npcDialogueSheet");
+      sheet.classList.toggle("open");
+    }
+
+    // Simulate different typewriter speeds
+    function setSpeed(btn, speed) {
+      const btns = btn.parentNode.querySelectorAll(".speed-btn");
+      btns.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      const npcBubbleText = document.getElementById("npcText");
+      if (speed === 'Instant') {
+        npcBubbleText.innerText = "Welcome to the shop, Gungeoneer. Bring me my secret curiosities and you'll get a permanent 30% discount!";
+      } else {
+        // Typing simulation
+        const str = "Welcome to the shop, Gungeoneer. Bring me my secret curiosities and you'll get a permanent 30% discount!";
+        npcBubbleText.innerText = "";
+        let i = 0;
+        let speedMs = speed === 'Fast' ? 20 : speed === 'Normal' ? 45 : 90;
+        
+        function type() {
+          if (i < str.length) {
+            npcBubbleText.innerText += str.charAt(i);
+            i++;
+            setTimeout(type, speedMs);
+          }
+        }
+        type();
+      }
+    }
+
+    // Simulate Curious Cat Peeking animation from the edge of bezel
+    function triggerCatPeekSim() {
+      const cat = document.getElementById("curiousCat");
+      cat.classList.add("peek");
+      
+      setTimeout(() => {
+        cat.classList.remove("peek");
+      }, 5000);
+    }
+
+    // Simulate expanding smoke particles
+    function simulateSmokePoof() {
+      const poof = document.getElementById("poofContainer");
+      poof.style.display = "block";
+      
+      setTimeout(() => {
+        poof.style.display = "none";
+      }, 800);
+    }
+  </script>
+</body>
+</html>
