@@ -23,14 +23,14 @@ When done, mark status as `DONE` and move to Session Log.
 
 | Field | Value |
 |-------|-------|
-| **Agent** | _(none)_ |
-| **Branch** | — |
-| **Session started** | — |
-| **Last board update** | 2026-07-25 09:22 UTC+3 |
-| **Working on** | — |
+| **Agent** | Coder |
+| **Branch** | master |
+| **Session started** | 2026-07-25 20:36 UTC+3 |
+| **Last board update** | 2026-07-25 22:30 UTC+3 |
+| **Working on** | Roomian Battler — all 4 phases complete, standby |
 | **Files in progress** | — |
 | **Uncommitted changes** | — |
-| **Last commit** | _(no git repo at root — docs/ is outside gungeon_mate/ git)_ — Roomian visual pictation assessment + polish complete |
+| **Last commit** | `84a5aac` — Phase 4: Economy and Quests — shop, Room Balls, scrolls, boosts, quest system, training, sell prices, 140 tests passing |
 
 ### Slot 2
 

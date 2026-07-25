@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Creature Prompt Forge</title>
+<style>
+  :root {
+    --bg: #08080c;
+    --surface: #12121a;
+    --surface-2: #1a1a26;
+    --surface-3: #22222e;
+    --border: #2a2a3a;
+    --border-hi: #3a3a52;
+    --text: #eaeaf2;
+    --text-2: #9898b0;
+    --muted: #585870;
+    --accent: #4ecdc4;
+    --accent-2: #6bcb77;
+    --radius: 8px;
+    --radius-sm: 5px;
+    --transition: 140ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+  .header {
+    padding: 20px 24px 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .header h1 {
+    font-size: 1.1rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #ff6b35, #4ecdc4, #a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .header p { color: var(--muted); font-size: 0.78rem; margin-top: 4px; }
+  .wrap { max-width: 700px; margin: 0 auto; padding: 24px 20px 40px; }
+  .field { margin-bottom: 16px; }
+  .field label {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--muted);
+    margin-bottom: 5px;
+  }
+  .field input, .field select, .field textarea {
+    width: 100%;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 8px 12px;
+    color: var(--text);
+    font-size: 0.82rem;
+    outline: none;
+    transition: var(--transition);
+  }
+  .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--accent); }
+  .field textarea { resize: vertical; min-height: 60px; font-family: inherit; }
+  .field select { cursor: pointer; }
+  .row { display: flex; gap: 12px; }
+  .row .field { flex: 1; }
+  .btn {
+    background: var(--accent);
+    border: none;
+    color: #08080c;
+    font-size: 0.82rem;
+    font-weight: 800;
+    padding: 10px 24px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: var(--transition);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .btn:hover { background: #5dd9d0; }
+  .btn:active { transform: scale(0.96); }
+  .btn.secondary { background: var(--surface-3); color: var(--text-2); }
+  .btn.secondary:hover { background: var(--border-hi); color: var(--text); }
+  .actions { display: flex; gap: 10px; margin-bottom: 20px; }
+  .output {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+  }
+  .output-box {
+    background: var(--bg);
+    border: 1px solid var(--surface-3);
+    border-radius: var(--radius-sm);
+    padding: 14px;
+    font-family: 'Cascadia Code', 'Consolas', 'Courier New', monospace;
+    font-size: 0.72rem;
+    line-height: 1.65;
+    color: var(--text-2);
+    word-break: break-word;
+    white-space: pre-wrap;
+    max-height: 500px;
+    overflow-y: auto;
+  }
+  .output-box::-webkit-scrollbar { width: 4px; }
+  .output-box::-webkit-scrollbar-thumb { background: var(--border-hi); border-radius: 2px; }
+  .output-actions { display: flex; gap: 8px; margin-top: 12px; }
+  .hint { font-size: 0.68rem; color: var(--muted); margin-top: 4px; }
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>Creature Prompt Forge</h1>
+  <p>One expert template · Fill the blanks · Generate any creature</p>
+</div>
+<div class="wrap">
+  <div class="field">
+    <label>Format</label>
+    <select id="format">
+      <option value="single">Single Creature — one full body sprite</option>
+      <option value="2x2">2x2 Grid — 4 evolutions (baby / young / mature / epic)</option>
+      <option value="feature">2x2 Feature Views — front / side / attacking / angry</option>
+      <option value="3x3">3x3 Fenotype — 9 cells (default M/F + 6 elements + icon)</option>
+    </select>
+  </div>
+  <div class="row">
+    <div class="field">
+      <label>Creature Name</label>
+      <input id="name" type="text" placeholder="e.g. Fangtooth, Razorback, Duskfang...">
+    </div>
+    <div class="field">
+      <label>Element (optional)</label>
+      <select id="element">
+        <option value="">None</option>
+        <option value="fire">Fire</option>
+        <option value="water">Water</option>
+        <option value="earth">Earth</option>
+        <option value="air">Air</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+      </select>
+    </div>
+  </div>
+  <div class="field">
+    <label>Body Description</label>
+    <textarea id="body" placeholder="e.g. stocky wolf-like predator with thick fur and broad shoulders"></textarea>
+    <div class="hint">Main physical form — animal type, proportions, skin/fur texture</div>
+  </div>
+  <div class="row">
+    <div class="field">
+      <label>Head &amp; Face</label>
+      <input id="head" type="text" placeholder="e.g. wolf-like snout with sharp fangs">
+    </div>
+    <div class="field">
+      <label>Defining Feature</label>
+      <input id="feature" type="text" placeholder="e.g. glowing predator eyes, curved claws on all limbs">
+    </div>
+  </div>
+  <div class="row">
+    <div class="field">
+      <label>Stance / Posture</label>
+      <input id="stance" type="text" placeholder="e.g. crouched low and ready to pounce">
+    </div>
+    <div class="field">
+      <label>Personality / Vibe</label>
+      <input id="vibe" type="text" placeholder="e.g. patient ambush predator, aggressive and territorial">
+    </div>
+  </div>
+  <div class="row">
+    <div class="field">
+      <label>Color Scheme</label>
+      <input id="colors" type="text" placeholder="e.g. dark grey fur with silver underbelly">
+    </div>
+    <div class="field">
+      <label>Background</label>
+      <input id="bg" type="text" placeholder="e.g. solid dark teal">
+    </div>
+  </div>
+  <div class="actions">
+    <button class="btn" onclick="generate()">Generate Prompt</button>
+    <button class="btn secondary" onclick="randomize()">Randomize All</button>
+  </div>
+  <div class="output" id="output" style="display:none">
+    <div class="output-box" id="promptBox"></div>
+    <div class="output-actions">
+      <button class="btn" onclick="copyPrompt()">Copy</button>
+    </div>
+  </div>
+</div>
+<script>
+const STYLE = "pixel art creature, clean linework, simple dot eyes, small stubby legs casting faint shadows underneath, unique textured shading suggesting pixelated skin details, bold readable silhouette, vibrant saturated colors with clean tonal separation, retro SNES era JRPG bestiary quality, simple memorable design, no over-design no clutter";
+
+const SUFFIX = "--ar 1:1 --s 400 --niji 6 --style raw";
+
+const EL_FEATURES = {
+  fire: "warm orange-red tones with ember glow crackling across skin, small flame particles rising",
+  water: "cool blue tones with frost crystals forming on edges, misty breath",
+  earth: "mossy green-brown tones with small mushrooms sprouting from body, rocky texture",
+  air: "pale grey-blue tones with static crackle, windswept fur edges",
+  light: "golden warm glow radiating from within, soft halo of light particles",
+  dark: "deep purple-black tones with red glowing eyes, shadow trailing from body"
+};
+
+const RANDOM = {
+  names: ["Fangtooth","Razorback","Gnashwing","Sablefang","Thornclaw","Vilemaw","Bristlehide","Crimsonmaw","Duskfang","Ironbeak","Gloomclaw","Snapjaw","Riftwing","Quillback","Ashenmaw","Voidfang","Mireclaw","Shroudwing","Frostmane","Grimejaw"],
+  bodies: ["stocky wolf-like predator with thick fur and broad shoulders","lean feline hunter with long legs and sleek body","heavy bear-like beast with massive paws","coiled serpent body with muscular tail","hunched raptor-like body with clawed arms","wide toad-like body with thick warty skin","lanky insectoid body with segmented limbs","compact badger-like body with low stance","angular bird-like body with folded wings","squat turtle-like body with shell plates on back"],
+  heads: ["wolf-like snout with sharp fangs","narrow reptilian head with slit eyes","wide jaw with rows of small teeth","beaked head with hooked tip","broad flat head with small ears","triangular snake head with hinged jaw","round head with big forward-facing eyes","skull-like head with exposed teeth","horned head with crest ridge","wide mouth with tusk-like lower fangs"],
+  features: ["glowing predator eyes","sharp fangs visible even when mouth closed","curved claws on all limbs","ridged spines running down the back","forked tongue flicking out","feathered mane around the neck","multiple eyes for hunting","antenna-like feelers sensing prey","armored scales on the snout","tufted ears that twitch at sound"],
+  stances: ["crouched low and ready to pounce","standing tall scanning for prey","leaning forward with teeth bared","coiled and tense about to strike","lurking low with only eyes visible","upright and alert with ears forward","hunched with claws extended","sprawled wide blocking the path"],
+  vibes: ["patient ambush predator waiting in stillness","aggressive and territorial snarling at everything","cold calculating hunter tracking prey","feral and rabid foaming at the mouth","sly and cunning circling its target","lazy but deadly only moving to kill","pack hunter working with unseen allies","solitary apex predator fearing nothing"],
+  colors: ["dark grey fur with silver underbelly","deep crimson scales with black tips","mottled green and brown camouflage","sandy tan with dark stripe down the back","midnight black with faint purple sheen","rust orange with cream belly markings","pale white with grey spots","dark teal with bioluminescent blue dots","ash grey with red ember markings","olive green with yellow eye markings"],
+  backgrounds: ["solid dark teal","solid dark forest green","solid dark navy","solid charcoal black","solid dark maroon","solid deep slate","solid dark olive","solid dark purple","solid midnight blue","solid dark brown"]
+};
+
+function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+function val(id) { return document.getElementById(id).value.trim(); }
+
+function randomize() {
+  document.getElementById("name").value = pick(RANDOM.names);
+  document.getElementById("body").value = pick(RANDOM.bodies);
+  document.getElementById("head").value = pick(RANDOM.heads);
+  document.getElementById("feature").value = pick(RANDOM.features);
+  document.getElementById("stance").value = pick(RANDOM.stances);
+  document.getElementById("vibe").value = pick(RANDOM.vibes);
+  document.getElementById("colors").value = pick(RANDOM.colors);
+  document.getElementById("bg").value = pick(RANDOM.backgrounds);
+  const els = ["fire","water","earth","air","light","dark"];
+  document.getElementById("element").value = pick(["", ...els]);
+  generate();
+}
+
+function generate() {
+  const fmt = val("format");
+  const name = val("name") || "creature";
+  const body = val("body");
+  const head = val("head");
+  const feature = val("feature");
+  const stance = val("stance");
+  const vibe = val("vibe");
+  const colors = val("colors");
+  const bg = val("bg") || "solid dark teal";
+  const el = val("element");
+  const elDesc = el ? EL_FEATURES[el] : "";
+
+  const base = [body, head, stance].filter(Boolean).join(", ");
+  const elPart = elDesc ? `, ${el} elemental features: ${elDesc}` : "";
+  const personality = vibe ? `, personality: ${vibe}` : "";
+  const featurePart = feature ? `, unifying feature: ${feature}` : "";
+  const colorPart = colors ? `, ${colors}` : "";
+  const bgPart = ` against a ${bg} background`;
+
+  let prompt = "";
+
+  if (fmt === "single") {
+    prompt = `a ${name}, ${base}${elPart}${personality}${featurePart}${colorPart}${bgPart}, ${STYLE} ${SUFFIX}`;
+  } else if (fmt === "2x2") {
+    prompt = `2x2 grid sprite sheet of 4 full body ${name} variants, strict uniform 2x2 grid with 4 fixed-size square cells, all cells same size and spacing, each cell is a full body ${name} creature sprite clearly visible head to toe,
+cell 1 top-left: baby ${name}, tiny and round, oversized head with big cute eyes, stubby limbs, soft simple features, innocent curious expression, ${base},
+cell 2 top-right: young ${name}, smaller and leaner, developing features, energetic stance, growing into its body type, ${base},
+cell 3 bottom-left: mature ${name}, full grown and muscular, defined features, confident powerful stance, peak physical form, ${base},
+cell 4 bottom-right: epic ${name}, larger and imposing, exaggerated features, glowing markings, battle-worn scars, majestic dominant stance, radiating power, ${base}${elPart}${personality}${featurePart}${colorPart}, ${STYLE} ${SUFFIX}`;
+  } else if (fmt === "feature") {
+    prompt = `2x2 grid sprite sheet of 4 feature views of a ${name}, strict uniform 2x2 grid with 4 fixed-size square cells, all cells same size and spacing, each cell is the same full body ${name} creature clearly visible head to toe in a different pose and angle,
+cell 1 top-left: front view, orthographic straight-on front-facing view, neutral standing pose, ${base},
+cell 2 top-right: side view, profile side view 90 degrees from camera, showing full body silhouette from the side, ${base},
+cell 3 bottom-left: attacking view, dynamic action pose mid-attack lunging forward, aggressive body language, motion lines on limbs, ${base},
+cell 4 bottom-right: angry view, confrontational aggressive stance, tense coiled body language radiating hostility, ${base}${elPart}${personality}${featurePart}${colorPart}, ${STYLE} ${SUFFIX}`;
+  } else if (fmt === "3x3") {
+    const elNames = ["fire","water","earth","air","light","dark"];
+    const elCells = elNames.map(e => `${e} type ${name} with ${EL_FEATURES[e]}`);
+    prompt = `3x3 grid of 9 cells for ${name} race, strict 3x3 grid alignment with 9 uniform cells, all cells same size and spacing, consistent character base body across all 9 cells, ${base}${featurePart}${colorPart},
+cell 1 top-left: default ${name} full body front view, element-neutral natural colors,
+cell 2 top-center: default ${name} female variant, slightly slender build with softer features, same color scheme,
+cell 3 top-right: ${elCells[0]},
+cell 4 middle-left: ${elCells[1]},
+cell 5 middle-center: ${elCells[2]},
+cell 6 middle-right: ${elCells[3]},
+cell 7 bottom-left: ${elCells[4]},
+cell 8 bottom-center: ${elCells[5]},
+cell 9 bottom-right: ${name} race icon, 1:1 ratio game asset, no border, simple creature emblem, ${STYLE} ${SUFFIX}`;
+  }
+
+  document.getElementById("promptBox").textContent = prompt;
+  document.getElementById("output").style.display = "block";
+}
+
+function copyPrompt() {
+  const text = document.getElementById("promptBox").textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.querySelector(".output-actions .btn");
+    btn.textContent = "Copied!";
+    setTimeout(() => { btn.textContent = "Copy"; }, 1500);
+  });
+}
+</script>
+</body>
+</html>
