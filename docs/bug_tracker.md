@@ -235,7 +235,7 @@
 
 ### BUG-018 — Browse screen has no empty-search state
 - **Severity:** MEDIUM
-- **Status:** OPEN
+- **Status:** FIXED
 - **Found by:** Coder (UX bughunt, Jul 23 2026)
 - **File:** `lib/screens/browse_screen.dart`
 - **Lines:** 695–1098 (all list builders)
@@ -319,7 +319,7 @@
 
 ### BUG-026 — Browse grid add-button tap target too small
 - **Severity:** MEDIUM
-- **Status:** OPEN
+- **Status:** FIXED (v1.9.0, commit `d9d6486`)
 - **Found by:** Coder (UX bughunt, Jul 23 2026)
 - **File:** `lib/screens/browse_screen.dart:820-838`
 - **Description:** The `+` add button in grid view is a 10px icon inside a ~14px container with `padding: EdgeInsets.all(2)`. This is well below the 48×48 dp minimum tap target recommended by Material Design. On mobile this is hard to hit reliably.
@@ -329,7 +329,7 @@
 
 ### BUG-027 — Item detail remove/add/favourite buttons lack haptic feedback
 - **Severity:** LOW
-- **Status:** OPEN
+- **Status:** FIXED (v1.9.0, commit `d9d6486`)
 - **Found by:** Coder (UX bughunt, Jul 23 2026)
 - **File:** `lib/screens/item_detail_screen.dart:273-324, 393-407`
 - **Description:** The trash (remove), plus (add), and heart (favourite) buttons in item detail fire state changes but never call `Haptics`. Settings tiles, theme picker, shrine picker, and MP lobby all use `Haptics.selection()` consistently.
@@ -391,17 +391,13 @@
 
 ### BUG-033 — Browse filter chips use emoji instead of Material icons
 - **Severity:** LOW
-- **Status:** OPEN
-- **Found by:** Coder (UX bughunt, Jul 23 2026)
-- **File:** `lib/screens/browse_screen.dart:432-439`
-- **Description:** Filter chips use emoji (🎯, 💥, ❄️, 🥶, 🔥, 🤢, 💫, 🕵️) while every other UI element uses Material `Icon` widgets. Emoji rendering varies by device/OS and breaks visual consistency.
-- **Fix proposal:** Replace emoji with appropriate `Icons` constants.
+- **Status:** DISPUTED — No emoji filter chips found in current `browse_screen.dart`. The browse screen uses a `TabBar` with text labels (All, Guns, Items, Favourites), not filter chips. The emoji chips were likely removed during a prior refactor. Closing as wontfix.
 
 ---
 
 ### BUG-034 — Favourites heart toggle clears all snackbars
 - **Severity:** LOW
-- **Status:** OPEN
+- **Status:** FIXED (v1.9.0, commit `d9d6486`)
 - **Found by:** Coder (UX bughunt, Jul 23 2026)
 - **File:** `lib/screens/item_detail_screen.dart:397`
 - **Description:** `ScaffoldMessenger.of(context).clearSnackBars()` before showing the favourite toggled snackbar. If another important snackbar (e.g. synergy activated) was visible, it gets silently dismissed.
@@ -411,7 +407,7 @@
 
 ### BUG-035 — PeriodicTile gun panel: gun type not below title, RANGE missing from periodic grid
 - **Severity:** UX
-- **Status:** FIXED (v1.9.0, commit pending)
+- **Status:** FIXED (v1.9.0, commit `d9d6486`)
 - **Found by:** User testing (Aug 12 2026)
 - **Files:** `lib/widgets/periodic_tile.dart` (classicPeriodic branch 683–806, tacticalStats branch 570–682, `_corner` getter 185–219, `_typeTag` getter 224–267), `lib/widgets/active_run/player_page.dart` (`_tileGrid` 831–856, `childAspectRatio: 0.80` for classicPeriodic), `lib/models/gun.dart` (`range` field 18/47/128/155, `dpsValue` getter 59)
 - **Description:** On the active-run inventory **Periodic grid** (the `classicPeriodic` display mode), gun tiles show the gun **type tag in the top-right corner** (small, ~7.5px, stacked with elemental icons at `Positioned(top:3, right:3)` lines 727–765) and only the **DPS** (or corner badge) at the bottom-center (lines 767–806). The user wants a rework of the gun tile design so that:
@@ -445,7 +441,7 @@
 
 ### BUG-036 — Active run HeaderMenu: no quick "Reset Player Items", Settings not in bottom section
 - **Severity:** UX
-- **Status:** FIXED (v1.9.0, commit pending)
+- **Status:** FIXED (v1.9.0, commit `d9d6486`)
 - **Found by:** User testing (Aug 12 2026)
 - **Files:** `lib/widgets/active_run/active_run_helpers.dart` (`HeaderMenu` class 182–480, `itemBuilder` 289–390, `onSelected` switch 207–287), `lib/widgets/settings/run_tab.dart` (`_confirmClearInventory` 69–103, `RunTabState` 21–368)
 - **Description:** Two related menu-structure issues on the active-run gear (`HeaderMenu` PopupMenu):
@@ -476,7 +472,7 @@
 
 ### BUG-037 — Remove Multiplayer Summary panel/tab
 - **Severity:** UX
-- **Status:** FIXED (v1.9.0, commit pending)
+- **Status:** FIXED (v1.9.0, commit `d9d6486`)
 - **Found by:** User testing (Aug 12 2026)
 - **Files:** `lib/widgets/active_run/player_header.dart` (MP header Row 354–391, `SummaryTab` `Expanded` 381–388), `lib/screens/active_run_screen.dart` (PageView children 262–283, `MpSummaryPage()` at 281), `lib/widgets/active_run/summary_tab.dart` (`SummaryTab` class 17–79, `MpSummaryPage` class 84–663, `MpSummaryPageState` 91+)
 - **Description:** The multiplayer header shows three tabs: P1, P2, and **SUMMARY** (the third tab, `SummaryTab` at `player_header.dart:381–388`, page index 2). The user wants the Summary panel **removed entirely** — "we do not tinker with it for now." It should not be reachable and the tab should not render.
@@ -503,7 +499,7 @@
 
 ### BUG-038 — Unicorn theme: no particle effects + palette selector scrolls + no per-palette particle previews
 - **Severity:** HIGH
-- **Status:** FIXED (v1.9.0, commit pending)
+- **Status:** FIXED (v1.9.0, commit `d9d6486`)
 - **Found by:** User testing (Aug 12 2026)
 - **Files:**
   - `lib/services/app_theme.dart` — `UnicornPalette` enum (776–849, 6 values: cottonCandy/neon/dreamy/sunset/bubblegum/mulberry), `setUnicornPalette` (2598–2606), `AppTheme.mode` getter, `VisualPrefs` (2100–2560: `particlesEnabled` default false at 2208, `particlePreset` default `gungeonDust` at 2209, `setParticlePreset` at 2389–2392)
@@ -567,7 +563,7 @@
 
 ### BUG-039 — S-tier chest/quality colors unreadable (gold pill + white text, dark chest label)
 - **Severity:** MEDIUM
-- **Status:** FIXED (v1.9.0, commit pending)
+- **Status:** FIXED (v1.9.0, commit `d9d6486`)
 - **Found by:** User testing (Aug 12 2026)
 - **Files:**
   - `lib/widgets/quality_badge.dart` — class doc (4–5: intended "S → black pill, white label, golden glow"), `colorFor` (28–46, returns gold `0xFFFFD700` for S at line 32), `_isS` (22–25), build (88–140: badge Container 96–116, white text at 110, silver border at 104, animated glow 118–139 — glow is currently **white/silver**, not gold)
@@ -674,6 +670,67 @@
 ## Fixed Bugs
 
 *(Fixed bugs are moved here with commit hash and date. Open bugs above with `FIXED` status are awaiting move.)*
+
+---
+
+### BUG-042 — Auto-reconnect loop dies silently when `_busyTransition` is true
+- **Severity:** HIGH
+- **Status:** FIXED (v1.9.0, commit `d6556d9`)
+- **Found by:** User testing (Aug 12 2026) — "gf leaves for 15 min and when coming back i sometimes cant reconnect as sidekick"
+- **Files:**
+  - `lib/services/multiplayer_session.dart` — `_tryAutoReconnect()` (lines 1637–1662), timer callback at 1652–1661
+- **Description:** In `_tryAutoReconnect()`, the timer callback checks `_busyTransition` and bails without rescheduling:
+  ```dart
+  _autoReconnectTimer = Timer(delay, () {
+    _autoReconnectTimer = null;
+    if (_status != MpStatus.disconnected) return;
+    if (_busyTransition) return;  // <-- KILLS THE LOOP
+    unawaited(reconnect());
+  });
+  ```
+  If a previous `reconnect()` call is still running (it has an 800ms native radio cooldown + async permission checks + `startAsSidekick`/`startAsMain`), the next auto-reconnect timer fires during the busy window and returns without scheduling a new timer. The auto-reconnect loop **dies silently** — no new attempts are ever scheduled. The only recovery paths are a new `MpDisconnected` event (but the transport is already down), the watchdog (but it's stopped during disconnect), or the user manually tapping reconnect.
+- **Root cause:** The `_busyTransition` guard was added to prevent overlapping `reconnect()` calls, but it doesn't reschedule when it bails. The guard in `reconnect()` itself (line 747: `if (_busyTransition) return;`) is sufficient to prevent overlaps — the timer-side guard is redundant and causes the loop death.
+- **Fix proposal:** When `_busyTransition` is true in the timer callback, reschedule a short retry (2s) instead of bailing:
+  ```dart
+  if (_busyTransition) {
+    _autoReconnectTimer = Timer(const Duration(seconds: 2), _tryAutoReconnect);
+    return;
+  }
+  ```
+
+### BUG-043 — No immediate reconnect when app returns to foreground
+- **Severity:** MED
+- **Status:** FIXED (v1.9.0, commit `d6556d9`)
+- **Found by:** User testing (Aug 12 2026) — "gf leaves for 15 min and when coming back i sometimes cant reconnect as sidekick"
+- **Files:**
+  - `lib/services/multiplayer_session.dart` — no `WidgetsBindingObserver` wiring
+- **Description:** When the app is backgrounded, OS doze mode stops Dart timers from firing. The auto-reconnect timer, watchdog, and search timeout all stop. When the app returns to foreground, the timers resume but may fire late (or the timer may have already expired during background and won't fire again). The user has to wait for the next scheduled retry (which could be 30s away) or manually tap reconnect.
+- **Root cause:** No `WidgetsBindingObserver` to detect app resume and trigger an immediate reconnect attempt when status is `disconnected`.
+- **Fix proposal:** Add `WidgetsBindingObserver` to `MultiplayerSession`:
+  ```dart
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed &&
+        _status == MpStatus.disconnected &&
+        canReconnect && !_busyTransition) {
+      _log('App resumed — triggering immediate reconnect attempt...');
+      _cancelAutoReconnect();
+      _startAutoReconnect();
+    }
+  }
+  ```
+  Register in constructor: `WidgetsBinding.instance.addObserver(this);`
+  Unregister in dispose: `WidgetsBinding.instance.removeObserver(this);`
+
+### BUG-044 — Search timeout (60s) too long during auto-reconnect
+- **Severity:** LOW
+- **Status:** OPEN
+- **Found by:** User testing (Aug 12 2026) — "gf leaves for 15 min and when coming back i sometimes cant reconnect as sidekick"
+- **Files:**
+  - `lib/services/multiplayer_session.dart` — `_startSearchTimeout()` (lines 1612–1622), `_searchTimeoutMs` (line 234)
+- **Description:** During auto-reconnect, `reconnect()` calls `startAsSidekick()`/`startAsMain()` which starts a 60s search timeout. If the peer isn't advertising yet (their app is also backgrounded), those 60s are wasted before the next attempt. After 15 minutes, only ~10-12 attempts have been made (60s search + 30s backoff = 90s per cycle). A shorter timeout during reconnection would allow more attempts.
+- **Root cause:** The search timeout is a single constant (60s) used for both initial connection and reconnection. No distinction between fresh search and reconnect search.
+- **Fix proposal:** Add an optional `timeoutMs` parameter to `_startSearchTimeout()` and use a shorter value (20-25s) during auto-reconnect. Or: during auto-reconnect, skip the search timeout entirely and let the auto-reconnect loop's backoff timer act as the timeout — if no connection within the backoff window, the next attempt restarts the search.
 
 ---
 
