@@ -30,27 +30,27 @@ When done, mark status as `DONE` and move to Session Log.
 
 | Field | Value |
 |-------|-------|
-| **Agent** | Coder |
-| **Branch** | master |
-| **Session started** | 2026-08-12 18:24 UTC+3 |
-| **Last board update** | 2026-08-12 19:20 UTC+3 |
-| **Working on** | — (all 8 tasks done — release checklist next) |
+| **Agent** | _(none)_ |
+| **Branch** | — |
+| **Session started** | — |
+| **Last board update** | 2026-08-12 19:45 UTC+3 |
+| **Working on** | — |
 | **Files in progress** | — |
 | **Uncommitted changes** | — |
-| **Last commit** | `6cbb609` (gungeon_mate) — Task 6: Stat-group tag upgrade — bigger labels + theme-tied colors |
+| **Last commit** | `1270e60` (gungeon_mate) — VERSION_HISTORY: finalize v1.9.0 — all edition work landed |
 
 ### Slot 2
 
 | Field | Value |
 |-------|-------|
-| **Agent** | Coder #2 |
-| **Branch** | master |
-| **Session started** | 2026-08-12 19:35 UTC+3 |
-| **Last board update** | 2026-08-12 19:35 UTC+3 |
-| **Working on** | Task 6: Stat-group tag upgrade — bigger Combat/Handling/Meta labels + theme-tied per-group colors |
-| **Files in progress** | gungeon_mate/lib/services/app_theme.dart, gungeon_mate/lib/widgets/item_detail/gun_stats.dart |
+| **Agent** | _(none)_ |
+| **Branch** | — |
+| **Session started** | — |
+| **Last board update** | 2026-08-12 19:45 UTC+3 |
+| **Working on** | — |
+| **Files in progress** | — |
 | **Uncommitted changes** | — |
-| **Last commit** | `9c0ee22` (gungeon_mate) — Streamline theme + particle picking across all themes |
+| **Last commit** | `0c659ef` (gungeon_mate) — Stat-group tag upgrade: theme-tied per-group colors (ThemeFlair) |
 
 ### Slot 3
 
@@ -143,3 +143,5 @@ Format: `| Agent | Date | Branch | Commit | Task | Files | Status | Next | Watch
 | Maintainer | 2026-08-12 | master | `c5e113b` (outer repo) | Planned special mission: quick theme selection (hybrid strip + immersive) + combine Run+App settings into compact 2-column grid | docs/bullet_hell_edition_plan.md, AGENT_STATUS.md | DONE | Task Queue entries 7 + 8 added. Plan in edition doc under "Feature: Quick Theme Selection + Compact Settings". Coder to implement. | Part 1 (task 7) blocked by BUG-038 — both touch `theme_picker_screen.dart`. Part 2 (task 8) blocked by BUG-036 — both lift `_confirmClearInventory` from `run_tab.dart`. One agent per file at a time (AC4). User chose: hybrid strip+immersive for theme picker, 2-column grid for settings merge. `app_tab.dart` to be left dormant (Safety S4) after merge — don't delete without user OK. |
 | Coder | 2026-08-12 | master | `7a225f3` (gungeon_mate) | Re-versioned v2.0.0→v1.9.0 (user correction) + added animated Bullet Hell wobble+burn heading to main menu | gungeon_mate/{lib/screens/main_menu_screen.dart, pubspec.yaml, assets/data/changelog.json, VERSION_HISTORY.md}, docs/bullet_hell_edition_plan.md | DONE | Next: crack Task Queue — start with BUG-037 (smallest), then BUG-036, then the heavy hitters. | `_BulletHellHeading` widget: self-contained StatefulWidget with own AnimationController (2.8s wobble+glow cycle), disposed properly. flutter_animate import added to main_menu. flutter analyze: 0 issues. Pre-existing uncommitted UI tweaks in `periodic_tile.dart` + `item_detail/header.dart` still present — must coordinate before BUG-035/039. |
 | Coder #2 | 2026-08-12 | master | `463c999` (gungeon_mate) | 3 UI fixes: removed Codex button from main menu, removed Settings gear from top-right, character select 2-col to 4-col compact grid | gungeon_mate/{lib/screens/main_menu_screen.dart, lib/screens/character_select_screen.dart} | DONE | Settings + Codex still reachable via active-run HeaderMenu gear. flutter analyze: 0 issues on both files. | Staged only my 2 files — pre-existing uncommitted changes in `periodic_tile.dart` + `item_detail/header.dart` left unstaged. Character cards: 4-col grid, aspect 0.54, art scale 1.1, radius 10, font 10.5. 9 gungeoneers in 3 rows. |
+| Coder #2 | 2026-08-12 | master | `9c0ee22` (gungeon_mate) | Streamlined theme + particle picking across all themes — quick-access strip, per-theme particle defaults, pop instead of popUntil, palette quick-launch on main menu | gungeon_mate/{lib/screens/theme_picker_screen.dart, lib/services/app_theme.dart, lib/widgets/theme_overlay.dart, lib/screens/main_menu_screen.dart} | DONE | Task 7 done. Generalized BUG-038's unicorn-only particle auto-bind to all themes via kThemeParticleDefaults map. Theme picker apply flow fixed (pop not popUntil). | Also added ThemeFlair.statGroupCombat/Handling/Meta fields + opted in Unicorn + Forge Master themes + remix path copy — groundwork for Task 6. |
+| Coder | 2026-08-12 | master | `1270e60` (gungeon_mate) | Completed all 8 Task Queue items: BUG-035/036/037/038/039 + Tasks 6/8 (Task 7 by Coder #2) | gungeon_mate/{lib/widgets/active_run/player_header.dart, lib/screens/active_run_screen.dart, lib/widgets/active_run/summary_tab.dart, lib/widgets/active_run/active_run_helpers.dart, lib/widgets/settings/run_tab.dart, lib/widgets/particle_engine.dart, lib/widgets/theme_overlay.dart, lib/services/app_theme.dart, lib/screens/theme_picker_screen.dart, lib/widgets/quality_badge.dart, lib/widgets/item_detail/header.dart, lib/widgets/periodic_tile.dart, lib/widgets/active_run/player_page.dart, lib/screens/settings_screen.dart, lib/widgets/settings/app_tab.dart, lib/widgets/item_detail/gun_stats.dart, assets/data/changelog.json, VERSION_HISTORY.md}, docs/bug_tracker.md, AGENT_STATUS.md | DONE | All 8 tasks done. Full flutter analyze: 0 errors/warnings (20 pre-existing info-level lints on dashboard files). Changelog valid (12 items, emoji intact). Release checklist: pubspec 1.9.0+79, main_menu version strings match, VERSION_HISTORY finalized, placeholder removed. | Next: APK build + tag v1.9.0 + GitHub release (Maintainer or user-driven). Pre-existing uncommitted changes in periodic_tile.dart + header.dart were preserved and subsumed into BUG-035/039 commits. summary_tab.dart + app_tab.dart left dormant on disk per Safety S4. |
