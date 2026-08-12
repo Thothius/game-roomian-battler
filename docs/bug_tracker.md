@@ -610,7 +610,7 @@
 
 ### BUG-040 — Periodic grid gun badge: no "DMG" / "RANGE" text labels on the numeric values
 - **Severity:** UX
-- **Status:** OPEN
+- **Status:** FIXED (v1.9.0)
 - **Found by:** User testing (Aug 12 2026)
 - **Files:**
   - `lib/widgets/periodic_tile.dart` — `_buildGunStatsBadge` (lines 323–390), dpsBadge (330–361), rangeBadge (363–380), Row layout (382–389)
@@ -638,7 +638,7 @@
 
 ### BUG-041 — Active-run header icons: no text labels, hard to tell what each icon does
 - **Severity:** UX
-- **Status:** OPEN
+- **Status:** FIXED (v1.9.0)
 - **Found by:** User testing (Aug 12 2026)
 - **Files:**
   - `lib/widgets/active_run/player_page.dart` — `GungeoneerHeader` trailing Row (lines 222–322), calculator icon (230–250), effects icon (252–271), shrine icon (274–297), special panels icon (299–318)

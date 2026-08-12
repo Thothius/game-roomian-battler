@@ -21,8 +21,8 @@ When done, mark status as `DONE` and move to Session Log.
 | 6 | Feature: Stat-group tag upgrade — bigger Combat/Handling/Meta labels + theme-tied per-group colors (ThemeFlair extension + StatGroup rework). See `docs/bullet_hell_edition_plan.md` "Feature: Stat-Group Tag Upgrade" section. | Coder | DONE | BUG-038 (both touch app_theme.dart ThemeFlair) |
 | 7 | Feature: Quick theme selection — theme strip in picker + main-menu quick-launch + fix apply flow (pop not popUntil). See edition doc "Feature: Quick Theme Selection + Compact Settings" Part 1. | Coder #2 | DONE | — |
 | 8 | Feature: Combine Run + App settings tabs into compact 2-column grid (CombinedRunAppTab). See edition doc Part 2. | Coder | DONE | BUG-036 (both lift _confirmClearInventory from run_tab.dart) |
-| 9 | BUG-040: Periodic grid gun badge — add "DMG" and "RANGE" text labels next to the numeric values (e.g. "56.0 DMG" and "1000 RANGE"). Currently shows bare numbers with no unit labels. Files: `lib/widgets/periodic_tile.dart` (`_buildGunStatsBadge` lines 323–390, dpsBadge 330–361, rangeBadge 363–380). No aspect ratio change needed — badges are side-by-side in a Row with 4px gap, labels fit inline. | Coder | TODO | — |
-| 10 | BUG-041: Active-run header icons — add small text labels below the 4 toggle icons (Calculator, Effects, Shrine, Special Panels) for discoverability. Files: `lib/widgets/active_run/player_page.dart` (trailing Row lines 230–318). Each IconButton → Column(icon + tiny label). Labels: "Calc", "Effects", "Shrine", "Panels". Keep horizontal scroll, amber/white38 color scheme, tooltips. | Coder | TODO | — |
+| 9 | BUG-040: Periodic grid gun badge — add "DMG" and "RANGE" text labels next to the numeric values (e.g. "56.0 DMG" and "1000 RANGE"). Currently shows bare numbers with no unit labels. Files: `lib/widgets/periodic_tile.dart` (`_buildGunStatsBadge` lines 323–390, dpsBadge 330–361, rangeBadge 363–380). No aspect ratio change needed — badges are side-by-side in a Row with 4px gap, labels fit inline. | Coder | DONE | — |
+| 10 | BUG-041: Active-run header icons — add small text labels below the 4 toggle icons (Calculator, Effects, Shrine, Special Panels) for discoverability. Files: `lib/widgets/active_run/player_page.dart` (trailing Row lines 230–318). Each IconButton → Column(icon + tiny label). Labels: "Calc", "Effects", "Shrine", "Panels". Keep horizontal scroll, amber/white38 color scheme, tooltips. | Coder | DONE | — |
 
 ---
 
@@ -36,23 +36,23 @@ When done, mark status as `DONE` and move to Session Log.
 | **Branch** | master |
 | **Session started** | 2026-08-12 20:20 UTC+3 |
 | **Last board update** | 2026-08-12 20:20 UTC+3 |
-| **Working on** | BUG-040 + BUG-041: DMG/RANGE labels on periodic grid + text labels under active-run header icons |
-| **Files in progress** | gungeon_mate/lib/widgets/periodic_tile.dart, gungeon_mate/lib/widgets/active_run/player_page.dart |
+| **Working on** | — |
+| **Files in progress** | — |
 | **Uncommitted changes** | — |
-| **Last commit** | `1270e60` (gungeon_mate) — VERSION_HISTORY: finalize v1.9.0 — all edition work landed |
+| **Last commit** | `93a9ad1` (gungeon_mate) — BUG-040 + BUG-041: DMG/RNG labels on periodic grid + text labels under header icons |
 
 ### Slot 2
 
 | Field | Value |
 |-------|-------|
-| **Agent** | Maintainer |
-| **Branch** | master |
-| **Session started** | 2026-08-12 20:15 UTC+3 |
-| **Last board update** | 2026-08-12 20:15 UTC+3 |
-| **Working on** | Formalizing 2 new user-reported tasks: (1) DMG+RANGE labels on periodic grid, (2) text labels under active-run panel icons |
-| **Files in progress** | AGENT_STATUS.md, docs/bug_tracker.md |
+| **Agent** | _(none)_ |
+| **Branch** | — |
+| **Session started** | — |
+| **Last board update** | 2026-08-12 20:25 UTC+3 |
+| **Working on** | — |
+| **Files in progress** | — |
 | **Uncommitted changes** | — |
-| **Last commit** | `347a90f` (gungeon_mate) — Remove animated mascot from main menu + rebalance layout |
+| **Last commit** | `bb8d919` (outer) — Formalize BUG-040 + BUG-041: periodic grid DMG/RANGE labels + header icon labels |
 
 ### Slot 3
 
