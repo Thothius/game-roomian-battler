@@ -19,6 +19,8 @@ When done, mark status as `DONE` and move to Session Log.
 | 4 | BUG-038: Unicorn theme particle effects broken + palette selector scroll + per-palette preset particle previews | — | TODO | — |
 | 5 | BUG-039: S-tier chest/quality colors unreadable — revert to black pill + white text + gold glow (QualityBadge + _ChestChip + PeriodicTile S handling) | — | TODO | — |
 | 6 | Feature: Stat-group tag upgrade — bigger Combat/Handling/Meta labels + theme-tied per-group colors (ThemeFlair extension + StatGroup rework). See `docs/bullet_hell_edition_plan.md` "Feature: Stat-Group Tag Upgrade" section. | — | TODO | BUG-038 (both touch app_theme.dart ThemeFlair) |
+| 7 | Feature: Quick theme selection — theme strip in picker + main-menu quick-launch + fix apply flow (pop not popUntil). See edition doc "Feature: Quick Theme Selection + Compact Settings" Part 1. | — | TODO | BUG-038 (both touch theme_picker_screen.dart) |
+| 8 | Feature: Combine Run + App settings tabs into compact 2-column grid (CombinedRunAppTab). See edition doc Part 2. | — | TODO | BUG-036 (both lift _confirmClearInventory from run_tab.dart) |
 
 ---
 
@@ -28,14 +30,14 @@ When done, mark status as `DONE` and move to Session Log.
 
 | Field | Value |
 |-------|-------|
-| **Agent** | _(none)_ |
+| **Agent** | Coder |
 | **Branch** | master |
-| **Session started** | 2026-08-12 18:12 UTC+3 |
-| **Last board update** | 2026-08-12 18:15 UTC+3 |
-| **Working on** | — |
+| **Session started** | 2026-08-12 18:24 UTC+3 |
+| **Last board update** | 2026-08-12 18:26 UTC+3 |
+| **Working on** | Cracking Task Queue — starting with BUG-037 (remove MP Summary tab, smallest scope) then BUG-036 (HeaderMenu restructure) |
 | **Files in progress** | — |
 | **Uncommitted changes** | — |
-| **Last commit** | `42be72c` (gungeon_mate) — Add Bullet Hell codex page — themed Chamber 6 special page |
+| **Last commit** | `7a225f3` (gungeon_mate) — v1.9.0: re-version from v2.0.0 + animated Bullet Hell wobble+burn heading |
 
 ### Slot 2
 
@@ -44,11 +46,11 @@ When done, mark status as `DONE` and move to Session Log.
 | **Agent** | _(none)_ |
 | **Branch** | — |
 | **Session started** | — |
-| **Last board update** | 2026-08-12 18:32 UTC+3 |
+| **Last board update** | 2026-08-12 18:55 UTC+3 |
 | **Working on** | — |
 | **Files in progress** | — |
 | **Uncommitted changes** | — |
-| **Last commit** | `ccf4d7d` — Plan stat-group tag upgrade (bigger + theme-tied colors) for Bullet Hell Edition |
+| **Last commit** | `c5e113b` — Plan quick theme selection + compact settings merge (special mission) |
 
 ### Slot 3
 
@@ -138,3 +140,5 @@ Format: `| Agent | Date | Branch | Commit | Task | Files | Status | Next | Watch
 | Maintainer | 2026-08-12 | master | `ccf4d7d` (outer repo) | Planned stat-group tag upgrade (bigger Combat/Handling/Meta labels + theme-tied per-group colors) — feature, not a bug | docs/bullet_hell_edition_plan.md, AGENT_STATUS.md | DONE | Task Queue entry 6 added. Plan is in the edition doc under "Feature: Stat-Group Tag Upgrade". Coder to implement. | Feature touches `app_theme.dart` (ThemeFlair) — same file as BUG-038. Blocked-by relationship set in Task Queue. One agent should own `app_theme.dart` at a time (AC4). Items (`item_body.dart`) use StatPill directly with no group labels — unaffected by the group-tag change. |
 | Coder | 2026-08-12 | master | `788dc16` (gungeon_mate) | Branded next release as v2.0.0 "Bullet Hell Edition" — folds v1.8.39 hotfixes (BUG-017/019/020) into one milestone release | gungeon_mate/{assets/data/changelog.json, lib/screens/main_menu_screen.dart, pubspec.yaml, VERSION_HISTORY.md}, docs/bullet_hell_edition_plan.md | DONE | Next: pick up BUG-035–039 from Task Queue (all contribute to the edition). Append headline items to the v2.0.0 changelog entry as they land. | Persistent edition plan at `docs/bullet_hell_edition_plan.md` — READ IT before starting BUG-035–039 work. Emoji write-tool corruption: the 🔥 in changelog.json got mangled to U+FFFD on first write; fixed via node byte-replacement script. If adding emojis via edit/write tools, verify bytes afterward with `node -e` hex check. flutter analyze on main_menu: 0 issues. |
 | Coder | 2026-08-12 | master | `42be72c` (gungeon_mate) | Bullet Hell codex page — themed Chamber 6 special page under Codex (6th tab) | gungeon_mate/{lib/screens/bullet_hell_codex_screen.dart (NEW), lib/screens/codex_screen.dart, assets/images/codex/Bullethell_header.png (NEW), pubspec.yaml, assets/data/changelog.json, VERSION_HISTORY.md}, docs/bullet_hell_edition_plan.md | DONE | Next: BUG-035–039 still in Task Queue. Codex tab count is now 6 — if any code references the old 5-tab count, update it. | Image asset at `assets/images/codex/Bullethell_header.png` (163KB, from wiki.gg via user Desktop). Themed page uses ember/bone accent palette (not ThemeFlair) — intentionally hardcoded to match Bullet Hell's demonic aesthetic regardless of active theme. flutter analyze: 0 issues on 2 files. |
+| Maintainer | 2026-08-12 | master | `c5e113b` (outer repo) | Planned special mission: quick theme selection (hybrid strip + immersive) + combine Run+App settings into compact 2-column grid | docs/bullet_hell_edition_plan.md, AGENT_STATUS.md | DONE | Task Queue entries 7 + 8 added. Plan in edition doc under "Feature: Quick Theme Selection + Compact Settings". Coder to implement. | Part 1 (task 7) blocked by BUG-038 — both touch `theme_picker_screen.dart`. Part 2 (task 8) blocked by BUG-036 — both lift `_confirmClearInventory` from `run_tab.dart`. One agent per file at a time (AC4). User chose: hybrid strip+immersive for theme picker, 2-column grid for settings merge. `app_tab.dart` to be left dormant (Safety S4) after merge — don't delete without user OK. |
+| Coder | 2026-08-12 | master | `7a225f3` (gungeon_mate) | Re-versioned v2.0.0→v1.9.0 (user correction) + added animated Bullet Hell wobble+burn heading to main menu | gungeon_mate/{lib/screens/main_menu_screen.dart, pubspec.yaml, assets/data/changelog.json, VERSION_HISTORY.md}, docs/bullet_hell_edition_plan.md | DONE | Next: crack Task Queue — start with BUG-037 (smallest), then BUG-036, then the heavy hitters. | `_BulletHellHeading` widget: self-contained StatefulWidget with own AnimationController (2.8s wobble+glow cycle), disposed properly. flutter_animate import added to main_menu. flutter analyze: 0 issues. Pre-existing uncommitted UI tweaks in `periodic_tile.dart` + `item_detail/header.dart` still present — must coordinate before BUG-035/039. |

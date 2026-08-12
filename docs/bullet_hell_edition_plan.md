@@ -12,7 +12,7 @@
 | Field | Value |
 |-------|-------|
 | **Edition name** | Bullet Hell Edition |
-| **Version** | `v2.0.0` (build `+79`) |
+| **Version** | `v1.9.0` (build `+79`) |
 | **Title (changelog/main menu)** | `🔥 BULLET HELL EDITION` |
 | **Status** | IN PROGRESS — accumulating fixes |
 | **Started** | 2026-08-12 |
@@ -64,16 +64,17 @@
 ## Styling & Branding Direction
 
 - **Changelog entry** (`assets/data/changelog.json`): single entry, version
-  `v2.0.0`, title `🔥 BULLET HELL EDITION`, date `August 2026`. Each fix is a
+  `v1.9.0`, title `🔥 BULLET HELL EDITION`, date `August 2026`. Each fix is a
   punchy headline item with a leading emoji (💥/🔗/✨/🎯…). As pending bugs
   land, append their headline items to the same `items` array — do NOT create
   a second v2.0.0 entry.
-- **Main menu** (`main_menu_screen.dart`): version string `v2.0.0`, changelog
-  button `Changelog (v2.0.0)`, subtitle line `v2.0.0 — BULLET HELL EDITION`.
-- **VERSION_HISTORY.md**: one `## v2.0.0 — 🔥 BULLET HELL EDITION` section with
+- **Main menu** (`main_menu_screen.dart`): version string `v1.9.0`, changelog
+  button `Changelog (v1.9.0)`, subtitle line `v1.9.0 — BULLET HELL EDITION`.
+  Animated "Bullet Hell" wobble+burn sub-update heading below the subtitle ribbon.
+- **VERSION_HISTORY.md**: one `## v1.9.0 — 🔥 BULLET HELL EDITION` section with
   "Landed so far" + "Coming in the edition" subsections; move pending items to
   "Landed" as they commit.
-- **APK filename** (when shipped): `gungeon-mate-v2.0.0-bullet-hell-edition.apk`
+- **APK filename** (when shipped): `gungeon-mate-v1.9.0-bullet-hell-edition.apk`
   — include the edition slug for discoverability.
 - **Aesthetic**: keep the dark neon Gungeon look. The edition is a branding
   moment, not a reskin — no new color system. Particle/haptic polish from
@@ -87,9 +88,9 @@
 2. `flutter analyze` clean on all modified files.
 3. Changelog `items` array finalized — no "coming soon" placeholders left.
 4. VERSION_HISTORY "Coming in the edition" section emptied into "Landed".
-5. `pubspec.yaml` version confirmed `2.0.0+79`.
-6. Build release APK → `app-releases/gungeon-mate-v2.0.0-bullet-hell-edition.apk`.
-7. Tag `v2.0.0` + GitHub Release with APK asset.
+5. `pubspec.yaml` version confirmed `1.9.0+79`.
+6. Build release APK → `app-releases/gungeon-mate-v1.9.0-bullet-hell-edition.apk`.
+7. Tag `v1.9.0` + GitHub Release with APK asset.
 8. Update AGENT_STATUS Session Log with the edition ship row.
 
 ---
