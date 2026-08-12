@@ -27,14 +27,14 @@ When done, mark status as `DONE` and move to Session Log.
 
 | Field | Value |
 |-------|-------|
-| **Agent** | Coder |
+| **Agent** | _(none)_ |
 | **Branch** | master |
 | **Session started** | 2026-08-12 17:53 UTC+3 |
-| **Last board update** | 2026-08-12 17:53 UTC+3 |
-| **Working on** | Bugfix batch: BUG-017 (Max Pane synergy data) + BUG-019 (MP reconnect snackbar) + BUG-020 (1S→S data cleanup) |
+| **Last board update** | 2026-08-12 18:01 UTC+3 |
+| **Working on** | — |
 | **Files in progress** | — |
-| **Uncommitted changes** | assets/data/{synergies,guns,items}.json, lib/widgets/mp_request_listener.dart, lib/screens/{browse_screen,main_menu_screen}.dart, gungeon_mate/pubspec.yaml, assets/data/changelog.json, VERSION_HISTORY.md |
-| **Last commit** | `5e006ec` — Update AGENT_STATUS — all phases complete |
+| **Uncommitted changes** | — |
+| **Last commit** | `e0f928b` (gungeon_mate) — v1.8.39: fix BUG-017/019/020 — synergy data, MP reconnect feedback, quality cleanup |
 
 ### Slot 2
 
@@ -131,3 +131,4 @@ Format: `| Agent | Date | Branch | Commit | Task | Files | Status | Next | Watch
 | Coder | 2026-07-24 | master | `729ead5` | v1.8.23: fix mojibake, zoom app icon 15%, redesign item detail header | lib/screens/{browse_screen,character_select_screen,item_detail_screen}.dart, lib/widgets/{theme_overlay,item_detail/header}.dart, assets/images/app_icon.png, android+ios launcher icons | DONE | — | Fixed 11 mojibake across 4 files. Zoomed app icon 15% (crop+rescale, regenerated all platform icons). Redesigned ItemDetailHeader: rank badge top-left (36px), fav button 50% bigger (36px), no ring on icon, all tags inline in single Wrap, quote at bottom with accent gradient divider. Replaced _TypeAndElementsRow with _TagChip + _AccentDivider. flutter analyze: 0 issues. |
 | Coder | 2026-07-24 | master | `5b3cc94` | v1.8.38: Huntress health stats toggle, item detail header redesign, mojibake fixes, app icon zoom, release APK | lib/widgets/dashboards/huntress_dashboard.dart, lib/widgets/item_detail/header.dart, lib/screens/{browse_screen,character_select_screen,item_detail_screen,main_menu_screen}.dart, lib/widgets/{theme_overlay,active_run/player_page}.dart, pubspec.yaml, assets/data/changelog.json, assets/images/app_icon.png, android+ios launcher icons | DONE | — | User added Huntress ALL/HP toggle (StatefulWidget). Bumped to v1.8.38+77. APK 47.8MB at app-releases/gungeonon-mate-v1.8.38.apk + Desktop. flutter analyze: 0 errors, 0 warnings, 20 info (pre-existing). All changes pushed to origin/master. |
 | STALE — taken over by Coder | 2026-08-12 | master | — | Roomian Battler slot (last board update 2026-07-26, 17 days stale) cleared per AC6; user confirmed takeover. New Coder session started for bugfix batch (BUG-017/019/020). | — | DONE | — | `roomian_battler/` dir has uncommitted new commits with no .gitmodules mapping — left untouched per user. `git log` only shows 3 commits; older session-log commits not in history (repo appears reset/squashed at some point). |
+| Coder | 2026-08-12 | master | `e0f928b` (gungeon_mate) | v1.8.39 bugfix batch: BUG-017 (Max Pane synergy data), BUG-019 (MP reconnect snackbar+haptic), BUG-020 (1S→S quality cleanup) | assets/data/{synergies,guns,items,changelog}.json, lib/widgets/mp_request_listener.dart, lib/screens/{browse_screen,main_menu_screen}.dart, pubspec.yaml, VERSION_HISTORY.md | DONE | Next: 12 OPEN bugs remain (BUG-018/021/022/023/024/026/027/028/029/032/033/034). UX polish batch (BUG-018/026/027/028/029/033/034) is the next logical group. | `gungeon_mate/` is a nested git repo (not a submodule) — commits land there, not in outer repo. Two pre-existing uncommitted changes in `lib/widgets/item_detail/header.dart` + `lib/widgets/periodic_tile.dart` (UI tweaks from prior session) were left unstaged. flutter at `C:\src\flutter\bin\flutter.bat` (X:\flutter is gone). flutter analyze: 0 issues on 3 modified Dart files. |
