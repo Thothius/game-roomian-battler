@@ -13,14 +13,14 @@ When done, mark status as `DONE` and move to Session Log.
 
 | # | Task | Claimed by | Status | Blocked by |
 |---|------|------------|--------|-------------|
-| 1 | BUG-035: Rework PeriodicTile gun panel — gun type below title (centered addon-panel) + add RANGE number alongside DPS on the periodic grid | — | TODO | — |
-| 2 | BUG-036: Active run HeaderMenu — surface "Reset Player Items" quick action + move Settings to the bottom section (with Leave MP / End Run) | — | TODO | — |
-| 3 | BUG-037: Remove MP Summary panel/tab (SummaryTab + MpSummaryPage) from multiplayer header | — | TODO | — |
-| 4 | BUG-038: Unicorn theme particle effects broken + palette selector scroll + per-palette preset particle previews | — | TODO | — |
-| 5 | BUG-039: S-tier chest/quality colors unreadable — revert to black pill + white text + gold glow (QualityBadge + _ChestChip + PeriodicTile S handling) | — | TODO | — |
-| 6 | Feature: Stat-group tag upgrade — bigger Combat/Handling/Meta labels + theme-tied per-group colors (ThemeFlair extension + StatGroup rework). See `docs/bullet_hell_edition_plan.md` "Feature: Stat-Group Tag Upgrade" section. | — | TODO | BUG-038 (both touch app_theme.dart ThemeFlair) |
-| 7 | Feature: Quick theme selection — theme strip in picker + main-menu quick-launch + fix apply flow (pop not popUntil). See edition doc "Feature: Quick Theme Selection + Compact Settings" Part 1. | — | TODO | BUG-038 (both touch theme_picker_screen.dart) |
-| 8 | Feature: Combine Run + App settings tabs into compact 2-column grid (CombinedRunAppTab). See edition doc Part 2. | — | TODO | BUG-036 (both lift _confirmClearInventory from run_tab.dart) |
+| 1 | BUG-035: Rework PeriodicTile gun panel — gun type below title (centered addon-panel) + add RANGE number alongside DPS on the periodic grid | Coder | DONE | — |
+| 2 | BUG-036: Active run HeaderMenu — surface "Reset Player Items" quick action + move Settings to the bottom section (with Leave MP / End Run) | Coder | DONE | — |
+| 3 | BUG-037: Remove MP Summary panel/tab (SummaryTab + MpSummaryPage) from multiplayer header | Coder | DONE | — |
+| 4 | BUG-038: Unicorn theme particle effects broken + palette selector scroll + per-palette preset particle previews | Coder | DONE | — |
+| 5 | BUG-039: S-tier chest/quality colors unreadable — revert to black pill + white text + gold glow (QualityBadge + _ChestChip + PeriodicTile S handling) | Coder | DONE | — |
+| 6 | Feature: Stat-group tag upgrade — bigger Combat/Handling/Meta labels + theme-tied per-group colors (ThemeFlair extension + StatGroup rework). See `docs/bullet_hell_edition_plan.md` "Feature: Stat-Group Tag Upgrade" section. | Coder | DONE | BUG-038 (both touch app_theme.dart ThemeFlair) |
+| 7 | Feature: Quick theme selection — theme strip in picker + main-menu quick-launch + fix apply flow (pop not popUntil). See edition doc "Feature: Quick Theme Selection + Compact Settings" Part 1. | Coder #2 | DONE | — |
+| 8 | Feature: Combine Run + App settings tabs into compact 2-column grid (CombinedRunAppTab). See edition doc Part 2. | Coder | DONE | BUG-036 (both lift _confirmClearInventory from run_tab.dart) |
 
 ---
 
@@ -33,24 +33,24 @@ When done, mark status as `DONE` and move to Session Log.
 | **Agent** | Coder |
 | **Branch** | master |
 | **Session started** | 2026-08-12 18:24 UTC+3 |
-| **Last board update** | 2026-08-12 18:26 UTC+3 |
-| **Working on** | Cracking Task Queue — starting with BUG-037 (remove MP Summary tab, smallest scope) then BUG-036 (HeaderMenu restructure) |
+| **Last board update** | 2026-08-12 19:20 UTC+3 |
+| **Working on** | — (all 8 tasks done — release checklist next) |
 | **Files in progress** | — |
 | **Uncommitted changes** | — |
-| **Last commit** | `7a225f3` (gungeon_mate) — v1.9.0: re-version from v2.0.0 + animated Bullet Hell wobble+burn heading |
+| **Last commit** | `6cbb609` (gungeon_mate) — Task 6: Stat-group tag upgrade — bigger labels + theme-tied colors |
 
 ### Slot 2
 
 | Field | Value |
 |-------|-------|
-| **Agent** | _(none)_ |
-| **Branch** | — |
-| **Session started** | — |
-| **Last board update** | 2026-08-12 18:55 UTC+3 |
-| **Working on** | — |
-| **Files in progress** | — |
+| **Agent** | Coder #2 |
+| **Branch** | master |
+| **Session started** | 2026-08-12 19:35 UTC+3 |
+| **Last board update** | 2026-08-12 19:35 UTC+3 |
+| **Working on** | Task 6: Stat-group tag upgrade — bigger Combat/Handling/Meta labels + theme-tied per-group colors |
+| **Files in progress** | gungeon_mate/lib/services/app_theme.dart, gungeon_mate/lib/widgets/item_detail/gun_stats.dart |
 | **Uncommitted changes** | — |
-| **Last commit** | `c5e113b` — Plan quick theme selection + compact settings merge (special mission) |
+| **Last commit** | `9c0ee22` (gungeon_mate) — Streamline theme + particle picking across all themes |
 
 ### Slot 3
 
@@ -142,3 +142,4 @@ Format: `| Agent | Date | Branch | Commit | Task | Files | Status | Next | Watch
 | Coder | 2026-08-12 | master | `42be72c` (gungeon_mate) | Bullet Hell codex page — themed Chamber 6 special page under Codex (6th tab) | gungeon_mate/{lib/screens/bullet_hell_codex_screen.dart (NEW), lib/screens/codex_screen.dart, assets/images/codex/Bullethell_header.png (NEW), pubspec.yaml, assets/data/changelog.json, VERSION_HISTORY.md}, docs/bullet_hell_edition_plan.md | DONE | Next: BUG-035–039 still in Task Queue. Codex tab count is now 6 — if any code references the old 5-tab count, update it. | Image asset at `assets/images/codex/Bullethell_header.png` (163KB, from wiki.gg via user Desktop). Themed page uses ember/bone accent palette (not ThemeFlair) — intentionally hardcoded to match Bullet Hell's demonic aesthetic regardless of active theme. flutter analyze: 0 issues on 2 files. |
 | Maintainer | 2026-08-12 | master | `c5e113b` (outer repo) | Planned special mission: quick theme selection (hybrid strip + immersive) + combine Run+App settings into compact 2-column grid | docs/bullet_hell_edition_plan.md, AGENT_STATUS.md | DONE | Task Queue entries 7 + 8 added. Plan in edition doc under "Feature: Quick Theme Selection + Compact Settings". Coder to implement. | Part 1 (task 7) blocked by BUG-038 — both touch `theme_picker_screen.dart`. Part 2 (task 8) blocked by BUG-036 — both lift `_confirmClearInventory` from `run_tab.dart`. One agent per file at a time (AC4). User chose: hybrid strip+immersive for theme picker, 2-column grid for settings merge. `app_tab.dart` to be left dormant (Safety S4) after merge — don't delete without user OK. |
 | Coder | 2026-08-12 | master | `7a225f3` (gungeon_mate) | Re-versioned v2.0.0→v1.9.0 (user correction) + added animated Bullet Hell wobble+burn heading to main menu | gungeon_mate/{lib/screens/main_menu_screen.dart, pubspec.yaml, assets/data/changelog.json, VERSION_HISTORY.md}, docs/bullet_hell_edition_plan.md | DONE | Next: crack Task Queue — start with BUG-037 (smallest), then BUG-036, then the heavy hitters. | `_BulletHellHeading` widget: self-contained StatefulWidget with own AnimationController (2.8s wobble+glow cycle), disposed properly. flutter_animate import added to main_menu. flutter analyze: 0 issues. Pre-existing uncommitted UI tweaks in `periodic_tile.dart` + `item_detail/header.dart` still present — must coordinate before BUG-035/039. |
+| Coder #2 | 2026-08-12 | master | `463c999` (gungeon_mate) | 3 UI fixes: removed Codex button from main menu, removed Settings gear from top-right, character select 2-col to 4-col compact grid | gungeon_mate/{lib/screens/main_menu_screen.dart, lib/screens/character_select_screen.dart} | DONE | Settings + Codex still reachable via active-run HeaderMenu gear. flutter analyze: 0 issues on both files. | Staged only my 2 files — pre-existing uncommitted changes in `periodic_tile.dart` + `item_detail/header.dart` left unstaged. Character cards: 4-col grid, aspect 0.54, art scale 1.1, radius 10, font 10.5. 9 gungeoneers in 3 rows. |

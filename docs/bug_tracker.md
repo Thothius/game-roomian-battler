@@ -411,7 +411,7 @@
 
 ### BUG-035 — PeriodicTile gun panel: gun type not below title, RANGE missing from periodic grid
 - **Severity:** UX
-- **Status:** OPEN
+- **Status:** FIXED (v1.9.0, commit pending)
 - **Found by:** User testing (Aug 12 2026)
 - **Files:** `lib/widgets/periodic_tile.dart` (classicPeriodic branch 683–806, tacticalStats branch 570–682, `_corner` getter 185–219, `_typeTag` getter 224–267), `lib/widgets/active_run/player_page.dart` (`_tileGrid` 831–856, `childAspectRatio: 0.80` for classicPeriodic), `lib/models/gun.dart` (`range` field 18/47/128/155, `dpsValue` getter 59)
 - **Description:** On the active-run inventory **Periodic grid** (the `classicPeriodic` display mode), gun tiles show the gun **type tag in the top-right corner** (small, ~7.5px, stacked with elemental icons at `Positioned(top:3, right:3)` lines 727–765) and only the **DPS** (or corner badge) at the bottom-center (lines 767–806). The user wants a rework of the gun tile design so that:
@@ -445,7 +445,7 @@
 
 ### BUG-036 — Active run HeaderMenu: no quick "Reset Player Items", Settings not in bottom section
 - **Severity:** UX
-- **Status:** OPEN
+- **Status:** FIXED (v1.9.0, commit pending)
 - **Found by:** User testing (Aug 12 2026)
 - **Files:** `lib/widgets/active_run/active_run_helpers.dart` (`HeaderMenu` class 182–480, `itemBuilder` 289–390, `onSelected` switch 207–287), `lib/widgets/settings/run_tab.dart` (`_confirmClearInventory` 69–103, `RunTabState` 21–368)
 - **Description:** Two related menu-structure issues on the active-run gear (`HeaderMenu` PopupMenu):
@@ -476,7 +476,7 @@
 
 ### BUG-037 — Remove Multiplayer Summary panel/tab
 - **Severity:** UX
-- **Status:** OPEN
+- **Status:** FIXED (v1.9.0, commit pending)
 - **Found by:** User testing (Aug 12 2026)
 - **Files:** `lib/widgets/active_run/player_header.dart` (MP header Row 354–391, `SummaryTab` `Expanded` 381–388), `lib/screens/active_run_screen.dart` (PageView children 262–283, `MpSummaryPage()` at 281), `lib/widgets/active_run/summary_tab.dart` (`SummaryTab` class 17–79, `MpSummaryPage` class 84–663, `MpSummaryPageState` 91+)
 - **Description:** The multiplayer header shows three tabs: P1, P2, and **SUMMARY** (the third tab, `SummaryTab` at `player_header.dart:381–388`, page index 2). The user wants the Summary panel **removed entirely** — "we do not tinker with it for now." It should not be reachable and the tab should not render.
@@ -503,7 +503,7 @@
 
 ### BUG-038 — Unicorn theme: no particle effects + palette selector scrolls + no per-palette particle previews
 - **Severity:** HIGH
-- **Status:** OPEN
+- **Status:** FIXED (v1.9.0, commit pending)
 - **Found by:** User testing (Aug 12 2026)
 - **Files:**
   - `lib/services/app_theme.dart` — `UnicornPalette` enum (776–849, 6 values: cottonCandy/neon/dreamy/sunset/bubblegum/mulberry), `setUnicornPalette` (2598–2606), `AppTheme.mode` getter, `VisualPrefs` (2100–2560: `particlesEnabled` default false at 2208, `particlePreset` default `gungeonDust` at 2209, `setParticlePreset` at 2389–2392)
@@ -567,7 +567,7 @@
 
 ### BUG-039 — S-tier chest/quality colors unreadable (gold pill + white text, dark chest label)
 - **Severity:** MEDIUM
-- **Status:** OPEN
+- **Status:** FIXED (v1.9.0, commit pending)
 - **Found by:** User testing (Aug 12 2026)
 - **Files:**
   - `lib/widgets/quality_badge.dart` — class doc (4–5: intended "S → black pill, white label, golden glow"), `colorFor` (28–46, returns gold `0xFFFFD700` for S at line 32), `_isS` (22–25), build (88–140: badge Container 96–116, white text at 110, silver border at 104, animated glow 118–139 — glow is currently **white/silver**, not gold)
