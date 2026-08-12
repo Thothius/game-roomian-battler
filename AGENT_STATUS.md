@@ -29,25 +29,25 @@ When done, mark status as `DONE` and move to Session Log.
 |-------|-------|
 | **Agent** | _(none)_ |
 | **Branch** | master |
-| **Session started** | 2026-08-12 17:53 UTC+3 |
-| **Last board update** | 2026-08-12 18:01 UTC+3 |
+| **Session started** | 2026-08-12 18:07 UTC+3 |
+| **Last board update** | 2026-08-12 18:10 UTC+3 |
 | **Working on** | — |
 | **Files in progress** | — |
 | **Uncommitted changes** | — |
-| **Last commit** | `e0f928b` (gungeon_mate) — v1.8.39: fix BUG-017/019/020 — synergy data, MP reconnect feedback, quality cleanup |
+| **Last commit** | `788dc16` (gungeon_mate) — Rebrand next release as v2.0.0 "Bullet Hell Edition" |
 
 ### Slot 2
 
 | Field | Value |
 |-------|-------|
-| **Agent** | Maintainer |
-| **Branch** | master |
-| **Session started** | 2026-08-12 18:00 UTC+3 |
-| **Last board update** | 2026-08-12 18:00 UTC+3 |
-| **Working on** | Formalizing 5 user-reported bugs (BUG-035–039) into bug tracker + Task Queue for Coder pickup |
-| **Files in progress** | docs/bug_tracker.md, AGENT_STATUS.md |
+| **Agent** | _(none)_ |
+| **Branch** | — |
+| **Session started** | — |
+| **Last board update** | 2026-08-12 18:18 UTC+3 |
+| **Working on** | — |
+| **Files in progress** | — |
 | **Uncommitted changes** | — |
-| **Last commit** | `9abddc0` — Bughunt fixes: remove duplicate dice card from AppTab, remove dead DebugTab class, fix dice preview glow alpha, remove redundant header, fix stale comment + settings doc comment |
+| **Last commit** | `2998f7a` — Enhance BUG-035–039 reports with implementation-ready detail |
 
 ### Slot 3
 
@@ -132,3 +132,6 @@ Format: `| Agent | Date | Branch | Commit | Task | Files | Status | Next | Watch
 | Coder | 2026-07-24 | master | `5b3cc94` | v1.8.38: Huntress health stats toggle, item detail header redesign, mojibake fixes, app icon zoom, release APK | lib/widgets/dashboards/huntress_dashboard.dart, lib/widgets/item_detail/header.dart, lib/screens/{browse_screen,character_select_screen,item_detail_screen,main_menu_screen}.dart, lib/widgets/{theme_overlay,active_run/player_page}.dart, pubspec.yaml, assets/data/changelog.json, assets/images/app_icon.png, android+ios launcher icons | DONE | — | User added Huntress ALL/HP toggle (StatefulWidget). Bumped to v1.8.38+77. APK 47.8MB at app-releases/gungeonon-mate-v1.8.38.apk + Desktop. flutter analyze: 0 errors, 0 warnings, 20 info (pre-existing). All changes pushed to origin/master. |
 | STALE — taken over by Coder | 2026-08-12 | master | — | Roomian Battler slot (last board update 2026-07-26, 17 days stale) cleared per AC6; user confirmed takeover. New Coder session started for bugfix batch (BUG-017/019/020). | — | DONE | — | `roomian_battler/` dir has uncommitted new commits with no .gitmodules mapping — left untouched per user. `git log` only shows 3 commits; older session-log commits not in history (repo appears reset/squashed at some point). |
 | Coder | 2026-08-12 | master | `e0f928b` (gungeon_mate) | v1.8.39 bugfix batch: BUG-017 (Max Pane synergy data), BUG-019 (MP reconnect snackbar+haptic), BUG-020 (1S→S quality cleanup) | assets/data/{synergies,guns,items,changelog}.json, lib/widgets/mp_request_listener.dart, lib/screens/{browse_screen,main_menu_screen}.dart, pubspec.yaml, VERSION_HISTORY.md | DONE | Next: 12 OPEN bugs remain (BUG-018/021/022/023/024/026/027/028/029/032/033/034). UX polish batch (BUG-018/026/027/028/029/033/034) is the next logical group. | `gungeon_mate/` is a nested git repo (not a submodule) — commits land there, not in outer repo. Two pre-existing uncommitted changes in `lib/widgets/item_detail/header.dart` + `lib/widgets/periodic_tile.dart` (UI tweaks from prior session) were left unstaged. flutter at `C:\src\flutter\bin\flutter.bat` (X:\flutter is gone). flutter analyze: 0 issues on 3 modified Dart files. |
+| Maintainer | 2026-08-12 | master | `73569c9` (outer repo) | Formalized 5 user-reported bugs into tracker + Task Queue (no code changes — coordination only) | docs/bug_tracker.md, AGENT_STATUS.md | DONE | 5 new tasks in Task Queue (BUG-035–039) ready for Coder pickup. Slot released. | AGENT_STATUS.md is gitignored (local-only). `roomian_battler` submodule pointer drift left untouched per user. NOTE for Coder: BUG-035 + BUG-039 both touch `periodic_tile.dart` and `item_detail/header.dart` — there are pre-existing uncommitted UI tweaks in those two files from the prior Coder session (see row above); coordinate/stash before starting to avoid clobbering. BUG-038 is the largest scope (theme+particle system). |
+| Maintainer | 2026-08-12 | master | `2998f7a` (outer repo) | Enhanced BUG-035–039 reports to implementation-ready specs (no code changes) | docs/bug_tracker.md | DONE | Reports now include exact line numbers, root cause traces, code sketches, edge cases, verification checklists. Ready for Coder pickup. | Discovered: BUG-038 blocker — `ParticleField` has no `colorsOverride` param (only glow/lineLinks overrides) — per-palette particles require adding it. Discovered: BUG-039 — the S-tier animated glow is currently white/silver, not gold (doc says gold). Both noted in the enhanced reports. |
+| Coder | 2026-08-12 | master | `788dc16` (gungeon_mate) | Branded next release as v2.0.0 "Bullet Hell Edition" — folds v1.8.39 hotfixes (BUG-017/019/020) into one milestone release | gungeon_mate/{assets/data/changelog.json, lib/screens/main_menu_screen.dart, pubspec.yaml, VERSION_HISTORY.md}, docs/bullet_hell_edition_plan.md | DONE | Next: pick up BUG-035–039 from Task Queue (all contribute to the edition). Append headline items to the v2.0.0 changelog entry as they land. | Persistent edition plan at `docs/bullet_hell_edition_plan.md` — READ IT before starting BUG-035–039 work. Emoji write-tool corruption: the 🔥 in changelog.json got mangled to U+FFFD on first write; fixed via node byte-replacement script. If adding emojis via edit/write tools, verify bytes afterward with `node -e` hex check. flutter analyze on main_menu: 0 issues. |
