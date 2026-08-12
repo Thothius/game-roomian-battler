@@ -608,6 +608,69 @@
 
 ---
 
+### BUG-040 — Periodic grid gun badge: no "DMG" / "RANGE" text labels on the numeric values
+- **Severity:** UX
+- **Status:** OPEN
+- **Found by:** User testing (Aug 12 2026)
+- **Files:**
+  - `lib/widgets/periodic_tile.dart` — `_buildGunStatsBadge` (lines 323–390), dpsBadge (330–361), rangeBadge (363–380), Row layout (382–389)
+- **Description:** On the active-run inventory **Periodic grid** (`classicPeriodic` display mode), the bottom-center gun stats badge shows the DPS and RANGE values as **bare numbers with no unit labels**. The user sees e.g. "56.0" and "1000" but has to infer which is damage and which is range. The user wants explicit labels like **"56.0 DMG"** and **"1000 RANGE"** so the values are immediately understandable.
+- **Current behavior:**
+  - dpsBadge (lines 330–361): renders only the numeric value from `_corner` getter (185–219). Font 12.5px, weight 900, gold if top DPS else white, on semi-transparent black bg. No "DMG" label.
+  - rangeBadge (lines 363–380): renders only the cleaned range string from `_cleanStat(widget.gun!.range)` (304–321). Font 10px, weight 700, `Colors.white70`, on semi-transparent black bg. No "RANGE" label.
+  - Layout: side-by-side `Row` with 4px gap (line 386). Grid `childAspectRatio: 0.75` (player_page.dart line 841).
+- **Fix proposal:** Add small unit labels inline with the numeric values:
+  - **dpsBadge:** append `" DMG"` after the numeric value (or render the label as a smaller suffix within the same badge). Keep the number as the primary visual element (larger/bolder), label as a smaller suffix. Example: `56.0 DMG` where "56.0" is the existing 12.5px gold/white and "DMG" is ~8px, weight 700, slightly dimmed (white60).
+  - **rangeBadge:** append `" RANGE"` after the cleaned range value. Example: `1000 RANGE` where "1000" is the existing 10px white70 and "RANGE" is ~7px, weight 700, white54.
+  - The badges are already in a horizontal Row with 4px gap — the labels fit inline without changing the Row layout or the grid aspect ratio.
+  - Keep the gold shimmer animation on top-DPS badges (354–359) — it animates the whole badge, label included.
+- **Edge cases:**
+  - Guns with empty `dps` or empty `range`: the existing `if (dps.isNotEmpty && range.isNotEmpty)` guard (line 385) and individual emptiness checks already handle this — only show the label when the value is present.
+  - Very long range strings (e.g. "10.5 (charged)"): `_cleanStat` already truncates to 7 chars. Adding " RANGE" (6 chars) makes the worst case ~13 chars. At 10px font in a badge with 4px horizontal padding, this fits within the tile width (tiles are ~90px wide at 4 columns on a 360px screen). Verify on narrow screens (3 columns at <360px width).
+  - The `_corner` getter formats DPS as integer when ≥100 (e.g. "150") and 1-decimal when <100 (e.g. "22.5"). The "DMG" label works for both formats.
+- **Verification:**
+  - `flutter analyze` on `periodic_tile.dart`.
+  - Visual: open the Periodic Grid with a gun that has both DPS and RANGE — confirm "DMG" and "RANGE" labels are visible next to the numbers, readable, and don't overflow the tile.
+  - Confirm top-DPS gold shimmer still animates correctly with the label.
+  - Confirm guns with missing DPS or RANGE still show only the available stat.
+
+---
+
+### BUG-041 — Active-run header icons: no text labels, hard to tell what each icon does
+- **Severity:** UX
+- **Status:** OPEN
+- **Found by:** User testing (Aug 12 2026)
+- **Files:**
+  - `lib/widgets/active_run/player_page.dart` — `GungeoneerHeader` trailing Row (lines 222–322), calculator icon (230–250), effects icon (252–271), shrine icon (274–297), special panels icon (299–318)
+- **Description:** The active-run header has 4 toggle icons in a horizontal row (Damage Calculator, Effects Panel, Shrine Picker, Special Panels). Each is a bare `IconButton` with only a tooltip — **no visible text label**. New users can't tell what each icon does without tapping them blindly. The user wants **small text labels below each icon** for immediate discoverability.
+- **Current behavior:**
+  - All 4 icons are `IconButton` widgets, size 20, in a horizontal `Row` wrapped in `SingleChildScrollView(scrollDirection: Axis.horizontal)` (line 223).
+  - Color: `Colors.amberAccent` when ON, `Colors.white38` when OFF.
+  - Constraints: `BoxConstraints(minWidth: 36, minHeight: 36)`, padding `EdgeInsets.zero`.
+  - Tooltips exist but are only visible on long-press/hover — not discoverable on mobile.
+  - The Row also contains `SpongeButton` (line 227, conditional) and `HeaderMenu` (line 320, gear icon) — these are not part of the labeling task.
+- **Fix proposal:** Wrap each of the 4 `IconButton`s in a `Column` with a tiny text label below:
+  - **Calculator** → label "Calc" (short for "Damage Calculator")
+  - **Effects** → label "Effects"
+  - **Shrine** → label "Shrine"
+  - **Special Panels** → label "Panels"
+  - Label style: ~8px, weight 600, `Colors.white54` (or amber-tinted when ON to match the icon state), `letterSpacing: 0.5`, `GoopText` for font consistency.
+  - Keep the `ListenableBuilder` wrappers, `IconButton` tooltips, tap/long-press actions, and amber/white38 color scheme unchanged.
+  - Keep the `SingleChildScrollView` horizontal scroll — adding labels makes each column slightly wider (~36px → ~36px, label is narrower than the icon). If the Row gets too wide, the scroll handles it.
+  - Consider tightening the `SizedBox(width: 4)` gaps between labeled columns if needed.
+- **Edge cases:**
+  - Narrow screens (≤360px): the Row already scrolls horizontally. Labels don't add significant width since they're shorter than the icons. Verify the Row doesn't push the `HeaderMenu` gear off-screen on narrow devices — the scroll handles overflow.
+  - The `SpongeButton` (line 227) is conditional and has its own layout — don't label it, only the 4 toggle icons.
+  - The `HeaderMenu` (line 320) is a separate gear icon with a popup menu — don't label it.
+  - Label color should match the icon state: amber-tinted when ON, white38/white54 when OFF. Use the same `ListenableBuilder` value to drive both icon and label color.
+- **Verification:**
+  - `flutter analyze` on `player_page.dart`.
+  - Visual: open the active run screen — confirm 4 icons each have a small text label below them, labels are readable but not overpowering, and the header doesn't overflow on narrow screens.
+  - Toggle each icon ON/OFF — confirm both the icon and label color shift between amber and white38.
+  - Confirm tooltips, tap actions, and long-press actions still work.
+
+---
+
 ## Fixed Bugs
 
 *(Fixed bugs are moved here with commit hash and date. Open bugs above with `FIXED` status are awaiting move.)*
