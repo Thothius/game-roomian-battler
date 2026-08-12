@@ -409,6 +409,82 @@
 
 ---
 
+### BUG-035 — PeriodicTile gun panel: gun type not below title, RANGE missing from periodic grid
+- **Severity:** UX
+- **Status:** OPEN
+- **Found by:** User testing (Aug 12 2026)
+- **Files:** `lib/widgets/periodic_tile.dart` (classicPeriodic branch ~683–806, tacticalStats branch ~570–682), `lib/models/gun.dart`
+- **Description:** On the active-run inventory **Periodic grid** (the `classicPeriodic` display mode), gun tiles show the gun **type tag in the top-right corner** (small, ~7.5px, stacked with elemental icons) and only the **DPS** (or corner badge) at the bottom-center. The user wants a rework of the gun tile design so that:
+  1. The **gun type** (Pistol / Shotgun / Rifle / Beam / etc.) sits **below the gun title** as a dedicated, centered visual addon-panel — not a tiny corner tag.
+  2. The **RANGE** number is shown **alongside the DPS** on the periodic grid (currently only DPS appears in the bottom-center `_corner` badge; RANGE is only visible in the `tacticalStats` 2×3 grid, not in `classicPeriodic`).
+  - DPS display is already good and should be kept.
+- **Root cause:** `classicPeriodic` layout puts `_typeTag` in a `Positioned(top:3, right:3)` corner (lines 727–765) and the bottom-center `_corner` badge (lines 767–806) only renders DPS (via `_corner` getter, lines 185–192, which returns the DPS value for guns). RANGE is never surfaced in this mode.
+- **Fix proposal:** Rework the `classicPeriodic` gun tile: move the type tag from the top-right corner to a centered subtitle row directly beneath the gun name/title area; add a RANGE value next to (or beneath) the DPS in the bottom-center badge so both DPS and RANGE are visible on the periodic grid. Keep the elemental icons in the top-right. Verify the `tacticalStats` mode already shows RANGE (it does, line 657) — no change needed there. Watch tile height in `SliverGrid` `childAspectRatio` so the added row doesn't clip.
+
+---
+
+### BUG-036 — Active run HeaderMenu: no quick "Reset Player Items", Settings not in bottom section
+- **Severity:** UX
+- **Status:** OPEN
+- **Found by:** User testing (Aug 12 2026)
+- **Files:** `lib/widgets/active_run/active_run_helpers.dart` (`HeaderMenu` ~182–420), `lib/widgets/settings/run_tab.dart` (has the reset logic, ~274–288)
+- **Description:** Two related menu-structure issues on the active-run gear (`HeaderMenu` PopupMenu):
+  1. **"Reset Player Items" is only reachable via Settings → Run tab → Inventory Maintenance.** The user wants it available quicker — as a direct item in the active-run gear menu (it already exists as `_confirmClearInventory` in `run_tab.dart` and can be reused).
+  2. **Settings is currently at the TOP of the gear menu** (lines 299–306, right after Favourites). The user wants Settings moved to the **final/lower section**, grouped with Leave Multiplayer and End Run (the "End & Leave" block at lines 360+), so the top of the menu prioritizes in-run actions.
+- **Root cause:** Menu ordering in `itemBuilder` (lines 289–420) places Favourites/Settings/Codex first, then actions, then save/session, then end/leave. Settings is a "destination" not an "in-run action" and is crowding the top.
+- **Fix proposal:**
+  - Add a `reset_items` (and `reset_items_p2` when coop active) `PopupMenuItem` in the Actions section, calling the existing `_confirmClearInventory(context, p, PlayerSlot.main)` helper (lift it to a shared location or call `RunProvider` directly — `run_tab.dart` already has the confirm dialog, consider extracting to `active_run_helpers.dart` so both the menu and the Run tab share it).
+  - Move the `settings` `PopupMenuItem` down into the final section (after the End/Leave block) so the menu reads: Favourites → Codex → Dice Roll → Save → Reset Items → Leave MP / End Run → Settings. Keep the `onSelected` switch case.
+
+---
+
+### BUG-037 — Remove Multiplayer Summary panel/tab
+- **Severity:** UX
+- **Status:** OPEN
+- **Found by:** User testing (Aug 12 2026)
+- **Files:** `lib/widgets/active_run/player_header.dart` (lines 354–391, the `SummaryTab` in the MP header Row), `lib/widgets/active_run/summary_tab.dart` (`SummaryTab` + `MpSummaryPage`), and the page-switcher wiring that maps page index 2 → `MpSummaryPage`
+- **Description:** The multiplayer header shows three tabs: P1, P2, and **SUMMARY** (the third tab, `SummaryTab` at `player_header.dart:381–388`, page index 2). The user wants the Summary panel **removed entirely** — "we do not tinker with it for now." It should not be reachable and the tab should not render.
+- **Root cause:** Feature is wired into the MP header Row as a third `Expanded(flex:2)` child and the page controller maps index 2 to `MpSummaryPage`.
+- **Fix proposal:** Remove the `SummaryTab` `Expanded` from the MP header Row (lines 381–388) so only P1 + P2 remain (each can go back to `flex:1` / equal width). Remove/stop routing page index 2 to `MpSummaryPage` in the active-run page switcher. Leave `summary_tab.dart` on disk for now (do NOT delete the file — per Safety S4, only delete files you created; mark the classes as unused or leave for later re-introduction). Confirm the local-coop `PlayerSwitcher` (non-MP) is unaffected — it already has no Summary tab.
+
+---
+
+### BUG-038 — Unicorn theme: no particle effects + palette selector scrolls + no per-palette particle previews
+- **Severity:** HIGH
+- **Status:** OPEN
+- **Found by:** User testing (Aug 12 2026)
+- **Files:** `lib/services/app_theme.dart` (`UnicornPalette` enum ~776, `setUnicornPalette` ~2598, `VisualPrefs.particlePreset` ~2120/2389), `lib/widgets/theme_overlay.dart` (ParticleField uses `prefs.particlePreset` ~147–157), `lib/widgets/particle_engine.dart` (`unicornSparkles` preset ~168–178), `lib/screens/theme_picker_screen.dart` (`_PaletteSelector` ~1090–1195, unicorn palette cards ~256–277)
+- **Description:** Multiple intertwined theme issues:
+  1. **Unicorn theme shows no particle effects.** The particle field is driven by the *global* `VisualPrefs.particlePreset` (a single user-chosen preset, default `gungeonDust`), NOT by the active theme. Selecting the Unicorn theme does **not** switch the preset to `unicornSparkles`, and `particlesEnabled` defaults to `false` (VisualPrefs ~2208) so unless the user manually enabled particles + picked the unicorn preset, the unicorn theme shows nothing. There is no binding between `AppThemeMode.unicorn` / `UnicornPalette` and `ParticlePreset`.
+  2. **Palette selector requires horizontal scrolling.** `_PaletteSelector` (theme_picker_screen.dart ~1107–1115) renders palette cards in a horizontal `ListView.separated` with `SizedBox(height: 64)`. The Unicorn megapack has **6 palettes** (cottonCandy, neon, dreamy, sunset, bubblegum, mulberry) — they don't all fit on screen at once and the user can't see them all without scrolling. User wants all palettes visible on screen without scrolling.
+  3. **No per-palette preset particle previews.** User wants each Unicorn palette (especially Bubblegum) to show a **preset particle effect made just for it** in the preview panel, mixed into the theme preview.
+- **Root cause:** Particle preset is a flat global pref with no theme coupling; palette selector uses a horizontal scroll list instead of a wrap/grid; no per-palette particle config exists (only one `unicornSparkles` preset for the whole megapack).
+- **Fix proposal:**
+  - **Particles:** When `AppThemeMode.unicorn` is active, auto-apply a unicorn-appropriate `ParticlePreset` (enable particles + set preset) — either override `ParticleField`'s preset based on theme (read `AppTheme.mode` in `theme_overlay.dart` and map unicorn → `unicornSparkles`), or auto-set `VisualPrefs.particlePreset` when the user picks the unicorn theme. Prefer the overlay-side override so it doesn't clobber the user's global choice when they switch back.
+  - **Palette layout:** Replace the horizontal `ListView` in `_PaletteSelector` with a `Wrap` or a 2-row `GridView`/`Row` of `Expanded` cards so all 6 palettes are visible without scrolling. Verify on small screens.
+  - **Per-palette particles:** Add a per-`UnicornPalette` particle color/config mapping (e.g. Bubblegum → pink bubble particles, Mulberry → purple) and surface a small live `ParticleField` preview in the theme preview panel for the active palette. Reuse `ParticleField` with a per-palette color override.
+  - Assess and fix any other theme whose particles don't show for the same global-preset reason while here.
+
+---
+
+### BUG-039 — S-tier chest/quality colors unreadable (gold pill + white text, dark chest label)
+- **Severity:** MEDIUM
+- **Status:** OPEN
+- **Found by:** User testing (Aug 12 2026)
+- **Files:** `lib/widgets/quality_badge.dart` (`colorFor` ~28–46, build ~88–116), `lib/widgets/item_detail/header.dart` (`_ChestChip` ~334–419), `lib/widgets/periodic_tile.dart` (S-tier handling ~471–485)
+- **Description:** The S-tier rendering has drifted from its intended design and is hard to read:
+  1. **`QualityBadge.colorFor('S')` returns bright gold `0xFFFFD700`** (line 32) — but the class doc (lines 4–5) says the intended design is *"S → black pill, white label, golden glow (animated)"*. The badge paints the **letter white on bright gold** (line 110 `color: Colors.white`), which is low-contrast and hard to read. The user explicitly wants **S tier = black pill, white text**.
+  2. **`_ChestChip` for the black/S chest** (`header.dart:338–419`) uses `color = 0xFF222222` (near-black) and renders the "Chest" label in `color.withValues(alpha: 0.85)` (line 393) — i.e. near-black text at 85% alpha on a near-black translucent chip background (`color.withValues(alpha:0.12)`). The label is nearly invisible. The rank letter is white (fine), but the "Chest" word and the icon are dark-on-dark.
+  3. **`PeriodicTile` S-tier** (lines 471–485) mirrors the gold drift: `qColor = 0xFFFFD700`, gold border, dark card bg `0xFF14120E`. The gold border is fine, but the quality badge inside inherits the gold-pill problem.
+- **Root cause:** Someone changed S from the documented black-pill design to a gold pill (likely to "make it pop"), trading readability for flash. The chest chip then compounds it with dark-on-dark label text.
+- **Fix proposal:** Revert S-tier to the documented design across all three sites:
+  - `QualityBadge.colorFor('S')` → return near-black (`0xFF1A1A1A` or `0xFF222222`); keep the **white** label text; keep the existing silver/white border (`E0E0E0`, line 104) and the animated golden **glow** (the `_glow` controller at lines 118+) — that gives "black pill, white text, gold glow" as intended.
+  - `_ChestChip`: for `isS`, render the "Chest" label and icon in **white** (not `color.withValues(alpha:0.85)`); keep the chip background dark with the white border + white glow (already there). The rank letter is already white.
+  - `PeriodicTile`: keep the gold **border/glow** for S but ensure the embedded `QualityBadge` now shows black-pill/white-text (it will inherit the `QualityBadge` fix). Re-evaluate `cardBgColor = 0xFF14120E` — fine to keep.
+  - Verify readability on both the inventory grid and the item/gun detail header pill.
+
+---
+
 ## Fixed Bugs
 
 *(Fixed bugs are moved here with commit hash and date. Open bugs above with `FIXED` status are awaiting move.)*
