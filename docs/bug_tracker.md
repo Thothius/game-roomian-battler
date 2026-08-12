@@ -224,11 +224,12 @@
 
 ### BUG-017 — "Max Pane" synergy missing "Glass Guon Stone" from items array
 - **Severity:** HIGH
-- **Status:** OPEN
+- **Status:** FIXED
 - **Found by:** Coder (data bughunt, Jul 23 2026)
 - **File:** `assets/data/synergies.json`
 - **Description:** The synergy "Max Pane" has `"items": ["Glass Cannon"]` only, but the effect text and `effect_tokens` reference both "Glass Guon Stone" and "Glass Cannon". The `matchesItems()` logic checks the `items` array — it will never flag this synergy as active when the player has both items.
-- **Fix proposal:** Add `"Glass Guon Stone"` to the `items` array: `"items": ["Glass Cannon", "Glass Guon Stone"]`.
+- **Fix:** Added `"Glass Guon Stone"` to the `items` array: `"items": ["Glass Cannon", "Glass Guon Stone"]`.
+- **Commit:** e0f928b
 
 ---
 
@@ -245,21 +246,23 @@
 
 ### BUG-019 — No "Connection Restored" feedback after MP reconnect
 - **Severity:** HIGH
-- **Status:** OPEN
+- **Status:** FIXED
 - **Found by:** Coder (UX bughunt, Jul 23 2026)
 - **File:** `lib/widgets/mp_request_listener.dart:283-288`
 - **Description:** When MP reconnect succeeds, the drop dialog closes silently. No snackbar, no haptic, no visual confirmation. User has to infer reconnection from the dialog disappearing. Identified as P0 gap #1 in `docs/mp_auto_reconnect_plan.md`.
-- **Fix proposal:** Show a brief "Connection Restored" snackbar with `Haptics.success()` when reconnect succeeds.
+- **Fix:** In the `else if (!shouldShow && _dropDialogShowing)` branch, after closing the dialog, check `session.status` — if `connected` or `handshaking` (real reconnect, not teardown to `idle`/`error`), call `Haptics.success()` and show a floating "Connection restored — sync resumed" snackbar (1800ms).
+- **Commit:** e0f928b
 
 ---
 
 ### BUG-020 — Quality value `1S` instead of `S` in data
 - **Severity:** MEDIUM
-- **Status:** OPEN
+- **Status:** FIXED
 - **Found by:** Coder (data bughunt, Jul 23 2026)
 - **File:** `assets/data/guns.json` (19 entries), `assets/data/items.json` (17 entries)
 - **Description:** 36 entries use `"quality": "1S"` instead of `"quality": "S"`. The browse filter handles this with a special case (`q == 'S' || q == '1S'`), but the raw value is displayed in UI metadata chips — users see "1S" instead of "S" on screen. The `1` prefix appears to be a data pipeline artifact.
-- **Fix proposal:** Global find-and-replace `"quality": "1S"` → `"quality": "S"` in both JSON files. Then simplify the filter special case.
+- **Fix:** Global replace `"quality": "1S"` → `"quality": "S"` in both JSON files (19 + 17 = 36 replacements). Removed the `'1S': 0` alias from `_qualityOrder` in `browse_screen.dart`. Note: defensive `1S` normalizations in `quality_badge.dart`, `run_provider.dart`, `item.dart`, `gun.dart`, `sort_picker.dart`, `browse_pills.dart`, `periodic_tile.dart`, `inventory_list_row.dart` are now harmless dead branches — left in place as a separate cleanup task.
+- **Commit:** e0f928b
 
 ---
 

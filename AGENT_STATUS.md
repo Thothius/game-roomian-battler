@@ -13,7 +13,11 @@ When done, mark status as `DONE` and move to Session Log.
 
 | # | Task | Claimed by | Status | Blocked by |
 |---|------|------------|--------|-------------|
-| — | _(empty — user or agents add tasks here)_ | — | — | — |
+| 1 | BUG-035: Rework PeriodicTile gun panel — gun type below title (centered addon-panel) + add RANGE number alongside DPS on the periodic grid | — | TODO | — |
+| 2 | BUG-036: Active run HeaderMenu — surface "Reset Player Items" quick action + move Settings to the bottom section (with Leave MP / End Run) | — | TODO | — |
+| 3 | BUG-037: Remove MP Summary panel/tab (SummaryTab + MpSummaryPage) from multiplayer header | — | TODO | — |
+| 4 | BUG-038: Unicorn theme particle effects broken + palette selector scroll + per-palette preset particle previews | — | TODO | — |
+| 5 | BUG-039: S-tier chest/quality colors unreadable — revert to black pill + white text + gold glow (QualityBadge + _ChestChip + PeriodicTile S handling) | — | TODO | — |
 
 ---
 
@@ -25,23 +29,23 @@ When done, mark status as `DONE` and move to Session Log.
 |-------|-------|
 | **Agent** | Coder |
 | **Branch** | master |
-| **Session started** | 2026-07-25 20:36 UTC+3 |
-| **Last board update** | 2026-07-26 03:10 UTC+3 |
-| **Working on** | Roomian Battler — all 5 phases complete, standby |
+| **Session started** | 2026-08-12 17:53 UTC+3 |
+| **Last board update** | 2026-08-12 17:53 UTC+3 |
+| **Working on** | Bugfix batch: BUG-017 (Max Pane synergy data) + BUG-019 (MP reconnect snackbar) + BUG-020 (1S→S data cleanup) |
 | **Files in progress** | — |
-| **Uncommitted changes** | — |
-| **Last commit** | `3ad75f7` — Phase 4 UI: Level-up and Evolution choice dialogs |
+| **Uncommitted changes** | assets/data/{synergies,guns,items}.json, lib/widgets/mp_request_listener.dart, lib/screens/{browse_screen,main_menu_screen}.dart, gungeon_mate/pubspec.yaml, assets/data/changelog.json, VERSION_HISTORY.md |
+| **Last commit** | `5e006ec` — Update AGENT_STATUS — all phases complete |
 
 ### Slot 2
 
 | Field | Value |
 |-------|-------|
-| **Agent** | _(none)_ |
-| **Branch** | — |
-| **Session started** | — |
-| **Last board update** | 2026-07-24 09:08 UTC+3 |
-| **Working on** | — |
-| **Files in progress** | — |
+| **Agent** | Maintainer |
+| **Branch** | master |
+| **Session started** | 2026-08-12 18:00 UTC+3 |
+| **Last board update** | 2026-08-12 18:00 UTC+3 |
+| **Working on** | Formalizing 5 user-reported bugs (BUG-035–039) into bug tracker + Task Queue for Coder pickup |
+| **Files in progress** | docs/bug_tracker.md, AGENT_STATUS.md |
 | **Uncommitted changes** | — |
 | **Last commit** | `9abddc0` — Bughunt fixes: remove duplicate dice card from AppTab, remove dead DebugTab class, fix dice preview glow alpha, remove redundant header, fix stale comment + settings doc comment |
 
@@ -126,3 +130,4 @@ Format: `| Agent | Date | Branch | Commit | Task | Files | Status | Next | Watch
 | Coder | 2026-07-24 | master | `de99f43` | v1.8.22 release — merge branches, fix 2 crit bugs, bump version, APK build + push | lib/screens/item_detail_screen.dart, lib/widgets/dashboards/huntress_dashboard.dart, lib/screens/main_menu_screen.dart, pubspec.yaml, assets/data/changelog.json | DONE | — | Merged coder/synergy-ui into coder/playwright-setup then into master. Fixed missing `elements` param in ItemDetailHeader call site (crash bug) and broken InkWell in huntress_dashboard.dart. APK 45.6MB at app-releases/gungeonon-mate-v1.8.22.apk. 0 analyze errors, 21 info warnings (all pre-existing). |
 | Coder | 2026-07-24 | master | `729ead5` | v1.8.23: fix mojibake, zoom app icon 15%, redesign item detail header | lib/screens/{browse_screen,character_select_screen,item_detail_screen}.dart, lib/widgets/{theme_overlay,item_detail/header}.dart, assets/images/app_icon.png, android+ios launcher icons | DONE | — | Fixed 11 mojibake across 4 files. Zoomed app icon 15% (crop+rescale, regenerated all platform icons). Redesigned ItemDetailHeader: rank badge top-left (36px), fav button 50% bigger (36px), no ring on icon, all tags inline in single Wrap, quote at bottom with accent gradient divider. Replaced _TypeAndElementsRow with _TagChip + _AccentDivider. flutter analyze: 0 issues. |
 | Coder | 2026-07-24 | master | `5b3cc94` | v1.8.38: Huntress health stats toggle, item detail header redesign, mojibake fixes, app icon zoom, release APK | lib/widgets/dashboards/huntress_dashboard.dart, lib/widgets/item_detail/header.dart, lib/screens/{browse_screen,character_select_screen,item_detail_screen,main_menu_screen}.dart, lib/widgets/{theme_overlay,active_run/player_page}.dart, pubspec.yaml, assets/data/changelog.json, assets/images/app_icon.png, android+ios launcher icons | DONE | — | User added Huntress ALL/HP toggle (StatefulWidget). Bumped to v1.8.38+77. APK 47.8MB at app-releases/gungeonon-mate-v1.8.38.apk + Desktop. flutter analyze: 0 errors, 0 warnings, 20 info (pre-existing). All changes pushed to origin/master. |
+| STALE — taken over by Coder | 2026-08-12 | master | — | Roomian Battler slot (last board update 2026-07-26, 17 days stale) cleared per AC6; user confirmed takeover. New Coder session started for bugfix batch (BUG-017/019/020). | — | DONE | — | `roomian_battler/` dir has uncommitted new commits with no .gitmodules mapping — left untouched per user. `git log` only shows 3 commits; older session-log commits not in history (repo appears reset/squashed at some point). |
