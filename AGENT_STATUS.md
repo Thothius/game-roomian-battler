@@ -18,6 +18,7 @@ When done, mark status as `DONE` and move to Session Log.
 | 3 | BUG-037: Remove MP Summary panel/tab (SummaryTab + MpSummaryPage) from multiplayer header | — | TODO | — |
 | 4 | BUG-038: Unicorn theme particle effects broken + palette selector scroll + per-palette preset particle previews | — | TODO | — |
 | 5 | BUG-039: S-tier chest/quality colors unreadable — revert to black pill + white text + gold glow (QualityBadge + _ChestChip + PeriodicTile S handling) | — | TODO | — |
+| 6 | Feature: Stat-group tag upgrade — bigger Combat/Handling/Meta labels + theme-tied per-group colors (ThemeFlair extension + StatGroup rework). See `docs/bullet_hell_edition_plan.md` "Feature: Stat-Group Tag Upgrade" section. | — | TODO | BUG-038 (both touch app_theme.dart ThemeFlair) |
 
 ---
 
@@ -29,12 +30,12 @@ When done, mark status as `DONE` and move to Session Log.
 |-------|-------|
 | **Agent** | _(none)_ |
 | **Branch** | master |
-| **Session started** | 2026-08-12 18:07 UTC+3 |
-| **Last board update** | 2026-08-12 18:10 UTC+3 |
+| **Session started** | 2026-08-12 18:12 UTC+3 |
+| **Last board update** | 2026-08-12 18:15 UTC+3 |
 | **Working on** | — |
 | **Files in progress** | — |
 | **Uncommitted changes** | — |
-| **Last commit** | `788dc16` (gungeon_mate) — Rebrand next release as v2.0.0 "Bullet Hell Edition" |
+| **Last commit** | `42be72c` (gungeon_mate) — Add Bullet Hell codex page — themed Chamber 6 special page |
 
 ### Slot 2
 
@@ -43,11 +44,11 @@ When done, mark status as `DONE` and move to Session Log.
 | **Agent** | _(none)_ |
 | **Branch** | — |
 | **Session started** | — |
-| **Last board update** | 2026-08-12 18:18 UTC+3 |
+| **Last board update** | 2026-08-12 18:32 UTC+3 |
 | **Working on** | — |
 | **Files in progress** | — |
 | **Uncommitted changes** | — |
-| **Last commit** | `2998f7a` — Enhance BUG-035–039 reports with implementation-ready detail |
+| **Last commit** | `ccf4d7d` — Plan stat-group tag upgrade (bigger + theme-tied colors) for Bullet Hell Edition |
 
 ### Slot 3
 
@@ -134,4 +135,6 @@ Format: `| Agent | Date | Branch | Commit | Task | Files | Status | Next | Watch
 | Coder | 2026-08-12 | master | `e0f928b` (gungeon_mate) | v1.8.39 bugfix batch: BUG-017 (Max Pane synergy data), BUG-019 (MP reconnect snackbar+haptic), BUG-020 (1S→S quality cleanup) | assets/data/{synergies,guns,items,changelog}.json, lib/widgets/mp_request_listener.dart, lib/screens/{browse_screen,main_menu_screen}.dart, pubspec.yaml, VERSION_HISTORY.md | DONE | Next: 12 OPEN bugs remain (BUG-018/021/022/023/024/026/027/028/029/032/033/034). UX polish batch (BUG-018/026/027/028/029/033/034) is the next logical group. | `gungeon_mate/` is a nested git repo (not a submodule) — commits land there, not in outer repo. Two pre-existing uncommitted changes in `lib/widgets/item_detail/header.dart` + `lib/widgets/periodic_tile.dart` (UI tweaks from prior session) were left unstaged. flutter at `C:\src\flutter\bin\flutter.bat` (X:\flutter is gone). flutter analyze: 0 issues on 3 modified Dart files. |
 | Maintainer | 2026-08-12 | master | `73569c9` (outer repo) | Formalized 5 user-reported bugs into tracker + Task Queue (no code changes — coordination only) | docs/bug_tracker.md, AGENT_STATUS.md | DONE | 5 new tasks in Task Queue (BUG-035–039) ready for Coder pickup. Slot released. | AGENT_STATUS.md is gitignored (local-only). `roomian_battler` submodule pointer drift left untouched per user. NOTE for Coder: BUG-035 + BUG-039 both touch `periodic_tile.dart` and `item_detail/header.dart` — there are pre-existing uncommitted UI tweaks in those two files from the prior Coder session (see row above); coordinate/stash before starting to avoid clobbering. BUG-038 is the largest scope (theme+particle system). |
 | Maintainer | 2026-08-12 | master | `2998f7a` (outer repo) | Enhanced BUG-035–039 reports to implementation-ready specs (no code changes) | docs/bug_tracker.md | DONE | Reports now include exact line numbers, root cause traces, code sketches, edge cases, verification checklists. Ready for Coder pickup. | Discovered: BUG-038 blocker — `ParticleField` has no `colorsOverride` param (only glow/lineLinks overrides) — per-palette particles require adding it. Discovered: BUG-039 — the S-tier animated glow is currently white/silver, not gold (doc says gold). Both noted in the enhanced reports. |
+| Maintainer | 2026-08-12 | master | `ccf4d7d` (outer repo) | Planned stat-group tag upgrade (bigger Combat/Handling/Meta labels + theme-tied per-group colors) — feature, not a bug | docs/bullet_hell_edition_plan.md, AGENT_STATUS.md | DONE | Task Queue entry 6 added. Plan is in the edition doc under "Feature: Stat-Group Tag Upgrade". Coder to implement. | Feature touches `app_theme.dart` (ThemeFlair) — same file as BUG-038. Blocked-by relationship set in Task Queue. One agent should own `app_theme.dart` at a time (AC4). Items (`item_body.dart`) use StatPill directly with no group labels — unaffected by the group-tag change. |
 | Coder | 2026-08-12 | master | `788dc16` (gungeon_mate) | Branded next release as v2.0.0 "Bullet Hell Edition" — folds v1.8.39 hotfixes (BUG-017/019/020) into one milestone release | gungeon_mate/{assets/data/changelog.json, lib/screens/main_menu_screen.dart, pubspec.yaml, VERSION_HISTORY.md}, docs/bullet_hell_edition_plan.md | DONE | Next: pick up BUG-035–039 from Task Queue (all contribute to the edition). Append headline items to the v2.0.0 changelog entry as they land. | Persistent edition plan at `docs/bullet_hell_edition_plan.md` — READ IT before starting BUG-035–039 work. Emoji write-tool corruption: the 🔥 in changelog.json got mangled to U+FFFD on first write; fixed via node byte-replacement script. If adding emojis via edit/write tools, verify bytes afterward with `node -e` hex check. flutter analyze on main_menu: 0 issues. |
+| Coder | 2026-08-12 | master | `42be72c` (gungeon_mate) | Bullet Hell codex page — themed Chamber 6 special page under Codex (6th tab) | gungeon_mate/{lib/screens/bullet_hell_codex_screen.dart (NEW), lib/screens/codex_screen.dart, assets/images/codex/Bullethell_header.png (NEW), pubspec.yaml, assets/data/changelog.json, VERSION_HISTORY.md}, docs/bullet_hell_edition_plan.md | DONE | Next: BUG-035–039 still in Task Queue. Codex tab count is now 6 — if any code references the old 5-tab count, update it. | Image asset at `assets/images/codex/Bullethell_header.png` (163KB, from wiki.gg via user Desktop). Themed page uses ember/bone accent palette (not ThemeFlair) — intentionally hardcoded to match Bullet Hell's demonic aesthetic regardless of active theme. flutter analyze: 0 issues on 2 files. |

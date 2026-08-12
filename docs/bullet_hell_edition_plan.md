@@ -23,8 +23,9 @@
 ## Scope — Bug Lineup
 
 ### Landed (done, committed)
-| Bug | Sev | Summary | Commit |
+| Bug/Feature | Sev | Summary | Commit |
 |-----|-----|---------|--------|
+| **Bullet Hell codex page** | FEATURE | Themed special page under Codex (6th tab) — header graphic + lore/mechanics for Chamber 6. `bullet_hell_codex_screen.dart` + tab wiring + `assets/images/codex/Bullethell_header.png` | `42be72c` |
 | BUG-017 | HIGH | Max Pane synergy: added `Glass Guon Stone` to items array so it flags active when both are owned | `e0f928b` |
 | BUG-019 | HIGH | MP reconnect: floating "Connection restored — sync resumed" snackbar + `Haptics.success()` on real reconnect (not teardown) | `e0f928b` |
 | BUG-020 | MED | Quality `1S` → `S` across 36 data entries (guns 19 + items 17); browse sort simplified | `e0f928b` |
