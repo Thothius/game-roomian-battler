@@ -391,11 +391,11 @@
 
 ### BUG-032 — `catch (_) {}` silently swallows SharedPreferences errors across 30+ sites
 - **Severity:** LOW
-- **Status:** OPEN
+- **Status:** FIXED
 - **Found by:** Coder (UX bughunt, Jul 23 2026)
-- **Files:** `run_provider.dart` (20+ sites), `app_theme.dart` (6 sites), `multiplayer_lobby_screen.dart` (4 sites), `active_run_screen.dart` (3 sites)
+- **Files:** `run_provider.dart` (24 sites), `app_theme.dart` (7 sites), `multiplayer_lobby_screen.dart` (5 sites), `run_tab.dart` (1), `item_detail_screen.dart` (1), `app_tab.dart` (1), `codex_detail_screen.dart` (1), `mp_request_listener.dart` (2)
 - **Description:** All persistence operations use `try { ... } catch (_) {}` — silently eating errors. If SharedPreferences fails (e.g. disk full on older Android), the user gets no indication their run state isn't saving. Not a crash bug, but a data-loss UX risk.
-- **Fix proposal:** At minimum, log errors with `debugPrint`. For critical saves (run state), show a snackbar on failure.
+- **Fix:** Replaced all 42 `catch (_) {}` with `catch (e) { debugPrint('[Tag] error: $e'); }` across 8 files. Each catch now logs the error with a file-specific tag. `debugPrint` is available via material.dart/foundation.dart — no new imports needed. flutter analyze: 0 issues on all 17 modified files.
 
 ---
 
@@ -759,6 +759,80 @@
 - **Root cause:** Incomplete feature implementation. The `_collapsed`/`_expanded` fields, `InkWell` wrappers, and `if (!_collapsed)` guards were added but the tap handlers, state mutation, and visual indicators were never connected.
 - **Fix:** Wired all 17 `onTap` handlers to `setState(() => _collapsed = !_collapsed)` (or `_expanded`) with `Haptics.selection()`. Added `Icon(_collapsed ? Icons.expand_more : Icons.expand_less)` chevrons to all 17 header rows. Analyzer now reports 0 issues on the dashboards directory (down from 17 `prefer_final_fields` warnings).
 - **Commit:** 1be09e1
+
+---
+
+### BUG-046 — Junkan + 3 special gun dashboards: inverted `_expanded` variable, chevron points wrong way, starts collapsed
+- **Severity:** LOW
+- **Status:** OPEN
+- **Found by:** Coder (bughunt, Aug 14 2026)
+- **Files:** `lib/widgets/dashboards/junkan_dashboard.dart` (line 19, 166, 176-177), `lib/widgets/dashboards/special_gun_dashboards.dart` (lines 19/115/125-126, 258/337/347-348, 476/553/563-564)
+- **Description:** The Junkan dashboard and all 3 special gun dashboards (Gunderfury, Triple Gun, Evolver) use a boolean field named `_expanded`, but the logic is inverted:
+  - `_expanded = true` → shows `SizedBox.shrink()` (content hidden = collapsed)
+  - `_expanded = false` → shows content (expanded)
+  - The variable name is backwards — `_expanded = true` means COLLAPSED.
+  - The chevron is also wrong: `Icon(_expanded ? Icons.expand_less : Icons.expand_more)` shows `expand_less` (up arrow) when content is hidden and `expand_more` (down arrow) when content is shown — the opposite of what it should be.
+  - Default is `_expanded = true` → dashboards start COLLAPSED. Compare with `compact_dashboards.dart` which uses `_collapsed = false` (starts expanded) and `Icon(_collapsed ? Icons.expand_more : Icons.expand_less)` (correct chevron direction).
+- **Fix proposal:** Rename `_expanded` to `_collapsed` and invert the logic, OR keep the name but fix the chevron and default:
+  - Option A (minimal): Change chevron to `Icon(_expanded ? Icons.expand_more : Icons.expand_less)` and change default to `_expanded = false`. This fixes the chevron direction and starts expanded, but the variable name is still misleading.
+  - Option B (clean): Rename `_expanded` → `_collapsed`, invert all references (`_collapsed = !_collapsed` stays the same, but `_collapsed ? SizedBox.shrink() : Column(...)` and `_collapsed ? Icons.expand_more : Icons.expand_less`), default `_collapsed = false`. Matches the pattern in compact_dashboards.dart.
+  - Prefer Option B for consistency with compact_dashboards.dart.
+
+---
+
+### BUG-047 — Robot dashboard missing 4 tracked fields: Armor, Fireplace, Battery, Fuse Disarmer
+- **Severity:** MEDIUM
+- **Status:** OPEN
+- **Found by:** Coder (bughunt, Aug 14 2026)
+- **Files:** `lib/widgets/dashboards/robot_dashboard.dart` (entire file), `lib/providers/run_provider.dart` (lines 94-100, 131-137, 500-506, 533-590)
+- **Description:** The Robot dashboard (`RobotDashboardSliver`) only shows Junk count, Gold Junk toggle, and Lies toggle. However, `RunProvider` tracks 4 additional Robot-specific fields with full persistence and setters:
+  1. `robotArmor` (int, default 6) — `setRobotArmor(int)`, persisted as `special.robot.armor`
+  2. `fireplaceExtinguished` (bool) — `setFireplaceExtinguished(bool)`, persisted as `special.robot.fireplace`
+  3. `batteryBulletsSynergy` (bool) — `setBatteryBulletsSynergy(bool)`, persisted as `special.robot.battery`
+  4. `fuseDisarmer` (bool) — `setFuseDisarmer(bool)`, persisted as `special.robot.fusedisarmer`
+  None of these 4 fields have any UI anywhere in the app (confirmed by grep across `lib/widgets/` and `lib/screens/`). The user can never view or modify these values through the UI. They persist silently but are invisible.
+- **Fix proposal:** Add controls to the Robot dashboard for all 4 fields:
+  - **Armor:** Add a +/- counter row (like the Junk counter) showing current armor value. Armor affects Robot's survivability.
+  - **Fireplace Extinguished:** Add a toggle (like Gold Junk / Lies toggles).
+  - **Battery Bullets Synergy:** Add a toggle.
+  - **Fuse Disarmer:** Add a toggle.
+  - The dashboard already has a 2-column toggle row — extend it to a 2×2 grid for the 3 new toggles, or add a second row.
+
+---
+
+### BUG-048 — Rad Gun has empty `type` field in guns.json
+- **Severity:** LOW
+- **Status:** OPEN
+- **Found by:** Coder (data bughunt, Aug 14 2026)
+- **File:** `assets/data/guns.json` — Rad Gun entry
+- **Description:** Rad Gun has `"type": ""` (empty string). All other 238 guns have a non-empty type. The `type` field is displayed as:
+  1. A subtitle in the item detail screen (`item_detail_screen.dart:61`: `gun.type`)
+  2. A meta pill in browse (`browse_pills.dart:198`: `if (gun.type.isNotEmpty) metaPill(gun.type, ...)`)
+  The empty type means Rad Gun shows no type pill in browse and no subtitle in detail. The `class` field is "SILLY" (valid) so the periodic tile tag works, but the `type` field is used in different places.
+- **Fix proposal:** Set Rad Gun's `type` to "Semiautomatic" (the wiki lists it as a semiautomatic pistol).
+
+---
+
+### BUG-049 — Gunderfury has garbage `type` field: "Semiautomatic Automatic Semiautomatic Semiautomatic Automatic Automatic"
+- **Severity:** LOW
+- **Status:** OPEN
+- **Found by:** Coder (data bughunt, Aug 14 2026)
+- **File:** `assets/data/guns.json` — Gunderfury entry
+- **Description:** Gunderfury's `type` field contains `"Semiautomatic Automatic Semiautomatic Semiautomatic Automatic Automatic"` — a concatenation of all its form types. This is a data pipeline artifact (the gun changes forms). The `gun_stats.dart` file already special-cases this with `isGunderfury ? '???' : gun.type` at line 1178, so the detail screen shows "???". But the browse screen (`browse_pills.dart:198`) shows the raw garbage string as a pill.
+- **Fix proposal:** Set Gunderfury's `type` to "Variable" or "Multi-Form" (a single clean label), and remove the `isGunderfury` special case in `gun_stats.dart` since the data would be clean.
+
+---
+
+### BUG-050 — 2 guns have non-standard `type` variants inconsistent with the 5 standard types
+- **Severity:** LOW
+- **Status:** OPEN
+- **Found by:** Coder (data bughunt, Aug 14 2026)
+- **File:** `assets/data/guns.json` — Deck4rd, Mr. Accretion Jr.
+- **Description:** The standard gun types are: Semiautomatic (134 guns), Automatic (41), Beam (17), Charged (33), Burst (10). Two guns have non-standard variants:
+  1. **Deck4rd**: `"type": "Semiautomatic (functionally Automatic)"` — a parenthetical qualifier
+  2. **Mr. Accretion Jr.**: `"type": "Semi-Automatic"` — has a hyphen and different casing
+  These don't match any of the 5 standard type strings. If any code does exact string matching on type (e.g. filtering by "Semiautomatic"), these 2 guns would be missed. The browse pill shows the full non-standard string.
+- **Fix proposal:** Normalize both to `"Semiautomatic"`. The functional behavior is already semiautomatic — the parenthetical on Deck4rd is trivia, not a separate type category.
 
 ---
 

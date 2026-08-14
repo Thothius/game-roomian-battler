@@ -23,6 +23,11 @@ When done, mark status as `DONE` and move to Session Log.
 | 8 | Feature: Combine Run + App settings tabs into compact 2-column grid (CombinedRunAppTab). See edition doc Part 2. | Coder | DONE | BUG-036 (both lift _confirmClearInventory from run_tab.dart) |
 | 9 | BUG-040: Periodic grid gun badge — add "DMG" and "RANGE" text labels next to the numeric values (e.g. "56.0 DMG" and "1000 RANGE"). Currently shows bare numbers with no unit labels. Files: `lib/widgets/periodic_tile.dart` (`_buildGunStatsBadge` lines 323–390, dpsBadge 330–361, rangeBadge 363–380). No aspect ratio change needed — badges are side-by-side in a Row with 4px gap, labels fit inline. | Coder | DONE | — |
 | 10 | BUG-041: Active-run header icons — add small text labels below the 4 toggle icons (Calculator, Effects, Shrine, Special Panels) for discoverability. Files: `lib/widgets/active_run/player_page.dart` (trailing Row lines 230–318). Each IconButton → Column(icon + tiny label). Labels: "Calc", "Effects", "Shrine", "Panels". Keep horizontal scroll, amber/white38 color scheme, tooltips. | Coder | DONE | — |
+| 11 | BUG-046: Junkan + 3 special gun dashboards — inverted `_expanded` variable, chevron points wrong way, starts collapsed. Files: `junkan_dashboard.dart`, `special_gun_dashboards.dart`. Rename `_expanded`→`_collapsed`, fix chevron, default to expanded. | — | TODO | — |
+| 12 | BUG-047: Robot dashboard missing 4 tracked fields (Armor, Fireplace, Battery, Fuse Disarmer) — persisted in RunProvider but no UI anywhere. Files: `robot_dashboard.dart`, `run_provider.dart`. | — | TODO | — |
+| 13 | BUG-048: Rad Gun has empty `type` field in guns.json — no type pill in browse, no subtitle in detail. Fix: set type to "Semiautomatic". | — | TODO | — |
+| 14 | BUG-049: Gunderfury has garbage `type` field ("Semiautomatic Automatic Semiautomatic..."). Browse pill shows raw garbage. Fix: set type to "Variable", remove isGunderfury special case. | — | TODO | — |
+| 15 | BUG-050: Deck4rd + Mr. Accretion Jr. have non-standard type variants ("Semiautomatic (functionally Automatic)", "Semi-Automatic"). Fix: normalize to "Semiautomatic". | — | TODO | — |
 
 ---
 
@@ -32,14 +37,14 @@ When done, mark status as `DONE` and move to Session Log.
 
 | Field | Value |
 |-------|-------|
-| **Agent** | _(none)_ |
-| **Branch** | — |
-| **Session started** | — |
-| **Last board update** | 2026-08-14 14:10 UTC+3 |
-| **Working on** | — |
+| **Agent** | Coder |
+| **Branch** | master |
+| **Session started** | 2026-08-14 15:00 UTC+3 |
+| **Last board update** | 2026-08-14 15:00 UTC+3 |
+| **Working on** | Fresh bughunt — code review pass for undiscovered issues |
 | **Files in progress** | — |
 | **Uncommitted changes** | — |
-| **Last commit** | `4e8b705` (gungeon_mate) — Fix 5 theme palette issues from assessment |
+| **Last commit** | `16d5af5` (gungeon_mate) — v1.9.9: Code hygiene — dead 1S branches + BUG-032 silent catch logging + version desync fix |
 
 ### Slot 2
 
