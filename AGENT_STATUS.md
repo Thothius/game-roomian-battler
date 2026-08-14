@@ -28,6 +28,11 @@ When done, mark status as `DONE` and move to Session Log.
 | 13 | BUG-048: Rad Gun has empty `type` field in guns.json — no type pill in browse, no subtitle in detail. Fix: set type to "Semiautomatic". | — | TODO | — |
 | 14 | BUG-049: Gunderfury has garbage `type` field ("Semiautomatic Automatic Semiautomatic..."). Browse pill shows raw garbage. Fix: set type to "Variable", remove isGunderfury special case. | — | TODO | — |
 | 15 | BUG-050: Deck4rd + Mr. Accretion Jr. have non-standard type variants ("Semiautomatic (functionally Automatic)", "Semi-Automatic"). Fix: normalize to "Semiautomatic". | — | TODO | — |
+| 16 | BUG-051: 3 IconButtons with sub-minimum tap targets (BoxConstraints() + padding zero). Files: `multiplayer_lobby_screen.dart:522`, `player_header.dart:488`, `item_detail/header.dart:107`. | — | TODO | — |
+| 17 | BUG-052: 27 IconButtons missing tooltips (accessibility). Files: multiple — see bug_tracker.md for full list. | — | TODO | — |
+| 18 | BUG-053: Dashboard GestureDetector controls missing haptics + Material ripple. Files: `robot_dashboard.dart`, `junkan_dashboard.dart`, `special_gun_dashboards.dart`. | — | TODO | — |
+| 19 | BUG-054: Emote bottom sheet missing SafeArea (hardcoded bottom: 32). File: `active_run_screen.dart:146-153`. | — | TODO | — |
+| 20 | BUG-055: stats_detail_screen large stat value (fontSize 52) not responsive — no FittedBox or scaling. File: `stats_detail_screen.dart:196-205`. | — | TODO | — |
 
 ---
 
@@ -37,13 +42,13 @@ When done, mark status as `DONE` and move to Session Log.
 
 | Field | Value |
 |-------|-------|
-| **Agent** | _(none)_ |
-| **Branch** | — |
-| **Session started** | — |
-| **Last board update** | 2026-08-14 15:30 UTC+3 |
-| **Working on** | — |
-| **Files in progress** | — |
-| **Uncommitted changes** | — |
+| **Agent** | Coder |
+| **Branch** | master |
+| **Session started** | 2026-08-14 16:00 UTC+3 |
+| **Last board update** | 2026-08-14 16:15 UTC+3 |
+| **Working on** | BUG-022 synergy icons + BUG-046/047/048/049/050 batch |
+| **Files in progress** | assets/images/synergies/, docs/bug_tracker.md, lib/widgets/dashboards/ |
+| **Uncommitted changes** | 287 new synergy fallback icons + pending code fixes |
 | **Last commit** | `c9dc251` (outer) — Bughunt: log 5 new bugs (BUG-046 to BUG-050) + add to task queue |
 
 ### Slot 2

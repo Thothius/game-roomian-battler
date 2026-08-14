@@ -280,11 +280,11 @@
 
 ### BUG-022 — 289 synergies missing local icon assets
 - **Severity:** MEDIUM
-- **Status:** OPEN
+- **Status:** FIXED
 - **Found by:** Coder (data bughunt, Jul 23 2026)
 - **File:** `assets/images/synergies/` (106 of 395 webp files present)
 - **Description:** Only 106 of 395 synergies have local `.webp` icon files. The remaining 289 show fallback letter icons. The `Synergy.fromJson` constructor uses `localSynergyIcon(name)` to resolve the path — missing files silently fall back.
-- **Fix proposal:** Batch-generate or download synergy icons for the 289 missing entries. Alternatively, improve the fallback to use a synergy-specific placeholder instead of a letter.
+- **Fix:** Parsed cached `cache_wikigg/Synergies.html` for dedicated sprite URLs — 108 synergies have unique sprites (106 already downloaded + 2 new). The remaining 287 synergies have no dedicated wiki sprite (they use the generic blue synergy arrow). Downloaded `Synergy.png` from wiki.gg and copied it as fallback for all 287 missing entries. Final count: 396 files (108 unique + 287 fallback + 1 fallback source). All synergies now show an icon instead of a letter placeholder.
 
 ---
 
@@ -764,19 +764,11 @@
 
 ### BUG-046 — Junkan + 3 special gun dashboards: inverted `_expanded` variable, chevron points wrong way, starts collapsed
 - **Severity:** LOW
-- **Status:** OPEN
+- **Status:** FIXED
 - **Found by:** Coder (bughunt, Aug 14 2026)
-- **Files:** `lib/widgets/dashboards/junkan_dashboard.dart` (line 19, 166, 176-177), `lib/widgets/dashboards/special_gun_dashboards.dart` (lines 19/115/125-126, 258/337/347-348, 476/553/563-564)
-- **Description:** The Junkan dashboard and all 3 special gun dashboards (Gunderfury, Triple Gun, Evolver) use a boolean field named `_expanded`, but the logic is inverted:
-  - `_expanded = true` → shows `SizedBox.shrink()` (content hidden = collapsed)
-  - `_expanded = false` → shows content (expanded)
-  - The variable name is backwards — `_expanded = true` means COLLAPSED.
-  - The chevron is also wrong: `Icon(_expanded ? Icons.expand_less : Icons.expand_more)` shows `expand_less` (up arrow) when content is hidden and `expand_more` (down arrow) when content is shown — the opposite of what it should be.
-  - Default is `_expanded = true` → dashboards start COLLAPSED. Compare with `compact_dashboards.dart` which uses `_collapsed = false` (starts expanded) and `Icon(_collapsed ? Icons.expand_more : Icons.expand_less)` (correct chevron direction).
-- **Fix proposal:** Rename `_expanded` to `_collapsed` and invert the logic, OR keep the name but fix the chevron and default:
-  - Option A (minimal): Change chevron to `Icon(_expanded ? Icons.expand_more : Icons.expand_less)` and change default to `_expanded = false`. This fixes the chevron direction and starts expanded, but the variable name is still misleading.
-  - Option B (clean): Rename `_expanded` → `_collapsed`, invert all references (`_collapsed = !_collapsed` stays the same, but `_collapsed ? SizedBox.shrink() : Column(...)` and `_collapsed ? Icons.expand_more : Icons.expand_less`), default `_collapsed = false`. Matches the pattern in compact_dashboards.dart.
-  - Prefer Option B for consistency with compact_dashboards.dart.
+- **Files:** `lib/widgets/dashboards/junkan_dashboard.dart`, `lib/widgets/dashboards/special_gun_dashboards.dart`
+- **Description:** The Junkan dashboard and all 3 special gun dashboards (Gunderfury, Triple Gun, Evolver) used a boolean field named `_expanded`, but the logic was inverted: `_expanded = true` meant COLLAPSED. The chevron pointed the wrong way and dashboards started collapsed.
+- **Fix:** Applied Option B — renamed `_expanded` → `_collapsed` in all 4 dashboards, inverted all references (`_collapsed ? SizedBox.shrink() : Column(...)`, `_collapsed ? Icons.expand_more : Icons.expand_less`), default `_collapsed = false` (starts expanded). Now matches `compact_dashboards.dart` pattern. flutter analyze: 0 issues.
 
 ---
 
@@ -833,6 +825,78 @@
   2. **Mr. Accretion Jr.**: `"type": "Semi-Automatic"` — has a hyphen and different casing
   These don't match any of the 5 standard type strings. If any code does exact string matching on type (e.g. filtering by "Semiautomatic"), these 2 guns would be missed. The browse pill shows the full non-standard string.
 - **Fix proposal:** Normalize both to `"Semiautomatic"`. The functional behavior is already semiautomatic — the parenthetical on Deck4rd is trivia, not a separate type category.
+
+---
+
+### BUG-051 — 3 IconButtons with sub-minimum tap targets (BoxConstraints() + padding zero)
+- **Severity:** MEDIUM
+- **Status:** OPEN
+- **Found by:** Coder (UI bughunt, Aug 14 2026)
+- **Files:** `lib/screens/multiplayer_lobby_screen.dart:522-529`, `lib/widgets/active_run/player_header.dart:488-493`, `lib/widgets/item_detail/header.dart:107-114`
+- **Description:** Three IconButton widgets use `constraints: const BoxConstraints()` and `padding: EdgeInsets.zero`, removing the default 48x48 minimum tap target. The resulting tap targets are just the icon size:
+  1. **multiplayer_lobby_screen.dart:522** — delete session button, icon size 16 → 16px tap target (destructive action!)
+  2. **player_header.dart:488** — MP diagnostics close button, icon size 20 → 20px tap target
+  3. **item_detail/header.dart:107** — favorite toggle, icon size 36 → 36px tap target (borderline)
+  Material Design recommends minimum 48x48dp. The 16px delete button is the worst — users will struggle to tap it accurately, and it's a destructive action.
+- **Fix proposal:** Remove `constraints: const BoxConstraints()` and `padding: EdgeInsets.zero` from all 3, or set `constraints: const BoxConstraints(minWidth: 44, minHeight: 44)`. For the delete button, also add `tooltip: 'Delete session'`.
+
+---
+
+### BUG-052 — 27 IconButtons missing tooltips (accessibility)
+- **Severity:** LOW
+- **Status:** OPEN
+- **Found by:** Coder (UI bughunt, Aug 14 2026)
+- **Files:** Multiple — see list below
+- **Description:** 27 standalone IconButton widgets (not in AppBar, which provides implicit tooltips) are missing the `tooltip` parameter. Screen reader users cannot identify what these buttons do. The most important ones:
+  - **multiplayer_lobby_screen.dart:522** — delete session (destructive, no tooltip)
+  - **item_detail/header.dart:107** — favorite toggle (no tooltip)
+  - **robot_dashboard.dart:144,163** — junk +/- buttons
+  - **compact_dashboards.dart** — 18 +/- buttons across 9 tracker dashboards (platinum bullets, iron coin, spice, metronome, boxing glove, cigarettes, Polaris, Gunther)
+  - **theme_picker_screen.dart:81** — back button
+  - **settings_screen.dart:31** — back button
+  - **active_run_screen.dart:562** — search clear button
+  - **all_synergies_screen.dart:87** — close button
+  - **main_menu_screen.dart:320** — changelog close button
+  - **mp_request_listener.dart:500** — reconnection hub close
+  - **settings/app_tab.dart:256, run_tab.dart:216** — changelog close
+  - **multiplayer_lobby_screen.dart:666** — back-to-lobby arrow
+- **Fix proposal:** Add `tooltip:` to each. For +/- buttons: `'Decrease <name>'` / `'Increase <name>'`. For close buttons: `'Close'`. For back buttons: `'Back'`. For favorite: `isFav ? 'Remove from favourites' : 'Add to favourites'`.
+
+---
+
+### BUG-053 — Dashboard GestureDetector controls missing haptics + Material ripple
+- **Severity:** LOW
+- **Status:** OPEN
+- **Found by:** Coder (UI bughunt, Aug 14 2026)
+- **Files:** `lib/widgets/dashboards/robot_dashboard.dart:223-244`, `lib/widgets/dashboards/junkan_dashboard.dart:250-274`, `lib/widgets/dashboards/special_gun_dashboards.dart:193-223, 411-439, 627-655`
+- **Description:** Dashboard increment/decrement and toggle controls use `GestureDetector` with `HitTestBehavior.opaque` but:
+  1. No `Haptics.selection()` or `Haptics.light()` call — the rest of the app consistently uses haptics on state-changing actions (compact_dashboards.dart IconButtons all call `Haptics.light()`).
+  2. No `InkWell` wrapper — no Material ripple feedback on tap.
+  Affected controls:
+  - Robot dashboard: Gold Junk toggle, Lies toggle (2 controls)
+  - Junkan dashboard: junk add/remove buttons (2 controls)
+  - Special gun dashboards: Gunderfury level +/-, Triple Gun form +/-, Evolver level +/- (6 controls)
+- **Fix proposal:** Add `Haptics.light()` at the start of each `onTap` handler. Optionally wrap the child in `InkWell` for ripple, or migrate to `IconButton` which has built-in ripple.
+
+---
+
+### BUG-054 — Emote bottom sheet missing SafeArea (hardcoded bottom: 32)
+- **Severity:** LOW
+- **Status:** OPEN
+- **Found by:** Coder (UI bughunt, Aug 14 2026)
+- **File:** `lib/screens/active_run_screen.dart:146-153`
+- **Description:** The emote bottom sheet uses `Padding(EdgeInsets.fromLTRB(20, 20, 20, 32))` instead of SafeArea. The hardcoded 32px bottom padding may not cover the system navigation bar inset on all devices (some Android nav bars are 48px). On such devices, the bottom row of emote buttons could be partially obscured by the nav bar. The `showModalBottomSheet` call does not set `useSafeArea: true` (defaults to false in Flutter 3.29).
+- **Fix proposal:** Either add `useSafeArea: true` to the `showModalBottomSheet` call, or wrap the Padding in `SafeArea(child: Padding(...))` and reduce the bottom padding from 32 to a smaller value.
+
+---
+
+### BUG-055 — stats_detail_screen large stat value (fontSize 52) not responsive
+- **Severity:** LOW
+- **Status:** OPEN
+- **Found by:** Coder (UI bughunt, Aug 14 2026)
+- **File:** `lib/screens/stats_detail_screen.dart:196-205`
+- **Description:** The main stat value display uses `fontSize: 52` without scaling or `FittedBox`. The value is a short string like "5.0" (3-5 chars), which fits on 360px screens at default text scale. However, if the user has increased system text scale (e.g. 1.5x via accessibility settings), the text could overflow the card width. The file doesn't use `Responsive.factor` at all. Compare with `main_menu_screen.dart` which wraps its fontSize: 40 title in `FittedBox(fit: BoxFit.scaleDown)`.
+- **Fix proposal:** Wrap the GoopText in `FittedBox(fit: BoxFit.scaleDown)` so it shrinks gracefully on narrow screens / high text scale, matching the main menu title pattern.
 
 ---
 
