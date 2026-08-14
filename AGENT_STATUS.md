@@ -39,7 +39,7 @@ When done, mark status as `DONE` and move to Session Log.
 | **Working on** | — |
 | **Files in progress** | — |
 | **Uncommitted changes** | — |
-| **Last commit** | `9eeda49` (gungeon_mate) — Fix BUG-023/024/028/029/044: data + UX + MP reconnect improvements |
+| **Last commit** | `dcbe801` (gungeon_mate) — Refine portal vortex animation to match reference video precisely |
 
 ### Slot 2
 
