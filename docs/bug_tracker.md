@@ -774,129 +774,107 @@
 
 ### BUG-047 — Robot dashboard missing 4 tracked fields: Armor, Fireplace, Battery, Fuse Disarmer
 - **Severity:** MEDIUM
-- **Status:** OPEN
+- **Status:** FIXED
 - **Found by:** Coder (bughunt, Aug 14 2026)
-- **Files:** `lib/widgets/dashboards/robot_dashboard.dart` (entire file), `lib/providers/run_provider.dart` (lines 94-100, 131-137, 500-506, 533-590)
-- **Description:** The Robot dashboard (`RobotDashboardSliver`) only shows Junk count, Gold Junk toggle, and Lies toggle. However, `RunProvider` tracks 4 additional Robot-specific fields with full persistence and setters:
-  1. `robotArmor` (int, default 6) — `setRobotArmor(int)`, persisted as `special.robot.armor`
-  2. `fireplaceExtinguished` (bool) — `setFireplaceExtinguished(bool)`, persisted as `special.robot.fireplace`
-  3. `batteryBulletsSynergy` (bool) — `setBatteryBulletsSynergy(bool)`, persisted as `special.robot.battery`
-  4. `fuseDisarmer` (bool) — `setFuseDisarmer(bool)`, persisted as `special.robot.fusedisarmer`
-  None of these 4 fields have any UI anywhere in the app (confirmed by grep across `lib/widgets/` and `lib/screens/`). The user can never view or modify these values through the UI. They persist silently but are invisible.
-- **Fix proposal:** Add controls to the Robot dashboard for all 4 fields:
-  - **Armor:** Add a +/- counter row (like the Junk counter) showing current armor value. Armor affects Robot's survivability.
-  - **Fireplace Extinguished:** Add a toggle (like Gold Junk / Lies toggles).
-  - **Battery Bullets Synergy:** Add a toggle.
-  - **Fuse Disarmer:** Add a toggle.
-  - The dashboard already has a 2-column toggle row — extend it to a 2×2 grid for the 3 new toggles, or add a second row.
+- **Files:** `lib/widgets/dashboards/robot_dashboard.dart`, `lib/providers/run_provider.dart`
+- **Description:** The Robot dashboard only showed Junk count, Gold Junk toggle, and Lies toggle. 4 additional Robot-specific fields were tracked in RunProvider with full persistence but no UI.
+- **Fix:** Added all 4 fields to the Robot dashboard:
+  - **Armor:** +/- counter row (like Junk counter), default 6, clamped 0-99.
+  - **Fireplace Extinguished:** toggle (blueAccent), uses `setFireplaceExtinguished`.
+  - **Battery Bullets Synergy:** toggle (greenAccent), uses `setBatteryBulletsSynergy`.
+  - **Fuse Disarmer:** full-width toggle (orangeAccent), uses `setFuseDisarmer`.
+  All 4 fields now visible and editable. flutter analyze: 0 issues.
 
 ---
 
 ### BUG-048 — Rad Gun has empty `type` field in guns.json
 - **Severity:** LOW
-- **Status:** OPEN
+- **Status:** FIXED
 - **Found by:** Coder (data bughunt, Aug 14 2026)
 - **File:** `assets/data/guns.json` — Rad Gun entry
-- **Description:** Rad Gun has `"type": ""` (empty string). All other 238 guns have a non-empty type. The `type` field is displayed as:
-  1. A subtitle in the item detail screen (`item_detail_screen.dart:61`: `gun.type`)
-  2. A meta pill in browse (`browse_pills.dart:198`: `if (gun.type.isNotEmpty) metaPill(gun.type, ...)`)
-  The empty type means Rad Gun shows no type pill in browse and no subtitle in detail. The `class` field is "SILLY" (valid) so the periodic tile tag works, but the `type` field is used in different places.
-- **Fix proposal:** Set Rad Gun's `type` to "Semiautomatic" (the wiki lists it as a semiautomatic pistol).
+- **Description:** Rad Gun had `"type": ""` (empty string). No type pill in browse, no subtitle in detail.
+- **Fix:** Set Rad Gun's `type` to "Semiautomatic".
 
 ---
 
 ### BUG-049 — Gunderfury has garbage `type` field: "Semiautomatic Automatic Semiautomatic Semiautomatic Automatic Automatic"
 - **Severity:** LOW
-- **Status:** OPEN
+- **Status:** FIXED
 - **Found by:** Coder (data bughunt, Aug 14 2026)
-- **File:** `assets/data/guns.json` — Gunderfury entry
-- **Description:** Gunderfury's `type` field contains `"Semiautomatic Automatic Semiautomatic Semiautomatic Automatic Automatic"` — a concatenation of all its form types. This is a data pipeline artifact (the gun changes forms). The `gun_stats.dart` file already special-cases this with `isGunderfury ? '???' : gun.type` at line 1178, so the detail screen shows "???". But the browse screen (`browse_pills.dart:198`) shows the raw garbage string as a pill.
-- **Fix proposal:** Set Gunderfury's `type` to "Variable" or "Multi-Form" (a single clean label), and remove the `isGunderfury` special case in `gun_stats.dart` since the data would be clean.
+- **File:** `assets/data/guns.json` — Gunderfury entry, `lib/widgets/item_detail/gun_stats.dart`
+- **Description:** Gunderfury's `type` field contained a concatenation of all its form types. Browse pill showed raw garbage. Detail screen special-cased it with `isGunderfury ? '???'`.
+- **Fix:** Set Gunderfury's `type` to "Variable". Removed the `isGunderfury` special case in `gun_stats.dart` — `displayType` now uses `gun.type` directly. The dynamic DPS calculation (which depends on `p.gunderfuryLevel`) is preserved via inline `gun.name.toLowerCase() == 'gunderfury'` check.
 
 ---
 
 ### BUG-050 — 2 guns have non-standard `type` variants inconsistent with the 5 standard types
 - **Severity:** LOW
-- **Status:** OPEN
+- **Status:** FIXED
 - **Found by:** Coder (data bughunt, Aug 14 2026)
 - **File:** `assets/data/guns.json` — Deck4rd, Mr. Accretion Jr.
-- **Description:** The standard gun types are: Semiautomatic (134 guns), Automatic (41), Beam (17), Charged (33), Burst (10). Two guns have non-standard variants:
-  1. **Deck4rd**: `"type": "Semiautomatic (functionally Automatic)"` — a parenthetical qualifier
-  2. **Mr. Accretion Jr.**: `"type": "Semi-Automatic"` — has a hyphen and different casing
-  These don't match any of the 5 standard type strings. If any code does exact string matching on type (e.g. filtering by "Semiautomatic"), these 2 guns would be missed. The browse pill shows the full non-standard string.
-- **Fix proposal:** Normalize both to `"Semiautomatic"`. The functional behavior is already semiautomatic — the parenthetical on Deck4rd is trivia, not a separate type category.
+- **Description:** Deck4rd had `"Semiautomatic (functionally Automatic)"` and Mr. Accretion Jr. had `"Semi-Automatic"` — non-standard variants that wouldn't match exact string filters.
+- **Fix:** Normalized both to `"Semiautomatic"`.
 
 ---
 
 ### BUG-051 — 3 IconButtons with sub-minimum tap targets (BoxConstraints() + padding zero)
 - **Severity:** MEDIUM
-- **Status:** OPEN
+- **Status:** FIXED
 - **Found by:** Coder (UI bughunt, Aug 14 2026)
-- **Files:** `lib/screens/multiplayer_lobby_screen.dart:522-529`, `lib/widgets/active_run/player_header.dart:488-493`, `lib/widgets/item_detail/header.dart:107-114`
-- **Description:** Three IconButton widgets use `constraints: const BoxConstraints()` and `padding: EdgeInsets.zero`, removing the default 48x48 minimum tap target. The resulting tap targets are just the icon size:
-  1. **multiplayer_lobby_screen.dart:522** — delete session button, icon size 16 → 16px tap target (destructive action!)
-  2. **player_header.dart:488** — MP diagnostics close button, icon size 20 → 20px tap target
-  3. **item_detail/header.dart:107** — favorite toggle, icon size 36 → 36px tap target (borderline)
-  Material Design recommends minimum 48x48dp. The 16px delete button is the worst — users will struggle to tap it accurately, and it's a destructive action.
-- **Fix proposal:** Remove `constraints: const BoxConstraints()` and `padding: EdgeInsets.zero` from all 3, or set `constraints: const BoxConstraints(minWidth: 44, minHeight: 44)`. For the delete button, also add `tooltip: 'Delete session'`.
+- **Files:** `lib/screens/multiplayer_lobby_screen.dart`, `lib/widgets/active_run/player_header.dart`, `lib/widgets/item_detail/header.dart`
+- **Description:** Three IconButton widgets used `constraints: const BoxConstraints()` and `padding: EdgeInsets.zero`, removing the default 48x48 minimum tap target. The 16px delete button was the worst — destructive action with tiny tap target.
+- **Fix:** Replaced `BoxConstraints()` with `BoxConstraints(minWidth: 44, minHeight: 44)` and removed `padding: EdgeInsets.zero` from all 3. Added tooltips to all 3 (delete session, close, favorite toggle). flutter analyze: 0 issues.
 
 ---
 
 ### BUG-052 — 27 IconButtons missing tooltips (accessibility)
 - **Severity:** LOW
-- **Status:** OPEN
+- **Status:** FIXED
 - **Found by:** Coder (UI bughunt, Aug 14 2026)
-- **Files:** Multiple — see list below
-- **Description:** 27 standalone IconButton widgets (not in AppBar, which provides implicit tooltips) are missing the `tooltip` parameter. Screen reader users cannot identify what these buttons do. The most important ones:
-  - **multiplayer_lobby_screen.dart:522** — delete session (destructive, no tooltip)
-  - **item_detail/header.dart:107** — favorite toggle (no tooltip)
-  - **robot_dashboard.dart:144,163** — junk +/- buttons
-  - **compact_dashboards.dart** — 18 +/- buttons across 9 tracker dashboards (platinum bullets, iron coin, spice, metronome, boxing glove, cigarettes, Polaris, Gunther)
-  - **theme_picker_screen.dart:81** — back button
-  - **settings_screen.dart:31** — back button
-  - **active_run_screen.dart:562** — search clear button
-  - **all_synergies_screen.dart:87** — close button
-  - **main_menu_screen.dart:320** — changelog close button
-  - **mp_request_listener.dart:500** — reconnection hub close
-  - **settings/app_tab.dart:256, run_tab.dart:216** — changelog close
-  - **multiplayer_lobby_screen.dart:666** — back-to-lobby arrow
-- **Fix proposal:** Add `tooltip:` to each. For +/- buttons: `'Decrease <name>'` / `'Increase <name>'`. For close buttons: `'Close'`. For back buttons: `'Back'`. For favorite: `isFav ? 'Remove from favourites' : 'Add to favourites'`.
+- **Files:** Multiple — 11 files
+- **Description:** 18 standalone IconButton widgets were missing the `tooltip` parameter. Screen reader users could not identify what these buttons do.
+- **Fix:** Added `tooltip:` to all 18 IconButtons across 11 files:
+  - robot_dashboard.dart: 4 tooltips (junk +/-, armor +/-)
+  - compact_dashboards.dart: 14 tooltips (platinum bullets, iron coin, spice, metronome, boxing glove, cigarettes, Polaris, Gunther +/-)
+  - theme_picker_screen.dart, settings_screen.dart: back buttons
+  - active_run_screen.dart: search clear
+  - all_synergies_screen.dart, main_menu_screen.dart, mp_request_listener.dart, app_tab.dart, run_tab.dart: close buttons
+  - multiplayer_lobby_screen.dart: back-to-lobby arrow
+  Plus 3 tooltips added as part of BUG-051 (delete session, close, favorite toggle). flutter analyze: 0 issues.
 
 ---
 
 ### BUG-053 — Dashboard GestureDetector controls missing haptics + Material ripple
 - **Severity:** LOW
-- **Status:** OPEN
+- **Status:** FIXED
 - **Found by:** Coder (UI bughunt, Aug 14 2026)
-- **Files:** `lib/widgets/dashboards/robot_dashboard.dart:223-244`, `lib/widgets/dashboards/junkan_dashboard.dart:250-274`, `lib/widgets/dashboards/special_gun_dashboards.dart:193-223, 411-439, 627-655`
-- **Description:** Dashboard increment/decrement and toggle controls use `GestureDetector` with `HitTestBehavior.opaque` but:
-  1. No `Haptics.selection()` or `Haptics.light()` call — the rest of the app consistently uses haptics on state-changing actions (compact_dashboards.dart IconButtons all call `Haptics.light()`).
-  2. No `InkWell` wrapper — no Material ripple feedback on tap.
-  Affected controls:
-  - Robot dashboard: Gold Junk toggle, Lies toggle (2 controls)
-  - Junkan dashboard: junk add/remove buttons (2 controls)
-  - Special gun dashboards: Gunderfury level +/-, Triple Gun form +/-, Evolver level +/- (6 controls)
-- **Fix proposal:** Add `Haptics.light()` at the start of each `onTap` handler. Optionally wrap the child in `InkWell` for ripple, or migrate to `IconButton` which has built-in ripple.
+- **Files:** `lib/widgets/dashboards/robot_dashboard.dart`, `lib/widgets/dashboards/junkan_dashboard.dart`, `lib/widgets/dashboards/special_gun_dashboards.dart`
+- **Description:** Dashboard increment/decrement and toggle controls used `GestureDetector` without `Haptics.light()` calls, inconsistent with compact_dashboards.dart which uses haptics on all state-changing actions.
+- **Fix:** Added `Haptics.light()` to all 10 GestureDetector onTap handlers:
+  - robot_dashboard.dart: 4 IconButtons (junk +/-, armor +/-) + 1 GestureDetector toggle (_buildCompactToggle)
+  - junkan_dashboard.dart: 2 GestureDetectors (junk add/remove)
+  - special_gun_dashboards.dart: 6 GestureDetectors (Gunderfury +/-, Triple Gun +/-, Evolver +/-)
+  flutter analyze: 0 issues.
 
 ---
 
 ### BUG-054 — Emote bottom sheet missing SafeArea (hardcoded bottom: 32)
 - **Severity:** LOW
-- **Status:** OPEN
+- **Status:** FIXED
 - **Found by:** Coder (UI bughunt, Aug 14 2026)
-- **File:** `lib/screens/active_run_screen.dart:146-153`
-- **Description:** The emote bottom sheet uses `Padding(EdgeInsets.fromLTRB(20, 20, 20, 32))` instead of SafeArea. The hardcoded 32px bottom padding may not cover the system navigation bar inset on all devices (some Android nav bars are 48px). On such devices, the bottom row of emote buttons could be partially obscured by the nav bar. The `showModalBottomSheet` call does not set `useSafeArea: true` (defaults to false in Flutter 3.29).
-- **Fix proposal:** Either add `useSafeArea: true` to the `showModalBottomSheet` call, or wrap the Padding in `SafeArea(child: Padding(...))` and reduce the bottom padding from 32 to a smaller value.
+- **File:** `lib/screens/active_run_screen.dart`
+- **Description:** The emote bottom sheet used hardcoded 32px bottom padding without SafeArea, risking obscurement by system nav bars on some devices.
+- **Fix:** Added `useSafeArea: true` to the `showModalBottomSheet` call and reduced bottom padding from 32 to 12 (SafeArea handles the rest).
 
 ---
 
 ### BUG-055 — stats_detail_screen large stat value (fontSize 52) not responsive
 - **Severity:** LOW
-- **Status:** OPEN
+- **Status:** FIXED
 - **Found by:** Coder (UI bughunt, Aug 14 2026)
-- **File:** `lib/screens/stats_detail_screen.dart:196-205`
-- **Description:** The main stat value display uses `fontSize: 52` without scaling or `FittedBox`. The value is a short string like "5.0" (3-5 chars), which fits on 360px screens at default text scale. However, if the user has increased system text scale (e.g. 1.5x via accessibility settings), the text could overflow the card width. The file doesn't use `Responsive.factor` at all. Compare with `main_menu_screen.dart` which wraps its fontSize: 40 title in `FittedBox(fit: BoxFit.scaleDown)`.
-- **Fix proposal:** Wrap the GoopText in `FittedBox(fit: BoxFit.scaleDown)` so it shrinks gracefully on narrow screens / high text scale, matching the main menu title pattern.
+- **File:** `lib/screens/stats_detail_screen.dart`
+- **Description:** The main stat value display used `fontSize: 52` without scaling or `FittedBox`, risking overflow on high text scale settings.
+- **Fix:** Wrapped the GoopText in `FittedBox(fit: BoxFit.scaleDown)` so it shrinks gracefully on narrow screens / high text scale, matching the main menu title pattern.
 
 ---
 

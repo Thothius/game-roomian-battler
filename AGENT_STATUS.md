@@ -23,16 +23,16 @@ When done, mark status as `DONE` and move to Session Log.
 | 8 | Feature: Combine Run + App settings tabs into compact 2-column grid (CombinedRunAppTab). See edition doc Part 2. | Coder | DONE | BUG-036 (both lift _confirmClearInventory from run_tab.dart) |
 | 9 | BUG-040: Periodic grid gun badge — add "DMG" and "RANGE" text labels next to the numeric values (e.g. "56.0 DMG" and "1000 RANGE"). Currently shows bare numbers with no unit labels. Files: `lib/widgets/periodic_tile.dart` (`_buildGunStatsBadge` lines 323–390, dpsBadge 330–361, rangeBadge 363–380). No aspect ratio change needed — badges are side-by-side in a Row with 4px gap, labels fit inline. | Coder | DONE | — |
 | 10 | BUG-041: Active-run header icons — add small text labels below the 4 toggle icons (Calculator, Effects, Shrine, Special Panels) for discoverability. Files: `lib/widgets/active_run/player_page.dart` (trailing Row lines 230–318). Each IconButton → Column(icon + tiny label). Labels: "Calc", "Effects", "Shrine", "Panels". Keep horizontal scroll, amber/white38 color scheme, tooltips. | Coder | DONE | — |
-| 11 | BUG-046: Junkan + 3 special gun dashboards — inverted `_expanded` variable, chevron points wrong way, starts collapsed. Files: `junkan_dashboard.dart`, `special_gun_dashboards.dart`. Rename `_expanded`→`_collapsed`, fix chevron, default to expanded. | — | TODO | — |
-| 12 | BUG-047: Robot dashboard missing 4 tracked fields (Armor, Fireplace, Battery, Fuse Disarmer) — persisted in RunProvider but no UI anywhere. Files: `robot_dashboard.dart`, `run_provider.dart`. | — | TODO | — |
-| 13 | BUG-048: Rad Gun has empty `type` field in guns.json — no type pill in browse, no subtitle in detail. Fix: set type to "Semiautomatic". | — | TODO | — |
-| 14 | BUG-049: Gunderfury has garbage `type` field ("Semiautomatic Automatic Semiautomatic..."). Browse pill shows raw garbage. Fix: set type to "Variable", remove isGunderfury special case. | — | TODO | — |
-| 15 | BUG-050: Deck4rd + Mr. Accretion Jr. have non-standard type variants ("Semiautomatic (functionally Automatic)", "Semi-Automatic"). Fix: normalize to "Semiautomatic". | — | TODO | — |
-| 16 | BUG-051: 3 IconButtons with sub-minimum tap targets (BoxConstraints() + padding zero). Files: `multiplayer_lobby_screen.dart:522`, `player_header.dart:488`, `item_detail/header.dart:107`. | — | TODO | — |
-| 17 | BUG-052: 27 IconButtons missing tooltips (accessibility). Files: multiple — see bug_tracker.md for full list. | — | TODO | — |
-| 18 | BUG-053: Dashboard GestureDetector controls missing haptics + Material ripple. Files: `robot_dashboard.dart`, `junkan_dashboard.dart`, `special_gun_dashboards.dart`. | — | TODO | — |
-| 19 | BUG-054: Emote bottom sheet missing SafeArea (hardcoded bottom: 32). File: `active_run_screen.dart:146-153`. | — | TODO | — |
-| 20 | BUG-055: stats_detail_screen large stat value (fontSize 52) not responsive — no FittedBox or scaling. File: `stats_detail_screen.dart:196-205`. | — | TODO | — |
+| 11 | BUG-046: Junkan + 3 special gun dashboards — inverted `_expanded` variable, chevron points wrong way, starts collapsed. Files: `junkan_dashboard.dart`, `special_gun_dashboards.dart`. Rename `_expanded`→`_collapsed`, fix chevron, default to expanded. | Coder | DONE | — |
+| 12 | BUG-047: Robot dashboard missing 4 tracked fields (Armor, Fireplace, Battery, Fuse Disarmer) — persisted in RunProvider but no UI anywhere. Files: `robot_dashboard.dart`, `run_provider.dart`. | Coder | DONE | — |
+| 13 | BUG-048: Rad Gun has empty `type` field in guns.json — no type pill in browse, no subtitle in detail. Fix: set type to "Semiautomatic". | Coder | DONE | — |
+| 14 | BUG-049: Gunderfury has garbage `type` field ("Semiautomatic Automatic Semiautomatic..."). Browse pill shows raw garbage. Fix: set type to "Variable", remove isGunderfury special case. | Coder | DONE | — |
+| 15 | BUG-050: Deck4rd + Mr. Accretion Jr. have non-standard type variants ("Semiautomatic (functionally Automatic)", "Semi-Automatic"). Fix: normalize to "Semiautomatic". | Coder | DONE | — |
+| 16 | BUG-051: 3 IconButtons with sub-minimum tap targets (BoxConstraints() + padding zero). Files: `multiplayer_lobby_screen.dart:522`, `player_header.dart:488`, `item_detail/header.dart:107`. | Coder | DONE | — |
+| 17 | BUG-052: 27 IconButtons missing tooltips (accessibility). Files: multiple — see bug_tracker.md for full list. | Coder | DONE | — |
+| 18 | BUG-053: Dashboard GestureDetector controls missing haptics + Material ripple. Files: `robot_dashboard.dart`, `junkan_dashboard.dart`, `special_gun_dashboards.dart`. | Coder | DONE | — |
+| 19 | BUG-054: Emote bottom sheet missing SafeArea (hardcoded bottom: 32). File: `active_run_screen.dart:146-153`. | Coder | DONE | — |
+| 20 | BUG-055: stats_detail_screen large stat value (fontSize 52) not responsive — no FittedBox or scaling. File: `stats_detail_screen.dart:196-205`. | Coder | DONE | — |
 
 ---
 
@@ -42,14 +42,14 @@ When done, mark status as `DONE` and move to Session Log.
 
 | Field | Value |
 |-------|-------|
-| **Agent** | Coder |
-| **Branch** | master |
-| **Session started** | 2026-08-14 16:00 UTC+3 |
-| **Last board update** | 2026-08-14 16:15 UTC+3 |
-| **Working on** | BUG-022 synergy icons + BUG-046/047/048/049/050 batch |
-| **Files in progress** | assets/images/synergies/, docs/bug_tracker.md, lib/widgets/dashboards/ |
-| **Uncommitted changes** | 287 new synergy fallback icons + pending code fixes |
-| **Last commit** | `c9dc251` (outer) — Bughunt: log 5 new bugs (BUG-046 to BUG-050) + add to task queue |
+| **Agent** | _(none)_ |
+| **Branch** | — |
+| **Session started** | — |
+| **Last board update** | 2026-08-14 17:30 UTC+3 |
+| **Working on** | — |
+| **Files in progress** | — |
+| **Uncommitted changes** | — |
+| **Last commit** | `6734f18` (gungeon_mate) — v1.9.11: Accessibility + UX polish — BUG-051 to BUG-055 |
 
 ### Slot 2
 
