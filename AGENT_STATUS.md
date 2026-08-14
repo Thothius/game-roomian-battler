@@ -32,14 +32,14 @@ When done, mark status as `DONE` and move to Session Log.
 
 | Field | Value |
 |-------|-------|
-| **Agent** | Coder |
-| **Branch** | master |
-| **Session started** | 2026-08-12 20:20 UTC+3 |
-| **Last board update** | 2026-08-12 20:20 UTC+3 |
+| **Agent** | _(none)_ |
+| **Branch** | — |
+| **Session started** | — |
+| **Last board update** | 2026-08-13 02:45 UTC+3 |
 | **Working on** | — |
 | **Files in progress** | — |
 | **Uncommitted changes** | — |
-| **Last commit** | `93a9ad1` (gungeon_mate) — BUG-040 + BUG-041: DMG/RNG labels on periodic grid + text labels under header icons |
+| **Last commit** | `1be09e1` (gungeon_mate) — Fix BUG-045: wire up 17 broken dashboard collapse toggles |
 
 ### Slot 2
 
@@ -48,11 +48,11 @@ When done, mark status as `DONE` and move to Session Log.
 | **Agent** | _(none)_ |
 | **Branch** | — |
 | **Session started** | — |
-| **Last board update** | 2026-08-12 20:25 UTC+3 |
+| **Last board update** | 2026-08-13 01:45 UTC+3 |
 | **Working on** | — |
 | **Files in progress** | — |
 | **Uncommitted changes** | — |
-| **Last commit** | `bb8d919` (outer) — Formalize BUG-040 + BUG-041: periodic grid DMG/RANGE labels + header icon labels |
+| **Last commit** | `4e464be` (gungeon_mate) — v1.9.1 — Bullet Hell Edition hotfix + bigger title wobble |
 
 ### Slot 3
 

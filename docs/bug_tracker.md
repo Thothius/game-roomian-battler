@@ -734,6 +734,22 @@
 
 ---
 
+### BUG-045 — 17 dashboard collapse toggles non-functional (onTap: null, no chevron)
+- **Severity:** MEDIUM
+- **Status:** FIXED
+- **Found by:** Coder (analyzer audit, Aug 13 2026)
+- **Files:** `lib/widgets/dashboards/compact_dashboards.dart` (12 dashboards), `lib/widgets/dashboards/special_gun_dashboards.dart` (3 dashboards), `lib/widgets/dashboards/junkan_dashboard.dart` (1), `lib/widgets/dashboards/robot_dashboard.dart` (1)
+- **Description:** 17 special dashboards (Shellegun, Chamber Gun, Platinum Bullets, Iron Coin, Spice, Metronome, Sprun, Boxing Glove, Cigarettes, Polaris, Gunther, Gun Soul, Gunderfury, Triple Gun, Evolver, Junkan, Robot) declared `_collapsed`/`_expanded` boolean fields and wrapped their content in `if (!_collapsed) ...[...]` / `if (_expanded) ...[...]`, but:
+  1. The `InkWell` `onTap` was `null` — making the header non-tappable.
+  2. No `setState` was ever called — the fields were never reassigned.
+  3. No chevron/expand icon was rendered — no visual indication the header was tappable.
+  The analyzer flagged all 17 as `prefer_final_fields` because the fields were never reassigned. The collapse feature was scaffolded but never wired up.
+- **Root cause:** Incomplete feature implementation. The `_collapsed`/`_expanded` fields, `InkWell` wrappers, and `if (!_collapsed)` guards were added but the tap handlers, state mutation, and visual indicators were never connected.
+- **Fix:** Wired all 17 `onTap` handlers to `setState(() => _collapsed = !_collapsed)` (or `_expanded`) with `Haptics.selection()`. Added `Icon(_collapsed ? Icons.expand_more : Icons.expand_less)` chevrons to all 17 header rows. Analyzer now reports 0 issues on the dashboards directory (down from 17 `prefer_final_fields` warnings).
+- **Commit:** 1be09e1
+
+---
+
 ## Disputed / Wontfix
 
 *(None yet.)*
