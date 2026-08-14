@@ -290,21 +290,25 @@
 
 ### BUG-023 — 3 guns missing wiki notes content
 - **Severity:** LOW
-- **Status:** OPEN
+- **Status:** FIXED
 - **Found by:** Coder (data bughunt, Jul 23 2026)
 - **File:** `assets/data/guns.json`
 - **Description:** Poxcannon, Serious Cannon, and Silencer have no wiki notes content (empty `notes` array). All other 236 guns have notes.
 - **Fix proposal:** Populate from wiki data or accept as "no trivia exists" if the wiki has none.
+- **Fix:** Added wiki.notes sections from wiki.gg for all 3 guns. Poxcannon: 3 notes (PAX reference, POISON class, lousy t-shirt meme). Serious Cannon: 2 notes (Serious Sam reference, Kamikaze Attack synergy). Silencer: 3 notes (pillow silencer myth, thread count pun, Alben Smallbore/Dumbledore reference).
+- **Commit:** 9eeda49
 
 ---
 
 ### BUG-024 — 2 items missing wiki content
 - **Severity:** LOW
-- **Status:** OPEN
+- **Status:** FIXED
 - **Found by:** Coder (data bughunt, Jul 23 2026)
 - **File:** `assets/data/items.json`
 - **Description:** "C4 (Item)" and "Ser Junkan 1" have no wiki sections (effects, item_interactions, notes all empty).
 - **Fix proposal:** Populate from wiki data or accept if wiki has no content for these entries.
+- **Fix:** Added full wiki objects from wiki.gg. C4: effects (60 damage, no secret rooms), item_interactions (Blank Companion's Ring / Ring of Triggers), 3 notes. Ser Junkan 1: 2 effects (form changes, de-leveling), 5 notes (shop, Ammonomicon, blanks, win screen, Ser Duncan reference).
+- **Commit:** 9eeda49
 
 ---
 
@@ -341,21 +345,25 @@
 
 ### BUG-028 — Collapsible sections pop instead of animate height
 - **Severity:** LOW
-- **Status:** OPEN
+- **Status:** FIXED
 - **Found by:** Coder (UI bughunt, Jul 23 2026)
-- **Files:** `stats_detail_screen.dart`, `multiplayer_lobby_screen.dart`, `wiki_sections.dart`, `browse_screen.dart`
+- **Files:** `compact_dashboards.dart` (12), `special_gun_dashboards.dart` (3), `junkan_dashboard.dart` (1), `robot_dashboard.dart` (1), `stats_detail_screen.dart` (1)
 - **Description:** Collapsible sections use `if (!_collapsed) ...[children]` — content appears/disappears instantly. The chevron animates via `AnimatedRotation` but the content has no height transition. `AnimatedSize` wrapper would fix this with zero controller overhead.
 - **Fix proposal:** Wrap collapsible content in `AnimatedSize(duration: 200ms, curve: Curves.easeOutCubic, child: _collapsed ? SizedBox.shrink() : Column(children: [...]))`.
+- **Fix:** Wrapped all 18 collapsible sections in AnimatedSize with 200ms easeOutCubic. Content now smoothly expands/collapses instead of popping.
+- **Commit:** 9eeda49
 
 ---
 
 ### BUG-029 — Quick Add sheet search results limited to 6, no scroll indicator
 - **Severity:** LOW
-- **Status:** OPEN
+- **Status:** FIXED
 - **Found by:** Coder (UX bughunt, Jul 23 2026)
-- **File:** `lib/screens/active_run_screen.dart:316`
+- **File:** `lib/screens/active_run_screen.dart:461`
 - **Description:** `combinedResults.take(6)` silently truncates results. If the user searches "gun" they see 6 of ~80+ matches with no indication there are more. No "showing 6 of N" hint, no scroll-to-see-more.
 - **Fix proposal:** Either show a count ("6 of N results") or remove the limit and let the `Flexible` + `ListView` handle scrolling.
+- **Fix:** Removed .take(6) — all results now show in a scrollable ListView. Added "N results — scroll to see more" hint when results exceed 6.
+- **Commit:** 9eeda49
 
 ---
 
@@ -726,13 +734,15 @@
 
 ### BUG-044 — Search timeout (60s) too long during auto-reconnect
 - **Severity:** LOW
-- **Status:** OPEN
+- **Status:** FIXED
 - **Found by:** User testing (Aug 12 2026) — "gf leaves for 15 min and when coming back i sometimes cant reconnect as sidekick"
 - **Files:**
-  - `lib/services/multiplayer_session.dart` — `_startSearchTimeout()` (lines 1612–1622), `_searchTimeoutMs` (line 234)
+  - `lib/services/multiplayer_session.dart` — `_startSearchTimeout()`, `_searchTimeoutMs`, `_reconnectSearchTimeoutMs`
 - **Description:** During auto-reconnect, `reconnect()` calls `startAsSidekick()`/`startAsMain()` which starts a 60s search timeout. If the peer isn't advertising yet (their app is also backgrounded), those 60s are wasted before the next attempt. After 15 minutes, only ~10-12 attempts have been made (60s search + 30s backoff = 90s per cycle). A shorter timeout during reconnection would allow more attempts.
 - **Root cause:** The search timeout is a single constant (60s) used for both initial connection and reconnection. No distinction between fresh search and reconnect search.
 - **Fix proposal:** Add an optional `timeoutMs` parameter to `_startSearchTimeout()` and use a shorter value (20-25s) during auto-reconnect. Or: during auto-reconnect, skip the search timeout entirely and let the auto-reconnect loop's backoff timer act as the timeout — if no connection within the backoff window, the next attempt restarts the search.
+- **Fix:** Added `_isReconnecting` flag set in `reconnect()`, reset on connection or timeout. `_startSearchTimeout()` uses 20s for reconnect (vs 60s fresh). Reconnect timeout silently retries instead of showing error. ~3x more reconnect attempts in the same time window (20s + 30s backoff = 50s per cycle vs 90s).
+- **Commit:** 9eeda49
 
 ---
 
