@@ -32,14 +32,14 @@ When done, mark status as `DONE` and move to Session Log.
 
 | Field | Value |
 |-------|-------|
-| **Agent** | _(none)_ |
-| **Branch** | — |
-| **Session started** | — |
-| **Last board update** | 2026-08-14 01:30 UTC+3 |
-| **Working on** | — |
-| **Files in progress** | — |
+| **Agent** | Coder |
+| **Branch** | master |
+| **Session started** | 2026-08-14 12:45 UTC+3 |
+| **Last board update** | 2026-08-14 12:45 UTC+3 |
+| **Working on** | Batch fix: BUG-023, BUG-024, BUG-028, BUG-029, BUG-044 |
+| **Files in progress** | assets/data/guns.json, assets/data/items.json, lib/screens/stats_detail_screen.dart, lib/screens/multiplayer_lobby_screen.dart, lib/widgets/wiki_sections.dart, lib/screens/browse_screen.dart, lib/screens/active_run_screen.dart, lib/services/multiplayer_session.dart |
 | **Uncommitted changes** | — |
-| **Last commit** | `430466b` (gungeon_mate) — Compact theme picker + fix particle visibility |
+| **Last commit** | `0231ee4` (gungeon_mate) — Redesign GungeonFallAnimation to match reference video |
 
 ### Slot 2
 
