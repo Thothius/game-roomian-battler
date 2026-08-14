@@ -268,11 +268,13 @@
 
 ### BUG-021 — 46 active items missing `recharge_time`
 - **Severity:** MEDIUM
-- **Status:** OPEN
+- **Status:** FIXED
 - **Found by:** Coder (data bughunt, Jul 23 2026)
 - **File:** `assets/data/items.json`
 - **Description:** 46 of 67 active items have no `recharge_time` value. Includes common items like Bomb, Box, Decoy, Molotov, Smoke Bomb, Teleporter Prototype. The item detail screen shows recharge time when present — these 46 items just omit it.
 - **Fix proposal:** Populate `recharge_time` from wiki data for all active items.
+- **Fix:** Extracted floor-1 damage recharge values from cached wiki.gg HTML for all 46 items. 44 use damage-based recharge (e.g., "200 dmg"), Busted Television is "None", Arcane Gunpowder is "Cannot be used" (quest item). All 67 active items now have recharge_time.
+- **Commit:** d84690d
 
 ---
 

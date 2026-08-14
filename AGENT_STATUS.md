@@ -32,12 +32,12 @@ When done, mark status as `DONE` and move to Session Log.
 
 | Field | Value |
 |-------|-------|
-| **Agent** | _(none)_ |
-| **Branch** | — |
-| **Session started** | — |
-| **Last board update** | 2026-08-14 00:30 UTC+3 |
-| **Working on** | — |
-| **Files in progress** | — |
+| **Agent** | Coder |
+| **Branch** | coder/compact-theme-picker |
+| **Session started** | 2026-08-14 01:00 UTC+3 |
+| **Last board update** | 2026-08-14 01:00 UTC+3 |
+| **Working on** | Compact theme picker + fix particle visibility |
+| **Files in progress** | lib/screens/theme_picker_screen.dart |
 | **Uncommitted changes** | — |
 | **Last commit** | `20324a5` (gungeon_mate) — Feature: Gungeon Fall Animation — vortex + falling gungeoneer on home screen |
 
@@ -48,11 +48,11 @@ When done, mark status as `DONE` and move to Session Log.
 | **Agent** | _(none)_ |
 | **Branch** | — |
 | **Session started** | — |
-| **Last board update** | 2026-08-13 01:45 UTC+3 |
+| **Last board update** | 2026-08-14 12:30 UTC+3 |
 | **Working on** | — |
 | **Files in progress** | — |
 | **Uncommitted changes** | — |
-| **Last commit** | `4e464be` (gungeon_mate) — v1.9.1 — Bullet Hell Edition hotfix + bigger title wobble |
+| **Last commit** | `d84690d` (gungeon_mate) — Fix BUG-021: populate recharge_time for all 46 missing active items |
 
 ### Slot 3
 
