@@ -876,6 +876,30 @@
 - **Description:** The main stat value display used `fontSize: 52` without scaling or `FittedBox`, risking overflow on high text scale settings.
 - **Fix:** Wrapped the GoopText in `FittedBox(fit: BoxFit.scaleDown)` so it shrinks gracefully on narrow screens / high text scale, matching the main menu title pattern.
 
+### BUG-056 — Briefcase of Cash effect text truncated
+- **Severity:** HIGH
+- **Status:** FIXED
+- **Found by:** Coder (data audit, Aug 14 2026)
+- **File:** `assets/data/items.json`
+- **Description:** Effect read `"Grants 250 and 3 ."` — wiki ref tokens were stripped during data import, losing "coins" and "Hegemony Credits".
+- **Fix:** Restored to `"Grants 250 coins and 3 Hegemony Credits."` based on wiki effects section.
+
+### BUG-057 — 12 guns had empty notes field
+- **Severity:** MEDIUM
+- **Status:** FIXED
+- **Found by:** Coder (data audit, Aug 14 2026)
+- **File:** `assets/data/guns.json`
+- **Description:** 12 guns (AK-47, Derringer, M1911, Machine Pistol, Magnum, Makarov, Regular Shotgun, Thompson Sub-Machinegun, Trank Gun, Void Marshal, Vulcan Cannon, Winchester Rifle) had completely empty `notes` fields, leaving the detail view with no effect description.
+- **Fix:** Populated all 12 with concise descriptions sourced from wiki.gg pages.
+
+### BUG-058 — Synergy name mismatch: "Thermal Imaging" → "Thermal Imagine"
+- **Severity:** LOW
+- **Status:** FIXED
+- **Found by:** Coder (synergy audit, Aug 14 2026)
+- **File:** `assets/data/synergies.json`
+- **Description:** Our JSON used "Thermal Imaging" but the official wiki/game name is "Thermal Imagine" (a pun). This could cause synergy lookup mismatches.
+- **Fix:** Renamed to "Thermal Imagine" to match the wiki.
+
 ---
 
 ## Disputed / Wontfix

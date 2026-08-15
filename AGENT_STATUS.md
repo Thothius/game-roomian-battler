@@ -42,11 +42,11 @@ When done, mark status as `DONE` and move to Session Log.
 
 | Field | Value |
 |-------|-------|
-| **Agent** | _(none)_ |
-| **Branch** | — |
-| **Session started** | — |
-| **Last board update** | 2026-08-14 17:30 UTC+3 |
-| **Working on** | — |
+| **Agent** | Coder |
+| **Branch** | master |
+| **Session started** | 2026-08-14 18:00 UTC+3 |
+| **Last board update** | 2026-08-14 18:00 UTC+3 |
+| **Working on** | BUG-056-059: data integrity fixes (synergies, gun notes, item effect) |
 | **Files in progress** | — |
 | **Uncommitted changes** | — |
 | **Last commit** | `6734f18` (gungeon_mate) — v1.9.11: Accessibility + UX polish — BUG-051 to BUG-055 |
