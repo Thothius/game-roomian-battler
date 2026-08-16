@@ -949,6 +949,30 @@
 - **Description:** Master Round I, Master Round II, and Rusty Sidearm had `"icon": ""` while their siblings (Master Round III/IV/V) had proper URLs. This caused blank images in the browse and detail views.
 - **Fix:** Populated all 3 with correct Fandom CDN image URLs sourced from the wiki.
 
+### BUG-065 — 11 synergy effects with stripped wiki ref tokens (" ." and " ," patterns)
+- **Severity:** LOW
+- **Status:** FIXED
+- **Found by:** Coder (deep data audit round 2, Aug 16 2026)
+- **File:** `assets/data/synergies.json`
+- **Description:** Same root cause as BUG-062 — wiki ref tokens stripped during import left orphaned spaces before punctuation. Affected 11 synergies: Behold!, Cormorant, Fairy Bow, Five O'Clock Somewhere, Kung Fu Hippie Rappin' Surfer, Pinker Guon Stone, Resourceful Indeed, Rubenstein's Monster, Shield Night, Tears of Blood, Whiter Guon Stone.
+- **Fix:** Replaced all `' .'` → `'.'` and `' ,'` → `','` in synergy effect fields.
+
+### BUG-066 — 56 guns with empty range field
+- **Severity:** LOW
+- **Status:** FIXED
+- **Found by:** Coder (deep data audit round 2, Aug 16 2026)
+- **File:** `assets/data/guns.json`
+- **Description:** 56 guns had `"range": ""` while the wiki shows `[Infinity.png]` for all of them. This caused the gun stats UI to display an empty range value. Includes AK-47, Bullet Bore, Deck4rd, Eye of the Beholster, Pitchfork, and 51 more.
+- **Fix:** Set all 56 to `"range": "∞"` to match the wiki's infinite range notation. 6 guns already used `"∞"` — now all 62 infinite-range guns are consistent.
+
+### BUG-067 — 6 beam weapons with empty shot_speed field
+- **Severity:** LOW
+- **Status:** FIXED
+- **Found by:** Coder (deep data audit round 2, Aug 16 2026)
+- **File:** `assets/data/guns.json`
+- **Description:** 6 beam-type guns had `"shot_speed": ""` — Abyssal Tentacle, Gamma Ray, Life Orb, Moonscraper, Mourning Star, Raiden Coil. Beam weapons fire instant-hit beams, so shot speed is effectively infinite. The wiki shows `[Infinity.png]` for these.
+- **Fix:** Set all 6 to `"shot_speed": "∞"`.
+
 ---
 
 ## Disputed / Wontfix

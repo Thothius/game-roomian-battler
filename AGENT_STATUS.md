@@ -56,11 +56,11 @@ When done, mark status as `DONE` and move to Session Log.
 
 | Field | Value |
 |-------|-------|
-| **Agent** | _(none)_ |
+| **Agent** | Coder |
 | **Branch** | — |
-| **Session started** | — |
-| **Last board update** | 2026-08-16 12:30 UTC+3 |
-| **Working on** | — |
+| **Session started** | 2026-08-16 13:00 UTC+3 |
+| **Last board update** | 2026-08-16 13:00 UTC+3 |
+| **Working on** | Deep audit round 2: stat fields, ammonomicon entries, synergy effects, formatting |
 | **Files in progress** | — |
 | **Uncommitted changes** | — |
 | **Last commit** | `6084638` (gungeon_mate) — v1.9.13: BUG-062-064 deep data audit — stripped ref tokens, empty gun classes, missing icons |
