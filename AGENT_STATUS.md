@@ -42,25 +42,25 @@ When done, mark status as `DONE` and move to Session Log.
 
 | Field | Value |
 |-------|-------|
-| **Agent** | _(none)_ |
+| **Agent** | Maintainer |
 | **Branch** | — |
-| **Session started** | — |
-| **Last board update** | 2026-08-14 18:30 UTC+3 |
-| **Working on** | — |
+| **Session started** | 2026-08-15 14:40 UTC+3 |
+| **Last board update** | 2026-08-15 14:50 UTC+3 |
+| **Working on** | QA sweep complete — 3 bugs found (BUG-059 fixed, BUG-060/061 logged) |
 | **Last commit** | 58bb603 — v1.9.12: BUG-056-058 data integrity fixes |
 | **Files in progress** | — |
-| **Uncommitted changes** | — |
+| **Uncommitted changes** | `gungeon_mate/lib/widgets/gungeoneer_header.dart` — BUG-059 ticker fix (SingleTicker→Ticker) |
 | **Last commit** | `6734f18` (gungeon_mate) — v1.9.11: Accessibility + UX polish — BUG-051 to BUG-055 |
 
 ### Slot 2
 
 | Field | Value |
 |-------|-------|
-| **Agent** | _(none)_ |
+| **Agent** | Coder |
 | **Branch** | — |
-| **Session started** | — |
-| **Last board update** | 2026-08-14 12:30 UTC+3 |
-| **Working on** | — |
+| **Session started** | 2026-08-16 12:00 UTC+3 |
+| **Last board update** | 2026-08-16 12:00 UTC+3 |
+| **Working on** | Deep audit: synergy cross-refs, description problems, data consistency |
 | **Files in progress** | — |
 | **Uncommitted changes** | — |
 | **Last commit** | `d84690d` (gungeon_mate) — Fix BUG-021: populate recharge_time for all 46 missing active items |

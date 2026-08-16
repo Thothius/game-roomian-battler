@@ -900,6 +900,55 @@
 - **Description:** Our JSON used "Thermal Imaging" but the official wiki/game name is "Thermal Imagine" (a pun). This could cause synergy lookup mismatches.
 - **Fix:** Renamed to "Thermal Imagine" to match the wiki.
 
+### BUG-059 — GungeonHeader multiple tickers crash (SingleTickerProviderStateMixin + 2 AnimationControllers)
+- **Severity:** CRITICAL
+- **Status:** FIXED
+- **Found by:** Maintainer (Playwright QA sweep, Aug 15 2026)
+- **File:** `lib/widgets/gungeoneer_header.dart` (line 81)
+- **Description:** `_GungeoneerHeaderState` used `SingleTickerProviderStateMixin` but created TWO `AnimationController`s (`_wobbleController` + `_borderPulseController`), both with `vsync: this`. `SingleTickerProviderStateMixin` only supports one ticker. When the GungeonHeader mounted (immediately after character select → active run screen), Flutter threw a "Multiple tickers" assertion error, crashing the app.
+- **Fix:** Changed `SingleTickerProviderStateMixin` → `TickerProviderStateMixin` (supports multiple tickers). Verified all other 18 `SingleTickerProviderStateMixin` usages in the codebase — they each correctly use only one controller.
+- **Repro:** Main Menu → Local Run → select any character → crash.
+
+### BUG-060 — Main menu shows hardcoded "v1.9.11" despite pubspec being v1.9.12
+- **Severity:** LOW
+- **Status:** OPEN
+- **Found by:** Maintainer (Playwright QA sweep, Aug 15 2026)
+- **File:** `lib/screens/main_menu_screen.dart` (lines 185, 254, 309, 726)
+- **Description:** The main menu has 4 hardcoded `'v1.9.11'` strings. After the v1.9.12 bump (BUG-056-058 data fixes), the menu still shows "v1.9.11" and "Changelog (v1.9.11)". No central version constant exists — version is manually hardcoded in 4 places.
+- **Fix proposal:** Either (a) create a central `kAppVersion` constant and reference it, or (b) use `package_info_plus` to read version dynamically, or (c) at minimum update the 4 strings to 'v1.9.12'.
+
+### BUG-061 — Browse pill says "synergys" instead of "synergies" (plural typo)
+- **Severity:** LOW
+- **Status:** OPEN
+- **Found by:** Maintainer (Playwright QA sweep, Aug 15 2026)
+- **File:** `lib/widgets/browse/browse_pills.dart` (line 178)
+- **Description:** The synergy count pill uses `'$count synergy${count == 1 ? "" : "s"}'` which produces "1 synergy" (correct) but "2 synergys" (wrong — should be "synergies"). The English plural of "synergy" is "synergies", not "synergys".
+- **Fix proposal:** Change to `'$count ${count == 1 ? 'synergy' : 'synergies'}'`.
+
+### BUG-062 — Stripped wiki ref tokens causing " ." and " ," patterns in gun notes and item effects
+- **Severity:** LOW
+- **Status:** FIXED
+- **Found by:** Coder (deep data audit, Aug 16 2026)
+- **Files:** `assets/data/guns.json` (22 entries), `assets/data/items.json` (9 entries)
+- **Description:** During original data import, wiki ref tokens (e.g. `[[Stun]]`, `[[Burn]]`) were stripped from text fields, leaving behind a space before the punctuation mark. This produced patterns like `'chance to stun .'` and `'Starting gun of The Convict .'` across 22 gun notes and 9 item effects — 31 entries total.
+- **Fix:** Replaced all `' .'` → `'.'` and `' ,'` → `','` in notes and effect fields. No semantic content was lost — only the orphaned space was removed.
+
+### BUG-063 — 12 guns had empty "class" field
+- **Severity:** LOW
+- **Status:** FIXED
+- **Found by:** Coder (deep data audit, Aug 16 2026)
+- **File:** `assets/data/guns.json`
+- **Description:** 12 guns had `"class": ""` — A.W.P., Alien Sidearm, Anvillain, Balloon Gun, Bee Hive, Big Iron, Big Shotgun, Blunderbuss, Brick Breaker, Budget Revolver, Bullet, Cold 45. The class field is used by `ElementalTagger` and gun classification logic.
+- **Fix:** Populated all 12 with wiki-verified gun classes: A.W.P.→RIFLE, Alien Sidearm→PISTOL, Anvillain→CHARGE, Balloon Gun→FULLAUTO, Bee Hive→SILLY, Big Iron→PISTOL, Big Shotgun→EXPLOSIVE, Blunderbuss→CHARGE, Brick Breaker→SILLY, Budget Revolver→SHITTY, Bullet→PISTOL, Cold 45→ICE.
+
+### BUG-064 — 3 entries with missing icon URLs
+- **Severity:** LOW
+- **Status:** FIXED
+- **Found by:** Coder (deep data audit, Aug 16 2026)
+- **Files:** `assets/data/items.json` (Master Round I, Master Round II), `assets/data/guns.json` (Rusty Sidearm)
+- **Description:** Master Round I, Master Round II, and Rusty Sidearm had `"icon": ""` while their siblings (Master Round III/IV/V) had proper URLs. This caused blank images in the browse and detail views.
+- **Fix:** Populated all 3 with correct Fandom CDN image URLs sourced from the wiki.
+
 ---
 
 ## Disputed / Wontfix
