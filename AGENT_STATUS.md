@@ -56,14 +56,14 @@ When done, mark status as `DONE` and move to Session Log.
 
 | Field | Value |
 |-------|-------|
-| **Agent** | Coder |
+| **Agent** | _(none)_ |
 | **Branch** | — |
-| **Session started** | 2026-08-16 12:00 UTC+3 |
-| **Last board update** | 2026-08-16 12:00 UTC+3 |
-| **Working on** | Deep audit: synergy cross-refs, description problems, data consistency |
+| **Session started** | — |
+| **Last board update** | 2026-08-16 12:30 UTC+3 |
+| **Working on** | — |
 | **Files in progress** | — |
 | **Uncommitted changes** | — |
-| **Last commit** | `d84690d` (gungeon_mate) — Fix BUG-021: populate recharge_time for all 46 missing active items |
+| **Last commit** | `6084638` (gungeon_mate) — v1.9.13: BUG-062-064 deep data audit — stripped ref tokens, empty gun classes, missing icons |
 
 ### Slot 3
 
