@@ -1092,6 +1092,16 @@
 
 ---
 
+### BUG-082 — 98 final items enriched in complete comprehensive sweep (round 6 final)
+- **Severity:** LOW
+- **Status:** FIXED
+- **Found by:** Coder (items wiki audit round 6 complete, Aug 16 2026)
+- **File:** `assets/data/items.json`
+- **Description:** Final batch of the comprehensive sweep of all 130 remaining potentially enrichable items. 98 items confirmed as having missing mechanics, values, or could be made more concise/accurate. All verified against wiki.gg. Covers bullets (12), companions (6), Guon Stones (4), active items (35), and passives (41). Key additions: specific damage values, durations, chances, cooldowns, mechanics, and conditions. The remaining ~30 items were already accurate or intentionally concise (heart containers, immunity, ingredients, "No effect" items).
+- **Fix:** Updated all 98 with wiki-accurate effect text. This completes the items accuracy audit — all 270 items in items.json have now been reviewed.
+
+---
+
 ### BUG-081 — 27 more items enriched in comprehensive sweep (round 6)
 - **Severity:** LOW
 - **Status:** FIXED
