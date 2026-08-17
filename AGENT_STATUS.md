@@ -45,10 +45,10 @@ When done, mark status as `DONE` and move to Session Log.
 | **Agent** | Maintainer |
 | **Branch** | — |
 | **Session started** | 2026-08-15 14:40 UTC+3 |
-| **Last board update** | 2026-08-16 18:10 UTC+3 |
-| **Working on** | Remove BULLET HELL heading from home screen + fix character select to 3 columns + sync version strings to v1.9.20 |
-| **Last commit** | `23be4c2` (gungeon_mate) — v1.9.18 version string sync |
-| **Files in progress** | `lib/screens/main_menu_screen.dart`, `lib/screens/character_select_screen.dart` |
+| **Last board update** | 2026-08-16 18:30 UTC+3 |
+| **Working on** | — |
+| **Last commit** | `d8e608a` (gungeon_mate) — v1.9.22+99: home screen vortex + character grid fix |
+| **Files in progress** | — |
 | **Uncommitted changes** | — |
 
 ### Slot 2
