@@ -45,12 +45,11 @@ When done, mark status as `DONE` and move to Session Log.
 | **Agent** | Maintainer |
 | **Branch** | — |
 | **Session started** | 2026-08-15 14:40 UTC+3 |
-| **Last board update** | 2026-08-16 15:00 UTC+3 |
-| **Working on** | — |
-| **Last commit** | `3f65e95` (gungeon_mate) — v1.9.16+93: BUG-059-061 Playwright QA fixes |
-| **Files in progress** | — |
+| **Last board update** | 2026-08-16 18:10 UTC+3 |
+| **Working on** | Remove BULLET HELL heading from home screen + fix character select to 3 columns + sync version strings to v1.9.20 |
+| **Last commit** | `23be4c2` (gungeon_mate) — v1.9.18 version string sync |
+| **Files in progress** | `lib/screens/main_menu_screen.dart`, `lib/screens/character_select_screen.dart` |
 | **Uncommitted changes** | — |
-| **Last commit** | `6734f18` (gungeon_mate) — v1.9.11: Accessibility + UX polish — BUG-051 to BUG-055 |
 
 ### Slot 2
 
@@ -59,11 +58,11 @@ When done, mark status as `DONE` and move to Session Log.
 | **Agent** | _(none)_ |
 | **Branch** | — |
 | **Session started** | — |
-| **Last board update** | 2026-08-16 18:00 UTC+3 |
+| **Last board update** | 2026-08-16 18:40 UTC+3 |
 | **Working on** | — |
 | **Files in progress** | — |
 | **Uncommitted changes** | — |
-| **Last commit** | `95a4d3f` (gungeon_mate) — v1.9.20: BUG-079 items wiki audit round 4 — bullet upgrades, guon stone, table tech |
+| **Last commit** | `e9072ef` (gungeon_mate) — v1.9.21: BUG-080 items wiki audit round 5 final — table techs, active items, companions, rings |
 
 ### Slot 3
 
