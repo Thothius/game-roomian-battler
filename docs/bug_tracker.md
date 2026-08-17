@@ -1082,6 +1082,16 @@
 
 ---
 
+### BUG-080 — 23 final items with vague effects missing specific values (round 5)
+- **Severity:** LOW
+- **Status:** FIXED
+- **Found by:** Coder (items wiki audit round 5 final, Aug 16 2026)
+- **File:** `assets/data/items.json`
+- **Description:** 23 final items had vague effect text missing specific values and mechanics. Confirmed by wiki.gg. Affected: Table Tech Heat (5 tiles, 10s), Table Tech Money (40%, 1-4 coins), Table Tech Rocket (30+30 dmg), Table Tech Shotgun (10 bullets, 6 dmg, 4 bounces), Bomb (60 dmg), Molotov (4 DPS, 4s), Magazine Rack (10s), Charm Horn (10s), Aged Bell (5s), Potion of Gun Friendship (+30% dmg, x2 fire rate, -70% reload, x10 knockback), Cluster Mine (60 dmg), Chaff Grenade (10s stun), Daruma (recharge), Orbital Bullets (wall hit, bounce fallback), Ring of Chest Vampirism (half heart, mimics), Cartographer's Ring (50%, no secret rooms), Chaos Bullets (10% pierce/bounce/status, 25% beam), Gundromeda Strain (bosses too), Baby Good Shelleton (12.5 DPS), Honeycomb (12-20 bees, 3+1/s), Enraging Photo (4s), Blue Guon Stone (33% shot speed, 5s), Portable Table Device (Table Tech trigger).
+- **Fix:** Updated all 23 with wiki-accurate effect text including specific values, durations, and damage numbers. Completes the items accuracy audit.
+
+---
+
 ## Disputed / Wontfix
 
 *(None yet.)*
