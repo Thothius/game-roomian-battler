@@ -1092,6 +1092,16 @@
 
 ---
 
+### BUG-084 — 30 gun notes enriched with wiki-accurate mechanics
+- **Severity:** LOW
+- **Status:** FIXED
+- **Found by:** Coder (gun notes wiki audit, Aug 16 2026)
+- **File:** `assets/data/guns.json`
+- **Description:** First gun notes accuracy audit. Of 239 guns, 62 had short notes (<50 chars). After verifying against wiki.gg, 30 were confirmed as missing useful mechanics, damage values, or form details. Key additions: AU Gun (100 dmg), Bundle of Wands (10% transmogrify, 3 projectiles), Chamber Gun (10 forms), Triple Gun (ammo thresholds), Evolver (6 forms, 5 kills each), AC-15 (two forms), Frost Giant (ice cone), Megahand (6/45 dmg, modes), Plague Pistol (50% poison), Teapot (final shot), RC Rocket (100+30 dmg), Prototype Railgun (150 dmg, secret rooms), Snakemaker (25%), and more. The remaining 32 short notes were already accurate per wiki.
+- **Fix:** Updated all 30 with wiki-accurate notes text.
+
+---
+
 ### BUG-083 — 16 synergy effects enriched with wiki-accurate mechanics
 - **Severity:** LOW
 - **Status:** FIXED
