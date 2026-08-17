@@ -909,21 +909,21 @@
 - **Fix:** Changed `SingleTickerProviderStateMixin` → `TickerProviderStateMixin` (supports multiple tickers). Verified all other 18 `SingleTickerProviderStateMixin` usages in the codebase — they each correctly use only one controller.
 - **Repro:** Main Menu → Local Run → select any character → crash.
 
-### BUG-060 — Main menu shows hardcoded "v1.9.11" despite pubspec being v1.9.12
+### BUG-060 — Main menu shows hardcoded "v1.9.11" despite pubspec being v1.9.15
 - **Severity:** LOW
-- **Status:** OPEN
+- **Status:** FIXED
 - **Found by:** Maintainer (Playwright QA sweep, Aug 15 2026)
 - **File:** `lib/screens/main_menu_screen.dart` (lines 185, 254, 309, 726)
-- **Description:** The main menu has 4 hardcoded `'v1.9.11'` strings. After the v1.9.12 bump (BUG-056-058 data fixes), the menu still shows "v1.9.11" and "Changelog (v1.9.11)". No central version constant exists — version is manually hardcoded in 4 places.
-- **Fix proposal:** Either (a) create a central `kAppVersion` constant and reference it, or (b) use `package_info_plus` to read version dynamically, or (c) at minimum update the 4 strings to 'v1.9.12'.
+- **Description:** The main menu had 4 hardcoded `'v1.9.11'` strings. After version bumps to v1.9.15, the menu still showed "v1.9.11" and "Changelog (v1.9.11)". No central version constant exists — version is manually hardcoded in 4 places.
+- **Fix:** Updated all 4 strings to 'v1.9.15'. Note: these will need manual updating on each version bump until a central constant is introduced.
 
 ### BUG-061 — Browse pill says "synergys" instead of "synergies" (plural typo)
 - **Severity:** LOW
-- **Status:** OPEN
+- **Status:** FIXED
 - **Found by:** Maintainer (Playwright QA sweep, Aug 15 2026)
 - **File:** `lib/widgets/browse/browse_pills.dart` (line 178)
-- **Description:** The synergy count pill uses `'$count synergy${count == 1 ? "" : "s"}'` which produces "1 synergy" (correct) but "2 synergys" (wrong — should be "synergies"). The English plural of "synergy" is "synergies", not "synergys".
-- **Fix proposal:** Change to `'$count ${count == 1 ? 'synergy' : 'synergies'}'`.
+- **Description:** The synergy count pill used `'$count synergy${count == 1 ? "" : "s"}'` which produced "1 synergy" (correct) but "2 synergys" (wrong — should be "synergies"). The English plural of "synergy" is "synergies", not "synergys".
+- **Fix:** Changed to `'$count ${count == 1 ? 'synergy' : 'synergies'}'`.
 
 ### BUG-062 — Stripped wiki ref tokens causing " ." and " ," patterns in gun notes and item effects
 - **Severity:** LOW

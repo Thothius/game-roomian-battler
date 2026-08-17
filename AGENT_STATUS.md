@@ -45,23 +45,23 @@ When done, mark status as `DONE` and move to Session Log.
 | **Agent** | Maintainer |
 | **Branch** | — |
 | **Session started** | 2026-08-15 14:40 UTC+3 |
-| **Last board update** | 2026-08-15 14:50 UTC+3 |
-| **Working on** | QA sweep complete — 3 bugs found (BUG-059 fixed, BUG-060/061 logged) |
-| **Last commit** | 58bb603 — v1.9.12: BUG-056-058 data integrity fixes |
+| **Last board update** | 2026-08-16 15:00 UTC+3 |
+| **Working on** | — |
+| **Last commit** | `3f65e95` (gungeon_mate) — v1.9.16+93: BUG-059-061 Playwright QA fixes |
 | **Files in progress** | — |
-| **Uncommitted changes** | `gungeon_mate/lib/widgets/gungeoneer_header.dart` — BUG-059 ticker fix (SingleTicker→Ticker) |
+| **Uncommitted changes** | — |
 | **Last commit** | `6734f18` (gungeon_mate) — v1.9.11: Accessibility + UX polish — BUG-051 to BUG-055 |
 
 ### Slot 2
 
 | Field | Value |
 |-------|-------|
-| **Agent** | _(none)_ |
+| **Agent** | Coder |
 | **Branch** | — |
-| **Session started** | — |
-| **Last board update** | 2026-08-16 14:30 UTC+3 |
-| **Working on** | — |
-| **Files in progress** | — |
+| **Session started** | 2026-08-16 15:00 UTC+3 |
+| **Last board update** | 2026-08-16 15:00 UTC+3 |
+| **Working on** | Items-focused wiki accuracy audit — effects, stats, sell_price, quality |
+| **Files in progress** | `assets/data/items.json` |
 | **Uncommitted changes** | — |
 | **Last commit** | `0c67daa` (gungeon_mate) — v1.9.15: BUG-068-072 wiki accuracy audit — number formatting, recharge consistency, vague effects |
 
