@@ -1072,6 +1072,16 @@
 
 ---
 
+### BUG-079 — 12 more items with vague effects missing specific values (round 4)
+- **Severity:** LOW
+- **Status:** FIXED
+- **Found by:** Coder (items wiki audit round 4, Aug 16 2026)
+- **File:** `assets/data/items.json`
+- **Description:** 12 more items had vague effect text missing specific values and mechanics. Confirmed by wiki.gg. Affected: Frost Bullets (slower weapons higher chance), Devolver Rounds (Arrowkin, beam double dmg), Hungry Bullets (blue, 1.5 tiles, +10%/bullet, cap 80%, beam x2), Magic Bullets (4% transmog), Zombie Bullets (33% refund, no beam), Chance Bullets (no ammo cost), Katana Bullets (curse +1, 100% beam, 50%/s beam double), Table Tech Sight (3s, grammar fix), Green Guon Stone (20% heal, 50% lethal), Ruby Bracelet (30 dmg), Mustache (Bello 15% cheaper), Ice Bomb (8 dmg).
+- **Fix:** Updated all 12 with wiki-accurate effect text including specific values, percentages, and mechanics.
+
+---
+
 ## Disputed / Wontfix
 
 *(None yet.)*
