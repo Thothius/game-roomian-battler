@@ -58,11 +58,11 @@ When done, mark status as `DONE` and move to Session Log.
 | **Agent** | _(none)_ |
 | **Branch** | — |
 | **Session started** | — |
-| **Last board update** | 2026-08-16 21:00 UTC+3 |
+| **Last board update** | 2026-08-16 22:00 UTC+3 |
 | **Working on** | — |
 | **Files in progress** | — |
 | **Uncommitted changes** | — |
-| **Last commit** | `95d1568` (gungeon_mate) — v1.9.25: BUG-083 synergies wiki audit — 16 synergy effects enriched |
+| **Last commit** | `f5928b2` (gungeon_mate) — v1.9.28: BUG-086 synergies deep audit |
 
 ### Slot 3
 
