@@ -1018,6 +1018,40 @@
 
 ---
 
+### BUG-073 — 13 passive items with vague effects missing specific values
+- **Severity:** LOW
+- **Status:** FIXED
+- **Found by:** Coder (items wiki audit, Aug 16 2026)
+- **File:** `assets/data/items.json`
+- **Description:** 13 passive items had vague effect text that omitted specific values and mechanics. Confirmed by wiki.gg comparison. Affected: Ballistic Boots, Shotga Cola, Shotgun Coffee, Bionic Leg, Military Training, Battle Standard, Coin Crown, Gold Ammolet, Wolf, Bullet Idol, Eyepatch, Unity, Book of Chest Anatomy.
+- **Fix:** Updated all 13 with wiki-accurate effect text including specific values.
+
+### BUG-074 — 6 bullet upgrade items with missing chance percentages
+- **Severity:** LOW
+- **Status:** FIXED
+- **Found by:** Coder (items wiki audit, Aug 16 2026)
+- **File:** `assets/data/items.json`
+- **Description:** 6 bullet upgrade items said "adds a chance" without specifying the percentage. Wiki.gg lists specific values. Affected: Charming Rounds (7.5%), Hot Lead (20%), Homing Bullets (20%), Irradiated Lead (50%, 2.5s), Explosive Rounds (8.5%, 25 damage), Shadow Bullets (15%).
+- **Fix:** Added wiki-accurate percentages and damage values.
+
+### BUG-075 — 4 active items with vague effects missing duration
+- **Severity:** LOW
+- **Status:** FIXED
+- **Found by:** Coder (items wiki audit, Aug 16 2026)
+- **File:** `assets/data/items.json`
+- **Description:** 4 active items with temporary effects didn't specify duration or key limitations. Affected: Stuffed Star (9s, pits/traps still harm), Double Vision (10s, reduces accuracy), Bullet Time (3s), Potion of Lead Skin (6s).
+- **Fix:** Added wiki-accurate durations and missing mechanics.
+
+### BUG-076 — 10 more items with vague effects missing key details
+- **Severity:** LOW
+- **Status:** FIXED
+- **Found by:** Coder (items wiki audit, Aug 16 2026)
+- **File:** `assets/data/items.json`
+- **Description:** 10 items had vague effect text missing important details. Affected: Pig (sacrifices itself, removes item), Heart of Ice (8-12 bullets, freeze), Cat Bullet King Throne (flight, roll direction), Table Tech Rage (3s), Omega Bullets (final two shots, not one), Shock Rounds (connects bullets), Snowballets (further travel), Angry Bullets (no ammo cost), Macho Brace (double damage), Turkey (same gun).
+- **Fix:** Updated all 10 with wiki-accurate effect text.
+
+---
+
 ## Disputed / Wontfix
 
 *(None yet.)*
