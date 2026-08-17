@@ -1092,6 +1092,16 @@
 
 ---
 
+### BUG-086 — 5 more synergy effects corrected in deeper audit
+- **Severity:** LOW
+- **Status:** FIXED
+- **Found by:** Coder (synergies deep audit, Aug 16 2026)
+- **File:** `assets/data/synergies.json`
+- **Description:** Deeper synergies audit focusing on long effects (>100 chars) accuracy. 5 effects corrected: blade (missing "and bosses"), Praise the Gun (missing "Old Crest room"), Firing With Flair (incorrect "permanently burning" vs wiki's "Green Fire 120s 4 DPS"), Why's Bullet Crying? (missing 75 damage value and no-repeat mechanic), Jotun Time (missing "rapidly" qualifier). Also verified 20+ other long effects as already accurate against wiki.gg.
+- **Fix:** Updated all 5 with wiki-accurate effect text.
+
+---
+
 ### BUG-085 — 105 missing gun stats filled with wiki-accurate values
 - **Severity:** LOW
 - **Status:** FIXED
