@@ -1092,6 +1092,16 @@
 
 ---
 
+### BUG-081 — 27 more items enriched in comprehensive sweep (round 6)
+- **Severity:** LOW
+- **Status:** FIXED
+- **Found by:** Coder (items wiki audit round 6 comprehensive, Aug 16 2026)
+- **File:** `assets/data/items.json`
+- **Description:** Final comprehensive sweep of all 130 remaining potentially enrichable items. 27 items confirmed as having missing mechanics or values, verified against wiki.gg. Affected: Space Friend (5 dmg), Orange Guon Stone (5 dmg, 1s CD), Red Guon Stone (dodge speed+distance), Owl (mini-blanks, blocks), Blank Bullets (beam x2), Vorpal Bullets (100 dmg crit, beam), Bouncy Bullets (2 bounces), Scattershot (55% dmg, +65% effective), Roll Bomb (5+20 dmg), C4 (60 dmg, no secret rooms), Boomerang (5s stun), Relodestone (6s), Bracket Key (150 dmg, no waves), Bottle (store/drop), Coolant Leak (Robot starter), Bloodied Scarf (-30% reload), Sprun (random trigger, ~10s), Ice Cube (recharge while active), Metronome (+2%/kill, max +150%), Scouter (+10% dmg, -10% spread), Broccoli (+1 speed), Gunboots (8 dmg, +1 speed), Sunglasses (55% slow, 25% dodge, 2s, 10s CD), Cloranthy Ring (15.8% dodge), Hip Holster (perfect accuracy), Brick of Cash (Snitch Brick), Portable Turret (blocks, room clear).
+- **Fix:** Updated all 27 with wiki-accurate effect text. The remaining ~100 items were reviewed and confirmed as already accurate or intentionally concise (heart containers, immunity, ingredients).
+
+---
+
 ## Disputed / Wontfix
 
 *(None yet.)*
