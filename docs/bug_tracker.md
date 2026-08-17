@@ -1052,6 +1052,16 @@
 
 ---
 
+### BUG-077 — 11 more items with vague effects missing specific values (round 2)
+- **Severity:** LOW
+- **Status:** FIXED
+- **Found by:** Coder (items wiki audit round 2, Aug 16 2026)
+- **File:** `assets/data/items.json`
+- **Description:** 11 more items had vague effect text missing specific percentages and mechanics. Confirmed by wiki.gg. Affected: Gilded Bullets (100% at 500), Platinum Bullets (250s/500s, max triple), Stout Bullets (50% larger, 12.5%-75%, -30% speed), Ammo Synthesizer (10%, 5% ammo), Armor Synthesizer (10%, no damage), Heart Synthesizer (20%, half heart, not full health), Master of Unlocking (20%, free key), Ring of Chest Friendship (50% more, halves D-tier), Chaos Ammolet (50% each, stun 1s, 25 tiles), Antibody (50%, extra half heart), Bloody 9mm (8%/s, homing/piercing/bouncing).
+- **Fix:** Updated all 11 with wiki-accurate effect text including specific values and conditions.
+
+---
+
 ## Disputed / Wontfix
 
 *(None yet.)*
