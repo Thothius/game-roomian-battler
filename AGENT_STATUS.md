@@ -56,14 +56,14 @@ When done, mark status as `DONE` and move to Session Log.
 
 | Field | Value |
 |-------|-------|
-| **Agent** | Coder |
+| **Agent** | _(none)_ |
 | **Branch** | — |
-| **Session started** | 2026-08-16 15:00 UTC+3 |
-| **Last board update** | 2026-08-16 15:00 UTC+3 |
-| **Working on** | Items-focused wiki accuracy audit — effects, stats, sell_price, quality |
-| **Files in progress** | `assets/data/items.json` |
+| **Session started** | — |
+| **Last board update** | 2026-08-16 16:00 UTC+3 |
+| **Working on** | — |
+| **Files in progress** | — |
 | **Uncommitted changes** | — |
-| **Last commit** | `0c67daa` (gungeon_mate) — v1.9.15: BUG-068-072 wiki accuracy audit — number formatting, recharge consistency, vague effects |
+| **Last commit** | `2a03a86` (gungeon_mate) — v1.9.17: BUG-073-076 items wiki accuracy audit — vague effects enriched |
 
 ### Slot 3
 
