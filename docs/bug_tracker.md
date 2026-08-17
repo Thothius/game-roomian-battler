@@ -1062,6 +1062,16 @@
 
 ---
 
+### BUG-078 — 14 more items with vague effects missing specific values (round 3)
+- **Severity:** LOW
+- **Status:** FIXED
+- **Found by:** Coder (items wiki audit round 3, Aug 16 2026)
+- **File:** `assets/data/items.json`
+- **Description:** 14 more items had vague effect text missing specific values and mechanics. Confirmed by wiki.gg. Affected: Copper/Frost/Uranium Ammolet (stun 1s, 25 tiles, 50% chance), Lodestone Ammolet (stun 3s, 400% knockback), Wingman (20 dmg rockets, 5s, blocks bullets), R2G2 (6 bullets, 5 dmg, 4s cooldown), Super Space Turtle (5 dmg bullets), Melted Rock (15 dmg), Singularity (8s duration), Air Strike (25 dmg per explosion), Fortune's Favor (8s duration), Proximity Mine (60 dmg), Bumbullets (bee every second, 3 dmg + 1/s for 2s, no ammo), Crutch (slight homing).
+- **Fix:** Updated all 14 with wiki-accurate effect text including specific values, durations, and damage numbers.
+
+---
+
 ## Disputed / Wontfix
 
 *(None yet.)*
