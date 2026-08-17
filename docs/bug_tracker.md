@@ -1092,6 +1092,16 @@
 
 ---
 
+### BUG-083 — 16 synergy effects enriched with wiki-accurate mechanics
+- **Severity:** LOW
+- **Status:** FIXED
+- **Found by:** Coder (synergies wiki audit, Aug 16 2026)
+- **File:** `assets/data/synergies.json`
+- **Description:** First synergies accuracy audit. Of 395 synergies, 121 had short effects (<60 chars). After verifying against wiki.gg, 16 were confirmed as missing useful details — specific values, conditions, side effects, or mechanics. Key additions: Klobbering Time (two shots), Iron Slug (explosive), Kalibreath (loses piercing, +knockback), Beta Ray (no longer instant), Two Kinds of People (10 digs, better loot, no bombs), Battery Powered (1 ammo/4s), Massive Effect (explodes into more projectiles), Telefrag (+extra active slot), Savior of the Universe (+double magazine), Sniper Woof (1s stand), Hidden Tech Time (only on-screen enemies), Pinker Guon Stone (grows, fixed rotation), Solar Flare (meteor), Chance On Hit (Shock Rounds effect), Chicken Arise (+bullet size), Nailed It! (larger nails). The remaining ~105 short effects were already accurate (e.g. "The guns are dual-wielded." is the complete wiki description).
+- **Fix:** Updated all 16 with wiki-accurate effect text.
+
+---
+
 ### BUG-082 — 98 final items enriched in complete comprehensive sweep (round 6 final)
 - **Severity:** LOW
 - **Status:** FIXED
