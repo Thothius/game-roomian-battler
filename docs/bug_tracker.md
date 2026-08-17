@@ -1092,6 +1092,16 @@
 
 ---
 
+### BUG-085 — 105 missing gun stats filled with wiki-accurate values
+- **Severity:** LOW
+- **Status:** FIXED
+- **Found by:** Coder (gun stats audit, Aug 16 2026)
+- **File:** `assets/data/guns.json`
+- **Description:** Comprehensive gun stats audit found 106 missing/empty stat fields across 56 guns. 105 were filled with wiki-accurate values: infinite-ammo guns now show ∞, beam weapons show N/A for reload_time, special guns have appropriate placeholder values. Yari Launcher damage corrected from 8/8 to 10/15 per wiki. Big Shotgun and Yari Launcher DPS filled. Multiple missing fire_rate, shot_speed, force, and spread values filled.
+- **Fix:** Updated all 105 missing stats with wiki-verified values.
+
+---
+
 ### BUG-084 — 30 gun notes enriched with wiki-accurate mechanics
 - **Severity:** LOW
 - **Status:** FIXED
