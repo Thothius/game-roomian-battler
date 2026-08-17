@@ -56,12 +56,12 @@ When done, mark status as `DONE` and move to Session Log.
 
 | Field | Value |
 |-------|-------|
-| **Agent** | _(none)_ |
+| **Agent** | Coder |
 | **Branch** | — |
-| **Session started** | — |
-| **Last board update** | 2026-08-16 13:30 UTC+3 |
-| **Working on** | — |
-| **Files in progress** | — |
+| **Session started** | 2026-08-16 14:00 UTC+3 |
+| **Last board update** | 2026-08-16 14:00 UTC+3 |
+| **Working on** | Wiki accuracy audit — compare gun/item stats against wiki.gg |
+| **Files in progress** | `assets/data/guns.json`, `assets/data/items.json` |
 | **Uncommitted changes** | — |
 | **Last commit** | `198e5eb` (gungeon_mate) — v1.9.14: BUG-065-067 deep data audit round 2 — synergy ref tokens, infinite range/shot speed |
 

@@ -973,6 +973,49 @@
 - **Description:** 6 beam-type guns had `"shot_speed": ""` — Abyssal Tentacle, Gamma Ray, Life Orb, Moonscraper, Mourning Star, Raiden Coil. Beam weapons fire instant-hit beams, so shot speed is effectively infinite. The wiki shows `[Infinity.png]` for these.
 - **Fix:** Set all 6 to `"shot_speed": "∞"`.
 
+### BUG-068 — 10 guns with spaces inside number values in stat fields
+- **Severity:** LOW
+- **Status:** FIXED
+- **Found by:** Coder (wiki accuracy audit, Aug 16 2026)
+- **File:** `assets/data/guns.json`
+- **Description:** 10 guns had spaces inside number values (e.g. `"16. 6"` instead of `"16.6"`) in DPS, damage, and spread fields. Caused by wiki scraping artifacts. Affected Flare Gun (dps), Lower Case r (damage), Mailbox (dps), Makarov (dps), Pea Shooter (dps), Shellegun (dps), Sling (dps), Starpew (dps), Trashcannon (dps), Triple Gun (dps).
+- **Fix:** Removed spaces after decimal points in all numeric stat fields.
+
+### BUG-069 — 3 guns with double degree symbols in spread field
+- **Severity:** LOW
+- **Status:** FIXED
+- **Found by:** Coder (wiki accuracy audit, Aug 16 2026)
+- **File:** `assets/data/guns.json`
+- **Description:** 3 guns had `°°` (double degree symbol) in spread field — Crescent Crossbow (`"0°°"`), Gunbow (`"0°°"`), M1911 (`"4°°"`). The M1911 wiki page itself has this typo, which was scraped into our data.
+- **Fix:** Replaced all `°°` with `°`.
+
+### BUG-070 — 7 active items with inconsistent recharge_time values
+- **Severity:** LOW
+- **Status:** FIXED
+- **Found by:** Coder (wiki accuracy audit, Aug 16 2026)
+- **File:** `assets/data/items.json`
+- **Description:** 7 active items had inconsistent `recharge_time` values. 6 items had `"-Use"` (truncated from `"Single-Use"` during scraping) — Meatbun, Medkit, Ration, Spice, Supply Drop, Weird Egg. 1 item had `"Single Use"` (missing hyphen) — Duct Tape. The wiki consistently uses `"Single-Use"`.
+- **Fix:** All 7 normalized to `"Single-Use"`.
+
+### BUG-071 — 10 guns with reload_time missing "s" suffix
+- **Severity:** LOW
+- **Status:** FIXED
+- **Found by:** Coder (wiki accuracy audit, Aug 16 2026)
+- **File:** `assets/data/guns.json`
+- **Description:** 10 guns had `reload_time` values without the `"s"` suffix (e.g. `"1.2"` instead of `"1.2s"`), while 205 other guns consistently use the `"s"` suffix. Affected Barrel, Cold 45, Devolver, Directional Pad, Evolver, Flash Ray, Railgun, Sawed-Off, Strafe Gun, Vorpal Gun.
+- **Fix:** Added `"s"` suffix to all 10 values.
+
+### BUG-072 — 3 items with vague effect text missing key mechanics
+- **Severity:** LOW
+- **Status:** FIXED
+- **Found by:** Coder (wiki accuracy audit, Aug 16 2026)
+- **File:** `assets/data/items.json`
+- **Description:** 3 items had vague effect text that omitted important mechanics, confirmed by wiki.gg comparison:
+  - Galactic Medal of Valor: said "Deal more damage to Bosses. Increases reload speed and accuracy." — missing the specific 30% damage boost, halves reload time, halves shot spread, and cannot be dropped.
+  - Number 2: said "Boosts stats when alone." — missing the specific +2 movement speed and +41% damage values.
+  - Gungeon Pepper: said "Deals damage to nearby enemies." — missing the specific 5 damage per second rate.
+- **Fix:** Updated all 3 with wiki-accurate effect text including specific mechanics.
+
 ---
 
 ## Disputed / Wontfix
