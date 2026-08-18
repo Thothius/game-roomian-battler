@@ -160,3 +160,37 @@ Extracted from external framework suggestions, filtered against actual codebase 
 - Zero-cloud contract — already enforced by design
 - Automated static guardrails — already have /bughunt-proof, /frame-audit, /state-audit commands
 - master_plan.md — explicitly rejected in protocol v0.0.2
+
+---
+
+## Part VI: Rendering & Design System Assessment (2026-08-18)
+
+Assessed 20+ external suggestions against actual codebase. Findings:
+
+### Already implemented (no action needed)
+- Zero-allocation particle pooling — `_respawnParticle` mutates existing objects in-place, no per-frame allocation
+- V-Sync frame lock — particle engine uses `SingleTickerProviderStateMixin` + vsync-driven `AnimationController`
+- Haptic-synced visual pulses — `haptics.dart` service + `HapticFeedback` calls in dashboards (BUG-053)
+- BackdropFilter avoidance — vortex explicitly uses `ImageFiltered` over `BackdropFilter` (documented in `vortex_config.dart`)
+- Opacity leaf-level — all 14 `Opacity()` usages are on individual icons/containers, not wrapping large subtrees
+- Flavor-title presets — 37 particle presets + 11 glows + 16 schemas + 12 named glow colors already exist
+- Intelligent fallback — `app_theme.dart` migrates stale themes to `kVisibleThemes.first`, enum indices clamped
+- Granular override as diff — VisualPrefs stores individual fields in SharedPreferences (is a diff patch)
+- 48dp touch targets — BUG-051 fixed sub-minimum targets, BUG-052 added tooltips
+
+### Useful — log for future implementation
+6. **Double-buffered painter offscreen rasterization** — cache static particle background layers onto `ui.Picture`, composite only dynamic sprites per frame. Relevant for the 8 missing RepaintBoundary wrappers.
+7. **Surface hierarchy (3 tiers)** — formalize `SurfaceTier.base/floating/overlay` enum with mapped container colors. Low effort, real consistency gain. Currently `0xFF1E1E22` is used ad-hoc.
+8. **One-click preset reset in Experience Studio** — verify a "reset to defaults" button exists; add if missing. Small win.
+9. **Boss Encounter HUD** — new `RunDisplayMode` that auto-triggers on boss rooms, strips non-essential clutter, expands DPS/armor/weapon into large high-visibility nodes with pulsing neon warning borders. Best new view mode idea — genuinely useful during actual gameplay. Requires boss detection input from user.
+10. **Minimalist Peripheral HUD ("Ghost Glass")** — corner-only ultra-thin semi-transparent indicators that flare on critical events (low health, item trigger). Pairs with Combat Focus Mode (Q1).
+11. **Compact Combat Bar** — single-line ticker mode for peripheral glanceability during heavy bullet-hell. Pairs with Combat Focus Mode (Q1).
+
+### Skipped (assessed and rejected)
+- Subpixel text snap — Flutter handles this; manual intervention fights the framework
+- GPU color matrix tinting — no shaders exist, premature
+- 8pt harmonic grid — massive refactor of every spacing constant for no user-visible benefit
+- Polymorphic pill-button-tab engine — abstraction nobody asked for (Ponytail #1)
+- Theme-linked layout tokens — low priority, current ThemeFlair covers colors adequately
+- Unified typography scaling — over-engineering, google_fonts + ThemeFlair sufficient
+- Speedrun & Split Timer — requires floor timing infrastructure we don't have, niche audience
