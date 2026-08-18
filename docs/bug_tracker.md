@@ -1152,6 +1152,78 @@
 
 ---
 
+### BUG-087 — ShrineActivationSheet missing SafeArea wrapper
+- **Severity:** MEDIUM
+- **Status:** OPEN
+- **Found by:** UNIVERSAL WORKER (bughunt, Aug 18 2026)
+- **File:** `lib/screens/shrine_picker_screen.dart`
+- **Lines:** 392–402 (`ShrineActivationSheet.build` → `DraggableScrollableSheet` builder)
+- **Description:** `ShrineActivationSheet` is shown via `showModalBottomSheet` without `useSafeArea: true`, and its `DraggableScrollableSheet` builder returns a `Container` → `Column` with no `SafeArea` wrapper. The `ListView` inside has `padding: EdgeInsets.fromLTRB(18, 14, 18, 18)` — only 18px bottom padding. On Android devices with gesture nav or 3-button nav (24–48px safe area inset), the bottom content (activation buttons, curse info) can be partially hidden under the system nav bar.
+- **Root cause:** Missing `SafeArea` wrapper. Same pattern as BUG-009/010 (previously fixed in other sheets).
+- **Fix proposal:** Wrap the `Container` in `SafeArea(child: ...)` inside the `DraggableScrollableSheet` builder, OR add `useSafeArea: true` to the `showModalBottomSheet` call at line 141.
+
+---
+
+### BUG-088 — Dice roll dialog close button sub-minimum tap target
+- **Severity:** LOW
+- **Status:** OPEN
+- **Found by:** UNIVERSAL WORKER (bughunt, Aug 18 2026)
+- **File:** `lib/widgets/active_run/dice_roll.dart`
+- **Lines:** 334–343
+- **Description:** The dice roll dialog close button is an `IconButton` with `padding: EdgeInsets.zero` and `constraints: const BoxConstraints()` — empty constraints mean no minimum size, so the tap target is only 20px (the icon size). This is well below the 48×48dp Material Design minimum. On mobile this is hard to hit reliably. Also missing `tooltip`.
+- **Root cause:** `BoxConstraints()` with no arguments = no minimum constraint. Same pattern as BUG-051 (previously fixed in other files).
+- **Fix proposal:** Add `constraints: const BoxConstraints(minWidth: 44, minHeight: 44)` and `tooltip: 'Close'`.
+
+---
+
+### BUG-089 — DPS calculator GestureDetector missing haptics
+- **Severity:** LOW
+- **Status:** OPEN
+- **Found by:** UNIVERSAL WORKER (bughunt, Aug 18 2026)
+- **File:** `lib/widgets/active_run/player_page.dart`
+- **Lines:** 397–398
+- **Description:** The DPS calculator tile in the inventory section uses a `GestureDetector` with `onTap: () => _showDamageCalcSheet(context, _slot)` — no `Haptics.selection()` call. The same action triggered from the header icon (line 264–266) correctly calls `Haptics.selection()` before showing the sheet. The inventory tile should match.
+- **Root cause:** Missing `Haptics.selection()` call in the `onTap` handler.
+- **Fix proposal:** Add `Haptics.selection();` before `_showDamageCalcSheet(context, _slot)` in the `onTap` callback.
+
+---
+
+### BUG-090 — "View All" synergies button missing haptics
+- **Severity:** LOW
+- **Status:** OPEN
+- **Found by:** UNIVERSAL WORKER (bughunt, Aug 18 2026)
+- **File:** `lib/widgets/active_run/player_page.dart`
+- **Lines:** 1180–1189
+- **Description:** The "View All" text button in the synergies section uses a `GestureDetector` with `onTap: () => Navigator.push(...)` — no `Haptics.selection()` call. All other navigation actions in the app use haptics for consistency.
+- **Root cause:** Missing `Haptics.selection()` call.
+- **Fix proposal:** Add `Haptics.selection();` before `Navigator.push` in the `onTap` callback.
+
+---
+
+### BUG-091 — "Remember Pick" checkbox missing haptics
+- **Severity:** LOW
+- **Status:** OPEN
+- **Found by:** UNIVERSAL WORKER (bughunt, Aug 18 2026)
+- **File:** `lib/widgets/active_run/modes/mode_picker_onboarding.dart`
+- **Lines:** 438–439 (GestureDetector), 443–446 (Checkbox)
+- **Description:** The "Remember Pick" checkbox in the mode picker onboarding dialog has no haptic feedback. The `GestureDetector` `onTap` at line 439 calls `setState` without `Haptics`, and the `Checkbox` `onChanged` at line 445 also has no haptics. All other toggle/selection actions in the app use `Haptics.selection()`.
+- **Root cause:** Missing `Haptics.selection()` in both the `GestureDetector.onTap` and `Checkbox.onChanged` callbacks.
+- **Fix proposal:** Add `Haptics.selection();` at the start of both callbacks.
+
+---
+
+### BUG-092 — End Run button in settings missing haptics
+- **Severity:** LOW
+- **Status:** OPEN
+- **Found by:** UNIVERSAL WORKER (bughunt, Aug 18 2026)
+- **File:** `lib/widgets/settings/settings_tab.dart`
+- **Lines:** 532–533
+- **Description:** The "End Run" button in the Settings tab Danger Zone uses a `GestureDetector` with `onTap: () => _confirmEndRun(context, p)` — no `Haptics` call. The `_confirmEndRun` method (line 35) opens the `EndRunConfirmDialog` which has haptics on its internal confirm/cancel buttons, but the initial tap on the End Run button itself has no feedback. Destructive actions should have haptic feedback on tap to confirm the user feels the interaction.
+- **Root cause:** Missing `Haptics.warning()` or `Haptics.selection()` call.
+- **Fix proposal:** Add `Haptics.warning();` (or `Haptics.selection()`) before `_confirmEndRun(context, p)` in the `onTap` callback.
+
+---
+
 ## Disputed / Wontfix
 
 *(None yet.)*
