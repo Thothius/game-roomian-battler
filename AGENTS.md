@@ -73,6 +73,11 @@ The board supports **up to 4 concurrent agent slots** — the core triad (XEENU-
 - The only exception: the user explicitly tells you to take over (and you update the board first).
 
 ### AC5. Git branch per agent for parallel sessions
+- **Nested repo awareness:** This workspace has two git repos:
+  - **Root repo** (`X:\apps\GungeonMate\`): tracks `AGENTS.md`, `AGENT_STATUS.md`, `docs/`, `MUTATION_STATION/`, `.windsurfrules`. Remote: `game-roomian-battler.git`.
+  - **App repo** (`X:\apps\GungeonMate\gungeon_mate\`): tracks all `lib/`, `assets/`, `pubspec.yaml`. Remote: `GungeonMate.git`.
+  - Before branching, identify which repo your changes touch. If both, branch in both.
+  - Pre-session sync (AC5b) must pull BOTH repos if remotes are reachable.
 - When you are the **only** active agent, work on `master` as usual.
 - When **2+ agents** are active simultaneously, each must work on their own branch:
   - Branch naming: `slot<N>-<agent-slug>/<task-slug>` (e.g. `slot1-xeenu/glow-borders`, `slot2-coder/repaint-templates`, `slot3-planner/synergy-predictor`)
@@ -88,6 +93,7 @@ The board supports **up to 4 concurrent agent slots** — the core triad (XEENU-
     4. If you can't resolve confidently, ask the user. Show them the conflict.
     5. After resolving: `git add <files>` then `git rebase --continue` (or `git merge --continue`).
     6. Never abort a rebase with uncommitted work — stash first if needed.
+  - **Unmerged feature branches must rebase within 24h of master advancing.** If your branch is behind master by more than 3 commits, rebase before continuing work. This prevents accumulation of merge debt.
 - This eliminates the risk of parallel agents clobbering each other's uncommitted changes.
 
 ### AC5b. Pre-session sync
