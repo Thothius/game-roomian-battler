@@ -399,7 +399,10 @@ Avoid photorealism, smooth 3D CGI, anime styling, generic cyberpunk city scenery
 ### Immediate (user-requested, not yet done)
 
 - **52 new palette-variant splash prompts** (14 themes × 3 new variants + Unicorn's 5 missing palettes) — palette direction table approved, prompts not yet written
-- **3 Bubblegum Unicorn color schemas for logo rework** — user requested, interrupted before starting
+
+### Cancelled by user
+
+- ~~3 Bubblegum Unicorn color schemas for logo rework~~ — user decided not to pursue (2026-08-18)
 
 ### Optional follow-up
 
@@ -452,5 +455,5 @@ Avoid photorealism, smooth 3D CGI, anime styling, generic cyberpunk city scenery
 | Enemy codex (remaining 116 enemies) | 0 | 116 |
 | Boss codex (all 26 consistent) | 0 | 26 |
 | Consumable splashes | 16 | 0 |
-| Logo rework (Bubblegum Unicorn) | 0 | 3 |
-| **Total written** | **101** | **197 pending** |
+| Logo rework (Bubblegum Unicorn) | 0 | 0 (cancelled) |
+| **Total written** | **101** | **194 pending** |
