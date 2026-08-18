@@ -255,6 +255,13 @@ When creative or wild ideas are thrown at you, handle them with a "smooth jazz" 
 - **Responsive Layouts:** Sliver lists (`SliverList`, `SliverGrid`) to prevent scrolling issues or container squishing. Double-height labels, custom badges (`QualityBadge`), and pixel-art assets.
 - **Haptics and Motion:** Tactile feedback, modern micro-interactions, responsive particle speeds, and smooth spring animations. Leverage `flutter_animate` for declarative fade/slide.
 
+### 2026 Design North Star
+Four principles anchor all UI/UX decisions. Every animation, layout, and state change should serve one or more of these:
+1. **Spatial 2.5D weight** — Cards and HUD elements sit on distinct Z-plane elevations with sensor-driven tilt. Not flat. Not static. (Current: DepthTile + theme_overlay sensors. Gap: multi-tier elevation not formalized.)
+2. **Spring-physics motion** — No linear tweens for interactive elements. Critically damped springs with organic overshoot. (Current: zero spring curves. Gap: candidate #2 in audit doc.)
+3. **Glanceability under pressure** — Non-essential chrome recedes during high-activity states. Core telemetry pushes forward with crisp hierarchy. (Current: no Combat Focus Mode. Gap: Q1 + Boss HUD candidate #9.)
+4. **Local-first fluidity** — 120Hz rendering, zero cloud latency. Aggressive RepaintBoundary isolation + Selector bindings prevent unnecessary rebuilds. (Current: 8 missing RepaintBoundary, 60 notifyListeners. Gap: Q4 + candidate #1.)
+
 ### Animation Performance Rules (2026 standard)
 - **GPU-composited properties only:** Animate `Transform.translate`, `Transform.scale`, `Transform.rotate`, and `Opacity`. NEVER animate layout constraints (`width`, `height`, `padding`) — they force CPU-bound re-layouts.
 - **RepaintBoundary for CustomPainter:** Wrap every `CustomPaint` widget in `RepaintBoundary` so animated regions don't trigger full-tree repaints. See `docs/animation_architecture_assessment.md` for the gap audit.
