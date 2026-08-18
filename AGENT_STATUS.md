@@ -76,7 +76,7 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 | **Branch** | master (gungeon_mate + root) |
 | **Session started** | 2026-08-18 08:00 UTC+3 |
 | **Last board update** | 2026-08-18 10:45 UTC+3 |
-| **Last commit** | `5005315` (root) — Adversarial audit v0.0.7: document nested dual-repo structure in AC5 + rebase-within-24h rule |
+| **Last commit** | `9d6188c` (root) — Add 2026 Design North Star + `e7eefbb` (gungeon_mate) — Particle engine expansion |
 | **Files in progress** | — |
 | **Uncommitted changes** | — |
 
