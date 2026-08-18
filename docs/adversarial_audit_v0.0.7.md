@@ -138,3 +138,25 @@ void _saveRun() {
 ### Long-term (post-release)
 6. **Add _saveRun() write debounce** — coalesces rapid saves into single disk writes
 7. **Consider SharedPreferences write queue** — guarantees write ordering for rapid-fire stat changes
+
+---
+
+## Part V: Advanced Implementation Candidates (assessed 2026-08-18)
+
+Extracted from external framework suggestions, filtered against actual codebase gaps.
+
+### High-impact (do soon)
+1. **Selector partitioning in RunProvider** — wrap high-frequency display widgets (ammo, armor, coolness, curse counters) in `Selector<RunProvider, T>` so they only rebuild when their specific slice changes. Directly addresses the 60-notifyListeners storm. Highest-impact performance fix available.
+2. **Spring-damped scale responses** — replace `Curves.easeInOut` with `Curves.easeOutBack` (card entrances), `Curves.elasticOut` (playful bounces), `Curves.fastOutSlowIn` (drawers) in touch interactions. Audit found zero spring curves — this is the #1 tactile feel gap.
+3. **Schema migration parser** — add `_kSchemaVersion` int to SharedPreferences + boot-time upgrade path. Prevents silent enum remapping when new VisualPrefs/RunProvider fields are added. Real gap found in audit.
+
+### Medium-impact (do when complex feature warrants it)
+4. **DAG task mapping** — for multi-file features like Device Pairing (Task 21), decompose into a markdown DAG with upstream prerequisites and downstream side effects before coding. Not for every task — only features touching 4+ files.
+5. **Decision Log** — lightweight `docs/decision_log.md` recording architectural choices + discarded alternatives (e.g. "chose Provider over Riverpod because..."). Not a master plan, just a "why X over Y" reference for future sessions.
+
+### Skipped (assessed and rejected)
+- Immutable state snapshotting — massive refactor, Ponytail says current Provider + Selectors covers it
+- Shader pre-warming — no shaders exist yet, premature
+- Zero-cloud contract — already enforced by design
+- Automated static guardrails — already have /bughunt-proof, /frame-audit, /state-audit commands
+- master_plan.md — explicitly rejected in protocol v0.0.2
