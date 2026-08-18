@@ -127,7 +127,7 @@ When bumping the version, ALL of these files must be updated in lockstep:
 
 **Version format:** `MAJOR.MINOR.PATCH+BUILD` (e.g. `1.9.60+136`). The `+BUILD` number increments with every release. The `PATCH` increments for features/fixes.
 
-**Current version:** `1.9.60+136`
+**Current version:** `1.9.62+138`
 
 ### Changelog entry format
 
@@ -161,19 +161,20 @@ When bumping the version, ALL of these files must be updated in lockstep:
 
 ---
 
-## 5. Current App Architecture (v1.9.60)
+## 5. Current App Architecture (v1.9.62)
 
 ### Active Run Display Modes
 
-The active run screen supports **5 display modes** via `RunDisplayMode` enum:
+The active run screen supports **4 display modes** via `RunDisplayMode` enum:
 
 | Mode | Enum value | Widget | Description |
 |------|------------|--------|-------------|
 | Classic Scroll | `classic` | (default scroll view in PlayerPage) | The original full scroll view. Default. |
 | Codex Book | `codex` | `CodexBookMode` | Leather-and-brass two-page book spread |
 | Compact Run | `compact` | `CompactRunMode` | Tactical HUD, 2-column grid |
-| Gungeon Matrix | `matrix` | `MatrixMode` | Purple digital rain background |
 | Theme Signature | `signature` | `ThemeSignatureMode` | Adapts to active theme — lore, colors, decorations |
+
+**Note:** Matrix mode was removed in v1.9.62. `matrix_mode.dart` and `gungeon_matrix_rain.dart` deleted.
 
 **Routing:** `PlayerPage` checks `VisualPrefs.runDisplayMode` and returns the appropriate mode widget. The `RunDisplayModeBar` (collapsible pill between header and PageView) switches modes instantly.
 
@@ -241,6 +242,28 @@ Key fields:
 
 **Trigger:** Was triggered after `startNewRun` in `character_select_screen.dart`, but user removed the trigger (2026-08-18). `showModePickerOnNewRun` default is now `false`. The dialog widget still exists and can be re-wired if needed.
 
+### Settings Screen (v1.9.62)
+
+| File | Purpose |
+|------|---------|
+| `lib/screens/settings_screen.dart` | 2-tab layout (Appearance + Settings) |
+| `lib/widgets/settings/theme_visuals_tab.dart` | Appearance tab — theme, fonts, glow, inventory |
+| `lib/widgets/settings/settings_tab.dart` | Settings tab — dice, MP, account, dev, danger |
+
+**v1.9.62 unification:** Formerly 3 tabs (Appearance / Gameplay / App). Gameplay + App merged into single Settings tab. Dialogue options removed (useless). Event Log + Quick Actions removed (don't belong in settings). `gameplay_tab.dart` and `run_tab.dart` deleted.
+
+**Orphaned:** `run_log_screen.dart` — no longer imported anywhere. Run log data still feeds `stats_detail_screen.dart` via `RunProvider.curseLog`/`coolnessLog`. Can be re-wired if event log access is needed elsewhere.
+
+### Experience Studio (v1.9.61+)
+
+| File | Purpose |
+|------|---------|
+| `lib/screens/experience_studio_screen.dart` | Theme picker + customization (tabbed, with fullscreen preview) |
+
+**v1.9.61:** 14 Gemini-generated theme splash images in `assets/images/themes/splash/`. Each theme card shows its splash as background. `AppThemeMode.splashSlug` getter maps themes to asset slugs. `themeSplashPath()` helper in `asset_paths.dart`.
+
+**Redesign (in progress):** Converted from 5-step wizard to 4-tab picker (Theme / Particles / Typography / Ambiance). Side bookmark button opens fullscreen preview. `_PaletteStep` is orphaned dead code (warning).
+
 ---
 
 ## 6. Key File Locations
@@ -263,7 +286,6 @@ Key fields:
 |------|------|
 | `lib/widgets/active_run/modes/codex_book_mode.dart` | Codex Book |
 | `lib/widgets/active_run/modes/compact_run_mode.dart` | Compact Run |
-| `lib/widgets/active_run/modes/matrix_mode.dart` | Gungeon Matrix |
 | `lib/widgets/active_run/modes/theme_signature_mode.dart` | Theme Signature |
 | `lib/widgets/active_run/modes/theme_lore.dart` | ThemeLore registry |
 | `lib/widgets/active_run/modes/run_display_mode_bar.dart` | Mode switcher bar |
@@ -276,7 +298,6 @@ Key fields:
 | `lib/widgets/active_run/gungeon_meter.dart` | Interactive coolness/curse meter |
 | `lib/widgets/active_run/depth_tile.dart` | 2.5D perspective inventory tile |
 | `lib/widgets/backgrounds/animated_wallpaper.dart` | MP4 video wallpaper + vortex fallback |
-| `lib/widgets/backgrounds/gungeon_matrix_rain.dart` | Purple matrix rain CustomPainter |
 | `lib/widgets/backgrounds/ambient_shader_layer.dart` | Fragment shader ambient layer |
 
 ### Multiplayer

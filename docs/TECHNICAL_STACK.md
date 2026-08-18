@@ -1,4 +1,4 @@
-# GungeonMate - Technical Stack Specification (v1.9.60)
+# GungeonMate - Technical Stack Specification (v1.9.62)
 
 > **See also:** `docs/TECHNICAL_REFERENCE.md` — the canonical technical reference for all agents (git auth, build commands, platform quirks, release checklist).
 
@@ -103,17 +103,18 @@ The home screen features an animated vortex portal wallpaper (`gungeonmate-anima
 
 ---
 
-## 🎨 8. Active Run Display Modes (v1.9.55+)
+## 🎨 8. Active Run Display Modes (v1.9.62)
 
-The active run screen supports 5 switchable display modes via `RunDisplayMode` enum:
+The active run screen supports 4 switchable display modes via `RunDisplayMode` enum:
 
 | Mode | Widget | Description |
 |------|--------|-------------|
 | Classic Scroll | (default PlayerPage scroll) | The original full scroll view. Default. |
 | Codex Book | `CodexBookMode` | Leather-and-brass two-page book spread with character locket, interactive GungeonMeters, swipeable gun/item pages. |
-| Compact Run | `CompactRunMode` | Tactical HUD — top stat strip, 2-column grid, overflow sheet, gold top-DPS border. |
-| Gungeon Matrix | `MatrixMode` | Purple digital rain background, glassmorphic panels, vertical data readout, horizontal scrolling data streams. |
+| Compact Run | `CompactRunMode` | Tactical HUD — top stat strip, 2-column grid, overflow sheet, gold top-DPS accent bar. |
 | Theme Signature | `ThemeSignatureMode` | Adapts entire layout to active theme — lore header, themed stat labels, 14 decorative background painters (embers, frost, sparkles, circuits, paws, moonlight, lightning, etc.). |
+
+**Note:** Matrix mode was removed in v1.9.62. `matrix_mode.dart` and `gungeon_matrix_rain.dart` deleted.
 
 **Switching:** `RunDisplayModeBar` (collapsible pill between header and PageView). Modes apply instantly via `VisualPrefs.setRunDisplayMode()`. No navigation.
 
