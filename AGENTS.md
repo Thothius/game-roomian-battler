@@ -114,6 +114,13 @@ The board supports **up to 4 concurrent agent slots** — the core triad (XEENU-
 - The user must confirm before claiming a stale slot.
 - When taking over a stale slot, set the old agent's slot to `_(none)_` with a note in the Session Log: `STALE — taken over by <new agent>`.
 
+### AC7. Inter-slot delegation
+- When a slot completes its core task or hits a domain boundary, it should not sit idle. It should evaluate downstream needs and delegate the next logical step to the appropriate specialist slot.
+- Delegations are logged in the `## Inter-Slot Task Queue` section of `AGENT_STATUS.md` with: From slot, To slot, task summary, target branch, status (`PENDING` / `IN_PROGRESS` / `DONE`), and a context pointer (file path or brief technical note).
+- The receiving slot checks the Inter-Slot Task Queue at session start. If a task is addressed to it and `PENDING`, it claims it (status → `IN_PROGRESS`), creates the target branch, and executes.
+- Delegation is optional, not mandatory. If a task is better handled by the user or doesn't need to be built at all (Ponytail Rules), don't delegate — note it and move on.
+- The delegating slot does NOT write code in the receiving slot's domain. It writes the handoff note and context pointer only.
+
 ---
 
 ## Safety Rules (Non-Negotiable)

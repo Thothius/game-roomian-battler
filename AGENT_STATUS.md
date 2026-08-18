@@ -37,6 +37,16 @@ When done, mark status as `DONE` and move to Session Log.
 
 ---
 
+## Inter-Slot Task Queue
+
+Agent-to-agent delegations (AC7). Receiving slot claims at session start.
+
+| From | To | Task Summary | Target Branch | Status | Context |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| _(none)_ | _(none)_ | _(empty — no pending delegations)_ | — | — | — |
+
+---
+
 ## Active Worker Slots (up to 4 concurrent)
 
 | Slot | Assigned Agent | Status | Working On | Last Heartbeat |
