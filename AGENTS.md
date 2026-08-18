@@ -1,5 +1,7 @@
 # GungeonMate Agent Guidelines
 
+> **MANDATORY READING:** `docs/TECHNICAL_REFERENCE.md` — the canonical technical reference for all agents. Contains git auth, push workflow, Flutter paths, build commands, platform quirks, release checklist, and current architecture. Every agent must read it at session start.
+
 Up to 4 agents can work on this codebase simultaneously. Each has a clear domain. All follow the Ponytail Rules (below) and the Safety Rules (below). Neither touches the other's domain without explicit user approval.
 
 | Agent | Command | Role | One-line |
@@ -100,6 +102,14 @@ The board supports **up to 4 concurrent agent slots** — the core triad (XEENU-
 - Before starting work, pull the latest master to avoid drift: `git checkout master && git pull origin master` (if remote exists and is reachable).
 - If `origin` is not configured or unreachable, skip the pull — local master is the baseline.
 - This is a 5-second step that prevents merge surprises later.
+
+### AC5b2. Git authentication (Windows)
+- The `gh` CLI is authenticated as `Thothius` (keyring). Use `gh auth setup-git` to configure the git credential helper.
+- Remotes use HTTPS (`https://github.com/Thothius/<repo>.git`). Do NOT switch to SSH — no SSH keys are configured.
+- If `git push` fails with "could not read Username for 'https://github.com'": run `gh auth setup-git` then retry.
+- If `git push` fails with "Permission denied (publickey)": the remote was switched to SSH. Fix: `git remote set-url origin https://github.com/Thothius/<repo>.git`.
+- `git push` writes progress to stderr — PowerShell shows red text + `NativeCommandError`. This is normal. Check the exit code and output content, not the color.
+- Full push procedure and troubleshooting in `docs/TECHNICAL_REFERENCE.md` §2.
 
 ### AC5c. Milestone tagging for major phases
 - When a major feature phase or stable version lands (e.g. "Active Run Rework Phase 1 complete", "v1.9.46 release"), tag it:

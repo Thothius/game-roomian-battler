@@ -1,4 +1,6 @@
-# GungeonMate - Technical Stack Specification (v1.6.7)
+# GungeonMate - Technical Stack Specification (v1.9.60)
+
+> **See also:** `docs/TECHNICAL_REFERENCE.md` — the canonical technical reference for all agents (git auth, build commands, platform quirks, release checklist).
 
 This document outlines the software engineering architecture, state-management topologies, local storage strategies, and real-time networking protocols driving GungeonMate.
 
@@ -87,3 +89,42 @@ Haptics are decoupled from native system defaults and wrapped inside `@/lib/serv
 * **`Haptics.light()`:** Triggers quick, micro-vibrations for animated slider snaps and typewriter clicks.
 * **`Haptics.selection()`:** Soft feedback for tapping buttons and player avatar portraits.
 * **`Haptics.success()`:** Satisfying double-pulse vibration for completing quests, unlocking shop discounts, and acquiring secret curios.
+
+---
+
+## 🎬 7. Video Playback & Animated Wallpapers
+
+The home screen features an animated vortex portal wallpaper (`gungeonmate-animation-02.mp4`) played via the standard `video_player` API:
+
+* **`video_player` (`^2.9.2`):** The core Flutter video API. Backends exist for Android, iOS, macOS, and Web.
+* **`video_player_media_kit` (`^2.0.0`):** Drop-in libmpv backend for Windows and Linux. Initialized via `VideoPlayerMediaKit.ensureInitialized(windows: true)` in `main.dart` before `runApp`. No API changes — existing `VideoPlayerController.asset()` calls just work.
+* **`AnimatedWallpaperBackground` (`lib/widgets/backgrounds/animated_wallpaper.dart`):** Stateful widget that initializes the video, loops it muted, and falls back to a `_VortexFallbackPainter` (CustomPaint rotating purple rings) if video init fails on any platform.
+* **Theme overlay integration:** The wallpaper sits at layer 0.4 in `ThemeOverlay`, always mounted (keeps the video controller warm), visible at 85% opacity when on the home screen.
+
+---
+
+## 🎨 8. Active Run Display Modes (v1.9.55+)
+
+The active run screen supports 5 switchable display modes via `RunDisplayMode` enum:
+
+| Mode | Widget | Description |
+|------|--------|-------------|
+| Classic Scroll | (default PlayerPage scroll) | The original full scroll view. Default. |
+| Codex Book | `CodexBookMode` | Leather-and-brass two-page book spread with character locket, interactive GungeonMeters, swipeable gun/item pages. |
+| Compact Run | `CompactRunMode` | Tactical HUD — top stat strip, 2-column grid, overflow sheet, gold top-DPS border. |
+| Gungeon Matrix | `MatrixMode` | Purple digital rain background, glassmorphic panels, vertical data readout, horizontal scrolling data streams. |
+| Theme Signature | `ThemeSignatureMode` | Adapts entire layout to active theme — lore header, themed stat labels, 14 decorative background painters (embers, frost, sparkles, circuits, paws, moonlight, lightning, etc.). |
+
+**Switching:** `RunDisplayModeBar` (collapsible pill between header and PageView). Modes apply instantly via `VisualPrefs.setRunDisplayMode()`. No navigation.
+
+**Theme Lore Registry:** `lib/widgets/active_run/modes/theme_lore.dart` — 14 entries (one per visible theme) with lore title, tagline, Gungeon quote, element, decorative style, themed stat labels, and accent glyph.
+
+---
+
+## 📊 9. Interactive GungeonMeter (v1.9.56+)
+
+Custom-painted horizontal fill bar for coolness/curse stats:
+
+* **`GungeonMeter` (`lib/widgets/active_run/gungeon_meter.dart`):** Animated gradient fill (cyan for coolness, oxblood-red for curse). Threshold tick at 10.0. Tap or drag to adjust. Overflow state at curse ≥ 10: pulsing red glow + skull icon + Lord of the Jammed alert. Haptic feedback on threshold cross. `RepaintBoundary` isolated.
+* **Threshold:** 10.0 = Lord of the Jammed (curse) / max effective coolness. Provider clamps to -100..100. Visual range 0..15.
+* **Locations:** Stats detail screen, Codex Book left page, Theme Signature mode.

@@ -14,6 +14,15 @@ Before ANY code changes, read `AGENT_STATUS.md` (project root) and follow the Ag
 - Use git branches when 2+ agents are active (AC5)
 - Stale sessions can be taken over with user permission (AC6)
 
+**MANDATORY:** Also read `docs/TECHNICAL_REFERENCE.md` — the canonical technical reference. Contains:
+- Git auth & push workflow (gh CLI, credential helper, HTTPS remotes)
+- Flutter SDK path (`C:\src\flutter\bin\flutter.bat`) — never use bare `flutter`
+- Build & analyze commands with timeouts
+- Release checklist (5 files to update in lockstep on version bump)
+- Current architecture (5 display modes, ThemeLore registry, GungeonMeter, video player setup)
+- PowerShell gotchas (heredocs, $ variables, stderr)
+- Platform quirks (Windows video backend, PATH issues)
+
 ---
 
 ## 1. The "Smooth Jazz" Coding Standard
