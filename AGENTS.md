@@ -81,10 +81,10 @@ The board supports **up to 4 concurrent agent slots** — the core triad (XEENU-
 - When you are the **only** active agent, work on `master` as usual.
 - When **2+ agents** are active simultaneously, each must work on their own branch:
   - Branch naming: `slot<N>-<agent-slug>/<task-slug>` (e.g. `slot1-xeenu/glow-borders`, `slot2-coder/repaint-templates`, `slot3-planner/synergy-predictor`)
-  - Create branch: `git checkout -b <branch-name>`
+  - Create branch + isolated working directory per **AC5d** (worktree isolation). Do NOT use bare `git checkout -b` when another agent is active — that switches the shared working directory's branch out from under them.
   - Set the **Branch** field in your slot to the branch name.
-  - Commit to your branch as usual.
-  - When your task is done and bughunted, merge to master: `git checkout master; git merge <branch-name>`, then delete the branch: `git branch -d <branch-name>`.
+  - Commit to your branch as usual (inside your worktree — see AC5d).
+  - When your task is done and bughunted, merge to master from the **main working directory** (not your worktree): `cd <main-repo-path>; git checkout master; git merge <branch-name>`, then remove the worktree and delete the branch per AC5d.
   - If another agent has merged to master since you branched, rebase first: `git rebase master` on your branch before merging.
   - **Merge conflict resolution:** If rebase or merge produces conflicts:
     1. Do NOT force-push. Do NOT `git checkout --` conflicted files.
@@ -107,6 +107,57 @@ The board supports **up to 4 concurrent agent slots** — the core triad (XEENU-
 - Tags are immutable rollback points — if an experiment goes sideways, `git checkout <tag>` restores a known-good state.
 - Tags are optional for minor commits and bug fixes. Use them for: version bumps, completed multi-phase features, protocol changes, and release builds.
 - Do NOT push tags unless the user explicitly asks.
+
+### AC5d. Worktree isolation for parallel agents (MANDATORY when 2+ agents active)
+**Problem this solves:** All agents share one git working directory. A bare `git checkout <branch>` switches the branch for *everyone* — staged changes can land on the wrong branch, and one agent's checkout can silently hijack another's commit. This happened on 2026-08-18: Slot 4's `git checkout` caused Slot 1's staged files to commit onto Slot 4's branch. `git worktree` gives each agent its own working directory on its own branch, eliminating this class of collision.
+
+**When to use:** MANDATORY for the app repo (`gungeon_mate/`) whenever 2+ agents are active. OPTIONAL for the root repo (root changes are usually docs/coordination, rarely parallel — but use it if two agents are both editing root files).
+
+**Setup — app repo worktree (the common case):**
+```powershell
+# From the main app repo working directory:
+cd X:\apps\GungeonMate\gungeon_mate
+git worktree add X:\apps\GungeonMate\.worktrees\<slot-name>\gungeon_mate <branch-name>
+# Then work in the worktree directory:
+cd X:\apps\GungeonMate\.worktrees\<slot-name>\gungeon_mate
+```
+- `<slot-name>` = your slot identifier (e.g. `slot1-xeenu`, `slot4-universal`).
+- The worktree shares the same `.git` object store — no repo duplication, just a second working directory.
+- Create the branch first if it doesn't exist: `git branch <branch-name>` then `git worktree add <path> <branch-name>`. Or use `git worktree add -b <branch-name> <path>` to create+checkout in one step.
+
+**Setup — root repo worktree (only if needed):**
+```powershell
+cd X:\apps\GungeonMate
+git worktree add X:\apps\GungeonMate\.worktrees\<slot-name> <branch-name>
+cd X:\apps\GungeonMate\.worktrees\<slot-name>
+```
+- Note: the root worktree will NOT contain `gungeon_mate/` (it's gitignored). If you need both repos, create both worktrees and work in each as needed.
+
+**During the session:**
+- All your edits, `flutter analyze`, and commits happen inside your worktree directory — not the main working directory.
+- The main working directory (`X:\apps\GungeonMate\gungeon_mate\`) stays on `master` and is only used for merges.
+- Set the **Branch** field in your slot to the branch name. The worktree path is implied by convention (`.worktrees\<slot-name>\gungeon_mate`).
+
+**Merge to master + cleanup:**
+```powershell
+# From the main working directory (NOT your worktree):
+cd X:\apps\GungeonMate\gungeon_mate
+git checkout master
+git merge <branch-name>
+git worktree remove X:\apps\GungeonMate\.worktrees\<slot-name>\gungeon_mate
+git branch -d <branch-name>
+```
+- If `git worktree remove` fails because of untracked files, inspect them first. Do NOT use `--force` unless you created those files and they're disposable.
+- If another agent merged to master since you branched, rebase your worktree branch first: `cd <worktree-path>; git rebase master`.
+
+**Sole-agent exception:** When you are the only active agent, skip worktrees entirely — work on `master` in the main working directory as usual. Worktrees are overhead for a single agent.
+
+**Pre-flight check (do this before creating a worktree):**
+- Verify no existing worktree for your slot: `git worktree list`
+- Verify your branch doesn't already exist: `git branch --list <branch-name>`
+- If a stale worktree from a previous session exists, clean it up first: `git worktree remove <path>` (or `git worktree prune` if the directory was already deleted manually).
+
+**Nested repo note:** `gungeon_mate/` is gitignored in the root repo — the two repos are fully independent. An app-repo worktree does NOT need a root-repo worktree and vice versa. Create only the worktree for the repo your changes touch.
 
 ### AC6. Stale session detection
 - Check the slot's **Last board update** first — if it's recent (< 10 min ago), the agent is likely still active even without commits. Do not claim it.

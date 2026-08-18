@@ -33,7 +33,7 @@ When done, mark status as `DONE` and move to Session Log.
 | 18 | BUG-053: Dashboard GestureDetector controls missing haptics + Material ripple. Files: `robot_dashboard.dart`, `junkan_dashboard.dart`, `special_gun_dashboards.dart`. | Coder | DONE | — |
 | 19 | BUG-054: Emote bottom sheet missing SafeArea (hardcoded bottom: 32). File: `active_run_screen.dart:146-153`. | Coder | DONE | — |
 | 20 | BUG-055: stats_detail_screen large stat value (fontSize 52) not responsive — no FittedBox or scaling. File: `stats_detail_screen.dart:196-205`. | Coder | DONE | — |
-| 21 | Feature: Device Pairing — "Pair Partner" option for automatic MP run connecting. Paired devices get elevated privileges: auto-reconnect priority, seamless character swap, and "Reset Run with New Gungeoneer" from menu/prefs without re-pairing. Eliminates the multi-step PIN/handshake flow for regular co-op partners (e.g. user + girlfriend). Pairs via Nearby Connections proximity detection, persists pairing across sessions. See user request 2026-08-18. | UNIVERSAL WORKER | IN_PROGRESS | — |
+| 21 | Feature: Device Pairing — "Pair Partner" option for automatic MP run connecting. Paired devices get elevated privileges: auto-reconnect priority, seamless character swap, and "Reset Run with New Gungeoneer" from menu/prefs without re-pairing. Eliminates the multi-step PIN/handshake flow for regular co-op partners (e.g. user + girlfriend). Pairs via Nearby Connections proximity detection, persists pairing across sessions. See user request 2026-08-18. | UNIVERSAL WORKER | DONE (Phase 1) | — |
 
 ---
 
@@ -52,9 +52,9 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 | Slot | Assigned Agent | Status | Working On | Last Heartbeat |
 | :--- | :--- | :--- | :--- | :--- |
 | **Slot 1** | **XEENU-ANIMATOR** | `IDLE` | — | 2026-08-18 11:25 UTC+3 |
-| **Slot 2** | **Coder-Maintainer-Reworker-Genius** | `IDLE` | — | 2026-08-18 10:45 UTC+3 |
+| **Slot 2** | **Coder-Maintainer-Reworker-Genius** | `ACTIVE` | AC5d: git worktree policy for parallel agents | 2026-08-18 12:47 UTC+3 |
 | **Slot 3** | **Planner-Architect-Mockupper** | `IDLE` | — | — |
-| **Slot 4** | **UNIVERSAL WORKER** | `ACTIVE` | Task 21: Device Pairing feature | 2026-08-18 10:59 UTC+3 |
+| **Slot 4** | **UNIVERSAL WORKER** | `IDLE` | — | 2026-08-18 12:00 UTC+3 |
 
 ### Slot Details
 
@@ -75,11 +75,11 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 #### Slot 2 — Coder-Maintainer-Reworker-Genius
 | Field | Value |
 |-------|-------|
-| **Branch** | master (gungeon_mate + root) |
-| **Session started** | 2026-08-18 08:00 UTC+3 |
-| **Last board update** | 2026-08-18 10:45 UTC+3 |
+| **Branch** | master (root only — docs change) |
+| **Session started** | 2026-08-18 12:47 UTC+3 |
+| **Last board update** | 2026-08-18 12:47 UTC+3 |
 | **Last commit** | `9d6188c` (root) — Add 2026 Design North Star + `e7eefbb` (gungeon_mate) — Particle engine expansion |
-| **Files in progress** | — |
+| **Files in progress** | AGENTS.md |
 | **Uncommitted changes** | — |
 
 > **Session ended 2026-08-18 10:45.** Major work this session: (1) Particle engine expansion — 6 new glow effects, 9 new presets, visual pills, named glow colors (`e7eefbb` gungeon_mate). (2) Animation R&D audit + MUTATION_STATION archive (`8980ec4` root). (3) 2026 animation/architecture assessment + AGENTS.md perf rules (`5f23c6e` root). (4) Genius-tier audit v0.0.7 — 4 user decisions locked: glowing synergy borders, synergy predictor, ambient fragment shaders, RepaintBoundary templates (`e275534` root). (5) Four-slot roster + identity protocol locked (`e102d69` root). (6) AC5 upgraded: slot-aligned branch naming, pre-session sync, milestone tagging (`da436d3` root). (7) Adversarial penetration test — documented nested dual-repo trap, notifyListeners storm, 24h rebase rule (`5005315` root). (8) Agent commands reference added to AGENTS.md. Task 21 (Device Pairing feature) logged in Task Queue. Next session: implement RepaintBoundary templates (Q4 priority 1) or Device Pairing (Task 21) per user direction.
@@ -99,12 +99,14 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 #### Slot 4 — UNIVERSAL WORKER
 | Field | Value |
 |-------|-------|
-| **Branch** | `slot4-universal/device-pairing` (gungeon_mate) — 2 agents active, AC5 |
+| **Branch** | master (merged + branch deleted) |
 | **Session started** | 2026-08-18 10:59 UTC+3 |
-| **Last board update** | 2026-08-18 11:10 UTC+3 |
-| **Last commit** | — |
-| **Files in progress** | paired_partner.dart, paired_partners_store.dart, multiplayer_messages.dart, multiplayer_session.dart, main.dart, multiplayer_lobby_screen.dart |
-| **Uncommitted changes** | WIP: Device Pairing feature (model + store + wire messages + session logic done; UI pending) |
+| **Last board update** | 2026-08-18 12:00 UTC+3 |
+| **Last commit** | `689fcf0` (gungeon_mate) — Device Pairing: one-tap co-op with regular partners (v1.9.47) |
+| **Files in progress** | — |
+| **Uncommitted changes** | — |
+
+> **Session ended 2026-08-18 12:00.** Task 21 (Device Pairing) Phase 1 complete and merged to master. New files: `lib/models/paired_partner.dart`, `lib/services/paired_partners_store.dart`. Modified: `multiplayer_messages.dart` (MpPair + MpPairAck), `multiplayer_session.dart` (pairing mode + connectPaired), `multiplayer_lobby_screen.dart` (Pair a Partner UI + Paired Partners list), `main.dart` (PairedPartnersStore.load), version bump to 1.9.47+123. flutter analyze clean. NOTE: A commit accidentally landed on Slot 1's branch (ce0f123) — fixed via `git branch -f` to reset Slot 1 to 12b6aa5, cherry-picked to my branch, merged to master. Phase 2 (elevated privileges: faster auto-reconnect for paired, character swap flexibility, "Reset Run with New Gungeoneer") is a follow-up task.
 
 ---
 
@@ -184,6 +186,7 @@ Format: `| Agent | Date | Branch | Commit | Task | Files | Status | Next | Watch
 | Maintainer | 2026-08-12 | master | `73569c9` (outer repo) | Formalized 5 user-reported bugs into tracker + Task Queue (no code changes — coordination only) | docs/bug_tracker.md, AGENT_STATUS.md | DONE | 5 new tasks in Task Queue (BUG-035–039) ready for Coder pickup. Slot released. | AGENT_STATUS.md is gitignored (local-only). `roomian_battler` submodule pointer drift left untouched per user. NOTE for Coder: BUG-035 + BUG-039 both touch `periodic_tile.dart` and `item_detail/header.dart` — there are pre-existing uncommitted UI tweaks in those two files from the prior Coder session (see row above); coordinate/stash before starting to avoid clobbering. BUG-038 is the largest scope (theme+particle system). |
 | Coder | 2026-08-18 | coder/home-rework-codex-ammonomicon → master | `d78ec0b` (gungeon_mate) | v1.9.41: Home screen rework + Ammonomicon codex tabs | lib/screens/{main_menu_screen,codex_screen}.dart, lib/widgets/home/{rotating_gungeoneer,junk_particle_field,home_customization_sheet}.dart, lib/widgets/codex/ammonomicon_tabs.dart, lib/services/home_customization.dart, lib/main.dart, pubspec.yaml, assets/data/changelog.json, assets/images/{home/junk,codex/tabs}/* | DONE | Slot released. Branch merged to master + deleted. | Worked in parallel with Coder #2 (coder/responsive-profiles on responsive.dart + character_select_screen.dart — AC4 respected, no overlap). Coordinated via AC5 branches. flutter analyze: 0 issues on full lib/. VERSION_HISTORY.md is gitignored — could not update (release-checklist item 2 skipped). Other agent's uncommitted files preserved across merge via stash. |
 | Coder | 2026-08-18 | coder/active-run-calc-avatar → master | `54b80f4` (gungeon_mate) | v1.9.43: Active run calc UX + avatar default + empty-state info | lib/widgets/active_run/player_page.dart, lib/widgets/gungeoneer_header.dart, lib/widgets/dashboards/dashboard_swiper.dart, lib/main.dart, lib/screens/main_menu_screen.dart, pubspec.yaml, assets/data/changelog.json | DONE | Slot released. Branch merged to master + deleted. | Worked in parallel with Coder #2 (coder/responsive-profiles). AC4 respected — no overlap with their responsive.dart/character_select_screen.dart/rotating_gungeoneer.dart. NOTE: edits were lost once when branch switched unexpectedly to other agent's branch — had to re-apply all edits. Lesson: always verify `git branch --show-current` before editing. flutter analyze: 0 issues. Other agent's uncommitted files preserved across merge via stash. |
+| UNIVERSAL WORKER | 2026-08-18 | slot4-universal/device-pairing → master | `689fcf0` (gungeon_mate) | Task 21 Phase 1: Device Pairing — one-tap co-op with regular partners | lib/models/paired_partner.dart (new), lib/services/paired_partners_store.dart (new), lib/models/multiplayer_messages.dart, lib/services/multiplayer_session.dart, lib/screens/multiplayer_lobby_screen.dart, lib/main.dart, lib/utils/asset_paths.dart, pubspec.yaml, assets/data/changelog.json, VERSION_HISTORY.md | DONE (Phase 1) | Phase 2: elevated privileges (faster auto-reconnect for paired, character swap flexibility, "Reset Run with New Gungeoneer" quick action) | Worked in parallel with Slot 1 (XEENU-ANIMATOR on slot1-xeenu/repaint-boundary-templates). AC4 respected — no file overlap. NOTE: commit accidentally landed on Slot 1's branch (ce0f123) due to branch switch — fixed via `git branch -f slot1-xeenu/repaint-boundary-templates 12b6aa5` (user approved), cherry-picked to my branch, merged to master. Version bumped 1.9.46+122 → 1.9.47+123. flutter analyze: 0 issues on all 7 modified Dart files. |
 | Coder #2 | 2026-08-18 | coder/responsive-profiles → master | `534e408` (gungeon_mate) | Vortex animation system + responsive profiles + home menu UX | lib/widgets/home/vortex_config.dart (NEW), lib/widgets/home/rotating_gungeoneer.dart, lib/widgets/home/junk_particle_field.dart, lib/screens/main_menu_screen.dart, lib/utils/responsive.dart | DONE | Slot released. Branch merged to master + deleted. | Vortex physics: always-forward 30s descent + 25s ascent cycle, 360 rotateZ spin (faster on descent), 15-30% screen width bounding box, slight ImageFiltered blur. VortexConfig centralizes all params. Junk field optimized (cached particles, MediaQuery.sizeOf). Main menu: unified Toggle Animations pill + labeled Theme Picker pill. Responsive: ScreenProfile system with Material 3 breakpoints. flutter analyze: 0 issues. Playwright: 0 console errors. |
 | Maintainer | 2026-08-12 | master | `2998f7a` (outer repo) | Enhanced BUG-035–039 reports to implementation-ready specs (no code changes) | docs/bug_tracker.md | DONE | Reports now include exact line numbers, root cause traces, code sketches, edge cases, verification checklists. Ready for Coder pickup. | Discovered: BUG-038 blocker — `ParticleField` has no `colorsOverride` param (only glow/lineLinks overrides) — per-palette particles require adding it. Discovered: BUG-039 — the S-tier animated glow is currently white/silver, not gold (doc says gold). Both noted in the enhanced reports. |
 | Maintainer | 2026-08-12 | master | `ccf4d7d` (outer repo) | Planned stat-group tag upgrade (bigger Combat/Handling/Meta labels + theme-tied per-group colors) — feature, not a bug | docs/bullet_hell_edition_plan.md, AGENT_STATUS.md | DONE | Task Queue entry 6 added. Plan is in the edition doc under "Feature: Stat-Group Tag Upgrade". Coder to implement. | Feature touches `app_theme.dart` (ThemeFlair) — same file as BUG-038. Blocked-by relationship set in Task Queue. One agent should own `app_theme.dart` at a time (AC4). Items (`item_body.dart`) use StatPill directly with no group labels — unaffected by the group-tag change. |

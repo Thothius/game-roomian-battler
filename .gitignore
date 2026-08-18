@@ -20,3 +20,6 @@ Thumbs.db
 # Temp
 *.tmp
 *.bak
+
+# Git worktrees (parallel agent isolation — see AGENTS.md AC5d)
+.worktrees/
