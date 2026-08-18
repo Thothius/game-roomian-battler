@@ -437,3 +437,72 @@ Before starting any task, check `docs/` for an existing spec. If one exists, fol
 ### C11. PowerShell syntax
 - PowerShell uses `;` to chain commands, not `&&`.
 - When running multiple commands in sequence, use `;` as the separator.
+
+---
+
+## Agent Commands Reference
+
+### Universal Commands (any slot)
+
+#### `/sync-audit` — Pre-session sync + drift detection
+Run at session start. Syncs both repos, checks branch drift, flags stale slots.
+1. Read `AGENT_STATUS.md` — identify your slot, check all 4 slots for staleness
+2. Root repo: `git checkout master && git pull origin master` (if reachable)
+3. App repo: `cd gungeon_mate && git checkout master && git pull origin master`
+4. Check: is your slot's branch behind master by >3 commits? Flag for rebase
+5. Check: any unmerged feature branches from other slots? List with drift count
+6. Check: any Shared Core files currently claimed? List them
+7. Report: "Synced. Slot N is [active/idle]. Branches needing rebase: [list]. Shared Core locked: [list]. Ready to work."
+
+#### `/bughunt-proof` — Enforced post-task bughunt with proof paste
+Run before declaring a task done. Makes S6/S10 impossible to skip.
+1. `git diff --name-only HEAD~1` — identify files changed in last commit
+2. `flutter analyze [changed files]` — paste full output
+3. Grep changed files for: `dispose()` missing on `*Controller`/`*Timer`/`*Notifier` — paste count
+4. Grep changed files for: async operations without `context.mounted` check — paste count
+5. Grep changed files for: `notifyListeners()` count — flag if >5 in a single new function
+6. If non-trivial logic: verify a self-check exists (per Ponytail Rules)
+7. Report: "Bughunt complete. Analyzer: [output]. Missing dispose: [N]. Missing mounted: [N]. Notify storm: [N]. Self-check: [present/missing]."
+
+#### `/diff-impact` — Pre-commit safety check across both repos
+Run before `git commit`. Catches wrong-repo commits and off-limits file touches.
+1. Root repo: `git status` + `git diff --stat` — list changed files
+2. App repo: `git status` + `git diff --stat` — list changed files
+3. Cross-check against `AGENT_STATUS.md`: any files in another slot's "Files in progress"? → BLOCK
+4. Any Shared Core files claimed by another agent? → BLOCK
+5. Any User WIP files? → BLOCK
+6. On master with 2+ agents active? → WARN (should be on a branch)
+7. Changes in wrong repo (lib/ on root, docs/ on app)? → WARN
+8. Report: "Root: [N files]. App: [N files]. Off-limits: [list/none]. Branch: [correct/warn]. Ready: [yes/blocked]."
+
+### Slot-Specific Commands
+
+#### `/frame-audit` (Slot 1 — XEENU-ANIMATOR)
+Run after animation work. Finds missing RepaintBoundary, spring curve gaps.
+1. Grep all `CustomPaint(` instances → list file + line
+2. For each: check if wrapped in `RepaintBoundary` → flag missing
+3. Count `AnimationController` vs `flutter_animate` usage → ratio report
+4. Grep for `Curves.linear|Curves.easeInOut` → flag as "no character" candidates
+5. Grep for `Curves.easeOutBack|elasticOut|fastOutSlowIn` → count spring-curve adoption
+6. Check particle engine: new presets without glow? Glow effects without render logic?
+7. Report: "CustomPaint: [N total, M missing RepaintBoundary]. Controller:animate: [X:Y]. Spring: [N]. Linear: [N]. Gaps: [list]."
+
+#### `/state-audit` (Slot 2 — Coder-Maintainer-Reworker-Genius)
+Run after state changes. Finds notifyListeners storms, unawaited setters, schema gaps.
+1. Count `notifyListeners()` in `run_provider.dart` and `app_theme.dart` → total per file
+2. Grep for `Future<void> set*` methods → check if callers await them
+3. Grep for `prefs.setInt|setBool|setString|setStringList` → list all write paths
+4. Grep for `.clamp(` in setters → flag any numeric setter without clamp
+5. Check: any new VisualPrefs fields without a SharedPreferences key?
+6. Check: any enum in prefs without `.clamp(0, Enum.values.length - 1)` on read?
+7. Report: "notifyListeners: [N, M new]. Unawaited: [N]. Writes: [N]. Missing clamps: [list]. Schema gaps: [list]."
+
+#### `/blueprint` (Slot 3 — Planner-Architect-Mockupper)
+Run before coding a feature. Maps every file a feature would touch, identifies conflicts.
+1. Take feature description as input
+2. Grep for relevant keywords across `lib/` → identify candidate files
+3. For each candidate: is it Shared Core? In another slot's "Files in progress"? What imports it?
+4. Check `assets/data/*.json` — does the feature need new data or schema changes?
+5. Check `pubspec.yaml` — does the feature need a new dependency?
+6. Check `docs/` — does a plan already exist?
+7. Output: touch-point list (file, reason, shared-core?, blocked?), dependency graph, data needs, existing plan reference

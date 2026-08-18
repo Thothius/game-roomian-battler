@@ -33,6 +33,7 @@ When done, mark status as `DONE` and move to Session Log.
 | 18 | BUG-053: Dashboard GestureDetector controls missing haptics + Material ripple. Files: `robot_dashboard.dart`, `junkan_dashboard.dart`, `special_gun_dashboards.dart`. | Coder | DONE | — |
 | 19 | BUG-054: Emote bottom sheet missing SafeArea (hardcoded bottom: 32). File: `active_run_screen.dart:146-153`. | Coder | DONE | — |
 | 20 | BUG-055: stats_detail_screen large stat value (fontSize 52) not responsive — no FittedBox or scaling. File: `stats_detail_screen.dart:196-205`. | Coder | DONE | — |
+| 21 | Feature: Device Pairing — "Pair Partner" option for automatic MP run connecting. Paired devices get elevated privileges: auto-reconnect priority, seamless character swap, and "Reset Run with New Gungeoneer" from menu/prefs without re-pairing. Eliminates the multi-step PIN/handshake flow for regular co-op partners (e.g. user + girlfriend). Pairs via Nearby Connections proximity detection, persists pairing across sessions. See user request 2026-08-18. | _(none)_ | TODO | — |
 
 ---
 
@@ -41,7 +42,7 @@ When done, mark status as `DONE` and move to Session Log.
 | Slot | Assigned Agent | Status | Working On | Last Heartbeat |
 | :--- | :--- | :--- | :--- | :--- |
 | **Slot 1** | **XEENU-ANIMATOR** | `IDLE` | — | — |
-| **Slot 2** | **Coder-Maintainer-Reworker-Genius** | `ACTIVE` | Genius audit v0.0.7 complete — 4 decisions locked. Awaiting go-ahead to implement RepaintBoundary templates (Q4, priority 1) | 2026-08-18 10:20 UTC+3 |
+| **Slot 2** | **Coder-Maintainer-Reworker-Genius** | `IDLE` | — | 2026-08-18 10:45 UTC+3 |
 | **Slot 3** | **Planner-Architect-Mockupper** | `IDLE` | — | — |
 | **Slot 4** | **UNIVERSAL WORKER** | `IDLE` | — | — |
 
@@ -62,12 +63,14 @@ When done, mark status as `DONE` and move to Session Log.
 #### Slot 2 — Coder-Maintainer-Reworker-Genius
 | Field | Value |
 |-------|-------|
-| **Branch** | master (gungeon_mate) |
+| **Branch** | master (gungeon_mate + root) |
 | **Session started** | 2026-08-18 08:00 UTC+3 |
-| **Last board update** | 2026-08-18 10:20 UTC+3 |
-| **Last commit** | `e275534` (root) — Genius-tier audit v0.0.7: 4 user decisions locked |
+| **Last board update** | 2026-08-18 10:45 UTC+3 |
+| **Last commit** | `5005315` (root) — Adversarial audit v0.0.7: document nested dual-repo structure in AC5 + rebase-within-24h rule |
 | **Files in progress** | — |
 | **Uncommitted changes** | — |
+
+> **Session ended 2026-08-18 10:45.** Major work this session: (1) Particle engine expansion — 6 new glow effects, 9 new presets, visual pills, named glow colors (`e7eefbb` gungeon_mate). (2) Animation R&D audit + MUTATION_STATION archive (`8980ec4` root). (3) 2026 animation/architecture assessment + AGENTS.md perf rules (`5f23c6e` root). (4) Genius-tier audit v0.0.7 — 4 user decisions locked: glowing synergy borders, synergy predictor, ambient fragment shaders, RepaintBoundary templates (`e275534` root). (5) Four-slot roster + identity protocol locked (`e102d69` root). (6) AC5 upgraded: slot-aligned branch naming, pre-session sync, milestone tagging (`da436d3` root). (7) Adversarial penetration test — documented nested dual-repo trap, notifyListeners storm, 24h rebase rule (`5005315` root). (8) Agent commands reference added to AGENTS.md. Task 21 (Device Pairing feature) logged in Task Queue. Next session: implement RepaintBoundary templates (Q4 priority 1) or Device Pairing (Task 21) per user direction.
 
 #### Slot 3 — Planner-Architect-Mockupper
 | Field | Value |
@@ -183,3 +186,4 @@ Format: `| Agent | Date | Branch | Commit | Task | Files | Status | Next | Watch
 | Coder | 2026-08-12 | master | `1270e60` (gungeon_mate) | Completed all 8 Task Queue items: BUG-035/036/037/038/039 + Tasks 6/8 (Task 7 by Coder #2) | gungeon_mate/{lib/widgets/active_run/player_header.dart, lib/screens/active_run_screen.dart, lib/widgets/active_run/summary_tab.dart, lib/widgets/active_run/active_run_helpers.dart, lib/widgets/settings/run_tab.dart, lib/widgets/particle_engine.dart, lib/widgets/theme_overlay.dart, lib/services/app_theme.dart, lib/screens/theme_picker_screen.dart, lib/widgets/quality_badge.dart, lib/widgets/item_detail/header.dart, lib/widgets/periodic_tile.dart, lib/widgets/active_run/player_page.dart, lib/screens/settings_screen.dart, lib/widgets/settings/app_tab.dart, lib/widgets/item_detail/gun_stats.dart, assets/data/changelog.json, VERSION_HISTORY.md}, docs/bug_tracker.md, AGENT_STATUS.md | DONE | All 8 tasks done. Full flutter analyze: 0 errors/warnings (20 pre-existing info-level lints on dashboard files). Changelog valid (12 items, emoji intact). Release checklist: pubspec 1.9.0+79, main_menu version strings match, VERSION_HISTORY finalized, placeholder removed. | Next: APK build + tag v1.9.0 + GitHub release (Maintainer or user-driven). Pre-existing uncommitted changes in periodic_tile.dart + header.dart were preserved and subsumed into BUG-035/039 commits. summary_tab.dart + app_tab.dart left dormant on disk per Safety S4. |
 || Coder | 2026-08-17 | master | `e2e31bf` (gungeon_mate) | v1.9.36: MP reconnect hardening + release build | gungeon_mate/{lib/services/multiplayer_session.dart, lib/main.dart, pubspec.yaml, assets/data/changelog.json, VERSION_HISTORY.md, lib/screens/main_menu_screen.dart} | DONE | v1.9.36+113 built and archived. flutter analyze: 2 pre-existing info lints (shrine_picker_screen.dart). APK 49.2MB at app-releases/gungeon-mate-v1.9.36.apk and Desktop. | Pushed to origin? No — run `git push origin master` to publish. Remember to update `MultiplayerSession.appVersionString` in main.dart on the next version bump. |
 || Coder (Design) | 2026-08-18 | coder/active-run-rework (NOT merged) | `4e5940b` (gungeon_mate) | Active Run rework Phase 1: RunDisplayMode enum + VisualPrefs fields + mode_helpers.dart extraction + DepthTile 2.5D wrapper | gungeon_mate/{lib/services/app_theme.dart, lib/widgets/active_run/{mode_helpers.dart (NEW), depth_tile.dart (NEW), player_page.dart}}, docs/active_run_rework_plan.md (outer repo, NEW) | WIP — Phase 1 of 5 done, session ended by user before Phase 2 | Next: Phase 2 — build RunDisplayModeBar (3 preview cards + collapse state) + wire into active_run_screen.dart, then codex_book_mode.dart. Plan at docs/active_run_rework_plan.md. | Branch NOT merged to master (feature incomplete). flutter analyze: 0 issues on all 4 modified files. 3 AnimationControllers in DepthTile all disposed; 6 context.mounted checks in mode_helpers. User WIP off-limits per AC4: experience_studio_screen.dart, particle_engine.dart (+263 lines, not mine), .commit_msg.txt. PowerShell heredoc fails for commit messages — use `git commit -F <file>` (Safety S2). Stale branch of same name was deleted (was 0 ahead of master). |
+|| Coder-Maintainer-Reworker-Genius (Slot 2) | 2026-08-18 | master (both repos) | `5005315` (root) + `e7eefbb` (gungeon_mate) | Particle engine expansion + animation R&D + genius audit v0.0.7 + four-slot roster + adversarial audit + agent commands | gungeon_mate/{lib/widgets/particle_engine.dart, lib/screens/experience_studio_screen.dart}, root/{AGENTS.md, AGENT_STATUS.md, docs/animation_architecture_assessment.md, docs/genius_audit_v0.0.7.md, docs/adversarial_audit_v0.0.7.md, MUTATION_STATION/syntax_patches/*} | DONE | Session ended 2026-08-18 10:45. 8 commits across 2 repos. | Next session: implement RepaintBoundary templates (Q4 priority 1) or Device Pairing (Task 21) per user direction. 4 genius-audit decisions locked: glowing synergy borders, synergy predictor, ambient fragment shaders, RepaintBoundary templates. Task 21 (Device Pairing) logged — user plays with girlfriend, wants paired auto-connect + reset run from menu. Nested dual-repo trap documented in AC5. 24h rebase rule for unmerged branches. Agent commands added: /sync-audit, /bughunt-proof, /diff-impact (universal) + /frame-audit, /state-audit, /blueprint (slot-specific). |
