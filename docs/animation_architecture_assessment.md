@@ -44,10 +44,12 @@
 
 ## 2. Key Gaps Identified
 
-### GAP 1: RepaintBoundary underuse (HIGH priority)
-Only 4 `RepaintBoundary` wrappers for 25 CustomPainter instances and 115 AnimationControllers. This means animated regions may trigger full-tree repaints.
+### GAP 1: RepaintBoundary underuse (HIGH priority) — ✅ RESOLVED 2026-08-18
+Previously only 4 `RepaintBoundary` wrappers for 25 CustomPainter instances and 115 AnimationControllers. Animated regions could trigger full-tree repaints.
 
-**Action:** Wrap all CustomPainter-based widgets (ParticleField, vortex, avatar aura, lightning) in RepaintBoundary. Target: 15-20 wrappers.
+**Resolution:** All 11 `CustomPaint` widget sites in `lib/` now carry a `RepaintBoundary` (was 3, +8 added). See "RepaintBoundary placement" below for the canonical template and the full site list. Commit: `slot1-xeenu/repaint-boundary-templates`.
+
+**Action (done):** Wrap all CustomPainter-based widgets (ParticleField, vortex, avatar aura, lightning) in RepaintBoundary. Target: 15-20 wrappers. — Achieved 11/11 CustomPaint sites; remaining gap to "15-20" is for static-content-near-animation wrappers, deferred until a profile shows a hotspot (Ponytail: no speculative wrappers).
 
 ### GAP 2: No spring physics (MEDIUM priority)
 Zero spring-physics curves. All animations use linear or ease curves. The app feels "flash-appear" rather than "organic rebound."
@@ -119,18 +121,58 @@ AnimatedContainer(width: ..., height: ...)
 AnimatedPadding(padding: ...)
 ```
 
-### RepaintBoundary placement
+### RepaintBoundary placement — canonical template (archived 2026-08-18)
+The established codebase pattern, pre-tested across 11 sites. Wrap the **animated subtree** (the `AnimatedBuilder`/`CustomPaint` pair), not the static parent. This isolates the high-frequency repaint so the surrounding layer tree is not invalidated.
+
 ```dart
-// Wrap high-frequency animations
-RepaintBoundary(
-  child: CustomPaint(painter: MyParticlePainter()),
+// Template A — AnimatedBuilder driving the painter (most common).
+// Wrap the AnimatedBuilder. The painter rebuilds in isolation.
+return RepaintBoundary(
+  child: AnimatedBuilder(
+    animation: _controller,
+    builder: (_, __) => CustomPaint(
+      painter: MyPainter(t: _controller.value),
+      size: Size.infinite,
+    ),
+  ),
+);
+
+// Template B — standalone CustomPaint inside IgnorePointer/Positioned.fill
+// (touch particles, dice particles, strikethrough, lightning bolt).
+// Wrap the CustomPaint directly, inside the IgnorePointer.
+Positioned.fill(
+  child: IgnorePointer(
+    child: RepaintBoundary(
+      child: CustomPaint(painter: MyPainter(...)),
+    ),
+  ),
 )
 
-// Wrap static content near animations
+// Wrap static content near animations (only when a profile shows a hotspot —
+// do NOT add speculatively, per Ponytail Rules).
 RepaintBoundary(
   child: StaticHeader(),  // doesn't repaint when particles do
 )
 ```
+
+**Rule of thumb:** the `RepaintBoundary` goes immediately around the widget whose subtree repaints every frame. Putting it outside a `Stack`/`Positioned.fill` that also holds static children defeats the purpose. Putting it inside `IgnorePointer` keeps hit-testing unchanged.
+
+**Sites wrapped (11/11 CustomPaint in `lib/`):**
+| File | Painter | Template | Wrapped since |
+|------|---------|----------|---------------|
+| `widgets/particle_engine.dart` | `_ParticlePainter` | A | pre-existing |
+| `widgets/avatar_aura.dart` | `_AuraPainter` | A | pre-existing |
+| `widgets/particles/crimson_drip.dart` | `CrimsonDripPainter` | A | pre-existing |
+| `widgets/particles/curse_fog.dart` | `CurseFogPainter` | A | 2026-08-18 |
+| `widgets/theme_engines.dart` (`EdgeDripWidget`) | `_EdgeDripPainter` | A | 2026-08-18 |
+| `widgets/home/junk_particle_field.dart` | `_JunkPainter` | A (inside IgnorePointer) | 2026-08-18 |
+| `widgets/backgrounds/gungeon_fall_animation.dart` | `_PortalPainter` | A (inside IgnorePointer) | 2026-08-18 |
+| `widgets/theme_overlay.dart` | `TouchParticlePainter` | B | 2026-08-18 |
+| `widgets/active_run/dice_roll.dart` | `DialogParticlePainter` | B | 2026-08-18 |
+| `widgets/periodic_tile.dart` | `_StrikethroughPainter` | B | 2026-08-18 |
+| `widgets/home/vortex_lightning.dart` | `_LightningBoltPainter` | B | 2026-08-18 |
+
+**Verification:** `grep -r "CustomPaint(" lib/` → 11 matches; `grep -r "RepaintBoundary" lib/` → 11 files. Every CustomPaint site is now immediately inside a RepaintBoundary.
 
 ### Spring physics curves
 ```dart

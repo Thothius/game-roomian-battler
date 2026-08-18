@@ -33,7 +33,7 @@ When done, mark status as `DONE` and move to Session Log.
 | 18 | BUG-053: Dashboard GestureDetector controls missing haptics + Material ripple. Files: `robot_dashboard.dart`, `junkan_dashboard.dart`, `special_gun_dashboards.dart`. | Coder | DONE | — |
 | 19 | BUG-054: Emote bottom sheet missing SafeArea (hardcoded bottom: 32). File: `active_run_screen.dart:146-153`. | Coder | DONE | — |
 | 20 | BUG-055: stats_detail_screen large stat value (fontSize 52) not responsive — no FittedBox or scaling. File: `stats_detail_screen.dart:196-205`. | Coder | DONE | — |
-| 21 | Feature: Device Pairing — "Pair Partner" option for automatic MP run connecting. Paired devices get elevated privileges: auto-reconnect priority, seamless character swap, and "Reset Run with New Gungeoneer" from menu/prefs without re-pairing. Eliminates the multi-step PIN/handshake flow for regular co-op partners (e.g. user + girlfriend). Pairs via Nearby Connections proximity detection, persists pairing across sessions. See user request 2026-08-18. | _(none)_ | TODO | — |
+| 21 | Feature: Device Pairing — "Pair Partner" option for automatic MP run connecting. Paired devices get elevated privileges: auto-reconnect priority, seamless character swap, and "Reset Run with New Gungeoneer" from menu/prefs without re-pairing. Eliminates the multi-step PIN/handshake flow for regular co-op partners (e.g. user + girlfriend). Pairs via Nearby Connections proximity detection, persists pairing across sessions. See user request 2026-08-18. | UNIVERSAL WORKER | IN_PROGRESS | — |
 
 ---
 
@@ -51,21 +51,21 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 
 | Slot | Assigned Agent | Status | Working On | Last Heartbeat |
 | :--- | :--- | :--- | :--- | :--- |
-| **Slot 1** | **XEENU-ANIMATOR** | `IDLE` | — | — |
+| **Slot 1** | **XEENU-ANIMATOR** | `ACTIVE` | RepaintBoundary templates — wrap 8 CustomPaint widgets + archive reusable template | 2026-08-18 11:06 UTC+3 |
 | **Slot 2** | **Coder-Maintainer-Reworker-Genius** | `IDLE` | — | 2026-08-18 10:45 UTC+3 |
 | **Slot 3** | **Planner-Architect-Mockupper** | `IDLE` | — | — |
-| **Slot 4** | **UNIVERSAL WORKER** | `IDLE` | — | — |
+| **Slot 4** | **UNIVERSAL WORKER** | `ACTIVE` | Task 21: Device Pairing feature | 2026-08-18 10:59 UTC+3 |
 
 ### Slot Details
 
 #### Slot 1 — XEENU-ANIMATOR
 | Field | Value |
 |-------|-------|
-| **Branch** | — |
-| **Session started** | — |
-| **Last board update** | 2026-08-18 07:00 UTC+3 |
+| **Branch** | `slot1-xeenu/repaint-boundary-templates` (gungeon_mate) — 2 agents active, AC5 |
+| **Session started** | 2026-08-18 11:06 UTC+3 |
+| **Last board update** | 2026-08-18 11:08 UTC+3 |
 | **Last commit** | `23ce430` (gungeon_mate) — v1.9.45: Synergy pill + Robot DMG badge + Big stat views + Panel pills |
-| **Files in progress** | — |
+| **Files in progress** | curse_fog.dart, theme_engines.dart, junk_particle_field.dart, gungeon_fall_animation.dart, theme_overlay.dart, dice_roll.dart, periodic_tile.dart, vortex_lightning.dart, docs/animation_architecture_assessment.md |
 | **Uncommitted changes** | — |
 
 > **STALE takeover note:** Slot 1 was held by Maintainer since 2026-08-15, last board update 2026-08-16 18:30 (>24h stale). User confirmed takeover 2026-08-17 23:35. Previous Maintainer work logged in Session Log.
@@ -97,12 +97,12 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 #### Slot 4 — UNIVERSAL WORKER
 | Field | Value |
 |-------|-------|
-| **Branch** | — |
-| **Session started** | — |
-| **Last board update** | — |
+| **Branch** | `slot4-universal/device-pairing` (gungeon_mate) — 2 agents active, AC5 |
+| **Session started** | 2026-08-18 10:59 UTC+3 |
+| **Last board update** | 2026-08-18 11:10 UTC+3 |
 | **Last commit** | — |
-| **Files in progress** | — |
-| **Uncommitted changes** | — |
+| **Files in progress** | paired_partner.dart, paired_partners_store.dart, multiplayer_messages.dart, multiplayer_session.dart, main.dart, multiplayer_lobby_screen.dart |
+| **Uncommitted changes** | WIP: Device Pairing feature (model + store + wire messages + session logic done; UI pending) |
 
 ---
 
