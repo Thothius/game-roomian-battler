@@ -36,50 +36,60 @@ When done, mark status as `DONE` and move to Session Log.
 
 ---
 
-## Active Agents (up to 3 concurrent slots)
+## Active Worker Slots (up to 4 concurrent)
 
-### Slot 1
+| Slot | Assigned Agent | Status | Working On | Last Heartbeat |
+| :--- | :--- | :--- | :--- | :--- |
+| **Slot 1** | **XEENU-ANIMATOR** | `IDLE` | — | — |
+| **Slot 2** | **Coder-Maintainer-Reworker-Genius** | `ACTIVE` | Genius audit v0.0.7 complete — 4 decisions locked. Awaiting go-ahead to implement RepaintBoundary templates (Q4, priority 1) | 2026-08-18 10:20 UTC+3 |
+| **Slot 3** | **Planner-Architect-Mockupper** | `IDLE` | — | — |
+| **Slot 4** | **UNIVERSAL WORKER** | `IDLE` | — | — |
 
+### Slot Details
+
+#### Slot 1 — XEENU-ANIMATOR
 | Field | Value |
 |-------|-------|
-| **Agent** | _(none)_ |
 | **Branch** | — |
 | **Session started** | — |
 | **Last board update** | 2026-08-18 07:00 UTC+3 |
-| **Working on** | — |
 | **Last commit** | `23ce430` (gungeon_mate) — v1.9.45: Synergy pill + Robot DMG badge + Big stat views + Panel pills |
 | **Files in progress** | — |
 | **Uncommitted changes** | — |
 
 > **STALE takeover note:** Slot 1 was held by Maintainer since 2026-08-15, last board update 2026-08-16 18:30 (>24h stale). User confirmed takeover 2026-08-17 23:35. Previous Maintainer work logged in Session Log.
 
-### Slot 2
-
+#### Slot 2 — Coder-Maintainer-Reworker-Genius
 | Field | Value |
 |-------|-------|
-| **Agent** | Coder |
 | **Branch** | master (gungeon_mate) |
 | **Session started** | 2026-08-18 08:00 UTC+3 |
-| **Last board update** | 2026-08-18 09:50 UTC+3 |
-| **Working on** | — |
+| **Last board update** | 2026-08-18 10:20 UTC+3 |
+| **Last commit** | `e275534` (root) — Genius-tier audit v0.0.7: 4 user decisions locked |
 | **Files in progress** | — |
 | **Uncommitted changes** | — |
-| **Last commit** | `e7eefbb` (gungeon_mate) — Particle engine expansion: 6 new glow effects, 9 new presets, visual pills, named glow colors |
 
-### Slot 3
-
+#### Slot 3 — Planner-Architect-Mockupper
 | Field | Value |
 |-------|-------|
-| **Agent** | _(none)_ |
 | **Branch** | — |
 | **Session started** | — |
 | **Last board update** | 2026-08-18 09:40 UTC+3 |
-| **Working on** | — |
+| **Last commit** | `4e5940b` (gungeon_mate, branch coder/active-run-rework) — Active run rework Phase 1: RunDisplayMode + mode_helpers + DepthTile |
 | **Files in progress** | — |
 | **Uncommitted changes** | — (user has WIP on experience_studio_screen.dart + particle_engine.dart + untracked .commit_msg.txt — all off-limits per AC4) |
-| **Last commit** | `4e5940b` (gungeon_mate, branch coder/active-run-rework) — Active run rework Phase 1: RunDisplayMode + mode_helpers + DepthTile |
 
 > **Session ended 2026-08-18.** Branch `coder/active-run-rework` NOT merged to master (Phase 1 of 5 only — feature incomplete). Next agent: continue from Phase 2 (RunDisplayModeBar). See `docs/active_run_rework_plan.md`. Phase 2 was in_progress when session ended — no files were being edited yet (run_display_mode_bar.dart not yet created).
+
+#### Slot 4 — UNIVERSAL WORKER
+| Field | Value |
+|-------|-------|
+| **Branch** | — |
+| **Session started** | — |
+| **Last board update** | — |
+| **Last commit** | — |
+| **Files in progress** | — |
+| **Uncommitted changes** | — |
 
 ---
 
@@ -89,7 +99,7 @@ When done, mark status as `DONE` and move to Session Log.
 1. Read this file
 2. Find an empty slot (Agent is `_(none)_`)
 3. If all slots are full, check for stale sessions (see below). If none are stale, STOP and ask the user.
-4. Set **Agent** to your role (`Coder`, `Coder #2`, or `Maintainer`)
+4. Set **Agent** to your role (`XEENU-ANIMATOR`, `Coder-Maintainer-Reworker-Genius`, `Planner-Architect-Mockupper`, or `UNIVERSAL WORKER`)
 5. Set **Session started** and **Last board update** to current timestamp
 6. Set **Working on** to your task description (or claim a task from the Task Queue)
 7. If another agent is active in a different slot, create a git branch: `git checkout -b <agent-type>/<task-slug>` (see AC5)
