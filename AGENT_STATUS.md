@@ -52,7 +52,7 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 | Slot | Assigned Agent | Status | Working On | Last Heartbeat |
 | :--- | :--- | :--- | :--- | :--- |
 | **Slot 1** | **XEENU-ANIMATOR** | `IDLE` | — | 2026-08-18 11:25 UTC+3 |
-| **Slot 2** | **Coder-Maintainer-Reworker-Genius** | `ACTIVE` | AC5d: git worktree policy for parallel agents | 2026-08-18 12:47 UTC+3 |
+| **Slot 2** | **Coder-Maintainer-Reworker-Genius** | `IDLE` | — | 2026-08-18 13:00 UTC+3 |
 | **Slot 3** | **Planner-Architect-Mockupper** | `IDLE` | — | — |
 | **Slot 4** | **UNIVERSAL WORKER** | `IDLE` | — | 2026-08-18 12:00 UTC+3 |
 
@@ -77,10 +77,12 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 |-------|-------|
 | **Branch** | master (root only — docs change) |
 | **Session started** | 2026-08-18 12:47 UTC+3 |
-| **Last board update** | 2026-08-18 12:47 UTC+3 |
-| **Last commit** | `9d6188c` (root) — Add 2026 Design North Star + `e7eefbb` (gungeon_mate) — Particle engine expansion |
-| **Files in progress** | AGENTS.md |
+| **Last board update** | 2026-08-18 13:00 UTC+3 |
+| **Last commit** | `4eff3b4` (root) — AC5d: git worktree isolation policy for parallel agents |
+| **Files in progress** | — |
 | **Uncommitted changes** | — |
+
+> **Session ended 2026-08-18 13:00.** Task: AC5d worktree policy. Added new AC5d section to AGENTS.md — MANDATORY `git worktree` isolation when 2+ agents are active. Documents setup, session workflow, merge+cleanup, sole-agent exception, pre-flight checks, nested repo notes. Updated AC5 branch-creation and merge steps to reference AC5d. Added `.worktrees/` to .gitignore. Validated full worktree create→list→remove→branch-delete cycle in this environment. This prevents the 2026-08-18 collision (Slot 4's checkout hijacked Slot 1's staged changes).
 
 > **Session ended 2026-08-18 10:45.** Major work this session: (1) Particle engine expansion — 6 new glow effects, 9 new presets, visual pills, named glow colors (`e7eefbb` gungeon_mate). (2) Animation R&D audit + MUTATION_STATION archive (`8980ec4` root). (3) 2026 animation/architecture assessment + AGENTS.md perf rules (`5f23c6e` root). (4) Genius-tier audit v0.0.7 — 4 user decisions locked: glowing synergy borders, synergy predictor, ambient fragment shaders, RepaintBoundary templates (`e275534` root). (5) Four-slot roster + identity protocol locked (`e102d69` root). (6) AC5 upgraded: slot-aligned branch naming, pre-session sync, milestone tagging (`da436d3` root). (7) Adversarial penetration test — documented nested dual-repo trap, notifyListeners storm, 24h rebase rule (`5005315` root). (8) Agent commands reference added to AGENTS.md. Task 21 (Device Pairing feature) logged in Task Queue. Next session: implement RepaintBoundary templates (Q4 priority 1) or Device Pairing (Task 21) per user direction.
 
