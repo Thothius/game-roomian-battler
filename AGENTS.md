@@ -204,6 +204,13 @@ When creative or wild ideas are thrown at you, handle them with a "smooth jazz" 
 - **Responsive Layouts:** Sliver lists (`SliverList`, `SliverGrid`) to prevent scrolling issues or container squishing. Double-height labels, custom badges (`QualityBadge`), and pixel-art assets.
 - **Haptics and Motion:** Tactile feedback, modern micro-interactions, responsive particle speeds, and smooth spring animations. Leverage `flutter_animate` for declarative fade/slide.
 
+### Animation Performance Rules (2026 standard)
+- **GPU-composited properties only:** Animate `Transform.translate`, `Transform.scale`, `Transform.rotate`, and `Opacity`. NEVER animate layout constraints (`width`, `height`, `padding`) — they force CPU-bound re-layouts.
+- **RepaintBoundary for CustomPainter:** Wrap every `CustomPaint` widget in `RepaintBoundary` so animated regions don't trigger full-tree repaints. See `docs/animation_architecture_assessment.md` for the gap audit.
+- **Prefer declarative over manual:** Use `flutter_animate` (`.fadeIn().slideX()`) or `TweenAnimationBuilder` over manual `AnimationController` when the animation doesn't need pause/reverse/seek. Reduces disposal boilerplate.
+- **Spring curves for organic feel:** Use `Curves.easeOutBack` (card entrances), `Curves.fastOutSlowIn` (drawers/panels), `Curves.elasticOut` (playful bounces). Avoid `Curves.linear` and `Curves.easeInOut` for interactive elements.
+- **Particle engine budget:** 60fps at count=32 on web. If increasing max count above 64, switch line-link O(n²) to spatial hashing. See `MUTATION_STATION/syntax_patches/` for archived patterns.
+
 ---
 
 ## Coder — Full-Stack Developer Agent
