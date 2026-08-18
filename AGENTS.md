@@ -75,7 +75,7 @@ The board supports **up to 4 concurrent agent slots** — the core triad (XEENU-
 ### AC5. Git branch per agent for parallel sessions
 - When you are the **only** active agent, work on `master` as usual.
 - When **2+ agents** are active simultaneously, each must work on their own branch:
-  - Branch naming: `<agent-type>/<task-slug>` (e.g. `coder/debug-tab`, `maintainer/verify-v1.6.7`)
+  - Branch naming: `slot<N>-<agent-slug>/<task-slug>` (e.g. `slot1-xeenu/glow-borders`, `slot2-coder/repaint-templates`, `slot3-planner/synergy-predictor`)
   - Create branch: `git checkout -b <branch-name>`
   - Set the **Branch** field in your slot to the branch name.
   - Commit to your branch as usual.
@@ -89,6 +89,18 @@ The board supports **up to 4 concurrent agent slots** — the core triad (XEENU-
     5. After resolving: `git add <files>` then `git rebase --continue` (or `git merge --continue`).
     6. Never abort a rebase with uncommitted work — stash first if needed.
 - This eliminates the risk of parallel agents clobbering each other's uncommitted changes.
+
+### AC5b. Pre-session sync
+- Before starting work, pull the latest master to avoid drift: `git checkout master && git pull origin master` (if remote exists and is reachable).
+- If `origin` is not configured or unreachable, skip the pull — local master is the baseline.
+- This is a 5-second step that prevents merge surprises later.
+
+### AC5c. Milestone tagging for major phases
+- When a major feature phase or stable version lands (e.g. "Active Run Rework Phase 1 complete", "v1.9.46 release"), tag it:
+  `git tag -a v1.9.46-stable -m "Milestone: <description>"`
+- Tags are immutable rollback points — if an experiment goes sideways, `git checkout <tag>` restores a known-good state.
+- Tags are optional for minor commits and bug fixes. Use them for: version bumps, completed multi-phase features, protocol changes, and release builds.
+- Do NOT push tags unless the user explicitly asks.
 
 ### AC6. Stale session detection
 - Check the slot's **Last board update** first — if it's recent (< 10 min ago), the agent is likely still active even without commits. Do not claim it.
