@@ -65,9 +65,9 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 | Slot | Assigned Agent | Status | Working On | Last Heartbeat |
 | :--- | :--- | :--- | :--- | :--- |
 | **Slot 1** | **XEENU-ANIMATOR** | `ACTIVE` | Custom theme save/load system (uncommitted in worktree — RISK: commit WIP soon) | 2026-08-25 (now) UTC+3 |
-| **Slot 2** | **Coder-Maintainer** | `ACTIVE` | Cultist hide + Tap-to-change removal committed (c722960) | 2026-08-25 (now) UTC+3 |
+| **Slot 2** | **Coder-Maintainer** | `ACTIVE` | Root folder cleanup: 2.3 GB freed, roomian_battler moved to Desktop (9f99963) | 2026-08-26 (now) UTC+3 |
 | **Slot 3** | **_(none)_** | `IDLE` | Free for second active coder | — |
-| **Slot 4** | **UNIVERSAL WORKER** | `IDLE` | Part A MP Lobby Rework complete | 2026-08-25 (now) UTC+3 |
+| **Slot 4** | **_(none)_** | `IDLE` | Session ended — see session log | 2026-08-26 (now) UTC+3 |
 
 ### Slot Details
 
