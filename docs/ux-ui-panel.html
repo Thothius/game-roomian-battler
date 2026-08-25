@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GungeonMate — UX/UI Panel</title>
+<style>
+  :root {
+    --bg: #0d0d12;
+    --surface: #1a1a22;
+    --card: #1e1e28;
+    --border: #2a2a38;
+    --text: #e8e8f0;
+    --muted: #8888a0;
+    --accent: #42a5f5;
+    --amber: #ffb300;
+    --green: #66bb6a;
+    --pink: #ef5350;
+    --purple: #ab47bc;
+    --orange: #ff7043;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  h1 {
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, var(--accent), var(--purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  h2 {
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    margin-top: 40px;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  h3 {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .subtitle { color: var(--muted); font-size: 14px; margin-bottom: 32px; }
+  .panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  .panel-title {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+  }
+  .badge-done { background: rgba(102,187,106,0.15); color: var(--green); border: 1px solid rgba(102,187,106,0.4); }
+  .badge-proposed { background: rgba(66,165,245,0.15); color: var(--accent); border: 1px solid rgba(66,165,245,0.4); }
+  .badge-attention { background: rgba(255,179,0,0.15); color: var(--amber); border: 1px solid rgba(255,179,0,0.4); }
+
+  /* ── Mockup: Collapsible Tab Strip ── */
+  .mockup-container {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .mockup {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    width: 320px;
+    height: 400px;
+    position: relative;
+  }
+  .mockup-label {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px;
+    color: var(--muted);
+    background: rgba(0,0,0,0.6);
+    padding: 3px 10px;
+    border-radius: 999px;
+    z-index: 10;
+  }
+  .mockup-content {
+    padding: 16px;
+    height: 100%;
+  }
+
+  /* Bookmark tabs */
+  .bookmark-strip {
+    position: absolute;
+    top: 16px;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    z-index: 5;
+  }
+  .bookmark-tab {
+    width: 56px;
+    height: 56px;
+    border-radius: 0 14px 14px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    font-weight: 800;
+    text-align: center;
+    color: rgba(255,255,255,0.55);
+    border: 1px solid;
+    transition: all 0.25s cubic-bezier(0.2, 0, 0, 1);
+  }
+  .bookmark-tab.active {
+    width: 68px;
+    height: 68px;
+    color: white;
+  }
+  .collapse-toggle {
+    width: 56px;
+    height: 28px;
+    border-radius: 0 14px 14px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--card);
+    border: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .collapse-toggle:hover { background: rgba(66,165,245,0.1); }
+  .collapse-toggle-collapsed {
+    width: 32px;
+    height: 48px;
+    border-radius: 0 14px 14px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  /* NPC idle GIF mockup */
+  .npc-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    padding-left: 76px;
+    padding-top: 16px;
+  }
+  .npc-grid-collapsed { padding-left: 40px; }
+  .npc-card {
+    background: var(--card);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    aspect-ratio: 0.82;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+  }
+  .npc-card .icon {
+    font-size: 28px;
+    margin-bottom: 4px;
+  }
+  .npc-card .name {
+    font-size: 8px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.85);
+    text-align: center;
+  }
+  .npc-card.animated {
+    border-color: rgba(255,179,0,0.3);
+    background: rgba(255,179,0,0.05);
+  }
+  .npc-card.animated .icon { animation: bob 1.5s ease-in-out infinite; }
+  @keyframes bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+  }
+
+  /* Visual attention items */
+  .attention-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+  }
+  .attention-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+  }
+  .attention-card h4 {
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .attention-card p {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .attention-card .mock-visual {
+    margin: 12px 0;
+    height: 60px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  /* Lottie bookmark concept */
+  .lottie-concept {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: rgba(66,165,245,0.05);
+    border: 1px solid rgba(66,165,245,0.15);
+    border-radius: 8px;
+    margin-top: 12px;
+  }
+  .lottie-icon-placeholder {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: rgba(66,165,245,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.7; }
+    50% { transform: scale(1.1); opacity: 1; }
+  }
+  .lottie-concept p {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  .status-list { list-style: none; }
+  .status-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .status-list li:last-child { border-bottom: none; }
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .dot-green { background: var(--green); }
+  .dot-blue { background: var(--accent); }
+  .dot-amber { background: var(--amber); }
+</style>
+</head>
+<body>
+
+<h1>GUNGEONMATE — UX/UI PANEL</h1>
+<p class="subtitle">Codex redesign concepts + visual attention items. Reference panel for ongoing work.</p>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<h2>1. Codex: Collapsible Bookmark Tab Strip</h2>
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+
+<div class="panel">
+  <div class="panel-title">
+    <span class="badge badge-done">SHIPPED</span>
+    Collapsible Ammonomicon Tab Strip
+  </div>
+  <p style="font-size:13px; color:var(--muted); margin-bottom:16px; line-height:1.5;">
+    The left-side bookmark tabs can now be collapsed to give the codex content
+    the full screen width. A chevron toggle sits at the top of the strip.
+    When collapsed, a small accent-colored tab remains so users can expand
+    the strip back. The content area animates its left padding smoothly.
+  </p>
+
+  <div class="mockup-container">
+    <!-- Expanded mockup -->
+    <div class="mockup">
+      <div class="mockup-label">EXPANDED — tabs visible</div>
+      <div class="bookmark-strip">
+        <div class="collapse-toggle">‹</div>
+        <div class="bookmark-tab active" style="background:rgba(66,165,245,0.22); border-color:rgba(66,165,245,0.9);">Gungeoneers</div>
+        <div class="bookmark-tab" style="background:var(--card); border-color:rgba(239,83,80,0.5);">NPCs</div>
+        <div class="bookmark-tab" style="background:var(--card); border-color:rgba(255,112,67,0.5);">Enemies</div>
+        <div class="bookmark-tab" style="background:var(--card); border-color:rgba(171,71,188,0.5);">Bosses</div>
+        <div class="bookmark-tab" style="background:var(--card); border-color:rgba(66,165,245,0.5);">Pickups</div>
+      </div>
+      <div class="npc-grid">
+        <div class="npc-card"><div class="icon">🧑</div><div class="name">Marine</div></div>
+        <div class="npc-card"><div class="icon">🧑</div><div class="name">Pilot</div></div>
+        <div class="npc-card"><div class="icon">🧑</div><div class="name">Convict</div></div>
+        <div class="npc-card"><div class="icon">🧑</div><div class="name">Hunter</div></div>
+        <div class="npc-card"><div class="icon">🧑</div><div class="name">Bullet</div></div>
+        <div class="npc-card"><div class="icon">🧑</div><div class="name">Robot</div></div>
+        <div class="npc-card"><div class="icon">🧑</div><div class="name">Paradox</div></div>
+        <div class="npc-card"><div class="icon">🧑</div><div class="name">Gunslinger</div></div>
+      </div>
+    </div>
+
+    <!-- Collapsed mockup -->
+    <div class="mockup">
+      <div class="mockup-label">COLLAPSED — fullscreen content</div>
+      <div class="bookmark-strip">
+        <div class="collapse-toggle-collapsed" style="background:rgba(66,165,245,0.22); border:1px solid rgba(66,165,245,0.6); color:var(--accent);">›</div>
+      </div>
+      <div class="npc-grid npc-grid-collapsed">
+        <div class="npc-card"><div class="icon">🧑</div><div class="name">Marine</div></div>
+        <div class="npc-card"><div class="icon">🧑</div><div class="name">Pilot</div></div>
+        <div class="npc-card"><div class="icon">🧑</div><div class="name">Convict</div></div>
+        <div class="npc-card"><div class="icon">🧑</div><div class="name">Hunter</div></div>
+        <div class="npc-card"><div class="icon">🧑</div><div class="name">Bullet</div></div>
+        <div class="npc-card"><div class="icon">🧑</div><div class="name">Robot</div></div>
+        <div class="npc-card"><div class="icon">🧑</div><div class="name">Paradox</div></div>
+        <div class="npc-card"><div class="icon">🧑</div><div class="name">Gunslinger</div></div>
+        <div class="npc-card"><div class="icon">🧑</div><div class="name">Cultist</div></div>
+        <div class="npc-card"><div class="icon">🧑</div><div class="name">Marine</div></div>
+        <div class="npc-card"><div class="icon">🧑</div><div class="name">Pilot</div></div>
+        <div class="npc-card"><div class="icon">🧑</div><div class="name">Convict</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lottie-concept">
+    <div class="lottie-icon-placeholder">🔖</div>
+    <div>
+      <strong style="font-size:12px;">Lottie bookmark concept (proposed)</strong>
+      <p>When the strip collapses, a Lottie animation of a bookmark sliding
+      behind the content edge could play — giving the "tucking into a book"
+      feeling. The expand would reverse the animation. This would require
+      adding <code style="color:var(--accent);">lottie: ^3.x</code> to
+      pubspec and creating a 2-3 second Lottie JSON. Low priority — the
+      current chevron toggle works cleanly.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<h2>2. Codex: Animated NPC Idle GIFs</h2>
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+
+<div class="panel">
+  <div class="panel-title">
+    <span class="badge badge-done">SHIPPED</span>
+    NPC Idle Animations in Codex
+  </div>
+  <p style="font-size:13px; color:var(--muted); margin-bottom:16px; line-height:1.5;">
+    NPC codex cards and detail screens now show animated idle GIFs instead
+    of static icons when available. 11 NPCs have idle animations:
+    Bello, Cursula, Flynt, Frifle & Grey Mauser, Professor Goopton,
+    Greymauser, Old Red, Sell Creep, Tailor, Vampire, and Winchester.
+  </p>
+
+  <div class="mockup-container">
+    <div class="mockup">
+      <div class="mockup-label">NPC tab — animated cards glow</div>
+      <div class="bookmark-strip">
+        <div class="collapse-toggle">‹</div>
+        <div class="bookmark-tab" style="background:var(--card); border-color:rgba(66,165,245,0.5);">Gungeoneers</div>
+        <div class="bookmark-tab active" style="background:rgba(239,83,80,0.22); border-color:rgba(239,83,80,0.9);">NPCs</div>
+        <div class="bookmark-tab" style="background:var(--card); border-color:rgba(255,112,67,0.5);">Enemies</div>
+        <div class="bookmark-tab" style="background:var(--card); border-color:rgba(171,71,188,0.5);">Bosses</div>
+      </div>
+      <div class="npc-grid">
+        <div class="npc-card animated"><div class="icon">🧙</div><div class="name">Bello</div></div>
+        <div class="npc-card animated"><div class="icon">🧛</div><div class="name">Vampire</div></div>
+        <div class="npc-card animated"><div class="icon">🏹</div><div class="name">Winchester</div></div>
+        <div class="npc-card animated"><div class="icon">🧪</div><div class="name">Cursula</div></div>
+        <div class="npc-card animated"><div class="icon">🔑</div><div class="name">Flynt</div></div>
+        <div class="npc-card animated"><div class="icon">💰</div><div class="name">Goopton</div></div>
+        <div class="npc-card"><div class="icon">🧑</div><div class="name">Doug</div></div>
+        <div class="npc-card"><div class="icon">🧑</div><div class="name">Tinker</div></div>
+      </div>
+    </div>
+  </div>
+  <p style="font-size:11px; color:var(--muted); margin-top:12px;">
+    Animated cards have a subtle amber tint and gentle bob animation in this mockup.
+    In the app, the actual GIFs play their idle loop (breathing, blinking, etc.).
+  </p>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<h2>3. Visual Attention Items</h2>
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+
+<p style="font-size:13px; color:var(--muted); margin-bottom:20px;">
+  A few items worthy of visual attention for future polish passes. Not
+  implemented yet — just flagged here for review.
+</p>
+
+<div class="attention-grid">
+
+  <!-- Item 1: Codex detail hero animation -->
+  <div class="attention-card">
+    <h4>1. Codex Detail: Hero transition for NPC GIFs</h4>
+    <span class="badge badge-proposed">PROPOSED</span>
+    <p>When tapping an NPC card, the idle GIF could fly from the card
+    to the detail screen's hero area using a Hero animation. This would
+    give a seamless "zoom into the character" feel. Requires wrapping
+    the GIF in a Hero widget with a unique tag per NPC.</p>
+    <div class="mock-visual" style="background:rgba(66,165,245,0.05); border:1px dashed rgba(66,165,245,0.2);">
+      Card → Detail: GIF flies and scales up
+    </div>
+  </div>
+
+  <!-- Item 2: Boss idle animations -->
+  <div class="attention-card">
+    <h4>2. Boss idle animations (assets/animations/bosses/)</h4>
+    <span class="badge badge-attention">ATTENTION</span>
+    <p>The <code>assets/animations/bosses/</code> folder exists and is
+    declared in pubspec, but we haven't checked what's in it or whether
+    boss codex entries could use animated sprites like NPCs do. Worth
+    investigating for consistency.</p>
+    <div class="mock-visual" style="background:rgba(171,71,188,0.05); border:1px dashed rgba(171,71,188,0.2);">
+      Boss tab → animated boss sprites?
+    </div>
+  </div>
+
+  <!-- Item 3: Enemy idle animations -->
+  <div class="attention-card">
+    <h4>3. Enemy idle animations (assets/animations/dog/)</h4>
+    <span class="badge badge-attention">ATTENTION</span>
+    <p>The <code>assets/animations/dog/</code> folder exists and is
+    declared in pubspec. If it contains enemy idle sprites, the same
+    pattern used for NPCs could be applied to the Enemies tab.</p>
+    <div class="mock-visual" style="background:rgba(255,112,67,0.05); border:1px dashed rgba(255,112,67,0.2);">
+      Enemy tab → animated enemy sprites?
+    </div>
+  </div>
+
+  <!-- Item 4: Tab strip active glow -->
+  <div class="attention-card">
+    <h4>4. Active tab glow pulse</h4>
+    <span class="badge badge-proposed">PROPOSED</span>
+    <p>The active bookmark tab currently has a static glow. A subtle
+    breathing pulse (opacity 0.35 → 0.5 → 0.35 over 2s) would make the
+    selected category feel alive without being distracting. Low priority
+    — the static glow already reads well.</p>
+    <div class="mock-visual" style="background:rgba(66,165,245,0.05); border:1px dashed rgba(66,165,245,0.2);">
+      ▒▒▒ breathing glow on active tab ▒▒▒
+    </div>
+  </div>
+
+  <!-- Item 5: Codex search bar refinement -->
+  <div class="attention-card">
+    <h4>5. Search bar: animated focus state</h4>
+    <span class="badge badge-proposed">PROPOSED</span>
+    <p>When the search bar gains focus, the border could animate from
+    0.3 alpha to 0.7 alpha with a subtle width change. Currently this
+    is a hard transition. A 200ms ease would smooth it. Trivial fix.</p>
+    <div class="mock-visual" style="background:rgba(255,179,0,0.05); border:1px dashed rgba(255,179,0,0.2);">
+      🔍 Search enemies... [focus → border glows]
+    </div>
+  </div>
+
+  <!-- Item 6: Collapsed tab indicator -->
+  <div class="attention-card">
+    <h4>6. Collapsed tab: show active category color</h4>
+    <span class="badge badge-done">SHIPPED</span>
+    <p>When the tab strip is collapsed, the small chevron button uses
+    the active category's accent color. This gives users a visual hint
+    of which section they're in even when the full strip is hidden.</p>
+    <div class="mock-visual" style="background:rgba(239,83,80,0.05); border:1px dashed rgba(239,83,80,0.2);">
+      › (red = NPCs active)
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<h2>4. Implementation Status</h2>
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+
+<div class="panel">
+  <ul class="status-list">
+    <li><span class="dot dot-green"></span> NPC idle GIF mapping function (<code>npcIdleGifPath()</code>) — 11 NPCs mapped</li>
+    <li><span class="dot dot-green"></span> NPC cards in codex grid show idle GIFs when available</li>
+    <li><span class="dot dot-green"></span> NPC detail screen hero shows idle GIF when available</li>
+    <li><span class="dot dot-green"></span> AmmonomiconTabStrip supports collapsed state</li>
+    <li><span class="dot dot-green"></span> Collapse toggle (chevron) at top of strip</li>
+    <li><span class="dot dot-green"></span> Collapsed state shows accent-colored expand button</li>
+    <li><span class="dot dot-green"></span> Content area animates padding on collapse/expand</li>
+    <li><span class="dot dot-amber"></span> Lottie bookmark animation — proposed, not implemented</li>
+    <li><span class="dot dot-amber"></span> Boss/enemy idle animation audit — needs investigation</li>
+    <li><span class="dot dot-amber"></span> Hero transition for NPC GIFs — proposed</li>
+    <li><span class="dot dot-amber"></span> Active tab glow pulse — proposed, low priority</li>
+  </ul>
+</div>
+
+</body>
+</html>
