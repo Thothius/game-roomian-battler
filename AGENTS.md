@@ -2,6 +2,8 @@
 
 > **MANDATORY READING:** `docs/TECHNICAL_REFERENCE.md` — the canonical technical reference for all agents. Contains git auth, push workflow, Flutter paths, build commands, platform quirks, release checklist, and current architecture. Every agent must read it at session start.
 
+> **MANDATORY FOR UI/UX WORK:** `docs/REWORK_LESSONS_LEARNED.md` — consolidated learnings from the full Theme UX rework. Contains design standards, mistakes to avoid, what worked, verification checklist, and file map. Every agent doing UI/UX work must read it before starting.
+
 Up to 4 agents can work on this codebase simultaneously. Each has a clear domain. All follow the Ponytail Rules (below) and the Safety Rules (below). Neither touches the other's domain without explicit user approval.
 
 | Agent | Command | Role | One-line |
