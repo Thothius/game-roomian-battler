@@ -1,0 +1,719 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GungeonMate — Agent & Theme Cheat Sheet</title>
+<style>
+:root {
+  --bg: #0E1018;
+  --card: #1A1E2E;
+  --card-hover: #232842;
+  --border: #2A2F4A;
+  --text: #E0E0E0;
+  --muted: #6B7280;
+  --dim: #4A4F6A;
+  --visual: #00D2FF;
+  --core: #FF9F1C;
+  --parallel: #69F0AE;
+  --support: #9370DB;
+  --accent: #4682B4;
+  --accent2: #9370DB;
+  --mono: 'Courier New', monospace;
+  --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  line-height: 1.5;
+  min-height: 100vh;
+}
+.container { max-width: 1100px; margin: 0 auto; padding: 16px; }
+.header {
+  text-align: center;
+  padding: 24px 16px 16px;
+  border-bottom: 1px solid var(--border);
+}
+.header h1 {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.header .meta {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 4px;
+  font-family: var(--mono);
+}
+.top-tabs {
+  display: flex;
+  gap: 4px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+.top-tab {
+  padding: 8px 20px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid transparent;
+  border-radius: 6px 6px 0 0;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.top-tab:hover { color: var(--text); background: var(--card); }
+.top-tab.active {
+  color: var(--text);
+  background: var(--card);
+  border-color: var(--border);
+  border-bottom-color: var(--card);
+}
+.top-tab .badge {
+  display: inline-block;
+  font-size: 10px;
+  padding: 1px 6px;
+  border-radius: 999px;
+  margin-left: 6px;
+  background: var(--dim);
+  color: var(--text);
+}
+.panel { display: none; padding: 16px 0; }
+.panel.active { display: block; }
+.agent-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.agent-tab {
+  padding: 10px 18px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: var(--card);
+  color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.agent-tab:hover { color: var(--text); }
+.agent-tab.active { color: var(--text); border-width: 2px; }
+.agent-tab[data-agent="visual"].active { border-color: var(--visual); }
+.agent-tab[data-agent="core"].active { border-color: var(--core); }
+.agent-tab[data-agent="parallel"].active { border-color: var(--parallel); }
+.agent-tab[data-agent="support"].active { border-color: var(--support); }
+.agent-dot {
+  width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+}
+.agent-tab[data-agent="visual"] .agent-dot { background: var(--visual); }
+.agent-tab[data-agent="core"] .agent-dot { background: var(--core); }
+.agent-tab[data-agent="parallel"] .agent-dot { background: var(--parallel); }
+.agent-tab[data-agent="support"] .agent-dot { background: var(--support); }
+.agent-content { display: none; }
+.agent-content.active { display: block; }
+.agent-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+.agent-card[data-agent="visual"] { border-left: 3px solid var(--visual); }
+.agent-card[data-agent="core"] { border-left: 3px solid var(--core); }
+.agent-card[data-agent="parallel"] { border-left: 3px solid var(--parallel); }
+.agent-card[data-agent="support"] { border-left: 3px solid var(--support); }
+.agent-card h2 {
+  font-size: 18px;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+.agent-card .tagline {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 12px;
+  font-style: italic;
+}
+.agent-card .field {
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+.agent-card .field strong { color: var(--text); }
+.agent-card .field span { color: var(--muted); }
+.sub-tabs {
+  display: flex;
+  gap: 2px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+.sub-tab {
+  padding: 6px 14px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  background: transparent;
+  color: var(--muted);
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.sub-tab:hover { color: var(--text); }
+.sub-tab.active { color: var(--text); border-bottom-color: var(--accent); }
+.sub-content { display: none; }
+.sub-content.active { display: block; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+th, td {
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border);
+}
+th {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+tr:hover { background: var(--card-hover); }
+td code, th code {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--visual);
+}
+.cmd-type {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.cmd-type.pre { background: #1B3A5A; color: #6BB6FF; }
+.cmd-type.post { background: #1A4A1A; color: #6BE66B; }
+.cmd-type.hygiene { background: #3A1A4A; color: #CE93D8; }
+.cmd-type.verify { background: #4A3A1A; color: #FFD166; }
+.cmd-type.release { background: #4A1A1A; color: #FF6B6B; }
+.cmd-type.testing { background: #1A3A3A; color: #4DD0E1; }
+.cmd-type.retired { background: #333; color: #666; text-decoration: line-through; }
+.file-list {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.8;
+}
+.file-list .dir { color: var(--accent2); font-weight: 700; }
+.theme-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 12px;
+}
+.theme-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  transition: all 0.15s;
+}
+.theme-card:hover { border-color: var(--accent); }
+.theme-card .theme-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.theme-card .theme-glyph {
+  font-size: 20px;
+  width: 32px; height: 32px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+.theme-card .theme-name {
+  font-size: 14px;
+  font-weight: 700;
+}
+.theme-card .theme-enum {
+  font-size: 10px;
+  color: var(--muted);
+  font-family: var(--mono);
+}
+.theme-card .theme-vibe {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 999px;
+  margin-left: auto;
+}
+.theme-card .theme-desc {
+  font-size: 11px;
+  color: var(--muted);
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+.theme-card .swatches {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+.theme-card .swatch {
+  flex: 1;
+  height: 24px;
+  border-radius: 4px;
+  position: relative;
+  cursor: help;
+}
+.theme-card .swatch::after {
+  content: attr(data-color);
+  position: absolute;
+  bottom: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 8px;
+  font-family: var(--mono);
+  color: var(--muted);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.15s;
+  pointer-events: none;
+}
+.theme-card .swatch:hover::after { opacity: 1; }
+.theme-card .theme-meta {
+  display: flex;
+  gap: 12px;
+  font-size: 10px;
+  color: var(--dim);
+  font-family: var(--mono);
+  margin-top: 4px;
+  flex-wrap: wrap;
+}
+.theme-card .stat-colors {
+  display: flex;
+  gap: 4px;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+}
+.theme-card .stat-chip {
+  font-size: 9px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: var(--mono);
+}
+.theme-card .picker-only {
+  font-size: 9px;
+  color: var(--core);
+  font-weight: 700;
+  margin-left: 4px;
+}
+.theme-card .hidden-theme {
+  font-size: 9px;
+  color: var(--dim);
+  font-weight: 700;
+  margin-left: 4px;
+}
+.retired-section {
+  margin-top: 24px;
+  padding: 16px;
+  background: var(--card);
+  border: 1px dashed var(--dim);
+  border-radius: 8px;
+}
+.retired-section h3 {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.retired-section td { color: var(--dim); }
+@media (max-width: 600px) {
+  .container { padding: 8px; }
+  .header h1 { font-size: 16px; }
+  .top-tab { padding: 6px 12px; font-size: 11px; }
+  .agent-tab { padding: 8px 12px; font-size: 11px; }
+  .theme-grid { grid-template-columns: 1fr; }
+  table { font-size: 11px; }
+  th, td { padding: 6px 4px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+  <h1>GungeonMate — Agent & Theme Cheat Sheet</h1>
+  <div class="meta">v2.0.4 · 4 agents · 17 commands · 33 themes</div>
+</div>
+<div class="top-tabs">
+  <div class="top-tab active" data-top="agents">Agents <span class="badge">4</span></div>
+  <div class="top-tab" data-top="themes">Themes <span class="badge">33</span></div>
+  <div class="top-tab" data-top="commands">Commands <span class="badge">17</span></div>
+</div>
+
+<!-- AGENTS -->
+<div class="panel active" data-panel="agents">
+  <div class="agent-tabs">
+    <div class="agent-tab active" data-agent="visual"><span class="agent-dot"></span> VISUAL</div>
+    <div class="agent-tab" data-agent="core"><span class="agent-dot"></span> CORE</div>
+    <div class="agent-tab" data-agent="parallel"><span class="agent-dot"></span> PARALLEL</div>
+    <div class="agent-tab" data-agent="support"><span class="agent-dot"></span> SUPPORT</div>
+  </div>
+
+  <div class="agent-content active" data-agent="visual">
+    <div class="agent-card" data-agent="visual">
+      <h2>VISUAL <span style="font-size:11px;color:var(--muted);font-weight:400">· Slot 1</span></h2>
+      <div class="tagline">The visual wizard and motion maestro.</div>
+      <div class="field"><strong>Specialty:</strong> <span>2.5D volumetric layouts, custom particle engines, spring-physics curves, high-framerate RepaintBoundary rendering, theme visual polish</span></div>
+      <div class="field"><strong>Directive:</strong> <span>Brings static UI components to life with fluid, 2026-grade kinetic feedback.</span></div>
+      <div class="field"><strong>Owns:</strong> <span>lib/widgets/theme_overlay.dart, lib/widgets/backgrounds/, particle systems, glow effects, animation curves, theme splash graphics</span></div>
+      <div class="field"><strong>Does NOT touch:</strong> <span>State management logic, MP protocol, data pipelines, test infrastructure</span></div>
+    </div>
+    <div class="sub-tabs">
+      <div class="sub-tab active" data-sub="visual-cmds">Commands</div>
+      <div class="sub-tab" data-sub="visual-files">Files</div>
+    </div>
+    <div class="sub-content active" data-sub="visual-cmds">
+      <table><thead><tr><th>Command</th><th>When</th><th>What it does</th></tr></thead><tbody>
+        <tr><td><code>/frame-audit</code></td><td><span class="cmd-type post">Post-animation</span></td><td>Checks CustomPaint→RepaintBoundary wrapping, AnimationController vs flutter_animate ratio, spring curve adoption, particle engine gaps</td></tr>
+        <tr><td><code>/sync</code></td><td><span class="cmd-type pre">Pre-session</span></td><td>Sync both repos, check branch drift, flag stale slots</td></tr>
+        <tr><td><code>/bughunt</code></td><td><span class="cmd-type post">Post-task</span></td><td>Analyzer + dispose + context.mounted + notifyListeners check with proof paste</td></tr>
+        <tr><td><code>/precommit</code></td><td><span class="cmd-type pre">Pre-commit</span></td><td>Cross-repo safety: off-limits files, wrong repo, branch check</td></tr>
+        <tr><td><code>/test</code></td><td><span class="cmd-type verify">Verify</span></td><td>Run flutter test with expanded reporter, paste pass/fail counts</td></tr>
+        <tr><td><code>/analyze</code></td><td><span class="cmd-type verify">Verify</span></td><td>Run flutter analyze lib, paste output</td></tr>
+        <tr><td><code>/build-web</code></td><td><span class="cmd-type testing">Testing</span></td><td>Build web + start HTTP server + report URL for Playwright</td></tr>
+        <tr><td><code>/screenshot</code></td><td><span class="cmd-type testing">Testing</span></td><td>Playwright: load app, navigate to screen, capture screenshot</td></tr>
+      </tbody></table>
+    </div>
+    <div class="sub-content" data-sub="visual-files">
+      <div class="file-list">
+        <span class="dir">lib/widgets/theme_overlay.dart</span> — global visual stack (layers 0-1.0)<br>
+        <span class="dir">lib/widgets/backgrounds/</span> — animated_wallpaper, ambient layers<br>
+        <span class="dir">lib/widgets/active_run/</span> — gungeon_meter, depth_tile, player_header<br>
+        <span class="dir">lib/theme/tokens.dart</span> — Insets, Radii, Motion, FontSizes, TypeScale<br>
+        <span class="dir">lib/services/app_theme.dart</span> — ThemeFlair, particle presets, glow (shared with CORE)<br>
+        <span class="dir">assets/images/themes/splash/</span> — 14 theme splash images<br>
+      </div>
+    </div>
+  </div>
+
+  <div class="agent-content" data-agent="core">
+    <div class="agent-card" data-agent="core">
+      <h2>CORE <span style="font-size:11px;color:var(--muted);font-weight:400">· Slot 2</span></h2>
+      <div class="tagline">The core engine builder, structural refactorer, and quality enforcer.</div>
+      <div class="field"><strong>Specialty:</strong> <span>State management (Provider/ChangeNotifier), dependency audits, bug squashing, feature blueprints, protocol design, MP reconnect logic, clean architecture</span></div>
+      <div class="field"><strong>Directive:</strong> <span>Plans before building, verifies after building. Ensures architecture is bulletproof and future-proof.</span></div>
+      <div class="field"><strong>Owns:</strong> <span>lib/main.dart, lib/models/, lib/providers/, lib/services/ (mp_session, damage_calculator, etc.), lib/screens/, lib/utils/, assets/data/*.json, pubspec.yaml, tools/</span></div>
+      <div class="field"><strong>Does NOT touch:</strong> <span>test/ (SUPPORT owns test infra), release build process, data verification pipeline</span></div>
+    </div>
+    <div class="sub-tabs">
+      <div class="sub-tab active" data-sub="core-cmds">Commands</div>
+      <div class="sub-tab" data-sub="core-files">Files</div>
+    </div>
+    <div class="sub-content active" data-sub="core-cmds">
+      <table><thead><tr><th>Command</th><th>When</th><th>What it does</th></tr></thead><tbody>
+        <tr><td><code>/state-audit</code></td><td><span class="cmd-type post">Post-state</span></td><td>notifyListeners storms, unawaited setters, SharedPreferences write paths, numeric clamps, VisualPrefs schema gaps</td></tr>
+        <tr><td><code>/blueprint</code></td><td><span class="cmd-type pre">Pre-feature</span></td><td>Touch-point map: files touched, shared-core conflicts, data needs, pubspec impact, existing plan reference</td></tr>
+        <tr><td><code>/sync</code></td><td><span class="cmd-type pre">Pre-session</span></td><td>Sync both repos, check branch drift, flag stale slots</td></tr>
+        <tr><td><code>/bughunt</code></td><td><span class="cmd-type post">Post-task</span></td><td>Analyzer + dispose + context.mounted + notifyListeners check with proof paste</td></tr>
+        <tr><td><code>/precommit</code></td><td><span class="cmd-type pre">Pre-commit</span></td><td>Cross-repo safety: off-limits files, wrong repo, branch check</td></tr>
+        <tr><td><code>/test</code></td><td><span class="cmd-type verify">Verify</span></td><td>Run flutter test with expanded reporter, paste pass/fail counts</td></tr>
+        <tr><td><code>/analyze</code></td><td><span class="cmd-type verify">Verify</span></td><td>Run flutter analyze lib, paste output</td></tr>
+        <tr><td><code>/version-bump</code></td><td><span class="cmd-type release">Release</span></td><td>4-file version bump (pubspec, changelog, asset_paths, main_menu) without full APK</td></tr>
+        <tr><td><code>/release-build</code></td><td><span class="cmd-type release">Release</span></td><td>Full release: version + changelog + APK build + push</td></tr>
+        <tr><td><code>/verify-data</code></td><td><span class="cmd-type verify">Data</span></td><td>JSON data integrity pipeline (data_integrity.py, audit_stats.py, validate_db.py)</td></tr>
+      </tbody></table>
+    </div>
+    <div class="sub-content" data-sub="core-files">
+      <div class="file-list">
+        <span class="dir">lib/main.dart</span> — app entry point<br>
+        <span class="dir">lib/models/</span> — gun, item, synergy, player, gungeoneer, run_state, shrine, multiplayer_messages<br>
+        <span class="dir">lib/providers/run_provider.dart</span> — state management orchestrator<br>
+        <span class="dir">lib/services/</span> — mp_session, paired_partners_store, damage_calculator, effect_tagger, elemental_tagger, goop_talk_engine, app_theme, haptics, home_customization<br>
+        <span class="dir">lib/screens/</span> — all screens (active_run, browse, character_select, codex, mp_lobby, mp_connect, settings, etc.)<br>
+        <span class="dir">lib/utils/</span> — asset_paths, bug_reporter, format, responsive<br>
+        <span class="dir">assets/data/*.json</span> — guns, items, synergies, shrines, gungeoneers, changelog<br>
+        <span class="dir">gungeon_mate/pubspec.yaml</span> — dependencies and version<br>
+        <span class="dir">gungeon_mate/tools/</span> — data pipeline Python scripts<br>
+      </div>
+    </div>
+  </div>
+
+  <div class="agent-content" data-agent="parallel">
+    <div class="agent-card" data-agent="parallel">
+      <h2>PARALLEL <span style="font-size:11px;color:var(--muted);font-weight:400">· Slot 3</span></h2>
+      <div class="tagline">A second pair of hands for parallel feature work.</div>
+      <div class="field"><strong>Specialty:</strong> <span>Whatever CORE isn't doing. Picks up independent features, bug fixes, or UI rework that doesn't overlap with Slot 2's active files.</span></div>
+      <div class="field"><strong>Directive:</strong> <span>Multiplies throughput when 2+ features need to ship in parallel. Coordinates with CORE via the status board and AC4 file locks.</span></div>
+      <div class="field"><strong>Owns:</strong> <span>Same domain as CORE — but only files NOT in CORE's "Files in progress" list</span></div>
+      <div class="field"><strong>Does NOT touch:</strong> <span>Any file claimed by another active slot. Uses worktree isolation (AC5d) when 2+ agents are active.</span></div>
+    </div>
+    <div class="sub-tabs">
+      <div class="sub-tab active" data-sub="parallel-cmds">Commands</div>
+      <div class="sub-tab" data-sub="parallel-files">Files</div>
+    </div>
+    <div class="sub-content active" data-sub="parallel-cmds">
+      <table><thead><tr><th>Command</th><th>When</th><th>What it does</th></tr></thead><tbody>
+        <tr><td><code>/sync</code></td><td><span class="cmd-type pre">Pre-session</span></td><td>Sync both repos, check branch drift, flag stale slots</td></tr>
+        <tr><td><code>/bughunt</code></td><td><span class="cmd-type post">Post-task</span></td><td>Analyzer + dispose + context.mounted + notifyListeners check with proof paste</td></tr>
+        <tr><td><code>/precommit</code></td><td><span class="cmd-type pre">Pre-commit</span></td><td>Cross-repo safety: off-limits files, wrong repo, branch check</td></tr>
+        <tr><td><code>/test</code></td><td><span class="cmd-type verify">Verify</span></td><td>Run flutter test with expanded reporter, paste pass/fail counts</td></tr>
+        <tr><td><code>/analyze</code></td><td><span class="cmd-type verify">Verify</span></td><td>Run flutter analyze lib, paste output</td></tr>
+        <tr><td><code>/build-web</code></td><td><span class="cmd-type testing">Testing</span></td><td>Build web + start HTTP server + report URL for Playwright</td></tr>
+        <tr><td><code>/screenshot</code></td><td><span class="cmd-type testing">Testing</span></td><td>Playwright: load app, navigate to screen, capture screenshot</td></tr>
+      </tbody></table>
+    </div>
+    <div class="sub-content" data-sub="parallel-files">
+      <div class="file-list">
+        <span style="color:var(--parallel)">Same domain as CORE</span> — but only unclaimed files.<br>
+        Check <code>AGENT_STATUS.md</code> → CORE's "Files in progress" before starting.<br>
+        Use worktree isolation: <code>git worktree add .worktrees/slot3-parallel/gungeon_mate &lt;branch&gt;</code><br>
+        Typical tasks: independent features, UI bug fixes, screen rewrites, widget refactors that don't touch shared state.
+      </div>
+    </div>
+  </div>
+
+  <div class="agent-content" data-agent="support">
+    <div class="agent-card" data-agent="support">
+      <h2>SUPPORT <span style="font-size:11px;color:var(--muted);font-weight:400">· Slot 4</span></h2>
+      <div class="tagline">The flexible generalist and cleanup specialist.</div>
+      <div class="field"><strong>Specialty:</strong> <span>Dead code detection, doc consistency auditing, stale reference cleanup, test infrastructure, general cross-slot assistance</span></div>
+      <div class="field"><strong>Directive:</strong> <span>Keeps the codebase lean and docs honest. Owns the cleanup-and-doc niche.</span></div>
+      <div class="field"><strong>Owns:</strong> <span>test/ directory, .devin/workflows/, AGENTS.md convention auditing, doc consistency checks</span></div>
+      <div class="field"><strong>Does NOT touch:</strong> <span>Production features, design decisions, game data content (only verifies it)</span></div>
+    </div>
+    <div class="sub-tabs">
+      <div class="sub-tab active" data-sub="support-cmds">Commands</div>
+      <div class="sub-tab" data-sub="support-files">Files</div>
+    </div>
+    <div class="sub-content active" data-sub="support-cmds">
+      <table><thead><tr><th>Command</th><th>When</th><th>What it does</th></tr></thead><tbody>
+        <tr><td><code>/cleanup</code></td><td><span class="cmd-type hygiene">Hygiene</span></td><td>7-step sweep: dead code, doc consistency, stale docs, AGENTS.md drift, changelog sync, asset references, report</td></tr>
+        <tr><td><code>/sync</code></td><td><span class="cmd-type pre">Pre-session</span></td><td>Sync both repos, check branch drift, flag stale slots</td></tr>
+        <tr><td><code>/bughunt</code></td><td><span class="cmd-type post">Post-task</span></td><td>Analyzer + dispose + context.mounted + notifyListeners check with proof paste</td></tr>
+        <tr><td><code>/precommit</code></td><td><span class="cmd-type pre">Pre-commit</span></td><td>Cross-repo safety: off-limits files, wrong repo, branch check</td></tr>
+        <tr><td><code>/test</code></td><td><span class="cmd-type verify">Verify</span></td><td>Run flutter test with expanded reporter, paste pass/fail counts</td></tr>
+        <tr><td><code>/analyze</code></td><td><span class="cmd-type verify">Verify</span></td><td>Run flutter analyze lib, paste output</td></tr>
+        <tr><td><code>/playwright-smoke</code></td><td><span class="cmd-type testing">Testing</span></td><td>App load verification after build</td></tr>
+        <tr><td><code>/playwright-screens</code></td><td><span class="cmd-type testing">Testing</span></td><td>Full screen tour + screenshot capture</td></tr>
+        <tr><td><code>/playwright-features</code></td><td><span class="cmd-type testing">Testing</span></td><td>E2E feature flow testing</td></tr>
+      </tbody></table>
+    </div>
+    <div class="sub-content" data-sub="support-files">
+      <div class="file-list">
+        <span class="dir">gungeon_mate/test/</span> — Flutter test infrastructure, test files, test helpers<br>
+        <span class="dir">.devin/workflows/</span> — all workflow files (bot-coder, bot-maintainer, pre/post-session, release-build, verify-data, playwright-*)<br>
+        <span class="dir">AGENTS.md</span> — rules enforcement, convention auditing (propose changes, user approves)<br>
+        <span class="dir">AGENT_STATUS.md</span> — shared status board (all agents read/write, SUPPORT enforces hygiene)<br>
+        <span class="dir">docs/</span> — living docs (TECHNICAL_REFERENCE, REWORK_LESSONS_LEARNED, GUNGEONMATE, USER_BUG_LIST)<br>
+        <span class="dir">docs/archive/</span> — historical docs (indexed, not actively maintained)<br>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- THEMES -->
+<div class="panel" data-panel="themes">
+  <div style="font-size:12px;color:var(--muted);margin-bottom:16px">
+    All 33 themes from <code style="color:var(--visual)">AppThemeMode</code> enum.
+    <span style="color:var(--core)">PICKER</span> = in kPickerThemes (8 curated premades with splash).
+    <span style="color:var(--dim)">HIDDEN</span> = in kVisibleThemes for persistence but excluded from picker.
+    Colors are from <code style="color:var(--visual)">ThemeFlair</code> static definitions.
+  </div>
+  <div class="theme-grid" id="themeGrid"></div>
+</div>
+
+<!-- COMMANDS -->
+<div class="panel" data-panel="commands">
+  <table><thead><tr><th>Command</th><th>Slot</th><th>Type</th><th>What it does</th></tr></thead><tbody id="cmdTableBody"></tbody></table>
+  <div class="retired-section">
+    <h3>RETIRED COMMANDS</h3>
+    <table><thead><tr><th>Command</th><th>Why retired</th></tr></thead><tbody>
+      <tr><td><code>/bot-coder</code></td><td>Vestigial. Agents just claim a slot and work — no one "activates coder mode"</td></tr>
+      <tr><td><code>/bot-maintainer</code></td><td>Self-verification replaced the Creator-Verifier handoff</td></tr>
+      <tr><td><code>/bot-architect</code></td><td>Was always optional. <code>/blueprint</code> covers planning now</td></tr>
+      <tr><td><code>/caveman-ponytail</code></td><td>Ponytail Rules are baked into every agent's behavior already</td></tr>
+    </tbody></table>
+  </div>
+</div>
+
+</div>
+
+<script>
+const themes = [
+  {enum:'unicorn',label:'Unicorn',vibe:'MAGICAL',diff:'CO-OP',elem:'RAINBOW',glyph:'\u2661',picker:true,visible:true,desc:'A cotton candy megapack with six switchable palettes: Cotton Candy, Neon, Dreamy, Sunset, Bubblegum, and Mulberry. Cycle through pastel pink, electric magenta, whispered rose, golden-hour coral, bright bubblegum pop, and deep crimson-purple.',scaffold:'#1A101F',card:'#2D1B36',primary:'#FF69B4',secondary:'#E8A7F0',headline:'#F06292',font:'fredoka',aura:'pastelPulse',radius:18,combat:'#FF69B4',handling:'#F06292',meta:'#E8A7F0'},
+  {enum:'unicornII',label:'Unicorn II',vibe:'NEON',diff:'CO-OP',elem:'RAINBOW',glyph:'\u2661',picker:false,visible:true,desc:'A neon-charged cotton candy overload. Hot pink and electric magenta scream through the dark with an intense radioactive glow.',scaffold:'#0F0A14',card:'#1E1528',primary:'#FF1493',secondary:'#DA70D6',headline:'#E040FB',font:'fredoka',aura:'pastelPulse',radius:16,combat:'#FF1493',handling:'#DA70D6',meta:'#E040FB'},
+  {enum:'unicornIII',label:'Unicorn III',vibe:'DREAMY',diff:'CO-OP',elem:'RAINBOW',glyph:'\u2661',picker:false,visible:true,desc:'A softer, whispered cotton candy. Muted rose and dusty lavender drift like a watercolour sunset.',scaffold:'#1F1825',card:'#2A2230',primary:'#F8BBD0',secondary:'#D1C4E9',headline:'#CE93D8',font:'fredoka',aura:'pastelPulse',radius:20,combat:'#F8BBD0',handling:'#D1C4E9',meta:'#CE93D8'},
+  {enum:'unicornIV',label:'Unicorn IV',vibe:'SUNSET',diff:'CO-OP',elem:'RAINBOW',glyph:'\u2661',picker:false,visible:true,desc:'Cotton candy at golden hour. Coral pink and warm peach blend with powder-pink undertones for a sunset-drenched magical vibe.',scaffold:'#1A1218',card:'#2A1E26',primary:'#FF6B9D',secondary:'#FFAB91',headline:'#FFD1DC',font:'fredoka',aura:'pastelPulse',radius:18,combat:'#FF6B9D',handling:'#FFAB91',meta:'#FFD1DC'},
+  {enum:'ammonomicon',label:'Codex',vibe:'ARCHIVAL',diff:'NORMAL',elem:'KNOWLEDGE',glyph:'\uD83D\uDCD6',picker:false,visible:false,desc:'Flip through the pages of the ultimate Gungeon compendium. Styled with heavy book-leather browns and crisp gold-embossed trim.',scaffold:'#120D0A',card:'#221A14',primary:'#D4AF37',secondary:'#CD9F73',headline:'#FFFDD0',font:'gungeon',aura:'brassConic',radius:12,combat:'#D4AF37',handling:'#CD9F73',meta:'#FFFDD0'},
+  {enum:'forgeMaster',label:'Forge Master',vibe:'INDUSTRIAL',diff:'EXPERT',elem:'FIRE',glyph:'\uD83D\uDD25',picker:true,visible:true,desc:'Forged in the depths of the Fifth Chamber. Obsidian plates illuminated by roaring blast furnaces and the glowing scales of the High Dragun.',scaffold:'#0F0C0A',card:'#1C1714',primary:'#FF4500',secondary:'#FFB74D',headline:'#FFCC00',font:'russoOne',aura:'forgeGlow',radius:8,combat:'#FF4500',handling:'#FFB74D',meta:'#FFCC00'},
+  {enum:'hollowChill',label:'Hollow Chill',vibe:'ETHEREAL',diff:'BRUTAL',elem:'ICE',glyph:'\u2744',picker:false,visible:true,desc:'Feel the creeping frost of the Fourth Chamber. Chilled directly by spectral remnants, haunted tombstones, and freezing ice-cube ammunition.',scaffold:'#0A1118',card:'#132230',primary:'#00D2FF',secondary:'#90A4AE',headline:'#E0F7FA',font:'gungeon',aura:'frostRing',radius:12,combat:'#00D2FF',handling:'#90A4AE',meta:'#E0F7FA'},
+  {enum:'lordJammed',label:'Lord Jammed',vibe:'CURSED',diff:'10-CURSE',elem:'JAMMED',glyph:'\u2020',picker:false,visible:true,desc:'An irreversible pact sealed in maximum curse. Dark, corrupted purple UI accented by lethal oxblood lines. If you hear stalking footsteps, dont look back.',scaffold:'#0A030C',card:'#16071B',primary:'#FF0033',secondary:'#CE93D8',headline:'#FF007F',font:'gungeon',aura:'oxbloodBreath',radius:12,combat:'#FF0033',handling:'#CE93D8',meta:'#FF007F'},
+  {enum:'theBreach',label:'The Breach',vibe:'COZY',diff:'STEADY',elem:'BRASS',glyph:'\u2605',picker:false,visible:true,desc:'Relax alongside Cadence, Ox, and the cult of gungeoneers. Brings a warm, comforting hearthstone glow to your loadout tracking.',scaffold:'#111216',card:'#1D2026',primary:'#FF9F1C',secondary:'#9FA8DA',headline:'#FFD166',font:'gungeon',aura:'brassConic',radius:8,combat:'#FF9F1C',handling:'#9FA8DA',meta:'#FFD166'},
+  {enum:'bulletHell',label:'Bullet Hell',vibe:'HELLISH',diff:'EXTREME',elem:'ACID',glyph:'\u2620',picker:false,visible:true,desc:'Descend into the absolute depths of the Gungeon floor layout. Lethal acid greens cut cleanly through a charred landscape of absolute bullet chaos.',scaffold:'#08090A',card:'#141619',primary:'#39FF14',secondary:'#B388FF',headline:'#CCFF00',font:'gungeon',aura:'cosmicTemporal',radius:10,combat:'#39FF14',handling:'#B388FF',meta:'#CCFF00'},
+  {enum:'resourcefulRat',label:'Resourceful Rat',vibe:'SNEAKY',diff:'PUZZLE',elem:'LOOT',glyph:'\uD83E\uDDC0',picker:false,visible:true,desc:'Channel the ultimate mastermind of the ventilation shafts. A clever, high-contrast layout built from dirty sewer elements and brilliant, shiny stolen items.',scaffold:'#0D110E',card:'#18221B',primary:'#FFD700',secondary:'#81C784',headline:'#FFA500',font:'gungeon',aura:'toxicOoze',radius:12,combat:'#FFD700',handling:'#81C784',meta:'#FFA500'},
+  {enum:'gungeonProper',label:'Gungeon Proper',vibe:'CLASSIC',diff:'NORMAL',elem:'STONE',glyph:'\uD83C\uDFF0',picker:false,visible:true,desc:'The textbook definition of entering the breach. Clean castle stone blues paired with royal purple accents that recall the long, winding entry halls of the true first floor.',scaffold:'#0E1018',card:'#1A1E2E',primary:'#4682B4',secondary:'#9370DB',headline:'#87CEEB',font:'gungeon',aura:'brassConic',radius:12,combat:'#4682B4',handling:'#9370DB',meta:'#87CEEB'},
+  {enum:'theOubliette',label:'The Oubliette',vibe:'TOXIC',diff:'HARD',elem:'SLUDGE',glyph:'\u2623',picker:false,visible:true,desc:'Descend into the hidden, damp pipeline layer. A layout covered in industrial sewer muck, rusted pipework bronze, and bright toxic spills that pop sharply against the dark.',scaffold:'#0A0F08',card:'#141A10',primary:'#64DD17',secondary:'#795548',headline:'#B2FF59',font:'gungeon',aura:'toxicOoze',radius:10,combat:'#64DD17',handling:'#795548',meta:'#B2FF59'},
+  {enum:'pastParadox',label:'Past Paradox',vibe:'COSMIC',diff:'BRUTAL',elem:'VOID',glyph:'\uD83C\uDF0C',picker:false,visible:true,desc:'Kill your past or fracture the space-time continuum trying. Features deep stellar space backdrops cracked wide open by unstable, flashing neon cosmic energy.',scaffold:'#050308',card:'#0E0A1A',primary:'#00E5FF',secondary:'#6A1B9A',headline:'#E0F7FA',font:'gungeon',aura:'cosmicTemporal',radius:12,combat:'#00E5FF',handling:'#6A1B9A',meta:'#E0F7FA'},
+  {enum:'highPriestVoid',label:'High Priest Void',vibe:'MYSTIC',diff:'EXPERT',elem:'SHADOW',glyph:'\uD83D\uDC41',picker:false,visible:true,desc:'Immerse your loadout tracker in the ominous shadows of the true gun cultists. Dark ritual violet panels broken apart by flickering candle yellow and unstable boss accents.',scaffold:'#0A0510',card:'#160B20',primary:'#8B008B',secondary:'#FFD54F',headline:'#E1BEE7',font:'gungeon',aura:'lichPurple',radius:12,combat:'#8B008B',handling:'#FFD54F',meta:'#E1BEE7'},
+  {enum:'cultOfGundead',label:'Cult of Gundead',vibe:'RETRO',diff:'NORMAL',elem:'BRASS',glyph:'\uD83C\uDFAF',picker:false,visible:false,desc:'Pay homage to the standard, loyal foot soldiers of the gungeoneers demise. Formatted with soft ammunition brass tones and target practice reds on lead gray backdrops.',scaffold:'#0D0B08',card:'#1A1610',primary:'#FF1744',secondary:'#CD9F73',headline:'#FFD700',font:'gungeon',aura:'brassConic',radius:10,combat:'#FF1744',handling:'#CD9F73',meta:'#FFD700'},
+  {enum:'synergySurge',label:'Synergy Surge',vibe:'ENERGETIC',diff:'CO-OP',elem:'FUSION',glyph:'\uD83D\uDD39',picker:false,visible:false,desc:'When your inventory items fuse together perfectly. An ultra-bright, dynamic color palette based on the iconic blue arrows that appear above your gungeoneer during a item pairing.',scaffold:'#080B14',card:'#101828',primary:'#00B4D8',secondary:'#42A5F5',headline:'#E3F2FD',font:'gungeon',aura:'cosmicTemporal',radius:12,combat:'#00B4D8',handling:'#42A5F5',meta:'#E3F2FD'},
+  {enum:'glitchedChest',label:'Glitched Chest',vibe:'CORRUPTED',diff:'CHAOS',elem:'ERROR',glyph:'\uD83D\uDCBE',picker:false,visible:false,desc:'Something went terribly wrong with the chest generation parameters. A distinct glitch aesthetic combining harsh digital greens and magenta color visual artifacts over a pitch-black terminal frame.',scaffold:'#000000',card:'#0A0A0A',primary:'#FF00E4',secondary:'#00FF41',headline:'#E0E0E0',font:'gungeon',aura:'voidPulse',radius:6,combat:'#FF00E4',handling:'#00FF41',meta:'#E0E0E0'},
+  {enum:'lichsTomb',label:'Lich\u0027s Tomb',vibe:'ELDRITCH',diff:'EXTREME',elem:'BONE',glyph:'\u2620',picker:false,visible:false,desc:'Stand face to face with the master of the gungeon floor layout. Features skeletal bone white indicators slicing through eerie, lingering phantom teal lines and deep crypt shadows.',scaffold:'#060808',card:'#0E1212',primary:'#2EC4B6',secondary:'#E0E0E0',headline:'#F5F5DC',font:'gungeon',aura:'lichPurple',radius:10,combat:'#2EC4B6',handling:'#E0E0E0',meta:'#F5F5DC'},
+  {enum:'winchestersGame',label:'Winchester\u0027s Game',vibe:'CARNIVAL',diff:'CASUAL',elem:'TARGET',glyph:'\uD83C\uDFAF',picker:false,visible:false,desc:'A carnival aesthetic with warm orange and green accents.',scaffold:'#0F0A06',card:'#1C1408',primary:'#F77F00',secondary:'#66BB6A',headline:'#FFE082',font:'gungeon',aura:'brassConic',radius:12,combat:'#F77F00',handling:'#66BB6A',meta:'#FFE082'},
+  {enum:'robotsCore',label:'Robot\u0027s Core',vibe:'CYBERNETIC',diff:'EXPERT',elem:'CIRCUIT',glyph:'\u2699',picker:false,visible:true,desc:'JUNK IS THE OPTIMAL SOURCE OF FUEL. A cold steel cybernetic interface with circuit-green accents and battery-blue highlights. The Robot\u0027s domain — efficient, calculating, and relentlessly logical.',scaffold:'#0A0E0A',card:'#121812',primary:'#69F0AE',secondary:'#40C4FF',headline:'#B9F6CA',font:'jetBrainsMono',aura:'tacticalRing',radius:6,combat:'#69F0AE',handling:'#40C4FF',meta:'#B9F6CA'},
+  {enum:'valorOfMarines',label:'Valor of Marines',vibe:'TACTICAL',diff:'NORMAL',elem:'DOG TAG',glyph:'\u2605',picker:false,visible:true,desc:'Stay frosty. A disciplined military aesthetic with olive drab, tactical amber, and steel gray. The Marine\u0027s domain — precise, reliable, and always by the book.',scaffold:'#0F0F0A',card:'#1A1A14',primary:'#C5E1A5',secondary:'#FFB74D',headline:'#E6EE9C',font:'blackOpsOne',aura:'tacticalRing',radius:8,combat:'#FFB74D',handling:'#C5E1A5',meta:'#E6EE9C'},
+  {enum:'theBullet',label:'The Bullet',vibe:'HEROIC',diff:'NORMAL',elem:'BLADE',glyph:'\u2694',picker:true,visible:true,desc:'For the glory of the Bullet-King! A brave bullet-kin aesthetic with polished brass gold, heroic red, and steel gray. The Bullet that dared to wield a blade — noble, bright, and defiant.',scaffold:'#0F0D08',card:'#1A1610',primary:'#FFD740',secondary:'#EF5350',headline:'#FFE57F',font:'righteous',aura:'goldShimmerRing',radius:12,combat:'#EF5350',handling:'#FFD740',meta:'#FFE57F'},
+  {enum:'theParadox',label:'The Paradox',vibe:'FRACTURED',diff:'EXPERT',elem:'RIFT',glyph:'\u2726',picker:true,visible:true,desc:'Who... what... when... am I? A fractured reality aesthetic with swirling paradox purple, time-rift violet, and stardust white. Existence is a loop inside a cylinder — broken, beautiful, and unknowable.',scaffold:'#0A0812',card:'#140F1F',primary:'#CE93D8',secondary:'#7E57C2',headline:'#E1BEE7',font:'syncopate',aura:'paradoxRift',radius:16,combat:'#7E57C2',handling:'#CE93D8',meta:'#E1BEE7'},
+  {enum:'gunpowder',label:'Gunpowder',vibe:'EXPLOSIVE',diff:'NORMAL',elem:'POWDER',glyph:'\uD83D\uDCA5',picker:true,visible:true,desc:'Lock and load. A smoky gunpowder aesthetic with charcoal black, sulfurous gray, and ember red. The smell of spent casings and black powder — raw, industrial, and ready to detonate.',scaffold:'#0A0A0A',card:'#141414',primary:'#B71C1C',secondary:'#9E9E9E',headline:'#E57373',font:'rowdies',aura:'oxbloodBreath',radius:6,combat:'#B71C1C',handling:'#9E9E9E',meta:'#E57373'},
+  {enum:'dragunfire',label:'Dragunfire',vibe:'MOLTEN',diff:'BRUTAL',elem:'FIRE',glyph:'\uD83D\uDC32',picker:true,visible:true,desc:'Face the High Dragun. A molten inferno aesthetic with dragun orange, scale amber, and ash black. The Fifth Chamber burns — scales glint, fire roars, and only the worthy survive.',scaffold:'#0F0805',card:'#1C100A',primary:'#FF4500',secondary:'#FFAB40',headline:'#FFCC00',font:'archivoBlack',aura:'dragunScale',radius:8,combat:'#FF4500',handling:'#FFAB40',meta:'#FFCC00'},
+  {enum:'lichsDomain',label:'Lich\u0027s Domain',vibe:'NECROTIC',diff:'EXTREME',elem:'BONE',glyph:'\u2620',picker:true,visible:true,desc:'The master of the gungeon awaits. A necrotic domain with bone white, crypt teal, and void black. The Lich\u0027s chamber — cold, eternal, and absolute in its finality.',scaffold:'#050808',card:'#0C1010',primary:'#2EC4B6',secondary:'#E0E0E0',headline:'#F5F5DC',font:'specialElite',aura:'voidPulse',radius:10,combat:'#2EC4B6',handling:'#E0E0E0',meta:'#F5F5DC'},
+  {enum:'catLady',label:'Cat Lady',vibe:'COZY',diff:'NORMAL',elem:'PAW',glyph:'\uD83D\uDC3E',picker:false,visible:true,desc:'A warm hearth-lit den where a content gungeoneer and their nine lives nap between chambers. Amber paw prints padding across deep walnut, with soft copper accents and a gentle purr of warmth.',scaffold:'#1A1208',card:'#2A1E10',primary:'#FFB74D',secondary:'#D7CCC8',headline:'#FFCC80',font:'carterOne',aura:'catPawTrail',radius:16,combat:'#FFB74D',handling:'#D7CCC8',meta:'#FFCC80'},
+  {enum:'moonlitChamber',label:'Moonlit Chamber',vibe:'LUNAR',diff:'NORMAL',elem:'MOON',glyph:'\uD83C\uDF19',picker:true,visible:true,desc:'Silver light spills through the gungeon grates as a crescent moon watches from above. Cool midnight blues with silver-white crescents drifting in the dark — serene, watchful, and quietly powerful.',scaffold:'#0A0E1A',card:'#121829',primary:'#90CAF9',secondary:'#E1F5FE',headline:'#B3E5FC',font:'cinzel',aura:'moonGlow',radius:14,combat:'#90CAF9',handling:'#E1F5FE',meta:'#B3E5FC'},
+  {enum:'stormCaller',label:'Storm Caller',vibe:'ELECTRIC',diff:'EXPERT',elem:'LIGHTNING',glyph:'\u26A1',picker:false,visible:true,desc:'The gungeon trembles as thunder rolls through its corridors. Crackling electric yellow arcs against storm-grey steel, with voltage blue accents — a high-voltage aesthetic for the gungeoneer who shoots first and asks questions never.',scaffold:'#0A0A12',card:'#14141F',primary:'#FFEB3B',secondary:'#42A5F5',headline:'#FFFF00',font:'fasterOne',aura:'lightningArc',radius:8,combat:'#FFEB3B',handling:'#42A5F5',meta:'#FFFF00'},
+  {enum:'theCultist',label:'The Cultist',vibe:'MYSTIC',diff:'HARD',elem:'SHADOW',glyph:'\u25C8',picker:false,visible:true,desc:'A hooded figure kneels in candlelight. Deep blue robes, flickering gold, and shadow-purple — for the gungeoneer who speaks in riddles and fights in silence.',scaffold:'#0D0F1A',card:'#161A2E',primary:'#FFD700',secondary:'#7B68EE',headline:'#FFE082',font:'medievalSharp',aura:'voidPulse',radius:14,combat:'#FFD700',handling:'#7B68EE',meta:'#FFE082'},
+  {enum:'theGunslinger',label:'The Gunslinger',vibe:'LEGENDARY',diff:'EXTREME',elem:'BULLET',glyph:'\u2726',picker:false,visible:true,desc:'The legend who killed the past with two guns and a grin. Polished gold, worn leather, and gunmetal — for the gungeoneer who walks in like they own the place.',scaffold:'#1A1208',card:'#2A1E10',primary:'#FFB300',secondary:'#FF6F00',headline:'#FFD54F',font:'cinzel',aura:'goldShimmerRing',radius:10,combat:'#FFB300',handling:'#FF6F00',meta:'#FFD54F'},
+  {enum:'theConvict',label:'The Convict',vibe:'REBELLIOUS',diff:'HARD',elem:'FIRE',glyph:'\u25B2',picker:false,visible:true,desc:'A rebel with a shotgun and a grudge. Prison orange, rebel red, and dark steel — for the gungeoneer who fights harder when cornered.',scaffold:'#1A0F0A',card:'#2A1810',primary:'#FF5722',secondary:'#D32F2F',headline:'#FF8A65',font:'anton',aura:'forgeGlow',radius:8,combat:'#FF5722',handling:'#D32F2F',meta:'#FF8A65'},
+  {enum:'theHunter',label:'The Hunter',vibe:'WILDERNESS',diff:'NORMAL',elem:'NATURE',glyph:'\u27A4',picker:false,visible:true,desc:'A crossbow, a plan, and patience. Forest green, bark brown, and crossbow silver — for the gungeoneer who hunts from the shadows of the gungeon.',scaffold:'#0A1208',card:'#121E10',primary:'#66BB6A',secondary:'#A1887F',headline:'#A5D6A7',font:'merriweather',aura:'pastelPulse',radius:12,combat:'#66BB6A',handling:'#A1887F',meta:'#A5D6A7'},
+  {enum:'thePilot',label:'The Pilot',vibe:'CHARISMATIC',diff:'NORMAL',elem:'COSMIC',glyph:'\u2605',picker:false,visible:true,desc:'A rogueish grin and a trusty sidearm. Space silver, trust blue, and starlight — for the gungeoneer who talks their way in and shoots their way out.',scaffold:'#0A0E1A',card:'#121829',primary:'#42A5F5',secondary:'#B0BEC5',headline:'#82B1FF',font:'orbitron',aura:'cosmicTemporal',radius:12,combat:'#42A5F5',handling:'#B0BEC5',meta:'#82B1FF'},
+  {enum:'theRat',label:'The Resourceful Rat',vibe:'CUNNING',diff:'NORMAL',elem:'GOLD',glyph:'\u25C6',picker:false,visible:true,desc:'A dealmaker in the dark. Cheese gold, rat brown, and stolen silver — for the gungeoneer who always has a backup plan and a price.',scaffold:'#12100A',card:'#1E1A10',primary:'#FFC107',secondary:'#8D6E63',headline:'#FFD54F',font:'pressStart2p',aura:'pastelPulse',radius:10,combat:'#FFC107',handling:'#8D6E63',meta:'#FFD54F'},
+  {enum:'breachGateway',label:'The Breach',vibe:'ENTRY',diff:'NORMAL',elem:'PORTAL',glyph:'\u25C9',picker:false,visible:true,desc:'The gateway shimmers. Portal purple, breach blue, and starlight white — the first step into the gungeon, where every run begins.',scaffold:'#0A0814',card:'#14102A',primary:'#7C4DFF',secondary:'#18FFFF',headline:'#B388FF',font:'rajdhani',aura:'paradoxRift',radius:16,combat:'#7C4DFF',handling:'#18FFFF',meta:'#B388FF'},
+  {enum:'leadLordKeep',label:'Lead Lord\u0027s Keep',vibe:'REGAL',diff:'NORMAL',elem:'BRASS',glyph:'\u2756',picker:false,visible:true,desc:'The first chamber, ruled by the Bullet King. Brass, gold, and stone grey — a regal hall where the gungeon begins in earnest.',scaffold:'#12100A',card:'#221E14',primary:'#C5A05E',secondary:'#D4AF37',headline:'#FFD700',font:'cinzelDecorative',aura:'pastelPulse',radius:12,combat:'#C5A05E',handling:'#D4AF37',meta:'#FFD700'},
+  {enum:'oubliettePit',label:'The Oubliette',vibe:'TOXIC',diff:'HARD',elem:'POISON',glyph:'\u2620',picker:false,visible:true,desc:'A forgotten chamber of sewage and poison. Toxic green, rust orange, and murky brown — for the gungeoneer who ventures where others flush.',scaffold:'#0A1208',card:'#121E0E',primary:'#8BC34A',secondary:'#BF360C',headline:'#AED581',font:'shareTechMono',aura:'toxicOoze',radius:10,combat:'#8BC34A',handling:'#BF360C',meta:'#AED581'},
+  {enum:'blackPowderMine',label:'Black Powder Mine',vibe:'INDUSTRIAL',diff:'HARD',elem:'EXPLOSIVE',glyph:'\u2738',picker:false,visible:true,desc:'A mine shaft of coal and gunpowder. Spark orange, coal black, and rust brown — for the gungeoneer who digs deep and shoots straight.',scaffold:'#0A0A08',card:'#14140E',primary:'#FF6F00',secondary:'#795548',headline:'#FFAB40',font:'blackOpsOne',aura:'forgeGlow',radius:8,combat:'#FF6F00',handling:'#795548',meta:'#FFAB40'},
+  {enum:'bulletHellFloor',label:'Bullet Hell',vibe:'APOCALYPTIC',diff:'EXTREME',elem:'BULLET',glyph:'\u2715',picker:false,visible:true,desc:'The final floor. Blood red, bullet black, and warning yellow — for the gungeoneer who has killed their past and lives to tell about it.',scaffold:'#0A0404',card:'#140808',primary:'#D32F2F',secondary:'#FFC107',headline:'#FF5252',font:'archivoBlack',aura:'lichPurple',radius:6,combat:'#D32F2F',handling:'#FFC107',meta:'#FF5252'},
+  {enum:'rgDepartment',label:'R&G Department',vibe:'BUREAUCRATIC',diff:'EXPERT',elem:'NEON',glyph:'\u25B8',picker:false,visible:true,desc:'The office floor of the Research & Development Department. Neon green, paper white, and office grey — for the gungeoneer who files paperwork between bullets.',scaffold:'#0C0C0C',card:'#181818',primary:'#00E676',secondary:'#E0E0E0',headline:'#69F0AE',font:'jetBrainsMono',aura:'lightningArc',radius:8,combat:'#00E676',handling:'#E0E0E0',meta:'#69F0AE'},
+  {enum:'custom',label:'Custom',vibe:'TACTICAL',diff:'NORMAL',elem:'BULLET',glyph:'\uD83C\uDFA8',picker:false,visible:true,desc:'A blank canvas of absolute personal madness. Paint the town in your own choice of radioactive colors. Godspeed, designer!',scaffold:'user',card:'user',primary:'user',secondary:'user',headline:'user',font:'user',aura:'user',radius:0,combat:'-',handling:'-',meta:'-'},
+  {enum:'minimalist',label:'Minimalist',vibe:'CLEAN',diff:'NORMAL',elem:'METAL',glyph:'\u2014',picker:false,visible:true,desc:'A stripped-back metallic interface: pure black, clean white, and cold grey. No glow, no noise — just crisp information.',scaffold:'#0A0A0A',card:'#121212',primary:'#E0E0E0',secondary:'#9E9E9E',headline:'#FFFFFF',font:'dmSans',aura:'none',radius:6,combat:'#E0E0E0',handling:'#9E9E9E',meta:'#FFFFFF'},
+];
+
+const commands = [
+  {cmd:'/sync',slot:'Any',type:'pre',label:'Pre-session',desc:'Sync both repos, check branch drift, flag stale slots. Read AGENT_STATUS.md, pull master on both repos, check unmerged branches, check Shared Core locks.'},
+  {cmd:'/bughunt',slot:'Any',type:'post',label:'Post-task',desc:'Analyzer + dispose + context.mounted + notifyListeners check with proof paste. Run before declaring any task done.'},
+  {cmd:'/precommit',slot:'Any',type:'pre',label:'Pre-commit',desc:'Cross-repo safety: off-limits files, wrong repo, branch check. Run before git commit.'},
+  {cmd:'/cleanup',slot:'SUPPORT',type:'hygiene',label:'Hygiene',desc:'7-step sweep: dead code, doc consistency, stale docs, AGENTS.md drift, changelog sync, asset references, report.'},
+  {cmd:'/frame-audit',slot:'VISUAL',type:'post',label:'Post-animation',desc:'CustomPaint\u2192RepaintBoundary wrapping, AnimationController vs flutter_animate ratio, spring curve adoption, particle engine gaps.'},
+  {cmd:'/state-audit',slot:'CORE',type:'post',label:'Post-state',desc:'notifyListeners storms, unawaited setters, SharedPreferences write paths, numeric clamps, VisualPrefs schema gaps.'},
+  {cmd:'/blueprint',slot:'CORE',type:'pre',label:'Pre-feature',desc:'Touch-point map: files touched, shared-core conflicts, data needs, pubspec impact, existing plan reference.'},
+  {cmd:'/test',slot:'Any',type:'verify',label:'Verify',desc:'Run flutter test with expanded reporter, paste pass/fail counts.'},
+  {cmd:'/analyze',slot:'Any',type:'verify',label:'Verify',desc:'Run flutter analyze lib, paste output.'},
+  {cmd:'/build-web',slot:'Any',type:'testing',label:'Testing',desc:'Build web + start local HTTP server + report URL for Playwright.'},
+  {cmd:'/screenshot',slot:'Any',type:'testing',label:'Testing',desc:'Playwright: load app, navigate to screen, capture screenshot. Takes screen name + optional tap sequence.'},
+  {cmd:'/version-bump',slot:'Any',type:'release',label:'Release',desc:'4-file version bump (pubspec, changelog, asset_paths, main_menu) without full APK build.'},
+  {cmd:'/release-build',slot:'Any',type:'release',label:'Release',desc:'Full release: version + changelog + APK build + push. Version bump, changelog, VERSION_HISTORY, main_menu label, APK compile.'},
+  {cmd:'/verify-data',slot:'Any',type:'verify',label:'Data',desc:'JSON data integrity pipeline (data_integrity.py, audit_stats.py, validate_db.py).'},
+  {cmd:'/playwright-smoke',slot:'Any',type:'testing',label:'Testing',desc:'App load verification after build. Quick smoke test that the app renders.'},
+  {cmd:'/playwright-screens',slot:'Any',type:'testing',label:'Testing',desc:'Full screen tour + screenshot capture. Mobile viewport, all major screens.'},
+  {cmd:'/playwright-features',slot:'Any',type:'testing',label:'Testing',desc:'E2E feature flow testing. Interaction sequences, MP flows, settings, navigation.'},
+];
+
+function renderThemes() {
+  const grid = document.getElementById('themeGrid');
+  grid.innerHTML = themes.map(t => {
+    const isCustom = t.enum === 'custom';
+    const swatches = isCustom ? '<div style="font-size:11px;color:var(--muted);padding:8px 0">User-defined colors — blank canvas</div>' : [
+      '<div class="swatches">',
+      '<div class="swatch" style="background:'+t.scaffold+'" data-color="'+t.scaffold+'"></div>',
+      '<div class="swatch" style="background:'+t.card+'" data-color="'+t.card+'"></div>',
+      '<div class="swatch" style="background:'+t.primary+'" data-color="'+t.primary+'"></div>',
+      '<div class="swatch" style="background:'+t.secondary+'" data-color="'+t.secondary+'"></div>',
+      '<div class="swatch" style="background:'+t.headline+'" data-color="'+t.headline+'"></div>',
+      '</div>',
+      '<div style="display:flex;gap:4px;font-size:8px;color:var(--dim);font-family:var(--mono)">',
+      '<span style="flex:1;text-align:center">scaffold</span>',
+      '<span style="flex:1;text-align:center">card</span>',
+      '<span style="flex:1;text-align:center">primary</span>',
+      '<span style="flex:1;text-align:center">secondary</span>',
+      '<span style="flex:1;text-align:center">headline</span>',
+      '</div>'
+    ].join('');
+    const statColors = isCustom ? '' : [
+      '<div class="stat-colors">',
+      '<span class="stat-chip" style="background:'+t.combat+';color:#000">COMBAT</span>',
+      '<span class="stat-chip" style="background:'+t.handling+';color:#000">HANDLE</span>',
+      '<span class="stat-chip" style="background:'+t.meta+';color:#000">META</span>',
+      '</div>'
+    ].join('');
+    const badges = [];
+    if (t.picker) badges.push('<span class="picker-only">PICKER</span>');
+    if (!t.visible) badges.push('<span class="hidden-theme">HIDDEN</span>');
+    const glyphColor = isCustom ? 'var(--support)' : t.primary;
+    return [
+      '<div class="theme-card">',
+      '<div class="theme-header">',
+      '<div class="theme-glyph" style="background:'+t.card+';color:'+glyphColor+'">'+t.glyph+'</div>',
+      '<div><div class="theme-name">'+t.label+badges.join('')+'</div>',
+      '<div class="theme-enum">'+t.enum+'</div></div>',
+      '<div class="theme-vibe" style="background:'+t.card+';color:'+t.primary+';border:1px solid '+t.primary+'40">'+t.vibe+'</div>',
+      '</div>',
+      '<div class="theme-desc">'+t.desc+'</div>',
+      swatches,
+      statColors,
+      '<div class="theme-meta">',
+      '<span>DIFF: '+t.diff+'</span>',
+      '<span>ELEM: '+t.elem+'</span>',
+      '<span>R: '+(isCustom?'\u2014':t.radius)+'</span>',
+      '<span>FONT: '+t.font+'</span>',
+      '<span>AURA: '+t.aura+'</span>',
+      '</div></div>'
+    ].join('');
+  }).join('');
+}
+
+function renderCommands() {
+  const body = document.getElementById('cmdTableBody');
+  body.innerHTML = commands.map(c =>
+    '<tr><td><code>'+c.cmd+'</code></td><td>'+c.slot+'</td><td><span class="cmd-type '+c.type+'">'+c.label+'</span></td><td>'+c.desc+'</td></tr>'
+  ).join('');
+}
+
+document.querySelectorAll('.top-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.top-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    document.querySelector('[data-panel="'+tab.dataset.top+'"]').classList.add('active');
+  });
+});
+document.querySelectorAll('.agent-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.agent-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.agent-content').forEach(c => c.classList.remove('active'));
+    tab.classList.add('active');
+    document.querySelector('.agent-content[data-agent="'+tab.dataset.agent+'"]').classList.add('active');
+  });
+});
+document.querySelectorAll('.sub-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    const parent = tab.closest('.agent-content');
+    parent.querySelectorAll('.sub-tab').forEach(t => t.classList.remove('active'));
+    parent.querySelectorAll('.sub-content').forEach(c => c.classList.remove('active'));
+    tab.classList.add('active');
+    parent.querySelector('[data-sub="'+tab.dataset.sub+'"]').classList.add('active');
+  });
+});
+renderThemes();
+renderCommands();
+</script>
+</body>
+</html>

@@ -6,14 +6,16 @@
 
 Up to 4 agents can work on this codebase simultaneously. Each has a clear domain. All follow the Ponytail Rules (below) and the Safety Rules (below). Neither touches the other's domain without explicit user approval.
 
-| Agent | Command | Role | One-line |
-|-------|---------|------|----------|
-| **Coder** | `/bot-coder` | Developer (full-stack) | Builds features, fixes bugs, writes logic, data, UI, screens — all production code |
-| **Maintainer** | `/bot-maintainer` | Reviewer/QA/Coordinator | Verifies quality, runs tests, manages releases, guards integrity, enforces conventions |
+| Agent | Role | One-line |
+|-------|------|----------|
+| **VISUAL** (Slot 1) | Visual/motion specialist | Animations, particles, themes, UI polish, RepaintBoundary optimization |
+| **CORE** (Slot 2) | Developer + planner | All production code, state management, architecture, blueprints, verification |
+| **PARALLEL** (Slot 3) | Second coder | Independent feature work when 2+ features need to ship in parallel |
+| **SUPPORT** (Slot 4) | Cleanup + QA + docs | Test infrastructure, dead code sweeps, doc consistency, Playwright testing |
 
-**Self-verification standard:** Every agent runs `/bughunt-proof` on its own work before declaring a task done. The Creator-Verifier handoff is optional for large changes — use `/bot-maintainer` when a change is complex enough to warrant a second perspective.
+**Self-verification standard:** Every agent runs `/bughunt` on its own work before declaring a task done. For large or complex changes, optionally ask another slot for a second perspective.
 
-**Optional — Architect mode:** When you need research/planning without code changes, invoke `/bot-architect` (if created). Not a core agent — use on demand.
+**Retired commands:** `/bot-coder`, `/bot-maintainer`, `/bot-architect`, `/caveman-ponytail` — see Commands Reference below for why.
 
 ---
 
@@ -21,24 +23,24 @@ Up to 4 agents can work on this codebase simultaneously. Each has a clear domain
 
 Every agent must explicitly state their identity, active slot, and core competency in the opening line of every response or status update. No anonymous executions.
 
-### 1. Slot 1 — XEENU-ANIMATOR
+### 1. Slot 1 — VISUAL
 * **Identity & Persona:** The visual wizard and motion maestro.
-* **Specialty:** 2.5D volumetric layouts, custom particle engines, spring-physics curves, and high-framerate `RepaintBoundary` rendering. 
+* **Specialty:** 2.5D volumetric layouts, custom particle engines, spring-physics curves, and high-framerate `RepaintBoundary` rendering.
 * **Directive:** Brings static UI components to life with fluid, 2026-grade kinetic feedback.
 
-### 2. Slot 2 — Coder-Maintainer
+### 2. Slot 2 — CORE
 * **Identity & Persona:** The core engine builder, structural refactorer, and quality enforcer.
-* **Specialty:** Local-first state management (`Provider`/`ChangeNotifier`), dependency audits, bug squashing (e.g., MP reconnect states), feature blueprints, protocol design, and clean code execution. Absorbed Slot 3's planning duties — `/blueprint` command now lives here.
+* **Specialty:** Local-first state management (`Provider`/`ChangeNotifier`), dependency audits, bug squashing (e.g., MP reconnect states), feature blueprints, protocol design, and clean code execution. Absorbed former Slot 3's planning duties — `/blueprint` command lives here.
 * **Directive:** Ensures the underlying architecture is bulletproof, performant, and future-proof. Plans before building, verifies after building.
 
-### 3. Slot 3 — Coder #2 (second active coder)
+### 3. Slot 3 — PARALLEL
 * **Identity & Persona:** A second pair of hands for parallel feature work.
-* **Specialty:** Whatever Slot 2 isn't doing. Picks up independent features, bug fixes, or UI rework that doesn't overlap with Slot 2's active files. Uses `/bot-coder` and follows the same Coder domain rules.
-* **Directive:** Multiplies throughput when 2+ features need to ship in parallel. Coordinates with Slot 2 via the status board and AC4 file locks.
+* **Specialty:** Whatever CORE isn't doing. Picks up independent features, bug fixes, or UI rework that doesn't overlap with Slot 2's active files. Follows the same Coder domain rules as CORE.
+* **Directive:** Multiplies throughput when 2+ features need to ship in parallel. Coordinates with CORE via the status board and AC4 file locks.
 
-### 4. Slot 4 — UNIVERSAL WORKER
+### 4. Slot 4 — SUPPORT
 * **Identity & Persona:** The flexible generalist and cleanup specialist.
-* **Specialty:** General code generation, documentation writing, minor cleanups, cross-slot assistance, and **dead code / doc consistency auditing** via `/cleanup-doc-audit`.
+* **Specialty:** Test infrastructure, documentation, minor cleanups, cross-slot assistance, Playwright testing, and **dead code / doc consistency auditing** via `/cleanup`.
 * **Directive:** Can step into any domain when Slot 1, 2, or 3 are occupied, but operates with broader strokes. Owns the cleanup-and-doc niche — keeping the codebase lean and docs honest.
 
 ---
@@ -47,13 +49,13 @@ Every agent must explicitly state their identity, active slot, and core competen
 
 All agents share a single status board: **`AGENT_STATUS.md`** (project root). This is the canonical source of truth for who is active and what they're working on. Chat messages are ephemeral; the status board persists.
 
-The board supports **up to 4 concurrent agent slots** — the core triad (XEENU-ANIMATOR, Coder-Maintainer-Reworker-Genius, Planner-Architect-Mockupper) plus the UNIVERSAL WORKER can work simultaneously on different tasks.
+The board supports **up to 4 concurrent agent slots** — VISUAL (visuals/motion), CORE (core code + planning), PARALLEL (second coder), and SUPPORT (cleanup + docs + testing).
 
 ### AC1. Claim a slot before starting work
 - Before ANY code changes, read `AGENT_STATUS.md`.
 - Find an empty slot (Agent field is `_(none)_`).
 - If all slots are full, check for stale sessions (AC6). If none are stale, STOP and ask the user.
-- Set Agent to your role (`Coder`, `Coder #2`, or `Maintainer`), fill in Session started, Last board update, Working on.
+- Set Agent to your role (`VISUAL`, `CORE`, `PARALLEL`, or `SUPPORT`), fill in Session started, Last board update, Working on.
 - If claiming a task from the Task Queue, add your name to the "Claimed by" column. Check the "Blocked by" column — if the blocking task isn't DONE, don't claim it yet.
 - **Self-check:** After writing your slot, re-read `AGENT_STATUS.md` and verify your slot is actually filled. Only then proceed to write code.
 - This is step zero — before even the pre-session workflow.
@@ -463,9 +465,9 @@ Maintainer may fix **trivial issues** directly (1-3 line changes) without full h
 - Never leave uncommitted changes when switching agents.
 
 ### C4. Self-verification protocol
-- After completing any task, run `/bughunt-proof` and paste the results.
-- For large or complex changes (new screens, protocol changes, 10+ file reworks), optionally switch to `/bot-maintainer` for an independent second perspective.
-- For trivial changes (1-5 line fixes), self-verification via `/bughunt-proof` is sufficient.
+- After completing any task, run `/bughunt` and paste the results.
+- For large or complex changes (new screens, protocol changes, 10+ file reworks), optionally ask another slot for an independent second perspective.
+- For trivial changes (1-5 line fixes), self-verification via `/bughunt` is sufficient.
 - The old mandatory Creator-Verifier handoff is retired — agents are trusted to self-verify with proof.
 
 ### C5. Memory protocol
@@ -475,12 +477,11 @@ Maintainer may fix **trivial issues** directly (1-3 line changes) without full h
 - Tag appropriately: `coder`, `maintainer`, `gungeonmate`.
 
 ### C6. Existing workflows coexist
-- `/caveman-ponytail` — orthogonal style mode, stacks on top of any bot.
-- `/release-build` — Maintainer owns and executes this workflow.
-- `/verify-data` — Maintainer owns and executes this workflow.
-- `/playwright-smoke` — Maintainer runs after builds to verify app loads.
-- `/playwright-screens` — Maintainer runs for full screen tour + screenshot capture.
-- `/playwright-features` — Maintainer runs for end-to-end feature flow testing.
+- `/release-build` — any slot can execute this workflow (typically CORE or SUPPORT).
+- `/verify-data` — any slot can execute this workflow (typically CORE or SUPPORT).
+- `/playwright-smoke` — SUPPORT runs after builds to verify app loads.
+- `/playwright-screens` — SUPPORT runs for full screen tour + screenshot capture.
+- `/playwright-features` — SUPPORT runs for end-to-end feature flow testing.
 - `/playwright` — reference doc for all Playwright testing capabilities.
 - Bots reference these workflows; they do not replace them.
 
@@ -519,9 +520,11 @@ Before starting any task, check `docs/` for an existing spec. If one exists, fol
 
 ## Agent Commands Reference
 
+> **Cheat sheet:** Open `gungeon-mate-agents.html` in a browser for a visual quick-reference of all agents, commands, and themes.
+
 ### Universal Commands (any slot)
 
-#### `/sync-audit` — Pre-session sync + drift detection
+#### `/sync` — Pre-session sync + drift detection
 Run at session start. Syncs both repos, checks branch drift, flags stale slots.
 1. Read `AGENT_STATUS.md` — identify your slot, check all 4 slots for staleness
 2. Root repo: `git checkout master && git pull origin master` (if reachable)
@@ -531,7 +534,7 @@ Run at session start. Syncs both repos, checks branch drift, flags stale slots.
 6. Check: any Shared Core files currently claimed? List them
 7. Report: "Synced. Slot N is [active/idle]. Branches needing rebase: [list]. Shared Core locked: [list]. Ready to work."
 
-#### `/bughunt-proof` — Enforced post-task bughunt with proof paste
+#### `/bughunt` — Post-task bughunt with proof paste
 Run before declaring a task done. Makes S6/S10 impossible to skip.
 1. `git diff --name-only HEAD~1` — identify files changed in last commit
 2. `flutter analyze [changed files]` — paste full output
@@ -541,7 +544,7 @@ Run before declaring a task done. Makes S6/S10 impossible to skip.
 6. If non-trivial logic: verify a self-check exists (per Ponytail Rules)
 7. Report: "Bughunt complete. Analyzer: [output]. Missing dispose: [N]. Missing mounted: [N]. Notify storm: [N]. Self-check: [present/missing]."
 
-#### `/diff-impact` — Pre-commit safety check across both repos
+#### `/precommit` — Pre-commit safety check across both repos
 Run before `git commit`. Catches wrong-repo commits and off-limits file touches.
 1. Root repo: `git status` + `git diff --stat` — list changed files
 2. App repo: `git status` + `git diff --stat` — list changed files
@@ -552,9 +555,43 @@ Run before `git commit`. Catches wrong-repo commits and off-limits file touches.
 7. Changes in wrong repo (lib/ on root, docs/ on app)? → WARN
 8. Report: "Root: [N files]. App: [N files]. Off-limits: [list/none]. Branch: [correct/warn]. Ready: [yes/blocked]."
 
+#### `/test` — Run flutter test with expanded reporter
+Run when you need to verify the test suite.
+1. `cd gungeon_mate && & 'C:\src\flutter\bin\flutter.bat' test --reporter expanded`
+2. Paste pass/fail counts
+3. If failures: read the failure output, identify root cause, fix or flag
+
+#### `/analyze` — Run flutter analyze
+Run when you need to check for analyzer warnings.
+1. `cd gungeon_mate && & 'C:\src\flutter\bin\flutter.bat' analyze lib`
+2. Paste full output
+3. If warnings: fix or flag each one
+
+#### `/build-web` — Build web + start HTTP server
+Run when you need to Playwright-test or share a live preview.
+1. `cd gungeon_mate && & 'C:\src\flutter\bin\flutter.bat' build web`
+2. Start a local HTTP server on a fresh port (e.g. 8765): `python -m http.server 8765 --directory build/web`
+3. Report the URL
+4. Note: service workers from prior sessions may cache old builds — unregister if needed
+
+#### `/screenshot` — Playwright screenshot capture
+Run when you need a visual check of a screen.
+1. Launch Playwright against the web build URL
+2. Navigate to the target screen (provide tap sequence if needed)
+3. Capture screenshot at mobile viewport (412x915)
+4. Report the screenshot path
+
+#### `/version-bump` — 4-file version bump without full APK
+Run when you need to bump the version for a minor release.
+1. `pubspec.yaml`: bump `version: X.Y.Z+build`
+2. `assets/data/changelog.json`: add new entry at top of array
+3. `lib/utils/asset_paths.dart`: update `kAppVersion`
+4. `lib/screens/main_menu_screen.dart`: reads `kAppVersion` dynamically — no change needed
+5. Commit all 4 files together
+
 ### Slot-Specific Commands
 
-#### `/frame-audit` (Slot 1 — XEENU-ANIMATOR)
+#### `/frame-audit` (Slot 1 — VISUAL)
 Run after animation work. Finds missing RepaintBoundary, spring curve gaps.
 1. Grep all `CustomPaint(` instances → list file + line
 2. For each: check if wrapped in `RepaintBoundary` → flag missing
@@ -564,7 +601,7 @@ Run after animation work. Finds missing RepaintBoundary, spring curve gaps.
 6. Check particle engine: new presets without glow? Glow effects without render logic?
 7. Report: "CustomPaint: [N total, M missing RepaintBoundary]. Controller:animate: [X:Y]. Spring: [N]. Linear: [N]. Gaps: [list]."
 
-#### `/state-audit` (Slot 2 — Coder-Maintainer)
+#### `/state-audit` (Slot 2 — CORE)
 Run after state changes. Finds notifyListeners storms, unawaited setters, schema gaps.
 1. Count `notifyListeners()` in `run_provider.dart` and `app_theme.dart` → total per file
 2. Grep for `Future<void> set*` methods → check if callers await them
@@ -574,7 +611,7 @@ Run after state changes. Finds notifyListeners storms, unawaited setters, schema
 6. Check: any enum in prefs without `.clamp(0, Enum.values.length - 1)` on read?
 7. Report: "notifyListeners: [N, M new]. Unawaited: [N]. Writes: [N]. Missing clamps: [list]. Schema gaps: [list]."
 
-#### `/blueprint` (Slot 2 — Coder-Maintainer, formerly Slot 3)
+#### `/blueprint` (Slot 2 — CORE)
 Run before coding a feature. Maps every file a feature would touch, identifies conflicts.
 1. Take feature description as input
 2. Grep for relevant keywords across `lib/` → identify candidate files
@@ -584,7 +621,7 @@ Run before coding a feature. Maps every file a feature would touch, identifies c
 6. Check `docs/` — does a plan already exist?
 7. Output: touch-point list (file, reason, shared-core?, blocked?), dependency graph, data needs, existing plan reference
 
-#### `/cleanup-doc-audit` (Slot 4 — UNIVERSAL WORKER)
+#### `/cleanup` (Slot 4 — SUPPORT)
 Run when the codebase needs a hygiene pass. Combines dead code detection, doc consistency, and stale reference cleanup in one sweep.
 1. **Dead code:** Grep for unused imports across `lib/` → list file + import line. Grep for unused private functions/variables (`_` prefix, no references). Grep for `// TODO` and `// FIXME` comments → list with age if possible.
 2. **Doc consistency:** Check every doc in `docs/` — does it reference files that still exist? Does it reference widgets/screens that were renamed or deleted? List broken references.
@@ -593,3 +630,16 @@ Run when the codebase needs a hygiene pass. Combines dead code detection, doc co
 5. **Changelog sync:** Check if `assets/data/changelog.json` latest entry matches the latest commit message. Flag desync.
 6. **Asset references:** Grep for `Image.asset('assets/...')` calls → verify the asset paths exist in `pubspec.yaml` and on disk. List missing.
 7. Report: "Dead code: [N imports, M functions, K TODOs]. Broken doc refs: [list]. Stale docs: [list]. AGENTS.md drift: [list]. Changelog desync: [yes/no]. Missing assets: [list]."
+
+### Retired Commands
+
+| Command | Why retired |
+|---------|-------------|
+| `/bot-coder` | Vestigial. Agents just claim a slot and work — no one "activates coder mode" |
+| `/bot-maintainer` | Self-verification replaced the Creator-Verifier handoff |
+| `/bot-architect` | Was always optional. `/blueprint` covers planning now |
+| `/caveman-ponytail` | Ponytail Rules are baked into every agent's behavior already |
+| `/sync-audit` | Renamed to `/sync` (shorter) |
+| `/bughunt-proof` | Renamed to `/bughunt` (shorter) |
+| `/diff-impact` | Renamed to `/precommit` (clearer) |
+| `/cleanup-doc-audit` | Renamed to `/cleanup` (shorter) |
