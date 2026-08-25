@@ -189,7 +189,7 @@ The active run screen supports **4 display modes** via `RunDisplayMode` enum:
 | `VisualPrefs` (persisted user prefs) | `lib/services/app_theme.dart` |
 | `kVisibleThemes` list | `lib/services/app_theme.dart` |
 | `ThemeOverlay` (global visual stack) | `lib/widgets/theme_overlay.dart` |
-| `ThemeLore` registry (14 entries) | `lib/widgets/active_run/modes/theme_lore.dart` |
+| `ThemeLore` registry (14 entries) | **Deleted** (v2.0.2) — was `lib/widgets/active_run/modes/theme_lore.dart` |
 
 **14 visible themes:** Minimalist, Unicorn, Forge Master, Robot's Core, Cat Lady, Moonlit Chamber, Storm Caller, Mr. Robot, Valor of Marines, The Bullet, The Paradox, Gunpowder, Dragunfire, Lich's Domain, Custom.
 
@@ -300,9 +300,7 @@ Key fields:
 | File | Purpose |
 |------|---------|
 | `lib/widgets/active_run/gungeon_meter.dart` | Interactive coolness/curse meter |
-| `lib/widgets/active_run/depth_tile.dart` | 2.5D perspective inventory tile |
 | `lib/widgets/backgrounds/animated_wallpaper.dart` | MP4 video wallpaper + vortex fallback |
-| `lib/widgets/backgrounds/ambient_shader_layer.dart` | Fragment shader ambient layer |
 
 ### Multiplayer (v2.0.3 — fully reworked)
 
