@@ -267,6 +267,97 @@ The 3x glow boost is applied but the glow rendering itself (RadialGradient in Th
 | `778c09c` | B Fix | Themes UX rework — live preview, swipe, compact grids |
 | `d709dba` | B Polish | Compact swipable grids, font scoping, glow 3x, home polish |
 | `74b33c4` | B Fix 2 | UI bug fixes (grid sizing, font uniformity) + Codex rework |
+| `a0fe219` | Docs | REWORK_LESSONS_LEARNED.md — consolidated learnings |
+| `c8080f2` | C | Custom themes + curated premades + UI rework |
+
+---
+
+## 8. PHASE C — Custom Themes & Curated Premades (Lessons)
+
+### 8.1 Curated themes = complete identity, not just colors
+**Decision:** Selecting a premade theme always resets particle/typo/ambiance to the theme's curated defaults. No "first time only" or "prompt" — always reset.
+
+**Why:** A "curated theme" means the theme has a complete, intentional visual identity. If the user customizes and switches back, they get the curated experience again. Their customizations are lost. This is the correct mental model for "premade theme = curated package."
+
+**Rule:** Premade themes are curated packages (colors + particles + glow + font + shader). Selecting one always applies the full curation. Users who want to keep their settings should use CUSTOM or save a custom theme.
+
+### 8.2 CUSTOM tile as entry point, not as a theme itself
+**Pattern:** The CUSTOM tile (first in picker, "?" icon) is not a theme — it's an entry point that says "make your own." Tapping it:
+1. Selects `AppThemeMode.custom` as the preview mode
+2. Shows a floating tooltip directing users to Particles/Typography/Ambiance tabs
+3. Glows those tabs amber to visually guide the user
+4. Shows a SAVE THEME button in the top bar
+
+**Rule:** When a feature requires user education, use progressive disclosure — don't explain everything upfront. Show a tooltip on first interaction, glow the relevant tabs, and reveal the save action only when there's something to save.
+
+### 8.3 Custom theme persistence — SharedPreferences JSON
+**Implementation:** `CustomThemeStore` saves custom themes as a JSON list in SharedPreferences. Each `SavedCustomTheme` captures: id, name, splashSlug, baseMode, and the full `VisualPrefs` state. Unlimited count.
+
+**Why SharedPreferences over SQLite:** Custom themes are small JSON blobs (a few hundred bytes each). Even 100 themes is < 50KB. SharedPreferences is simpler, works offline, and doesn't need migration. SQLite would be overkill.
+
+**Rule:** For small, user-created, list-based data, SharedPreferences + JSON is sufficient. Don't reach for SQLite unless you have hundreds of records with queryable fields.
+
+### 8.4 Graphic reuse for custom themes
+**Decision:** Custom themes pick from existing premade splash graphics. No file upload/import.
+
+**Why:** File import requires file picker permissions, image storage/compression, and platform-specific handling. Reusing existing art is simpler, keeps the app lightweight, and the 8 premade graphics are already high quality. Users pick the graphic that closest matches their custom theme's vibe.
+
+### 8.5 Long-press for destructive actions
+**Pattern:** Long-press a saved custom theme → delete dialog. Long-press a premade theme → quick-apply.
+
+**Rule:** Long-press is the right gesture for "power user" actions (delete, quick-apply). It keeps the UI clean (no delete buttons on every tile) while making the action discoverable through the red X indicator on custom theme tiles.
+
+---
+
+## 9. IMAGE RATIO ASSESSMENT — Theme Graphics
+
+### Current state
+- All 14 splash images are **2048x2048 (1:1 square)**
+- File sizes: 1.7MB – 8.6MB (avg ~3MB each, total ~38MB)
+- Format: JPG
+
+### Where images are rendered
+
+| Location | Aspect ratio | Fit | Notes |
+|----------|-------------|-----|-------|
+| Theme picker tiles | 3:4 portrait (0.75) | `BoxFit.cover` | Crops left/right of square |
+| Live preview (sticky) | ~16:9 landscape | `BoxFit.cover` | Crops top/bottom of square |
+| Fullscreen preview | ~9:16 portrait (mobile) | `BoxFit.cover` | Crops left/right heavily |
+| Save dialog graphic picker | 3:4 portrait (0.75) | `BoxFit.cover` | Crops left/right of square |
+
+### The problem
+1:1 square images rendered in 3:4 portrait or 9:16 portrait containers with `BoxFit.cover` lose significant content on the left/right. For images with centered subjects this is usually fine, but for wide compositions (landscapes, scenes) important detail gets cropped.
+
+### Recommendation: Dual-format asset system
+
+**For Gemini image generation, generate TWO versions per theme:**
+
+| Format | Ratio | Dimensions | Used for |
+|--------|------|------------|----------|
+| **Banner** | 4:3 landscape | 2048x1536 | Top panel/banner when theme is selected (fullscreen preview top portion) |
+| **Panel** | 3:4 portrait | 1536x2048 | Theme picker tiles, save dialog picker, panel thumbnails |
+
+**Why not 16:9 for banner?** 4:3 is a better middle ground — it works for both landscape preview and portrait tiles with less aggressive cropping. 16:9 would be too wide for the portrait tiles.
+
+**Why not 1:1 anymore?** 1:1 is the worst of both worlds — it gets cropped in both portrait and landscape containers. A dual-format system gives each container the right aspect ratio natively.
+
+### File size optimization
+Current images are 1.7–8.6MB each. For web delivery, target:
+- Banner (2048x1536): < 500KB (JPG quality 80)
+- Panel (1536x2048): < 400KB (JPG quality 80)
+- Total per theme: < 900KB (vs current avg 3MB)
+- Total for 8 themes: < 7.2MB (vs current ~38MB)
+
+### Migration plan (when new graphics are ready)
+1. Generate 8 banner + 8 panel images with Gemini
+2. Save as `assets/images/themes/banner/<slug>.jpg` and `assets/images/themes/panel/<slug>.jpg`
+3. Update `splashSlug` getter to return both formats
+4. Update rendering code to pick the right format per container
+5. Keep old 1:1 images as fallback during transition
+6. Remove old images once migration is verified
+
+### For now
+The current 1:1 images work with `BoxFit.cover` — they're functional but not optimal. The dual-format system is a future polish item, not a blocker.
 
 ---
 
