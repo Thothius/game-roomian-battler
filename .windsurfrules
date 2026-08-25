@@ -46,4 +46,4 @@ We are designing with the mechanics, feature sets, and general design philosophy
 We maintain a dynamic, easily editable Changelog:
 - **Location:** The structured logs are kept in `assets/data/changelog.json`.
 - **Display:** Loaded dynamically at startup or via the main menu's Changelog dialog.
-- **Updating:** When any feature is added or updated, document the changes immediately in `assets/data/changelog.json` and keep `gungeon_mate/builds/VERSION_HISTORY.md` in sync.
+- **Updating:** When any feature is added or updated, document the changes immediately in `assets/data/changelog.json` and keep `gungeon_mate/VERSION_HISTORY.md` in sync.

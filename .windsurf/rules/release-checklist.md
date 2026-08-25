@@ -19,5 +19,4 @@ step order exactly (non-blocking build + polling, not a blocking build call).
 
 If asked to modify `guns.json`, `items.json`, or `synergies.json` data content
 (not just code), recommend running `.devin/workflows/verify-data.md` before
-and after the edit, since these files are validated against a cached wiki
-source of truth in `cache_wikigg/`.
+and after the edit.
