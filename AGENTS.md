@@ -11,7 +11,7 @@ Up to 4 agents can work on this codebase simultaneously. Each has a clear domain
 | **Coder** | `/bot-coder` | Developer (full-stack) | Builds features, fixes bugs, writes logic, data, UI, screens — all production code |
 | **Maintainer** | `/bot-maintainer` | Reviewer/QA/Coordinator | Verifies quality, runs tests, manages releases, guards integrity, enforces conventions |
 
-**Creator-Verifier Principle:** Coder builds. Maintainer independently verifies. No agent grades its own homework.
+**Self-verification standard:** Every agent runs `/bughunt-proof` on its own work before declaring a task done. The Creator-Verifier handoff is optional for large changes — use `/bot-maintainer` when a change is complex enough to warrant a second perspective.
 
 **Optional — Architect mode:** When you need research/planning without code changes, invoke `/bot-architect` (if created). Not a core agent — use on demand.
 
@@ -26,20 +26,20 @@ Every agent must explicitly state their identity, active slot, and core competen
 * **Specialty:** 2.5D volumetric layouts, custom particle engines, spring-physics curves, and high-framerate `RepaintBoundary` rendering. 
 * **Directive:** Brings static UI components to life with fluid, 2026-grade kinetic feedback.
 
-### 2. Slot 2 — Coder-Maintainer-Reworker-Genius
-* **Identity & Persona:** The core engine builder and structural refactorer.
-* **Specialty:** Local-first state management (`Provider`/`ChangeNotifier`), dependency audits, bug squashing (e.g., MP reconnect states), and clean code execution.
-* **Directive:** Ensures the underlying architecture is bulletproof, performant, and future-proof.
+### 2. Slot 2 — Coder-Maintainer
+* **Identity & Persona:** The core engine builder, structural refactorer, and quality enforcer.
+* **Specialty:** Local-first state management (`Provider`/`ChangeNotifier`), dependency audits, bug squashing (e.g., MP reconnect states), feature blueprints, protocol design, and clean code execution. Absorbed Slot 3's planning duties — `/blueprint` command now lives here.
+* **Directive:** Ensures the underlying architecture is bulletproof, performant, and future-proof. Plans before building, verifies after building.
 
-### 3. Slot 3 — Planner-Architect-Mockupper
-* **Identity & Persona:** The visionary strategist and systems designer.
-* **Specialty:** Master blueprints, protocol evolution, data pipelines, and UI wireframing.
-* **Directive:** Maps out complex features, maintains synchronization across the collective brain, and prevents architectural drift.
+### 3. Slot 3 — Coder #2 (second active coder)
+* **Identity & Persona:** A second pair of hands for parallel feature work.
+* **Specialty:** Whatever Slot 2 isn't doing. Picks up independent features, bug fixes, or UI rework that doesn't overlap with Slot 2's active files. Uses `/bot-coder` and follows the same Coder domain rules.
+* **Directive:** Multiplies throughput when 2+ features need to ship in parallel. Coordinates with Slot 2 via the status board and AC4 file locks.
 
 ### 4. Slot 4 — UNIVERSAL WORKER
-* **Identity & Persona:** The flexible generalist and reliable utility player.
-* **Specialty:** General code generation, documentation writing, minor cleanups, and cross-slot assistance.
-* **Directive:** Can step into any domain when Slot 1, 2, or 3 are occupied, but operates with broader strokes and lacks the razor-sharp specialty optimizations of the core triad.
+* **Identity & Persona:** The flexible generalist and cleanup specialist.
+* **Specialty:** General code generation, documentation writing, minor cleanups, cross-slot assistance, and **dead code / doc consistency auditing** via `/cleanup-doc-audit`.
+* **Directive:** Can step into any domain when Slot 1, 2, or 3 are occupied, but operates with broader strokes. Owns the cleanup-and-doc niche — keeping the codebase lean and docs honest.
 
 ---
 
@@ -462,11 +462,11 @@ Maintainer may fix **trivial issues** directly (1-3 line changes) without full h
 - When switching to Maintainer for verification, Maintainer reads the commit, runs verification, and commits test/fix changes with `[Maintainer]` prefix.
 - Never leave uncommitted changes when switching agents.
 
-### C4. Creator-Verifier protocol
-- After Coder completes a non-trivial task, switch to `/bot-maintainer` for independent verification.
-- Maintainer runs the verification goal + constraints, flags issues back via git commit comments or direct message.
-- Coder fixes flagged issues before the task is considered done.
-- For trivial changes (1-5 line fixes), self-verification is acceptable — no need for full Maintainer handoff.
+### C4. Self-verification protocol
+- After completing any task, run `/bughunt-proof` and paste the results.
+- For large or complex changes (new screens, protocol changes, 10+ file reworks), optionally switch to `/bot-maintainer` for an independent second perspective.
+- For trivial changes (1-5 line fixes), self-verification via `/bughunt-proof` is sufficient.
+- The old mandatory Creator-Verifier handoff is retired — agents are trusted to self-verify with proof.
 
 ### C5. Memory protocol
 - Memories are for session context, design decisions, and architectural patterns.
@@ -564,7 +564,7 @@ Run after animation work. Finds missing RepaintBoundary, spring curve gaps.
 6. Check particle engine: new presets without glow? Glow effects without render logic?
 7. Report: "CustomPaint: [N total, M missing RepaintBoundary]. Controller:animate: [X:Y]. Spring: [N]. Linear: [N]. Gaps: [list]."
 
-#### `/state-audit` (Slot 2 — Coder-Maintainer-Reworker-Genius)
+#### `/state-audit` (Slot 2 — Coder-Maintainer)
 Run after state changes. Finds notifyListeners storms, unawaited setters, schema gaps.
 1. Count `notifyListeners()` in `run_provider.dart` and `app_theme.dart` → total per file
 2. Grep for `Future<void> set*` methods → check if callers await them
@@ -574,7 +574,7 @@ Run after state changes. Finds notifyListeners storms, unawaited setters, schema
 6. Check: any enum in prefs without `.clamp(0, Enum.values.length - 1)` on read?
 7. Report: "notifyListeners: [N, M new]. Unawaited: [N]. Writes: [N]. Missing clamps: [list]. Schema gaps: [list]."
 
-#### `/blueprint` (Slot 3 — Planner-Architect-Mockupper)
+#### `/blueprint` (Slot 2 — Coder-Maintainer, formerly Slot 3)
 Run before coding a feature. Maps every file a feature would touch, identifies conflicts.
 1. Take feature description as input
 2. Grep for relevant keywords across `lib/` → identify candidate files
@@ -583,3 +583,13 @@ Run before coding a feature. Maps every file a feature would touch, identifies c
 5. Check `pubspec.yaml` — does the feature need a new dependency?
 6. Check `docs/` — does a plan already exist?
 7. Output: touch-point list (file, reason, shared-core?, blocked?), dependency graph, data needs, existing plan reference
+
+#### `/cleanup-doc-audit` (Slot 4 — UNIVERSAL WORKER)
+Run when the codebase needs a hygiene pass. Combines dead code detection, doc consistency, and stale reference cleanup in one sweep.
+1. **Dead code:** Grep for unused imports across `lib/` → list file + import line. Grep for unused private functions/variables (`_` prefix, no references). Grep for `// TODO` and `// FIXME` comments → list with age if possible.
+2. **Doc consistency:** Check every doc in `docs/` — does it reference files that still exist? Does it reference widgets/screens that were renamed or deleted? List broken references.
+3. **Stale docs:** Check for docs older than 30 days that describe completed work (assessments, plans, audits). List candidates for archiving to `docs/archive/`.
+4. **AGENTS.md drift:** Check if slot names, commands, or file paths in AGENTS.md match the actual codebase structure. Flag mismatches.
+5. **Changelog sync:** Check if `assets/data/changelog.json` latest entry matches the latest commit message. Flag desync.
+6. **Asset references:** Grep for `Image.asset('assets/...')` calls → verify the asset paths exist in `pubspec.yaml` and on disk. List missing.
+7. Report: "Dead code: [N imports, M functions, K TODOs]. Broken doc refs: [list]. Stale docs: [list]. AGENTS.md drift: [list]. Changelog desync: [yes/no]. Missing assets: [list]."

@@ -43,7 +43,7 @@ When done, mark status as `DONE` and move to Session Log.
 
 | # | Task | Claimed by | Status | Blocked by |
 |---|------|------------|--------|-------------|
-| 22 | **Part A: MP Lobby Rework** — Remove PINs entirely. Role selection (Main/Sidekick) before options. Main→HOST, Sidekick→JOIN. Main can't pick Cultist. MP visual overhaul (atmosphere, character identity, themed role cards). Files: `mp_lobby_screen.dart`, `mp_connect_screen.dart`, `mp_session.dart`, `mp_sync.dart`, `mp_recovery.dart`, `mp_link.dart`, MP tests. | _(none)_ | PENDING | — |
+| 22 | **Part A: MP Lobby Rework** — Remove PINs entirely. Role selection (Main/Sidekick) before options. Main→HOST, Sidekick→JOIN. Main can't pick Cultist. MP visual overhaul (atmosphere, character identity, themed role cards). Files: `mp_lobby_screen.dart`, `mp_connect_screen.dart`, `mp_session.dart`, `mp_sync.dart`, `mp_recovery.dart`, `mp_link.dart`, MP tests. | UNIVERSAL WORKER | DONE | — |
 | 23 | **Part B: Quick-Add UX + Toolbar** — Move search to bottom of quick-add sheet (keyboard auto-open). Tap ADD → add + auto-clear search for rapid-fire. Move Effects/Shrine/Panels under MORE popup. Remove "More" label, make prefs icon bigger (36→44px). Files: `active_run_screen.dart`, `player_page.dart`, `active_run_helpers.dart`. | _(none)_ | PENDING | — |
 | 24 | **Part C: Char Select + Detail + Main Menu** — Remove How to Use from main menu. Add 10% padding to char select grid. Remove "?" buttons, add long-press for detail. Fix gungeoneer detail 2-row→1-row layout. Name+graphic on top. Loadout with real gun/item icons, linkable. Add "PLAY AS [NAME]" button. Files: `main_menu_screen.dart`, `character_select_screen.dart`, `gungeoneer_detail_screen.dart`. | _(none)_ | PENDING | — |
 | 25 | **Part D: Settings + Codex + Map Icons** — Remove DANGER ZONE collapsible, show END RUN + RESET full-width. Codex: show tab graphics always (not dimmed), better padding. Use map icons (9x9px pixel art) instead of animated sprites in active run header. Files: `settings_tab.dart`, `codex_screen.dart`, `ammonomicon_tabs.dart`, `asset_paths.dart`, `player_header.dart`, `pubspec.yaml`. | _(none)_ | PENDING | — |
@@ -64,10 +64,10 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 
 | Slot | Assigned Agent | Status | Working On | Last Heartbeat |
 | :--- | :--- | :--- | :--- | :--- |
-| **Slot 1** | **XEENU-ANIMATOR** | `ACTIVE` | Custom theme save/load system (uncommitted in worktree) | 2026-08-25 (now) UTC+3 |
-| **Slot 2** | **Coder-Maintainer-Reworker-Genius** | `ACTIVE` | Color sweep + gun stats redesign (3-tier layout, custom icons, remove lore) | 2026-08-25 (now) UTC+3 |
-| **Slot 3** | **Planner-Architect-Mockupper** | `IDLE` | MP rebuild blueprint complete — handed to Slot 2 | 2026-08-24 (now) UTC+3 |
-| **Slot 4** | **UNIVERSAL WORKER** | `IDLE` | Diagnosed build — APK builds clean | 2026-08-19 (now) |
+| **Slot 1** | **XEENU-ANIMATOR** | `ACTIVE` | Custom theme save/load system (uncommitted in worktree — RISK: commit WIP soon) | 2026-08-25 (now) UTC+3 |
+| **Slot 2** | **Coder-Maintainer** | `ACTIVE` | Cultist hide + Tap-to-change removal committed (c722960) | 2026-08-25 (now) UTC+3 |
+| **Slot 3** | **_(none)_** | `IDLE` | Free for second active coder | — |
+| **Slot 4** | **UNIVERSAL WORKER** | `IDLE` | Part A MP Lobby Rework complete | 2026-08-25 (now) UTC+3 |
 
 ### Slot Details
 
@@ -92,13 +92,13 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 
 > **Session ended 2026-08-18 13:48.** Task: Q2 Synergy Predictor (genius audit v0.0.7). Three-file implementation: (1) `RunProvider.synergiesCompletedBy(itemName, {slot})` — returns synergy names that would activate if the item were added to the target slot's loadout. Core logic: `!matchesItems(owned) && matchesItems(owned + item)`. Slot-aware for coop browse. (2) `completesPill` — gold/amber metaPill with link icon, shows "COMPLETES: <name>" or "COMPLETES N". Follows existing pill pattern. (3) `GunMeta` + `ItemMeta` — new optional `completesSynergies` param, renders pill before synergy count. (4) `browse_screen _gunRow + _itemRow` — calls predictor with targetSlot, passes to meta. Version bumped to v1.9.50+126 with full release checklist (pubspec, changelog.json, VERSION_HISTORY.md, main_menu_screen, asset_paths). flutter analyze clean on all 5 files. Sole active agent — no worktree needed.
 
-#### Slot 2 — Coder-Maintainer-Reworker-Genius
+#### Slot 2 — Coder-Maintainer
 | Field | Value |
 |-------|-------|
 | **Branch** | master |
 | **Session started** | 2026-08-25 (now) UTC+3 |
 | **Last board update** | 2026-08-25 (now) UTC+3 |
-| **Last commit** | 0314356 (Token migration batch 2: spacing + radius + typography across 45 files) |
+| **Last commit** | c722960 (Remove 'Tap to change' label + hide Cultist except MP Sidekick) |
 | **Files in progress** | — |
 | **Uncommitted changes** | — |
 
@@ -106,15 +106,17 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 
 > **Session ended 2026-08-18 10:45.** Major work this session: (1) Particle engine expansion — 6 new glow effects, 9 new presets, visual pills, named glow colors (`e7eefbb` gungeon_mate). (2) Animation R&D audit + MUTATION_STATION archive (`8980ec4` root). (3) 2026 animation/architecture assessment + AGENTS.md perf rules (`5f23c6e` root). (4) Genius-tier audit v0.0.7 — 4 user decisions locked: glowing synergy borders, synergy predictor, ambient fragment shaders, RepaintBoundary templates (`e275534` root). (5) Four-slot roster + identity protocol locked (`e102d69` root). (6) AC5 upgraded: slot-aligned branch naming, pre-session sync, milestone tagging (`da436d3` root). (7) Adversarial penetration test — documented nested dual-repo trap, notifyListeners storm, 24h rebase rule (`5005315` root). (8) Agent commands reference added to AGENTS.md. Task 21 (Device Pairing feature) logged in Task Queue. Next session: implement RepaintBoundary templates (Q4 priority 1) or Device Pairing (Task 21) per user direction.
 
-#### Slot 3 — Planner-Architect-Mockupper
+#### Slot 3 — Coder #2 (second active coder)
 | Field | Value |
 |-------|-------|
-| **Branch** | master (root only — docs change) |
-| **Session started** | 2026-08-24 (now) UTC+3 |
-| **Last board update** | 2026-08-24 (now) UTC+3 |
-| **Last commit** | — (uncommitted: docs/mp_audit_and_rework_plan.md, docs/mp_rebuild_blueprint.md, AGENT_STATUS.md) |
+| **Branch** | — |
+| **Session started** | — |
+| **Last board update** | — |
+| **Last commit** | — |
 | **Files in progress** | — |
-| **Uncommitted changes** | docs/mp_audit_and_rework_plan.md (new), docs/mp_rebuild_blueprint.md (new, foolproof edition — 966 lines), AGENT_STATUS.md (slot update) |
+| **Uncommitted changes** | — |
+
+> **Slot restructured 2026-08-25.** Formerly Planner-Architect-Mockupper. Planning duties merged into Slot 2 (Coder-Maintainer). This slot is now a free second coder for parallel feature work. Uses `/bot-coder` and follows Coder domain rules.
 
 > **Session ended 2026-08-18.** Branch `coder/active-run-rework` NOT merged to master (Phase 1 of 5 only — feature incomplete). Next agent: continue from Phase 2 (RunDisplayModeBar). See `docs/active_run_rework_plan.md`. Phase 2 was in_progress when session ended — no files were being edited yet (run_display_mode_bar.dart not yet created).
 
@@ -122,11 +124,13 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 | Field | Value |
 |-------|-------|
 | **Branch** | master |
-| **Session started** | 2026-08-19 (now) UTC+3 |
-| **Last board update** | 2026-08-19 (now) UTC+3 |
-| **Last commit** | `8374996` (root) — Bughunt: 6 new bugs logged (BUG-087 through BUG-092) |
+| **Session started** | 2026-08-25 (now) UTC+3 |
+| **Last board update** | 2026-08-25 (now) UTC+3 |
+| **Last commit** | — (uncommitted: Part A MP Lobby Rework — PINs removed, role selection, visual overhaul) |
 | **Files in progress** | — |
-| **Uncommitted changes** | — (Slot 1 has WIP v1.9.63 — off-limits per AC4) |
+| **Uncommitted changes** | Part A MP Lobby Rework: PINs removed from entire MP system, role selection (MAIN/SIDEKICK) before options, visual overhaul with AmbientGlow background + themed role cards + larger character preview. 16 files modified. flutter analyze clean, 49 tests pass. |
+
+> **Slot restructured 2026-08-25.** Now owns the cleanup-and-doc niche via `/cleanup-doc-audit` command. Use for dead code sweeps, doc consistency checks, stale reference cleanup, and general cross-slot assistance.
 
 > **Session ended 2026-08-18 14:19.** Active Run Rework ALL 5 PHASES COMPLETE. Phase 2: RunDisplayModeBar + CodexBookMode. Phase 3: CompactRunMode (tactical HUD). Phase 4: MatrixMode (purple digital rain + glassmorphic panels). Phase 5: Preferences sheet (display mode picker + 2.5D toggle + tilt intensity slider). 4 new files in modes/ + 1 new painter. All controllers disposed. 26 MP/dice/emote callbacks intact. flutter analyze: 0 issues on full lib/. Versions: 1.9.52→1.9.55 (4 commits).
 
@@ -140,7 +144,7 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 1. Read this file
 2. Find an empty slot (Agent is `_(none)_`)
 3. If all slots are full, check for stale sessions (see below). If none are stale, STOP and ask the user.
-4. Set **Agent** to your role (`XEENU-ANIMATOR`, `Coder-Maintainer-Reworker-Genius`, `Planner-Architect-Mockupper`, or `UNIVERSAL WORKER`)
+4. Set **Agent** to your role (`XEENU-ANIMATOR`, `Coder-Maintainer`, `Coder #2`, or `UNIVERSAL WORKER`)
 5. Set **Session started** and **Last board update** to current timestamp
 6. Set **Working on** to your task description (or claim a task from the Task Queue)
 7. If another agent is active in a different slot, create a git branch: `git checkout -b <agent-type>/<task-slug>` (see AC5)

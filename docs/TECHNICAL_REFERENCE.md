@@ -478,3 +478,5 @@ Append a row to the Session Log table at the end of every session with: Agent, D
 | **All** | Git push fails with "could not read Username" | Run `gh auth setup-git` |
 | **All** | PowerShell heredocs fail | Write commit messages to temp files |
 | **All** | `git push` shows red error text | Check exit code, not color — stderr is normal |
+| **Web** | `nearby_connections` has no web implementation — `MissingPluginException` on load | MP features are native-only. Web builds hang on loading screen if MP init runs before UI mounts. Test MP via widget tests + fake transport, not Playwright. UI-only screens (menu, settings, codex) can be Playwright-tested if the app gets past loading. |
+| **Web** | Service worker from prior dev sessions caches old builds | Unregister SW before testing: `navigator.serviceWorker.getRegistrations().then(r => r.forEach(sw => sw.unregister()))` then hard reload. Use a fresh port to avoid SW scope collision. |
