@@ -78,7 +78,7 @@ The board supports **up to 4 concurrent agent slots** — the core triad (XEENU-
 
 ### AC5. Git branch per agent for parallel sessions
 - **Nested repo awareness:** This workspace has two git repos:
-  - **Root repo** (`X:\apps\GungeonMate\`): tracks `AGENTS.md`, `AGENT_STATUS.md`, `docs/`, `MUTATION_STATION/`, `.windsurfrules`. Remote: `game-roomian-battler.git`.
+  - **Root repo** (`X:\apps\GungeonMate\`): tracks `AGENTS.md`, `AGENT_STATUS.md`, `docs/`, `.windsurfrules`. Remote: `game-roomian-battler.git`.
   - **App repo** (`X:\apps\GungeonMate\gungeon_mate\`): tracks all `lib/`, `assets/`, `pubspec.yaml`. Remote: `GungeonMate.git`.
   - Before branching, identify which repo your changes touch. If both, branch in both.
   - Pre-session sync (AC5b) must pull BOTH repos if remotes are reachable.
@@ -330,7 +330,7 @@ Four principles anchor all UI/UX decisions. Every animation, layout, and state c
 - **RepaintBoundary for CustomPainter:** Wrap every `CustomPaint` widget in `RepaintBoundary` so animated regions don't trigger full-tree repaints. See `docs/animation_architecture_assessment.md` for the gap audit.
 - **Prefer declarative over manual:** Use `flutter_animate` (`.fadeIn().slideX()`) or `TweenAnimationBuilder` over manual `AnimationController` when the animation doesn't need pause/reverse/seek. Reduces disposal boilerplate.
 - **Spring curves for organic feel:** Use `Curves.easeOutBack` (card entrances), `Curves.fastOutSlowIn` (drawers/panels), `Curves.elasticOut` (playful bounces). Avoid `Curves.linear` and `Curves.easeInOut` for interactive elements.
-- **Particle engine budget:** 60fps at count=32 on web. If increasing max count above 64, switch line-link O(n²) to spatial hashing. See `MUTATION_STATION/syntax_patches/` for archived patterns.
+- **Particle engine budget:** 60fps at count=32 on web. If increasing max count above 64, switch line-link O(n²) to spatial hashing.
 
 ---
 

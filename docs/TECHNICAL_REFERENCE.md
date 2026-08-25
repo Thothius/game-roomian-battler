@@ -13,7 +13,7 @@ There are **two independent git repositories**:
 
 | Repo | Path | Remote | Tracks |
 |------|------|--------|--------|
-| **Root** | `X:\apps\GungeonMate` | `https://github.com/Thothius/game-roomian-battler.git` | `AGENTS.md`, `AGENT_STATUS.md`, `docs/`, `MUTATION_STATION/`, `.windsurfrules`, root-level scripts |
+| **Root** | `X:\apps\GungeonMate` | `https://github.com/Thothius/game-roomian-battler.git` | `AGENTS.md`, `AGENT_STATUS.md`, `docs/`, `.windsurfrules` |
 | **App** | `X:\apps\GungeonMate\gungeon_mate` | `https://github.com/Thothius/GungeonMate.git` | All `lib/`, `assets/`, `pubspec.yaml`, `test/` |
 
 **Critical:** `gungeon_mate/` is gitignored in the root repo. The two repos are fully independent. An app-repo worktree does NOT need a root-repo worktree and vice versa.

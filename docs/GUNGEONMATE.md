@@ -5,9 +5,9 @@
 >
 > **Companion docs:**
 > - `TECHNICAL_REFERENCE.md` — agent operations (git, build commands, release checklist, PowerShell gotchas)
-> - `THEME_UX_ASSESSMENT_2026.md` — Slot 1's theme system audit
-> - `CUSTOMIZATION_AUDIT_2026.md` — Slot 1's font/particle/customization audit
-> - `mp_rebuild_blueprint.md` — MP architecture blueprint (reference for the v2.0.2→v2.0.3 rework)
+> - `REWORK_LESSONS_LEARNED.md` — design standards, mistakes to avoid, verification checklist
+> - `USER_BUG_LIST.md` — active user-reported bug tracker
+> - `docs/archive/` — historical assessments, plans, and audits (completed work)
 
 ---
 
