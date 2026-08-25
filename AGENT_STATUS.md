@@ -51,22 +51,26 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 
 | Slot | Assigned Agent | Status | Working On | Last Heartbeat |
 | :--- | :--- | :--- | :--- | :--- |
-| **Slot 1** | **XEENU-ANIMATOR** | `IDLE` | Bughunt + polish complete | 2026-08-18 17:00 UTC+3 |
-| **Slot 2** | **Coder-Maintainer-Reworker-Genius** | `IDLE` | — | 2026-08-18 13:00 UTC+3 |
-| **Slot 3** | **Planner-Architect-Mockupper** | `IDLE` | — | — |
-| **Slot 4** | **UNIVERSAL WORKER** | `IDLE` | — | 2026-08-18 17:50 UTC+3 |
+| **Slot 1** | **XEENU-ANIMATOR** | `IDLE` | Theme rework done — 12 new themes + per-theme fonts + font trim (68→30) | 2026-08-25 (now) UTC+3 |
+| **Slot 2** | **Coder-Maintainer-Reworker-Genius** | `ACTIVE` | MP critical bug fix + test harness | 2026-08-25 (now) UTC+3 |
+| **Slot 3** | **Planner-Architect-Mockupper** | `IDLE` | MP rebuild blueprint complete — handed to Slot 2 | 2026-08-24 (now) UTC+3 |
+| **Slot 4** | **UNIVERSAL WORKER** | `IDLE` | Diagnosed build — APK builds clean | 2026-08-19 (now) |
 
 ### Slot Details
 
 #### Slot 1 — XEENU-ANIMATOR
 | Field | Value |
 |-------|-------|
-| **Branch** | — (merged to master + worktree deleted) |
-| **Session started** | 2026-08-18 13:52 UTC+3 |
-| **Last board update** | 2026-08-18 15:10 UTC+3 |
-| **Last commit** | `2dbbe76` (gungeon_mate, master) — Q3: Ambient fragment shaders — GPU digital rain + dark neon fog (v1.9.51) |
+| **Branch** | master |
+| **Session started** | 2026-08-25 (now) UTC+3 |
+| **Last board update** | 2026-08-25 (now) UTC+3 |
+| **Last commit** | — (uncommitted: 12 new themes + per-theme fonts + font trim 68→30) |
 | **Files in progress** | — |
-| **Uncommitted changes** | — |
+| **Uncommitted changes** | lib/services/app_theme.dart (12 new themes + font field on ThemeFlair + font trim 68→30) + lib/screens/experience_studio_screen.dart (font grid trimmed). Root repo: docs reorg (41 docs archived, GUNGEONMATE.md written) |
+
+> **Session ended 2026-08-25.** Theme system rework + docs reorg. (1) Reorganized root docs — 41 redundant docs archived to docs/archive/, 6 kept in root, wrote GUNGEONMATE.md (620-line definitive reference). (2) Added `font` field to ThemeFlair — themes now auto-apply their curated font on switch. (3) Added 12 new themes: 6 character (Cultist, Gunslinger, Convict, Hunter, Pilot, Rat) + 6 floor (Breach, Lead Lord's Keep, Oubliette, Black Powder Mine, Bullet Hell, R&G Dept). (4) Set curated font for all 27 visible themes. (5) Trimmed AppFont enum 68→30 (kept gungeon+megrim locked, removed 38 noise fonts). (6) Updated kVisibleThemes, kThemeParticleDefaults, splashSlug, label/tagline switches for 12 new themes. (7) Renamed 3 new themes to avoid enum collisions with hidden themes (theBreach→breachGateway, theOubliette→oubliettePit, bulletHell→bulletHellFloor). (8) flutter analyze clean, 105 tests pass. Next: generate splash JPGs for 12 new themes, commit+push both repos.
+
+> **Session ended 2026-08-18 17:10.** Experience Studio redesign + bughunt. (1) Replaced 5-step wizard with 4-tab picker (Theme/Particles/Typography/Ambiance). (2) Removed palette variants — one card per theme. (3) Preview button moved to bottom-right square with "PREVIEW" label. (4) Fullscreen slide-in preview with theme splash + sample UI scene (item card, stat chips, buttons, synergy glow, palette strip). (5) Fixed preview animation race condition (reverse before removing widget). (6) Brightened preview illumination (splash 0.65 opacity, lighter scrim, accent radial glow, fallback gradient for themes without splash). (7) Fixed compact mode stat strip overflow (Flexible wrapper on character name). (8) Added mounted check to _applyAndClose. (9) Removed ~420 lines of dead palette code. (10) Verified zero non-uniform Border+borderRadius combos in entire codebase. (11) Verified zero remaining Matrix mode references. (12) flutter analyze clean. Version bumped to v1.9.63+139 with full release checklist.
 
 > **Session ended 2026-08-18 15:10.** Art prompt planning session (no code changes). 101 Gemini Nano Banana prompts written and delivered to user: 30 theme splashes (15 themes × 2 variants), 9 gungeoneer splashes, 10 stub boss icons, 30 common enemy icons, 6 hyper-explicit basic enemies, 16 consumable splashes. Robot themes refined with explicit EtG technical detail per user request. Theme palette assessment completed: 33 enum values, 38 palettes (15 visible + 18 hidden + 6 Unicorn variants). 4-palette-per-theme plan (I–IV) approved by user — 52 variant prompts pending. 3 Bubblegum Unicorn logo rework prompts pending (interrupted). Full documentation at `docs/art_prompt_plan.md` (root repo). No code changes, no commits, no assets generated — prompts are copy-paste ready for user to generate via Gemini.
 
@@ -77,12 +81,12 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 #### Slot 2 — Coder-Maintainer-Reworker-Genius
 | Field | Value |
 |-------|-------|
-| **Branch** | master (root only — docs change) |
-| **Session started** | 2026-08-18 12:47 UTC+3 |
-| **Last board update** | 2026-08-18 13:00 UTC+3 |
-| **Last commit** | `4eff3b4` (root) — AC5d: git worktree isolation policy for parallel agents |
+| **Branch** | master |
+| **Session started** | 2026-08-25 (now) UTC+3 |
+| **Last board update** | 2026-08-25 (now) UTC+3 |
+| **Last commit** | — (uncommitted: full v2.0.2→v2.0.3 MP rework + test harness + CI) |
 | **Files in progress** | — |
-| **Uncommitted changes** | — |
+| **Uncommitted changes** | App repo (52 modified/deleted + 29 new): MP rework (mp_session.dart, mp/*.dart, mp_lobby_screen, mp_connect_screen, mp_reconnect_banner), provider fix (run_provider.dart, main.dart), test suite (test/*.dart, test/widget/*.dart), CI (.github/workflows/ci.yml), gitignore, VERSION_HISTORY, changelog.json, pubspec.yaml. Root repo: .gitignore, AGENT_STATUS.md, docs/TECHNICAL_REFERENCE.md, docs/SYSTEM_SUMMARY.md, docs/* (untracked) |
 
 > **Session ended 2026-08-18 13:00.** Task: AC5d worktree policy. Added new AC5d section to AGENTS.md — MANDATORY `git worktree` isolation when 2+ agents are active. Documents setup, session workflow, merge+cleanup, sole-agent exception, pre-flight checks, nested repo notes. Updated AC5 branch-creation and merge steps to reference AC5d. Added `.worktrees/` to .gitignore. Validated full worktree create→list→remove→branch-delete cycle in this environment. This prevents the 2026-08-18 collision (Slot 4's checkout hijacked Slot 1's staged changes).
 
@@ -91,12 +95,12 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 #### Slot 3 — Planner-Architect-Mockupper
 | Field | Value |
 |-------|-------|
-| **Branch** | — |
-| **Session started** | — |
-| **Last board update** | 2026-08-18 09:40 UTC+3 |
-| **Last commit** | `4e5940b` (gungeon_mate, branch coder/active-run-rework) — Active run rework Phase 1: RunDisplayMode + mode_helpers + DepthTile |
+| **Branch** | master (root only — docs change) |
+| **Session started** | 2026-08-24 (now) UTC+3 |
+| **Last board update** | 2026-08-24 (now) UTC+3 |
+| **Last commit** | — (uncommitted: docs/mp_audit_and_rework_plan.md, docs/mp_rebuild_blueprint.md, AGENT_STATUS.md) |
 | **Files in progress** | — |
-| **Uncommitted changes** | — (user has WIP on experience_studio_screen.dart + particle_engine.dart + untracked .commit_msg.txt — all off-limits per AC4) |
+| **Uncommitted changes** | docs/mp_audit_and_rework_plan.md (new), docs/mp_rebuild_blueprint.md (new, foolproof edition — 966 lines), AGENT_STATUS.md (slot update) |
 
 > **Session ended 2026-08-18.** Branch `coder/active-run-rework` NOT merged to master (Phase 1 of 5 only — feature incomplete). Next agent: continue from Phase 2 (RunDisplayModeBar). See `docs/active_run_rework_plan.md`. Phase 2 was in_progress when session ended — no files were being edited yet (run_display_mode_bar.dart not yet created).
 
@@ -104,11 +108,11 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 | Field | Value |
 |-------|-------|
 | **Branch** | master |
-| **Session started** | 2026-08-18 17:14 UTC+3 |
-| **Last board update** | 2026-08-18 17:14 UTC+3 |
+| **Session started** | 2026-08-19 (now) UTC+3 |
+| **Last board update** | 2026-08-19 (now) UTC+3 |
 | **Last commit** | `8374996` (root) — Bughunt: 6 new bugs logged (BUG-087 through BUG-092) |
 | **Files in progress** | — |
-| **Uncommitted changes** | — |
+| **Uncommitted changes** | — (Slot 1 has WIP v1.9.63 — off-limits per AC4) |
 
 > **Session ended 2026-08-18 14:19.** Active Run Rework ALL 5 PHASES COMPLETE. Phase 2: RunDisplayModeBar + CodexBookMode. Phase 3: CompactRunMode (tactical HUD). Phase 4: MatrixMode (purple digital rain + glassmorphic panels). Phase 5: Preferences sheet (display mode picker + 2.5D toggle + tilt intensity slider). 4 new files in modes/ + 1 new painter. All controllers disposed. 26 MP/dice/emote callbacks intact. flutter analyze: 0 issues on full lib/. Versions: 1.9.52→1.9.55 (4 commits).
 
@@ -170,6 +174,7 @@ Format: `| Agent | Date | Branch | Commit | Task | Files | Status | Next | Watch
 | Coder | 2026-07-23 | master | `05dc81d` | Phase 1: Split active_run_screen.dart megafile | active_run_screen.dart, widgets/active_run/{player_header,player_page,active_run_helpers,stat_sheets,sort_picker,starter_hint,dice_roll,summary_tab}.dart, widgets/dashboards/{dashboard_swiper,robot_dashboard,junkan_dashboard,special_gun_dashboards,huntress_dashboard,compact_dashboards}.dart, widgets/sheets/damage_calc_sheet.dart | DONE | Phase 2+4 reorg | 9520→566 lines. 60+ classes → 15 files across 3 dirs. All dispose()/mounted checks preserved. flutter analyze clean. |
 | Coder | 2026-07-23 | master | `7c8012b` | Phase 2: Split theme_overlay.dart | theme_overlay.dart, widgets/particles/{touch_particle,ambient_glow,curse_fog,curse_breath,crimson_drip}.dart, widgets/backgrounds/{page_frame,animated_wallpaper}.dart, widgets/easter_eggs/cat_throne.dart | DONE | Phase 4 next | 951→312 lines. 10 classes → 8 files. CurseFog/CurseBreath/CrimsonDrip are dead code (not referenced in build). CatThrone easter egg extracted. All AnimationControllers have dispose(). flutter analyze clean. |
 | Coder | 2026-07-24 | master | `104e842` | Item detail chest chip + duplicate sell price + Gunderfury fixes + mojibake cleanup + dashboard tab system | lib/widgets/item_detail/{header,gun_stats,item_body}.dart, lib/screens/item_detail_screen.dart, lib/widgets/active_run/player_page.dart, lib/widgets/active_run/{sort_picker,stat_sheets,active_run_helpers,dice_roll,player_header,starter_hint,summary_tab}.dart, lib/widgets/dashboards/{dashboard_swiper,junkan_dashboard,special_gun_dashboards,robot_dashboard,huntress_dashboard,compact_dashboards}.dart, lib/widgets/sheets/damage_calc_sheet.dart, lib/screens/active_run_screen.dart, lib/widgets/item_detail/synergies_section.dart, lib/widgets/gungeoneer_header.dart, lib/screens/synergies_overview_screen.dart, lib/widgets/active_run/summary_tab.dart, assets/data/{back_refs,guns,synergies}.json | DONE | Test dashboard tab system on real device/emulator | DashboardSwiper now uses PageController + dispose() correctly. Tab chips show item/gun icons. Panel height is 22% of screen. Gunderfury DPS now dynamic in item detail and active run. |
+| XEENU-ANIMATOR | 2026-08-25 | master (root) | _(uncommitted)_ | Theme UX assessment (2026 designer lens) — full audit of theme system | docs/THEME_UX_ASSESSMENT_2026.md (new) | DONE | Fix CRITICAL build breaks: (1) define `splashSlug` getter on AppThemeMode + commit 14 splash JPGs, (2) remove `RunDisplayMode.matrix` enum value + migrate pref key. Then rebuild + capture fresh screenshots. | **MASTER HEAD `fe1a16c` DOES NOT COMPILE** — 7 errors: 4× `splashSlug` undefined in experience_studio_screen.dart, 3× non-exhaustive switch on `RunDisplayMode.matrix` in run_display_mode_bar.dart. Slot 2 has large uncommitted MP rework in main WD (13.5k lines deleted) — did NOT touch. Used isolated worktree `.worktrees/slot1-xeenu/gungeon_mate` for clean-HEAD build attempt. Worktree still exists — remove after review. |
 | Coder | 2026-07-24 | master | `3090780` | Resolve prior uncommitted changes | lib/screens/{multiplayer_lobby_screen,theme_picker_screen}.dart, lib/services/app_theme.dart, lib/widgets/{particle_engine.dart,settings/theme_visuals_tab.dart}, macos/Flutter/GeneratedPluginRegistrant.swift | DONE | — | MP lobby has numeric keypad PIN bottom sheet. HSV color picker added. ThemeRemix supports full ThemeFlair override. Particle cosmic dust palette brightened. webview_flutter plugin registration removed from macOS. |
 | Coder | 2026-07-24 | master | `062da94` | Dice roll UX: cancel challenge protocol, per-die sparkle keys, VS overflow | lib/widgets/active_run/dice_roll.dart, lib/services/multiplayer_session.dart, lib/models/multiplayer_messages.dart, lib/screens/active_run_screen.dart | DONE | — | Added MpDiceCancel message/session/handler, cancel challenge button, per-die GlobalKey sparkle positioning, FittedBox score overflow. flutter analyze clean. |
 | Coder | 2026-07-24 | master | `881f374` | v1.8.19 release build + APK | gungeon_mate/pubspec.yaml, gungeon_mate/assets/data/changelog.json, gungeon_mate/VERSION_HISTORY.md, gungeon_mate/lib/screens/main_menu_screen.dart | DONE | — | Bumped to 1.8.19+74, updated changelog/history/main_menu version strings, built release APK (45.3MB), merged coder/playwright-setup into master and pushed to origin. |

@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GungeonMate — Redesign Comparison Gallery</title>
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --panel: #1a1a22;
+    --panel2: #16161e;
+    --border: #2a2a35;
+    --accent: #b480ff;
+    --accent-glow: rgba(180, 128, 255, 0.3);
+    --text: #e0e0e8;
+    --text-dim: #8888a0;
+    --text-faint: #555568;
+    --gold: #ffd54f;
+    --cyan: #4fc3f7;
+    --green: #66bb6a;
+    --pink: #ff5252;
+    --red: #c62828;
+    --amber: #ffb300;
+    --purple: #ab47bc;
+    /* Gungeon theme colors */
+    --s-tier: #ffd54f;
+    --a-tier: #ff5252;
+    --b-tier: #4fc3f7;
+    --c-tier: #66bb6a;
+    --d-tier: #888;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    min-height: 100vh;
+  }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%);
+    border-bottom: 2px solid var(--accent);
+    padding: 28px 40px;
+    position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  }
+  .header h1 {
+    font-size: 26px; font-weight: 800; letter-spacing: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--gold));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .header .subtitle { color: var(--text-dim); font-size: 13px; margin-top: 4px; }
+  .header .meta { display: flex; gap: 24px; margin-top: 10px; flex-wrap: wrap; }
+  .header .meta-item { font-size: 12px; color: var(--text-dim); }
+  .header .meta-item strong { color: var(--accent); font-weight: 700; }
+
+  /* Filter bar */
+  .filter-bar {
+    background: var(--panel);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 40px;
+    display: flex; gap: 8px; flex-wrap: wrap;
+    position: sticky; top: 85px; z-index: 99;
+  }
+  .filter-btn {
+    background: transparent; border: 1px solid var(--border);
+    color: var(--text-dim); padding: 6px 16px; border-radius: 20px;
+    font-size: 12px; font-weight: 600; cursor: pointer;
+    transition: all 0.2s; letter-spacing: 0.5px;
+  }
+  .filter-btn:hover { border-color: var(--accent); color: var(--text); }
+  .filter-btn.active {
+    background: var(--accent); border-color: var(--accent); color: #fff;
+    box-shadow: 0 0 12px var(--accent-glow);
+  }
+
+  /* Comparison container */
+  .comparisons { padding: 30px 40px; max-width: 1800px; margin: 0 auto; }
+  .comparison {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 32px;
+  }
+  .comparison-header {
+    padding: 20px 28px;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 16px;
+  }
+  .comparison-num {
+    font-size: 11px; font-weight: 800; color: var(--accent);
+    letter-spacing: 2px; text-transform: uppercase;
+  }
+  .comparison-title { font-size: 20px; font-weight: 700; color: var(--text); }
+  .comparison-tag {
+    font-size: 10px; font-weight: 700; padding: 3px 10px;
+    border-radius: 4px; letter-spacing: 1px; text-transform: uppercase;
+  }
+  .tag-critical { background: rgba(255,82,82,0.2); color: var(--pink); border: 1px solid var(--pink); }
+  .tag-high { background: rgba(255,179,0,0.2); color: var(--amber); border: 1px solid var(--amber); }
+  .tag-medium { background: rgba(79,195,247,0.2); color: var(--cyan); border: 1px solid var(--cyan); }
+  .tag-low { background: rgba(102,187,106,0.2); color: var(--green); border: 1px solid var(--green); }
+  .comparison-desc {
+    font-size: 13px; color: var(--text-dim); margin-top: 6px; line-height: 1.5;
+  }
+
+  /* Side-by-side */
+  .side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+  .side-label {
+    padding: 10px 20px;
+    font-size: 11px; font-weight: 800; letter-spacing: 2px;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border);
+  }
+  .side-label.old { color: var(--text-faint); background: var(--panel2); }
+  .side-label.new { color: var(--green); background: rgba(102,187,106,0.05); }
+  .side-content {
+    padding: 20px;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 400px;
+  }
+  .side-content.old { background: var(--panel2); }
+  .side-content.new { background: rgba(102,187,106,0.02); }
+
+  /* Old screenshot */
+  .screenshot-frame {
+    width: 280px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  }
+  .screenshot-frame img { width: 100%; display: block; }
+
+  /* Phone mockup for new designs */
+  .phone {
+    width: 280px;
+    background: #0a0a0f;
+    border-radius: 24px;
+    border: 2px solid var(--border);
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+    font-size: 11px;
+  }
+  .phone-screen { padding: 0; min-height: 500px; }
+
+  /* ── Shared phone UI components ── */
+  .ph-statusbar {
+    height: 6px; background: #000;
+  }
+  .ph-appbar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 14px; background: rgba(0,0,0,0.3);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .ph-appbar-back { color: var(--accent); font-size: 18px; cursor: pointer; }
+  .ph-appbar-title { font-weight: 800; letter-spacing: 1px; font-size: 13px; }
+  .ph-appbar-menu { color: var(--text-dim); font-size: 18px; cursor: pointer; }
+
+  .ph-body { padding: 12px; }
+
+  /* Stat capsules */
+  .stat-row { display: flex; gap: 4px; padding: 8px 12px; }
+  .stat-cap {
+    flex: 1; text-align: center; padding: 6px 4px;
+    border-radius: 8px; font-size: 9px; font-weight: 700;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .stat-cap .val { font-size: 13px; display: block; }
+  .stat-cap .lbl { font-size: 8px; opacity: 0.6; letter-spacing: 1px; }
+  .stat-cool { border-color: rgba(0,229,255,0.3); }
+  .stat-cool .val { color: var(--cyan); }
+  .stat-curse { border-color: rgba(224,64,251,0.3); }
+  .stat-curse .val { color: #e040fb; }
+  .stat-cd { border-color: rgba(0,176,255,0.3); }
+  .stat-cd .val { color: #00b0ff; }
+  .stat-ammo { border-color: rgba(0,230,118,0.3); }
+  .stat-ammo .val { color: var(--green); }
+
+  /* Toggle row (OLD) */
+  .toggle-row-old {
+    display: flex; gap: 6px; padding: 8px 12px;
+    overflow-x: auto;
+  }
+  .toggle-btn-old {
+    display: flex; flex-direction: column; align-items: center; gap: 2px;
+    padding: 6px 8px; border-radius: 8px; min-width: 50px;
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06);
+    font-size: 8px; color: var(--text-dim);
+  }
+  .toggle-btn-old .icon { font-size: 16px; }
+  .toggle-btn-old.active { color: var(--amber); border-color: rgba(255,179,0,0.3); }
+
+  /* Gungeoneer header */
+  .gungeoneer-hdr {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 14px;
+  }
+  .gungeon-avatar {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: linear-gradient(135deg, #4fc3f7, #1976d2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; font-weight: 800; color: #fff;
+  }
+  .gungeon-info { flex: 1; }
+  .gungeon-name { font-size: 12px; font-weight: 700; }
+  .gungeon-sub { font-size: 9px; color: var(--text-dim); }
+
+  /* Tab bar */
+  .tab-bar {
+    display: flex; border-top: 1px solid var(--border);
+    background: rgba(0,0,0,0.4);
+  }
+  .tab-item {
+    flex: 1; text-align: center; padding: 10px 0;
+    font-size: 9px; font-weight: 700; color: var(--text-dim);
+    letter-spacing: 1px;
+  }
+  .tab-item.active { color: var(--accent); }
+
+  /* Cards */
+  .card-item {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 10px; padding: 10px 12px; margin-bottom: 8px;
+  }
+  .card-item-title { font-size: 11px; font-weight: 700; }
+  .card-item-sub { font-size: 9px; color: var(--text-dim); margin-top: 2px; }
+
+  /* Section header (NEW popup) */
+  .popup-section-hdr {
+    font-size: 9px; font-weight: 800; letter-spacing: 2px;
+    color: var(--accent); padding: 10px 16px 4px;
+    text-transform: uppercase;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .popup-section-hdr:first-child { border-top: none; }
+  .popup-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 16px; font-size: 12px; cursor: pointer;
+  }
+  .popup-item:hover { background: rgba(255,255,255,0.03); }
+  .popup-item .pi-icon { font-size: 16px; opacity: 0.7; }
+  .popup-item .pi-label { flex: 1; }
+  .popup-item .pi-toggle {
+    width: 32px; height: 18px; border-radius: 9px;
+    background: rgba(255,255,255,0.1); position: relative;
+  }
+  .popup-item .pi-toggle.on { background: var(--green); }
+  .popup-item .pi-toggle::after {
+    content: ''; position: absolute; top: 2px; left: 2px;
+    width: 14px; height: 14px; border-radius: 50%; background: #fff;
+    transition: left 0.2s;
+  }
+  .popup-item .pi-toggle.on::after { left: 16px; }
+  .popup-item.danger { color: var(--pink); }
+  .popup-item.danger .pi-icon { color: var(--pink); opacity: 1; }
+
+  /* Disabled button header (OLD popup) */
+  .popup-disabled-old {
+    padding: 8px 16px; font-size: 10px; font-weight: 700;
+    color: var(--text-faint); letter-spacing: 1px;
+    background: rgba(0,0,0,0.2); border-bottom: 1px solid rgba(255,255,255,0.03);
+  }
+  .popup-btn-old {
+    padding: 10px 16px; font-size: 12px; color: var(--text);
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+  }
+  .popup-btn-old.disabled { color: var(--text-faint); font-weight: 700; font-size: 10px; letter-spacing: 1px; }
+
+  /* Settings sections (NEW) */
+  .settings-section { margin-bottom: 16px; }
+  .settings-section-hdr {
+    font-size: 9px; font-weight: 800; letter-spacing: 2px;
+    color: var(--accent); padding: 0 4px 8px;
+    text-transform: uppercase;
+  }
+  .settings-row {
+    display: flex; align-items: center; gap: 10px;
+    padding: 12px 14px; background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 10px; margin-bottom: 6px;
+    font-size: 12px;
+  }
+  .settings-row .sr-icon { font-size: 18px; opacity: 0.6; }
+  .settings-row .sr-label { flex: 1; }
+  .settings-row .sr-arrow { color: var(--text-faint); }
+  .settings-row.danger { border-color: rgba(255,82,82,0.2); }
+  .settings-row.danger .sr-icon { color: var(--pink); opacity: 1; }
+  .settings-row.warn .sr-icon { color: var(--amber); opacity: 1; }
+
+  /* Theme picker rows (NEW) */
+  .theme-section-label {
+    font-size: 8px; font-weight: 800; letter-spacing: 2px;
+    color: var(--accent); padding: 12px 14px 6px;
+    text-transform: uppercase;
+  }
+  .theme-row { display: flex; gap: 4px; padding: 0 14px 10px; flex-wrap: wrap; }
+  .theme-chip {
+    padding: 5px 10px; border-radius: 8px; font-size: 9px; font-weight: 600;
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+    color: var(--text-dim); cursor: pointer;
+  }
+  .theme-chip.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+  /* Home screen */
+  .home-bg {
+    background: radial-gradient(ellipse at center, #1a0a2e 0%, #0a0a0f 70%);
+    min-height: 500px; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; padding: 20px;
+  }
+  .home-title {
+    font-size: 24px; font-weight: 900; letter-spacing: 2px;
+    color: var(--gold); text-shadow: 0 3px 4px rgba(0,0,0,0.5);
+    -webkit-text-stroke: 2px var(--red);
+  }
+  .home-subtitle {
+    font-size: 9px; font-weight: 800; letter-spacing: 1.5px;
+    color: #e57373; margin-top: 8px;
+    padding: 4px 12px; border: 1px solid rgba(198,40,40,0.6);
+    border-radius: 6px; background: rgba(198,40,40,0.15);
+  }
+  .home-btn {
+    width: 100%; padding: 14px; margin-top: 10px;
+    border-radius: 12px; font-size: 13px; font-weight: 700;
+    text-align: center; cursor: pointer;
+    background: rgba(180,128,255,0.15); border: 1px solid var(--accent);
+    color: var(--text);
+  }
+  .home-btn.primary { background: var(--accent); color: #fff; }
+  .home-version { font-size: 10px; color: var(--text-dim); margin-top: 16px; font-weight: 700; }
+
+  /* Character grid */
+  .char-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; padding: 12px; }
+  .char-cell {
+    aspect-ratio: 1; border-radius: 12px;
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    font-size: 9px; font-weight: 600; color: var(--text-dim); gap: 4px;
+  }
+  .char-cell .char-icon { font-size: 20px; }
+  .char-cell.selected { border-color: var(--accent); background: rgba(180,128,255,0.1); }
+
+  /* Codex grid (NEW) */
+  .codex-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 6px; padding: 10px; }
+  .codex-tile {
+    padding: 10px 6px; border-radius: 8px; text-align: center;
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+    font-size: 8px; font-weight: 700; color: var(--text-dim);
+  }
+  .codex-tile .ct-icon { font-size: 18px; margin-bottom: 4px; display: block; }
+  .codex-tile.special { border-color: rgba(180,128,255,0.3); }
+  .codex-tile.special .ct-icon { color: var(--accent); }
+
+  /* Change annotations */
+  .change-notes {
+    padding: 16px 28px; border-top: 1px solid var(--border);
+    background: rgba(180,128,255,0.03);
+  }
+  .change-notes-title {
+    font-size: 10px; font-weight: 800; letter-spacing: 2px;
+    color: var(--green); text-transform: uppercase; margin-bottom: 8px;
+  }
+  .change-list { list-style: none; }
+  .change-list li {
+    font-size: 12px; color: var(--text-dim); padding: 3px 0;
+    padding-left: 20px; position: relative;
+  }
+  .change-list li::before {
+    content: '→'; position: absolute; left: 0; color: var(--green); font-weight: 700;
+  }
+  .change-list li.remove::before { content: '✕'; color: var(--pink); }
+  .change-list li.add::before { content: '+'; color: var(--green); }
+  .change-list li.move::before { content: '↗'; color: var(--cyan); }
+
+  /* Footer */
+  .footer {
+    text-align: center; padding: 30px; color: var(--text-dim);
+    font-size: 12px; border-top: 1px solid var(--border); margin-top: 20px;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .side-by-side { grid-template-columns: 1fr; }
+    .side-content { min-height: 350px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>GUNGEON MATE — REDESIGN COMPARISON</h1>
+  <div class="subtitle">Approved reworks — side-by-side visual comparison for final design review</div>
+  <div class="meta">
+    <div class="meta-item">Version: <strong>v1.9.25 → v1.9.26 (proposed)</strong></div>
+    <div class="meta-item">Approved reworks: <strong>3</strong></div>
+    <div class="meta-item">New proposal: <strong>1 (Multiplayer)</strong></div>
+    <div class="meta-item">Status: <strong>READY FOR IMPLEMENTATION</strong></div>
+  </div>
+</div>
+
+<div class="filter-bar">
+  <button class="filter-btn active" data-filter="all">ALL</button>
+  <button class="filter-btn" data-filter="critical">CRITICAL</button>
+  <button class="filter-btn" data-filter="high">HIGH</button>
+  <button class="filter-btn" data-filter="medium">MEDIUM</button>
+  <button class="filter-btn" data-filter="low">LOW</button>
+</div>
+
+<div class="comparisons" id="comparisons"></div>
+
+<div class="footer">
+  GungeonMate Redesign Comparison — 3 approved reworks + 1 new proposal (Multiplayer) — Old (screenshot) vs New (HTML mockup)
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════════
+// COMPARISON DATA + HTML RECREATIONS
+// ═══════════════════════════════════════════════════════════
+
+const comparisons = [
+  // ── 2. RUN OPTIONS POPUP ──────────────────────────────
+  {
+    id: 2, num: 'PHASE 3', title: 'Run Options Popup — Real Section Headers',
+    tag: 'high', tagLabel: 'HIGH',
+    filter: 'high',
+    oldScreenshot: 'screenshots/14_run_options_popup.png',
+    desc: 'Disabled buttons used as section headers look like broken actions. Some sections have only 1 item. Proposed: styled text headers with dividers, checkbox toggles for panels, clear grouping.',
+    newHtml: `
+      <div class="phone">
+        <div class="phone-screen">
+          <div class="ph-statusbar"></div>
+          <div class="ph-appbar">
+            <span class="ph-appbar-back">✕</span>
+            <span class="ph-appbar-title">RUN TOOLS</span>
+            <span style="width:18px;"></span>
+          </div>
+          <!-- PANELS section with toggle switches -->
+          <div class="popup-section-hdr">PANELS</div>
+          <div class="popup-item">
+            <span class="pi-icon">🧮</span>
+            <span class="pi-label">Damage Calculator</span>
+            <div class="pi-toggle"></div>
+          </div>
+          <div class="popup-item">
+            <span class="pi-icon">✨</span>
+            <span class="pi-label">Effects Panel</span>
+            <div class="pi-toggle"></div>
+          </div>
+          <div class="popup-item">
+            <span class="pi-icon">🛕</span>
+            <span class="pi-label">Shrine Tracker</span>
+            <div class="pi-toggle"></div>
+          </div>
+          <div class="popup-item">
+            <span class="pi-icon">📊</span>
+            <span class="pi-label">Special Panels</span>
+            <div class="pi-toggle on"></div>
+          </div>
+          <!-- NAVIGATION section -->
+          <div class="popup-section-hdr">NAVIGATION</div>
+          <div class="popup-item">
+            <span class="pi-icon">📖</span>
+            <span class="pi-label">Browse Codex</span>
+            <span class="sr-arrow">›</span>
+          </div>
+          <div class="popup-item">
+            <span class="pi-icon">⭐</span>
+            <span class="pi-label">My Favourites</span>
+            <span class="sr-arrow">›</span>
+          </div>
+          <div class="popup-item">
+            <span class="pi-icon">🛕</span>
+            <span class="pi-label">Shrine Picker</span>
+            <span class="sr-arrow">›</span>
+          </div>
+          <!-- ACTIONS section -->
+          <div class="popup-section-hdr">ACTIONS</div>
+          <div class="popup-item">
+            <span class="pi-icon">🎲</span>
+            <span class="pi-label">Gunfortuna Dice</span>
+            <span class="sr-arrow">›</span>
+          </div>
+          <div class="popup-item">
+            <span class="pi-icon">👥</span>
+            <span class="pi-label">Add Co-op Player</span>
+            <span class="sr-arrow">›</span>
+          </div>
+          <div class="popup-item">
+            <span class="pi-icon">💾</span>
+            <span class="pi-label">Save Run</span>
+            <span class="sr-arrow">›</span>
+          </div>
+          <!-- END section -->
+          <div class="popup-section-hdr" style="color:var(--pink);">⚠ END SESSION</div>
+          <div class="popup-item danger">
+            <span class="pi-icon">⏹</span>
+            <span class="pi-label">End Run</span>
+            <span class="sr-arrow">›</span>
+          </div>
+        </div>
+      </div>
+    `,
+    changes: [
+      { type: 'remove', text: 'Removed disabled buttons as section headers (BROWSE/ACTIONS/SESSION/END/SETTINGS)' },
+      { type: 'add', text: 'Styled text headers with accent color + divider lines' },
+      { type: 'add', text: 'Toggle switches for panel controls (visual on/off state)' },
+      { type: 'add', text: 'Renamed popup to "RUN TOOLS" — clear purpose' },
+      { type: 'move', text: 'Add Co-op moved here from Settings App tab' },
+      { type: 'move', text: 'Shrine Picker as nav item (no more dual-mode button)' },
+      { type: 'add', text: 'End Session section clearly marked with warning color' },
+    ],
+  },
+
+  // ── 3. SETTINGS APP TAB ───────────────────────────────
+  {
+    id: 3, num: 'PHASE 2', title: 'Settings App Tab — Reorganization',
+    tag: 'high', tagLabel: 'HIGH',
+    filter: 'high',
+    oldScreenshot: 'screenshots/11_settings_app.png',
+    desc: 'Gameplay actions (Add Co-op, Use Shrine) mixed with settings. Dev Tools next to user buttons. Proposed: move actions to Run Tools, group remaining into clear sections.',
+    newHtml: `
+      <div class="phone">
+        <div class="phone-screen">
+          <div class="ph-statusbar"></div>
+          <div class="ph-appbar">
+            <span class="ph-appbar-back">←</span>
+            <span class="ph-appbar-title">SETTINGS</span>
+            <span style="width:18px;"></span>
+          </div>
+          <!-- Tab bar -->
+          <div style="display:flex;gap:0;border-bottom:1px solid var(--border);">
+            <div style="flex:1;text-align:center;padding:8px;font-size:9px;font-weight:700;color:var(--text-dim);">APPEARANCE</div>
+            <div style="flex:1;text-align:center;padding:8px;font-size:9px;font-weight:700;color:var(--text-dim);">GAMEPLAY</div>
+            <div style="flex:1;text-align:center;padding:8px;font-size:9px;font-weight:700;color:var(--accent);border-bottom:2px solid var(--accent);">APP</div>
+          </div>
+          <div class="ph-body">
+            <!-- ACCOUNT & DATA -->
+            <div class="settings-section">
+              <div class="settings-section-hdr">ACCOUNT & DATA</div>
+              <div class="settings-row">
+                <span class="sr-icon">🔄</span>
+                <span class="sr-label">Reset Character Loadout</span>
+                <span class="sr-arrow">›</span>
+              </div>
+              <div class="settings-row">
+                <span class="sr-icon">📋</span>
+                <span class="sr-label">Changelog</span>
+                <span class="sr-arrow">›</span>
+              </div>
+              <div class="settings-row">
+                <span class="sr-icon">📜</span>
+                <span class="sr-label">Event Log</span>
+                <span class="sr-arrow">›</span>
+              </div>
+            </div>
+            <!-- DEVELOPER -->
+            <div class="settings-section">
+              <div class="settings-section-hdr">DEVELOPER</div>
+              <div class="settings-row warn">
+                <span class="sr-icon">🛠</span>
+                <span class="sr-label">Dev Tools</span>
+                <span class="sr-arrow">›</span>
+              </div>
+            </div>
+            <!-- DANGER ZONE -->
+            <div class="settings-section">
+              <div class="settings-section-hdr" style="color:var(--pink);">⚠ DANGER ZONE</div>
+              <div class="settings-row danger">
+                <span class="sr-icon">⏹</span>
+                <span class="sr-label">End Current Run</span>
+                <span class="sr-arrow">›</span>
+              </div>
+              <div class="settings-row danger">
+                <span class="sr-icon">🗑</span>
+                <span class="sr-label">Reset All Data</span>
+                <span class="sr-arrow">›</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `,
+    changes: [
+      { type: 'move', text: '"Add Co-op" moved to Run Tools popup' },
+      { type: 'move', text: '"Use Shrine" moved to Run Tools popup' },
+      { type: 'add', text: 'Three clear sections: ACCOUNT & DATA, DEVELOPER, DANGER ZONE' },
+      { type: 'add', text: 'Dev Tools gets warning icon to signal it\'s advanced' },
+      { type: 'add', text: 'Event Log grouped under ACCOUNT & DATA (it\'s a data view, not an action)' },
+      { type: 'remove', text: 'Removed uncategorized button soup' },
+    ],
+  },
+
+  // ── 4. THEME PICKER ───────────────────────────────────
+  {
+    id: 4, num: 'PHASE 5', title: 'Theme Picker — Section Labels',
+    tag: 'medium', tagLabel: 'MEDIUM',
+    filter: 'medium',
+    oldScreenshot: 'screenshots/09_theme_picker.png',
+    desc: '24+ controls with no labels explaining what each row does. Top carousel too small to notice swipeability. Proposed: taller hero carousel with swipe arrows + preview, then labeled sections below.',
+    newHtml: `
+      <div class="phone">
+        <div class="phone-screen">
+          <div class="ph-statusbar"></div>
+          <div class="ph-appbar">
+            <span class="ph-appbar-back">←</span>
+            <span class="ph-appbar-title">PALETTE</span>
+            <span style="width:18px;"></span>
+          </div>
+          <!-- TALL HERO CAROUSEL — clearly swipeable -->
+          <div style="position:relative;height:120px;overflow:hidden;background:linear-gradient(135deg,#0f0f1a,#1a1a2e);border-bottom:1px solid var(--border);">
+            <!-- Swipe left arrow -->
+            <div style="position:absolute;left:8px;top:50%;transform:translateY(-50%);width:28px;height:28px;border-radius:50%;background:rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--text-dim);z-index:2;">‹</div>
+            <!-- Theme preview card (centered, large) -->
+            <div style="position:absolute;left:44px;right:44px;top:10px;bottom:10px;border-radius:12px;background:linear-gradient(160deg,#1e1e22,#0a0a0f);border:1px solid var(--accent);display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 0 20px rgba(180,128,255,0.15);">
+              <div style="font-size:18px;font-weight:900;letter-spacing:3px;color:var(--gold);text-shadow:0 2px 4px rgba(0,0,0,0.5);">MINIMALIST</div>
+              <div style="font-size:9px;color:var(--text-dim);margin-top:6px;text-align:center;padding:0 16px;">Stripped Back — pure black, clean white, cold grey</div>
+              <div style="margin-top:8px;display:flex;gap:4px;">
+                <div style="width:16px;height:16px;border-radius:4px;background:#000;border:1px solid #333;"></div>
+                <div style="width:16px;height:16px;border-radius:4px;background:#fff;"></div>
+                <div style="width:16px;height:16px;border-radius:4px;background:#888;"></div>
+              </div>
+            </div>
+            <!-- Swipe right arrow -->
+            <div style="position:absolute;right:8px;top:50%;transform:translateY(-50%);width:28px;height:28px;border-radius:50%;background:rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--text-dim);z-index:2;">›</div>
+          </div>
+          <!-- Dot indicators + swipe hint -->
+          <div style="text-align:center;padding:8px 0 6px;background:rgba(0,0,0,0.2);">
+            <div style="display:flex;justify-content:center;gap:6px;margin-bottom:4px;">
+              <div style="width:24px;height:4px;border-radius:2px;background:var(--accent);"></div>
+              <div style="width:8px;height:4px;border-radius:2px;background:rgba(255,255,255,0.15);"></div>
+              <div style="width:8px;height:4px;border-radius:2px;background:rgba(255,255,255,0.15);"></div>
+              <div style="width:8px;height:4px;border-radius:2px;background:rgba(255,255,255,0.15);"></div>
+              <div style="width:8px;height:4px;border-radius:2px;background:rgba(255,255,255,0.15);"></div>
+            </div>
+            <div style="font-size:8px;color:var(--text-faint);letter-spacing:1px;">← SWIPE TO BROWSE THEMES →</div>
+          </div>
+          <!-- THEME section -->
+          <div class="theme-section-label">PALETTE VARIANT</div>
+          <div class="theme-row">
+            <div class="theme-chip active">✓ Active</div>
+            <div class="theme-chip">Original</div>
+            <div class="theme-chip">Graphite</div>
+            <div class="theme-chip">Platinum</div>
+            <div class="theme-chip">Charcoal</div>
+            <div class="theme-chip">Obsidian</div>
+          </div>
+          <!-- PARTICLE PRESET -->
+          <div class="theme-section-label">PARTICLE PRESET</div>
+          <div class="theme-row">
+            <div class="theme-chip">Gungeon Dust</div>
+            <div class="theme-chip">Cosmic Stars</div>
+            <div class="theme-chip">Forge Embers</div>
+            <div class="theme-chip">Frost Shards</div>
+            <div class="theme-chip">Unicorn Sparkles</div>
+            <div class="theme-chip">Golden Sparkle</div>
+          </div>
+          <!-- COLOR SCHEMA -->
+          <div class="theme-section-label">COLOR SCHEMA</div>
+          <div class="theme-row">
+            <div class="theme-chip active">Default</div>
+            <div class="theme-chip">Theme Match</div>
+            <div class="theme-chip">Inferno</div>
+            <div class="theme-chip">Glacier</div>
+            <div class="theme-chip">Toxic</div>
+            <div class="theme-chip">Void Storm</div>
+            <div class="theme-chip">Gilded</div>
+          </div>
+          <!-- ANIMATION SPEED -->
+          <div class="theme-section-label">ANIMATION SPEED</div>
+          <div class="theme-row">
+            <div class="theme-chip">Very Slow</div>
+            <div class="theme-chip">Slow</div>
+            <div class="theme-chip active">Normal</div>
+            <div class="theme-chip">Fast</div>
+            <div class="theme-chip">Very Fast</div>
+          </div>
+          <!-- Particle Studio -->
+          <div style="padding:0 14px 14px;">
+            <div style="padding:10px;border-radius:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);text-align:center;font-size:10px;font-weight:700;color:var(--accent);">
+              ▼ PARTICLE STUDIO
+            </div>
+          </div>
+        </div>
+      </div>
+    `,
+    changes: [
+      { type: 'add', text: 'Tall hero carousel (120px) with theme preview card — clearly swipeable' },
+      { type: 'add', text: 'Left/right swipe arrows on carousel edges' },
+      { type: 'add', text: 'Color swatch preview inside carousel card' },
+      { type: 'add', text: 'Wide pill dot indicators (active = elongated bar)' },
+      { type: 'add', text: '"← SWIPE TO BROWSE THEMES →" hint text below dots' },
+      { type: 'add', text: 'Section labels: PALETTE VARIANT, PARTICLE PRESET, COLOR SCHEMA, ANIMATION SPEED' },
+      { type: 'add', text: 'Active states clearly highlighted with accent color' },
+      { type: 'add', text: 'Rows are visually scannable instead of a wall of buttons' },
+    ],
+  },
+
+  // ── 4. MULTIPLAYER LOBBY — MINIMALIST REWORK ─────────
+  {
+    id: 4, num: 'PROPOSAL', title: 'Multiplayer Lobby — Minimalist Rework',
+    tag: 'high', tagLabel: 'PROPOSED',
+    filter: 'high',
+    oldScreenshot: 'screenshots/13_multiplayer_lobby.png',
+    desc: 'Current lobby crams 8+ sections into one scroll (nickname, role cards, character, PIN, start, solo co-op, saved sessions, how-to guide). Proposed: 3 clear steps, role-specific flow, guide as dialog.',
+    newHtml: `
+      <div class="phone">
+        <div class="phone-screen">
+          <div class="ph-statusbar"></div>
+          <div class="ph-appbar">
+            <span class="ph-appbar-back">←</span>
+            <span class="ph-appbar-title">MULTIPLAYER</span>
+            <span style="width:18px;"></span>
+          </div>
+          <div class="ph-body" style="padding:16px 20px;">
+
+            <!-- STEP 1 — NICKNAME -->
+            <div style="font-size:8px;font-weight:800;letter-spacing:2px;color:var(--accent);margin-bottom:6px;">STEP 1 — WHO ARE YOU?</div>
+            <div style="padding:10px 14px;border-radius:10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);margin-bottom:16px;">
+              <div style="display:flex;align-items:center;gap:8px;">
+                <span style="font-size:14px;opacity:0.5;">👤</span>
+                <span style="font-size:12px;color:var(--text);">Player</span>
+                <span style="flex:1;"></span>
+                <span style="font-size:9px;color:var(--text-faint);">tap to edit</span>
+              </div>
+            </div>
+
+            <!-- STEP 2 — HOST OR JOIN -->
+            <div style="font-size:8px;font-weight:800;letter-spacing:2px;color:var(--accent);margin-bottom:6px;">STEP 2 — HOST OR JOIN?</div>
+            <div style="display:flex;gap:8px;margin-bottom:16px;">
+              <div style="flex:1;padding:16px 10px;border-radius:12px;background:rgba(180,128,255,0.12);border:2px solid var(--accent);text-align:center;">
+                <div style="font-size:22px;margin-bottom:4px;">📡</div>
+                <div style="font-size:11px;font-weight:800;color:var(--accent);">HOST</div>
+                <div style="font-size:8px;color:var(--text-dim);margin-top:2px;">Host a game</div>
+              </div>
+              <div style="flex:1;padding:16px 10px;border-radius:12px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);text-align:center;">
+                <div style="font-size:22px;margin-bottom:4px;opacity:0.5;">🔗</div>
+                <div style="font-size:11px;font-weight:700;color:var(--text-dim);">JOIN</div>
+                <div style="font-size:8px;color:var(--text-faint);margin-top:2px;">Join a game</div>
+              </div>
+            </div>
+
+            <!-- STEP 3 — CHARACTER (Host only) -->
+            <div style="font-size:8px;font-weight:800;letter-spacing:2px;color:var(--accent);margin-bottom:6px;">STEP 3 — YOUR CHARACTER</div>
+            <div style="padding:10px 14px;border-radius:10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);margin-bottom:16px;display:flex;align-items:center;gap:10px;">
+              <div style="width:40px;height:40px;border-radius:8px;background:linear-gradient(135deg,#4fc3f7,#1976d2);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;color:#fff;">M</div>
+              <div style="flex:1;">
+                <div style="font-size:12px;font-weight:700;">The Marine</div>
+                <div style="font-size:9px;color:var(--text-dim);">Tap to change</div>
+              </div>
+              <span style="color:var(--text-faint);font-size:14px;">›</span>
+            </div>
+
+            <!-- Primary CTA -->
+            <div style="padding:14px;border-radius:12px;background:var(--accent);text-align:center;font-size:13px;font-weight:800;color:#fff;margin-bottom:12px;box-shadow:0 0 16px rgba(180,128,255,0.3);">
+              ▶ START HOSTING
+            </div>
+
+            <!-- Divider -->
+            <div style="text-align:center;font-size:9px;color:var(--text-faint);margin:12px 0;">─ or ─</div>
+
+            <!-- Solo Co-op -->
+            <div style="padding:12px 14px;border-radius:10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+              <span style="font-size:18px;">🤖</span>
+              <div style="flex:1;">
+                <div style="font-size:11px;font-weight:700;">Solo Co-op</div>
+                <div style="font-size:9px;color:var(--text-dim);">Play with AI partner</div>
+              </div>
+              <span style="color:var(--text-faint);font-size:14px;">›</span>
+            </div>
+
+            <!-- Bottom links -->
+            <div style="border-top:1px solid var(--border);padding-top:12px;">
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;font-size:11px;color:var(--text-dim);">
+                <span>📖 How to Play</span>
+                <span style="color:var(--text-faint);">›</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;font-size:11px;color:var(--text-dim);">
+                <span>💾 Saved Sessions (2)</span>
+                <span style="color:var(--text-faint);">›</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    `,
+    changes: [
+      { type: 'remove', text: 'Removed Main/Sidekick role cards — replaced with simple HOST/JOIN buttons' },
+      { type: 'remove', text: 'Removed always-visible PIN field — only shows when JOIN is selected' },
+      { type: 'remove', text: 'Removed Forced Cultist tile — JOIN shows simple text instead' },
+      { type: 'remove', text: 'Removed 2-page vertical PageView — no more hidden guide page' },
+      { type: 'add', text: '3-step flow: WHO ARE YOU → HOST OR JOIN → CHARACTER' },
+      { type: 'add', text: 'Only one flow visible at a time (Host shows character picker, Join shows PIN)' },
+      { type: 'add', text: 'Solo Co-op promoted with "─ or ─" divider and clear description' },
+      { type: 'add', text: 'How to Play opens as dialog, not hidden swipe page' },
+      { type: 'add', text: 'Saved Sessions as bottom link → opens dedicated sheet' },
+      { type: 'add', text: 'Section labels match Theme Picker style (STEP N — LABEL)' },
+    ],
+  },
+];
+
+// ═══════════════════════════════════════════════════════════
+// RENDER
+// ═══════════════════════════════════════════════════════════
+
+const container = document.getElementById('comparisons');
+let currentFilter = 'all';
+
+function renderComparisons() {
+  const filtered = currentFilter === 'all' ? comparisons : comparisons.filter(c => c.filter === currentFilter);
+  container.innerHTML = filtered.map(c => `
+    <div class="comparison" data-filter="${c.filter}">
+      <div class="comparison-header">
+        <div>
+          <div class="comparison-num">${c.num}</div>
+          <div style="display:flex;align-items:center;gap:12px;margin-top:4px;">
+            <div class="comparison-title">${c.title}</div>
+            <div class="comparison-tag tag-${c.tag}">${c.tagLabel}</div>
+          </div>
+          <div class="comparison-desc">${c.desc}</div>
+        </div>
+      </div>
+      <div class="side-by-side">
+        <div>
+          <div class="side-label old">CURRENT — v1.9.25</div>
+          <div class="side-content old">
+            <div class="screenshot-frame">
+              <img src="${c.oldScreenshot}" alt="Current ${c.title}" loading="lazy">
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="side-label new">PROPOSED — v1.9.26</div>
+          <div class="side-content new">
+            ${c.newHtml}
+          </div>
+        </div>
+      </div>
+      <div class="change-notes">
+        <div class="change-notes-title">Key Changes</div>
+        <ul class="change-list">
+          ${c.changes.map(ch => `<li class="${ch.type}">${ch.text}</li>`).join('')}
+        </ul>
+      </div>
+    </div>
+  `).join('');
+}
+
+// Filter buttons
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentFilter = btn.dataset.filter;
+    renderComparisons();
+  });
+});
+
+renderComparisons();
+</script>
+
+</body>
+</html>

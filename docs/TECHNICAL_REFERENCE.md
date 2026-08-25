@@ -3,7 +3,7 @@
 > **READ THIS BEFORE ANY WORK.** This is the canonical technical reference.
 > Every agent must know these facts at all times. No exceptions.
 >
-> Last updated: 2026-08-18 (v1.9.60)
+> Last updated: 2026-08-25 (v2.0.3)
 
 ---
 
@@ -127,7 +127,7 @@ When bumping the version, ALL of these files must be updated in lockstep:
 
 **Version format:** `MAJOR.MINOR.PATCH+BUILD` (e.g. `1.9.60+136`). The `+BUILD` number increments with every release. The `PATCH` increments for features/fixes.
 
-**Current version:** `1.9.62+138`
+**Current version:** `2.0.3+143`
 
 ### Changelog entry format
 
@@ -161,7 +161,7 @@ When bumping the version, ALL of these files must be updated in lockstep:
 
 ---
 
-## 5. Current App Architecture (v1.9.62)
+## 5. Current App Architecture (v2.0.3)
 
 ### Active Run Display Modes
 
@@ -242,7 +242,7 @@ Key fields:
 
 **Trigger:** Was triggered after `startNewRun` in `character_select_screen.dart`, but user removed the trigger (2026-08-18). `showModePickerOnNewRun` default is now `false`. The dialog widget still exists and can be re-wired if needed.
 
-### Settings Screen (v1.9.62)
+### Settings Screen (v2.0.3)
 
 | File | Purpose |
 |------|---------|
@@ -282,14 +282,18 @@ Key fields:
 
 ### Active Run Modes
 
-| File | Mode |
-|------|------|
-| `lib/widgets/active_run/modes/codex_book_mode.dart` | Codex Book |
-| `lib/widgets/active_run/modes/compact_run_mode.dart` | Compact Run |
-| `lib/widgets/active_run/modes/theme_signature_mode.dart` | Theme Signature |
-| `lib/widgets/active_run/modes/theme_lore.dart` | ThemeLore registry |
-| `lib/widgets/active_run/modes/run_display_mode_bar.dart` | Mode switcher bar |
-| `lib/widgets/active_run/modes/mode_picker_onboarding.dart` | Onboarding dialog |
+**Note:** Matrix mode, Codex Book, Compact Run, Theme Signature, RunDisplayModeBar, and ModePickerOnboarding were all deleted in v2.0.2–v2.0.3 cleanup. The active run screen now uses a single Classic Scroll mode. The `RunDisplayMode` enum and related VisualPrefs fields may still exist but the mode widgets are gone.
+
+| File | Status |
+|------|--------|
+| `lib/widgets/active_run/modes/codex_book_mode.dart` | **Deleted** (v2.0.2) |
+| `lib/widgets/active_run/modes/compact_run_mode.dart` | **Deleted** (v2.0.2) |
+| `lib/widgets/active_run/modes/theme_signature_mode.dart` | **Deleted** (v2.0.2) |
+| `lib/widgets/active_run/modes/theme_lore.dart` | **Deleted** (v2.0.2) |
+| `lib/widgets/active_run/modes/run_display_mode_bar.dart` | **Deleted** (v2.0.2) |
+| `lib/widgets/active_run/modes/mode_picker_onboarding.dart` | **Deleted** (v2.0.2) |
+| `lib/widgets/active_run/depth_tile.dart` | **Deleted** (v2.0.2) |
+| `lib/widgets/backgrounds/gungeon_matrix_rain.dart` | **Deleted** (v1.9.62) |
 
 ### Graphics
 
@@ -300,15 +304,62 @@ Key fields:
 | `lib/widgets/backgrounds/animated_wallpaper.dart` | MP4 video wallpaper + vortex fallback |
 | `lib/widgets/backgrounds/ambient_shader_layer.dart` | Fragment shader ambient layer |
 
-### Multiplayer
+### Multiplayer (v2.0.3 — fully reworked)
+
+The old `multiplayer_session.dart` / `multiplayer_service.dart` / `paired_partner.dart` architecture was replaced in v2.0.2–v2.0.3 with a clean layered design:
 
 | File | Purpose |
 |------|---------|
-| `lib/services/multiplayer_session.dart` | MP session, pairing, reconnect (2662 lines) |
-| `lib/services/multiplayer_service.dart` | Socket transport |
-| `lib/services/paired_partners_store.dart` | Paired partner persistence |
-| `lib/models/paired_partner.dart` | Paired partner model |
-| `lib/models/multiplayer_messages.dart` | MP message types |
+| `lib/services/mp_session.dart` | Thin UI facade + lifecycle coordinator |
+| `lib/services/mp/mp_link.dart` | Nearby Connections transport, discovery, advertising, heartbeat |
+| `lib/services/mp/mp_sync.dart` | Hello handshake, snapshots, gifts, dice/emotes, shared-state sync |
+| `lib/services/mp/mp_recovery.dart` | Reconnect + app-kill restore |
+| `lib/services/mp/mp_store.dart` | Persistence of active MP session + run state |
+| `lib/services/paired_partners_store.dart` | Nickname persistence only (pairing removed) |
+| `lib/models/multiplayer_messages.dart` | MP wire protocol (17 message types) |
+| `lib/screens/mp_lobby_screen.dart` | Host/Join lobby — nickname + PIN |
+| `lib/screens/mp_connect_screen.dart` | Connecting/connected/error view |
+| `lib/widgets/mp_reconnect_banner.dart` | Reconnect status banner |
+| `lib/widgets/mp_request_listener.dart` | Gift/request bottom-sheet listener |
+
+**Key changes from v1.x:**
+- Pairing system removed entirely (~600 lines dead code purged)
+- `AutoConnectModePin` replaces manual endpoint selection
+- Main-authoritative shared-state model (Sidekick sends deltas, Main rebroadcasts)
+- Heartbeat 5s, reconnect 5s on / 5s off
+- `MpEndRun` sent on cancel so peer tears down cleanly
+- Connection timeout (45s) prevents infinite spinner
+- Discovery loop pauses during connection request (race condition fix)
+
+**Deleted files (v2.0.2):**
+- `lib/services/multiplayer_service.dart`
+- `lib/services/multiplayer_session.dart`
+- `lib/services/mp/mp_pairing.dart`
+- `lib/models/paired_partner.dart`
+- `lib/screens/multiplayer_lobby_screen.dart`
+
+---
+
+## 6.5. Test Suite (v2.0.3)
+
+105 tests across 6 files, all passing. CI runs on every push via GitHub Actions.
+
+| File | Tests | Coverage |
+|------|-------|----------|
+| `test/mp_flow_simulation_test.dart` | 11 | MP flow simulation + `_runProvider` desync regression |
+| `test/mp_message_test.dart` | 33 | Wire protocol round-trip + error handling |
+| `test/mp_link_test.dart` | 20 | Transport logic, endpoint parsing, PIN matching |
+| `test/run_provider_test.dart` | 24 | State management, shared state, restore, lifecycle |
+| `test/widget/mp_lobby_screen_test.dart` | 10 | Lobby UI rendering + validation |
+| `test/widget/mp_connect_screen_test.dart` | 7 | Connect screen states (connecting, error, restoring) |
+
+**CI workflow:** `.github/workflows/ci.yml` — 3 jobs (analyze, test, build APK) on every push/PR to `master` or `dev`.
+
+**Run tests:**
+```powershell
+& 'C:\src\flutter\bin\flutter.bat' test
+& 'C:\src\flutter\bin\flutter.bat' test --coverage  # generates coverage/lcov.info
+```
 
 ---
 

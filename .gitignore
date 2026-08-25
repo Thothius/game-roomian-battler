@@ -3,6 +3,7 @@ gungeon_mate/
 
 # IDE
 .idea/
+.vscode/
 
 # Cache
 cache_wikigg/
@@ -13,13 +14,30 @@ app-releases/
 # Scripts (GungeonMate tooling)
 scripts/
 
+# Playwright MCP console logs
+.playwright-mcp/
+
+# Temp / commit message files
+.commit_msg*.txt
+*.tmp
+*.bak
+
+# Loose screenshots in root (moved to docs/screenshots/ or deleted)
+*.png
+*.mp4
+
+# Sounds (not tracked in root repo)
+sounds/
+
+# Theme splash assets (tracked in app repo, not root)
+theme-splash/
+
+# Unsorted asset folders
+assets new folder/
+
 # OS
 Thumbs.db
 .DS_Store
-
-# Temp
-*.tmp
-*.bak
 
 # Git worktrees (parallel agent isolation — see AGENTS.md AC5d)
 .worktrees/

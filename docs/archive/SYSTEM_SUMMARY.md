@@ -49,3 +49,19 @@ The planned system would include:
 * `lib/screens/codex_screen.dart` - Codex encyclopedia: enemies, bosses, NPCs, objects, pickups browser.
 * `lib/screens/active_run_screen.dart` - Central run dashboard with inventory, dashboards, and multiplayer.
 * `lib/screens/settings_screen.dart` - Theme, font, and run utility configuration.
+
+---
+
+## 5. Multiplayer Architecture (v2.0.3)
+
+The multiplayer system was fully reworked in v2.0.2–v2.0.3. The old monolithic `multiplayer_session.dart` / `multiplayer_service.dart` was replaced with a clean layered design:
+
+* **`MpSession`** (`lib/services/mp_session.dart`) — Thin UI-facing facade and lifecycle coordinator. The ONLY thing the UI talks to.
+* **`MpLink`** (`lib/services/mp/mp_link.dart`) — Nearby Connections transport: advertising, discovery, auto-connect by PIN, heartbeat, connection callbacks.
+* **`MpSync`** (`lib/services/mp/mp_sync.dart`) — Hello handshake, snapshots, gifts, requests, dice/emotes, Main-authoritative shared-state synchronization.
+* **`MpRecovery`** (`lib/services/mp/mp_recovery.dart`) — Reconnect and app-kill restore behavior.
+* **`MpStore`** (`lib/services/mp/mp_store.dart`) — Persistence of active MP session and run state.
+
+**Connection flow:** Host picks character → auto-generated 4-digit PIN → advertises `nickname#PIN`. Joiner enters PIN → discovers → auto-connects to matching endpoint → hello handshake → snapshot exchange → both see the run.
+
+**Pairing system removed** in v2.0.2 (~600 lines dead code purged). `paired_partners_store.dart` now stores nickname only.
