@@ -65,7 +65,7 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 | Slot | Assigned Agent | Status | Working On | Last Heartbeat |
 | :--- | :--- | :--- | :--- | :--- |
 | **Slot 1** | **VISUAL** | `ACTIVE` | Custom theme save/load system (uncommitted in worktree — RISK: commit WIP soon) | 2026-08-25 (now) UTC+3 |
-| **Slot 2** | **_(none)_** | `IDLE` | Session ended — P0/P1 UX bug fixes shipped | 2026-08-27 (now) UTC+3 |
+| **Slot 2** | **_(none)_** | `IDLE` | Session ended — B4 + W4 fixes shipped | 2026-08-27 (now) UTC+3 |
 | **Slot 3** | **_(none)_** | `IDLE` | Free for PARALLEL (second coder) | — |
 | **Slot 4** | **_(none)_** | `IDLE` | Session ended — UX assessment doc shipped | 2026-08-27 (now) UTC+3 |
 
@@ -98,9 +98,9 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 | **Branch** | master |
 | **Session started** | 2026-08-27 (now) UTC+3 |
 | **Last board update** | 2026-08-27 (now) UTC+3 |
-| **Last commit** | 0ab0f10 (gungeon_mate) — FIX: P0/P1 UX bugs from assessment — mojibake, contrast, Settings back arrow |
+| **Last commit** | adb7ec2 (gungeon_mate) — FIX: B4 em-dash sweep + W4 designed empty/error states |
 | **Files in progress** | — |
-| **Uncommitted changes** | — (user has uncommitted: run_provider.dart parallel JSON loading, pubspec dep bumps) |
+| **Uncommitted changes** | — (user has uncommitted: run_provider.dart, pubspec, robot_dashboard, item_detail, favourites, special_gun_dashboards) |
 
 > **Session ended 2026-08-18 13:00.** Task: AC5d worktree policy. Added new AC5d section to AGENTS.md — MANDATORY `git worktree` isolation when 2+ agents are active. Documents setup, session workflow, merge+cleanup, sole-agent exception, pre-flight checks, nested repo notes. Updated AC5 branch-creation and merge steps to reference AC5d. Added `.worktrees/` to .gitignore. Validated full worktree create→list→remove→branch-delete cycle in this environment. This prevents the 2026-08-18 collision (Slot 4's checkout hijacked Slot 1's staged changes).
 
