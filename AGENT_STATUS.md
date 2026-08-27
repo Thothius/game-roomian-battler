@@ -65,9 +65,9 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 | Slot | Assigned Agent | Status | Working On | Last Heartbeat |
 | :--- | :--- | :--- | :--- | :--- |
 | **Slot 1** | **VISUAL** | `ACTIVE` | Custom theme save/load system (uncommitted in worktree — RISK: commit WIP soon) | 2026-08-25 (now) UTC+3 |
-| **Slot 2** | **_(none)_** | `IDLE` | Session ended — bughunt complete, see session log | 2026-08-26 (now) UTC+3 |
+| **Slot 2** | **CORE** | `ACTIVE` | Fixing P0/P1 bugs from UX assessment: B1 mojibake, B2 onSurface luminance (U-002), B3 Settings back arrow | 2026-08-27 (now) UTC+3 |
 | **Slot 3** | **_(none)_** | `IDLE` | Free for PARALLEL (second coder) | — |
-| **Slot 4** | **_(none)_** | `IDLE` | Session ended — see session log | 2026-08-26 (now) UTC+3 |
+| **Slot 4** | **_(none)_** | `IDLE` | Session ended — UX assessment doc shipped | 2026-08-27 (now) UTC+3 |
 
 ### Slot Details
 
@@ -96,10 +96,10 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 | Field | Value |
 |-------|-------|
 | **Branch** | master |
-| **Session started** | 2026-08-25 (now) UTC+3 |
-| **Last board update** | 2026-08-26 (now) UTC+3 |
-| **Last commit** | 1531931 (gungeon_mate) — Bughunt: bounds-guard AmmonomiconTabStrip; e92257d — Shrine nav + font scaling freeze; cecfde7 — Single-row header + sponge removal; 6f1c178 — Codex NPC GIFs + collapsible tabs; 2307a68 (root) — UX/UI panel |
-| **Files in progress** | — |
+| **Session started** | 2026-08-27 (now) UTC+3 |
+| **Last board update** | 2026-08-27 (now) UTC+3 |
+| **Last commit** | 4fd83f9 (gungeon_mate) — v2.0.8: FIX — MP reconnect blank screen + remove pull-to-refresh |
+| **Files in progress** | lib/screens/active_run_screen.dart, lib/services/app_theme.dart, lib/screens/settings_screen.dart |
 | **Uncommitted changes** | — |
 
 > **Session ended 2026-08-18 13:00.** Task: AC5d worktree policy. Added new AC5d section to AGENTS.md — MANDATORY `git worktree` isolation when 2+ agents are active. Documents setup, session workflow, merge+cleanup, sole-agent exception, pre-flight checks, nested repo notes. Updated AC5 branch-creation and merge steps to reference AC5d. Added `.worktrees/` to .gitignore. Validated full worktree create→list→remove→branch-delete cycle in this environment. This prevents the 2026-08-18 collision (Slot 4's checkout hijacked Slot 1's staged changes).
@@ -124,11 +124,11 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 | Field | Value |
 |-------|-------|
 | **Branch** | master |
-| **Session started** | 2026-08-25 (now) UTC+3 |
-| **Last board update** | 2026-08-25 (now) UTC+3 |
-| **Last commit** | — (uncommitted: Part A MP Lobby Rework — PINs removed, role selection, visual overhaul) |
+| **Session started** | 2026-08-27 (now) UTC+3 |
+| **Last board update** | 2026-08-27 (now) UTC+3 |
+| **Last commit** | — (uncommitted: docs/UX_ASSESSMENT_2026.md — full-app UX audit report) |
 | **Files in progress** | — |
-| **Uncommitted changes** | Part A MP Lobby Rework: PINs removed from entire MP system, role selection (MAIN/SIDEKICK) before options, visual overhaul with AmbientGlow background + themed role cards + larger character preview. 16 files modified. flutter analyze clean, 49 tests pass. |
+| **Uncommitted changes** | docs/UX_ASSESSMENT_2026.md (new — read-only audit, no code changes) |
 
 > **Slot restructured 2026-08-25.** Formerly UNIVERSAL WORKER. Now SUPPORT — owns the cleanup-and-doc niche via `/cleanup` command. Use for dead code sweeps, doc consistency checks, stale reference cleanup, Playwright testing, and general cross-slot assistance.
 
