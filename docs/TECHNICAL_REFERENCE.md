@@ -3,7 +3,7 @@
 > **READ THIS BEFORE ANY WORK.** This is the canonical technical reference.
 > Every agent must know these facts at all times. No exceptions.
 >
-> Last updated: 2026-08-25 (v2.0.3)
+> Last updated: 2026-08-28 (v2.1.0)
 
 ---
 
@@ -123,11 +123,11 @@ When bumping the version, ALL of these files must be updated in lockstep:
 | `gungeon_mate/lib/utils/asset_paths.dart` | `const String kAppVersion = 'X.Y.Z';` |
 | `gungeon_mate/assets/data/changelog.json` | New entry at top of array |
 | `gungeon_mate/VERSION_HISTORY.md` | New section at top |
-| `gungeon_mate/lib/screens/main_menu_screen.dart` | Version string in changelog dialog (~line 519) |
+| `gungeon_mate/lib/screens/main_menu_screen.dart` | Imports `kAppVersion` from `asset_paths.dart` — no hardcoded version string |
 
-**Version format:** `MAJOR.MINOR.PATCH+BUILD` (e.g. `1.9.60+136`). The `+BUILD` number increments with every release. The `PATCH` increments for features/fixes.
+**Version format:** `MAJOR.MINOR.PATCH+BUILD` (e.g. `2.1.0+150`). The `+BUILD` number increments with every release. The `PATCH` increments for features/fixes.
 
-**Current version:** `2.0.3+143`
+**Current version:** `2.1.0+150`
 
 ### Changelog entry format
 
@@ -161,7 +161,7 @@ When bumping the version, ALL of these files must be updated in lockstep:
 
 ---
 
-## 5. Current App Architecture (v2.0.3)
+## 5. Current App Architecture (v2.1.0)
 
 ### Active Run Display Modes
 
@@ -184,14 +184,20 @@ The active run screen supports **4 display modes** via `RunDisplayMode` enum:
 
 | Component | Location |
 |-----------|----------|
-| `AppThemeMode` enum (33 values, 14 visible) | `lib/services/app_theme.dart` |
+| `AppThemeMode` enum (39 values) | `lib/services/app_theme.dart` |
 | `ThemeFlair` (per-theme color palette) | `lib/services/app_theme.dart` |
 | `VisualPrefs` (persisted user prefs) | `lib/services/app_theme.dart` |
-| `kVisibleThemes` list | `lib/services/app_theme.dart` |
+| `kVisibleThemes` list (15 active, 12 commented out) | `lib/services/app_theme.dart` |
+| `kPickerThemes` list (8 curated with splash graphics) | `lib/services/app_theme.dart` |
 | `ThemeOverlay` (global visual stack) | `lib/widgets/theme_overlay.dart` |
 | `ThemeLore` registry (14 entries) | **Deleted** (v2.0.2) — was `lib/widgets/active_run/modes/theme_lore.dart` |
 
-**14 visible themes:** Minimalist, Unicorn, Forge Master, Robot's Core, Cat Lady, Moonlit Chamber, Storm Caller, Mr. Robot, Valor of Marines, The Bullet, The Paradox, Gunpowder, Dragunfire, Lich's Domain, Custom.
+**Theme lists:**
+- `kPickerThemes` (8 shown in theme picker, all have splash graphics): Unicorn, Forge Master, Moonlit Chamber, The Bullet, The Paradox, Dragunfire, Lich's Domain, Gunpowder.
+- `kVisibleThemes` (15 active): Minimalist + 8 picker themes + Robot's Core, Cat Lady, Storm Caller, Mr. Robot, Valor of Marines, Custom.
+- 12 themes commented out (no splash graphic yet): The Cultist, The Gunslinger, The Convict, The Hunter, The Pilot, The Rat, Breach Gateway, Lead Lord Keep, Oubliette Pit, Black Powder Mine, Bullet Hell Floor, R&G Department.
+- All 14 splash JPGs are 1200×1200 (recompressed from 2048×2048 in v2.1.0).
+- `errorBuilder` on all splash `Image.asset` calls falls back to radial gradient if file is missing.
 
 ### VisualPrefs fields (persisted to SharedPreferences)
 
@@ -221,7 +227,7 @@ Key fields:
 
 **Init:** `VideoPlayerMediaKit.ensureInitialized(windows: true)` in `main.dart` before `runApp`.
 
-**Usage:** `AnimatedWallpaperBackground` widget in `lib/widgets/backgrounds/animated_wallpaper.dart`. Plays `gungeonmate-animation-02.mp4` on the home screen. Falls back to `_VortexFallbackPainter` (CustomPaint) if video init fails.
+**Usage:** `AnimatedWallpaperBackground` widget in `lib/widgets/backgrounds/animated_wallpaper.dart`. Plays `gungeonmate-animation-02.mp4` on the home screen. Falls back to `_VortexFallbackPainter` (CustomPaint) if video init fails. The unused `wp_anim_01_galaxy.mp4` was deleted in v2.1.0 (8.9MB dead asset).
 
 ### GungeonMeter (Interactive Coolness/Curse Meter)
 
@@ -242,17 +248,25 @@ Key fields:
 
 **Trigger:** Was triggered after `startNewRun` in `character_select_screen.dart`, but user removed the trigger (2026-08-18). `showModePickerOnNewRun` default is now `false`. The dialog widget still exists and can be re-wired if needed.
 
-### Settings Screen (v2.0.3)
+### Settings Screen (v2.1.0)
 
 | File | Purpose |
 |------|---------|
-| `lib/screens/settings_screen.dart` | 2-tab layout (Appearance + Settings) |
-| `lib/widgets/settings/theme_visuals_tab.dart` | Appearance tab — theme, fonts, glow, inventory |
-| `lib/widgets/settings/settings_tab.dart` | Settings tab — dice, MP, account, dev, danger |
+| `lib/screens/settings_screen.dart` | Single-tab layout (SettingsTab only) |
+| `lib/widgets/settings/settings_tab.dart` | Settings tab — run tools, dice, MP, data, dev, danger |
 
-**v1.9.62 unification:** Formerly 3 tabs (Appearance / Gameplay / App). Gameplay + App merged into single Settings tab. Dialogue options removed (useless). Event Log + Quick Actions removed (don't belong in settings). `gameplay_tab.dart` and `run_tab.dart` deleted.
+**v2.1.0 reorganization:**
+- Single tab (Appearance tab deleted — theme selection moved to Experience Studio).
+- Sections: RUN TOOLS, DICE (style + roll), MULTIPLAYER (hidden when solo), DATA & STORAGE, DEV TOOLS.
+- "Save Run" always visible (was hidden during MP).
+- "DEBUG" renamed to "DEV TOOLS".
+- Bottom danger actions: END RUN, RESET DATA (full-width).
 
-**Orphaned:** `run_log_screen.dart` — no longer imported anywhere. Run log data still feeds `stats_detail_screen.dart` via `RunProvider.curseLog`/`coolnessLog`. Can be re-wired if event log access is needed elsewhere.
+**Deleted files (v2.0.4–v2.1.0):**
+- `lib/widgets/settings/theme_visuals_tab.dart` (Appearance tab, 691 lines)
+- `lib/widgets/settings/run_log_screen.dart` (orphaned, 271 lines)
+- `lib/widgets/settings/gameplay_tab.dart` (v1.9.62)
+- `lib/widgets/settings/run_tab.dart` (v1.9.62)
 
 ### Experience Studio (v1.9.61+)
 
@@ -260,9 +274,11 @@ Key fields:
 |------|---------|
 | `lib/screens/experience_studio_screen.dart` | Theme picker + customization (tabbed, with fullscreen preview) |
 
-**v1.9.61:** 14 Gemini-generated theme splash images in `assets/images/themes/splash/`. Each theme card shows its splash as background. `AppThemeMode.splashSlug` getter maps themes to asset slugs. `themeSplashPath()` helper in `asset_paths.dart`.
+**v1.9.61:** 14 theme splash images in `assets/images/themes/splash/`. Each theme card shows its splash as background. `AppThemeMode.splashSlug` getter maps themes to asset slugs. `themeSplashPath()` helper in `asset_paths.dart`.
 
-**Redesign (in progress):** Converted from 5-step wizard to 4-tab picker (Theme / Particles / Typography / Ambiance). Side bookmark button opens fullscreen preview. `_PaletteStep` is orphaned dead code (warning).
+**v2.1.0:** Splash JPGs recompressed from 2048×2048 to 1200×1200 (45.75MB → 1.51MB total). `errorBuilder` added to all splash Image.asset calls for graceful fallback.
+
+**Redesign complete:** 4-tab picker (Theme / Particles / Typography / Ambiance). Side bookmark button opens fullscreen preview. `_PaletteStep` deleted.
 
 ---
 
@@ -273,11 +289,11 @@ Key fields:
 | File | Purpose |
 |------|---------|
 | `lib/main.dart` | App entry point, `VideoPlayerMediaKit.ensureInitialized` |
-| `lib/providers/run_provider.dart` | State management (1762 lines) |
-| `lib/services/app_theme.dart` | Themes, VisualPrefs, RunDisplayMode enum (3535 lines) |
+| `lib/providers/run_provider.dart` | State management (1618 lines) |
+| `lib/services/app_theme.dart` | Themes, VisualPrefs, RunDisplayMode enum (4078 lines) |
 | `lib/widgets/theme_overlay.dart` | Global visual stack (layers 0-1.0) |
 | `lib/screens/home_screen.dart` | Home screen routing (MainMenu vs ActiveRunScreen) |
-| `lib/screens/active_run_screen.dart` | Active run screen (903 lines) |
+| `lib/screens/active_run_screen.dart` | Active run screen (964 lines) |
 | `lib/widgets/active_run/player_page.dart` | Per-player page with mode routing |
 
 ### Active Run Modes
@@ -315,7 +331,7 @@ The old `multiplayer_session.dart` / `multiplayer_service.dart` / `paired_partne
 | `lib/services/mp/mp_store.dart` | Persistence of active MP session + run state |
 | `lib/services/paired_partners_store.dart` | Nickname persistence only (pairing removed) |
 | `lib/models/multiplayer_messages.dart` | MP wire protocol (17 message types) |
-| `lib/screens/mp_lobby_screen.dart` | Host/Join lobby — nickname + PIN |
+| `lib/screens/mp_lobby_screen.dart` | Host/Join lobby — nickname + role selection (no PIN) |
 | `lib/screens/mp_connect_screen.dart` | Connecting/connected/error view |
 | `lib/widgets/mp_reconnect_banner.dart` | Reconnect status banner |
 | `lib/widgets/mp_request_listener.dart` | Gift/request bottom-sheet listener |
@@ -338,18 +354,26 @@ The old `multiplayer_session.dart` / `multiplayer_service.dart` / `paired_partne
 
 ---
 
-## 6.5. Test Suite (v2.0.3)
+## 6.5. Test Suite (v2.1.0)
 
-105 tests across 6 files, all passing. CI runs on every push via GitHub Actions.
+199 tests across 15 files, all passing. CI runs on every push via GitHub Actions.
 
 | File | Tests | Coverage |
 |------|-------|----------|
-| `test/mp_flow_simulation_test.dart` | 11 | MP flow simulation + `_runProvider` desync regression |
-| `test/mp_message_test.dart` | 33 | Wire protocol round-trip + error handling |
-| `test/mp_link_test.dart` | 20 | Transport logic, endpoint parsing, PIN matching |
-| `test/run_provider_test.dart` | 24 | State management, shared state, restore, lifecycle |
-| `test/widget/mp_lobby_screen_test.dart` | 10 | Lobby UI rendering + validation |
-| `test/widget/mp_connect_screen_test.dart` | 7 | Connect screen states (connecting, error, restoring) |
+| `test/mp_flow_simulation_test.dart` | 5 | MP flow simulation + `_runProvider` desync regression |
+| `test/mp_message_test.dart` | 3 | Wire protocol round-trip |
+| `test/mp_link_test.dart` | 2 | Endpoint name parsing |
+| `test/mp_integration_test.dart` | ~140 | Full MP integration: handshake, snapshots, gifts, reconnect, edge cases |
+| `test/mp_recovery_test.dart` | — | MP recovery scenarios |
+| `test/mp_reliability_test.dart` | — | MP reliability scenarios |
+| `test/run_provider_test.dart` | 2 | State management lifecycle |
+| `test/widget/character_select_screen_test.dart` | 2 | Character select rendering |
+| `test/widget/codex_screen_test.dart` | 9 | Codex screen rendering + back button |
+| `test/widget/home_screen_test.dart` | 3 | Bottom nav tab switching |
+| `test/widget/main_menu_test.dart` | — | Main menu rendering |
+| `test/widget/mp_lobby_screen_test.dart` | 1 | Lobby UI rendering |
+| `test/widget/mp_connect_screen_test.dart` | 3 | Connect screen states |
+| `test/widget/settings_screen_test.dart` | 13 | Settings sections, dice, dev tools, danger actions |
 
 **CI workflow:** `.github/workflows/ci.yml` — 3 jobs (analyze, test, build APK) on every push/PR to `master` or `dev`.
 
@@ -400,10 +424,10 @@ Always use the full path: `& 'C:\src\flutter\bin\flutter.bat'`
 
 | Slot | Agent | Specialty |
 |------|-------|-----------|
-| 1 | XEENU-ANIMATOR | 2.5D, particles, spring physics, RepaintBoundary |
-| 2 | Coder-Maintainer-Reworker-Genius | State management, architecture, bug squashing |
-| 3 | Planner-Architect-Mockupper | Blueprints, protocol design, wireframing |
-| 4 | UNIVERSAL WORKER | General code, docs, cross-slot assistance |
+| 1 | VISUAL | Animations, particles, themes, UI polish, RepaintBoundary |
+| 2 | CORE | State management, architecture, bug squashing, blueprints |
+| 3 | PARALLEL | Second coder for parallel feature work |
+| 4 | SUPPORT | Test infrastructure, docs, cleanup, cross-slot assistance |
 
 ### Board fields per slot
 
@@ -455,13 +479,17 @@ Append a row to the Session Log table at the end of every session with: Agent, D
 
 | Package | Version | Purpose |
 |---------|---------|---------|
-| `provider` | ^6.x | State management |
+| `provider` | ^6.1.5 | State management |
 | `video_player` | ^2.9.2 | Video playback API |
 | `video_player_media_kit` | ^2.0.0 | Windows/Linux video backend |
 | `media_kit_libs_windows_video` | ^1.0.11 | Windows video libs |
 | `flutter_animate` | ^4.x | Declarative animations |
-| `shared_preferences` | ^2.x | Local persistence |
+| `shared_preferences` | ^2.2.2 | Local persistence |
+| `google_fonts` | ^6.2.1 | Dynamic font loading |
+| `nearby_connections` | ^4.3.0 | MP Bluetooth/WiFi Direct transport |
 | `path_provider` | ^2.x | File system paths |
+| `url_launcher` | ^6.x | External browser links (wiki.gg) |
+| `permission_handler` | ^11.4.0 | Runtime permission requests |
 
 **Rule:** Never add a dependency without checking if a stdlib or existing package solution exists first (Ponytail Rules). Prefer packages published >7 days ago. Never use floating ranges (`latest`, `*`).
 

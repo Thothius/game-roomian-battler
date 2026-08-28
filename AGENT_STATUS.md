@@ -98,7 +98,7 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 | **Branch** | master |
 | **Session started** | 2026-08-27 (now) UTC+3 |
 | **Last board update** | 2026-08-28 UTC+3 |
-| **Last commit** | 80f0e7c (gungeon_mate) — Bughunt fix: _visitedTabs.add(1) in onRequestBrowse |
+| **Last commit** | d5dfc9e (gungeon_mate) — P4: Fix nameCtrl disposal + delete 4 dead widget files |
 | **Files in progress** | — |
 | **Uncommitted changes** | — |
 
