@@ -65,7 +65,7 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 | Slot | Assigned Agent | Status | Working On | Last Heartbeat |
 | :--- | :--- | :--- | :--- | :--- |
 | **Slot 1** | **VISUAL** | `ACTIVE` | Custom theme save/load system (uncommitted in worktree — RISK: commit WIP soon) | 2026-08-25 (now) UTC+3 |
-| **Slot 2** | **_(none)_** | `IDLE` | Session ended — P1 lazy IndexedStack shipped | 2026-08-27 (now) UTC+3 |
+| **Slot 2** | **_(none)_** | `IDLE` | Session ended — v2.1.0 asset optimization + settings reorg shipped | 2026-08-28 UTC+3 |
 | **Slot 3** | **_(none)_** | `IDLE` | Free for PARALLEL (second coder) | — |
 | **Slot 4** | **_(none)_** | `IDLE` | Session ended — UX assessment doc shipped | 2026-08-27 (now) UTC+3 |
 
@@ -97,10 +97,12 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 |-------|-------|
 | **Branch** | master |
 | **Session started** | 2026-08-27 (now) UTC+3 |
-| **Last board update** | 2026-08-27 (now) UTC+3 |
-| **Last commit** | ce86265 (gungeon_mate) — P1: Lazy IndexedStack — defer Codex JSON load until first tab visit |
+| **Last board update** | 2026-08-28 UTC+3 |
+| **Last commit** | 80f0e7c (gungeon_mate) — Bughunt fix: _visitedTabs.add(1) in onRequestBrowse |
 | **Files in progress** | — |
-| **Uncommitted changes** | — (user has uncommitted: run_provider.dart _scheduleSave fix) |
+| **Uncommitted changes** | — |
+
+> **Session ended 2026-08-28.** v2.1.0 release. (1) Asset optimization: recompressed 14 theme splash JPGs 2048×2048 → 1200×1200 (45.75MB → 1.51MB), deleted dead wp_anim_01_galaxy.mp4 (8.9MB). APK 90.8MB → 37.6MB (59% smaller). (2) Settings reorg: Save Run always visible, Dice Roll moved into DICE section, MULTIPLAYER card hidden when solo, DEBUG → DEV TOOLS, deleted dead AppearanceTab (580+ lines). (3) Bug fixes: _scheduleSave recursion, codex_detail_screen SafeArea paren. (4) Fresh-perspective bughunt: 10 findings audited, 1 critical (already fixed), 9 false positives/low-severity. flutter analyze clean, 199/199 tests pass. Version bumped v2.1.0+150 with full release checklist (pubspec, changelog.json, VERSION_HISTORY.md, asset_paths.dart).
 
 > **Session ended 2026-08-18 13:00.** Task: AC5d worktree policy. Added new AC5d section to AGENTS.md — MANDATORY `git worktree` isolation when 2+ agents are active. Documents setup, session workflow, merge+cleanup, sole-agent exception, pre-flight checks, nested repo notes. Updated AC5 branch-creation and merge steps to reference AC5d. Added `.worktrees/` to .gitignore. Validated full worktree create→list→remove→branch-delete cycle in this environment. This prevents the 2026-08-18 collision (Slot 4's checkout hijacked Slot 1's staged changes).
 
