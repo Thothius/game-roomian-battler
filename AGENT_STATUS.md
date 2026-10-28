@@ -69,7 +69,7 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 | **Slot 1** | **_(none)_** | `IDLE` | Session ended — custom theme system committed in `c8080f2` | 2026-08-28 UTC+3 |
 | **Slot 2** | **_(none)_** | `IDLE` | Session ended — quiz adversarial pass merged `06b4dc6` | 2026-10-28 UTC+2 |
 | **Slot 3** | **_(none)_** | `IDLE` | Session ended — MP diagnostics fixes merged `0acb435` | 2026-10-28 UTC+2 |
-| **Slot 4** | **_(none)_** | `IDLE` | Session ended — panel overhaul merged `7fd8397` | 2026-10-28 UTC+2 |
+| **Slot 4** | **_(none)_** | `IDLE` | Session ended — big-screen wins committed `410b9f4` on master (sole agent) | 2026-10-28 UTC+2 |
 
 ### Slot Details
 
@@ -187,6 +187,7 @@ Format: `| Agent | Date | Branch | Commit | Task | Files | Status | Next | Watch
 
 | Agent | Date | Branch | Commit | Task | Files | Status | Next | Watch out for |
 |-------|------|--------|--------|------|-------|--------|------|---------------|
+| SUPPORT | 2026-10-28 | master (sole agent) | `410b9f4` (gungeon_mate) | Big-screen quick wins: browse/detail max-widths (680/760dp), quick-add sheet 640dp, Windows title fix 'bar_kitchen_app'→'GungeonMate', WM_GETMINMAXINFO 400×700 min | lib/screens/{browse_screen,item_detail_screen,active_run_screen}.dart, windows/runner/{main,win32_window}.cpp | DONE | — | **PRE-EXISTING FAILING TEST:** `browse_synergies_test > TIERS mode filters` fails on clean HEAD `9f9efb8` (owner-attribution commit) — 'AKEY-47' not found after S-chip tap. NOT from my changes (verified via stash). Owner attribution commit's regression to fix. |
 | PARALLEL | 2026-10-28 | slot3-parallel/mp-fixes → master | `0acb435` | MP diagnostics findings: classic no-timeout seek, pause-state unification (pausedNotifier single source), ParadoxBar compact <460px, serviceId stopAll guard | mp_session.dart, paradox_bar.dart | DONE | gh push (needs workflow-scope token refresh); two-device field verify | 34 MP tests green after changes |
 | SUPPORT | 2026-10-28 | slot4-support/panel-overhaul → master | `7fd8397` (gungeon_mate) | Special-panel overhaul: Junkan tab icon fix ('Ser Junkan 1'), full dynamic DPS params in gun_stats header, persist metronome/boxing/cigarettes counters, endRun resets all run-scoped specials | lib/providers/run_provider.dart, lib/widgets/dashboards/dashboard_swiper.dart, lib/widgets/item_detail/gun_stats.dart | DONE | — | Gunderfury level intentionally persists across runs (save-permanent XP). Reset is endRun-only — startNewRun also serves MP restore. Junkan rank sprites live in assets/images/junkan/ — panels already use them. |
 | CORE | 2026-10-28 | slot2-core/gungeonmaster-quiz → master | `58bc26b` (gungeon_mate) | Gungeonmaster Quiz v3.1.0 — 7 chests (5+Rainbow+Rat), sudden-death streaks, themed distractors, Ammonomicon hint, quiz nav tab, Themes→Settings, Customization→Theme | lib/{screens,widgets}/quiz/*, lib/services/quiz_*, home_screen, main_menu_screen, settings_tab, tests, v3.1.0+155 | DONE | — | Other agent's nav WIP preserved in `stash@{0}` (superseded intentionally). Follow-ups noted: post-run recap, synergy chest. |
