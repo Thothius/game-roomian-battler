@@ -59,8 +59,12 @@ Suite was broken twice recently, both found and fixed during this audit:
 
 ## Recommended next batch (effort: ~half a session)
 
-1. `data_integrity_test.dart` — JSON coherence (P0.1)
-2. `version_lockstep_test.dart` — release consistency (P0.2)
-3. Extend `_smoke_detail_test.dart` → gun tab assertions (P0.3)
-4. `elemental_tagger_test.dart` (P1.4)
-5. `run_name_generator_test.dart` (P1.8)
+1. `data_integrity_test.dart` — JSON coherence (P0.1) — **DONE `1ed9b21`** (6 tests; data verified clean — no dupes, all synergy pieces resolve, all icons exist)
+2. `version_lockstep_test.dart` — release consistency (P0.2) — **DONE `1ed9b21`** (3 tests)
+3. Extend `_smoke_detail_test.dart` → gun tab assertions (P0.3) — **DONE `1ed9b21`** (+4 tests)
+4. `elemental_tagger_test.dart` (P1.4) — **DONE `1ed9b21`** (6 tests)
+5. `run_name_generator_test.dart` (P1.8) — **DONE `1ed9b21`** (2 tests)
+
+**Suite total: 386+ tests green.** Remaining open items: P1.5–P1.7
+(synergy edge cases, special dashboards, avatar identity) and P2
+(dice flow, active-run transfers, codex nav).
