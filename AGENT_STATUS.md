@@ -66,7 +66,7 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 
 | Slot | Assigned Agent | Status | Working On | Last Heartbeat |
 | :--- | :--- | :--- | :--- | :--- |
-| **Slot 1** | **_(none)_** | `IDLE` | Session ended — MP lobby centering, pause overlay, end-run dialog, studio simplification, themed main menu (last `65ad84b`) | 2026-10-28 |
+| **Slot 1** | **_(none)_** | `IDLE` | Session ended — shrine picker cleanup (last `73ff757`) | 2026-10-28 |
 | **Slot 2** | **_(none)_** | `IDLE` | Session ended — quiz polish + browse fix + goop-scramble removal + chest size normalize, all merged (last `9e6e660`), 333 tests green | 2026-10-28 UTC+2 |
 | **Slot 3** | **_(none)_** | `IDLE` | Session ended — MP diagnostics fixes merged `0acb435` | 2026-10-28 UTC+2 |
 | **Slot 4** | **_(none)_** | `IDLE` | Session ended — font-scale hardening `38cc93a`; UI_HEALTH doc consolidated | 2026-10-28 UTC+2 |
@@ -79,7 +79,7 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 | **Branch** | — (master) |
 | **Session started** | 2026-10-28 |
 | **Last board update** | 2026-10-28 |
-| **Last commit** | `65ad84b` (gungeon_mate) — Main menu: theme-colored buttons + luminance-safe labels |
+| **Last commit** | `73ff757` (gungeon_mate) — Shrine picker: bigger visuals + real USE buttons + clean detail sheet |
 | **Files in progress** | — |
 | **Uncommitted changes** | — |
 | **Worktree** | — |
@@ -189,6 +189,7 @@ Format: `| Agent | Date | Branch | Commit | Task | Files | Status | Next | Watch
 
 | Agent | Date | Branch | Commit | Task | Files | Status | Next | Watch out for |
 |-------|------|--------|--------|------|-------|--------|------|---------------|
+| VISUAL (Devin) | 2026-10-28 | master | `73ff757` | Shrine picker cleanup: tiles 92px icons + real 48px USE pill (was ~26px shrinkWrap); sheet 160px hero, deduped double flavor text (quote dropped, lore kept), companion heart-cost parity, 52px buttons | shrine_picker_screen.dart | DONE | — | analyze+format clean; dart format reflowed the file so diff is large but mechanical |
 | VISUAL (Devin) | 2026-10-28 | master | `45c2b70` `60a6c24` `3015359` `f2554e2` `65ad84b` | UI batch: MP lobby centered (paradox pattern); pause overlay bigger+monochrome; End Run → fullscreen reaper dialog (shared by all callers); palette picker simplified (tall panels, back/preview/apply) + studio picker cleanup (glyph type grid, flat fonts, particle cap 200); main menu theme-colored buttons | mp_lobby, pause_overlay, end_run_confirm_dialog, experience_studio, app_theme, main_menu | DONE | — | Other agent swept my uncommitted studio restructure into `09c0cff` mid-flight — landed verbatim, follow-up committed clean. v3.1.4 bump `d2b75dd` skipped changelog.json + VERSION_HISTORY.md (checklist gap, still open). Tests green. |
 | SUPPORT | 2026-10-28 | master (sole) | `498176d`-series | **v3.1.3 field-batch:** palettes(9)+maker, messenger convo, 6 surprises, fonts(6+weight+spacing), effects panel, browse 2.0, view lock, instant-transfer pill | studio/chat_sheet/surprise/header/player_page/settings | DONE | PART A (me): palette tiles, effects chips, charge tags, notes, avatar grid+zoom | PART B agent: DPS→MSG, sidekick back, Testing Mode fix |
 | SUPPORT | 2026-10-28 | — | — (read-only audits) | MP/Paradox exit-path audit + dice-roller stuck-popup check + full UI sweep (17 finding classes) | — | DONE | — | **Dice stuck-popup already fixed** — `PopScope`+close→`sendDiceCancel`, `__dice_*` route-name pop guard. All MP/Paradox views analyze clean, `id:frame` wire verified end-to-end. UI findings → `docs/UI_HEALTH_2026-10-28.md` + plan file. Codex is the token exemplar. |
