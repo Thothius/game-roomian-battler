@@ -32,7 +32,7 @@ Before starting any new feature work in a session, complete these steps in order
 3. **Review uncommitted changes** — `git diff` to see what's pending
 4. **Check memories** — review any system-retrieved memories for context from previous sessions
 5. **Identify which agent made recent changes** — commit prefixes (`[Coder]`, `[Maintainer]`) tell you who did what
-6. **Read the bug tracker** — `read_file(docs/bug_tracker.md)` to see all known open bugs. If you're about to work on a file with an OPEN bug, mention it to the user before proceeding. (See AGENTS.md → Bug Tracker Rules B3)
+6. **Read the bug tracker** — `read_file(docs/USER_BUG_LIST.md)` to see all known open bugs. If you're about to work on a file with an OPEN bug, mention it to the user before proceeding. (See AGENTS.md → Bug Tracker Rules B3)
 
 ## Step 3: Bughunt Completed Tasks
 

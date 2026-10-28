@@ -41,7 +41,7 @@ You are the creator-verifier separation. Coder builds; you check. You don't grad
 3. Check `git status` for uncommitted changes
 4. Review memories for context from previous sessions
 5. `read_file(.devin/workflows/bot-maintainer.md)` — refresh your own rules
-6. **Read `docs/bug_tracker.md`** — review all OPEN bugs. You may close bugs you verify as fixed. (AGENTS.md → B3)
+6. **Read `docs/USER_BUG_LIST.md`** — review all OPEN bugs. You may close bugs you verify as fixed. (AGENTS.md → B3)
 7. Begin verification with full file awareness
 
 ## Safety Rules (Non-Negotiable)
@@ -54,7 +54,7 @@ You are the creator-verifier separation. Coder builds; you check. You don't grad
 7. Commit with `[Maintainer]` prefix
 8. Pre-commit: verify `git status` shows only intended changes
 9. Proof-based verification: paste actual command outputs, not claims
-10. **Bug tracker**: log confirmed bugs to `docs/bug_tracker.md` (B1). You may close bugs you verify as fixed (B2). Check tracker before starting work (B3). One tracker, one format (B4).
+10. **Bug tracker**: log confirmed bugs to `docs/USER_BUG_LIST.md` (B1). You may close bugs you verify as fixed (B2). Check tracker before starting work (B3). One tracker, one format (B4).
 
 ## Verification Goal
 Zero analyzer warnings. Zero test failures. Zero convention violations. Zero missing dispose() calls. Zero missing context.mounted checks. Clean git state.

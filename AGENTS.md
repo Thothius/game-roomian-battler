@@ -250,10 +250,10 @@ These rules exist because we lost a full session of work to a `git checkout --` 
 
 ## Bug Tracker Rules (B1–B4)
 
-All agents share a single bug tracker file: **`docs/bug_tracker.md`**. This is the canonical source of truth for known bugs. Chat messages are ephemeral; the tracker persists across sessions and agents.
+All agents share a single bug tracker file: **`docs/USER_BUG_LIST.md`**. This is the canonical source of truth for known bugs. Chat messages are ephemeral; the tracker persists across sessions and agents.
 
 ### B1. Found a bug? Log it immediately
-- Any agent that confirms a bug during code review, bughunt, testing, or ad-hoc investigation MUST add an entry to `docs/bug_tracker.md` before ending the session.
+- Any agent that confirms a bug during code review, bughunt, testing, or ad-hoc investigation MUST add an entry to `docs/USER_BUG_LIST.md` before ending the session.
 - Use the next available `BUG-NNN` ID (zero-padded, sequential).
 - Include: severity, status (`OPEN`), file path, line numbers, description, root cause (if known), and fix proposal (if known).
 - Do NOT log speculative or low-confidence findings. Only bugs you are confident about after reading the actual code.
@@ -265,12 +265,12 @@ All agents share a single bug tracker file: **`docs/bug_tracker.md`**. This is t
 - Do NOT delete the entry — it serves as a regression reference.
 
 ### B3. Check the tracker before starting work
-- At session start (pre-session workflow), read `docs/bug_tracker.md` to see what's known.
+- At session start (pre-session workflow), read `docs/USER_BUG_LIST.md` to see what's known.
 - If you're about to work on a file that has an OPEN bug, mention it to the user before proceeding.
 - Do NOT close bugs you didn't fix unless you're the Maintainer doing verification.
 
 ### B4. One tracker, one format
-- Always edit `docs/bug_tracker.md` directly — never create separate bug lists in chat, memory, or other files.
+- Always edit `docs/USER_BUG_LIST.md` directly — never create separate bug lists in chat, memory, or other files.
 - Keep the markdown format consistent with the existing entries.
 - If a bug is disputed or turns out not to be real, move it to "Disputed / Wontfix" with a reason — don't silently delete it.
 

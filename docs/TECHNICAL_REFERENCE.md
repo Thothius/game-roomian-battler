@@ -165,20 +165,13 @@ When bumping the version, ALL of these files must be updated in lockstep:
 
 ### Active Run Display Modes
 
-The active run screen supports **4 display modes** via `RunDisplayMode` enum:
-
-| Mode | Enum value | Widget | Description |
-|------|------------|--------|-------------|
-| Classic Scroll | `classic` | (default scroll view in PlayerPage) | The original full scroll view. Default. |
-| Codex Book | `codex` | `CodexBookMode` | Leather-and-brass two-page book spread |
-| Compact Run | `compact` | `CompactRunMode` | Tactical HUD, 2-column grid |
-| Theme Signature | `signature` | `ThemeSignatureMode` | Adapts to active theme — lore, colors, decorations |
-
-**Note:** Matrix mode was removed in v1.9.62. `matrix_mode.dart` and `gungeon_matrix_rain.dart` deleted.
-
-**Routing:** `PlayerPage` checks `VisualPrefs.runDisplayMode` and returns the appropriate mode widget. The `RunDisplayModeBar` (collapsible pill between header and PageView) switches modes instantly.
-
-**Pref key:** `vp.run_display_mode_v2` (v2 because index shifted when `classic` was added as enum value 0).
+**Removed in v2.0.2–v2.0.3.** The active run screen previously supported
+4 display modes (Classic Scroll, Codex Book, Compact Run, Theme Signature)
+via a `RunDisplayMode` enum. All mode widgets, the `RunDisplayModeBar`,
+and the `RunDisplayMode` enum itself were deleted in the v2.0.2–v2.0.3
+cleanup (`d5dfc9e`). The active run screen now uses a single Classic
+Scroll mode rendered by `PlayerPage`. No residual `RunDisplayMode` code
+remains in the codebase.
 
 ### Theme System
 
@@ -209,11 +202,6 @@ All fields follow this pattern:
 5. `_with()` parameter + assignment
 
 Key fields:
-- `runDisplayMode` (RunDisplayMode, default: `classic`)
-- `runDisplayModeBarCollapsed` (bool, default: `true`)
-- `showModePickerOnNewRun` (bool, default: `false`)
-- `depthInventory` (bool, default: `true`)
-- `depthTiltIntensity` (double, default: `0.6`)
 - `shaderEnabled` (bool, default: `false`)
 - `shaderPreset` (ShaderPreset, default: `digitalRain`)
 
@@ -290,7 +278,7 @@ Key fields:
 |------|---------|
 | `lib/main.dart` | App entry point, `VideoPlayerMediaKit.ensureInitialized` |
 | `lib/providers/run_provider.dart` | State management (1618 lines) |
-| `lib/services/app_theme.dart` | Themes, VisualPrefs, RunDisplayMode enum (4078 lines) |
+| `lib/services/app_theme.dart` | Themes, VisualPrefs, CustomThemeStore (4078 lines) |
 | `lib/widgets/theme_overlay.dart` | Global visual stack (layers 0-1.0) |
 | `lib/screens/home_screen.dart` | Home screen routing (MainMenu vs ActiveRunScreen) |
 | `lib/screens/active_run_screen.dart` | Active run screen (964 lines) |
@@ -298,7 +286,7 @@ Key fields:
 
 ### Active Run Modes
 
-**Note:** Matrix mode, Codex Book, Compact Run, Theme Signature, RunDisplayModeBar, and ModePickerOnboarding were all deleted in v2.0.2–v2.0.3 cleanup. The active run screen now uses a single Classic Scroll mode. The `RunDisplayMode` enum and related VisualPrefs fields may still exist but the mode widgets are gone.
+**Note:** Matrix mode, Codex Book, Compact Run, Theme Signature, RunDisplayModeBar, and ModePickerOnboarding were all deleted in v2.0.2–v2.0.3 cleanup (`d5dfc9e`). The active run screen now uses a single Classic Scroll mode. The `RunDisplayMode` enum and all related VisualPrefs fields were fully removed — no residual code remains.
 
 | File | Status |
 |------|--------|
@@ -450,7 +438,7 @@ Append a row to the Session Log table at the end of every session with: Agent, D
 ## 9. Pre-Session Checklist
 
 1. Read `AGENT_STATUS.md` — check all 4 slots
-2. Read `docs/bug_tracker.md` — check for open bugs
+2. Read `docs/USER_BUG_LIST.md` — check for open bugs
 3. Read this file (`docs/TECHNICAL_REFERENCE.md`)
 4. `git status` — check uncommitted state
 5. `git log -5 --oneline` — recent activity

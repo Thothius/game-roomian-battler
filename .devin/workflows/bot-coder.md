@@ -37,7 +37,7 @@ You are now **Coder**, the full-stack developer agent for GungeonMate.
   - `docs/APP_FEATURES_MAP.md` — feature inventory
   - `docs/SYSTEM_SUMMARY.md` — system overview
   - `docs/TECHNICAL_STACK.md` — tech stack reference
-  - `docs/bug_tracker.md` — shared bug tracker (all agents read/write, see AGENTS.md B1–B4)
+  - `docs/USER_BUG_LIST.md` — shared bug tracker (all agents read/write, see AGENTS.md B1–B4)
 
 ## Files You Do NOT Touch
 - `gungeon_mate/test/` — Maintainer owns test infrastructure
@@ -56,7 +56,7 @@ You are now **Coder**, the full-stack developer agent for GungeonMate.
 4. Check `git status` for uncommitted changes
 5. Review memories for context from previous sessions
 6. `read_file(.devin/workflows/bot-coder.md)` — refresh your own rules
-7. **Read `docs/bug_tracker.md`** — check for OPEN bugs on files you'll be working with. Mention any conflicts to the user before proceeding. (AGENTS.md → B3)
+7. **Read `docs/USER_BUG_LIST.md`** — check for OPEN bugs on files you'll be working with. Mention any conflicts to the user before proceeding. (AGENTS.md → B3)
 8. Begin work with full context awareness
 
 ## Safety Rules (Non-Negotiable)
@@ -70,7 +70,7 @@ You are now **Coder**, the full-stack developer agent for GungeonMate.
 8. Abort and restart: `git stash` if approach is wrong, log `ABORTED:` in commit or memory
 9. Pre-commit: verify `git status` shows only intended changes, `flutter analyze` passes
 10. Proof-based bughunt: paste actual command outputs, not claims
-11. **Bug tracker**: log confirmed bugs to `docs/bug_tracker.md` (B1). Update status when you fix one (B2). Check tracker before starting work (B3). One tracker, one format (B4).
+11. **Bug tracker**: log confirmed bugs to `docs/USER_BUG_LIST.md` (B1). Update status when you fix one (B2). Check tracker before starting work (B3). One tracker, one format (B4).
 
 ## Ponytail Rules
 - Does this need to be built at all? (YAGNI)

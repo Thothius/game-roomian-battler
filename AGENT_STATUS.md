@@ -44,9 +44,11 @@ When done, mark status as `DONE` and move to Session Log.
 | # | Task | Claimed by | Status | Blocked by |
 |---|------|------------|--------|-------------|
 | 22 | **Part A: MP Lobby Rework** — Remove PINs entirely. Role selection (Main/Sidekick) before options. Main→HOST, Sidekick→JOIN. Main can't pick Cultist. MP visual overhaul (atmosphere, character identity, themed role cards). Files: `mp_lobby_screen.dart`, `mp_connect_screen.dart`, `mp_session.dart`, `mp_sync.dart`, `mp_recovery.dart`, `mp_link.dart`, MP tests. | UNIVERSAL WORKER | DONE | — |
-| 23 | **Part B: Quick-Add UX + Toolbar** — Move search to bottom of quick-add sheet (keyboard auto-open). Tap ADD → add + auto-clear search for rapid-fire. Move Effects/Shrine/Panels under MORE popup. Remove "More" label, make prefs icon bigger (36→44px). Files: `active_run_screen.dart`, `player_page.dart`, `active_run_helpers.dart`. | _(none)_ | PENDING | — |
-| 24 | **Part C: Char Select + Detail + Main Menu** — Remove How to Use from main menu. Add 10% padding to char select grid. Remove "?" buttons, add long-press for detail. Fix gungeoneer detail 2-row→1-row layout. Name+graphic on top. Loadout with real gun/item icons, linkable. Add "PLAY AS [NAME]" button. Files: `main_menu_screen.dart`, `character_select_screen.dart`, `gungeoneer_detail_screen.dart`. | _(none)_ | PENDING | — |
-| 25 | **Part D: Settings + Codex + Map Icons** — Remove DANGER ZONE collapsible, show END RUN + RESET full-width. Codex: show tab graphics always (not dimmed), better padding. Use map icons (9x9px pixel art) instead of animated sprites in active run header. Files: `settings_tab.dart`, `codex_screen.dart`, `ammonomicon_tabs.dart`, `asset_paths.dart`, `player_header.dart`, `pubspec.yaml`. | _(none)_ | PENDING | — |
+> **Removed 2026-10-28 — stale after v3.0.0 rework, kept as remarks only:**
+>
+> - ~~**Part B: Quick-Add UX + Toolbar**~~ — was: search to bottom of quick-add sheet, rapid-fire add, Effects/Shrine/Panels under MORE popup, bigger prefs icon. **Superseded** — quick-add + browse were reworked in v3 (`f856ea2`, `10aab91`); these asks are already covered or obsolete.
+> - ~~**Part C: Char Select + Detail + Main Menu**~~ — was: remove How to Use, char grid padding, long-press detail, 1-row detail layout, loadout icons, PLAY AS button. **Partially superseded** by v3 rework — re-scope fresh if still wanted.
+> - ~~**Part D: Settings + Codex + Map Icons**~~ — was: kill DANGER ZONE collapsible, full-width END RUN/RESET, always-lit codex tabs, 9px map icons in run header. **Unverified against v3** — re-scope fresh if still wanted.
 
 ---
 
@@ -56,7 +58,7 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 
 | From | To | Task Summary | Target Branch | Status | Context |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| _(none)_ | _(none)_ | _(empty — no pending delegations)_ | — | — | — |
+| CORE (scout) | PARALLEL | Feedback item: "If main player is Paradox, sidekick also starts with no items" — overlaps your Paradox Mode work. `_buildPlayerFor` resolves 'Random'→empty loadout; `startCoopPlayer` same path. Intent needs user clarification (empty vs random-rolled). See `docs/FEEDBACK_PLAN_2026-10-28.md` item 3. | PARALLEL's branch | PENDING | `run_provider.dart:837-863` |
 
 ---
 
@@ -64,23 +66,23 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 
 | Slot | Assigned Agent | Status | Working On | Last Heartbeat |
 | :--- | :--- | :--- | :--- | :--- |
-| **Slot 1** | **VISUAL** | `ACTIVE` | Custom theme save/load system (uncommitted in worktree — RISK: commit WIP soon) | 2026-08-25 (now) UTC+3 |
-| **Slot 2** | **_(none)_** | `IDLE` | Session ended — v2.1.0 asset optimization + settings reorg shipped | 2026-08-28 UTC+3 |
-| **Slot 3** | **_(none)_** | `IDLE` | Free for PARALLEL (second coder) | — |
-| **Slot 4** | **_(none)_** | `IDLE` | Session ended — UX assessment doc shipped | 2026-08-27 (now) UTC+3 |
+| **Slot 1** | **_(none)_** | `IDLE` | Session ended — custom theme system committed in `c8080f2` | 2026-08-28 UTC+3 |
+| **Slot 2** | **_(none)_** | `IDLE` | Session ended — Gungeonmaster Quiz v3.1.0 merged to master `58bc26b` | 2026-10-28 UTC+2 |
+| **Slot 3** | **_(none)_** | `IDLE` | Paradox Mode v3.0.0 — MP foundations, paradox flow, run view, chat, browse rework | 2026-10-28 UTC+2 |
+| **Slot 4** | **_(none)_** | `IDLE` | Session ended — feedback batch merged `1389620`+`7c5d6c0` | 2026-10-28 UTC+2 |
 
 ### Slot Details
 
-#### Slot 1 — VISUAL
+#### Slot 1 — _(released)_
 | Field | Value |
 |-------|-------|
-| **Branch** | slot1-xeenu/custom-themes |
-| **Session started** | 2026-08-25 (now) UTC+3 |
-| **Last board update** | 2026-08-25 (now) UTC+3 |
-| **Last commit** | — (uncommitted: custom theme save/load system — SavedCustomTheme, CustomThemeStore, ThemeCuration) |
-| **Files in progress** | lib/services/app_theme.dart, lib/screens/experience_studio_screen.dart, lib/screens/main_menu_screen.dart |
-| **Uncommitted changes** | Custom theme editor: ~940 lines across app_theme.dart (+333) + experience_studio_screen.dart (+715). CustomThemeStore, SavedCustomTheme, ThemeCuration classes. Theme curation shader/glow tweaks. |
-| **Worktree** | X:\apps\GungeonMate\.worktrees\slot1-xeenu\gungeon_mate |
+| **Branch** | — (merged to master) |
+| **Session started** | 2026-08-25 UTC+3 |
+| **Last board update** | 2026-08-28 UTC+3 |
+| **Last commit** | `c8080f2` (gungeon_mate) — Phase C: Custom themes + curated premades + UI rework |
+| **Files in progress** | — |
+| **Uncommitted changes** | — |
+| **Worktree** | — (removed — work was committed before worktree cleanup) |
 
 > **Session ended 2026-08-25.** Theme system rework + docs reorg. (1) Reorganized root docs — 41 redundant docs archived to docs/archive/, 6 kept in root, wrote GUNGEONMATE.md (620-line definitive reference). (2) Added `font` field to ThemeFlair — themes now auto-apply their curated font on switch. (3) Added 12 new themes: 6 character (Cultist, Gunslinger, Convict, Hunter, Pilot, Rat) + 6 floor (Breach, Lead Lord's Keep, Oubliette, Black Powder Mine, Bullet Hell, R&G Dept). (4) Set curated font for all 27 visible themes. (5) Trimmed AppFont enum 68→30 (kept gungeon+megrim locked, removed 38 noise fonts). (6) Updated kVisibleThemes, kThemeParticleDefaults, splashSlug, label/tagline switches for 12 new themes. (7) Renamed 3 new themes to avoid enum collisions with hidden themes (theBreach→breachGateway, theOubliette→oubliettePit, bulletHell→bulletHellFloor). (8) flutter analyze clean, 105 tests pass. Next: generate splash JPGs for 12 new themes, commit+push both repos.
 
@@ -95,12 +97,15 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 #### Slot 2 — CORE
 | Field | Value |
 |-------|-------|
-| **Branch** | master |
-| **Session started** | 2026-08-27 (now) UTC+3 |
-| **Last board update** | 2026-08-28 UTC+3 |
-| **Last commit** | d5dfc9e (gungeon_mate) — P4: Fix nameCtrl disposal + delete 4 dead widget files |
-| **Files in progress** | — |
+| **Branch** | `slot2-core/gungeonmaster-quiz` (worktree — AC5d, 2+ agents active) |
+| **Session started** | 2026-10-28 UTC+2 |
+| **Last board update** | 2026-10-28 UTC+2 |
+| **Last commit** | `75ca992` — Quiz v3.1.0 + bughunt + font-unification + themed distractors + streak back-confirm (rebased on `85f8882`, analyze clean, tests green) |
+| **Files in progress** | — (all committed on branch) |
 | **Uncommitted changes** | — |
+| **Worktree** | `X:\apps\GungeonMate\.worktrees\slot2-core\gungeon_mate` (keep — merge pending) |
+
+> **Merge note for Slot 3 (PARALLEL) / other agent:** `home_screen.dart` + `settings_tab.dart` have parallel uncommitted changes in the main WD (Themes nav tab + Themes-in-Settings tile + font unscoping). My branch adds Quiz as the 5th nav destination and the same Themes tile to Settings. Merge order that resolves cleanest: (1) other agent commits their WIP to master, (2) `git merge slot2-core/gungeonmaster-quiz`. Conflict resolution: drop the Themes nav destination (user wants it only inside Settings — the settings tile already exists on both sides), keep the Quiz destination + QuizHomeScreen stack entry, keep their font unscoping wrappers. pubspec/version lines: keep `3.1.0+155` / `kAppVersion='3.1.0'` (higher per AC5). changelog.json: keep both v3.0.0 and v3.1.0 entries.
 
 > **Session ended 2026-08-28.** v2.1.0 release. (1) Asset optimization: recompressed 14 theme splash JPGs 2048×2048 → 1200×1200 (45.75MB → 1.51MB), deleted dead wp_anim_01_galaxy.mp4 (8.9MB). APK 90.8MB → 37.6MB (59% smaller). (2) Settings reorg: Save Run always visible, Dice Roll moved into DICE section, MULTIPLAYER card hidden when solo, DEBUG → DEV TOOLS, deleted dead AppearanceTab (580+ lines). (3) Bug fixes: _scheduleSave recursion, codex_detail_screen SafeArea paren. (4) Fresh-perspective bughunt: 10 findings audited, 1 critical (already fixed), 9 false positives/low-severity. flutter analyze clean, 199/199 tests pass. Version bumped v2.1.0+150 with full release checklist (pubspec, changelog.json, VERSION_HISTORY.md, asset_paths.dart).
 
@@ -111,10 +116,10 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 #### Slot 3 — PARALLEL
 | Field | Value |
 |-------|-------|
-| **Branch** | — |
-| **Session started** | — |
-| **Last board update** | — |
-| **Last commit** | — |
+| **Branch** | master (sole active agent — AC5d exception) |
+| **Session started** | 2026-10-28 UTC+2 |
+| **Last board update** | 2026-10-28 UTC+2 |
+| `e5ecb0f` — v3 test coverage + test-found layout fixes (gungeon_mate) |
 | **Files in progress** | — |
 | **Uncommitted changes** | — |
 
@@ -182,6 +187,13 @@ Format: `| Agent | Date | Branch | Commit | Task | Files | Status | Next | Watch
 
 | Agent | Date | Branch | Commit | Task | Files | Status | Next | Watch out for |
 |-------|------|--------|--------|------|-------|--------|------|---------------|
+| CORE | 2026-10-28 | slot2-core/gungeonmaster-quiz → master | `58bc26b` (gungeon_mate) | Gungeonmaster Quiz v3.1.0 — 7 chests (5+Rainbow+Rat), sudden-death streaks, themed distractors, Ammonomicon hint, quiz nav tab, Themes→Settings, Customization→Theme | lib/{screens,widgets}/quiz/*, lib/services/quiz_*, home_screen, main_menu_screen, settings_tab, tests, v3.1.0+155 | DONE | — | Other agent's nav WIP preserved in `stash@{0}` (superseded intentionally). Follow-ups noted: post-run recap, synergy chest. |
+| PARALLEL | 2026-10-28 | master + slot3-parallel worktrees | `e5ecb0f` | Paradox Mode v3.0.0 (MP foundations, flow, run view, chat, browse/quick-add/inventory rework, theme cut+studio trim, release bump, APK) + sidekick-empty fix + protocol/widget/theme tests | ~25 lib files + 4 test files + pubspec/changelog/VERSION_HISTORY | DONE | Push origin (both repos ~80 ahead); ParadoxBar 15px overflow fix at <=500px; two-device field verify | AGENT_STATUS log rows now live here; favourites_screen dormant; uncommitted M/?? files in main WD belong to Slot 4 batch |
+| SUPPORT | 2026-10-28 | slot4-support/feedback-batch + paradox-sidekick + bughunt-fixes → master | `21802be`+`1389620`, `7c5d6c0`, `7958e06` (gungeon_mate) | Feedback items 7/2/4/1/3 + self-bughunt fixes: wakelock .ignore() (no Windows/Linux backend), applyPeerSnapshot one-shot coop clear for MP paradox sidekick timing | lib/main.dart, lib/models/gun.dart, lib/providers/run_provider.dart, lib/widgets/item_detail/item_body.dart, lib/widgets/dashboards/special_gun_dashboards.dart, pubspec.yaml/lock | DONE | Feedback plan doc complete — all 7 items shipped | Paradox sidekick-empty landed ON TOP of 926334e random-roll (user confirmed: main rolls random, sidekick stays empty). EnterTheGungeon fonts STAY (user directive — don't remove fontFamily lines). pubspec.lock regenerated (wakelock_plus). |
+| PARALLEL | 2026-10-28 | master (gungeon_mate) | `dac3642` | Paradox Mode v3.0.0 — protocol v3, paradox flow+lobby, run view (bar/panel/pause/chat), Cool&Curse, browse+quick-add rework, theme cut, release bump | 20 files new/edited across lib/ + tests | DONE | Manual two-device verify; APK build pending; studio option-trimming deferred | Stale Slot-2 WIP (MP naming/bughunt) was coherent and got committed alongside — check history if needed. favours_screen.dart dormant after browse cut. |
+| CORE | 2026-10-28 | slot2-core/item-descriptions → master | `0412791` (gungeon_mate) | Feedback item 5: item descriptions — ammonomicon_entry parsed into Item+Gun models, effect/notes + AmmonomiconCard rendered in detail bodies | lib/models/{item,gun}.dart, lib/widgets/item_detail/{description_blocks.dart (new),item_body,gun_stats}.dart, test/item_description_fields_test.dart (new, 3 tests) | DONE | Remaining: items 1/2/3/4/7 in plan doc | Reverted uncommitted font removals in item_body/gun_stats at user's request — EnterTheGungeon fonts STAY (user directive). Merge was fast-forward after revert. |
+| CORE (scout) | 2026-10-28 | slot2-core/xtg-wiki-filter + xtg-data-strip → master | `dcfcf85`+`a276732`+`b85e0bd`+`eacfdb2` (gungeon_mate) | Feedback item 6: XtG wiki bullets filtered at parse time + stripped from source JSONs + orphaned XTG codex icon deleted + full-app sweep verified clean | lib/models/rich_text.dart, test/rich_text_xtg_filter_test.dart (new, 5 tests), assets/data/{items,guns}.json, assets/images/codex/XTG_Ammonomicon_Icon.png (deleted), docs/FEEDBACK_PLAN_2026-10-28.md (root) | DONE | Remaining feedback items in plan doc — item 3 (Paradox sidekick) delegated to PARALLEL via Inter-Slot Queue | Match string 'Exit the Gungeon' is case-sensitive ON PURPOSE (lowercase = verb phrase, e.g. Ox and Cadence tip). Render filter stays as safety net for data regen. |
+| SUPPORT | 2026-08-28 | master (root) | _(uncommitted)_ | Doc cleanup: U-002 resolved, TECH_REF §5 stale RunDisplayMode note fixed, bug_tracker.md→USER_BUG_LIST.md refs updated, Slot 1 status corrected | docs/USER_BUG_LIST.md, docs/TECHNICAL_REFERENCE.md, AGENTS.md, .devin/workflows/{pre-session,post-session,bot-coder,bot-maintainer}.md, AGENT_STATUS.md | DONE | — | Slot 1 custom theme work was NOT lost — committed in `c8080f2` (Phase C). Worktree was removed after commit. Historical session log entries in AGENT_STATUS.md still reference `bug_tracker.md` — left as-is (historical record). |
 | Coder | 2026-07-23 | master | `14020f4` | Debug tab + special items grid | settings_screen.dart, run_provider.dart | DONE | — | removeGun/removeItem now have `force` param |
 | Coder | 2026-07-23 | master | _(user)_ | Main menu polish | main_menu_screen.dart, pubspec.yaml | DONE | — | Version bumped to 1.6.7+68 |
 | Coder #2 | 2026-07-23 | master | `48d3d21` | Phase 2: _Header redesign | item_detail_screen.dart | DONE | Phase 3 (summary string) next | Commit went to master instead of branch — branch was empty, deleted |

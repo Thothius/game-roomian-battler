@@ -18,6 +18,10 @@
 - **Severity:** Low (cosmetic — screenshot only)
 - **Status:** Reported
 
+---
+
+## Resolved
+
 ### U-002 — White button labels hard to read on light-colored buttons
 - **Reported:** 2026-08-25
 - **Source:** User visual review of screenshots
@@ -29,10 +33,7 @@
   role cards in light themes, and any flair-driven button where the fill
   gets bright but the text stays white.
 - **Severity:** TBD (needs audit across all themes/flairs)
-- **Status:** Reported
-
----
-
-## Resolved
-
-_(none yet)_
+- **Status:** Fixed in `0ab0f10` — `onSurface` text color is now derived from
+  the surface luminance via `Contrast.luminance()` in `app_theme.dart:4167-4170`.
+  Dark surfaces get off-white text; light surfaces get near-black text,
+  preventing the white-on-light contrast bug across all themes/flairs.

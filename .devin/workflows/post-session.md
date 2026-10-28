@@ -44,10 +44,10 @@ Update `AGENT_STATUS.md`:
 4. **Paste actual command outputs** — "analyzer passes" must include `flutter analyze` output, not just the claim
 
 ## Step 4: Update Bug Tracker (B1/B2)
-1. **Found bugs during bughunt?** Add them to `docs/bug_tracker.md` under "Open Bugs" with next `BUG-NNN` ID, severity, file, lines, description, root cause, fix proposal. (See AGENTS.md → B1)
-2. **Fixed bugs this session?** Move their entries from "Open Bugs" to "Fixed Bugs" in `docs/bug_tracker.md`. Add commit hash and date. Set status to `FIXED`. (See AGENTS.md → B2)
+1. **Found bugs during bughunt?** Add them to `docs/USER_BUG_LIST.md` under "Open Bugs" with next `BUG-NNN` ID, severity, file, lines, description, root cause, fix proposal. (See AGENTS.md → B1)
+2. **Fixed bugs this session?** Move their entries from "Open Bugs" to "Fixed Bugs" in `docs/USER_BUG_LIST.md`. Add commit hash and date. Set status to `FIXED`. (See AGENTS.md → B2)
 3. **Do NOT** log speculative findings. Only bugs you confirmed by reading the actual code.
-4. **Do NOT** create bug lists in chat, memory, or other files — `docs/bug_tracker.md` is the single source of truth. (See AGENTS.md → B4)
+4. **Do NOT** create bug lists in chat, memory, or other files — `docs/USER_BUG_LIST.md` is the single source of truth. (See AGENTS.md → B4)
 
 ## Step 5: Pre-Commit Verify (S9)
 Before committing, verify:
