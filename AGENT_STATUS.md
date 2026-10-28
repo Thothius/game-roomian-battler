@@ -67,9 +67,9 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 | Slot | Assigned Agent | Status | Working On | Last Heartbeat |
 | :--- | :--- | :--- | :--- | :--- |
 | **Slot 1** | **_(none)_** | `IDLE` | Session ended — custom theme system committed in `c8080f2` | 2026-08-28 UTC+3 |
-| **Slot 2** | **_(none)_** | `IDLE` | Session ended — Gungeonmaster Quiz v3.1.0 merged to master `58bc26b` | 2026-10-28 UTC+2 |
-| **Slot 3** | **_(none)_** | `IDLE` | Paradox Mode v3.0.0 — MP foundations, paradox flow, run view, chat, browse rework | 2026-10-28 UTC+2 |
-| **Slot 4** | **_(none)_** | `IDLE` | Session ended — feedback batch merged `1389620`+`7c5d6c0` | 2026-10-28 UTC+2 |
+| **Slot 2** | **_(none)_** | `IDLE` | Session ended — quiz adversarial pass merged `06b4dc6` | 2026-10-28 UTC+2 |
+| **Slot 3** | **_(none)_** | `IDLE` | Session ended — MP diagnostics fixes merged `0acb435` | 2026-10-28 UTC+2 |
+| **Slot 4** | **_(none)_** | `IDLE` | Session ended — panel overhaul merged `7fd8397` | 2026-10-28 UTC+2 |
 
 ### Slot Details
 
@@ -187,6 +187,8 @@ Format: `| Agent | Date | Branch | Commit | Task | Files | Status | Next | Watch
 
 | Agent | Date | Branch | Commit | Task | Files | Status | Next | Watch out for |
 |-------|------|--------|--------|------|-------|--------|------|---------------|
+| PARALLEL | 2026-10-28 | slot3-parallel/mp-fixes → master | `0acb435` | MP diagnostics findings: classic no-timeout seek, pause-state unification (pausedNotifier single source), ParadoxBar compact <460px, serviceId stopAll guard | mp_session.dart, paradox_bar.dart | DONE | gh push (needs workflow-scope token refresh); two-device field verify | 34 MP tests green after changes |
+| SUPPORT | 2026-10-28 | slot4-support/panel-overhaul → master | `7fd8397` (gungeon_mate) | Special-panel overhaul: Junkan tab icon fix ('Ser Junkan 1'), full dynamic DPS params in gun_stats header, persist metronome/boxing/cigarettes counters, endRun resets all run-scoped specials | lib/providers/run_provider.dart, lib/widgets/dashboards/dashboard_swiper.dart, lib/widgets/item_detail/gun_stats.dart | DONE | — | Gunderfury level intentionally persists across runs (save-permanent XP). Reset is endRun-only — startNewRun also serves MP restore. Junkan rank sprites live in assets/images/junkan/ — panels already use them. |
 | CORE | 2026-10-28 | slot2-core/gungeonmaster-quiz → master | `58bc26b` (gungeon_mate) | Gungeonmaster Quiz v3.1.0 — 7 chests (5+Rainbow+Rat), sudden-death streaks, themed distractors, Ammonomicon hint, quiz nav tab, Themes→Settings, Customization→Theme | lib/{screens,widgets}/quiz/*, lib/services/quiz_*, home_screen, main_menu_screen, settings_tab, tests, v3.1.0+155 | DONE | — | Other agent's nav WIP preserved in `stash@{0}` (superseded intentionally). Follow-ups noted: post-run recap, synergy chest. |
 | PARALLEL | 2026-10-28 | master + slot3-parallel worktrees | `e5ecb0f` | Paradox Mode v3.0.0 (MP foundations, flow, run view, chat, browse/quick-add/inventory rework, theme cut+studio trim, release bump, APK) + sidekick-empty fix + protocol/widget/theme tests | ~25 lib files + 4 test files + pubspec/changelog/VERSION_HISTORY | DONE | Push origin (both repos ~80 ahead); ParadoxBar 15px overflow fix at <=500px; two-device field verify | AGENT_STATUS log rows now live here; favourites_screen dormant; uncommitted M/?? files in main WD belong to Slot 4 batch |
 | SUPPORT | 2026-10-28 | slot4-support/feedback-batch + paradox-sidekick + bughunt-fixes → master | `21802be`+`1389620`, `7c5d6c0`, `7958e06` (gungeon_mate) | Feedback items 7/2/4/1/3 + self-bughunt fixes: wakelock .ignore() (no Windows/Linux backend), applyPeerSnapshot one-shot coop clear for MP paradox sidekick timing | lib/main.dart, lib/models/gun.dart, lib/providers/run_provider.dart, lib/widgets/item_detail/item_body.dart, lib/widgets/dashboards/special_gun_dashboards.dart, pubspec.yaml/lock | DONE | Feedback plan doc complete — all 7 items shipped | Paradox sidekick-empty landed ON TOP of 926334e random-roll (user confirmed: main rolls random, sidekick stays empty). EnterTheGungeon fonts STAY (user directive — don't remove fontFamily lines). pubspec.lock regenerated (wakelock_plus). |
