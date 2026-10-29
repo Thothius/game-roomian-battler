@@ -58,7 +58,7 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 
 | From | To | Task Summary | Target Branch | Status | Context |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| CORE (scout) | PARALLEL | Feedback item: "If main player is Paradox, sidekick also starts with no items" — overlaps your Paradox Mode work. `_buildPlayerFor` resolves 'Random'→empty loadout; `startCoopPlayer` same path. Intent needs user clarification (empty vs random-rolled). See `docs/FEEDBACK_PLAN_2026-10-28.md` item 3. | PARALLEL's branch | PENDING | `run_provider.dart:837-863` |
+| CORE (scout) | PARALLEL | Feedback item: "If main player is Paradox, sidekick also starts with no items" — overlaps your Paradox Mode work. `_buildPlayerFor` resolves 'Random'→empty loadout; `startCoopPlayer` same path. Intent needs user clarification (empty vs random-rolled). See `docs/FEEDBACK_PLAN_2026-10-28.md` item 3. | PARALLEL's branch | DONE (already shipped: `926334e` random-roll main + `7c5d6c0` `_paradoxSidekickEmptied`/`_isParadoxMain` empty sidekick; user confirmed semantics — see `run_provider.dart:902-919`) | `run_provider.dart:837-863` |
 
 ---
 
@@ -66,23 +66,25 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 
 | Slot | Assigned Agent | Status | Working On | Last Heartbeat |
 | :--- | :--- | :--- | :--- | :--- |
-| **Slot 1** | **_(none)_** | `IDLE` | Session ended — shrine picker cleanup (last `73ff757`) | 2026-10-28 |
-| **Slot 2** | **_(none)_** | `IDLE` | Session ended — quiz polish + browse fix + goop-scramble removal + chest size normalize, all merged (last `9e6e660`), 333 tests green | 2026-10-28 UTC+2 |
-| **Slot 3** | **_(none)_** | `IDLE` | Session ended — MP diagnostics fixes merged `0acb435` | 2026-10-28 UTC+2 |
+| **Slot 1** | **DESIGNER (Devin)** | `DONE` | Batch merged via Slot 2 (`72ca2cb`); `experience_studio_screen.dart` was structurally broken → reverted, other 4 files landed. Slot released | 2026-10-29 |
+| **Slot 2** | **CORE (Devin)** | `ACTIVE` | v3.2.1 pushed (`ee356aa`, squashed). Absorbed DESIGNER+GENERAL lanes: bottom_back_bar sweep done (5 screens; mp_lobby exempted — stage-nav doesn't fit thumb zone), TESTING MODE demoted, paradox entry added to lobby, big-screen caps started. Remaining: deeper lobby rework (needs spec), more 760 caps, memoize sweep | 2026-10-29 |
+| **Slot 3** | **PARALLEL (Devin — me)** | `DONE` | Absorbed by Slot 2 — bottom_back_bar landed+swept, testing-mode demoted, paradox entry wired, version bump done, big-screen + memoize partial. Slot released | 2026-10-29 |
 | **Slot 4** | **_(none)_** | `IDLE` | Session ended — font-scale hardening `38cc93a`; UI_HEALTH doc consolidated | 2026-10-28 UTC+2 |
 
 ### Slot Details
 
-#### Slot 1 — _(released)_
+#### Slot 1 — DESIGNER (Devin)
 | Field | Value |
 |-------|-------|
-| **Branch** | — (master) |
-| **Session started** | 2026-10-28 |
-| **Last board update** | 2026-10-28 |
-| **Last commit** | `73ff757` (gungeon_mate) — Shrine picker: bigger visuals + real USE buttons + clean detail sheet |
-| **Files in progress** | — |
-| **Uncommitted changes** | — |
-| **Worktree** | — |
+| **Branch** | `slot1-devin/design-batch` (worktree per AC5d once GO — 3 agents active) |
+| **Session started** | 2026-10-29 |
+| **Last board update** | 2026-10-29 |
+| **Last commit** | — (no commits this session; baseline verified: analyze clean, 419 pass / 1 WIP-broken test) |
+| **Files in progress** | `lib/services/app_theme.dart`, `lib/screens/experience_studio_screen.dart` |
+| **Uncommitted changes** | `lib/screens/main_menu_screen.dart`, `lib/screens/codex_screen.dart`, `lib/widgets/settings/settings_tab.dart` (items 13, 20, 14 done) |
+| **Worktree** | `X:\MEDIA SILO\APPS\GungeonMate\.worktrees\slot1-devin\gungeon_mate` (created, on `slot1-devin/design-batch`) |
+
+> **3-way split (user 2026-10-29):** DEVIN=Slot2 CORE, DESIGNER=Slot1 VISUAL, GENERAL=Slot3 PARALLEL. Shared deps: DEVIN lands `run_lifecycle.dart` early; GENERAL lands `bottom_back_bar.dart` early. Merge order: DEVIN → DESIGNER → GENERAL. Surprise-fx WIP in main WD (unclaimed, pre-existing) likely folds into my batch — TBD at GO.
 
 > **Session ended 2026-10-28.** UI batch shipped on master: `45c2b70` MP lobby centered (paradox pattern), `60a6c24` pause overlay bigger + full monochrome, `3015359` End Run → fullscreen Lord-of-the-Jammed dialog (all callers unified), `f2554e2` studio pickers cleanup, `65ad84b` main menu theme-colored buttons. Simple picker = `ExperienceStudioScreen()` default; full studio via `initialTab>0`. Note: other agent swept my uncommitted studio restructure into `09c0cff` mid-flight — landed verbatim, no loss. Open item for them: v3.1.4 changelog.json + VERSION_HISTORY.md entries (release-checklist gap).
 
@@ -96,16 +98,15 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 
 > **Session ended 2026-08-18 13:48.** Task: Q2 Synergy Predictor (genius audit v0.0.7). Three-file implementation: (1) `RunProvider.synergiesCompletedBy(itemName, {slot})` — returns synergy names that would activate if the item were added to the target slot's loadout. Core logic: `!matchesItems(owned) && matchesItems(owned + item)`. Slot-aware for coop browse. (2) `completesPill` — gold/amber metaPill with link icon, shows "COMPLETES: <name>" or "COMPLETES N". Follows existing pill pattern. (3) `GunMeta` + `ItemMeta` — new optional `completesSynergies` param, renders pill before synergy count. (4) `browse_screen _gunRow + _itemRow` — calls predictor with targetSlot, passes to meta. Version bumped to v1.9.50+126 with full release checklist (pubspec, changelog.json, VERSION_HISTORY.md, main_menu_screen, asset_paths). flutter analyze clean on all 5 files. Sole active agent — no worktree needed.
 
-#### Slot 2 — CORE
+#### Slot 2 — CORE (Devin)
 | Field | Value |
 |-------|-------|
-| **Branch** | `slot2-core/gungeonmaster-quiz` (worktree — AC5d, 2+ agents active) |
-| **Session started** | 2026-10-28 UTC+2 |
-| **Last board update** | 2026-10-28 UTC+2 |
-| **Last commit** | `75ca992` — Quiz v3.1.0 + bughunt + font-unification + themed distractors + streak back-confirm (rebased on `85f8882`, analyze clean, tests green) |
-| **Files in progress** | — (all committed on branch) |
+| **Branch** | `slot2-devin/mp-unify-detail` — worktree `X:\MEDIA SILO\APPS\GungeonMate\.worktrees\slot2-devin\gungeon_mate` (2 commits ahead) |
+| **Last commit** | `513c62c` — MP unification + compact menus + detail flat rework + console sys msgs + shrine wiki buttons |
+| **Files in progress** | — |
 | **Uncommitted changes** | — |
-| **Worktree** | `X:\apps\GungeonMate\.worktrees\slot2-core\gungeon_mate` (keep — merge pending) |
+| **AC4 split-file flag** | `player_page.dart` — my ~line 185 gate edit LANDED (`isParadox`→`isActive`); GENERAL's hint/select work in same file merges on top |
+| **Notes** | END RUN removed from ⋮ menus — lives in Settings + pause overlay only. MpHeader/classic bar now unused → dead-code candidate for GENERAL's sweep. `run_lifecycle.dart` = single end-run path; pause overlay still shows END RUN via RunLifecycle. |
 
 > **Merge note for Slot 3 (PARALLEL) / other agent:** `home_screen.dart` + `settings_tab.dart` have parallel uncommitted changes in the main WD (Themes nav tab + Themes-in-Settings tile + font unscoping). My branch adds Quiz as the 5th nav destination and the same Themes tile to Settings. Merge order that resolves cleanest: (1) other agent commits their WIP to master, (2) `git merge slot2-core/gungeonmaster-quiz`. Conflict resolution: drop the Themes nav destination (user wants it only inside Settings — the settings tile already exists on both sides), keep the Quiz destination + QuizHomeScreen stack entry, keep their font unscoping wrappers. pubspec/version lines: keep `3.1.0+155` / `kAppVersion='3.1.0'` (higher per AC5). changelog.json: keep both v3.0.0 and v3.1.0 entries.
 
