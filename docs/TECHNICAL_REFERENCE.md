@@ -13,8 +13,8 @@ There are **two independent git repositories**:
 
 | Repo | Path | Remote | Tracks |
 |------|------|--------|--------|
-| **Root** | `X:\apps\GungeonMate` | `https://github.com/Thothius/game-roomian-battler.git` | `AGENTS.md`, `AGENT_STATUS.md`, `docs/`, `.windsurfrules` |
-| **App** | `X:\apps\GungeonMate\gungeon_mate` | `https://github.com/Thothius/GungeonMate.git` | All `lib/`, `assets/`, `pubspec.yaml`, `test/` |
+| **Root** | `X:\GungeonMate` | `https://github.com/Thothius/game-roomian-battler.git` | `AGENTS.md`, `AGENT_STATUS.md`, `docs/`, `.windsurfrules` |
+| **App** | `X:\GungeonMate\gungeon_mate` | `https://github.com/Thothius/GungeonMate.git` | All `lib/`, `assets/`, `pubspec.yaml`, `test/` |
 
 **Critical:** `gungeon_mate/` is gitignored in the root repo. The two repos are fully independent. An app-repo worktree does NOT need a root-repo worktree and vice versa.
 
@@ -38,11 +38,11 @@ There are **two independent git repositories**:
 gh auth setup-git
 
 # 2. Push the app repo:
-cd X:\apps\GungeonMate\gungeon_mate
+cd X:\GungeonMate\gungeon_mate
 git push origin master
 
 # 3. Push the root repo (if root files changed):
-cd X:\apps\GungeonMate
+cd X:\GungeonMate
 git push origin master
 ```
 
@@ -75,7 +75,7 @@ core.autocrlf=true
 | **Flutter path** | `C:\src\flutter\bin\flutter.bat` |
 | **Flutter version** | 3.29.0 (stable, 2025-02-10) |
 | **Dart version** | 3.7.0+ |
-| **App repo working dir** | `X:\apps\GungeonMate\gungeon_mate` |
+| **App repo working dir** | `X:\GungeonMate\gungeon_mate` |
 
 ### All agents MUST use the full path to flutter:
 
@@ -406,7 +406,7 @@ Always use the full path: `& 'C:\src\flutter\bin\flutter.bat'`
 
 ## 8. Coordination Board
 
-**File:** `X:\apps\GungeonMate\AGENT_STATUS.md`
+**File:** `X:\GungeonMate\AGENT_STATUS.md`
 
 ### Slot layout
 
@@ -456,8 +456,8 @@ Append a row to the Session Log table at the end of every session with: Agent, D
 4. Append Session Log row
 5. Push both repos if changes exist:
    ```powershell
-   cd X:\apps\GungeonMate\gungeon_mate; git push origin master
-   cd X:\apps\GungeonMate; git push origin master
+   cd X:\GungeonMate\gungeon_mate; git push origin master
+   cd X:\GungeonMate; git push origin master
    ```
 6. Release slot (AC3)
 

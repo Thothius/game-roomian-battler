@@ -80,8 +80,8 @@ The board supports **up to 4 concurrent agent slots** — VISUAL (visuals/motion
 
 ### AC5. Git branch per agent for parallel sessions
 - **Nested repo awareness:** This workspace has two git repos:
-  - **Root repo** (`X:\apps\GungeonMate\`): tracks `AGENTS.md`, `AGENT_STATUS.md`, `docs/`, `.windsurfrules`. Remote: `game-roomian-battler.git`.
-  - **App repo** (`X:\apps\GungeonMate\gungeon_mate\`): tracks all `lib/`, `assets/`, `pubspec.yaml`. Remote: `GungeonMate.git`.
+  - **Root repo** (`X:\GungeonMate\`): tracks `AGENTS.md`, `AGENT_STATUS.md`, `docs/`, `.windsurfrules`. Remote: `game-roomian-battler.git`.
+  - **App repo** (`X:\GungeonMate\gungeon_mate\`): tracks all `lib/`, `assets/`, `pubspec.yaml`. Remote: `GungeonMate.git`.
   - Before branching, identify which repo your changes touch. If both, branch in both.
   - Pre-session sync (AC5b) must pull BOTH repos if remotes are reachable.
 - When you are the **only** active agent, work on `master` as usual.
@@ -130,10 +130,10 @@ The board supports **up to 4 concurrent agent slots** — VISUAL (visuals/motion
 **Setup — app repo worktree (the common case):**
 ```powershell
 # From the main app repo working directory:
-cd X:\apps\GungeonMate\gungeon_mate
-git worktree add X:\apps\GungeonMate\.worktrees\<slot-name>\gungeon_mate <branch-name>
+cd X:\GungeonMate\gungeon_mate
+git worktree add X:\GungeonMate\.worktrees\<slot-name>\gungeon_mate <branch-name>
 # Then work in the worktree directory:
-cd X:\apps\GungeonMate\.worktrees\<slot-name>\gungeon_mate
+cd X:\GungeonMate\.worktrees\<slot-name>\gungeon_mate
 ```
 - `<slot-name>` = your slot identifier (e.g. `slot1-xeenu`, `slot4-universal`).
 - The worktree shares the same `.git` object store — no repo duplication, just a second working directory.
@@ -141,24 +141,24 @@ cd X:\apps\GungeonMate\.worktrees\<slot-name>\gungeon_mate
 
 **Setup — root repo worktree (only if needed):**
 ```powershell
-cd X:\apps\GungeonMate
-git worktree add X:\apps\GungeonMate\.worktrees\<slot-name> <branch-name>
-cd X:\apps\GungeonMate\.worktrees\<slot-name>
+cd X:\GungeonMate
+git worktree add X:\GungeonMate\.worktrees\<slot-name> <branch-name>
+cd X:\GungeonMate\.worktrees\<slot-name>
 ```
 - Note: the root worktree will NOT contain `gungeon_mate/` (it's gitignored). If you need both repos, create both worktrees and work in each as needed.
 
 **During the session:**
 - All your edits, `flutter analyze`, and commits happen inside your worktree directory — not the main working directory.
-- The main working directory (`X:\apps\GungeonMate\gungeon_mate\`) stays on `master` and is only used for merges.
+- The main working directory (`X:\GungeonMate\gungeon_mate\`) stays on `master` and is only used for merges.
 - Set the **Branch** field in your slot to the branch name. The worktree path is implied by convention (`.worktrees\<slot-name>\gungeon_mate`).
 
 **Merge to master + cleanup:**
 ```powershell
 # From the main working directory (NOT your worktree):
-cd X:\apps\GungeonMate\gungeon_mate
+cd X:\GungeonMate\gungeon_mate
 git checkout master
 git merge <branch-name>
-git worktree remove X:\apps\GungeonMate\.worktrees\<slot-name>\gungeon_mate
+git worktree remove X:\GungeonMate\.worktrees\<slot-name>\gungeon_mate
 git branch -d <branch-name>
 ```
 - If `git worktree remove` fails because of untracked files, inspect them first. Do NOT use `--force` unless you created those files and they're disposable.
