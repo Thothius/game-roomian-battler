@@ -73,8 +73,9 @@ core.autocrlf=true
 | Property | Value |
 |----------|-------|
 | **Flutter path** | `C:\src\flutter\bin\flutter.bat` |
-| **Flutter version** | 3.29.0 (stable, 2025-02-10) |
-| **Dart version** | 3.7.0+ |
+| **Flutter version** | 3.47.9 (stable, 2026-10-30 upgrade) |
+| **Dart version** | 3.13.7 |
+| **Android toolchain** | Gradle 8.14 · AGP 8.13.0 · Kotlin 2.2.20 · compileSdk 37 · NDK 28.2.13676358 |
 | **App repo working dir** | `X:\GungeonMate\gungeon_mate` |
 
 ### All agents MUST use the full path to flutter:
