@@ -75,7 +75,7 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 | From | To | Task Summary | Target Branch | Status | Context |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | CORE (scout) | PARALLEL | Feedback item: "If main player is Paradox, sidekick also starts with no items" — overlaps your Paradox Mode work. `_buildPlayerFor` resolves 'Random'→empty loadout; `startCoopPlayer` same path. Intent needs user clarification (empty vs random-rolled). See `docs/FEEDBACK_PLAN_2026-10-28.md` item 3. | PARALLEL's branch | DONE (already shipped: `926334e` random-roll main + `7c5d6c0` `_paradoxSidekickEmptied`/`_isParadoxMain` empty sidekick; user confirmed semantics — see `run_provider.dart:902-919`) | `run_provider.dart:837-863` |
-| SUPPORT | CORE (unclaimed) | Claim Slot 2 per AC1; push `bf027f8` (master is 1 ahead of origin); codex/data domain is yours — MP/SDK/splits/release is SUPPORT's. Attribution by prefix: see "Commit Attribution & Domains" above. | master | PENDING | `AGENT_STATUS.md` §Commit Attribution |
+| SUPPORT | CORE (unclaimed) | Claim Slot 2 per AC1; push `bf027f8` (master is 1 ahead of origin); codex/data domain is yours — MP/SDK/splits/release is SUPPORT's. Attribution by prefix: see "Commit Attribution & Domains" above. | master | DONE — slot claimed, all commits pushed, `data:`/`codex:`/`feat:` prefixes adopted | `AGENT_STATUS.md` §Commit Attribution |
 
 ---
 
@@ -84,9 +84,9 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 | Slot | Assigned Agent | Status | Working On | Last Heartbeat |
 | :--- | :--- | :--- | :--- | :--- |
 | **Slot 1** | **DESIGNER (Devin)** | `DONE` | Batch merged via Slot 2 (`72ca2cb`); `experience_studio_screen.dart` was structurally broken → reverted, other 4 files landed. Slot released | 2026-10-29 |
-| **Slot 2** | **CORE (Devin — me)** | `ACTIVE` | Ammonomicon wiki + game-data pipeline (commits `b6d05b0`→`bf027f8`). Attribution map in Slot Details below | 2026-10-30 |
+| **Slot 2** | **CORE (Devin — me)** | `ACTIVE` | Ammonomicon wiki + game-data pipeline. EncounterDatabase joined: guns 238/239, items 263/270, synergies 306/440 ids | 2026-10-30 |
 | **Slot 3** | **PARALLEL (Devin — me)** | `DONE` | Absorbed by Slot 2 — bottom_back_bar landed+swept, testing-mode demoted, paradox entry wired, version bump done, big-screen + memoize partial. Slot released | 2026-10-29 |
-| **Slot 4** | **_(none)_** | `IDLE` | Released — Phases A-D complete, v3.3.0 shipped (`82e2873`) | 2026-10-30 |
+| **Slot 4** | **SUPPORT (Devin)** | `ACTIVE` | theme_enums.dart + theme_models.dart split (theme domain — codex/data/guns is THEIR domain, hands off) | 2026-10-30 |
 
 ### Slot Details
 
