@@ -1,0 +1,5285 @@
+{
+ "guns": {
+  "Thompson Sub-Machinegun": {
+   "id": [
+    2,
+    685
+   ],
+   "force": [
+    9.0,
+    15.0
+   ],
+   "damage": [
+    5.0,
+    6.5
+   ]
+  },
+  "A.W.P.": {
+   "id": [
+    5,
+    716
+   ],
+   "damage": [
+    40.0,
+    65.0
+   ]
+  },
+  "Zorgun": {
+   "id": [
+    null,
+    6
+   ],
+   "ammo_capacity": [
+    "300",
+    350
+   ],
+   "shot_speed": [
+    "23",
+    23.0
+   ],
+   "force": [
+    "9",
+    9.0
+   ],
+   "damage": [
+    "5.5",
+    5.5
+   ],
+   "reload_time": [
+    "0.6s",
+    0.6
+   ],
+   "quality": [
+    "A",
+    "S"
+   ],
+   "range": [
+    "\u221e",
+    1000.0
+   ]
+  },
+  "Barrel": {
+   "id": [
+    7,
+    709
+   ],
+   "shot_speed": [
+    20.0,
+    23.0
+   ],
+   "force": [
+    13.0,
+    10.0
+   ],
+   "damage": [
+    8.0,
+    5.0
+   ],
+   "range": [
+    1000.0,
+    35.0
+   ]
+  },
+  "Dueling Pistol": {
+   "id": [
+    9,
+    675
+   ]
+  },
+  "Mega Douser": {
+   "id": [
+    null,
+    10
+   ],
+   "ammo_capacity": [
+    "900",
+    900
+   ],
+   "shot_speed": [
+    "20",
+    20.0
+   ],
+   "force": [
+    "40",
+    40.0
+   ],
+   "damage": [
+    "15/s",
+    15.0
+   ],
+   "reload_time": [
+    "N/A",
+    0.0
+   ],
+   "quality": [
+    "D",
+    "C"
+   ],
+   "range": [
+    "20",
+    20.0
+   ]
+  },
+  "Crossbow": {
+   "id": [
+    227,
+    381
+   ],
+   "ammo_capacity": [
+    150,
+    100
+   ],
+   "shot_speed": [
+    25.0,
+    26.0
+   ],
+   "force": [
+    8.0,
+    25.0
+   ],
+   "damage": [
+    14.0,
+    22.0
+   ],
+   "reload_time": [
+    0.02,
+    0.9
+   ],
+   "quality": [
+    "C",
+    "B"
+   ]
+  },
+  "Bee Hive": {
+   "id": [
+    14,
+    703
+   ]
+  },
+  "AK-47": {
+   "id": [
+    null,
+    15
+   ],
+   "ammo_capacity": [
+    "500",
+    500
+   ],
+   "reload_time": [
+    "0.5s",
+    0.6
+   ],
+   "quality": [
+    "B",
+    "A"
+   ]
+  },
+  "Bubble Blaster": {
+   "id": [
+    17,
+    599
+   ],
+   "ammo_capacity": [
+    999,
+    500
+   ],
+   "shot_speed": [
+    40.0,
+    15.0
+   ],
+   "force": [
+    3.0,
+    6.0
+   ],
+   "damage": [
+    2.200000047683716,
+    6.0
+   ],
+   "reload_time": [
+    0.3,
+    1.5
+   ],
+   "quality": [
+    "A",
+    "B"
+   ],
+   "range": [
+    14.0,
+    35.0
+   ]
+  },
+  "Blooper": {
+   "id": [
+    null,
+    18
+   ],
+   "ammo_capacity": [
+    "80",
+    80
+   ],
+   "reload_time": [
+    "2.0s",
+    2.0
+   ],
+   "quality": [
+    "B",
+    "A"
+   ]
+  },
+  "Grenade Launcher": {
+   "id": [
+    null,
+    19
+   ],
+   "ammo_capacity": [
+    "60",
+    60
+   ],
+   "reload_time": [
+    "0.78s",
+    0.78
+   ],
+   "quality": [
+    "B",
+    "A"
+   ]
+  },
+  "Moonscraper": {
+   "id": [
+    20,
+    713
+   ]
+  },
+  "BSG": {
+   "id": [
+    null,
+    21
+   ],
+   "ammo_capacity": [
+    "25",
+    25
+   ],
+   "reload_time": [
+    "2.4s",
+    2.4
+   ]
+  },
+  "Shades's Revolver": {
+   "id": [
+    null,
+    22
+   ],
+   "ammo_capacity": [
+    "150",
+    150
+   ],
+   "shot_speed": [
+    "23",
+    23.0
+   ],
+   "force": [
+    "30",
+    30.0
+   ],
+   "damage": [
+    "15",
+    15.0
+   ],
+   "reload_time": [
+    "1.5s",
+    1.5
+   ],
+   "quality": [
+    "C",
+    "B"
+   ],
+   "range": [
+    "60",
+    60.0
+   ]
+  },
+  "Dungeon Eagle": {
+   "id": [
+    23,
+    750
+   ]
+  },
+  "Dart Gun": {
+   "id": [
+    24,
+    811
+   ]
+  },
+  "Nail Gun": {
+   "id": [
+    26,
+    692
+   ]
+  },
+  "Mailbox": {
+   "id": [
+    null,
+    28
+   ],
+   "ammo_capacity": [
+    "350",
+    350
+   ],
+   "shot_speed": [
+    "22",
+    22.0
+   ],
+   "force": [
+    "10",
+    10.0
+   ],
+   "damage": [
+    "5",
+    5.0
+   ],
+   "reload_time": [
+    "1.2s",
+    1.2
+   ],
+   "quality": [
+    "D",
+    "C"
+   ],
+   "range": [
+    "1,000",
+    1000.0
+   ]
+  },
+  "VertebraeK-47": {
+   "id": [
+    null,
+    29
+   ],
+   "ammo_capacity": [
+    "250",
+    300
+   ],
+   "shot_speed": [
+    "18",
+    18.0
+   ],
+   "force": [
+    "6",
+    6.0
+   ],
+   "damage": [
+    "4",
+    4.0
+   ],
+   "reload_time": [
+    "1.5s",
+    1.5
+   ],
+   "quality": [
+    "B",
+    "A"
+   ],
+   "range": [
+    "\u221e",
+    1000.0
+   ]
+  },
+  "M1911": {
+   "id": [
+    null,
+    30
+   ],
+   "ammo_capacity": [
+    "200",
+    200
+   ],
+   "shot_speed": [
+    "23",
+    23.0
+   ],
+   "force": [
+    "30",
+    30.0
+   ],
+   "damage": [
+    "8",
+    8.0
+   ],
+   "reload_time": [
+    "1.25s",
+    1.2
+   ],
+   "quality": [
+    "C",
+    "B"
+   ],
+   "range": [
+    "60",
+    60.0
+   ]
+  },
+  "Klobbe": {
+   "id": [
+    31,
+    690
+   ]
+  },
+  "Smiley's Revolver": {
+   "id": [
+    null,
+    35
+   ],
+   "ammo_capacity": [
+    "250",
+    250
+   ],
+   "shot_speed": [
+    "23",
+    23.0
+   ],
+   "force": [
+    "30",
+    30.0
+   ],
+   "damage": [
+    "9",
+    9.0
+   ],
+   "reload_time": [
+    "0.75s",
+    0.7
+   ],
+   "quality": [
+    "B",
+    "A"
+   ],
+   "range": [
+    "60",
+    60.0
+   ]
+  },
+  "Serious Cannon": {
+   "id": [
+    null,
+    37
+   ],
+   "ammo_capacity": [
+    "30",
+    30
+   ],
+   "shot_speed": [
+    "35",
+    35.0
+   ],
+   "force": [
+    "60",
+    60.0
+   ],
+   "damage": [
+    "50 (initial) 25 (on extra hits)",
+    50.0
+   ],
+   "reload_time": [
+    "1.5s",
+    1.5
+   ],
+   "quality": [
+    "A",
+    "S"
+   ],
+   "range": [
+    "\u221e",
+    1000.0
+   ]
+  },
+  "RPG": {
+   "id": [
+    null,
+    39
+   ],
+   "ammo_capacity": [
+    "40",
+    40
+   ],
+   "shot_speed": [
+    "40",
+    40.0
+   ],
+   "force": [
+    "10",
+    10.0
+   ],
+   "damage": [
+    "20 (Impact) 35 (Explosion)",
+    20.0
+   ],
+   "reload_time": [
+    "3.0s",
+    3.0
+   ],
+   "quality": [
+    "B",
+    "A"
+   ],
+   "range": [
+    "90",
+    90.0
+   ]
+  },
+  "Machine Pistol": {
+   "id": [
+    43,
+    673
+   ]
+  },
+  "Sniper Rifle": {
+   "id": [
+    null,
+    49
+   ],
+   "ammo_capacity": [
+    "80",
+    80
+   ],
+   "shot_speed": [
+    "200",
+    200.0
+   ],
+   "force": [
+    "15",
+    15.0
+   ],
+   "damage": [
+    "26",
+    26.0
+   ],
+   "reload_time": [
+    "1.5s",
+    1.5
+   ],
+   "quality": [
+    "C",
+    "B"
+   ],
+   "range": [
+    "1,000",
+    1000.0
+   ]
+  },
+  "SAA": {
+   "id": [
+    null,
+    50
+   ],
+   "ammo_capacity": [
+    "200",
+    200
+   ],
+   "shot_speed": [
+    "25",
+    25.0
+   ],
+   "force": [
+    "14",
+    14.0
+   ],
+   "damage": [
+    "8",
+    8.0
+   ],
+   "reload_time": [
+    "0.50s",
+    0.6
+   ],
+   "quality": [
+    "B",
+    "A"
+   ],
+   "range": [
+    "1000",
+    1000.0
+   ]
+  },
+  "Regular Shotgun": {
+   "id": [
+    660,
+    763
+   ],
+   "shot_speed": [
+    "23",
+    -1.0
+   ],
+   "force": [
+    "30",
+    10.0
+   ],
+   "damage": [
+    "4 x6 (24)",
+    30.0
+   ],
+   "reload_time": [
+    1.8,
+    0.1
+   ],
+   "range": [
+    "15",
+    30.0
+   ]
+  },
+  "Crescent Crossbow": {
+   "id": [
+    null,
+    52
+   ],
+   "ammo_capacity": [
+    "150",
+    150
+   ],
+   "shot_speed": [
+    "32",
+    32.0
+   ],
+   "force": [
+    "20",
+    20.0
+   ],
+   "damage": [
+    "22 (Large) 8 (Medium) 3 (Small)",
+    22.0
+   ],
+   "reload_time": [
+    "1.50s",
+    1.5
+   ],
+   "quality": [
+    "A",
+    "S"
+   ],
+   "range": [
+    "1000",
+    1000.0
+   ]
+  },
+  "AU Gun": {
+   "id": [
+    null,
+    53
+   ],
+   "ammo_capacity": [
+    "22",
+    22
+   ],
+   "shot_speed": [
+    "25",
+    25.0
+   ],
+   "force": [
+    "10",
+    10.0
+   ],
+   "damage": [
+    "100",
+    100.0
+   ],
+   "reload_time": [
+    "1.25s",
+    1.2
+   ],
+   "range": [
+    "1000",
+    1000.0
+   ]
+  },
+  "Laser Rifle": {
+   "id": [
+    123,
+    676
+   ],
+   "ammo_capacity": [
+    120,
+    500
+   ],
+   "reload_time": [
+    1.8,
+    1.2
+   ]
+  },
+  "38 Special": {
+   "id": [
+    56,
+    681
+   ],
+   "ammo_capacity": [
+    350,
+    600
+   ]
+  },
+  "Alien Sidearm": {
+   "id": [
+    57,
+    696
+   ],
+   "ammo_capacity": [
+    350,
+    500
+   ]
+  },
+  "Demon Head": {
+   "id": [
+    null,
+    60
+   ],
+   "ammo_capacity": [
+    "500",
+    500
+   ],
+   "shot_speed": [
+    "100",
+    100.0
+   ],
+   "force": [
+    "30",
+    30.0
+   ],
+   "damage": [
+    "31/s",
+    31.0
+   ],
+   "reload_time": [
+    "N/A",
+    0.0
+   ],
+   "quality": [
+    "B",
+    "A"
+   ],
+   "range": [
+    "40",
+    40.0
+   ]
+  },
+  "Bundle of Wands": {
+   "id": [
+    null,
+    61
+   ],
+   "ammo_capacity": [
+    "150",
+    150
+   ],
+   "shot_speed": [
+    "23",
+    23.0
+   ],
+   "force": [
+    "30",
+    30.0
+   ],
+   "damage": [
+    "7x3 (21)",
+    7.0
+   ],
+   "reload_time": [
+    "1.5s",
+    1.5
+   ],
+   "quality": [
+    "C",
+    "B"
+   ],
+   "range": [
+    "60",
+    60.0
+   ]
+  },
+  "Makarov": {
+   "id": [
+    null,
+    79
+   ],
+   "ammo_capacity": [
+    "350",
+    350
+   ],
+   "shot_speed": [
+    "23",
+    23.0
+   ],
+   "force": [
+    "10",
+    10.0
+   ],
+   "damage": [
+    "5",
+    5.0
+   ],
+   "reload_time": [
+    "1.2s",
+    1.2
+   ],
+   "quality": [
+    "D",
+    "C"
+   ],
+   "range": [
+    "60",
+    60.0
+   ]
+  },
+  "Deck4rd": {
+   "id": [
+    null,
+    81
+   ],
+   "ammo_capacity": [
+    "60",
+    60
+   ],
+   "shot_speed": [
+    "20",
+    20.0
+   ],
+   "force": [
+    "22",
+    22.0
+   ],
+   "damage": [
+    "5 (Bullet) + 35 (Explosion)",
+    5.0
+   ],
+   "reload_time": [
+    "1.5s",
+    1.5
+   ],
+   "quality": [
+    "A",
+    "S"
+   ],
+   "range": [
+    "\u221e",
+    1000.0
+   ]
+  },
+  "Elephant Gun": {
+   "id": [
+    82,
+    672
+   ]
+  },
+  "Vulcan Cannon": {
+   "id": [
+    84,
+    707
+   ],
+   "ammo_capacity": [
+    900,
+    1000
+   ],
+   "reload_time": [
+    1.5,
+    0.6
+   ]
+  },
+  "Marine Sidearm": {
+   "id": [
+    86,
+    809
+   ]
+  },
+  "Eye of the Beholster": {
+   "id": [
+    null,
+    90
+   ],
+   "ammo_capacity": [
+    "300",
+    300
+   ],
+   "shot_speed": [
+    "200",
+    200.0
+   ],
+   "force": [
+    "4",
+    4.0
+   ],
+   "damage": [
+    "6",
+    6.0
+   ],
+   "reload_time": [
+    "1.2s",
+    1.2
+   ],
+   "quality": [
+    "B",
+    "A"
+   ],
+   "range": [
+    "\u221e",
+    1000.0
+   ]
+  },
+  "H4mmer": {
+   "id": [
+    91,
+    715
+   ]
+  },
+  "MAC10": {
+   "id": [
+    null,
+    94
+   ],
+   "ammo_capacity": [
+    "600",
+    600
+   ],
+   "shot_speed": [
+    "23",
+    23.0
+   ],
+   "force": [
+    "5",
+    3.0
+   ],
+   "damage": [
+    "3.5",
+    3.5
+   ],
+   "reload_time": [
+    "1.0s",
+    1.0
+   ],
+   "quality": [
+    "C",
+    "B"
+   ],
+   "range": [
+    "\u221e",
+    1000.0
+   ]
+  },
+  "AKEY-47": {
+   "id": [
+    95,
+    726
+   ],
+   "shot_speed": [
+    23.0,
+    15.0
+   ],
+   "force": [
+    9.0,
+    11.0
+   ],
+   "damage": [
+    5.5,
+    10.0
+   ]
+  },
+  "M16": {
+   "id": [
+    null,
+    96
+   ],
+   "ammo_capacity": [
+    "500",
+    500
+   ],
+   "shot_speed": [
+    "23",
+    23.0
+   ],
+   "force": [
+    "11",
+    11.0
+   ],
+   "damage": [
+    "5.5 (Bullets) 10 (Grenade Impact) 25 (Explosion)",
+    5.5
+   ],
+   "reload_time": [
+    "1.2s",
+    1.2
+   ],
+   "quality": [
+    "A",
+    "S"
+   ],
+   "range": [
+    "\u221e",
+    1000.0
+   ]
+  },
+  "Polaris": {
+   "id": [
+    97,
+    718
+   ],
+   "ammo_capacity": [
+    450,
+    700
+   ]
+  },
+  "Excaliber": {
+   "id": [
+    98,
+    544
+   ],
+   "ammo_capacity": [
+    500,
+    300
+   ],
+   "force": [
+    15.0,
+    8.0
+   ],
+   "damage": [
+    7.0,
+    3.799999952316284
+   ],
+   "reload_time": [
+    1.0,
+    2.0
+   ]
+  },
+  "Rusty Sidearm": {
+   "id": [
+    99,
+    810
+   ]
+  },
+  "Blunderbuss": {
+   "id": [
+    122,
+    678
+   ]
+  },
+  "Cactus": {
+   "id": [
+    124,
+    700
+   ]
+  },
+  "Shotbow": {
+   "id": [
+    126,
+    749
+   ]
+  },
+  "Rad Gun": {
+   "id": [
+    566,
+    743
+   ],
+   "reload_time": [
+    1.2,
+    1.4
+   ]
+  },
+  "Com4nd0": {
+   "id": [
+    129,
+    723
+   ]
+  },
+  "RUBE-ADYNE MK.II": {
+   "id": [
+    null,
+    142
+   ],
+   "ammo_capacity": [
+    "300",
+    200
+   ],
+   "shot_speed": [
+    "40",
+    40.0
+   ],
+   "force": [
+    "10",
+    10.0
+   ],
+   "damage": [
+    "8",
+    7.0
+   ],
+   "reload_time": [
+    "0.48s",
+    0.6
+   ],
+   "range": [
+    "35",
+    60.0
+   ]
+  },
+  "Shotgun Full of Hate": {
+   "id": [
+    null,
+    143
+   ],
+   "ammo_capacity": [
+    "150",
+    150
+   ],
+   "reload_time": [
+    "1.2s",
+    1.2
+   ],
+   "quality": [
+    "A",
+    "S"
+   ]
+  },
+  "T-Shirt Cannon": {
+   "id": [
+    null,
+    150
+   ],
+   "ammo_capacity": [
+    "250",
+    250
+   ],
+   "shot_speed": [
+    "25",
+    25.0
+   ],
+   "force": [
+    "60",
+    60.0
+   ],
+   "damage": [
+    "8",
+    8.0
+   ],
+   "reload_time": [
+    "0.9s",
+    0.9
+   ],
+   "quality": [
+    "D",
+    "C"
+   ],
+   "range": [
+    "\u221e",
+    1000.0
+   ]
+  },
+  "Big Iron": {
+   "id": [
+    157,
+    694
+   ]
+  },
+  "Black Hole Gun": {
+   "id": [
+    null,
+    169
+   ],
+   "ammo_capacity": [
+    "30",
+    30
+   ],
+   "shot_speed": [
+    "4",
+    4.0
+   ],
+   "force": [
+    "9",
+    9.0
+   ],
+   "damage": [
+    "29.56/s",
+    10.0
+   ],
+   "reload_time": [
+    "1.56s",
+    1.56
+   ],
+   "quality": [
+    "A",
+    "S"
+   ],
+   "range": [
+    "\u221e",
+    1000.0
+   ]
+  },
+  "Gungeon Ant": {
+   "id": [
+    176,
+    739
+   ],
+   "shot_speed": [
+    26.0,
+    40.0
+   ],
+   "force": [
+    25.0,
+    10.0
+   ],
+   "damage": [
+    22.0,
+    20.0
+   ],
+   "range": [
+    1000.0,
+    90.0
+   ]
+  },
+  "Alien Engine": {
+   "id": [
+    177,
+    742
+   ]
+  },
+  "Proton Backpack": {
+   "id": [
+    658,
+    720
+   ],
+   "ammo_capacity": [
+    1000,
+    500
+   ]
+  },
+  "Grasschopper": {
+   "id": [
+    null,
+    180
+   ],
+   "ammo_capacity": [
+    "30",
+    30
+   ],
+   "shot_speed": [
+    "36",
+    36.0
+   ],
+   "force": [
+    "22",
+    22.0
+   ],
+   "damage": [
+    "40",
+    20.0
+   ],
+   "reload_time": [
+    "2.0s",
+    2.0
+   ],
+   "quality": [
+    "A",
+    "S"
+   ],
+   "range": [
+    "18",
+    18.0
+   ]
+  },
+  "Winchester Rifle": {
+   "id": [
+    null,
+    181
+   ],
+   "ammo_capacity": [
+    "130",
+    130
+   ],
+   "shot_speed": [
+    "32",
+    32.0
+   ],
+   "force": [
+    "9",
+    9.0
+   ],
+   "damage": [
+    "15",
+    15.0
+   ],
+   "reload_time": [
+    "1.2s",
+    1.2
+   ],
+   "quality": [
+    "D",
+    "C"
+   ],
+   "range": [
+    "\u221e",
+    1000.0
+   ]
+  },
+  "Grey Mauser": {
+   "id": [
+    182,
+    537
+   ],
+   "ammo_capacity": [
+    100,
+    250
+   ],
+   "damage": [
+    8.0,
+    5.0
+   ],
+   "reload_time": [
+    1.5,
+    1.0
+   ]
+  },
+  "Fossilized Gun": {
+   "id": [
+    null,
+    196
+   ],
+   "ammo_capacity": [
+    "500",
+    500
+   ],
+   "shot_speed": [
+    "15",
+    15.0
+   ],
+   "force": [
+    "40",
+    40.0
+   ],
+   "damage": [
+    "15/s",
+    15.0
+   ],
+   "reload_time": [
+    "N/A",
+    0.0
+   ],
+   "quality": [
+    "D",
+    "C"
+   ],
+   "range": [
+    "20",
+    20.0
+   ]
+  },
+  "Pea Shooter": {
+   "id": [
+    674,
+    740
+   ],
+   "ammo_capacity": [
+    1000,
+    350
+   ],
+   "shot_speed": [
+    20.0,
+    10.0
+   ],
+   "force": [
+    3.0,
+    10.0
+   ],
+   "damage": [
+    4.0,
+    7.0
+   ],
+   "reload_time": [
+    1.5,
+    1.2
+   ],
+   "range": [
+    20.0,
+    1000.0
+   ]
+  },
+  "Charmed Bow": {
+   "id": [
+    null,
+    200
+   ],
+   "ammo_capacity": [
+    "150",
+    150
+   ],
+   "reload_time": [
+    "0.0",
+    0.0
+   ],
+   "quality": [
+    "B",
+    "A"
+   ]
+  },
+  "Gunbow": {
+   "id": [
+    210,
+    693
+   ]
+  },
+  "Cold 45": {
+   "id": [
+    null,
+    223
+   ],
+   "ammo_capacity": [
+    "350",
+    350
+   ],
+   "shot_speed": [
+    "28",
+    28.0
+   ],
+   "force": [
+    "10",
+    10.0
+   ],
+   "damage": [
+    "6",
+    6.0
+   ],
+   "reload_time": [
+    "1.2s",
+    1.2
+   ],
+   "quality": [
+    "B",
+    "A"
+   ],
+   "range": [
+    "35",
+    35.0
+   ]
+  },
+  "Ice Breaker": {
+   "id": [
+    225,
+    745
+   ]
+  },
+  "Gilded Hydra": {
+   "id": [
+    null,
+    231
+   ],
+   "ammo_capacity": [
+    "50",
+    50
+   ],
+   "reload_time": [
+    "2.0s",
+    2.0
+   ]
+  },
+  "Flare Gun": {
+   "id": [
+    275,
+    706
+   ]
+  },
+  "Railgun": {
+   "id": [
+    393,
+    686
+   ],
+   "ammo_capacity": [
+    60,
+    200
+   ]
+  },
+  "Charge Shot": {
+   "id": [
+    null,
+    328
+   ],
+   "ammo_capacity": [
+    "75",
+    75
+   ],
+   "shot_speed": [
+    "26",
+    26.0
+   ],
+   "force": [
+    "25",
+    25.0
+   ],
+   "damage": [
+    "30",
+    22.0
+   ],
+   "reload_time": [
+    "1.0s",
+    1.0
+   ],
+   "quality": [
+    "B",
+    "A"
+   ],
+   "range": [
+    "\u221e",
+    1000.0
+   ]
+  },
+  "Zilla Shotgun": {
+   "id": [
+    null,
+    329
+   ],
+   "ammo_capacity": [
+    "240",
+    240
+   ],
+   "shot_speed": [
+    "26",
+    26.0
+   ],
+   "force": [
+    "26",
+    25.0
+   ],
+   "damage": [
+    "4x8 (32) Charged: 6x7 (42)",
+    22.0
+   ],
+   "reload_time": [
+    "1.5s",
+    1.5
+   ],
+   "quality": [
+    "A",
+    "S"
+   ],
+   "range": [
+    "\u221e",
+    1000.0
+   ]
+  },
+  "Pitchfork": {
+   "id": [
+    336,
+    722
+   ]
+  },
+  "Composite Gun": {
+   "id": [
+    null,
+    337
+   ],
+   "ammo_capacity": [
+    "50",
+    50
+   ],
+   "shot_speed": [
+    "25",
+    25.0
+   ],
+   "force": [
+    "10",
+    10.0
+   ],
+   "damage": [
+    "Uncharged: 40, Charged: 100",
+    100.0
+   ],
+   "reload_time": [
+    "0.6s",
+    0.6
+   ],
+   "range": [
+    "\u221e",
+    1000.0
+   ]
+  },
+  "Lower Case r": {
+   "id": [
+    340,
+    738
+   ]
+  },
+  "Shotgrub": {
+   "id": [
+    null,
+    347
+   ],
+   "ammo_capacity": [
+    "250",
+    250
+   ],
+   "reload_time": [
+    "1.5s",
+    1.5
+   ],
+   "quality": [
+    "C",
+    "B"
+   ]
+  },
+  "Compressed Air Tank": {
+   "id": [
+    null,
+    359
+   ],
+   "ammo_capacity": [
+    "50",
+    50
+   ],
+   "shot_speed": [
+    "35",
+    35.0
+   ],
+   "force": [
+    "60",
+    60.0
+   ],
+   "damage": [
+    "150",
+    50.0
+   ],
+   "reload_time": [
+    "1.2s",
+    1.2
+   ],
+   "quality": [
+    "A",
+    "S"
+   ],
+   "range": [
+    "\u221e",
+    1000.0
+   ]
+  },
+  "Magnum": {
+   "id": [
+    363,
+    751
+   ],
+   "ammo_capacity": [
+    200,
+    140
+   ],
+   "reload_time": [
+    1.2,
+    1.0
+   ]
+  },
+  "Stinger": {
+   "id": [
+    368,
+    369
+   ],
+   "ammo_capacity": [
+    200,
+    60
+   ],
+   "shot_speed": [
+    23.0,
+    20.0
+   ],
+   "force": [
+    15.0,
+    8.0
+   ],
+   "damage": [
+    0.0,
+    10.0
+   ],
+   "reload_time": [
+    0.6,
+    1.0
+   ]
+  },
+  "Shotgun Full of Love": {
+   "id": [
+    null,
+    379
+   ],
+   "ammo_capacity": [
+    "120",
+    120
+   ],
+   "reload_time": [
+    "1.2s",
+    1.2
+   ],
+   "quality": [
+    "A",
+    "S"
+   ]
+  },
+  "Sling": {
+   "id": [
+    null,
+    382
+   ],
+   "ammo_capacity": [
+    "80",
+    80
+   ],
+   "shot_speed": [
+    "23",
+    23.0
+   ],
+   "force": [
+    "35",
+    35.0
+   ],
+   "damage": [
+    "25",
+    13.0
+   ],
+   "reload_time": [
+    "0.9s",
+    0.9
+   ],
+   "quality": [
+    "D",
+    "C"
+   ],
+   "range": [
+    "1,000",
+    1000.0
+   ]
+  },
+  "Phoenix": {
+   "id": [
+    384,
+    736
+   ]
+  },
+  "Trident": {
+   "id": [
+    null,
+    444
+   ],
+   "ammo_capacity": [
+    "300",
+    300
+   ],
+   "shot_speed": [
+    "600",
+    600.0
+   ],
+   "force": [
+    "4",
+    4.0
+   ],
+   "damage": [
+    "8",
+    8.0
+   ],
+   "reload_time": [
+    "1.0s",
+    1.0
+   ],
+   "quality": [
+    "A",
+    "S"
+   ],
+   "range": [
+    "\u221e",
+    1000.0
+   ]
+  },
+  "The Scrambler": {
+   "id": [
+    null,
+    445
+   ],
+   "ammo_capacity": [
+    "120",
+    120
+   ],
+   "shot_speed": [
+    "20",
+    20.0
+   ],
+   "force": [
+    "0",
+    0.0
+   ],
+   "damage": [
+    "6 Seekers: 9x5 (45)",
+    6.0
+   ],
+   "reload_time": [
+    "1.2s",
+    1.2
+   ],
+   "quality": [
+    "C",
+    "B"
+   ],
+   "range": [
+    "32",
+    32.0
+   ]
+  },
+  "Shellegun": {
+   "id": [
+    null,
+    464
+   ],
+   "ammo_capacity": [
+    "300",
+    300
+   ],
+   "shot_speed": [
+    "25",
+    25.0
+   ],
+   "force": [
+    "22",
+    22.0
+   ],
+   "damage": [
+    "8 (Pistol) 5 (Beam)",
+    8.0
+   ],
+   "reload_time": [
+    "1.25s",
+    1.08
+   ],
+   "quality": [
+    "B",
+    "A"
+   ],
+   "range": [
+    "30",
+    30.0
+   ]
+  },
+  "Origuni": {
+   "id": [
+    477,
+    744
+   ]
+  },
+  "Banana": {
+   "id": [
+    478,
+    688
+   ]
+  },
+  "Super Meat Gun": {
+   "id": [
+    null,
+    479
+   ],
+   "ammo_capacity": [
+    "300",
+    300
+   ],
+   "shot_speed": [
+    "25",
+    25.0
+   ],
+   "force": [
+    "10",
+    10.0
+   ],
+   "damage": [
+    "6",
+    6.0
+   ],
+   "reload_time": [
+    "0.5s",
+    0.5
+   ],
+   "quality": [
+    "A",
+    "S"
+   ],
+   "range": [
+    "\u221e",
+    1000.0
+   ]
+  },
+  "Camera": {
+   "id": [
+    null,
+    481
+   ],
+   "ammo_capacity": [
+    "60",
+    60
+   ],
+   "shot_speed": [
+    "60",
+    60.0
+   ],
+   "force": [
+    "1",
+    1.0
+   ],
+   "damage": [
+    "10",
+    2.5
+   ],
+   "reload_time": [
+    "2.0s",
+    2.0
+   ],
+   "quality": [
+    "C",
+    "B"
+   ],
+   "range": [
+    "\u221e",
+    1000.0
+   ]
+  },
+  "Gunzheng": {
+   "id": [
+    null,
+    482
+   ],
+   "ammo_capacity": [
+    "800",
+    800
+   ],
+   "shot_speed": [
+    "23",
+    23.0
+   ],
+   "force": [
+    "8",
+    8.0
+   ],
+   "damage": [
+    "6",
+    6.0
+   ],
+   "reload_time": [
+    "0.0s",
+    0.0
+   ],
+   "quality": [
+    "B",
+    "A"
+   ],
+   "range": [
+    "\u221e",
+    1000.0
+   ]
+  },
+  "Devolver": {
+   "id": [
+    null,
+    484
+   ],
+   "ammo_capacity": [
+    "100",
+    100
+   ],
+   "shot_speed": [
+    "25",
+    25.0
+   ],
+   "force": [
+    "10",
+    10.0
+   ],
+   "damage": [
+    "6",
+    6.0
+   ],
+   "reload_time": [
+    "0.78s",
+    0.78
+   ],
+   "quality": [
+    "C",
+    "B"
+   ],
+   "range": [
+    "1000",
+    1000.0
+   ]
+  },
+  "Trank Gun": {
+   "id": [
+    null,
+    486
+   ],
+   "ammo_capacity": [
+    "200",
+    30
+   ],
+   "shot_speed": [
+    "23",
+    26.0
+   ],
+   "force": [
+    "30",
+    10.0
+   ],
+   "damage": [
+    "6.5",
+    100.0
+   ],
+   "reload_time": [
+    "0.54s",
+    1.8
+   ],
+   "range": [
+    "60",
+    90.0
+   ]
+  },
+  "Bullet": {
+   "id": [
+    503,
+    577
+   ],
+   "ammo_capacity": [
+    250,
+    180
+   ],
+   "shot_speed": [
+    12.0,
+    21.0
+   ],
+   "force": [
+    13.0,
+    6.0
+   ],
+   "range": [
+    100.0,
+    20.0
+   ]
+  },
+  "Starpew": {
+   "id": [
+    null,
+    507
+   ],
+   "ammo_capacity": [
+    "100",
+    100
+   ],
+   "reload_time": [
+    "1.0s",
+    1.0
+   ],
+   "quality": [
+    "A",
+    "S"
+   ]
+  },
+  "Dueling Laser": {
+   "id": [
+    null,
+    508
+   ],
+   "ammo_capacity": [
+    "\u221e",
+    25
+   ],
+   "shot_speed": [
+    "N/A",
+    600.0
+   ],
+   "force": [
+    "N/A",
+    20.0
+   ],
+   "damage": [
+    "100",
+    100.0
+   ],
+   "reload_time": [
+    "1s",
+    1.0
+   ],
+   "quality": [
+    "B",
+    "A"
+   ],
+   "range": [
+    "\u221e",
+    1000.0
+   ]
+  },
+  "JK-47": {
+   "id": [
+    null,
+    510
+   ],
+   "ammo_capacity": [
+    "500",
+    500
+   ],
+   "shot_speed": [
+    "23",
+    23.0
+   ],
+   "force": [
+    "9",
+    9.0
+   ],
+   "damage": [
+    "5.5",
+    5.5
+   ],
+   "reload_time": [
+    "1.5s",
+    1.5
+   ],
+   "quality": [
+    "C",
+    "B"
+   ],
+   "range": [
+    "1000",
+    1000.0
+   ]
+  },
+  "Poxcannon": {
+   "id": [
+    null,
+    513
+   ],
+   "ammo_capacity": [
+    "250",
+    250
+   ],
+   "shot_speed": [
+    "25",
+    25.0
+   ],
+   "force": [
+    "60",
+    60.0
+   ],
+   "damage": [
+    "15",
+    15.0
+   ],
+   "reload_time": [
+    "1.7s",
+    1.7
+   ],
+   "quality": [
+    "C",
+    "B"
+   ],
+   "range": [
+    "1,000",
+    1000.0
+   ]
+  },
+  "Directional Pad": {
+   "id": [
+    null,
+    514
+   ],
+   "ammo_capacity": [
+    "120",
+    120
+   ],
+   "shot_speed": [
+    "N/A",
+    23.0
+   ],
+   "force": [
+    "N/A",
+    12.0
+   ],
+   "damage": [
+    "8 Fireball: 45 Grappling Hook: 10",
+    8.0
+   ],
+   "reload_time": [
+    "1.6s",
+    1.7
+   ],
+   "quality": [
+    "B",
+    "A"
+   ],
+   "range": [
+    "\u221e",
+    50.0
+   ]
+  },
+  "Triple Gun": {
+   "id": [
+    517,
+    518
+   ],
+   "shot_speed": [
+    25.0,
+    75.0
+   ],
+   "force": [
+    3.0,
+    20.0
+   ],
+   "damage": [
+    6.5,
+    160.0
+   ],
+   "range": [
+    1000.0,
+    50.0
+   ]
+  },
+  "Combined Rifle": {
+   "id": [
+    null,
+    519
+   ],
+   "ammo_capacity": [
+    "500",
+    500
+   ],
+   "shot_speed": [
+    "23 (Rifle) 19 (Energy Ball)",
+    23.0
+   ],
+   "force": [
+    "9 (Rifle) 2.5 (Energy Ball)",
+    9.0
+   ],
+   "damage": [
+    "5 (Rifle) 100 (Energy ball)",
+    5.0
+   ],
+   "reload_time": [
+    "1.2s",
+    1.2
+   ],
+   "quality": [
+    "B",
+    "A"
+   ],
+   "range": [
+    "50 (Rifle) 150 (Energy Ball)",
+    50.0
+   ]
+  },
+  "Balloon Gun": {
+   "id": [
+    null,
+    520
+   ],
+   "ammo_capacity": [
+    "250",
+    250
+   ],
+   "shot_speed": [
+    "18",
+    18.0
+   ],
+   "force": [
+    "30",
+    30.0
+   ],
+   "damage": [
+    "12",
+    12.0
+   ],
+   "reload_time": [
+    "1.6s",
+    1.7
+   ],
+   "quality": [
+    "C",
+    "B"
+   ],
+   "range": [
+    "20",
+    40.0
+   ]
+  },
+  "Boxing Glove": {
+   "id": [
+    null,
+    539
+   ],
+   "ammo_capacity": [
+    "350",
+    350
+   ],
+   "shot_speed": [
+    "N/A",
+    15.0
+   ],
+   "force": [
+    "N/A",
+    6.0
+   ],
+   "damage": [
+    "12 (Regular) 200 (Super)",
+    6.0
+   ],
+   "reload_time": [
+    "1.5s",
+    1.5
+   ],
+   "quality": [
+    "C",
+    "B"
+   ],
+   "range": [
+    "3.5",
+    35.0
+   ]
+  },
+  "Glass Cannon": {
+   "id": [
+    540,
+    819
+   ],
+   "reload_time": [
+    2.0,
+    2.4
+   ]
+  },
+  "Casey": {
+   "id": [
+    541,
+    616
+   ]
+  },
+  "Strafe Gun": {
+   "id": [
+    null,
+    542
+   ],
+   "ammo_capacity": [
+    "400",
+    400
+   ],
+   "shot_speed": [
+    "500",
+    200.0
+   ],
+   "force": [
+    "N/A",
+    9.0
+   ],
+   "damage": [
+    "1 (Impact) 8 (Explosion)",
+    1.0
+   ],
+   "reload_time": [
+    "1.4s",
+    1.5
+   ],
+   "range": [
+    "\u221e",
+    1000.0
+   ]
+  },
+  "Crown of Guns": {
+   "id": [
+    null,
+    551
+   ],
+   "ammo_capacity": [
+    "3000",
+    3000
+   ],
+   "shot_speed": [
+    "N/A",
+    23.0
+   ],
+   "force": [
+    "9",
+    9.0
+   ],
+   "damage": [
+    "5.5",
+    5.5
+   ],
+   "reload_time": [
+    "2.0s",
+    2.0
+   ],
+   "quality": [
+    "C",
+    "B"
+   ],
+   "range": [
+    "40",
+    40.0
+   ]
+  },
+  "Life Orb": {
+   "id": [
+    null,
+    595
+   ],
+   "ammo_capacity": [
+    "600",
+    600
+   ],
+   "shot_speed": [
+    "\u221e",
+    30.0
+   ],
+   "force": [
+    "N/A",
+    10.0
+   ],
+   "damage": [
+    "20/s",
+    20.0
+   ],
+   "reload_time": [
+    "N/A",
+    1.6
+   ],
+   "quality": [
+    "A",
+    "S"
+   ],
+   "range": [
+    "\u221e",
+    30.0
+   ]
+  },
+  "Teapot": {
+   "id": [
+    null,
+    596
+   ],
+   "ammo_capacity": [
+    "250",
+    250
+   ],
+   "shot_speed": [
+    "20",
+    20.0
+   ],
+   "force": [
+    "7",
+    7.0
+   ],
+   "damage": [
+    "8.5 (Regular) 15 (Final Shot)",
+    8.5
+   ],
+   "reload_time": [
+    "3.0s",
+    3.0
+   ],
+   "quality": [
+    "C",
+    "B"
+   ],
+   "range": [
+    "1000",
+    1000.0
+   ]
+  },
+  "Big Shotgun": {
+   "id": [
+    null,
+    601
+   ],
+   "ammo_capacity": [
+    "70",
+    70
+   ],
+   "shot_speed": [
+    "23 20",
+    23.0
+   ],
+   "force": [
+    "9",
+    9.0
+   ],
+   "damage": [
+    "5.5 x3 (16.5) 15 x3 (45) 5.5",
+    5.5
+   ],
+   "reload_time": [
+    "2.1s",
+    2.2
+   ],
+   "quality": [
+    "A",
+    "S"
+   ],
+   "range": [
+    "1000",
+    1000.0
+   ]
+  },
+  "GuNNER": {
+   "id": [
+    null,
+    602
+   ],
+   "ammo_capacity": [
+    "200",
+    200
+   ],
+   "shot_speed": [
+    "27",
+    27.0
+   ],
+   "force": [
+    "9",
+    9.0
+   ],
+   "damage": [
+    "13.5",
+    13.5
+   ],
+   "reload_time": [
+    "1.5s",
+    1.5
+   ],
+   "quality": [
+    "B",
+    "A"
+   ],
+   "range": [
+    "1000",
+    1000.0
+   ]
+  },
+  "Slinger": {
+   "id": [
+    null,
+    604
+   ],
+   "ammo_capacity": [
+    "\u221e",
+    500
+   ],
+   "shot_speed": [
+    "23 (Bullet) 19 (Gun)",
+    23.0
+   ],
+   "force": [
+    "9 (Bullet) 40 (Gun)",
+    9.0
+   ],
+   "damage": [
+    "5.5 (Bullet) 4 (Gun)",
+    5.5
+   ],
+   "reload_time": [
+    "1.3s",
+    1.3
+   ],
+   "range": [
+    "1000 (Bullet) 30 (Gun)",
+    1000.0
+   ]
+  },
+  "Wood Beam": {
+   "id": [
+    null,
+    610
+   ],
+   "ammo_capacity": [
+    "900",
+    900
+   ],
+   "shot_speed": [
+    "40",
+    40.0
+   ],
+   "force": [
+    "N/A",
+    1.0
+   ],
+   "damage": [
+    "Varies",
+    1.0
+   ],
+   "reload_time": [
+    "0.9s",
+    0.9
+   ],
+   "quality": [
+    "B",
+    "A"
+   ],
+   "range": [
+    "10",
+    10.0
+   ]
+  },
+  "Elimentaler": {
+   "id": [
+    null,
+    626
+   ],
+   "ammo_capacity": [
+    "\u221e",
+    500
+   ],
+   "shot_speed": [
+    "23",
+    23.0
+   ],
+   "force": [
+    "9",
+    9.0
+   ],
+   "damage": [
+    "5.5 Pointy cheese: 8 Cheese wheel: 15 Average damage: 7.92",
+    5.5
+   ],
+   "reload_time": [
+    "1.3s",
+    1.3
+   ],
+   "range": [
+    "1000",
+    1000.0
+   ]
+  },
+  "Rogue Special": {
+   "id": [
+    null,
+    651
+   ],
+   "ammo_capacity": [
+    "\u221e",
+    350
+   ],
+   "shot_speed": [
+    "22",
+    22.0
+   ],
+   "force": [
+    "6",
+    6.0
+   ],
+   "damage": [
+    "5",
+    5.0
+   ],
+   "reload_time": [
+    "1.2s",
+    1.2
+   ],
+   "range": [
+    "13",
+    13.0
+   ]
+  },
+  "Budget Revolver": {
+   "id": [
+    null,
+    652
+   ],
+   "ammo_capacity": [
+    "\u221e",
+    350
+   ],
+   "shot_speed": [
+    "23",
+    23.0
+   ],
+   "force": [
+    "10",
+    10.0
+   ],
+   "damage": [
+    "6",
+    6.0
+   ],
+   "reload_time": [
+    "0.9s",
+    0.9
+   ],
+   "range": [
+    "18",
+    18.0
+   ]
+  },
+  "Freeze Ray": {
+   "id": [
+    null,
+    710
+   ],
+   "ammo_capacity": [
+    "500",
+    500
+   ],
+   "reload_time": [
+    "N/A",
+    0.0
+   ]
+  },
+  "Finished Gun": {
+   "id": [
+    null,
+    762
+   ],
+   "ammo_capacity": [
+    "500",
+    500
+   ],
+   "shot_speed": [
+    "30 20 (final shot)",
+    30.0
+   ],
+   "force": [
+    "14",
+    14.0
+   ],
+   "damage": [
+    "14 25 (final shot)",
+    14.0
+   ],
+   "reload_time": [
+    "0.78s",
+    0.78
+   ],
+   "range": [
+    "1000",
+    1000.0
+   ]
+  },
+  "Blasphemy": {
+   "id": [
+    null,
+    813
+   ],
+   "ammo_capacity": [
+    "\u221e",
+    350
+   ],
+   "shot_speed": [
+    "26",
+    26.0
+   ],
+   "force": [
+    "10",
+    10.0
+   ],
+   "damage": [
+    "14 (Projectile) 14 (Slash)",
+    14.0
+   ],
+   "reload_time": [
+    "1.0s (Single Reload) 2.0s (Double Reload)",
+    1.0
+   ],
+   "range": [
+    "1000",
+    1000.0
+   ]
+  }
+ },
+ "items": {
+  "Medkit": {
+   "id": [
+    63,
+    412
+   ]
+  },
+  "Knife Shield": {
+   "id": [
+    null,
+    65
+   ],
+   "quality": [
+    "D",
+    "C"
+   ]
+  },
+  "Proximity Mine": {
+   "id": [
+    null,
+    66
+   ],
+   "quality": [
+    "D",
+    "C"
+   ]
+  },
+  "Bullet Time": {
+   "id": [
+    null,
+    69
+   ],
+   "quality": [
+    "D",
+    "C"
+   ]
+  },
+  "Decoy": {
+   "id": [
+    71,
+    438
+   ],
+   "quality": [
+    "C",
+    "B"
+   ]
+  },
+  "Supply Drop": {
+   "id": [
+    null,
+    77
+   ],
+   "quality": [
+    "D",
+    "C"
+   ]
+  },
+  "Scope": {
+   "id": [
+    null,
+    102
+   ],
+   "quality": [
+    "D",
+    "C"
+   ]
+  },
+  "Ration": {
+   "id": [
+    null,
+    104
+   ],
+   "quality": [
+    "C",
+    "B"
+   ]
+  },
+  "Fortune's Favor": {
+   "id": [
+    null,
+    105
+   ],
+   "quality": [
+    "B",
+    "A"
+   ]
+  },
+  "Jetpack": {
+   "id": [
+    null,
+    106
+   ],
+   "quality": [
+    "C",
+    "B"
+   ]
+  },
+  "Bomb": {
+   "id": [
+    null,
+    108
+   ],
+   "quality": [
+    "D",
+    "C"
+   ]
+  },
+  "Ice Bomb": {
+   "id": [
+    null,
+    109
+   ],
+   "quality": [
+    "D",
+    "C"
+   ]
+  },
+  "Magic Sweet": {
+   "id": [
+    null,
+    110
+   ],
+   "quality": [
+    "A",
+    "S"
+   ]
+  },
+  "Heavy Bullets": {
+   "id": [
+    null,
+    111
+   ],
+   "quality": [
+    "C",
+    "B"
+   ]
+  },
+  "Cartographer's Ring": {
+   "id": [
+    null,
+    112
+   ],
+   "quality": [
+    "C",
+    "B"
+   ]
+  },
+  "Rocket-Powered Bullets": {
+   "id": [
+    null,
+    113
+   ],
+   "quality": [
+    "B",
+    "A"
+   ]
+  },
+  "Bionic Leg": {
+   "id": [
+    null,
+    114
+   ],
+   "quality": [
+    "C",
+    "B"
+   ]
+  },
+  "Eyepatch": {
+   "id": [
+    null,
+    118
+   ],
+   "quality": [
+    "A",
+    "S"
+   ]
+  },
+  "Metronome": {
+   "id": [
+    null,
+    119
+   ],
+   "quality": [
+    "B",
+    "A"
+   ]
+  },
+  "Junk": {
+   "id": [
+    127,
+    641
+   ]
+  },
+  "Utility Belt": {
+   "id": [
+    null,
+    131
+   ],
+   "quality": [
+    "C",
+    "B"
+   ]
+  },
+  "Ring of Miserly Protection": {
+   "id": [
+    null,
+    132
+   ],
+   "quality": [
+    "C",
+    "B"
+   ]
+  },
+  "Backpack": {
+   "id": [
+    null,
+    133
+   ],
+   "quality": [
+    "D",
+    "C"
+   ]
+  },
+  "Ammo Belt": {
+   "id": [
+    null,
+    134
+   ],
+   "quality": [
+    "D",
+    "C"
+   ]
+  },
+  "Cog of Battle": {
+   "id": [
+    null,
+    135
+   ],
+   "quality": [
+    "C",
+    "B"
+   ]
+  },
+  "Map": {
+   "id": [
+    null,
+    137
+   ],
+   "quality": [
+    "D",
+    "C"
+   ]
+  },
+  "Honeycomb": {
+   "id": [
+    null,
+    138
+   ],
+   "quality": [
+    "C",
+    "B"
+   ]
+  },
+  "Master of Unlocking": {
+   "id": [
+    null,
+    140
+   ],
+   "quality": [
+    "B",
+    "A"
+   ]
+  },
+  "Lies": {
+   "id": [
+    null,
+    148
+   ]
+  },
+  "Singularity": {
+   "id": [
+    null,
+    155
+   ],
+   "quality": [
+    "C",
+    "B"
+   ]
+  },
+  "Gunknight Helmet": {
+   "id": [
+    null,
+    160
+   ],
+   "quality": [
+    "A",
+    "S"
+   ]
+  },
+  "Gunknight Greaves": {
+   "id": [
+    null,
+    161
+   ],
+   "quality": [
+    "C",
+    "B"
+   ]
+  },
+  "Gunknight Gauntlet": {
+   "id": [
+    null,
+    162
+   ],
+   "quality": [
+    "C",
+    "B"
+   ]
+  },
+  "Gunknight Armor": {
+   "id": [
+    null,
+    163
+   ],
+   "quality": [
+    "B",
+    "A"
+   ]
+  },
+  "Heart Synthesizer": {
+   "id": [
+    null,
+    164
+   ],
+   "quality": [
+    "A",
+    "S"
+   ]
+  },
+  "Shelleton Key": {
+   "id": [
+    null,
+    166
+   ]
+  },
+  "Bloody Eye": {
+   "id": [
+    167,
+    431
+   ],
+   "quality": [
+    "A",
+    "S"
+   ]
+  },
+  "Double Vision": {
+   "id": [
+    null,
+    168
+   ],
+   "quality": [
+    "D",
+    "C"
+   ]
+  },
+  "Ice Cube": {
+   "id": [
+    null,
+    170
+   ],
+   "quality": [
+    "B",
+    "A"
+   ]
+  },
+  "Ghost Bullets": {
+   "id": [
+    null,
+    172
+   ],
+   "quality": [
+    "C",
+    "B"
+   ]
+  },
+  "Potion of Gun Friendship": {
+   "id": [
+    null,
+    174
+   ],
+   "quality": [
+    "D",
+    "C"
+   ]
+  },
+  "Rolling Eye": {
+   "id": [
+    null,
+    190
+   ],
+   "quality": [
+    "C",
+    "B"
+   ]
+  },
+  "Ring of Fire Resistance": {
+   "id": [
+    null,
+    191
+   ],
+   "quality": [
+    "C",
+    "B"
+   ]
+  },
+  "Bug Boots": {
+   "id": [
+    null,
+    193
+   ],
+   "quality": [
+    "B",
+    "A"
+   ]
+  },
+  "Portable Turret": {
+   "id": [
+    null,
+    201
+   ],
+   "quality": [
+    "B",
+    "A"
+   ]
+  },
+  "Poison Vial": {
+   "id": [
+    205,
+    432
+   ],
+   "quality": [
+    "C",
+    "B"
+   ]
+  },
+  "Charm Horn": {
+   "id": [
+    null,
+    206
+   ],
+   "quality": [
+    "B",
+    "A"
+   ]
+  },
+  "Sense of Direction": {
+   "id": [
+    null,
+    209
+   ],
+   "quality": [
+    "D",
+    "C"
+   ]
+  },
+  "Ballistic Boots": {
+   "id": [
+    null,
+    212
+   ],
+   "quality": [
+    "B",
+    "A"
+   ]
+  },
+  "Lichy Trigger Finger": {
+   "id": [
+    null,
+    213
+   ],
+   "quality": [
+    "D",
+    "C"
+   ]
+  },
+  "Old Knight's Shield": {
+   "id": [
+    null,
+    219
+   ],
+   "quality": [
+    "N",
+    "C"
+   ]
+  },
+  "Old Knight's Helm": {
+   "id": [
+    null,
+    222
+   ],
+   "quality": [
+    "N",
+    "C"
+   ]
+  },
+  "Space Friend": {
+   "id": [
+    232,
+    249
+   ]
+  },
+  "iBomb Companion App": {
+   "id": [
+    null,
+    234
+   ],
+   "quality": [
+    "C",
+    "B"
+   ]
+  },
+  "Aged Bell": {
+   "id": [
+    null,
+    237
+   ],
+   "quality": [
+    "A",
+    "S"
+   ]
+  },
+  "Duct Tape": {
+   "id": [
+    null,
+    239
+   ],
+   "quality": [
+    "A",
+    "S"
+   ]
+  },
+  "Crutch": {
+   "id": [
+    null,
+    240
+   ],
+   "quality": [
+    "B",
+    "A"
+   ]
+  },
+  "Scattershot": {
+   "id": [
+    null,
+    241
+   ],
+   "quality": [
+    "B",
+    "A"
+   ]
+  },
+  "Napalm Strike": {
+   "id": [
+    null,
+    242
+   ],
+   "quality": [
+    "C",
+    "B"
+   ]
+  },
+  "Grappling Hook": {
+   "id": [
+    null,
+    250
+   ],
+   "quality": [
+    "D",
+    "C"
+   ]
+  },
+  "Air Strike": {
+   "id": [
+    null,
+    252
+   ],
+   "quality": [
+    "B",
+    "A"
+   ]
+  },
+  "Gungeon Pepper": {
+   "id": [
+    null,
+    253
+   ],
+   "quality": [
+    "C",
+    "B"
+   ]
+  },
+  "Ring of Chest Friendship": {
+   "id": [
+    null,
+    254
+   ],
+   "quality": [
+    "B",
+    "A"
+   ]
+  },
+  "Ancient Hero's Bandana": {
+   "id": [
+    null,
+    255
+   ]
+  },
+  "Heavy Boots": {
+   "id": [
+    null,
+    256
+   ],
+   "quality": [
+    "D",
+    "C"
+   ]
+  },
+  "Broccoli": {
+   "id": [
+    null,
+    258
+   ],
+   "quality": [
+    "A",
+    "S"
+   ]
+  },
+  "Iron Coin": {
+   "id": [
+    null,
+    272
+   ],
+   "quality": [
+    "C",
+    "B"
+   ]
+  },
+  "Laser Sight": {
+   "id": [
+    null,
+    273
+   ],
+   "quality": [
+    "C",
+    "B"
+   ]
+  },
+  "Spice": {
+   "id": [
+    null,
+    276
+   ],
+   "quality": [
+    "A",
+    "S"
+   ]
+  },
+  "Fat Bullets": {
+   "id": [
+    null,
+    277
+   ],
+   "quality": [
+    "A",
+    "S"
+   ]
+  },
+  "Magic Bullets": {
+   "id": [
+    278,
+    533
+   ],
+   "quality": [
+    "S",
+    "A"
+   ]
+  },
+  "Drum Clip": {
+   "id": [
+    null,
+    280
+   ],
+   "quality": [
+    "B",
+    "A"
+   ]
+  },
+  "Homing Bullets": {
+   "id": [
+    null,
+    284
+   ],
+   "quality": [
+    "B",
+    "A"
+   ]
+  },
+  "Blood Brooch": {
+   "id": [
+    null,
+    285
+   ],
+   "quality": [
+    "A",
+    "S"
+   ]
+  },
+  "Backup Gun": {
+   "id": [
+    null,
+    287
+   ],
+   "quality": [
+    "B",
+    "A"
+   ]
+  },
+  "Bouncy Bullets": {
+   "id": [
+    null,
+    288
+   ],
+   "quality": [
+    "C",
+    "B"
+   ]
+  },
+  "Seven-Leaf Clover": {
+   "id": [
+    null,
+    289
+   ]
+  },
+  "Sunglasses": {
+   "id": [
+    null,
+    290
+   ],
+   "quality": [
+    "C",
+    "B"
+   ]
+  },
+  "Meatbun": {
+   "id": [
+    null,
+    291
+   ],
+   "quality": [
+    "D",
+    "C"
+   ]
+  },
+  "Mimic Tooth Necklace": {
+   "id": [
+    null,
+    293
+   ],
+   "quality": [
+    "A",
+    "S"
+   ]
+  },
+  "Ring of Mimic Friendship": {
+   "id": [
+    null,
+    294
+   ],
+   "quality": [
+    "D",
+    "C"
+   ]
+  },
+  "Dog": {
+   "id": [
+    301,
+    492
+   ]
+  },
+  "Escape Rope": {
+   "id": [
+    null,
+    306
+   ],
+   "quality": [
+    "D",
+    "C"
+   ]
+  },
+  "Cluster Mine": {
+   "id": [
+    null,
+    308
+   ],
+   "quality": [
+    "C",
+    "B"
+   ]
+  },
+  "Cloranthy Ring": {
+   "id": [
+    null,
+    309
+   ],
+   "quality": [
+    "C",
+    "B"
+   ]
+  },
+  "Clone": {
+   "id": [
+    null,
+    311
+   ]
+  },
+  "Monster Blood": {
+   "id": [
+    null,
+    313
+   ],
+   "quality": [
+    "C",
+    "B"
+   ]
+  },
+  "Nanomachines": {
+   "id": [
+    null,
+    314
+   ],
+   "quality": [
+    "B",
+    "A"
+   ]
+  },
+  "Gunboots": {
+   "id": [
+    null,
+    315
+   ],
+   "quality": [
+    "C",
+    "B"
+   ]
+  },
+  "Resourceful Sack": {
+   "id": [
+    null,
+    316
+   ]
+  },
+  "R2G2": {
+   "id": [
+    null,
+    318
+   ]
+  },
+  "Number 2": {
+   "id": [
+    null,
+    326
+   ],
+   "quality": [
+    "A",
+    "S"
+   ]
+  },
+  "Military Training": {
+   "id": [
+    354,
+    494
+   ],
+   "quality": [
+    "B",
+    "A"
+   ]
+  },
+  "Heart of Ice": {
+   "id": [
+    null,
+    364
+   ],
+   "quality": [
+    "C",
+    "S"
+   ]
+  },
+  "Alpha Bullet": {
+   "id": [
+    null,
+    373
+   ],
+   "quality": [
+    "A",
+    "S"
+   ]
+  },
+  "Omega Bullets": {
+   "id": [
+    null,
+    374
+   ],
+   "quality": [
+    "A",
+    "S"
+   ]
+  },
+  "Easy Reload Bullets": {
+   "id": [
+    null,
+    375
+   ],
+   "quality": [
+    "C",
+    "B"
+   ]
+  },
+  "Table Tech Sight": {
+   "id": [
+    null,
+    396
+   ],
+   "quality": [
+    "D",
+    "C"
+   ]
+  },
+  "Table Tech Money": {
+   "id": [
+    null,
+    397
+   ],
+   "quality": [
+    "D",
+    "C"
+   ]
+  },
+  "Table Tech Rocket": {
+   "id": [
+    null,
+    398
+   ],
+   "quality": [
+    "C",
+    "B"
+   ]
+  },
+  "Table Tech Rage": {
+   "id": [
+    null,
+    399
+   ],
+   "quality": [
+    "D",
+    "C"
+   ]
+  },
+  "Table Tech Blanks": {
+   "id": [
+    null,
+    400
+   ],
+   "quality": [
+    "C",
+    "B"
+   ]
+  },
+  "Melted Rock": {
+   "id": [
+    null,
+    403
+   ],
+   "quality": [
+    "C",
+    "B"
+   ]
+  },
+  "Heart Holster": {
+   "id": [
+    424,
+    425
+   ]
+  },
+  "Shotga Cola": {
+   "id": [
+    null,
+    426
+   ],
+   "quality": [
+    "C",
+    "B"
+   ]
+  },
+  "Shotgun Coffee": {
+   "id": [
+    null,
+    427
+   ],
+   "quality": [
+    "C",
+    "B"
+   ]
+  },
+  "Stuffed Star": {
+   "id": [
+    null,
+    433
+   ],
+   "quality": [
+    "B",
+    "A"
+   ]
+  },
+  "Bullet Idol": {
+   "id": [
+    null,
+    434
+   ],
+   "quality": [
+    "B",
+    "A"
+   ]
+  },
+  "Mustache": {
+   "id": [
+    null,
+    435
+   ],
+   "quality": [
+    "C",
+    "B"
+   ]
+  },
+  "Bracket Key": {
+   "id": [
+    null,
+    439
+   ]
+  },
+  "Ruby Bracelet": {
+   "id": [
+    null,
+    440
+   ],
+   "quality": [
+    "D",
+    "C"
+   ]
+  },
+  "Boomerang": {
+   "id": [
+    null,
+    448
+   ],
+   "quality": [
+    "B",
+    "A"
+   ]
+  },
+  "Teleporter Prototype": {
+   "id": [
+    null,
+    449
+   ],
+   "quality": [
+    "B",
+    "A"
+   ]
+  },
+  "Armor Synthesizer": {
+   "id": [
+    null,
+    450
+   ],
+   "quality": [
+    "A",
+    "S"
+   ]
+  },
+  "Pig": {
+   "id": [
+    null,
+    451
+   ],
+   "quality": [
+    "A",
+    "S"
+   ]
+  },
+  "Gas Mask": {
+   "id": [
+    453,
+    454
+   ],
+   "quality": [
+    "C",
+    "A"
+   ]
+  },
+  "Chaff Grenade": {
+   "id": [
+    null,
+    460
+   ],
+   "quality": [
+    "C",
+    "B"
+   ]
+  },
+  "Orange": {
+   "id": [
+    null,
+    485
+   ],
+   "quality": [
+    "B",
+    "A"
+   ]
+  },
+  "Ring of Chest Vampirism": {
+   "id": [
+    null,
+    488
+   ],
+   "quality": [
+    "C",
+    "B"
+   ]
+  },
+  "Gun Soul": {
+   "id": [
+    null,
+    489
+   ],
+   "quality": [
+    "A",
+    "S"
+   ]
+  },
+  "Wingman": {
+   "id": [
+    null,
+    491
+   ],
+   "quality": [
+    "A",
+    "S"
+   ]
+  },
+  "Hip Holster": {
+   "id": [
+    null,
+    500
+   ],
+   "quality": [
+    "B",
+    "A"
+   ]
+  },
+  "Chance Bullets": {
+   "id": [
+    null,
+    521
+   ],
+   "quality": [
+    "B",
+    "A"
+   ]
+  },
+  "Stout Bullets": {
+   "id": [
+    null,
+    523
+   ],
+   "quality": [
+    "B",
+    "A"
+   ]
+  },
+  "Bloody 9mm": {
+   "id": [
+    null,
+    524
+   ],
+   "quality": [
+    "B",
+    "A"
+   ]
+  },
+  "Chaos Bullets": {
+   "id": [
+    527,
+    569
+   ],
+   "quality": [
+    "A",
+    "S"
+   ]
+  },
+  "Zombie Bullets": {
+   "id": [
+    null,
+    528
+   ],
+   "quality": [
+    "C",
+    "B"
+   ]
+  },
+  "Battle Standard": {
+   "id": [
+    null,
+    529
+   ],
+   "quality": [
+    "D",
+    "C"
+   ]
+  },
+  "Remote Bullets": {
+   "id": [
+    null,
+    530
+   ],
+   "quality": [
+    "C",
+    "B"
+   ]
+  },
+  "Gilded Bullets": {
+   "id": [
+    null,
+    532
+   ],
+   "quality": [
+    "B",
+    "A"
+   ]
+  },
+  "Relodestone": {
+   "id": [
+    null,
+    536
+   ]
+  },
+  "Silver Bullets": {
+   "id": [
+    null,
+    538
+   ],
+   "quality": [
+    "C",
+    "B"
+   ]
+  },
+  "Full Metal Jacket": {
+   "id": [
+    null,
+    564
+   ],
+   "quality": [
+    "B",
+    "A"
+   ]
+  },
+  "Roll Bomb": {
+   "id": [
+    null,
+    567
+   ],
+   "quality": [
+    "C",
+    "B"
+   ]
+  },
+  "Helix Bullets": {
+   "id": [
+    null,
+    568
+   ],
+   "quality": [
+    "B",
+    "A"
+   ]
+  },
+  "Yellow Chamber": {
+   "id": [
+    null,
+    570
+   ]
+  },
+  "Cursed Bullets": {
+   "id": [
+    null,
+    571
+   ],
+   "quality": [
+    "C",
+    "B"
+   ]
+  },
+  "Chest Teleporter": {
+   "id": [
+    null,
+    573
+   ],
+   "quality": [
+    "A",
+    "S"
+   ]
+  },
+  "Sprun": {
+   "id": [
+    null,
+    578
+   ],
+   "quality": [
+    "A",
+    "S"
+   ]
+  },
+  "Platinum Bullets": {
+   "id": [
+    null,
+    627
+   ]
+  },
+  "Orbital Bullets": {
+   "id": [
+    630,
+    661
+   ],
+   "quality": [
+    "A",
+    "S"
+   ]
+  },
+  "Turkey": {
+   "id": [
+    632,
+    664
+   ],
+   "quality": [
+    "B",
+    "A"
+   ]
+  },
+  "Table Tech Shotgun": {
+   "id": [
+    633,
+    666
+   ]
+  },
+  "Crisis Stone": {
+   "id": [
+    null,
+    634
+   ],
+   "quality": [
+    "A",
+    "S"
+   ]
+  },
+  "Snowballets": {
+   "id": [
+    null,
+    636
+   ],
+   "quality": [
+    "A",
+    "S"
+   ]
+  },
+  "Turtle Problem": {
+   "id": [
+    null,
+    645
+   ],
+   "quality": [
+    "C",
+    "B"
+   ]
+  },
+  "Macho Brace": {
+   "id": [
+    null,
+    665
+   ],
+   "quality": [
+    "C",
+    "B"
+   ]
+  },
+  "Rat Boots": {
+   "id": [
+    null,
+    667
+   ],
+   "quality": [
+    "C",
+    "B"
+   ]
+  },
+  "Magazine Rack": {
+   "id": [
+    null,
+    814
+   ],
+   "quality": [
+    "C",
+    "B"
+   ]
+  },
+  "Lich's Eye Bullets": {
+   "id": [
+    null,
+    815
+   ]
+  },
+  "Cat Bullet King Throne": {
+   "id": [
+    null,
+    817
+   ],
+   "quality": [
+    "B",
+    "A"
+   ]
+  },
+  "Baby Good Shelleton": {
+   "id": [
+    null,
+    818
+   ]
+  },
+  "Scouter": {
+   "id": [
+    null,
+    821
+   ],
+   "quality": [
+    "C",
+    "B"
+   ]
+  }
+ },
+ "synergies": {
+  "total": 440
+ },
+ "unresolved": [
+  [
+   "gun",
+   "Lamp"
+  ],
+  [
+   "gun",
+   "Winchester Shotgun"
+  ],
+  [
+   "gun",
+   "Screech Gun"
+  ],
+  [
+   "gun",
+   "Wood Bow"
+  ],
+  [
+   "gun",
+   "Plasma Rifle"
+  ],
+  [
+   "gun",
+   "M1 Rifle"
+  ],
+  [
+   "gun",
+   "Zapper"
+  ],
+  [
+   "gun",
+   "Space Marshal"
+  ],
+  [
+   "gun",
+   "Eyeball Gun"
+  ],
+  [
+   "gun",
+   "Lemon Hand Cannon"
+  ],
+  [
+   "gun",
+   "Hunter Arm"
+  ],
+  [
+   "gun",
+   "Baretta"
+  ],
+  [
+   "gun",
+   "Skull Gun"
+  ],
+  [
+   "gun",
+   "Jolt Pistol"
+  ],
+  [
+   "gun",
+   "Space Core Shotgun"
+  ],
+  [
+   "gun",
+   "Space Core Assault Rifle"
+  ],
+  [
+   "gun",
+   "Std. Issue Laser"
+  ],
+  [
+   "gun",
+   "Raw Iron"
+  ],
+  [
+   "gun",
+   "Radiation Laser"
+  ],
+  [
+   "gun",
+   "Gunhand"
+  ],
+  [
+   "gun",
+   "Missile Launcher"
+  ],
+  [
+   "gun",
+   "Gold Double-Barrel Shotgun"
+  ],
+  [
+   "gun",
+   "Horn Of A Unicorn"
+  ],
+  [
+   "gun",
+   "Energy Cannon"
+  ],
+  [
+   "gun",
+   "Burning Hand"
+  ],
+  [
+   "gun",
+   "Ice Gun"
+  ],
+  [
+   "gun",
+   "Spell Action Revolver"
+  ],
+  [
+   "gun",
+   "Dragonbreath Gun"
+  ],
+  [
+   "gun",
+   "Electric Guitar Gun"
+  ],
+  [
+   "gun",
+   "Lt. Green's Rifle"
+  ],
+  [
+   "gun",
+   "Lt. Red's Shotgun"
+  ],
+  [
+   "gun",
+   "Electric Rifle"
+  ],
+  [
+   "gun",
+   "Trash Gun"
+  ],
+  [
+   "gun",
+   "Plasma Cell Gun"
+  ],
+  [
+   "gun",
+   "Rectangle Shotugn"
+  ],
+  [
+   "gun",
+   "Fallen Crest"
+  ],
+  [
+   "gun",
+   "Ghostly Sidearm"
+  ],
+  [
+   "gun",
+   "Lawgiver"
+  ],
+  [
+   "gun",
+   "Machine Gun Hand"
+  ],
+  [
+   "gun",
+   "Ashes of a Gunslinger"
+  ],
+  [
+   "gun",
+   "Excellent Prismatic Spray"
+  ],
+  [
+   "gun",
+   "Plague Gun"
+  ],
+  [
+   "gun",
+   "Syringe Gun"
+  ],
+  [
+   "gun",
+   "Distortion Launcher"
+  ],
+  [
+   "gun",
+   "ChromeAssault"
+  ],
+  [
+   "gun",
+   "Helix Blaster"
+  ],
+  [
+   "gun",
+   "Artful Shooter"
+  ],
+  [
+   "gun",
+   "Big Bang"
+  ],
+  [
+   "gun",
+   "Vindicator"
+  ],
+  [
+   "gun",
+   "SST Issue"
+  ],
+  [
+   "gun",
+   "Electro Shark"
+  ],
+  [
+   "gun",
+   "Bomb Gun"
+  ],
+  [
+   "gun",
+   "Mutated Arm"
+  ],
+  [
+   "gun",
+   "Winder"
+  ],
+  [
+   "gun",
+   "Pillow"
+  ],
+  [
+   "gun",
+   "Mask Gun"
+  ],
+  [
+   "gun",
+   "Wood Gun"
+  ],
+  [
+   "gun",
+   "Hero's Blade"
+  ],
+  [
+   "gun",
+   "Shotgun Axe"
+  ],
+  [
+   "gun",
+   "Hmon Autorifle"
+  ],
+  [
+   "gun",
+   "Claw"
+  ],
+  [
+   "gun",
+   "Science Ray"
+  ],
+  [
+   "gun",
+   "Mindmunch"
+  ],
+  [
+   "gun",
+   "Reaction Jacktor"
+  ],
+  [
+   "gun",
+   "Railgun Prototype"
+  ],
+  [
+   "gun",
+   "Nikita"
+  ],
+  [
+   "gun",
+   "Block Gun"
+  ],
+  [
+   "gun",
+   "Swordgun"
+  ],
+  [
+   "gun",
+   "Baretta"
+  ],
+  [
+   "gun",
+   "Shieldmet's Gun"
+  ],
+  [
+   "gun",
+   "Sorcerer Rifle"
+  ],
+  [
+   "gun",
+   "Ice Giant Handgun"
+  ],
+  [
+   "gun",
+   "Mjolnir"
+  ],
+  [
+   "gun",
+   "Mining Laser"
+  ],
+  [
+   "gun",
+   "Improvised Magic Gun"
+  ],
+  [
+   "gun",
+   "Enginge Gun"
+  ],
+  [
+   "gun",
+   "Snowball Launcher"
+  ],
+  [
+   "gun",
+   "Mermaid Gun"
+  ],
+  [
+   "gun",
+   "Rattler Shotgun"
+  ],
+  [
+   "gun",
+   "Maximum Tentacle"
+  ],
+  [
+   "gun",
+   "Laze-er"
+  ],
+  [
+   "gun",
+   "Kirkcannon"
+  ],
+  [
+   "gun",
+   "Tetris Gun"
+  ],
+  [
+   "gun",
+   "Drift King"
+  ],
+  [
+   "gun",
+   "Wicked Sixter"
+  ],
+  [
+   "gun",
+   "Lute"
+  ],
+  [
+   "gun",
+   "Controller"
+  ],
+  [
+   "gun",
+   "Shotgun Gun"
+  ],
+  [
+   "gun",
+   "Morning Mallet"
+  ],
+  [
+   "gun",
+   "Cool Bow"
+  ],
+  [
+   "gun",
+   "Predator Gun"
+  ],
+  [
+   "gun",
+   "Armored Gun"
+  ],
+  [
+   "gun",
+   "Sprun"
+  ],
+  [
+   "gun",
+   "Shovel Gung"
+  ],
+  [
+   "gun",
+   "Tachyon Gun"
+  ],
+  [
+   "gun",
+   "Exotic Gun"
+  ],
+  [
+   "gun",
+   "Wonderboy"
+  ],
+  [
+   "gun",
+   "Uberbot Gunhand"
+  ],
+  [
+   "gun",
+   "Voidcore Rocket Launcher"
+  ],
+  [
+   "gun",
+   "Moon Crown"
+  ],
+  [
+   "gun",
+   "Tachyon Gun"
+  ],
+  [
+   "gun",
+   "Big Giant Head"
+  ],
+  [
+   "gun",
+   "Lamey"
+  ],
+  [
+   "gun",
+   "Mutated Tech Arm"
+  ],
+  [
+   "gun",
+   "Screech Gun"
+  ],
+  [
+   "gun",
+   "AK-47 Island"
+  ],
+  [
+   "gun",
+   "Hunter Arm"
+  ],
+  [
+   "gun",
+   "Hunter Arm"
+  ],
+  [
+   "gun",
+   "Hunter Arm"
+  ],
+  [
+   "gun",
+   "Hunter Arm"
+  ],
+  [
+   "gun",
+   "Lemon Hand Cannon"
+  ],
+  [
+   "gun",
+   "Lemon Hand Cannon"
+  ],
+  [
+   "gun",
+   "Lemon Hand Cannon"
+  ],
+  [
+   "gun",
+   "Lemon Hand Cannon"
+  ],
+  [
+   "gun",
+   "Lemon Hand Cannon"
+  ],
+  [
+   "gun",
+   "Lemon Hand Cannon"
+  ],
+  [
+   "gun",
+   "Lemon Hand Cannon"
+  ],
+  [
+   "gun",
+   "Lemon Hand Cannon"
+  ],
+  [
+   "gun",
+   "Lamey"
+  ],
+  [
+   "gun",
+   "Upper Case R"
+  ],
+  [
+   "gun",
+   "Upper Case R"
+  ],
+  [
+   "gun",
+   "Winchester Shotgun"
+  ],
+  [
+   "gun",
+   "Glaive"
+  ],
+  [
+   "gun",
+   "Retro Special"
+  ],
+  [
+   "gun",
+   "Exotic Gun"
+  ],
+  [
+   "gun",
+   "Lamey"
+  ],
+  [
+   "gun",
+   "Dragonbreath Gun"
+  ],
+  [
+   "gun",
+   "Radiation Laser"
+  ],
+  [
+   "gun",
+   "Dragonbreath Gun"
+  ],
+  [
+   "gun",
+   "Snowball Launcher"
+  ],
+  [
+   "gun",
+   "Swordgun"
+  ],
+  [
+   "gun",
+   "Plague Gun"
+  ],
+  [
+   "gun",
+   "Plasma Rifle"
+  ],
+  [
+   "gun",
+   "M1 Rifle"
+  ],
+  [
+   "gun",
+   "Fallen Crest"
+  ],
+  [
+   "gun",
+   "Maximum Tentacle"
+  ],
+  [
+   "gun",
+   "Vindicator"
+  ],
+  [
+   "gun",
+   "Drift King"
+  ],
+  [
+   "gun",
+   "Electric Rifle"
+  ],
+  [
+   "gun",
+   "Burning Hand"
+  ],
+  [
+   "gun",
+   "Std. Issue Laser"
+  ],
+  [
+   "gun",
+   "Excellent Prismatic Spray"
+  ],
+  [
+   "gun",
+   "Electric Guitar Gun"
+  ],
+  [
+   "gun",
+   "Trash Gun"
+  ],
+  [
+   "gun",
+   "Retro Special"
+  ],
+  [
+   "gun",
+   "Helix Blaster"
+  ],
+  [
+   "gun",
+   "Zapper"
+  ],
+  [
+   "gun",
+   "Maximum Purple"
+  ],
+  [
+   "gun",
+   "Plasma Cell Gun"
+  ],
+  [
+   "gun",
+   "Mindmunch"
+  ],
+  [
+   "gun",
+   "Bomb Gun"
+  ],
+  [
+   "gun",
+   "Jolt Pistol"
+  ],
+  [
+   "gun",
+   "ChromeAssault"
+  ],
+  [
+   "gun",
+   "Eyeball Gun"
+  ],
+  [
+   "gun",
+   "Gunderfury Level 40"
+  ],
+  [
+   "gun",
+   "Gunderfury Level 50"
+  ],
+  [
+   "gun",
+   "Gunderfury Level 30"
+  ],
+  [
+   "gun",
+   "Gunderfury Level 20"
+  ],
+  [
+   "gun",
+   "Gunderfury Level 0"
+  ],
+  [
+   "gun",
+   "Gunderfury Level 10"
+  ],
+  [
+   "gun",
+   "Mimic Gun"
+  ],
+  [
+   "gun",
+   "Shieldmet's Gun"
+  ],
+  [
+   "gun",
+   "Big Giant Head"
+  ],
+  [
+   "gun",
+   "Dragonbreath Gun"
+  ],
+  [
+   "gun",
+   "Sunlight Spear"
+  ],
+  [
+   "gun",
+   "Nome Revolver"
+  ],
+  [
+   "gun",
+   "Tuco Revolver"
+  ],
+  [
+   "gun",
+   "Angel Revolver"
+  ],
+  [
+   "gun",
+   "Evo Gun"
+  ],
+  [
+   "gun",
+   "Evo Gun"
+  ],
+  [
+   "gun",
+   "Evo Gun"
+  ],
+  [
+   "gun",
+   "Evo Gun"
+  ],
+  [
+   "gun",
+   "Evo Gun"
+  ],
+  [
+   "gun",
+   "Evo Gun"
+  ],
+  [
+   "gun",
+   "Kthuliber Gun"
+  ],
+  [
+   "gun",
+   "Lamey"
+  ],
+  [
+   "gun",
+   "Lamey"
+  ],
+  [
+   "gun",
+   "Exotic Gun"
+  ],
+  [
+   "gun",
+   "Gunhand"
+  ],
+  [
+   "gun",
+   "Baretta"
+  ],
+  [
+   "gun",
+   "Chamber_Office"
+  ],
+  [
+   "item",
+   "Potion of Metal Skin"
+  ],
+  [
+   "item",
+   "Bubble Shield"
+  ],
+  [
+   "item",
+   "Eye Jewel"
+  ],
+  [
+   "item",
+   "Z Shirt"
+  ],
+  [
+   "item",
+   "Bullet Bait"
+  ],
+  [
+   "item",
+   "C4"
+  ],
+  [
+   "item",
+   "Quick Reload"
+  ],
+  [
+   "item",
+   "A Nice Smile"
+  ],
+  [
+   "item",
+   "Cigs"
+  ],
+  [
+   "item",
+   "Poison Shot"
+  ],
+  [
+   "item",
+   "Crown of the Coin King"
+  ],
+  [
+   "item",
+   "Cardboard Box"
+  ],
+  [
+   "item",
+   "Note"
+  ],
+  [
+   "item",
+   "Note"
+  ],
+  [
+   "item",
+   "Note"
+  ],
+  [
+   "item",
+   "Note"
+  ],
+  [
+   "item",
+   "Note"
+  ],
+  [
+   "item",
+   "Note"
+  ],
+  [
+   "item",
+   "Antibodies"
+  ],
+  [
+   "item",
+   "Guon Stone (Pink)"
+  ],
+  [
+   "item",
+   "Guon Stone (White)"
+  ],
+  [
+   "item",
+   "Ioun Stone (Orange)"
+  ],
+  [
+   "item",
+   "Guon Stone (Light Blue)"
+  ],
+  [
+   "item",
+   "Estus Flask"
+  ],
+  [
+   "item",
+   "Guon Stone (Red)"
+  ],
+  [
+   "item",
+   "Guon Stone (Dark Blue)"
+  ],
+  [
+   "item",
+   "Nerves of Steel"
+  ],
+  [
+   "item",
+   "Superhot"
+  ],
+  [
+   "item",
+   "The Blueprint"
+  ],
+  [
+   "item",
+   "Plus One Bullets"
+  ],
+  [
+   "item",
+   "Fire Bullets"
+  ],
+  [
+   "item",
+   "Yari Blueprint"
+  ],
+  [
+   "item",
+   "Family Crest"
+  ],
+  [
+   "item",
+   "White Wings"
+  ],
+  [
+   "item",
+   "Fairy Wings"
+  ],
+  [
+   "item",
+   "Helmet"
+  ],
+  [
+   "item",
+   "Ticket to the Gun Show"
+  ],
+  [
+   "item",
+   "Hit Blankh"
+  ],
+  [
+   "item",
+   "Force Blankh"
+  ],
+  [
+   "item",
+   "Tri Blankh"
+  ],
+  [
+   "item",
+   "Poison Blankh"
+  ],
+  [
+   "item",
+   "Flame Blankh"
+  ],
+  [
+   "item",
+   "Frost Blankh"
+  ],
+  [
+   "item",
+   "Ancient Primer"
+  ],
+  [
+   "item",
+   "Astral Slug"
+  ],
+  [
+   "item",
+   "Treasure Huntress"
+  ],
+  [
+   "item",
+   "Cell Key"
+  ],
+  [
+   "item",
+   "Chamber of Evil"
+  ],
+  [
+   "item",
+   "Busted TV"
+  ],
+  [
+   "item",
+   "Robot Arm"
+  ],
+  [
+   "item",
+   "Balloon"
+  ],
+  [
+   "item",
+   "Red Bandana"
+  ],
+  [
+   "item",
+   "Diazapam"
+  ],
+  [
+   "item",
+   "Emerald Bracelet"
+  ],
+  [
+   "item",
+   "Cop"
+  ],
+  [
+   "item",
+   "Nuke"
+  ],
+  [
+   "item",
+   "Shield"
+  ],
+  [
+   "item",
+   "Magic Mop"
+  ],
+  [
+   "item",
+   "Thorny Mail"
+  ],
+  [
+   "item",
+   "Ring of Gaseous Form"
+  ],
+  [
+   "item",
+   "Blanky"
+  ],
+  [
+   "item",
+   "Table Item"
+  ],
+  [
+   "item",
+   "Guon Stone (Green)"
+  ],
+  [
+   "item",
+   "Brick Bribe"
+  ],
+  [
+   "item",
+   "Our Powers Combined"
+  ],
+  [
+   "item",
+   "Lament Box"
+  ],
+  [
+   "item",
+   "Pegasus Boots"
+  ],
+  [
+   "item",
+   "Empty Bottle"
+  ],
+  [
+   "item",
+   "Cucco"
+  ],
+  [
+   "item",
+   "SackKnightBoon"
+  ],
+  [
+   "item",
+   "Bank Bag"
+  ],
+  [
+   "item",
+   "Bank Mask"
+  ],
+  [
+   "item",
+   "Safecracker"
+  ],
+  [
+   "item",
+   "Blank Personality"
+  ],
+  [
+   "item",
+   "Gungeon Egg"
+  ],
+  [
+   "item",
+   "KiPulse"
+  ],
+  [
+   "item",
+   "Folding Table"
+  ],
+  [
+   "item",
+   "Cheese Wheel"
+  ],
+  [
+   "item",
+   "Rat Pack"
+  ],
+  [
+   "item",
+   "Baby Dragun"
+  ],
+  [
+   "item",
+   "Kage Bunshin"
+  ]
+ ]
+}
