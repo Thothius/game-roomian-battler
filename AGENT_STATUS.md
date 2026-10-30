@@ -84,7 +84,7 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 | Slot | Assigned Agent | Status | Working On | Last Heartbeat |
 | :--- | :--- | :--- | :--- | :--- |
 | **Slot 1** | **DESIGNER (Devin)** | `DONE` | Batch merged via Slot 2 (`72ca2cb`); `experience_studio_screen.dart` was structurally broken → reverted, other 4 files landed. Slot released | 2026-10-29 |
-| **Slot 2** | **CORE (Devin — me)** | `ACTIVE` | Ammonomicon wiki + game-data pipeline. EncounterDatabase joined: guns 238/239, items 263/270, synergies 306/440 ids | 2026-10-30 |
+| **Slot 2** | **CORE (Devin — me)** | `ACTIVE` | Ammonomicon M1.5 — guns 238/239, items 263/270, synergies 344/440 joined + game-corrected, enemies 103/146 enc keys, shrines 10/14 text keys. 482 tests green | 2026-10-30 |
 | **Slot 3** | **PARALLEL (Devin — me)** | `DONE` | Absorbed by Slot 2 — bottom_back_bar landed+swept, testing-mode demoted, paradox entry wired, version bump done, big-screen + memoize partial. Slot released | 2026-10-29 |
 | **Slot 4** | **_(none)_** | `IDLE` | Released — theme split + run_stats + peer_snapshots landed, pushed `fb69eb8` | 2026-10-30 |
 
