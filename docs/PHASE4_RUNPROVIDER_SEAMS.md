@@ -58,7 +58,16 @@ Move (line ranges, verified):
 `RunState get _runState;` — verify each moved method for `_gunByName`/
 `_itemByName`/lookup-map references and declare those too.
 
-## Extraction 2 — `_SpecialTrackers`
+## Extraction 2 — `_SpecialTrackers` (survey done 2026-10-30)
+
+Findings: `_windgunnerTimer` field at line ~105 travels with the tracker
+group (startWindgunner/cancelWindgunner ~727-742, dispose cancels at ~748).
+Reset block at ~1239-1242 (zeroes windgunner + robot armor, before
+endRun ~1289) — move into `_resetRunScopedSpecials()` in the mixin.
+Setters write prefs directly + notifyListeners (satisfied by
+`on ChangeNotifier`); also declare `RunState get _runState;` and
+`void _scheduleSave();` as abstract requirements if any setter touches
+them — verify each moved method
 
 **Part file:** `lib/providers/trackers/special_trackers.dart`
 
