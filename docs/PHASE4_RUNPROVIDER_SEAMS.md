@@ -91,6 +91,27 @@ Move:
 `notifyListeners()` (available via `on ChangeNotifier`). Gunther/polaris
 setters may call `_log`/`_checkNewSynergies` — declare as needed.
 
+## Extraction 3 — `_RunPersistence` (markers verified 2026-10-30)
+
+Extraction markers (post-4b line numbers):
+- Fields: `Set<String> _favourites` (~63), `String _lastPlayedCharName` (~80),
+  `Timer? _saveDebounce` (~93)
+- Methods: saveRun (~399), _scheduleSave (~404), _saveRun (~411),
+  _loadFavourites (~431), _saveFavourites (~441), _loadLastPlayedChar (~452),
+  _saveLastPlayedChar (~461), saveLastPlayedCharacter (~473),
+  isFavourite (~484), toggleFavourite (~487), resetFavourites (~499),
+  favouritesCount (~505), restoreRunScopeState (later ~1074)
+- Abstract requirements needed in mixin: ONLY `RunState get _runState;`
+  (used by _saveRun toJson). _encodeRunState is top-level — visible to
+  part files via shared library. _favourites field accessed by
+  getFavouriteGuns/Items staying in main — legal (same class).
+- endRun/_loadData call sites for _scheduleSave/_loadSpecialUpgrades/
+  _loadFavourites/_loadLastPlayedChar stay in main — calling mixin
+  members is legal within the composed class.
+Part file: lib/providers/run_persistence.dart → part of 'run_provider.dart';
+mixin _RunPersistence on ChangeNotifier. Then update class decl:
+with ChangeNotifier, _SpecialTrackers, _SynergyQueries, _RunPersistence.
+
 ## Extraction 3 — `_RunPersistence`
 
 **Part file:** `lib/providers/run_persistence.dart`
