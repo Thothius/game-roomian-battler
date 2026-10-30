@@ -52,6 +52,22 @@ When done, mark status as `DONE` and move to Session Log.
 
 ---
 
+
+## Commit Attribution & Domains (2026-10-30)
+
+Two agents shared `master` during the v3.3.0 window. Attribution by commit style:
+
+**SUPPORT (Devin)** — phases, splits, MP, SDK, release:
+`992b9f6`..`468b441` (Phase A splits) · `7be7537` (Phase B MP+tests) · `6a50556`,`16c1fcf` (Phase C SDK) · `82e2873` (v3.3.0 release). Prefixes: `refactor: Phase`, `fix: Phase`, `chore:`, `release:`, `test:`, `assets:`, `lint:`, `cleanup:`.
+Domains: file splits, `mp_*`, `run_provider`, SDK/Gradle, tests, releases.
+
+**Unclaimed agent ("Ammonomicon agent")** — codex + game data:
+`b6d05b0` (game ground-truth merge) · `8550c0a`, `1fc4f9b`, `eeb52de`, `bf027f8` (Ammonomicon wiki + data rounds). Style: plain sentences starting "Ammonomicon"/"merge game ground-truth".
+Domains: `codex_*`, `ammonomicon_*`, `item_detail_screen`, data JSONs (`guns/items/synergies/enemies.json`), wiki deep-links.
+→ **Please claim Slot 2 (CORE) per AC1** and use a `codex:`/`data:`/`feat:` prefix so attribution stays mechanical.
+
+**Convention going forward:** if a commit isn't a SUPPORT/Devin prefix, it's theirs — and vice versa. When both agents touch `master`, each commits only own files (explicit `git add` paths, no `-A` sweeps — lesson from `7be7537`/`6a50556` catching codex WIP).
+
 ## Inter-Slot Task Queue
 
 Agent-to-agent delegations (AC7). Receiving slot claims at session start.
@@ -59,6 +75,7 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 | From | To | Task Summary | Target Branch | Status | Context |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | CORE (scout) | PARALLEL | Feedback item: "If main player is Paradox, sidekick also starts with no items" — overlaps your Paradox Mode work. `_buildPlayerFor` resolves 'Random'→empty loadout; `startCoopPlayer` same path. Intent needs user clarification (empty vs random-rolled). See `docs/FEEDBACK_PLAN_2026-10-28.md` item 3. | PARALLEL's branch | DONE (already shipped: `926334e` random-roll main + `7c5d6c0` `_paradoxSidekickEmptied`/`_isParadoxMain` empty sidekick; user confirmed semantics — see `run_provider.dart:902-919`) | `run_provider.dart:837-863` |
+| SUPPORT | CORE (unclaimed) | Claim Slot 2 per AC1; push `bf027f8` (master is 1 ahead of origin); codex/data domain is yours — MP/SDK/splits/release is SUPPORT's. Attribution by prefix: see "Commit Attribution & Domains" above. | master | PENDING | `AGENT_STATUS.md` §Commit Attribution |
 
 ---
 
@@ -69,7 +86,7 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 | **Slot 1** | **DESIGNER (Devin)** | `DONE` | Batch merged via Slot 2 (`72ca2cb`); `experience_studio_screen.dart` was structurally broken → reverted, other 4 files landed. Slot released | 2026-10-29 |
 | **Slot 2** | **CORE (Devin — me)** | `ACTIVE` | Ammonomicon wiki + game-data pipeline (commits `b6d05b0`→`bf027f8`). Attribution map in Slot Details below | 2026-10-30 |
 | **Slot 3** | **PARALLEL (Devin — me)** | `DONE` | Absorbed by Slot 2 — bottom_back_bar landed+swept, testing-mode demoted, paradox entry wired, version bump done, big-screen + memoize partial. Slot released | 2026-10-29 |
-| **Slot 4** | **SUPPORT (Devin)** | `ACTIVE` | COMPLETE — A-D done, v3.3.0 shipped | released | 2026-10-30 | 2026-10-30 |
+| **Slot 4** | **_(none)_** | `IDLE` | Released — Phases A-D complete, v3.3.0 shipped (`82e2873`) | 2026-10-30 |
 
 ### Slot Details
 
