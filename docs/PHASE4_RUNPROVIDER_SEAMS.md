@@ -1,4 +1,6 @@
-# Phase 4 — run_provider.dart Split Spec (verified 2026-10-30)
+# Phase 4 — run_provider.dart Split Spec — ✅ ALL DONE
+
+# (verified 2026-10-30 — COMPLETE, 2166→1450+193+471+139)
 
 > Execute mechanically. `run_provider.dart` = 2,166 lines.
 > `class RunProvider with ChangeNotifier` (mixin composition — mixins
@@ -91,7 +93,13 @@ Move:
 `notifyListeners()` (available via `on ChangeNotifier`). Gunther/polaris
 setters may call `_log`/`_checkNewSynergies` — declare as needed.
 
-## Extraction 3 — `_RunPersistence` (markers verified 2026-10-30)
+## Extraction 3 — `_RunPersistence` — ✅ DONE
+
+Extracted to `lib/providers/run_persistence.dart` (mixin in part file).
+Needs `RunState get _runState;` + `set _runState(RunState s);`
+(restoreRunScopeState writes it). Two misses during extraction:
+saveRun() and favouritesCount — patched after-the-fact. Main file
+now ~1,450 lines. Full suite green (474 pass).
 
 Extraction markers (post-4b line numbers):
 - Fields: `Set<String> _favourites` (~63), `String _lastPlayedCharName` (~80),
