@@ -67,7 +67,7 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 | Slot | Assigned Agent | Status | Working On | Last Heartbeat |
 | :--- | :--- | :--- | :--- | :--- |
 | **Slot 1** | **DESIGNER (Devin)** | `DONE` | Batch merged via Slot 2 (`72ca2cb`); `experience_studio_screen.dart` was structurally broken → reverted, other 4 files landed. Slot released | 2026-10-29 |
-| **Slot 2** | **_(none)_** | `IDLE` | Session ended — v3.2.1 `3cd8b10` on remote (squashed consolidated release + post-release sweep). Slot released | 2026-10-29 |
+| **Slot 2** | **CORE (Devin — me)** | `ACTIVE` | Ammonomicon wiki + game-data pipeline (commits `b6d05b0`→`bf027f8`). Attribution map in Slot Details below | 2026-10-30 |
 | **Slot 3** | **PARALLEL (Devin — me)** | `DONE` | Absorbed by Slot 2 — bottom_back_bar landed+swept, testing-mode demoted, paradox entry wired, version bump done, big-screen + memoize partial. Slot released | 2026-10-29 |
 | **Slot 4** | **SUPPORT (Devin)** | `ACTIVE` | COMPLETE — A-D done, v3.3.0 shipped | released | 2026-10-30 | 2026-10-30 |
 
@@ -101,12 +101,19 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 #### Slot 2 — CORE (Devin)
 | Field | Value |
 |-------|-------|
-| **Branch** | `slot2-devin/mp-unify-detail` — worktree `X:\GungeonMate\.worktrees\slot2-devin\gungeon_mate` (2 commits ahead) |
-| **Last commit** | `513c62c` — MP unification + compact menus + detail flat rework + console sys msgs + shrine wiki buttons |
-| **Files in progress** | — |
-| **Uncommitted changes** | — |
-| **AC4 split-file flag** | `player_page.dart` — my ~line 185 gate edit LANDED (`isParadox`→`isActive`); GENERAL's hint/select work in same file merges on top |
-| **Notes** | END RUN removed from ⋮ menus — lives in Settings + pause overlay only. MpHeader/classic bar now unused → dead-code candidate for GENERAL's sweep. `run_lifecycle.dart` = single end-run path; pause overlay still shows END RUN via RunLifecycle. |
+| **Branch** | `master` (sole active agent — Slot 4 released, AC5d exception) |
+| **Session started** | 2026-10-30 |
+| **Last board update** | 2026-10-30 |
+| **Last commit** | `bf027f8` — Ammonomicon data round 2 (EN string tables) |
+| **Files in progress** | `tools/` (root repo), `assets/data/*.json` merges, `codex_screen.dart`, `synergy_detail_screen.dart` |
+| **Uncommitted changes** | NONE of mine — `gungeoneer_header.dart` (M) + `lib/widgets/gungeoneer_header/` (untracked) are **SLOT 4's WIP — do not touch/commit** |
+| **AC4 shared-file flags** | `codex_screen.dart` (Slot 4 synced test label in `6a50556`), `item_detail/header.dart` (theirs — BUG-051), `main_menu_screen.dart` (both touched) |
+
+> **Attribution map (for Slot 4 / other agent):**
+> - **MINE this session:** `b6d05b0` data merge, `8550c0a` Ammonomicon cats+labels, `1fc4f9b` SynergyDetailScreen, `eeb52de` _GunDeepStats, `bf027f8` EN string tables + synergy joins. Root repo: `tools/` (dump_gungeon.py, merge_*.py, gungeon_dump.json, en_*.txt, *_report.json).
+> - **THEIRS (not mine):** `468b441` Phase A gungeoneer_header split, `7be7537` Phase B MP fixes, `6a50556` Phase C Flutter 3.47 upgrade + theme renames, `16c1fcf` chore, `82e2873` **v3.3.0+162 release** — all slot-4 refactor/release work, committed clean, already on remote.
+> - **Current version: v3.3.0+162** (Slot 4 bumped it — my v3.2.1 APK is stale).
+> - **Project:** Ammonomicon mega-wiki — replace codex w/ game-extracted data (UnityPy dump: 364 guns/261 items/440 synergies/260 enemies/shrines/npcs + EN string tables). Plan at `~/.devin/plans/plan-b2a72f872ea7d0cb.md`.
 
 > **Merge note for Slot 3 (PARALLEL) / other agent:** `home_screen.dart` + `settings_tab.dart` have parallel uncommitted changes in the main WD (Themes nav tab + Themes-in-Settings tile + font unscoping). My branch adds Quiz as the 5th nav destination and the same Themes tile to Settings. Merge order that resolves cleanest: (1) other agent commits their WIP to master, (2) `git merge slot2-core/gungeonmaster-quiz`. Conflict resolution: drop the Themes nav destination (user wants it only inside Settings — the settings tile already exists on both sides), keep the Quiz destination + QuizHomeScreen stack entry, keep their font unscoping wrappers. pubspec/version lines: keep `3.1.0+155` / `kAppVersion='3.1.0'` (higher per AC5). changelog.json: keep both v3.0.0 and v3.1.0 entries.
 
