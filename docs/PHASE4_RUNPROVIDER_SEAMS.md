@@ -58,7 +58,9 @@ Move (line ranges, verified):
 `RunState get _runState;` — verify each moved method for `_gunByName`/
 `_itemByName`/lookup-map references and declare those too.
 
-## Extraction 2 — `_SpecialTrackers` (survey done 2026-10-30)
+## Extraction 2 — `_SpecialTrackers` — ✅ DONE (`815b3ed`)
+
+Extracted to `lib/providers/trackers/special_trackers.dart` (mixin in part file). Main file now ~1,614 lines. Moved code needed NO abstract decls (removed 4 unused requirements — track them per-extraction, don't pre-declare).
 
 Findings: `_windgunnerTimer` field at line ~105 travels with the tracker
 group (startWindgunner/cancelWindgunner ~727-742, dispose cancels at ~748).
