@@ -38,7 +38,9 @@ mixin _SpecialTrackers on ChangeNotifier {
 Abstract member signatures in a mixin are requirements fulfilled by the
 composing class — legal Dart, resolves cross-mixin calls cleanly.
 
-## Extraction 1 — `_SynergyQueries` (do this first, most self-contained)
+## Extraction 1 — `_SynergyQueries` — ✅ DONE (`783b5e9`)
+
+Extracted to `lib/providers/synergy_queries.dart` (mixin in part file). Main file now ~1,993 lines. Note: `currentOwnedLower` is a 2-line arrow getter — arrow getters need multi-line capture in extraction scripts.
 
 **Part file:** `lib/providers/synergy_queries.dart`
 
