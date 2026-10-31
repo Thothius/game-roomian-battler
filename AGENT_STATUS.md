@@ -83,23 +83,23 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 
 | Slot | Assigned Agent | Status | Working On | Last Heartbeat |
 | :--- | :--- | :--- | :--- | :--- |
-| **Slot 1** | **DESIGNER (Devin)** | `DONE` | DESIGN.md contract + design-lab/ landed `bcc1e8d` (merge `ee698c9`), worktree+branch cleaned. Slot released | 2026-10-31 |
+| **Slot 1** | **VISUAL (Devin)** | `DONE` | Neo-Skeuo Phase A landed `f13ecd3` — mode, kit, menu reskin, demo lab, locks. Slot released | 2026-10-31 |
 | **Slot 2** | **CORE (Devin A1)** | `DONE` | All committed — see session log | 2026-10-31 |
 | **Slot 3** | **PARALLEL (Devin A2)** | `DONE` | **4-way polish** `b2ad1a3` + badge icon → double-chevron `8213c14` (matches game's synergy marker). Effects strip ~50% shorter, detail tag pills removed, synergies compact rows, color-coded glow → uniform blue badge. ⚠️ `main_menu_test` still open (hub owner). Slot released | 2026-10-31 |
 | **Slot 4** | **SUPPORT (Devin)** | `DONE` | Reference screenshots landed `dacbef9` → `design-lab/reference/` (8 PNGs + README). Slot released | 2026-10-31 |
 
 ### Slot Details
 
-#### Slot 1 — DESIGNER (Devin)
+#### Slot 1 — VISUAL (Devin)
 | Field | Value |
 |-------|-------|
-| **Branch** | `slot1-devin/design-batch` (worktree per AC5d once GO — 3 agents active) |
-| **Session started** | 2026-10-29 |
-| **Last board update** | 2026-10-29 |
-| **Last commit** | — (no commits this session; baseline verified: analyze clean, 419 pass / 1 WIP-broken test) |
-| **Files in progress** | `lib/services/app_theme.dart`, `lib/screens/experience_studio_screen.dart` |
-| **Uncommitted changes** | `lib/screens/main_menu_screen.dart`, `lib/screens/codex_screen.dart`, `lib/widgets/settings/settings_tab.dart` (items 13, 20, 14 done) |
-| **Worktree** | `X:\GungeonMate\.worktrees\slot1-devin\gungeon_mate` (created, on `slot1-devin/design-batch`) |
+| **Branch** | `master` (sole agent) |
+| **Session started** | 2026-10-31 |
+| **Last board update** | 2026-10-31 |
+| **Last commit** | app `f13ecd3` — feat(theme): Neo-Skeuo alternate skin |
+| **Files in progress** | — |
+| **Uncommitted changes** | — |
+| **Worktree** | — |
 
 > **3-way split (user 2026-10-29):** DEVIN=Slot2 CORE, DESIGNER=Slot1 VISUAL, GENERAL=Slot3 PARALLEL. Shared deps: DEVIN lands `run_lifecycle.dart` early; GENERAL lands `bottom_back_bar.dart` early. Merge order: DEVIN → DESIGNER → GENERAL. Surprise-fx WIP in main WD (unclaimed, pre-existing) likely folds into my batch — TBD at GO.
 
@@ -235,6 +235,7 @@ Format: `| Agent | Date | Branch | Commit | Task | Files | Status | Next | Watch
 
 | Agent | Date | Branch | Commit | Task | Files | Status | Next | Watch out for |
 |-------|------|--------|--------|------|-------|--------|------|---------------|
+| VISUAL (Devin) | 2026-10-31 | master (sole agent) | app `f13ecd3` | **Neo-Skeuo Phase A** — `AppThemeMode.neoSkeuo` (cream paper + ink kit look): enum+flair+kVisibleThemes (toggle-only, NOT kPickerThemes), bundled ShantellSans, ColorScheme.light gate, enter/exitSkeuo prev-mode+font restore. `lib/widgets/skeuo/` kit (tokens, SkeuoSurface w/ hatched offset shadow + press physics, SkeuoButton, SkeuoPaperBackdrop). Menu reskin + pencil toggle top-right + 'Style Demo' → spec-sheet lab screen. Overlay suppresses ambiance per-mode; customization locked (menu/run-tools/settings/studio guard); run-tools NEO-SKEUO row. Fixed Contrast.luminance /255-on-normalized bug | app_theme*, app_theme_modes, theme_data_tables, contrast, theme_overlay, main_menu, experience_studio, active_run_helpers, settings_tab, skeuo/ (3), neo_skeuo_lab, neo_skeuo_test, pubspec, font ttf, DESIGN.md | DONE — Phase A | User visual review of demo lab → iterate skeuo kit; Phase B = roll SkeuoSurface into real screens (browse rows, detail, dashboards, dialogs, nav) | Another agent had WIP in tree mid-session (mp_*, item_detail, gun/item models, format reflows) — committed explicit paths only. `neoSkeuo` must stay OUT of kPickerThemes (studio locked). ShantellSans TTF is the OFL variable font (Light→ExtraBold) |
 | CORE (Devin A1) | 2026-10-31 | master (sole agent) | app `6ecec5c` | **Customization hub rework** — killed dual-UI (one layout everywhere): sticky BACK·PREVIEW·APPLY bar, 5-tab strip (PRESETS/CUSTOM/FONTS/PARTICLES/AMBIANCE), draggable LIVE LOOK pane (15-75%, mini-UI mock w/ staged picks), CUSTOM tab = 6 color-role rows→ColorPicker + Unicorn 6-variant + glow strip + SAVE THEME (existing dialog), BACK restores entry snapshot via `VisualPrefs.replaceAndPersist`. Labels → 'Customization' everywhere | experience_studio_screen (~130 lines deleted dead chrome), main_menu, paradox_player_panel, settings_tab | DONE | Full brief leftovers: palette-maker deep integration (screen still exists as route), preset card splashSlug art, LIVE LOOK real-widget expansion | BACK silently restores staged picks (no confirm — sandbox undo semantics). `initialTab` now = hub tab index 0-4. Dead studio chrome deleted but `_ThemeStep`/`_SwipableGrid2x4`/`PaletteMakerScreen` still exist (unused, kept for reuse) |
 | PARALLEL (Devin A2) | 2026-10-31 | master (sole agent) | app `233f705`, `9437a62` | **Ammonomicon visual rework — pass 1 of N** (user: "looks shit, full rework"). Grid tiles: tinted box → gradient fill + glowing icon medallion (ring + shadow) + tightened label. Expanded-panel member rows: flat tinted row → gradient card + bordered icon chip. Design brief at `docs/AMMONOMICON_DESIGN_BRIEF.md` | ammonomicon_screen | DONE — PASS 1 ONLY | **Pass 2+ remaining:** chapter/mode FLOOR/SECRET/HUB badges + music/bundle tags (silent metadata — biggest ask), tab strip art coherence (12 tabs, only Guns/Items have assets), synergy detail polish, per-category empty states, motion/flutter_animate | ammonomicon_widgets + ammonomicon_detail still stock — next pass should hit detail screen + tab strip. `search` empty state exists only at picker level |
 | PARALLEL (Devin A2) | 2026-10-31 | master (sole agent) | app `c04b6f8` | **mp_session cleanup** — collapsed doubled `@override` annotations (mixin-split leftover), removed 5 empty section dividers + truncated 'Connection timeout' comment; analyze clean, mp_integration green | mp_session | DONE | WQ-2/3/4/5, mis-pair design call, Phase 8 | 'No PINs' doc comments verified accurate — kept |
