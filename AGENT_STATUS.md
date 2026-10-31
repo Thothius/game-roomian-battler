@@ -85,7 +85,7 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 | :--- | :--- | :--- | :--- | :--- |
 | **Slot 1** | **DESIGNER (Devin)** | `DONE` | DESIGN.md contract + design-lab/ landed `bcc1e8d` (merge `ee698c9`), worktree+branch cleaned. Slot released | 2026-10-31 |
 | **Slot 2** | **CORE (Devin A1)** | `DONE` | Hub rework `6ecec5c` + polish `f813e5c` + fonts `25ee147` — shared `buildBackdropParticleField` fixes dead particle options, glow picker + animated style chips (ORBIT/EMBER/HALO/DRIP), all 29 fonts by category + dashboard-text slider. Verified rendered + analyze + theme tests. Slot released | 2026-10-31 |
-| **Slot 3** | **PARALLEL (Devin A2)** | `DONE` | **Ammonomicon nav rework** `0ed9c6d` — tile-grid landing REMOVED (top strip = nav, bigger chip buttons, expandable tabs route to member panel), CODEX→AMMONOMICON, entry grid 6→4 cols, -240 dead lines. Earlier: shrines swipe-view `6897f07`, dead pref `3934018`. ⚠️ `main_menu_test` "Theme" fail still open (hub owner). Slot released | 2026-10-31 |
+| **Slot 3** | **PARALLEL (Devin A2)** | `DONE` | **MP lobby role-pick rework** `a528c9c` — step dots killed, HOST/SIDEKICK → horizontal medallion cards (gradient + icon ring + chevron). Earlier: ammonomicon nav rework `0ed9c6d`, shrines swipe-view `6897f07`. ⚠️ `main_menu_test` "Theme" fail still open (hub owner). Slot released | 2026-10-31 |
 | **Slot 4** | **SUPPORT (Devin)** | `DONE` | Reference screenshots landed `dacbef9` → `design-lab/reference/` (8 PNGs + README). Slot released | 2026-10-31 |
 
 ### Slot Details
