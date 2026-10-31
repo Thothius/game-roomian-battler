@@ -6,7 +6,7 @@ are exact. Emits merge_report.json for review.
 """
 import json, os, re, difflib
 
-TOOLS = r"X:\MEDIA SILO\APPS\GungeonMate\tools"
+TOOLS = r"X:\GungeonMate\tools"
 DATA = r"X:\GungeonMate\gungeon_mate\assets\data"
 REPORT = os.path.join(TOOLS, "merge_report.json")
 

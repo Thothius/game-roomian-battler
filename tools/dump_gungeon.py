@@ -8,7 +8,7 @@ import UnityPy
 
 ETG = r"X:\Games\Enter the Gungeon"
 BUNDLE = os.path.join(ETG, r"EtG_Data\StreamingAssets\Assets\brave_resources_001")
-OUT = r"X:\MEDIA SILO\APPS\GungeonMate\tools\gungeon_dump.json"
+OUT = r"X:\GungeonMate\tools\gungeon_dump.json"
 
 env = UnityPy.load(BUNDLE)
 
@@ -146,7 +146,7 @@ print(f"{len(syns)} synergies added -> {OUT}")
 
 # ── diff vs shipped app data ─────────────────────────────────────
 import re, glob
-appdir = r"X:\MEDIA SILO\APPS\GungeonMate\gungeon_mate\assets\data"
+appdir = r"X:\GungeonMate\gungeon_mate\assets\data"
 ours = {}
 for f in ("guns.json", "items.json", "synergies.json"):
     try:

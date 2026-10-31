@@ -1,0 +1,2931 @@
+{
+ "bundles": [
+  "brave_resources_001",
+  "dungeon_scene_001",
+  "encounters_base_001",
+  "enemies_base_001",
+  "flows_base_001",
+  "foyer_001",
+  "foyer_002",
+  "foyer_003",
+  "shared_auto_001",
+  "shared_auto_002",
+  "shared_base_001"
+ ],
+ "histograms": {
+  "brave_resources_001": {
+   "tk2dSprite": 2065,
+   "tk2dSpriteAnimator": 1339,
+   "EncounterTrackable": 632,
+   "SpeculativeRigidbody": 582,
+   "Projectile": 463,
+   "SpriteAnimatorKiller": 429,
+   "tk2dSpriteAttachPoint": 368,
+   "Gun": 364,
+   "PierceProjModifier": 170,
+   "dfPanel": 151,
+   "dfLabel": 146,
+   "dfSprite": 126,
+   "ProjectileVolleyData": 108,
+   "tk2dTiledSprite": 99,
+   "ObjectHeightController": 94,
+   "ModifyProjectileSynergyProcessor": 74,
+   "TransformGunSynergyProcessor": 74,
+   "TimedObjectKiller": 71,
+   "BounceProjModifier": 66,
+   "AkGameObj": 65,
+   "VolleyModificationSynergyProcessor": 58,
+   "DebrisObject": 57,
+   "ExplosiveModifier": 48,
+   "TrailController": 46,
+   "dfSlicedSprite": 43,
+   "GoopModifier": 40,
+   "HomingModifier": 36,
+   "BasicStatPickup": 36,
+   "DualWieldSynergyProcessor": 31,
+   "PlayerHandController": 30,
+   "BasicBeamController": 28,
+   "ParticleKiller": 27,
+   "dfScrollPanel": 27,
+   "SpawnProjModifier": 25,
+   "PlayerOrbital": 25,
+   "AudioAnimatorListener": 24,
+   "HealthHaver": 20,
+   "tk2dSpriteCollectionData": 17,
+   "HoveringGunSynergyProcessor": 17,
+   "tk2dSpriteAnimation": 17,
+   "BuffVFXAnimator": 17,
+   "OrbitalSynergyProcessor": 16,
+   "dfInputManager": 15,
+   "CoinBloop": 15,
+   "PlayerLightController": 15,
+   "dfGUICamera": 15,
+   "KnockbackDoer": 15,
+   "dfGUIManager": 15,
+   "ShootVolleyFromObjectSynergyProcessor": 15,
+   "SpawnObjectPlayerItem": 14,
+   "AmmonomiconPageRenderer": 13,
+   "dfAnimationClip": 13,
+   "OnKilledEnemySynergyProcessor": 13,
+   "PlayerController": 13,
+   "ComplexLightColorAnimator": 12,
+   "VolleyReplacementSynergyProcessor": 12,
+   "dfScrollbar": 12,
+   "FireOnReloadSynergyProcessor": 12,
+   "ShaderProjModifier": 12,
+   "tk2dTextMesh": 11,
+   "dfTextureSprite": 11,
+   "dfButton": 11,
+   "CompanionItem": 11,
+   "GrenadeProjectile": 10,
+   "PlayParticleSystemDuringBossIntro": 10,
+   "FoyerInfoPanelController": 9,
+   "UIKeyControls": 9,
+   "AIAnimator": 9,
+   "CharacterSelectFacecardIdleDoer": 9,
+   "ComplexProjectileModifier": 9,
+   "BecomeOrbitProjectileModifier": 9,
+   "AIBulletBank": 8,
+   "dfFont": 8,
+   "SubprojectileSynergyProcessor": 8,
+   "TableFlipItem": 8,
+   "InControlInputAdapter": 8,
+   "AdditionalBraveLight": 8,
+   "LightPulser": 8,
+   "AmbientProjectileSynergyProcessor": 7,
+   "TetrisBuff": 7,
+   "HelixProjectile": 7,
+   "DungeonPlaceable": 7,
+   "tk2dSlicedSprite": 7,
+   "PlayerOrbitalFollower": 7,
+   "SimpleSpriteRotator": 7,
+   "MomentumProjectile": 7,
+   "DungeonPlaceableBehaviour": 7,
+   "TextBoxManager": 7,
+   "PlayerOrbitalItem": 6,
+   "NotePassiveItem": 6,
+   "AmmonomiconBookmarkController": 6,
+   "IounStoneOrbitalItem": 6,
+   "GoopDefinition": 6,
+   "BlankModificationItem": 6,
+   "MinorBreakable": 6,
+   "tk2dFontData": 6,
+   "InputGuidedProjectile": 6,
+   "TalkDoerLite": 5,
+   "AmmoRegenSynergyProcessor": 5,
+   "BundleOfWandsLightController": 5,
+   "MajorBreakable": 5,
+   "ChainLightningModifier": 5,
+   "HealthModificationBuff": 5,
+   "StrafeBleedBuff": 5,
+   "RailgunChargeEffectController": 5,
+   "GunVolleyModificationItem": 5,
+   "RobotechProjectile": 5,
+   "ProjectileSpriteFollower": 5,
+   "FireSubBeamSynergyProcessor": 5,
+   "tk2dFont": 5,
+   "BulletStatusEffectItem": 5,
+   "UltraFortunesFavor": 5,
+   "CompanionSynergyProcessor": 5,
+   "DFTextureSwapper": 5,
+   "OnActiveItemUsedSynergyProcessor": 5,
+   "PlayMakerFSM": 5,
+   "GenericLootTable": 4,
+   "TowerBossEmitterController": 4,
+   "SpawnItemOnRoomClearItem": 4,
+   "PitParticleKiller": 4,
+   "ThreeWishesBuff": 4,
+   "StealthOnReloadPressed": 4,
+   "MatterAntimatterProjectileModifier": 4,
+   "ExoticSynergyProcessor": 4,
+   "InfiniteAmmoSynergyProcessor": 4,
+   "PortalGunPortalController": 4,
+   "CurrencyPickup": 4,
+   "HologramDoer": 4,
+   "HealPlayerItem": 4,
+   "ProximityMine": 4,
+   "RaidenBeamController": 4,
+   "?": 4,
+   "BulletArmorItem": 4,
+   "DelayedExplosiveBuff": 3,
+   "KilledEnemiesBecomeProjectileModifier": 3,
+   "SpawnItemOnGunDepletion": 3,
+   "GunExtraSettingSynergyProcessor": 3,
+   "SpawnPlayerProcessorOnAcquisition": 3,
+   "BeeProjectile": 3,
+   "ForceToSortingLayer": 3,
+   "BoomerangProjectile": 3,
+   "BonusDamageToSpecificEnemies": 3,
+   "PickupMover": 3,
+   "MachoBraceSynergyProcessor": 3,
+   "ScareEnemiesModifier": 3,
+   "RestoreAmmoToGunModifier": 3,
+   "CustomTrailRenderer": 3,
+   "ConditionalTranslator": 3,
+   "LaserSightController": 3,
+   "WingsItem": 3,
+   "HealthPickup": 3,
+   "OnGunDamagedModifier": 3,
+   "PassiveGooperItem": 3,
+   "DamageTypeModifierItem": 3,
+   "StatHolder": 3,
+   "WaftingDebrisObject": 3,
+   "ExplosionDebrisLauncher": 3,
+   "DecalObject": 3,
+   "GunFormeSynergyProcessor": 3,
+   "EyeOfTheTigerItem": 2,
+   "ArmoredGunModifier": 2,
+   "EmissionSettings": 2,
+   "ReloadSwitchSynergyProcessor": 2,
+   "ScalingStatBoostItem": 2,
+   "EmissivePulse": 2,
+   "dfAtlas": 2,
+   "AfterImageTrailController": 2,
+   "ExtraLifeItem": 2,
+   "MenuCrosshairSelectionDoer": 2,
+   "BasicInteractItemGiver": 2,
+   "HollowGunModifier": 2,
+   "BraveDFTextureAnimator": 2,
+   "AuraSynergyProcessor": 2,
+   "ReverseBeamController": 2,
+   "SpawnObjectOnReloadPressed": 2,
+   "KeyBulletPickup": 2,
+   "GunWeaponPanelSpriteOverride": 2,
+   "AppliesGoopDoerModifier": 2,
+   "Decoy": 2,
+   "EmbersController": 2,
+   "HitEffectHandler": 2,
+   "PlayerStats": 2,
+   "InstantlyDamageAllProjectile": 2,
+   "TitleDioramaController": 2,
+   "BlackHoleDoer": 2,
+   "MultiTemporaryOrbitalSynergyProcessor": 2,
+   "FireAdditionalProjectileOnDeathSynergyProcessor": 2,
+   "Tunnel": 2,
+   "DevolverModifier": 2,
+   "ScalingProjectileModifier": 2,
+   "PushNearbyProjectilesOnReloadModifier": 2,
+   "AmmoPickup": 2,
+   "JitterMotion": 2,
+   "FlippableCover": 2,
+   "BurningHandModifier": 2,
+   "SpriteAnimatorStopper": 2,
+   "TileSpriteClipper": 2,
+   "StrafeBleedPersistentDebris": 2,
+   "ThrownGunPassiveItem": 2,
+   "ThrownGoopItem": 2,
+   "ClipBulletModifierItem": 2,
+   "AuraOnReloadModifier": 2,
+   "DirectionalAttackActiveItem": 2,
+   "CartographersRingItem": 2,
+   "PlayerSpaceshipController": 2,
+   "BreakableShieldController": 2,
+   "GunMergeSynergyProcessor": 2,
+   "TunnelThatCanKillThePast": 2,
+   "GunTierController": 2,
+   "GunAttachmentUnbreaker": 2,
+   "GoopDefinitionModificationSynergyProcessor": 2,
+   "AkAudioListener": 2,
+   "ChallengeManager": 2,
+   "MotionTriggeredStatSynergyProcessor": 2,
+   "ReflectShieldPlayerItem": 2,
+   "ChainBulletsModifier": 2,
+   "TunnelScroller": 2,
+   "EnemyBulletSpeedItem": 2,
+   "OnDamagedSynergyProcessor": 2,
+   "SpawnProjectileOnDamagedItem": 2,
+   "CerebralBoreProjectile": 2,
+   "HomingBulletsPassiveItem": 2,
+   "AmmonomiconDeathPageController": 2,
+   "KeyProjModifier": 2,
+   "TowerBossIrisController": 2,
+   "AlphabetSoupSynergyProcessor": 2,
+   "TweenObjectScale": 2,
+   "EvolverGunController": 1,
+   "MulticompanionItem": 1,
+   "EmptyBottleItem": 1,
+   "PegasusBootsItem": 1,
+   "BankBagItem": 1,
+   "SkeletonKeyItem": 1,
+   "BarrageSynergyProcessor": 1,
+   "SimpleAnimationCurveHolder": 1,
+   "GameManager": 1,
+   "RationItem": 1,
+   "CreepyEyeController": 1,
+   "ScarfAttachmentDoer": 1,
+   "DuctTapeItem": 1,
+   "OnDamagedGunImprovementModifier": 1,
+   "MimicRingItem": 1,
+   "TimeSlowPlayerItem": 1,
+   "SkyRocketChallengeModifier": 1,
+   "FloorShockwaveChallengeModifier": 1,
+   "SharkProjectile": 1,
+   "FireVolleyOnRollItem": 1,
+   "CogOfBattleItem": 1,
+   "FortuneFavorItem": 1,
+   "ActiveBasicStatItem": 1,
+   "AIShooter": 1,
+   "BriefcaseFullOfCashItem": 1,
+   "dfFollowObject": 1,
+   "TowerBossBatteryController": 1,
+   "TachyonProjectile": 1,
+   "HeatIndicatorController": 1,
+   "RadialCharmItem": 1,
+   "BabyDragunController": 1,
+   "AmmonomiconPokedexEntry": 1,
+   "CardboardBoxItem": 1,
+   "DragunRageChallengeModifier": 1,
+   "LifeOrbGunModifier": 1,
+   "MagazineRack": 1,
+   "NPCCellKeyItem": 1,
+   "JetpackItem": 1,
+   "SmartOverheadVFXController": 1,
+   "SnowballBulletsItem": 1,
+   "BombCompanionAppItem": 1,
+   "ProjectileRandomizerItem": 1,
+   "BestForLastChallengeModifier": 1,
+   "NoteDoer": 1,
+   "ChaosBulletsItem": 1,
+   "CoopPassiveItem": 1,
+   "DistortionWake": 1,
+   "TeleporterController": 1,
+   "ProjectileSpawnedTrailModifier": 1,
+   "FloorTypeOverrideDoer": 1,
+   "MimicGunController": 1,
+   "ArtfulDodgerProjectileController": 1,
+   "Iconographizer": 1,
+   "AIActor": 1,
+   "EndTimesNebulaController": 1,
+   "LaserSightItem": 1,
+   "InvariantSpriteAnimator": 1,
+   "PaydaySynergyProcessor": 1,
+   "BaseShopController": 1,
+   "ParadoxPortalController": 1,
+   "MagazineRackItem": 1,
+   "OnKillEnemyItem": 1,
+   "AmazingChestAheadItem": 1,
+   "MoveAmmoToClipItem": 1,
+   "RadialSlowItem": 1,
+   "EnemyDeathBurstChallengeModifier": 1,
+   "PassiveReflectItem": 1,
+   "RechargeGunModifier": 1,
+   "DodgeRollGameSpeedChallengeModifier": 1,
+   "SceneLightManager": 1,
+   "GundromedaStrain": 1,
+   "ActiveItemCooldownItem": 1,
+   "AstralSlugItem": 1,
+   "GungeonMapItem": 1,
+   "dfSlider": 1,
+   "FoldingTableItem": 1,
+   "GooperSynergyProcessor": 1,
+   "KageBunshinController": 1,
+   "OnPlayerItemUsedItem": 1,
+   "MonsterHuntData": 1,
+   "CheeseWheelItem": 1,
+   "ExitController": 1,
+   "SummonTigerModifier": 1,
+   "KiPulseItem": 1,
+   "KingEnemyChallengeModifier": 1,
+   "EveryEnemySpawner": 1,
+   "ChamberOfEvilItem": 1,
+   "DemonWallChallengeModifier": 1,
+   "FireOnReloadItem": 1,
+   "HammerOfDawnController": 1,
+   "SupplyDropItem": 1,
+   "GunOverheatChallengeModifier": 1,
+   "SunglassesItem": 1,
+   "AncientPrimerItem": 1,
+   "TemporaryRadialIgniter": 1,
+   "ConvergeProjectile": 1,
+   "CombineEvaporateEffect": 1,
+   "SpecialKeyItem": 1,
+   "SlideSurface": 1,
+   "CursePotChallengeModifier": 1,
+   "DamageEnemiesInRadiusItem": 1,
+   "BigShotgunController": 1,
+   "MetronomeItem": 1,
+   "PuzzleBoxItem": 1,
+   "CathedralCrestItem": 1,
+   "GuidedBulletsPassiveItem": 1,
+   "GunQueueChallengeModifier": 1,
+   "FragileGunItemPiece": 1,
+   "BehaviorSpeculator": 1,
+   "RobotUnlockTelevisionItem": 1,
+   "BreakableProjectileChallengeModifier": 1,
+   "ShootPlayerProjectiles": 1,
+   "GunParticleSystemController": 1,
+   "ItemBlueprintItem": 1,
+   "BlobulinAmmoChallengeModifier": 1,
+   "OnPurchasePassiveItem": 1,
+   "ActiveShieldItem": 1,
+   "GunRechargeSynergyProcessor": 1,
+   "WarpWingPortalController": 1,
+   "SkyRocket": 1,
+   "TalkingGunModifier": 1,
+   "SilverBulletsPassiveItem": 1,
+   "PunchoutGunController": 1,
+   "RatBootsItem": 1,
+   "SpiceItem": 1,
+   "SenseOfDirectionItem": 1,
+   "StoutBulletsItem": 1,
+   "tk2dTileMap": 1,
+   "KnifeShieldItem": 1,
+   "ObjectVisibilityManager": 1,
+   "PoisonTrailChallengeModifier": 1,
+   "RedMatterParticleController": 1,
+   "BlackRevolverModifier": 1,
+   "OnDamagedPassiveItem": 1,
+   "GunIdleVFX": 1,
+   "EscapeRopeItem": 1,
+   "EstusFlaskItem": 1,
+   "SnitchBrickItem": 1,
+   "PileOfDarkSoulsPickup": 1,
+   "BlankPersonalityItem": 1,
+   "GaseousFormPlayerItem": 1,
+   "AppearedInTheGungeonController": 1,
+   "TransformingGunModifier": 1,
+   "HelmetItem": 1,
+   "SynergyCompletionItem": 1,
+   "BankMaskItem": 1,
+   "CorpseExplodeActiveItem": 1,
+   "DarknessChallengeModifier": 1,
+   "SlicedVolume": 1,
+   "ConsumableStealthItem": 1,
+   "ChestBrokenItem": 1,
+   "GunClassPassiveItem": 1,
+   "TemporaryInvulnerabilityPlayerItem": 1,
+   "GrapplingHookItem": 1,
+   "HighStressChallengeModifier": 1,
+   "ExplodingEnemiesChallengeModifier": 1,
+   "FinalIntroSequenceManager": 1,
+   "TowerBossController": 1,
+   "tk2dUISpriteAnimator": 1,
+   "TeapotHealingModifier": 1,
+   "SimplePuzzleItem": 1,
+   "SimpleHealthBarController": 1,
+   "CigaretteItem": 1,
+   "LootDataGlobalSettings": 1,
+   "ZoneControlChallengeModifier": 1,
+   "RandomProjectileReplacementItem": 1,
+   "RegenerationPassiveItem": 1,
+   "TigerProjectile": 1,
+   "HauntedChallengeModifier": 1,
+   "SpikedArmorItem": 1,
+   "BlinkPassiveItem": 1,
+   "ClockhairController": 1,
+   "RatPackItem": 1,
+   "PrototypeDungeonRoom": 1,
+   "MiserlyProtectionItem": 1,
+   "KthuliberProjectileController": 1,
+   "ModifyBeamSynergyProcessor": 1,
+   "ChamberGunProcessor": 1,
+   "TrackInputDirectionalPad": 1,
+   "ShootProjectileOnGunfireDoer": 1,
+   "GungeonEggItem": 1,
+   "RobotArmBalloonsItem": 1,
+   "CircleBurstChallengeModifier": 1,
+   "BulletScriptBehavior": 1,
+   "FlameTrapChallengeModifier": 1,
+   "FriendlyFireChallengeModifier": 1,
+   "PredatorGunController": 1,
+   "YellowChamberItem": 1,
+   "SprenOrbitalItem": 1,
+   "BalloonAttachmentDoer": 1,
+   "HammerTimeChallengeModifier": 1,
+   "EnemyBulletsBecomeJammedModifier": 1,
+   "AmmonomiconController": 1,
+   "BossStatuesChallengeModifier": 1,
+   "ShadowSystem": 1,
+   "InstantProjectileEffectModifier": 1,
+   "MindControlProjectileModifier": 1,
+   "GunnerGunController": 1,
+   "KeyBullet": 1,
+   "ModifyProjectileOnEnemyImpact": 1,
+   "ReusableBlankitem": 1,
+   "HighPriestChallengeModifier": 1,
+   "HealingReceivedModificationItem": 1,
+   "AmmonomiconInstanceManager": 1,
+   "PaydayDrillItem": 1,
+   "PressurePlate": 1,
+   "TeleporterPrototypeItem": 1,
+   "RemoteMineItem": 1,
+   "InstantDamageOneEnemyProjectile": 1,
+   "BossManager": 1,
+   "EmergencyCrateController": 1,
+   "HeavyBootsItem": 1,
+   "PickupObjectDatabase": 1,
+   "BooRoomChallengeModifier": 1,
+   "IronCoinItem": 1,
+   "ProjectileTrailDamageZone": 1,
+   "ActiveSummonItem": 1,
+   "RobotArmItem": 1,
+   "AuraItem": 1,
+   "BowlerSitController": 1,
+   "HomingProjectile": 1,
+   "WaveProjectile": 1,
+   "MaxNumberAliveModifier": 1,
+   "TerminatorPanelController": 1,
+   "DownwellBootsItem": 1,
+   "AutoblankVestItem": 1,
+   "RingOfPitFriendship": 1,
+   "RemoteMineController": 1,
+   "SevenLeafCloverItem": 1,
+   "MimicToothNecklaceItem": 1,
+   "OurPowersCombinedItem": 1,
+   "ReturnAmmoOnMissedShotItem": 1,
+   "HoveringGunController": 1,
+   "MachoBraceItem": 1,
+   "CrisisStoneItem": 1,
+   "PlatinumBulletsItem": 1,
+   "PowderSkullParticleController": 1,
+   "BulletThatCanKillThePast": 1,
+   "NanomachinesItem": 1,
+   "StunEnemiesInRoomItem": 1,
+   "TargetedAttackPlayerItem": 1,
+   "RelodestoneItem": 1,
+   "RingOfResourcefulRatItem": 1,
+   "DefaultLabelController": 1,
+   "GunderfuryController": 1,
+   "ChestTeleporterItem": 1,
+   "BattleStandardItem": 1,
+   "ArtfulDodgerGunController": 1,
+   "ActiveGunVolleyModificationItem": 1,
+   "StickyGrenadeBuff": 1,
+   "ChestFuseController": 1,
+   "SuperhotItem": 1,
+   "CharacterAnimationRandomizer": 1,
+   "RatchetScouterItem": 1,
+   "ShovelGunModifier": 1,
+   "__Sprite": 1,
+   "__Texture2D": 183
+  },
+  "dungeon_scene_001": {
+   "dfPanel": 185,
+   "dfSprite": 171,
+   "dfLabel": 140,
+   "MenuCrosshairSelectionDoer": 76,
+   "BraveOptionsMenuItem": 59,
+   "dfButton": 31,
+   "dfSpriteAnimation": 25,
+   "UIKeyControls": 22,
+   "dfSlicedSprite": 20,
+   "dfProgressBar": 17,
+   "dfCheckbox": 15,
+   "dfTextureSprite": 9,
+   "dfScrollPanel": 8,
+   "tk2dClippedSprite": 8,
+   "Iconographizer": 8,
+   "dfScrollbar": 5,
+   "AkAudioListener": 3,
+   "GameUIBossHealthController": 3,
+   "dfFollowObject": 3,
+   "tk2dTileMap": 2,
+   "dfGUICamera": 2,
+   "PlayerIdentityPortraitDoer": 2,
+   "GameUIItemController": 2,
+   "dfSlider": 2,
+   "GameUIBlankController": 2,
+   "GameUIAmmoController": 2,
+   "dfLanguageManager": 2,
+   "dfInputManager": 2,
+   "GameUIHeartController": 2,
+   "GameUIReloadBarController": 2,
+   "dfGUIManager": 2,
+   "AkInitializer": 1,
+   "DebugConsoleManager": 1,
+   "BraveInput": 1,
+   "HUDGC": 1,
+   "SpawnManager": 1,
+   "StickyFrictionManager": 1,
+   "PauseMenuController": 1,
+   "SimpleStatLabel": 1,
+   "DungeonAutoLoader": 1,
+   "DemoDieListener": 1,
+   "UINotificationController": 1,
+   "PhysicsEngine": 1,
+   "PreOptionsMenuController": 1,
+   "HUDFPS": 1,
+   "GenericFullscreenEffect": 1,
+   "DebugLines": 1,
+   "SENaturalBloomAndDirtyLens": 1,
+   "LevelNameUIManager": 1,
+   "KeyboardBindingMenuOption": 1,
+   "FullOptionsMenuController": 1,
+   "ConversationBarController": 1,
+   "MinimapUIController": 1,
+   "Pathfinder": 1,
+   "InControlInputAdapter": 1,
+   "GameCursorController": 1,
+   "ConditionalTranslator": 1,
+   "SpeedrunTimer": 1,
+   "MinimapRenderer": 1,
+   "Minimap": 1,
+   "?": 1,
+   "UndieListener": 1,
+   "AkTerminator": 1,
+   "CameraController": 1,
+   "Pixelator": 1,
+   "GameUIRoot": 1,
+   "__Sprite": 0,
+   "__Texture2D": 0
+  },
+  "encounters_base_001": {
+   "EncounterDatabase": 1,
+   "__Sprite": 0,
+   "__Texture2D": 0
+  },
+  "enemies_base_001": {
+   "tk2dSprite": 951,
+   "tk2dSpriteAnimator": 739,
+   "SpeculativeRigidbody": 402,
+   "AIAnimator": 366,
+   "HitEffectHandler": 263,
+   "HealthHaver": 260,
+   "AIActor": 260,
+   "BehaviorSpeculator": 257,
+   "ObjectVisibilityManager": 255,
+   "KnockbackDoer": 241,
+   "AIBulletBank": 215,
+   "EncounterTrackable": 191,
+   "SpriteAnimatorKiller": 176,
+   "tk2dSpriteAnimation": 159,
+   "tk2dSpriteCollectionData": 157,
+   "Projectile": 121,
+   "tk2dSpriteAttachPoint": 108,
+   "AIShooter": 76,
+   "DebrisObject": 53,
+   "AIBeamShooter": 43,
+   "GoopDoer": 39,
+   "BodyPartController": 38,
+   "GenericIntroDoer": 37,
+   "BulletScriptBehavior": 32,
+   "AdditionalBraveLight": 31,
+   "ExplodeOnDeath": 23,
+   "SpawnShardsOnDeath": 21,
+   "PlayerHandController": 19,
+   "CompanionController": 18,
+   "AutoAimTarget": 17,
+   "RandomizeSprite": 17,
+   "ExplosionDebrisLauncher": 17,
+   "GoopDefinition": 17,
+   "tk2dTiledSprite": 15,
+   "BossFinalRogueBulletScriptGun": 13,
+   "SpawnEnemyOnDeath": 12,
+   "BounceProjModifier": 9,
+   "BasicBeamController": 9,
+   "CustomTrailRenderer": 9,
+   "DraGunNeckPieceController": 8,
+   "ParticleKiller": 8,
+   "ExplosiveModifier": 8,
+   "GunHandController": 8,
+   "MajorBreakable": 7,
+   "BulletLimbController": 7,
+   "BeholsterTentacleController": 6,
+   "CrazedController": 6,
+   "GoopModifier": 6,
+   "dfSprite": 6,
+   "PierceProjModifier": 6,
+   "RobotechProjectile": 6,
+   "ArcProjectile": 5,
+   "AnimateWhenFired": 5,
+   "tk2dTextMesh": 5,
+   "MagicCircleHelper": 5,
+   "InvariantSpriteAnimator": 4,
+   "TrailController": 4,
+   "dfSlicedSprite": 4,
+   "PowderSkullParticleController": 4,
+   "DraGunArmController": 4,
+   "BashelliskBodyController": 4,
+   "BossStatueController": 4,
+   "TankTreaderMiniTurretController": 4,
+   "TileSpriteClipper": 4,
+   "BossStatueDeathController": 4,
+   "HelmetController": 3,
+   "AfterImageTrailController": 3,
+   "EncounterOnRoomClear": 3,
+   "UVScrollTimeOffsetInitializer": 3,
+   "ProjectileVolleyData": 3,
+   "BulletKingToadieController": 3,
+   "SkyRocket": 3,
+   "GenericLootTable": 3,
+   "ShellCasingSpawner": 3,
+   "TimedObjectKiller": 3,
+   "BasicTrapController": 3,
+   "SimpleSparksDoer": 2,
+   "UnearthController": 2,
+   "PlayParticleSystemDuringBossIntro": 2,
+   "DynamiteGuyController": 2,
+   "BulletBroDeathController": 2,
+   "KillOnRoomClear": 2,
+   "TeleportProjModifier": 2,
+   "DraGunNeckController": 2,
+   "PathMover": 2,
+   "NestedPrefab": 2,
+   "PlayMakerFSM": 2,
+   "SpawnShardsArbitrarily": 2,
+   "BroController": 2,
+   "dfLabel": 2,
+   "SpriteAnimatorSync": 2,
+   "DraGunController": 2,
+   "AshManEngageDoer": 2,
+   "DraGunHeadController": 2,
+   "WaftingDebrisObject": 2,
+   "tk2dSlicedSprite": 2,
+   "BulletKingIntroDoer": 2,
+   "ProjectileTrailRendererController": 2,
+   "BulletKingDeathController": 2,
+   "DestroyOverlappingBreakables": 2,
+   "DragunCracktonMap": 2,
+   "MakeVulnerableOnRoomClear": 2,
+   "BossFinalRogueLaserGun": 2,
+   "TalkDoerLite": 2,
+   "KeyBulletManController": 2,
+   "DragunKnifeProjectileController": 2,
+   "MeduziWaterHelper": 1,
+   "BulletBrosIntroDoer": 1,
+   "ShelletonRespawnController": 1,
+   "BashelliskBodyPickupController": 1,
+   "GunonIntroDoer": 1,
+   "BunkerBossDeathController": 1,
+   "PunchoutDroppedItem": 1,
+   "BossFinalRogueIntroDoer": 1,
+   "BossStatuesIntroDoer": 1,
+   "ResourcefulRatIntroDoer": 1,
+   "LineReticleController": 1,
+   "dfSpriteAnimation": 1,
+   "PunchoutPlayerController": 1,
+   "DraGunBoulderController": 1,
+   "BossDoorMimicDeathController": 1,
+   "AnimationColliderTrigger": 1,
+   "BlobulordDeathController": 1,
+   "ResourcefulRatController": 1,
+   "BashelliskDeathController": 1,
+   "GunNutSlamVfx": 1,
+   "TripleTapEffect": 1,
+   "HelicopterIntroDoer": 1,
+   "EnemyDatabase": 1,
+   "HologramDoer": 1,
+   "LichDeathController": 1,
+   "SpawningProjectile": 1,
+   "BashelliskHeadController": 1,
+   "BossStatuesController": 1,
+   "dfAtlas": 1,
+   "GatlingGullCrowController": 1,
+   "GripMasterController": 1,
+   "ObjectHeightController": 1,
+   "DungeonPlaceableBehaviour": 1,
+   "MetalGearRatController": 1,
+   "ManfredsRivalKnightsController": 1,
+   "AgunimDeathController": 1,
+   "MeduziIntroDoer": 1,
+   "BossFinalConvictDeathController": 1,
+   "PlacedBlockerConfigurable": 1,
+   "AdvancedDraGunIntroDoer": 1,
+   "AgunimIntroDoer": 1,
+   "BreakableSprite": 1,
+   "GatlingGullOutroDoer": 1,
+   "dfGUICamera": 1,
+   "SpotLightHelper": 1,
+   "TrapSpawnerController": 1,
+   "DraGunDeathController": 1,
+   "MegalichIntroDoer": 1,
+   "DraGunKnifeController": 1,
+   "UltraFortunesFavor": 1,
+   "DraGunIntroDoer": 1,
+   "EmissionSettings": 1,
+   "TankTreaderController": 1,
+   "AutoDistortionDoer": 1,
+   "CuccoController": 1,
+   "PunchoutAIActor": 1,
+   "PortableTurretController": 1,
+   "AdvancedDraGunDeathController": 1,
+   "PotFairyEngageDoer": 1,
+   "TankTreaderDeathController": 1,
+   "VfxController": 1,
+   "ResourcefulRatDeathController": 1,
+   "KaliberController": 1,
+   "PunchoutController": 1,
+   "DemonWallIntroDoer": 1,
+   "dfAnimationClip": 1,
+   "BlobulordIntroDoer": 1,
+   "dfPanel": 1,
+   "KillOnRoomUnseal": 1,
+   "FreezeOnDeath": 1,
+   "BashelliskIntroDoer": 1,
+   "WallMimicController": 1,
+   "GiantPowderSkullDeathController": 1,
+   "CoalGuyController": 1,
+   "dfGUIManager": 1,
+   "DFAnimatorDestroyer": 1,
+   "ModifyProjectileSynergyProcessor": 1,
+   "InfinilichDeathController": 1,
+   "MetalGearRatIntroDoer": 1,
+   "HelicopterDeathController": 1,
+   "BossFinalRogueDeathController": 1,
+   "GunonDeathController": 1,
+   "BossFinalRobotIntroDoer": 1,
+   "MegalichDeathController": 1,
+   "BossFinalGuideIntroDoer": 1,
+   "MicroCuccoController": 1,
+   "FloatingEyeController": 1,
+   "AgunimReflectProjectile": 1,
+   "PlacedWallDecorator": 1,
+   "BossFinalGuideDeathController": 1,
+   "BossFinalRogueController": 1,
+   "DemonWallDeathController": 1,
+   "LichIntroDoer": 1,
+   "BeholsterController": 1,
+   "GiantPowderSkullIntroDoer": 1,
+   "HelicopterController": 1,
+   "BossDoorMimicIntroDoer": 1,
+   "TarnisherController": 1,
+   "MinorBreakable": 1,
+   "BossFinalMarineDeathController": 1,
+   "InfinilichIntroDoer": 1,
+   "NoteDoer": 1,
+   "TankTreaderIntroDoer": 1,
+   "MeduziDeathController": 1,
+   "BloodbulonController": 1,
+   "InvariantParticleSystem": 1,
+   "AIActorDummy": 1,
+   "dfInputManager": 1,
+   "DraGunThirdEyeController": 1,
+   "DemonWallController": 1,
+   "SackKnightController": 1,
+   "UVScrollTriggerableInitializer": 1,
+   "BossFinalConvictHegemonyReinforceDoer": 1,
+   "SpawnProjModifier": 1,
+   "GatlingGullDeathController": 1,
+   "BeholsterBounceRocket": 1,
+   "DecalObject": 1,
+   "TBulonController": 1,
+   "BossFinalRobotDeathController": 1,
+   "HellDraggerArbitrary": 1,
+   "HighPriestIntroDoer": 1,
+   "MetalGearRatDeathController": 1,
+   "VoiceOverer": 1,
+   "GatlingGullIntroDoer": 1,
+   "__Sprite": 0,
+   "__Texture2D": 301
+  },
+  "flows_base_001": {
+   "PrototypeDungeonRoom": 11,
+   "DungeonFlow": 10,
+   "GenericRoomTable": 2,
+   "SharedInjectionData": 1,
+   "__Sprite": 0,
+   "__Texture2D": 0
+  },
+  "foyer_001": {
+   "dfPanel": 186,
+   "dfSprite": 173,
+   "dfLabel": 143,
+   "MenuCrosshairSelectionDoer": 76,
+   "BraveOptionsMenuItem": 59,
+   "tk2dSprite": 43,
+   "dfButton": 36,
+   "UIKeyControls": 27,
+   "dfSpriteAnimation": 25,
+   "dfSlicedSprite": 20,
+   "dfProgressBar": 17,
+   "dfCheckbox": 15,
+   "dfScrollPanel": 10,
+   "dfTextureSprite": 10,
+   "Iconographizer": 9,
+   "tk2dSpriteAnimator": 8,
+   "tk2dClippedSprite": 8,
+   "AdditionalBraveLight": 6,
+   "FinalIntroSequenceCard": 5,
+   "dfScrollbar": 5,
+   "tk2dTextMesh": 3,
+   "AkAudioListener": 3,
+   "GameUIBossHealthController": 3,
+   "dfGUICamera": 3,
+   "dfLanguageManager": 3,
+   "dfInputManager": 3,
+   "dfFollowObject": 3,
+   "dfGUIManager": 3,
+   "DFMaxScaler": 2,
+   "TempControlsController": 2,
+   "tk2dSpriteCollectionData": 2,
+   "tk2dTileMap": 2,
+   "GameUIAmmoController": 2,
+   "dfSlider": 2,
+   "PlayerIdentityPortraitDoer": 2,
+   "GameUIBlankController": 2,
+   "SimpleSpriteRotator": 2,
+   "GameUIItemController": 2,
+   "InControlInputAdapter": 2,
+   "GameUIHeartController": 2,
+   "GameUIReloadBarController": 2,
+   "tk2dSpriteAnimation": 1,
+   "AkInitializer": 1,
+   "DebugConsoleManager": 1,
+   "BraveInput": 1,
+   "Dungeon": 1,
+   "GameManager": 1,
+   "HUDGC": 1,
+   "MinimapRenderer": 1,
+   "SimpleStatLabel": 1,
+   "PhysicsEngine": 1,
+   "SpawnManager": 1,
+   "SpeedrunTimer": 1,
+   "Minimap": 1,
+   "TitleDioramaController": 1,
+   "PauseMenuController": 1,
+   "KeyboardBindingMenuOption": 1,
+   "PreOptionsMenuController": 1,
+   "GenericFullscreenEffect": 1,
+   "DebugLines": 1,
+   "SENaturalBloomAndDirtyLens": 1,
+   "?": 1,
+   "GameCursorController": 1,
+   "UndieListener": 1,
+   "FinalIntroSequenceManager": 1,
+   "ConversationBarController": 1,
+   "Pathfinder": 1,
+   "FullOptionsMenuController": 1,
+   "MinimapUIController": 1,
+   "LevelNameUIManager": 1,
+   "DemoDieListener": 1,
+   "HUDFPS": 1,
+   "StickyFrictionManager": 1,
+   "ConditionalTranslator": 1,
+   "UINotificationController": 1,
+   "MainMenuFoyerController": 1,
+   "AkTerminator": 1,
+   "CameraController": 1,
+   "Pixelator": 1,
+   "GameUIRoot": 1,
+   "__Sprite": 0,
+   "__Texture2D": 6
+  },
+  "foyer_002": {
+   "tk2dSprite": 124,
+   "SpeculativeRigidbody": 61,
+   "SimpleFlagDisabler": 33,
+   "tk2dSpriteAnimator": 17,
+   "DebrisRigidbodyInterface": 12,
+   "SceneLightManager": 9,
+   "ForceToSortingLayer": 9,
+   "ShadowSystem": 9,
+   "CharacterCostumeSwapper": 8,
+   "FloorTypeOverrideDoer": 8,
+   "DebrisObject": 6,
+   "MinorBreakable": 6,
+   "SpritePulser": 4,
+   "TorchController": 4,
+   "ObjectVisibilityManager": 4,
+   "EmissionSettings": 4,
+   "tk2dSpriteAnimation": 3,
+   "tk2dSpriteCollectionData": 3,
+   "FoyerGungeonDoor": 3,
+   "WarpPointHandler": 3,
+   "Foyer": 2,
+   "AkInitializer": 1,
+   "HologramFoyerController": 1,
+   "AdditionalBraveLight": 1,
+   "FoyerTimeHeroStatue": 1,
+   "AIAnimator": 1,
+   "DwarfEventListener": 1,
+   "EncounterTrackable": 1,
+   "PlayMakerFSM": 1,
+   "TalkDoerLite": 1,
+   "FoyerAlternateGunShrineController": 1,
+   "MovingPlatform": 1,
+   "FoyerFloorController": 1,
+   "AkTerminator": 1,
+   "__Sprite": 0,
+   "__Texture2D": 5
+  },
+  "foyer_003": {
+   "tk2dSprite": 53,
+   "SpeculativeRigidbody": 30,
+   "DebrisRigidbodyInterface": 9,
+   "tk2dSpriteAnimator": 8,
+   "SceneLightManager": 8,
+   "ForceToSortingLayer": 8,
+   "ShadowSystem": 8,
+   "SpritePulser": 4,
+   "TorchController": 4,
+   "ObjectVisibilityManager": 4,
+   "EmissionSettings": 4,
+   "WarpPointHandler": 3,
+   "AkInitializer": 1,
+   "Foyer": 1,
+   "MovingPlatform": 1,
+   "FoyerGungeonDoor": 1,
+   "AkTerminator": 1,
+   "__Sprite": 0,
+   "__Texture2D": 1
+  },
+  "shared_auto_001": {
+   "tk2dSprite": 912,
+   "tk2dSpriteAnimator": 423,
+   "SpeculativeRigidbody": 243,
+   "dfTiledSprite": 217,
+   "dfSprite": 195,
+   "DebrisObject": 192,
+   "dfPanel": 185,
+   "dfLabel": 143,
+   "SpriteAnimatorKiller": 123,
+   "tk2dSpriteCollectionData": 104,
+   "tk2dSpriteAnimation": 91,
+   "MinorBreakable": 89,
+   "DungeonPlaceableBehaviour": 88,
+   "PrototypeDungeonRoom": 81,
+   "MenuCrosshairSelectionDoer": 76,
+   "DungeonPlaceable": 73,
+   "PlayMakerFSM": 70,
+   "BraveOptionsMenuItem": 59,
+   "HitEffectHandler": 58,
+   "EncounterTrackable": 38,
+   "BreakableChunk": 35,
+   "AIAnimator": 33,
+   "TalkDoerLite": 33,
+   "dfSpriteAnimation": 32,
+   "dfButton": 31,
+   "dfAnimationClip": 29,
+   "GenericLootTable": 27,
+   "GenericRoomTable": 26,
+   "tk2dSpriteAttachPoint": 26,
+   "Projectile": 25,
+   "TimedObjectKiller": 25,
+   "UltraFortunesFavor": 23,
+   "UIKeyControls": 22,
+   "PlacedBlockerConfigurable": 21,
+   "TileIndexGrid": 21,
+   "dfTextureSprite": 20,
+   "dfSlicedSprite": 20,
+   "AudioAnimatorListener": 18,
+   "tk2dTiledSprite": 17,
+   "dfProgressBar": 17,
+   "PathMover": 16,
+   "ObjectHeightController": 16,
+   "dfCheckbox": 15,
+   "MajorBreakable": 14,
+   "SpritePulser": 13,
+   "AdvancedShrineController": 11,
+   "SimpleLightIntensityCurve": 10,
+   "Gun": 10,
+   "Chest": 9,
+   "PlacedWallDecorator": 9,
+   "tk2dClippedSprite": 9,
+   "ForceToSortingLayer": 9,
+   "ObjectStampOptions": 9,
+   "ObjectVisibilityManager": 9,
+   "ArtfulDodgerBumperController": 9,
+   "SharedInjectionData": 8,
+   "GoopDefinition": 8,
+   "Iconographizer": 8,
+   "dfScrollPanel": 8,
+   "OnKilledEnemySynergyProcessor": 7,
+   "MirrorDweller": 7,
+   "ExplosionDebrisLauncher": 7,
+   "SurfaceDecorator": 6,
+   "TorchController": 6,
+   "BaseShopController": 6,
+   "EmissionSettings": 6,
+   "NoteDoer": 6,
+   "ShadowSystem": 5,
+   "dfAtlas": 5,
+   "dfScrollbar": 5,
+   "tk2dSlicedSprite": 5,
+   "SceneLightManager": 5,
+   "ItemBlueprintItem": 5,
+   "SlideSurface": 4,
+   "dfFont": 4,
+   "dfInputManager": 4,
+   "DungeonDoorController": 4,
+   "AutoAimTarget": 4,
+   "TileSpriteClipper": 4,
+   "dfGUICamera": 4,
+   "dfGUIManager": 4,
+   "TransformGunSynergyProcessor": 4,
+   "FlippableCover": 4,
+   "DungeonMaterial": 3,
+   "DFAnimatorDestroyer": 3,
+   "BraveDFTextureAnimator": 3,
+   "RewardManager": 3,
+   "PathingTrapController": 3,
+   "WaftingDebrisObject": 3,
+   "dfFollowObject": 3,
+   "GameUIBossHealthController": 3,
+   "MinorBreakableGroupManager": 3,
+   "BulletScriptBehavior": 3,
+   "PierceProjModifier": 3,
+   "DecalObject": 3,
+   "AdditionalBraveLight": 3,
+   "PlaymakerEventInteractable": 3,
+   "DebrisMelter": 3,
+   "tk2dSpriteFromTexture": 2,
+   "DualWieldSynergyProcessor": 2,
+   "BasicBeamController": 2,
+   "PlayerIdentityPortraitDoer": 2,
+   "ResizableCollider": 2,
+   "StickyGrenadePersistentDebris": 2,
+   "tk2dFontData": 2,
+   "KickableObject": 2,
+   "AkAudioListener": 2,
+   "ChanceToLookNoncriticalRoom": 2,
+   "GameUIAmmoController": 2,
+   "GameUIHeartController": 2,
+   "PotemkinWafter": 2,
+   "ParticleKiller": 2,
+   "TrailController": 2,
+   "GameUIItemController": 2,
+   "tk2dTileMapData": 2,
+   "GatlingGullLeapPoint": 2,
+   "GameUIBlankController": 2,
+   "AkGameObj": 2,
+   "dfSlider": 2,
+   "dfLanguageManager": 2,
+   "ExplosionRadiusDefiner": 2,
+   "PlayerHandController": 2,
+   "GoopModifier": 2,
+   "GameUIReloadBarController": 2,
+   "HangingObjectController": 2,
+   "MovingPlatform": 2,
+   "FireOnReloadSynergyProcessor": 2,
+   "tk2dTileMap": 2,
+   "SynercacheManager": 2,
+   "BasicTrapController": 2,
+   "BulletKingWallOpenDoer": 2,
+   "ConveyorBelt": 2,
+   "ObsidianShellItem": 1,
+   "AutoDistortionDoer": 1,
+   "ChestBrokenImprovementItem": 1,
+   "AIBulletBank": 1,
+   "BeholsterShrineController": 1,
+   "FullOptionsMenuController": 1,
+   "MinimapRenderer": 1,
+   "PathBlocker": 1,
+   "FloorTypeOverrideDoer": 1,
+   "HologramDoer": 1,
+   "KeyProjModifier": 1,
+   "PitTrapController": 1,
+   "RaidenBeamController": 1,
+   "SilencerItem": 1,
+   "ModifyProjectileSynergyProcessor": 1,
+   "SpawnManager": 1,
+   "HUDGC": 1,
+   "BraveInput": 1,
+   "dfDynamicFont": 1,
+   "Pixelator_Simple": 1,
+   "Pixelator": 1,
+   "MirrorController": 1,
+   "BashelliskPickupSpawnPoint": 1,
+   "PreOptionsMenuController": 1,
+   "VolleyModificationSynergyProcessor": 1,
+   "KeyBulletPickup": 1,
+   "GunberMuncherController": 1,
+   "TonicWalletController": 1,
+   "DebugLines": 1,
+   "CompanionItem": 1,
+   "UndieListener": 1,
+   "DebugConsoleManager": 1,
+   "ConversationBarController": 1,
+   "AmmoRegenSynergyProcessor": 1,
+   "BuffVFXAnimator": 1,
+   "BreakableColumn": 1,
+   "Pathfinder": 1,
+   "AdvancedSynergyDatabase": 1,
+   "ArtfulDodgerTargetController": 1,
+   "StickyFrictionManager": 1,
+   "BossTriggerZone": 1,
+   "SimpleStatLabel": 1,
+   "GameUIRoot": 1,
+   "GoopPlaceable": 1,
+   "DraGunRoomPlaceable": 1,
+   "ArtfulDodgerCameraManipulator": 1,
+   "LevelNameUIManager": 1,
+   "RobotechProjectile": 1,
+   "BossCardUIController": 1,
+   "SmashTentController": 1,
+   "SENaturalBloomAndDirtyLens": 1,
+   "WarpPointHandler": 1,
+   "DemonFaceController": 1,
+   "KeyboardBindingMenuOption": 1,
+   "BossLightHelper": 1,
+   "WitchCauldronController": 1,
+   "MemoryTester": 1,
+   "ArtfulDodgerRoomController": 1,
+   "ExplosiveModifier": 1,
+   "CursePotController": 1,
+   "HoveringGunSynergyProcessor": 1,
+   "RewardPedestal": 1,
+   "MetaInjectionData": 1,
+   "InControlInputAdapter": 1,
+   "BounceProjModifier": 1,
+   "MetaShopController": 1,
+   "RelatedObjects": 1,
+   "ProjectileVolleyData": 1,
+   "ChallengeShrineController": 1,
+   "GenericDecorator": 1,
+   "ConditionalTranslator": 1,
+   "UINotificationController": 1,
+   "HomingModifier": 1,
+   "BrazierController": 1,
+   "CompanionSynergyProcessor": 1,
+   "StickyGrenadeBuff": 1,
+   "Flake": 1,
+   "CameraController": 1,
+   "GenericFullscreenEffect": 1,
+   "PauseMenuController": 1,
+   "MinimapUIController": 1,
+   "SpeedrunTimer": 1,
+   "DemoDieListener": 1,
+   "Minimap": 1,
+   "InstantlyDamageAllProjectile": 1,
+   "ForgeHammerController": 1,
+   "HUDFPS": 1,
+   "PhysicsEngine": 1,
+   "GameCursorController": 1,
+   "SpotLightHelper": 1,
+   "__Sprite": 0,
+   "__Texture2D": 358
+  },
+  "shared_auto_002": {
+   "tk2dSprite": 2023,
+   "PrototypeDungeonRoom": 640,
+   "tk2dSpriteAnimator": 552,
+   "BreakableChunk": 382,
+   "SpeculativeRigidbody": 287,
+   "DungeonPlaceable": 135,
+   "DebrisObject": 102,
+   "MinorBreakable": 83,
+   "HitEffectHandler": 79,
+   "SpriteAnimatorKiller": 57,
+   "DungeonPlaceableBehaviour": 45,
+   "PlayMakerFSM": 44,
+   "EncounterTrackable": 40,
+   "TalkDoerLite": 38,
+   "AIAnimator": 30,
+   "PlacedWallDecorator": 26,
+   "tk2dSpriteCollectionData": 21,
+   "tk2dSpriteAnimation": 20,
+   "TileIndexGrid": 17,
+   "AudioAnimatorListener": 16,
+   "UltraFortunesFavor": 14,
+   "SpritePulser": 14,
+   "tk2dSpriteAttachPoint": 13,
+   "ObjectStampOptions": 13,
+   "TimedObjectKiller": 12,
+   "ObjectHeightController": 11,
+   "SurfaceDecorator": 10,
+   "DungeonDoorController": 10,
+   "tk2dSlicedSprite": 10,
+   "PathMover": 9,
+   "ForceToSortingLayer": 9,
+   "FoyerCharacterSelectFlag": 9,
+   "SceneLightManager": 8,
+   "ElevatorDepartureController": 8,
+   "CharacterSelectIdleDoer": 8,
+   "Projectile": 8,
+   "ShadowSystem": 8,
+   "DungeonMaterial": 7,
+   "GenericLootTable": 7,
+   "ObjectVisibilityManager": 7,
+   "GenericRoomTable": 7,
+   "MajorBreakable": 6,
+   "AkGameObj": 6,
+   "BasicStatPickup": 6,
+   "SharedInjectionData": 6,
+   "FloorChestPlacer": 6,
+   "ElevatorArrivalController": 6,
+   "AutoAimTarget": 5,
+   "SimpleFlagDisabler": 5,
+   "Gun": 5,
+   "PathingTrapController": 4,
+   "KickableObject": 4,
+   "ProjectileTrapController": 3,
+   "DungeonTileStampData": 3,
+   "WarpPointHandler": 3,
+   "BaseShopController": 3,
+   "SimpleSpriteUpdater": 3,
+   "NoteDoer": 3,
+   "DwarfEventListener": 3,
+   "SlideSurface": 3,
+   "InteractableLock": 2,
+   "EmissionSettings": 2,
+   "AIBulletBank": 2,
+   "SimpleLightIntensityCurve": 2,
+   "FlippableCover": 2,
+   "ShopSubsidiaryZone": 2,
+   "ResizableCollider": 2,
+   "ExplosionDebrisLauncher": 2,
+   "MineCartController": 2,
+   "TorchController": 2,
+   "DungeonDoorSubsidiaryBlocker": 2,
+   "ParticleKiller": 2,
+   "PierceProjModifier": 2,
+   "InteractableDoorController": 2,
+   "PressurePlate": 2,
+   "BehaviorSpeculator": 1,
+   "BasicTrapController": 1,
+   "RobotechProjectile": 1,
+   "FloorTypeOverrideDoer": 1,
+   "LiveAmmoItem": 1,
+   "DirectionalAttackActiveItem": 1,
+   "SmartOverheadVFXController": 1,
+   "RagePassiveItem": 1,
+   "EntranceController": 1,
+   "LedgeGoblinHelmetController": 1,
+   "SellCellController": 1,
+   "FakeGameActorEffectHandler": 1,
+   "DungeonFlow": 1,
+   "LockpicksItem": 1,
+   "HeroSwordItem": 1,
+   "LightCookieAnimator": 1,
+   "ReticleRiserEffect": 1,
+   "HangingObjectController": 1,
+   "ExplosiveModifier": 1,
+   "HeartDispenser": 1,
+   "CartTurretController": 1,
+   "AdditionalBraveLight": 1,
+   "CrestDoorController": 1,
+   "GunberMuncherController": 1,
+   "tk2dTiledSprite": 1,
+   "ProjectileVolleyData": 1,
+   "GoopDefinition": 1,
+   "ThrownGoopItem": 1,
+   "ShortcutElevatorController": 1,
+   "SharedDungeonSettings": 1,
+   "PlaceableAsyncSceneLoader": 1,
+   "UsableBasicWarp": 1,
+   "BulletStatusEffectItem": 1,
+   "FireplaceController": 1,
+   "BabyDragunJailController": 1,
+   "SpawnObjectPlayerItem": 1,
+   "BounceProjModifier": 1,
+   "PlacedBlockerConfigurable": 1,
+   "AdvancedShrineController": 1,
+   "Chest": 1,
+   "VolleyModificationSynergyProcessor": 1,
+   "MovingPlatform": 1,
+   "DamageTypeEffectMatrix": 1,
+   "TrailController": 1,
+   "DoNothingActiveItem": 1,
+   "ArcaneGunpowderItem": 1,
+   "__Sprite": 0,
+   "__Texture2D": 84
+  },
+  "shared_base_001": {
+   "tk2dSprite": 6,
+   "tk2dSpriteAnimator": 4,
+   "AIAnimator": 2,
+   "EncounterTrackable": 2,
+   "SpriteAnimatorKiller": 2,
+   "SpeculativeRigidbody": 2,
+   "KnockbackDoer": 1,
+   "AIBulletBank": 1,
+   "SuperReaperController": 1,
+   "PrefabDatabase": 1,
+   "DwarfEventListener": 1,
+   "TalkDoerLite": 1,
+   "UltraFortunesFavor": 1,
+   "PlayMakerFSM": 1,
+   "NoteDoer": 1,
+   "__Sprite": 0,
+   "__Texture2D": 0
+  }
+ },
+ "samples": {
+  "Gun_full": {
+   "m_GameObject": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": -5602455131256451237
+    }
+   },
+   "m_Enabled": 1,
+   "m_Script": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": -1881756858430259141
+    }
+   },
+   "m_Name": "",
+   "PickupObjectId": 519,
+   "quality": 3,
+   "additionalMagnificenceModifier": 0.0,
+   "ItemSpansBaseQualityTiers": 0,
+   "ItemRespectsHeartMagnificence": 0,
+   "associatedItemChanceMods": "list[empty] len=0",
+   "contentSource": 3,
+   "ShouldBeExcludedFromShops": 0,
+   "CanBeDropped": 1,
+   "PreventStartingOwnerFromDropping": 0,
+   "PersistsOnDeath": 0,
+   "RespawnsIfPitfall": 0,
+   "PreventSaveSerialization": 0,
+   "IgnoredByRat": 0,
+   "SaveFlagToSetOnAcquisition": 0,
+   "itemName": "",
+   "ForcedPositionInAmmonomicon": 80,
+   "UsesCustomCost": 0,
+   "CustomCost": 0,
+   "PersistsOnPurchase": 0,
+   "CanBeSold": 1,
+   "gunName": "Combine Rifle",
+   "gunSwitchGroup": "CombineRifle",
+   "isAudioLoop": 0,
+   "lowersAudioWhileFiring": 0,
+   "gunClass": 10,
+   "currentGunStatModifiers": "list[empty] len=0",
+   "passiveStatModifiers": "list[empty] len=0",
+   "currentGunDamageTypeModifiers": "list[empty] len=0",
+   "ArmorToGainOnPickup": 0,
+   "barrelOffset": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": -4158033334004317391
+    }
+   },
+   "muzzleOffset": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": 0
+    }
+   },
+   "chargeOffset": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": 0
+    }
+   },
+   "reloadOffset": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": 0
+    }
+   },
+   "carryPixelOffset": {
+    "dict": {
+     "x": 6,
+     "y": 0
+    }
+   },
+   "carryPixelUpOffset": {
+    "dict": {
+     "x": 0,
+     "y": 0
+    }
+   },
+   "carryPixelDownOffset": {
+    "dict": {
+     "x": 0,
+     "y": 0
+    }
+   },
+   "UsesPerCharacterCarryPixelOffsets": 0,
+   "PerCharacterPixelOffsets": "list[empty] len=0",
+   "leftFacingPixelOffset": {
+    "dict": {
+     "x": 0,
+     "y": 0
+    }
+   },
+   "gunHandedness": 0,
+   "overrideOutOfAmmoHandedness": 0,
+   "additionalHandState": 2,
+   "gunPosition": 0,
+   "forceFlat": 0,
+   "rawVolley": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": 0
+    }
+   },
+   "singleModule": {
+    "dict": {
+     "shootStyle": 1,
+     "ammoType": 0,
+     "customAmmoType": "",
+     "projectiles": {
+      "list[dict]": {
+       "m_FileID": 0,
+       "m_PathID": 7006526880016324860
+      },
+      "len": 1
+     },
+     "sequenceStyle": 1,
+     "orderedGroupCounts": "list[empty] len=0",
+     "chargeProjectiles": "list[empty] len=0",
+     "maxChargeTime": 0.0,
+     "triggerCooldownForAnyChargeAmount": 0,
+     "isFinalVolley": 0,
+     "usesOptionalFinalProjectile": 0,
+     "finalProjectile": {
+      "dict": {
+       "m_FileID": 0,
+       "m_PathID": 0
+      }
+     },
+     "finalVolley": {
+      "dict": {
+       "m_FileID": 0,
+       "m_PathID": 0
+      }
+     },
+     "numberOfFinalProjectiles": 1,
+     "finalAmmoType": 0,
+     "finalCustomAmmoType": "",
+     "angleFromAim": 0.0,
+     "alternateAngle": 0,
+     "angleVariance": 7.0,
+     "positionOffset": {
+      "dict": {
+       "x": 0.0,
+       "y": 0.0,
+       "z": 0.0
+      }
+     },
+     "mirror": 0,
+     "inverted": 0,
+     "ammoCost": 1,
+     "burstShotCount": 3,
+     "burstCooldownTime": 0.10000000149011612,
+     "cooldownTime": 0.10000000149011612,
+     "numberOfShotsInClip": 30,
+     "ignoredForReloadPurposes": 0,
+     "preventFiringDuringCharge": 0
+    }
+   },
+   "rawOptionalReloadVolley": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": 0
+    }
+   },
+   "ammo": 500,
+   "CanGainAmmo": 1,
+   "LocalInfiniteAmmo": 0,
+   "UsesBossDamageModifier": 0,
+   "CustomBossDamageModifier": -1.0,
+   "maxAmmo": 500,
+   "reloadTime": 1.2000000476837158,
+   "blankDuringReload": 0,
+   "blankReloadRadius": 1.0,
+   "reflectDuringReload": 0,
+   "blankKnockbackPower": 20.0,
+   "blankDamageToEnemies": 0.0,
+   "blankDamageScalingOnEmptyClip": 1.0,
+   "doesScreenShake": 1,
+   "gunScreenShake": {
+    "dict": {
+     "magnitude": 0.30000001192092896,
+     "speed": 9.0,
+     "time": 0.05999999865889549,
+     "falloff": 0.0,
+     "direction": {
+      "dict": {
+       "x": 1.0,
+       "y": 0.20000000298023224
+      }
+     },
+     "vibrationType": 10,
+     "simpleVibrationTime": 20,
+     "simpleVibrationStrength": 20
+    }
+   },
+   "directionlessScreenShake": 0,
+   "damageModifier": 0,
+   "thrownObject": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": 0
+    }
+   },
+   "procGunData": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": 0
+    }
+   },
+   "activeReloadData": {
+    "dict": {
+     "damageMultiply": 1.0,
+     "knockbackMultiply": 1.0,
+     "usesOverrideAngleVariance": 0,
+     "overrideAngleVariance": 0.0,
+     "reloadSpeedMultiplier": 1.0,
+     "ActiveReloadStacks": 0,
+     "ActiveReloadIncrementsTier": 0,
+     "MaxTier": 5
+    }
+   },
+   "ClearsCooldownsLikeAWP": 0,
+   "AppliesHoming": 0,
+   "AppliedHomingAngularVelocity": 180.0,
+   "AppliedHomingDetectRadius": 4.0,
+   "m_unswitchableGun": 0,
+   "shootAnimation": "combine_fire",
+   "usesContinuousFireAnimation": 1,
+   "reloadAnimation": "combine_riflepulse",
+   "emptyReloadAnimation": "",
+   "idleAnimation": "combine_rifle_idle",
+   "chargeAnimation": "",
+   "dischargeAnimation": "",
+   "emptyAnimation": "combine_rifle_empty",
+   "introAnimation": "",
+   "finalShootAnimation": "",
+   "enemyPreFireAnimation": "",
+   "outOfAmmoAnimation": "",
+   "criticalFireAnimation": "",
+   "dodgeAnimation": "",
+   "usesDirectionalIdleAnimations": 0,
+   "usesDirectionalAnimator": 0,
+   "preventRotation": 0,
+   "muzzleFlashEffects": {
+    "dict": {
+     "type": 4,
+     "effects": {
+      "list[dict]": {
+       "effects": {
+        "list[dict]": {
+         "effect": "dict",
+         "orphaned": 0,
+         "attached": 1,
+         "persistsOnDeath": 0,
+         "usesZHeight": 0,
+         "zHeight": 0.0,
+         "alignment": 0,
+         "destructible": 0
+        },
+        "len": 1
+       }
+      },
+      "len": 1
+     }
+    }
+   },
+   "usesContinuousMuzzleFlash": 0,
+   "finalMuzzleFlashEffects": {
+    "dict": {
+     "type": 0,
+     "effects": "list[empty] len=0"
+    }
+   },
+   "reloadEffects": {
+    "dict": {
+     "type": 0,
+     "effects": "list[empty] len=0"
+    }
+   },
+   "emptyReloadEffects": {
+    "dict": {
+     "type": 0,
+     "effects": "list[empty] len=0"
+    }
+   },
+   "activeReloadSuccessEffects": {
+    "dict": {
+     "type": 0,
+     "effects": "list[empty] len=0"
+    }
+   },
+   "activeReloadFailedEffects": {
+    "dict": {
+     "type": 0,
+     "effects": "list[empty] len=0"
+    }
+   },
+   "light": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": 0
+    }
+   },
+   "baseLightIntensity": 0.0,
+   "shellCasing": {
+    "dict": {
+     "m_FileID": 2,
+     "m_PathID": 671557996272955978
+    }
+   },
+   "shellsToLaunchOnFire": 1,
+   "shellCasingOnFireFrameDelay": 0,
+   "shellsToLaunchOnReload": 0,
+   "reloadShellLaunchFrame": 0,
+   "clipObject": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": -6485200444902303977
+    }
+   },
+   "clipsToLaunchOnReload": 1,
+   "reloadClipLaunchFrame": 0,
+   "prefabName": "",
+   "rampBullets": 0,
+   "rampStartHeight": 2.0,
+   "rampTime": 1.0,
+   "IgnoresAngleQuantization": 0,
+   "IsTrickGun": 1,
+   "TrickGunAlternatesHandedness": 0,
+   "PreventOutlines": 0,
+   "alternateVolley": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": -7719275767635257718
+    }
+   },
+   "alternateShootAnimation": "combine_riflepulse_fire",
+   "alternateReloadAnimation": "combine_riflepulse",
+   "alternateSwitchGroup": "CombineBomb",
+   "IsHeroSword": 0,
+   "HeroSwordDoesntBlank": 0,
+   "StarterGunForAchievement": 0,
+   "CanSneakAttack": 0,
+   "SneakAttackDamageMultiplier": 3.0,
+   "SuppressLaserSight": 0,
+   "RequiresFundsToShoot": 0,
+   "CurrencyCostPerShot": 1,
+   "weaponPanelSpriteOverride": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": 0
+    }
+   },
+   "IsLuteCompanionBuff": 0,
+   "MovesPlayerForwardOnChargeFire": 0,
+   "LockedHorizontalOnCharge": 0,
+   "LockedHorizontalCenterFireOffset": -1.0,
+   "GoopReloadsFree": 0,
+   "IsUndertaleGun": 0,
+   "LocalActiveReload": 0,
+   "UsesRechargeLikeActiveItem": 0,
+   "ActiveItemStyleRechargeAmount": 100.0,
+   "CanAttackThroughObjects": 0,
+   "CanCriticalFire": 0,
+   "CriticalChance": 0.10000000149011612,
+   "CriticalDamageMultiplier": 3.0,
+   "CriticalMuzzleFlashEffects": {
+    "dict": {
+     "type": 0,
+     "effects": "list[empty] len=0"
+    }
+   },
+   "CriticalReplacementProjectile": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": 0
+    }
+   },
+   "GainsRateOfFireAsContinueAttack": 0,
+   "RateOfFireMultiplierAdditionPerSecond": 0.0,
+   "OnlyUsesIdleInWeaponBox": 0,
+   "DisablesRendererOnCooldown": 0,
+   "ObjectToInstantiateOnReload": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": 0
+    }
+   },
+   "HasBeenPickedUp": 0
+  },
+  "BasicStatPickup_full": {
+   "m_GameObject": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": 4617825036284373564
+    }
+   },
+   "m_Enabled": 1,
+   "m_Script": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": -2012276426234782883
+    }
+   },
+   "m_Name": "",
+   "PickupObjectId": 494,
+   "quality": 3,
+   "additionalMagnificenceModifier": 0.0,
+   "ItemSpansBaseQualityTiers": 0,
+   "ItemRespectsHeartMagnificence": 0,
+   "associatedItemChanceMods": "list[empty] len=0",
+   "contentSource": 0,
+   "ShouldBeExcludedFromShops": 0,
+   "CanBeDropped": 0,
+   "PreventStartingOwnerFromDropping": 0,
+   "PersistsOnDeath": 1,
+   "RespawnsIfPitfall": 0,
+   "PreventSaveSerialization": 0,
+   "IgnoredByRat": 0,
+   "SaveFlagToSetOnAcquisition": 0,
+   "itemName": "Military Training",
+   "ForcedPositionInAmmonomicon": 263,
+   "UsesCustomCost": 0,
+   "CustomCost": 45,
+   "PersistsOnPurchase": 0,
+   "CanBeSold": 0,
+   "passiveStatModifiers": "list[empty] len=0",
+   "ArmorToGainOnInitialPickup": 0,
+   "minimapIcon": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": 0
+    }
+   },
+   "modifiers": {
+    "list[dict]": {
+     "statToBoost": 2,
+     "modifyType": 1,
+     "amount": 0.5
+    },
+    "len": 3
+   },
+   "ArmorToGive": 0,
+   "ModifiesDodgeRoll": 0,
+   "DodgeRollTimeMultiplier": 0.8999999761581421,
+   "DodgeRollDistanceMultiplier": 1.25,
+   "AdditionalInvulnerabilityFrames": 0,
+   "IsJunk": 0,
+   "GivesCurrency": 0,
+   "CurrencyToGive": 0,
+   "IsMasteryToken": 0
+  },
+  "ActiveBasicStatItem_full": {
+   "m_GameObject": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": -5233479212329084987
+    }
+   },
+   "m_Enabled": 1,
+   "m_Script": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": 3814088508516111258
+    }
+   },
+   "m_Name": "",
+   "PickupObjectId": 174,
+   "quality": 1,
+   "additionalMagnificenceModifier": 0.0,
+   "ItemSpansBaseQualityTiers": 0,
+   "ItemRespectsHeartMagnificence": 0,
+   "associatedItemChanceMods": "list[empty] len=0",
+   "contentSource": 0,
+   "ShouldBeExcludedFromShops": 0,
+   "CanBeDropped": 1,
+   "PreventStartingOwnerFromDropping": 0,
+   "PersistsOnDeath": 0,
+   "RespawnsIfPitfall": 0,
+   "PreventSaveSerialization": 0,
+   "IgnoredByRat": 0,
+   "SaveFlagToSetOnAcquisition": 0,
+   "itemName": "Potion of Gun Friendship",
+   "ForcedPositionInAmmonomicon": 62,
+   "UsesCustomCost": 0,
+   "CustomCost": 35,
+   "PersistsOnPurchase": 0,
+   "CanBeSold": 1,
+   "consumable": 0,
+   "consumableOnCooldownUse": 0,
+   "consumableOnActiveUse": 0,
+   "consumableHandlesOwnDuration": 1,
+   "customDestroyTime": 10.0,
+   "numberOfUses": 1,
+   "UsesNumberOfUsesBeforeCooldown": 0,
+   "canStack": 1,
+   "roomCooldown": 0,
+   "timeCooldown": 0.0,
+   "damageCooldown": 400.0,
+   "usableDuringDodgeRoll": 0,
+   "useAnimation": "",
+   "minimapIcon": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": 0
+    }
+   },
+   "OnActivatedSprite": "",
+   "OnCooldownSprite": "",
+   "passiveStatModifiers": "list[empty] len=0",
+   "duration": 10.0,
+   "modifiers": {
+    "list[dict]": {
+     "statToBoost": 1,
+     "modifyType": 1,
+     "amount": 2.0
+    },
+    "len": 4
+   }
+  },
+  "itemish_classes": {
+   "BasicStatPickup": 36,
+   "SpawnObjectPlayerItem": 14,
+   "CompanionItem": 11,
+   "TableFlipItem": 8,
+   "PlayerOrbitalItem": 6,
+   "NotePassiveItem": 6,
+   "IounStoneOrbitalItem": 6,
+   "BlankModificationItem": 6,
+   "GunVolleyModificationItem": 5,
+   "BulletStatusEffectItem": 5,
+   "SpawnItemOnRoomClearItem": 4,
+   "CurrencyPickup": 4,
+   "HealPlayerItem": 4,
+   "BulletArmorItem": 4,
+   "WingsItem": 3,
+   "HealthPickup": 3,
+   "PassiveGooperItem": 3,
+   "DamageTypeModifierItem": 3,
+   "EyeOfTheTigerItem": 2,
+   "ScalingStatBoostItem": 2,
+   "ExtraLifeItem": 2,
+   "KeyBulletPickup": 2,
+   "AmmoPickup": 2,
+   "ThrownGunPassiveItem": 2,
+   "ThrownGoopItem": 2,
+   "ClipBulletModifierItem": 2,
+   "DirectionalAttackActiveItem": 2,
+   "CartographersRingItem": 2,
+   "ReflectShieldPlayerItem": 2,
+   "EnemyBulletSpeedItem": 2,
+   "SpawnProjectileOnDamagedItem": 2,
+   "HomingBulletsPassiveItem": 2,
+   "MulticompanionItem": 1,
+   "EmptyBottleItem": 1,
+   "PegasusBootsItem": 1,
+   "BankBagItem": 1,
+   "SkeletonKeyItem": 1,
+   "RationItem": 1,
+   "DuctTapeItem": 1,
+   "MimicRingItem": 1,
+   "TimeSlowPlayerItem": 1,
+   "FireVolleyOnRollItem": 1,
+   "CogOfBattleItem": 1,
+   "FortuneFavorItem": 1,
+   "ActiveBasicStatItem": 1,
+   "BriefcaseFullOfCashItem": 1,
+   "RadialCharmItem": 1,
+   "CardboardBoxItem": 1,
+   "NPCCellKeyItem": 1,
+   "JetpackItem": 1,
+   "SnowballBulletsItem": 1,
+   "BombCompanionAppItem": 1,
+   "ProjectileRandomizerItem": 1,
+   "ChaosBulletsItem": 1,
+   "CoopPassiveItem": 1,
+   "LaserSightItem": 1,
+   "MagazineRackItem": 1,
+   "OnKillEnemyItem": 1,
+   "AmazingChestAheadItem": 1,
+   "MoveAmmoToClipItem": 1,
+   "RadialSlowItem": 1,
+   "PassiveReflectItem": 1,
+   "ActiveItemCooldownItem": 1,
+   "AstralSlugItem": 1,
+   "GungeonMapItem": 1,
+   "FoldingTableItem": 1,
+   "OnPlayerItemUsedItem": 1,
+   "CheeseWheelItem": 1,
+   "KiPulseItem": 1,
+   "ChamberOfEvilItem": 1,
+   "FireOnReloadItem": 1,
+   "SupplyDropItem": 1,
+   "SunglassesItem": 1,
+   "AncientPrimerItem": 1,
+   "SpecialKeyItem": 1,
+   "DamageEnemiesInRadiusItem": 1,
+   "MetronomeItem": 1,
+   "PuzzleBoxItem": 1,
+   "CathedralCrestItem": 1,
+   "GuidedBulletsPassiveItem": 1,
+   "RobotUnlockTelevisionItem": 1,
+   "ItemBlueprintItem": 1,
+   "OnPurchasePassiveItem": 1,
+   "ActiveShieldItem": 1,
+   "SilverBulletsPassiveItem": 1,
+   "RatBootsItem": 1,
+   "SpiceItem": 1,
+   "SenseOfDirectionItem": 1,
+   "StoutBulletsItem": 1,
+   "KnifeShieldItem": 1,
+   "OnDamagedPassiveItem": 1,
+   "EscapeRopeItem": 1,
+   "EstusFlaskItem": 1,
+   "SnitchBrickItem": 1,
+   "PileOfDarkSoulsPickup": 1,
+   "BlankPersonalityItem": 1,
+   "GaseousFormPlayerItem": 1,
+   "HelmetItem": 1,
+   "SynergyCompletionItem": 1,
+   "BankMaskItem": 1,
+   "CorpseExplodeActiveItem": 1,
+   "ConsumableStealthItem": 1,
+   "ChestBrokenItem": 1,
+   "GunClassPassiveItem": 1,
+   "TemporaryInvulnerabilityPlayerItem": 1,
+   "GrapplingHookItem": 1,
+   "SimplePuzzleItem": 1,
+   "CigaretteItem": 1,
+   "RandomProjectileReplacementItem": 1,
+   "RegenerationPassiveItem": 1,
+   "SpikedArmorItem": 1,
+   "BlinkPassiveItem": 1,
+   "RatPackItem": 1,
+   "MiserlyProtectionItem": 1,
+   "GungeonEggItem": 1,
+   "RobotArmBalloonsItem": 1,
+   "YellowChamberItem": 1,
+   "SprenOrbitalItem": 1,
+   "HealingReceivedModificationItem": 1,
+   "PaydayDrillItem": 1,
+   "TeleporterPrototypeItem": 1,
+   "RemoteMineItem": 1,
+   "HeavyBootsItem": 1,
+   "IronCoinItem": 1,
+   "ActiveSummonItem": 1,
+   "RobotArmItem": 1,
+   "AuraItem": 1,
+   "DownwellBootsItem": 1,
+   "AutoblankVestItem": 1,
+   "SevenLeafCloverItem": 1,
+   "MimicToothNecklaceItem": 1,
+   "OurPowersCombinedItem": 1,
+   "ReturnAmmoOnMissedShotItem": 1,
+   "MachoBraceItem": 1,
+   "CrisisStoneItem": 1,
+   "PlatinumBulletsItem": 1,
+   "NanomachinesItem": 1,
+   "StunEnemiesInRoomItem": 1,
+   "TargetedAttackPlayerItem": 1,
+   "RelodestoneItem": 1,
+   "RingOfResourcefulRatItem": 1,
+   "ChestTeleporterItem": 1,
+   "BattleStandardItem": 1,
+   "ActiveGunVolleyModificationItem": 1,
+   "SuperhotItem": 1,
+   "RatchetScouterItem": 1
+  },
+  "synergy_entry_full": {
+   "NameKey": "#HEAVYMETAL",
+   "ActivationStatus": 3,
+   "MandatoryGunIDs": "list[int] len=1",
+   "MandatoryItemIDs": "list[empty] len=0",
+   "OptionalGunIDs": "list[empty] len=0",
+   "OptionalItemIDs": "list[int] len=2",
+   "NumberObjectsRequired": 2,
+   "ActiveWhenGunUnequipped": 0,
+   "SuppressVFX": 0,
+   "RequiresAtLeastOneGunAndOneItem": 1,
+   "statModifiers": {
+    "list[dict]": {
+     "statToBoost": 5,
+     "modifyType": 1,
+     "amount": 1.2000000476837158
+    },
+    "len": 2
+   },
+   "bonusSynergies": "list[empty] len=0"
+  },
+  "synergy_entry_example": {
+   "NameKey": "#HEAVYMETAL",
+   "ActivationStatus": 3,
+   "MandatoryGunIDs": [
+    393
+   ],
+   "MandatoryItemIDs": [],
+   "OptionalGunIDs": [],
+   "OptionalItemIDs": [
+    111,
+    256
+   ],
+   "NumberObjectsRequired": 2,
+   "ActiveWhenGunUnequipped": 0,
+   "SuppressVFX": 0,
+   "RequiresAtLeastOneGunAndOneItem": 1,
+   "statModifiers": [
+    {
+     "statToBoost": 5,
+     "modifyType": 1,
+     "amount": 1.2000000476837158
+    },
+    {
+     "statToBoost": 6,
+     "modifyType": 1,
+     "amount": 0.75
+    }
+   ],
+   "bonusSynergies": []
+  },
+  "synergydb_keys": [
+   "m_GameObject",
+   "m_Enabled",
+   "m_Script",
+   "m_Name",
+   "synergies"
+  ],
+  "shared_Chest": {
+   "m_GameObject": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": 2011506993779592033
+    }
+   },
+   "m_Enabled": 1,
+   "m_Script": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": 2361071260290412152
+    }
+   },
+   "m_Name": "",
+   "placeableWidth": 3,
+   "placeableHeight": 1,
+   "difficulty": 0,
+   "isPassable": 1,
+   "ChestIdentifier": 0,
+   "forceContentIds": "list[empty] len=0",
+   "lootTable": {
+    "dict": {
+     "lootTable": {
+      "dict": {
+       "m_FileID": 0,
+       "m_PathID": -3119490351517448801
+      }
+     },
+     "overrideItemLootTables": "list[empty] len=0",
+     "Common_Chance": 0.0,
+     "D_Chance": 1.0,
+     "C_Chance": 1.0,
+     "B_Chance": 1.0,
+     "A_Chance": 0.0,
+     "S_Chance": 0.0,
+     "CompletesSynergy": 1,
+     "canDropMultipleItems": 0,
+     "onlyOneGunCanDrop": 1,
+     "multipleItemDropChances": {
+      "dict": {
+       "elements": "list[empty] len=0"
+      }
+     }
+    }
+   },
+   "breakertronNothingChance": 0.10000000149011612,
+   "breakertronLootTable": {
+    "dict": {
+     "lootTable": {
+      "dict": {
+       "m_FileID": 0,
+       "m_PathID": -3119490351517448801
+      }
+     },
+     "overrideItemLootTables": "list[empty] len=0",
+     "Common_Chance": 0.0,
+     "D_Chance": 0.20000000298023224,
+     "C_Chance": 0.800000011920929,
+     "B_Chance": 0.10000000149011612,
+     "A_Chance": 0.0,
+     "S_Chance": 0.0,
+     "CompletesSynergy": 0,
+     "canDropMultipleItems": 0,
+     "onlyOneGunCanDrop": 1,
+     "multipleItemDropChances": {
+      "dict": {
+       "elements": "list[empty] len=0"
+      }
+     }
+    }
+   },
+   "prefersDungeonProcContents": 1,
+   "ShadowSprite": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": 0
+    }
+   },
+   "pickedUp": 0,
+   "spawnAnimName": "synergy_chest_appear",
+   "openAnimName": "synergy_chest_open_gamble",
+   "breakAnimName": "synergy_chest_break",
+   "overrideJunkId": -1,
+   "VFX_PreSpawn": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": 5233299719104300713
+    }
+   },
+   "VFX_GroundHit": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": -1401428876512443844
+    }
+   },
+   "groundHitDelay": 0.7300000190734863,
+   "spawnTransform": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": -8965765405447572704
+    }
+   },
+   "spawnCurve": {
+    "dict": {
+     "m_Curve": {
+      "list[dict]": {
+       "time": 0.0,
+       "value": 0.0,
+       "inSlope": 3.5625007152557373,
+       "outSlope": 3.5625007152557373
+      },
+      "len": 2
+     },
+     "m_PreInfinity": 2,
+     "m_PostInfinity": 2,
+     "m_RotationOrder": 0
+    }
+   },
+   "LockAnimator": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": 8755772324186312861
+    }
+   },
+   "LockOpenAnim": "synergy_lock_open",
+   "LockBreakAnim": "synergy_lock_break",
+   "LockNoKeyAnim": "synergy_lock_nokey",
+   "SubAnimators": {
+    "list[dict]": {
+     "m_FileID": 0,
+     "m_PathID": 2749857401035823717
+    },
+    "len": 1
+   },
+   "IsLocked": 1,
+   "IsSealed": 0,
+   "IsOpen": 0,
+   "IsBroken": 0,
+   "AlwaysBroadcastsOpenEvent": 0,
+   "IsRainbowChest": 0,
+   "IsMirrorChest": 0,
+   "MimicGuid": "abfb454340294a0992f4173d6e5898a8",
+   "mimicOffset": {
+    "dict": {
+     "x": 0,
+     "y": 0
+    }
+   },
+   "preMimicIdleAnim": "synergy_chest_mimic_idle",
+   "preMimicIdleAnimDelay": 3.0,
+   "overrideMimicChance": -1.0,
+   "MinimapIconPrefab": {
+    "dict": {
+     "m_FileID": 1,
+     "m_PathID": -7832486618240564577
+    }
+   }
+  },
+  "shared_ChestBrokenImprovementItem": {
+   "m_GameObject": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": 2987142583201749950
+    }
+   },
+   "m_Enabled": 1,
+   "m_Script": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": 3302535908425232804
+    }
+   },
+   "m_Name": "",
+   "PickupObjectId": 487,
+   "quality": 2,
+   "additionalMagnificenceModifier": 0.0,
+   "ItemSpansBaseQualityTiers": 0,
+   "ItemRespectsHeartMagnificence": 0,
+   "associatedItemChanceMods": "list[empty] len=0",
+   "contentSource": 0,
+   "ShouldBeExcludedFromShops": 0,
+   "CanBeDropped": 1,
+   "PreventStartingOwnerFromDropping": 0,
+   "PersistsOnDeath": 0,
+   "RespawnsIfPitfall": 0,
+   "PreventSaveSerialization": 0,
+   "IgnoredByRat": 0,
+   "SaveFlagToSetOnAcquisition": 0,
+   "itemName": "ChestAnatomyBook",
+   "ForcedPositionInAmmonomicon": 237,
+   "UsesCustomCost": 0,
+   "CustomCost": 65,
+   "PersistsOnPurchase": 0,
+   "CanBeSold": 1,
+   "passiveStatModifiers": "list[empty] len=0",
+   "ArmorToGainOnInitialPickup": 0,
+   "minimapIcon": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": 0
+    }
+   },
+   "ChanceForPickupQuality": 0.44999998807907104,
+   "ChanceForMinusOneQuality": 0.5,
+   "ChanceForEqualQuality": 0.05000000074505806,
+   "ChanceForPlusOneQuality": 0.0
+  },
+  "shared_GenericLootTable": {
+   "m_GameObject": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": 0
+    }
+   },
+   "m_Enabled": 1,
+   "m_Script": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": -2804154473011474706
+    }
+   },
+   "m_Name": "GungeonCrateAndBarrelTableTable",
+   "defaultItemDrops": {
+    "dict": {
+     "elements": {
+      "list[dict]": {
+       "rawGameObject": "dict",
+       "pickupId": -1,
+       "weight": 1.0,
+       "forceDuplicatesPossible": 0,
+       "additionalPrerequisites": "list[empty] len=0"
+      },
+      "len": 3
+     }
+    }
+   },
+   "includedLootTables": "list[empty] len=0",
+   "tablePrerequisites": "list[empty] len=0"
+  },
+  "shared_BaseShopController": {
+   "m_GameObject": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": 8907327787283165255
+    }
+   },
+   "m_Enabled": 1,
+   "m_Script": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": 3072687790971592862
+    }
+   },
+   "m_Name": "",
+   "placeableWidth": 5,
+   "placeableHeight": 5,
+   "difficulty": 0,
+   "isPassable": 1,
+   "baseShopType": 2,
+   "FoyerMetaShopForcedTiers": 0,
+   "IsBeetleMerchant": 0,
+   "ExampleBlueprintPrefab": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": 0
+    }
+   },
+   "shopItems": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": 5476646082824446377
+    }
+   },
+   "spawnPositions": {
+    "list[dict]": {
+     "m_FileID": 0,
+     "m_PathID": -7903497323770762228
+    },
+    "len": 3
+   },
+   "shopItemsGroup2": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": 0
+    }
+   },
+   "spawnPositionsGroup2": "list[empty] len=0",
+   "spawnGroupTwoItem1Chance": 0.5,
+   "spawnGroupTwoItem2Chance": 0.5,
+   "spawnGroupTwoItem3Chance": 0.5,
+   "shopkeepFSM": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": 5595547229293581230
+    }
+   },
+   "shopItemShadowPrefab": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": -8733103861718258329
+    }
+   },
+   "cat": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": 0
+    }
+   },
+   "OptionalMinimapIcon": {
+    "dict": {
+     "m_FileID": 1,
+     "m_PathID": -5039898891648764780
+    }
+   },
+   "ShopCostModifier": 1.0,
+   "FlagToSetOnEncounter": 45101
+  },
+  "shared_MetaShopController": {
+   "m_GameObject": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": -2431489829934910032
+    }
+   },
+   "m_Enabled": 1,
+   "m_Script": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": -5821667192643717908
+    }
+   },
+   "m_Name": "",
+   "placeableWidth": 24,
+   "placeableHeight": 15,
+   "difficulty": 0,
+   "isPassable": 1,
+   "shopItems": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": 0
+    }
+   },
+   "spawnPositions": {
+    "list[dict]": {
+     "m_FileID": 0,
+     "m_PathID": -6965304431639131048
+    },
+    "len": 3
+   },
+   "shopItemsGroup2": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": 0
+    }
+   },
+   "spawnPositionsGroup2": {
+    "list[dict]": {
+     "m_FileID": 0,
+     "m_PathID": 2653770610388434968
+    },
+    "len": 3
+   },
+   "speakerAnimator": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": -2857425794823472569
+    }
+   },
+   "speechPoint": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": -192819236180353796
+    }
+   },
+   "ItemHeightOffGroundModifier": -0.5,
+   "shopItemShadowPrefab": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": -7279183566291509047
+    }
+   },
+   "Witchkeeper": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": 5163008916588152776
+    }
+   },
+   "WitchStandPoint": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": -3462257691198112018
+    }
+   },
+   "WitchSleepPoint": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": -3229020579663748051
+    }
+   },
+   "WitchChairPoint": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": -4400421664707087237
+    }
+   },
+   "ChanceToBeAsleep": 0.5,
+   "Hologramophone": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": -7964623349446068276
+    }
+   },
+   "ExampleBlueprintPrefab": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": -2030587712411699646
+    }
+   },
+   "ExampleBlueprintPrefabItem": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": -3587013991537896690
+    }
+   },
+   "metaShopTiers": {
+    "list[dict]": {
+     "overrideTierCost": 2,
+     "itemId1": 2,
+     "overrideItem1Cost": 1,
+     "itemId2": 424,
+     "overrideItem2Cost": 2,
+     "itemId3": 87,
+     "overrideItem3Cost": 2
+    },
+    "len": 15
+   }
+  },
+  "enemy_AIBulletBank": {
+   "m_GameObject": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": -7527339825295160310
+    }
+   },
+   "m_Enabled": 1,
+   "m_Script": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": -6949743339884284451
+    }
+   },
+   "m_Name": "",
+   "Bullets": {
+    "list[dict]": {
+     "Name": "default",
+     "BulletObject": {
+      "dict": {
+       "m_FileID": 1,
+       "m_PathID": 2621574352450402402
+      }
+     },
+     "OverrideProjectile": 1,
+     "ProjectileData": {
+      "dict": {
+       "damage": 0.5,
+       "speed": 12.0,
+       "range": 100.0,
+       "force": 10.0,
+       "damping": 0.0,
+       "UsesCustomAccelerationCurve": 0,
+       "AccelerationCurve": "dict",
+       "CustomAccelerationCurveDuration": 1.0,
+       "onDestroyBulletScript": "dict"
+      }
+     },
+     "PlayAudio": 0,
+     "AudioSwitch": "",
+     "AudioEvent": "Play_WPN_Magnum_shot_01",
+     "AudioLimitOncePerFrame": 1,
+     "AudioLimitOncePerAttack": 0,
+     "MuzzleFlashEffects": {
+      "dict": {
+       "type": 4,
+       "effects": {
+        "list[dict]": {
+         "effects": {
+          "list[dict]": {
+           "effect": "dict",
+           "orphaned": 0,
+           "attached": 0,
+           "persistsOnDeath": 0,
+           "usesZHeight": 1,
+           "zHeight": 7.0,
+           "alignment": 0,
+           "destructible": 0
+          },
+          "len": 1
+         }
+        },
+        "len": 1
+       }
+      }
+     },
+     "MuzzleLimitOncePerFrame": 0,
+     "MuzzleInheritsTransformDirection": 0,
+     "SpawnShells": 0,
+     "ShellTransform": {
+      "dict": {
+       "m_FileID": 0,
+       "m_PathID": 0
+      }
+     },
+     "ShellPrefab": {
+      "dict": {
+       "m_FileID": 0,
+       "m_PathID": 0
+      }
+     },
+     "ShellForce": 1.75,
+     "ShellForceVariance": 0.75,
+     "DontRotateShell": 0,
+     "ShellGroundOffset": 0.0,
+     "ShellsLimitOncePerFrame": 0,
+     "rampBullets": 0,
+     "rampStartHeight": 15.0,
+     "rampTime": 1.0,
+     "conditionalMinDegFromNorth": 0.0,
+     "forceCanHitEnemies": 0,
+     "suppressHitEffectsIfOffscreen": 0,
+     "preloadCount": 0
+    },
+    "len": 3
+   },
+   "useDefaultBulletIfMissing": 1,
+   "transforms": "list[empty] len=0"
+  },
+  "enemy_HealthHaver": {
+   "m_GameObject": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": -3339383943875056579
+    }
+   },
+   "m_Enabled": 1,
+   "m_Script": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": 6751634338993186307
+    }
+   },
+   "m_Name": "",
+   "quantizeHealth": 0,
+   "quantizedIncrement": 0.5,
+   "flashesOnDamage": 1,
+   "incorporealityOnDamage": 0,
+   "incorporealityTime": 1.0,
+   "PreventAllDamage": 0,
+   "persistsOnDeath": 0,
+   "maximumHealth": 600000000.0,
+   "currentHealth": 15.0,
+   "currentArmor": 0.0,
+   "usesInvulnerabilityPeriod": 0,
+   "invulnerabilityPeriod": 0.5,
+   "useFortunesFavorInvulnerability": 0,
+   "deathEffect": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": 0
+    }
+   },
+   "damagedAudioEvent": "",
+   "overrideDeathAudioEvent": "",
+   "overrideDeathAnimation": "",
+   "shakesCameraOnDamage": 0,
+   "cameraShakeOnDamage": {
+    "dict": {
+     "magnitude": 0.3499999940395355,
+     "speed": 6.0,
+     "time": 0.05999999865889549,
+     "falloff": 0.0,
+     "direction": {
+      "dict": {
+       "x": 0.0,
+       "y": 0.0
+      }
+     },
+     "vibrationType": 10,
+     "simpleVibrationTime": 20,
+     "simpleVibrationStrength": 20
+    }
+   },
+   "damageTypeModifiers": "list[empty] len=0",
+   "healthIsNumberOfHits": 0,
+   "OnlyAllowSpecialBossDamage": 0,
+   "spawnBulletScript": 0,
+   "chanceToSpawnBulletScript": 0.0,
+   "overrideDeathAnimBulletScript": "",
+   "noCorpseWhenBulletScriptDeath": 0,
+   "bulletScriptType": 0,
+   "bulletScript": {
+    "dict": {
+     "scriptTypeName": ""
+    }
+   },
+   "bossHealthBar": 0,
+   "overrideBossName": "",
+   "forcePreventVictoryMusic": 0,
+   "GlobalPixelColliderDamageMultiplier": 1.0
+  },
+  "enemy_AIActor": {
+   "m_GameObject": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": -2991317619185940831
+    }
+   },
+   "m_Enabled": 1,
+   "m_Script": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": 3640717069243525064
+    }
+   },
+   "m_Name": "",
+   "placeableWidth": 1,
+   "placeableHeight": 1,
+   "difficulty": 0,
+   "isPassable": 1,
+   "ActorName": "Powder Skull",
+   "OverrideDisplayName": "",
+   "actorTypes": 0,
+   "HasShadow": 1,
+   "ShadowPrefab": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": 0
+    }
+   },
+   "ShadowObject": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": 0
+    }
+   },
+   "ShadowHeightOffGround": 0.0,
+   "ShadowParent": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": 0
+    }
+   },
+   "ActorShadowOffset": {
+    "dict": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    }
+   },
+   "DoDustUps": 0,
+   "DustUpInterval": 0.0,
+   "OverrideDustUp": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": 0
+    }
+   },
+   "FreezeDispelFactor": 20.0,
+   "ImmuneToAllEffects": 0,
+   "EffectResistances": "list[empty] len=0",
+   "OverrideColorOverridden": 0,
+   "EnemyId": 13,
+   "EnemyGuid": "af84951206324e349e1f13f9b7b60c1a",
+   "ForcedPositionInAmmonomicon": 45,
+   "SetsFlagOnDeath": 0,
+   "FlagToSetOnDeath": 0,
+   "SetsFlagOnActivation": 0,
+   "FlagToSetOnActivation": 0,
+   "SetsCharacterSpecificFlagOnDeath": 0,
+   "CharacterSpecificFlagToSetOnDeath": 0,
+   "IsNormalEnemy": 1,
+   "IsSignatureEnemy": 0,
+   "IsHarmlessEnemy": 0,
+   "CompanionSettings": {
+    "dict": {
+     "WarpsToRandomPoint": 0
+    }
+   },
+   "MovementSpeed": 2.0,
+   "PathableTiles": 6,
+   "LosPoint": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": 0
+    }
+   },
+   "DiesOnCollison": 0,
+   "CollisionDamage": 1.0,
+   "CollisionKnockbackStrength": 5.0,
+   "CollisionDamageTypes": 0,
+   "EnemyCollisionKnockbackStrengthOverride": -1.0,
+   "CollisionVFX": {
+    "dict": {
+     "type": 0,
+     "effects": "list[empty] len=0"
+    }
+   },
+   "NonActorCollisionVFX": {
+    "dict": {
+     "type": 0,
+     "effects": "list[empty] len=0"
+    }
+   },
+   "CollisionSetsPlayerOnFire": 0,
+   "TryDodgeBullets": 0,
+   "AvoidRadius": 4.0,
+   "ReflectsProjectilesWhileInvulnerable": 0,
+   "HitByEnemyBullets": 0,
+   "HasOverrideDodgeRollDeath": 0,
+   "OverrideDodgeRollDeath": "",
+   "CanDropCurrency": 1,
+   "AdditionalSingleCoinDropChance": 0.0,
+   "CanDropItems": 0,
+   "CustomLootTable": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": 0
+    }
+   },
+   "CanDropDuplicateItems": 0,
+   "CustomLootTableMinDrops": 1,
+   "CustomLootTableMaxDrops": 1,
+   "CustomChestTable": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": 0
+    }
+   },
+   "ChanceToDropCustomChest": 0.0,
+   "IgnoreForRoomClear": 0,
+   "SpawnLootAtRewardChestPos": 0,
+   "CorpseObject": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": 0
+    }
+   },
+   "CorpseShadow": 1,
+   "TransferShadowToCorpse": 0,
+   "shadowDeathType": 10,
+   "PreventDeathKnockback": 0,
+   "OnCorpseVFX": {
+    "dict": {
+     "type": 0,
+     "effects": "list[empty] len=0"
+    }
+   },
+   "OnEngagedVFX": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": 0
+    }
+   },
+   "OnEngagedVFXAnchor": 0,
+   "shadowHeightOffset": 0.0,
+   "invisibleUntilAwaken": 0,
+   "procedurallyOutlined": 0,
+   "forceUsesTrimmedBounds": 1,
+   "reinforceType": 0,
+   "optionalPalette": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": 0
+    }
+   },
+   "UsesVaryingEmissiveShaderPropertyBlock": 0,
+   "OverrideBuffEffectPosition": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": 0
+    }
+   },
+   "EnemySwitchState": "Powder_Skull",
+   "OverrideSpawnReticleAudio": "",
+   "OverrideSpawnAppearAudio": "",
+   "UseMovementAudio": 0,
+   "StartMovingEvent": "",
+   "StopMovingEvent": "",
+   "animationAudioEvents": {
+    "list[dict]": {
+     "eventTag": "death",
+     "eventName": "Play_CHR_skull_death_01"
+    },
+    "len": 1
+   },
+   "HealthOverrides": "list[empty] len=0",
+   "IdentifierForEffects": 0,
+   "BehaviorOverridesVelocity": 0,
+   "BehaviorVelocity": {
+    "dict": {
+     "x": 0.0,
+     "y": 0.0
+    }
+   },
+   "AlwaysShowOffscreenArrow": 0,
+   "BlackPhantomProperties": {
+    "dict": {
+     "BonusHealthPercentIncrease": 2.200000047683716,
+     "BonusHealthFlatIncrease": 0.0,
+     "MaxTotalHealth": 175.0,
+     "CooldownMultiplier": 0.6600000262260437,
+     "MovementSpeedMultiplier": 1.5,
+     "LocalTimeScaleMultiplier": 1.0,
+     "BulletSpeedMultiplier": 1.0,
+     "GradientScale": 0.75,
+     "ContrastPower": 1.2999999523162842
+    }
+   },
+   "ForceBlackPhantomParticles": 0,
+   "OverrideBlackPhantomParticlesCollider": 0,
+   "BlackPhantomParticlesCollider": 0,
+   "PreventFallingInPitsEver": 0
+  },
+  "enemy_EncounterTrackable": {
+   "m_GameObject": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": -2991317619185940831
+    }
+   },
+   "m_Enabled": 1,
+   "m_Script": {
+    "dict": {
+     "m_FileID": 0,
+     "m_PathID": -6032341579217542678
+    }
+   },
+   "m_Name": "",
+   "ProxyEncounterGuid": "",
+   "m_encounterGuid": "3d66e590169e42738fce54d0e9120e69",
+   "m_doNotificationOnEncounter": 1,
+   "SuppressInInventory": 0,
+   "m_journalData": {
+    "dict": {
+     "SuppressInAmmonomicon": 0,
+     "SuppressKnownState": 0,
+     "DisplayOnLoadingScreen": 0,
+     "RequiresLightBackgroundInLoadingScreen": 0,
+     "PrimaryDisplayName": "#POWDERSKULL_ENCNAME",
+     "NotificationPanelDescription": "#POWDERSKULL_SHORTDESC",
+     "AmmonomiconFullEntry": "#POWDERSKULL_LONGDESC",
+     "AmmonomiconSprite": "powderskull_front_001",
+     "IsEnemy": 1,
+     "enemyPortraitSprite": {
+      "dict": {
+       "m_FileID": 1,
+       "m_PathID": 4444909148098550647
+      }
+     },
+     "SpecialIdentifier": 0
+    }
+   },
+   "m_ignoreDifferentiator": 0,
+   "m_prerequisites": "list[empty] len=0",
+   "m_usesPurpleNotifications": 0
+  }
+ },
+ "notes": []
+}

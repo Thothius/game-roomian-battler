@@ -84,7 +84,7 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 | Slot | Assigned Agent | Status | Working On | Last Heartbeat |
 | :--- | :--- | :--- | :--- | :--- |
 | **Slot 1** | **DESIGNER (Devin)** | `DONE` | Batch merged via Slot 2 (`72ca2cb`); `experience_studio_screen.dart` was structurally broken → reverted, other 4 files landed. Slot released | 2026-10-29 |
-| **Slot 2** | **CORE (Devin — me)** | `ACTIVE` | Ammonomicon M1.5 — guns 238/239, items 263/270, synergies 344/440 joined + game-corrected, enemies 103/146 enc keys, shrines 10/14 text keys. 482 tests green | 2026-10-30 |
+| **Slot 2** | **CORE (Devin — me)** | `ACTIVE` | Game-data assessment — probed bundles for untapped fields: item stat modifiers, gun module/volley stats, synergy statModifiers, loot tables, chest chances, shop stocks, gungeoneer loadouts, sprites. Report ready | 2026-10-31 |
 | **Slot 3** | **PARALLEL (Devin — me)** | `DONE` | Absorbed by Slot 2 — bottom_back_bar landed+swept, testing-mode demoted, paradox entry wired, version bump done, big-screen + memoize partial. Slot released | 2026-10-29 |
 | **Slot 4** | **_(none)_** | `IDLE` | Released — 3 edge fixes landed+pushed; all gates green | 2026-10-30 |
 
@@ -120,9 +120,9 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 |-------|-------|
 | **Branch** | `master` (sole active agent — Slot 4 released, AC5d exception) |
 | **Session started** | 2026-10-30 |
-| **Last board update** | 2026-10-30 |
+| **Last board update** | 2026-10-31 |
 | **Last commit** | `bf027f8` — Ammonomicon data round 2 (EN string tables) |
-| **Files in progress** | `tools/` (root repo), `assets/data/*.json` merges, `codex_screen.dart`, `synergy_detail_screen.dart` |
+| **Files in progress** | `tools/` (root repo — probe scripts + stale-path fix) |
 | **Uncommitted changes** | NONE of mine — `gungeoneer_header.dart` (M) + `lib/widgets/gungeoneer_header/` (untracked) are **SLOT 4's WIP — do not touch/commit** |
 | **AC4 shared-file flags** | `codex_screen.dart` (Slot 4 synced test label in `6a50556`), `item_detail/header.dart` (theirs — BUG-051), `main_menu_screen.dart` (both touched) |
 

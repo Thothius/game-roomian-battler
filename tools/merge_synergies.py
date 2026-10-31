@@ -5,7 +5,7 @@ map to ids via the merged guns/items.json, then compare ID sets.
 """
 import json, os, re, difflib
 
-TOOLS = r"X:\MEDIA SILO\APPS\GungeonMate\tools"
+TOOLS = r"X:\GungeonMate\tools"
 DATA = r"X:\GungeonMate\gungeon_mate\assets\data"
 
 dump = json.load(open(os.path.join(TOOLS, "gungeon_dump.json"), encoding="utf-8"))
