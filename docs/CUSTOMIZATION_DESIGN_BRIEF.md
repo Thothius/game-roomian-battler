@@ -102,12 +102,33 @@ role does:
 5. **AMBIANCE** — screen glow intensity, glow color swatches,
    wallpaper/bg options.
 
-### Save flow (core ask)
-- From CUSTOM (or anywhere): **"SAVE AS PRESET"** → name field →
-  gets a default icon → appears in PRESETS under SAVED PALETTES
-  forever after. Saved presets hold the *full* pick set (palette +
-  font + particles + glow), not just colors — confirm this against
-  `theme_custom_data.dart` before designing the card.
+### Save flow (core ask) — VERIFIED against `theme_custom_data.dart`
+`CustomThemeData` today persists: `name` + **6 colors**
+(scaffold/card/primary/secondary/headlineStat/bulletColor) +
+`auraStyle` + `font`. It does **NOT** hold particle/glow/ambience
+picks — a saved preset is palette+font+aura only.
+
+User's ask is "save a custom setup" — to honor the *full* pick set,
+`CustomThemeData` (or `SavedCustomTheme`) needs extending with
+particle type/count/physics/color + glow color/intensity + font-size
+bias etc. **Designer decides the boundary:** minimal = save
+palette+font only (current behavior, honest label "saved palette");
+full = extend the model (bigger change, migration-tolerant
+fromJson already exists). Recommended: extend — the user explicitly
+wants their full setup to come back.
+
+- Also in the save flow: **default icon** — saved palettes use
+  `splashSlug` values (see `palette_maker_screen.dart` `_splashes` —
+  14 art slugs). Give the save dialog a slug picker or auto-assign a
+  distinctive default so saved presets look uniform.
+
+### Unicorn sub-palettes (critical detail)
+`AppThemeMode.unicorn` isn't one palette — it's a **megapack of 6
+variants** (Cotton Candy, Neon, Dreamy, Sunset, Bubblegum, Mulberry)
+driven by `UnicornPalette` (`_unicornPaletteKey` persisted
+separately). The CUSTOM tab (or the Unicorn preset card) must offer
+the 6-variant switcher — otherwise users lose the variants that
+just got merged out of the enum trim.
 
 ## C — Current assets to reuse
 
@@ -125,14 +146,19 @@ role does:
   `VisualPrefs`; BACK discards staging (confirm + warn if staged).
 - RESET — if kept, it resets *the current tab's* staged picks only.
 
-## E — PREVIEW (build last — hardest)
+## E — PREVIEW vs LIVE LOOK (build last — hardest)
 
-Today `displayedMode`/`_previewMode` re-skins the app live while
-browsing. Target: PREVIEW = explicit try-on mode —
-the whole app behind the sheet changes, plus a visible
-"PREVIEWING — [APPLY] [DISCARD]" affordance so the user knows state
-isn't committed yet. Out of scope for the first pass if it's deep;
-ship the unified tabs + save flow first.
+These are two different things — don't conflate them:
+
+- **LIVE LOOK pane** = *staging-area preview*: a mini-UI mock inside
+  the sheet that always reflects staged picks. Local, instant,
+  zero-cost — ships first.
+- **PREVIEW button** = *whole-app try-on*: the staged picks are
+  applied to the real app behind the sheet (today's `displayedMode`/
+  `_previewMode` mechanism does this implicitly while browsing — the
+  rework should make it an explicit mode with a
+  "PREVIEWING — [APPLY] [DISCARD]" banner so uncommitted state is
+  obvious). Build last; the unified tabs + save flow ship first.
 
 ## F — Files
 
