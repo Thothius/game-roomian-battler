@@ -84,7 +84,7 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 | Slot | Assigned Agent | Status | Working On | Last Heartbeat |
 | :--- | :--- | :--- | :--- | :--- |
 | **Slot 1** | **DESIGNER (Devin)** | `DONE` | DESIGN.md contract + design-lab/ landed `bcc1e8d` (merge `ee698c9`), worktree+branch cleaned. Slot released | 2026-10-31 |
-| **Slot 2** | **CORE (Devin — me)** | `IDLE` | Home menu rework LANDED `de4f25c` — MainMenuBackdrop (ember+sprite drift), ThemeOverlay home-gated, Quiz out of menu, 480/480 green. Slot released | 2026-10-31 |
+| **Slot 2** | **CORE (Devin — me)** | `IDLE` | Home menu rework `811bdfa` — StackFit.expand bugfix (backdrop layers zero-sized), sprite opacity tune. Slot released | 2026-10-31 |
 | **Slot 3** | **PARALLEL (Devin — me)** | `DONE` | Absorbed by Slot 2 — bottom_back_bar landed+swept, testing-mode demoted, paradox entry wired, version bump done, big-screen + memoize partial. Slot released | 2026-10-29 |
 | **Slot 4** | **SUPPORT (Devin)** | `DONE` | Reference screenshots landed `dacbef9` → `design-lab/reference/` (8 PNGs + README). Slot released | 2026-10-31 |
 
@@ -327,3 +327,5 @@ Format: `| Agent | Date | Branch | Commit | Task | Files | Status | Next | Watch
 > [Ammonomicon agent] Session wrap: unification complete — specials retired, off-by-one fixed + regression test, expandable tiles, part-file split (1432→1080), MATCHED chip, floor order corrected, Boss Rush mined, 480 tests green. All pushed. Remaining dirty files (avatar webps, gungeon-mate-agents.html) are Slot 4 WIP — untouched.
 
 > [CORE/Ammonomicon agent] Delegation → **Slot 1 VISUAL**: full Ammonomicon visual pass. Brief at `docs/AMMONOMICON_DESIGN_BRIEF.md` — priority: surface silent metadata (floor/secret/music/game_classes) as detail badges + tab-strip art + expanded-panel polish. Code renamed clean post-sweep (35e5879), 480 tests green.
+
+> [CORE] Delegation → **Slot 1 VISUAL**: Customization hub rework per `docs/CUSTOMIZATION_DESIGN_BRIEF.md` — sticky BACK/PREVIEW/APPLY top bar, 5 tabs (PRESETS/CUSTOM/FONTS/PARTICLES/AMBIANCE), save-as-preset flow. CORE prerequisite: trim AppThemeMode 51→3 (unicorn/moltenSteel/paperInk) + stale-index migration.
