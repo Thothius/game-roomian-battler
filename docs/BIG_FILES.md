@@ -58,7 +58,6 @@ layers. Lower priority only because it changes less often.
 | `screens/shrine_picker_screen.dart ✅` | 1,243 | |
 | `widgets/active_run/dice_roll.dart ✅` | 1,221 | physics + widgets + presets likely separable |
 | `services/mp_session.dart ✅` | 1,214 | session facade — keep cohesive, extract event-log plumbing |
-| `screens/paradox/paradox_flow_screen.dart ✅` | 1,214 | |
 | `screens/stats_detail_screen.dart ✅` | 1,212 | fontSize-52 responsiveness bug noted in UI_HEALTH |
 | `widgets/item_detail/item_body.dart ✅` | 1,168 | 13 name-gated special panels — table-driven registry |
 | `widgets/periodic_tile.dart ✅` | 1,107 | |
@@ -73,11 +72,10 @@ layers. Lower priority only because it changes less often.
 `avatar_aura.dart` (851) · `codex_screen.dart` (847) ·
 `gungeoneer_detail_screen.dart` (812) · `mp_lobby_screen.dart` (798) ·
 `active_run/stat_sheets.dart` (794) · `effect_tagger.dart` (768) ·
-`paradox/chat_sheet.dart` (755) · `quiz_engine.dart` (727)
+`quiz_engine.dart` (727)
 
 ## Duplication to hunt during splits
 - Ser Junkan rank table copy-pasted in `item_body.dart ✅` + `junkan_dashboard.dart`
-- Surprise preset fx map duplicated between `surprise_overlay.dart` and `chat_sheet.dart`
 - Gun/Item meta pill logic (`browse_pills.dart`) vs `periodic_tile.dart ✅`
 
 ## House rules for split sessions
