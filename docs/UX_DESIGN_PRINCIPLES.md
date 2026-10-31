@@ -108,3 +108,16 @@ use `alpha: 0.5` minimum for anything a user needs to read.
 - **Color harmony patterns** — new palettes should pick from analogous
   (calm), complementary (punch), or triadic (vibrant) families, not
   random pretty colors — that's what makes each set feel designed
+
+
+## Applied — post-review additions (2026-11)
+
+- **Paradox of the Active User** → LIVE LOOK pull handle plays a one-shot
+  3-bounce demo on first open (`experienceStudioDragDemoSeen` pref) —
+  discoverable drag affordance, no manual.
+- **Goal-gradient** → evaluated for the save-theme dialog and REJECTED:
+  the dialog is a single screen; a fake "1 of 2" would add UI debt with
+  no real progress signal (Occam's wins).
+- **Dashboard triage** → mode-switcher trackers (Shellegun, Chamber Gun,
+  Polaris, Triple Gun) removed — "user has to toggle it = useless".
+  Surviving trackers are evolving counters only.
