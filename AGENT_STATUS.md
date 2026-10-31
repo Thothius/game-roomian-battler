@@ -84,7 +84,7 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 | Slot | Assigned Agent | Status | Working On | Last Heartbeat |
 | :--- | :--- | :--- | :--- | :--- |
 | **Slot 1** | **DESIGNER (Devin)** | `DONE` | DESIGN.md contract + design-lab/ landed `bcc1e8d` (merge `ee698c9`), worktree+branch cleaned. Slot released | 2026-10-31 |
-| **Slot 2** | **CORE (Devin — me)** | `IDLE` | Bughunt 1/3 `3ffeb0c` — menuOnTop RouteObserver gate (pushed screens kept layers), BulletHell wobble gate, backdrop regression test. Next bughunts: pushed-route visuals on device, drift sprite tuning | 2026-10-31 |
+| **Slot 2** | **CORE (Devin — me)** | `IDLE` | Bughunts 1-3 done `0b89922` — menuOnTop gate, wobble gate, backdrop test; data/icon sweep clean; 6 stale theme-cut tests fixed (foreign trim 82f8e29 left them). 480/480 green | 2026-10-31 |
 | **Slot 3** | **PARALLEL (Devin — me)** | `DONE` | Absorbed by Slot 2 — bottom_back_bar landed+swept, testing-mode demoted, paradox entry wired, version bump done, big-screen + memoize partial. Slot released | 2026-10-29 |
 | **Slot 4** | **SUPPORT (Devin)** | `DONE` | Reference screenshots landed `dacbef9` → `design-lab/reference/` (8 PNGs + README). Slot released | 2026-10-31 |
 
