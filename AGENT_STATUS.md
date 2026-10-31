@@ -85,7 +85,7 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 | :--- | :--- | :--- | :--- | :--- |
 | **Slot 1** | **DESIGNER (Devin)** | `DONE` | DESIGN.md contract + design-lab/ landed `bcc1e8d` (merge `ee698c9`), worktree+branch cleaned. Slot released | 2026-10-31 |
 | **Slot 2** | **CORE (Devin A1)** | `DONE` | Hub rework `6ecec5c` + polish `f813e5c` + fonts `25ee147` — shared `buildBackdropParticleField` fixes dead particle options, glow picker + animated style chips (ORBIT/EMBER/HALO/DRIP), all 29 fonts by category + dashboard-text slider. Verified rendered + analyze + theme tests. Slot released | 2026-10-31 |
-| **Slot 3** | **PARALLEL (Devin A2)** | `DONE` | **Ammonomicon rework** (6 commits) + **dead `showEffectsPanel` pref removed** `3934018` (11 sites, write-only since ⋮ Effects toggle removal). ⚠️ **Pre-existing fail:** `main_menu_test` 'four primary action buttons' expects a "Theme" button the hub rework removed — owner should update test. Slot released | 2026-10-31 |
+| **Slot 3** | **PARALLEL (Devin A2)** | `DONE` | **Shrines swipe-view rework** `6897f07` — icon tab strip + PageView (title/sprite/effects card, no buttons) replaces flat grid. + dead `showEffectsPanel` cleanup `3934018`. ⚠️ Foreign dirty `studio_palette.dart` was mid-edit during session (splashSlug breakage) — resolved by their `6efc571` revert. `main_menu_test` "Theme" button fail still open (hub-rework owner). Slot released | 2026-10-31 |
 | **Slot 4** | **SUPPORT (Devin)** | `DONE` | Reference screenshots landed `dacbef9` → `design-lab/reference/` (8 PNGs + README). Slot released | 2026-10-31 |
 
 ### Slot Details
