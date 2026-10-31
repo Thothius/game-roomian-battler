@@ -83,7 +83,7 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 
 | Slot | Assigned Agent | Status | Working On | Last Heartbeat |
 | :--- | :--- | :--- | :--- | :--- |
-| **Slot 1** | **VISUAL (Devin)** | `DONE` | Neo-Skeuo R6: motion pass — draw-in borders, hover lift, ink-blob press, tab slide `7ed0041` | 2026-10-31 |
+| **Slot 1** | **VISUAL (Devin)** | `DONE` | Neo-Skeuo R7: motion polish — drawDelay stagger (menu cascade), disableAnimations gate `ef42f0f` | 2026-10-31 |
 | **Slot 2** | **CORE (Devin A1)** | `DONE` | All committed — see session log | 2026-10-31 |
 | **Slot 3** | **PARALLEL (Devin A2)** | `DONE` | **4-way polish** `b2ad1a3` + badge icon → double-chevron `8213c14` (matches game's synergy marker). Effects strip ~50% shorter, detail tag pills removed, synergies compact rows, color-coded glow → uniform blue badge. ⚠️ `main_menu_test` still open (hub owner). Slot released | 2026-10-31 |
 | **Slot 4** | **SUPPORT (Devin)** | `DONE` | Reference screenshots landed `dacbef9` → `design-lab/reference/` (8 PNGs + README). Slot released | 2026-10-31 |
@@ -96,7 +96,7 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 | **Branch** | `master` (sole agent) |
 | **Session started** | 2026-10-31 (polish round 2) |
 | **Last board update** | 2026-10-31 |
-| **Last commit** | app `7ed0041` — skeuo motion (draw-in, hover, ink-blob) |
+| **Last commit** | app `ef42f0f` — drawDelay stagger + a11y gate |
 | **Files in progress** | — |
 | **Uncommitted changes** | — |
 | **Worktree** | — |
