@@ -73,3 +73,38 @@ When touching the hub, verify against this list:
 - [ ] Off-white text, off-black surfaces, single accent lead
 - [ ] Tap targets ≥40px, touch feedback within 200ms
 - [ ] Falls back gracefully on every asset/pref/index (Postel)
+
+
+---
+
+## 4. Contrast audit (ran 2026-10-31 on all 6 presets)
+
+WCAG ratios computed on every preset flair:
+
+| Layer | Ratio | Verdict |
+|-------|-------|---------|
+| primary/card | 5.4 - 15.9 | pass |
+| secondary/card | 6.9 - 14.5 | pass |
+| headlineStat/card | 5.2 - 18.4 | pass |
+| 70% white body | ~9.5 | pass |
+| 55% white | ~6.0 | pass (AA) |
+| **40% white** | **~3.8** | **FAIL — was our muted label alpha** |
+| **35% white** | **~3.2** | **FAIL — subtitles/descriptions used it** |
+
+**Rule adopted:** informational text floors at 0.5 alpha (~4.8:1).
+Decorative-only elements (placeholder dots, hint glyphs) may sit below.
+Hub labels/descriptions bumped accordingly — when adding muted text,
+use `alpha: 0.5` minimum for anything a user needs to read.
+
+## Still on the table
+
+- **Paradox of the Active User** — nobody reads manuals; teach through
+  affordances (done: pull-handle bob, page dots; future: first-open
+  pulse on the swatch sheet, one-shot drag demo on LIVE LOOK)
+- **Tesler's Law** — hide irreducible complexity: CUSTOM's 6 roles are
+  the full color system compressed; don't add rows, add meaning
+- **Goal-Gradient** — save-theme flow could show "1 of 2 steps" (name →
+  confirm) so completion feels near
+- **Color harmony patterns** — new palettes should pick from analogous
+  (calm), complementary (punch), or triadic (vibrant) families, not
+  random pretty colors — that's what makes each set feel designed
