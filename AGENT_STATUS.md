@@ -84,8 +84,8 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 | Slot | Assigned Agent | Status | Working On | Last Heartbeat |
 | :--- | :--- | :--- | :--- | :--- |
 | **Slot 1** | **DESIGNER (Devin)** | `DONE` | DESIGN.md contract + design-lab/ landed `bcc1e8d` (merge `ee698c9`), worktree+branch cleaned. Slot released | 2026-10-31 |
-| **Slot 2** | **CORE (Devin A1)** | `ACTIVE` | **P0 pre-APK blockers** — (1) WQ-1 Ammonomicon pubspec assets + try/catch, (2) reconnect two-bars (modal+inline both fire), (3) ~38 kAvatarIds without webps → grey tiles. Branch `slot2-a1/p0-blockers` + AC5d worktree — A2 child session runs polish gaps in parallel | 2026-10-31 |
-| **Slot 3** | **PARALLEL (Devin)** | `DONE` | Character select rework landed `6f9354b` (merge `4606833`), worktree+branch cleaned. Slot released | 2026-10-31 |
+| **Slot 2** | **CORE (Devin A1)** | `DONE` | **P0 blockers shipped** `c5ba8db` (FF merge, worktree+branch cleaned) — all 3 verified: assets in build/web, modal suppressed on-run, 88/88 ids have webps. Slot released | 2026-10-31 |
+| **Slot 3** | **PARALLEL (Devin A2)** | `ACTIVE` | **Polish gaps** — MP lobby run-title input, mp_connect_screen visual pass, dead Effects toggle in MP ⋮ menu, reconnect chip toggles, item-detail ammonomicon_entry/wiki sections. Branch `slot3-a2/polish-gaps` + AC5d worktree | 2026-10-31 |
 | **Slot 4** | **SUPPORT (Devin)** | `DONE` | Reference screenshots landed `dacbef9` → `design-lab/reference/` (8 PNGs + README). Slot released | 2026-10-31 |
 
 ### Slot Details
@@ -118,13 +118,12 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 #### Slot 2 — CORE (Devin A1)
 | Field | Value |
 |-------|-------|
-| **Branch** | `slot2-a1/p0-blockers` — worktree `X:\GungeonMate\.worktrees\slot2-a1\gungeon_mate` (AC5d, A2 parallel) |
+| **Branch** | `slot2-a1/p0-blockers` → merged to master + deleted (AC5d worktree removed) |
 | **Session started** | 2026-10-31 |
 | **Last board update** | 2026-10-31 |
-| **Last commit** | — (in progress) |
-| **Files in progress** | `pubspec.yaml`, `lib/screens/ammonomicon_screen.dart`, `lib/widgets/mp_reconnect_banner.dart`, `lib/utils/asset_paths.dart` |
+| **Last commit** | `c5ba8db` — fix: pre-APK P0 blockers (Ammonomicon assets, two-bars, avatar registry) |
+| **Files in progress** | — |
 | **Uncommitted changes** | — |
-| **AC4 shared-file flags** | Reconnect UI files border A2's polish lane (mp_connect look / bar chips) — A1 keeps diff inside `mp_reconnect_banner.dart` where possible |
 
 > **Attribution map (for Slot 4 / other agent):**
 > - **MINE this session:** `b6d05b0` data merge, `8550c0a` Ammonomicon cats+labels, `1fc4f9b` SynergyDetailScreen, `eeb52de` _GunDeepStats, `bf027f8` EN string tables + synergy joins. Root repo: `tools/` (dump_gungeon.py, merge_*.py, gungeon_dump.json, en_*.txt, *_report.json).
@@ -140,15 +139,16 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 
 > **Session ended 2026-08-18 10:45.** Major work this session: (1) Particle engine expansion — 6 new glow effects, 9 new presets, visual pills, named glow colors (`e7eefbb` gungeon_mate). (2) Animation R&D audit + MUTATION_STATION archive (`8980ec4` root). (3) 2026 animation/architecture assessment + AGENTS.md perf rules (`5f23c6e` root). (4) Genius-tier audit v0.0.7 — 4 user decisions locked: glowing synergy borders, synergy predictor, ambient fragment shaders, RepaintBoundary templates (`e275534` root). (5) Four-slot roster + identity protocol locked (`e102d69` root). (6) AC5 upgraded: slot-aligned branch naming, pre-session sync, milestone tagging (`da436d3` root). (7) Adversarial penetration test — documented nested dual-repo trap, notifyListeners storm, 24h rebase rule (`5005315` root). (8) Agent commands reference added to AGENTS.md. Task 21 (Device Pairing feature) logged in Task Queue. Next session: implement RepaintBoundary templates (Q4 priority 1) or Device Pairing (Task 21) per user direction.
 
-#### Slot 3 — PARALLEL
+#### Slot 3 — PARALLEL (Devin A2)
 | Field | Value |
 |-------|-------|
-| **Branch** | master (sole active agent — AC5d exception) |
-| **Session started** | 2026-10-28 UTC+2 |
-| **Last board update** | 2026-10-28 UTC+2 |
-| `e5ecb0f` — v3 test coverage + test-found layout fixes (gungeon_mate) |
-| **Files in progress** | — |
+| **Branch** | `slot3-a2/polish-gaps` — worktree `X:\GungeonMate\.worktrees\slot3-a2\gungeon_mate` (AC5d, A1 active) |
+| **Session started** | 2026-10-31 |
+| **Last board update** | 2026-10-31 |
+| **Last commit** | — (in progress) |
+| **Files in progress** | `lib/screens/mp_lobby_screen.dart`, `lib/screens/mp_connect_screen.dart`, `lib/widgets/paradox/paradox_player_panel.dart`, `lib/widgets/paradox/paradox_bar.dart`, `lib/screens/item_detail_screen.dart` |
 | **Uncommitted changes** | — |
+| **AC4 shared-file flags** | `mp_reconnect_banner.dart` is A1's — chip toggles wired only if state lives outside that file; will flag on board before touching shared files |
 
 > **Slot restructured 2026-08-25.** Formerly Planner-Architect-Mockupper, then Coder #2. Now PARALLEL — a free second coder for parallel feature work. Planning duties merged into Slot 2 (CORE).
 
@@ -210,7 +210,7 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 
 Detailed plans for open items. Claim a slot, pick one, work it.
 
-### WQ-1 · FIX Ammonomicon blank screen (P0 — app-breaking) — **CLAIMED by CORE (A1), in progress on `slot2-a1/p0-blockers`**
+### WQ-1 · FIX Ammonomicon blank screen (P0 — app-breaking) — **DONE (CORE A1, `c5ba8db`)**
 - **Root cause (verified via web console 404s):** `lib/screens/ammonomicon_screen.dart` `_loadData()` (~line 187) loads 8 JSONs in one `Future.wait` — `assets/data/chapters.json` and `assets/data/game_modes.json` are NOT declared in `pubspec.yaml` assets list (~lines 92-106). `loadString` fails → wait throws (no try/catch) → `_loaded` stays false → skeletons forever. **Affects ALL platforms**, not just web.
 - **Fix:** (a) add `- assets/data/chapters.json` + `- assets/data/game_modes.json` to pubspec assets after `floors.json`; (b) wrap `_loadData` in try/catch — per-file fallback or error state so one bad asset degrades to an empty category instead of a dead screen.
 - **Verify:** `flutter build web` → Playwright Ammonomicon tab renders category grid (was skeleton-stuck); `flutter analyze`; codex tests. Full plan: `C:\Users\saare\.devin\plans\plan-f0011ef773ed3b88.md`.
@@ -236,6 +236,7 @@ Format: `| Agent | Date | Branch | Commit | Task | Files | Status | Next | Watch
 
 | Agent | Date | Branch | Commit | Task | Files | Status | Next | Watch out for |
 |-------|------|--------|--------|------|-------|--------|------|---------------|
+| CORE (Devin A1) | 2026-10-31 | `slot2-a1/p0-blockers` → merged (AC5d worktree) | app `c5ba8db` | **P0 pre-APK blockers** — WQ-1: pubspec declares chapters/game_modes.json + `_loadData` per-file `loadOr`+try/catch (verified in build/web output); reconnect two-bars killed via `runBarVisible` gating (modal suppressed while ParadoxBar on screen, persistent banner covers other tabs/routes); 38 dead `kAvatarIds` pruned to disk (126→88, grey tiles gone) | pubspec, ammonomicon_screen, mp_reconnect_banner, home_screen, asset_paths | DONE | APK build pending A2's polish sweep; A2 note: `MpReconnectBanner` now takes `runBarVisible` (HomeScreen feeds tab index) — merge cleanly | Old peers can still wire a pruned avatar id → person-icon fallback (graceful, intended). Persisted pruned ids same path. `session.cancel()` from banner is fire-and-forget — unchanged semantics |
 | PARALLEL (Devin) | 2026-10-31 | `slot3-devin/char-select` → merged (AC5d worktree) | app `6f9354b` + merge `4606833` | **Character select rework** — tile grid → icon tab-strip + swipeable PageView + sticky PICK bar; pages show sprite/name/armor/GUNS+ITEMS loadout chips (real icons via localGunIcon/localItemIcon) + short_desc+playstyle; detail-screen long-press removed per user | character_select_screen.dart, char_select test | DONE | Visual pass on device (320dp + 1.3× scale); design-lab mirror update pending | FontSizes has no bodySmall — use labelMedium. MP-pick contract (pop(char)) preserved — lobby depends on it. Root repo has uncommitted avatar-webp deletions + AGENT_STATUS edits from CORE's active session — not ours |
 | SUPPORT (Devin) | 2026-10-31 | master (sole agent) | app `dacbef9` | **Reference screenshots** — `flutter build web --release` + Playwright tour at 390x844: home, character select, active run, browse, item detail, quiz, settings captured → `design-lab/reference/` + README table | design-lab/reference/ (9 files) | DONE | Compare lab mocks 1:1 vs refs; reshoot remaining views if wanted | **Ammonomicon tab never loads on web** — skeleton shimmer persists >10s (`ref-06`). Worth investigating before web testing of codex. nearby_connections plugin errors expected on web. Flutter is now 3.47.9 |
 | DESIGNER (Devin) | 2026-10-31 | `designer/design-lab` → merged (AC5d worktree) | app `bcc1e8d` + merge `ee698c9` | **DESIGN.md + HTML design lab** — design contract at app-repo root (tokens/palette/responsive rules/component patterns/decisions log); `design-lab/` static mirror (Minimalist theme): tokens.css 1:1 Dart-token vars, shared component CSS, 7 view pages (main-menu, settings, codex grid/category/detail, browse, item-detail), width toolbar 320–768dp + 1.3x text-scale toggle, SERVE_LAB.bat → `:8619/design-lab/` | DESIGN.md, design-lab/ (15 files), AGENTS.md pointer | DONE | Extend lab with more views / theme packs as needed; port lab tweaks back via token names | Lab is a hand-maintained sandbox — verify values in real app. Used worktree per AC5d (CORE active). Codex enemy/gun icons referenced via ../assets/ — lab must be served from gungeon_mate/ root |
