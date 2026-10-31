@@ -178,9 +178,9 @@ remains in the codebase.
 
 | Component | Location |
 |-----------|----------|
-| `AppThemeMode` enum (39 values) | `lib/services/app_theme.dart` |
-| `ThemeFlair` (per-theme color palette) | `lib/services/app_theme.dart` |
-| `VisualPrefs` (persisted user prefs) | `lib/services/app_theme.dart` |
+| `AppThemeMode` enum | `lib/services/theme/app_theme_modes.dart` (part of app_theme) |
+| `ThemeFlair`/`VisualPrefs` | `lib/services/theme/theme_flair_prefs.dart` (part of app_theme) |
+
 | `kVisibleThemes` list (15 active, 12 commented out) | `lib/services/app_theme.dart` |
 | `kPickerThemes` list (8 curated with splash graphics) | `lib/services/app_theme.dart` |
 | `ThemeOverlay` (global visual stack) | `lib/widgets/theme_overlay.dart` |
@@ -279,7 +279,7 @@ Key fields:
 |------|---------|
 | `lib/main.dart` | App entry point, `VideoPlayerMediaKit.ensureInitialized` |
 | `lib/providers/run_provider.dart` | State management (1618 lines) |
-| `lib/services/app_theme.dart` | Themes, VisualPrefs, CustomThemeStore (4078 lines) |
+| `lib/services/app_theme.dart` | Theme engine hub (479 lines) + `theme/` part files: app_theme_modes (enum+lore), theme_data_tables, theme_flair_prefs, theme_custom_data, theme_store, theme_misc_enums |
 | `lib/widgets/theme_overlay.dart` | Global visual stack (layers 0-1.0) |
 | `lib/screens/home_screen.dart` | Home screen routing (MainMenu vs ActiveRunScreen) |
 | `lib/screens/active_run_screen.dart` | Active run screen (964 lines) |
