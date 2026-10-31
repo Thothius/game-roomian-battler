@@ -289,7 +289,9 @@ for o in env.objects:
 _base = os.path.join(ETG, r"EtG_Data\StreamingAssets\Assets")
 _gun_ids = {g["id"] for g in guns}
 _item_ids = {i["id"] for i in items}
-for extra in ("shared_auto_001", "shared_auto_002"):
+for extra in ("shared_auto_001", "shared_auto_002",
+              "enemies_base_001", "foyer_001", "foyer_002",
+              "foyer_003", "dungeon_scene_001", "shared_base_001"):
     objs = load_bundle(os.path.join(_base, extra))
     for o in objs:
         if o.type.name != "MonoBehaviour":
