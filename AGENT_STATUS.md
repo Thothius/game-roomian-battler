@@ -83,8 +83,8 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 
 | Slot | Assigned Agent | Status | Working On | Last Heartbeat |
 | :--- | :--- | :--- | :--- | :--- |
-| **Slot 1** | **DESIGNER (Devin)** | `DONE` | Batch merged via Slot 2 (`72ca2cb`); `experience_studio_screen.dart` was structurally broken → reverted, other 4 files landed. Slot released | 2026-10-29 |
-| **Slot 2** | **CORE (Devin — me)** | `ACTIVE` | Round 2 LANDED `9899d3b` — drop/shop sources (479), ammonomicon lore (500), gungeoneer loadouts (Pilot fix). Remaining candidates: chest tier chances, sprites/icons, enemy extras | 2026-10-31 |
+| **Slot 1** | **DESIGNER (Devin)** | `ACTIVE` | HTML design lab (`gungeon_mate/design-lab/`) + `DESIGN.md` contract — all-new files, zero overlap w/ Slot 2 data work. Branch `designer/design-lab` in worktree `.worktrees/designer/` (AC5d) | 2026-10-31 |
+| **Slot 2** | **CORE (Devin — me)** | `ACTIVE` | Round 3 LANDED `ef345cf` — 623 game sprites extracted (game_icon fields), 160 enemy extras, chests.json + floors.json. Remaining: BehaviorSpeculator bullet patterns, dungeon room data, NPC shop stocks | 2026-10-31 |
 | **Slot 3** | **PARALLEL (Devin — me)** | `DONE` | Absorbed by Slot 2 — bottom_back_bar landed+swept, testing-mode demoted, paradox entry wired, version bump done, big-screen + memoize partial. Slot released | 2026-10-29 |
 | **Slot 4** | **_(none)_** | `IDLE` | Released — 3 edge fixes landed+pushed; all gates green | 2026-10-30 |
 
@@ -121,7 +121,7 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 | **Branch** | `master` (sole active agent — Slot 4 released, AC5d exception) |
 | **Session started** | 2026-10-30 |
 | **Last board update** | 2026-10-31 |
-| **Last commit** | `9899d3b` — data: sources + lore + loadouts (app repo) |
+| **Last commit** | `ef345cf` — data: sprites + enemies + chests/floors (app repo) |
 | **Files in progress** | `tools/` (root repo — merge_stats.py + dump extensions) |
 | **Uncommitted changes** | NONE of mine — `gungeoneer_header.dart` (M) + `lib/widgets/gungeoneer_header/` (untracked) are **SLOT 4's WIP — do not touch/commit** |
 | **AC4 shared-file flags** | `codex_screen.dart` (Slot 4 synced test label in `6a50556`), `item_detail/header.dart` (theirs — BUG-051), `main_menu_screen.dart` (both touched) |

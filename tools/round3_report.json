@@ -1,0 +1,1753 @@
+{
+ "enemies": {
+  "Skusket": {
+   "game_guid": [
+    null,
+    "af84951206324e349e1f13f9b7b60c1a"
+   ],
+   "collision_damage": [
+    null,
+    1.0
+   ],
+   "ammonomicon_pos": [
+    null,
+    45
+   ]
+  },
+  "Gummy": {
+   "game_guid": [
+    "5288e86d20184fa69c91ceb642d31474",
+    "e21ac9492110493baef6df02a2682a0d"
+   ],
+   "ammonomicon_pos": [
+    22,
+    -1
+   ],
+   "effect_resistances": [
+    null,
+    [
+     {
+      "resistType": 2,
+      "resistAmount": 1.0
+     }
+    ]
+   ]
+  },
+  "High Priest": {
+   "game_guid": [
+    null,
+    "6c43fddfd401456c916089fdd1c99b1c"
+   ],
+   "collision_damage": [
+    null,
+    1.0
+   ],
+   "ammonomicon_pos": [
+    null,
+    13
+   ]
+  },
+  "Mimic": {
+   "game_guid": [
+    "d8fd592b184b4ac9a3be217bc70912a2",
+    "479556d05c7c44f3b6abb3b2067fc778"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    -1,
+    90
+   ]
+  },
+  "Fallen Bullet Kin": {
+   "game_guid": [
+    null,
+    "5f3abc2d561b4b9c9e72b879c6f10c7e"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    9
+   ]
+  },
+  "Cannon": {
+   "game_guid": [
+    null,
+    "39dca963ae2b4688b016089d926308ab"
+   ],
+   "collision_damage": [
+    null,
+    1.0
+   ],
+   "ammonomicon_pos": [
+    null,
+    22
+   ]
+  },
+  "Treadnaught": {
+   "game_guid": [
+    null,
+    "fa76c8cfdf1c4a88b55173666b4bc7fb"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    9
+   ],
+   "effect_resistances": [
+    null,
+    [
+     {
+      "resistType": 2,
+      "resistAmount": 1.0
+     }
+    ]
+   ]
+  },
+  "Cubulon": {
+   "game_guid": [
+    "864ea5a6a9324efc95a0dd2407f42810",
+    "2b6854c0849b4b8fb98eb15519d7db1c"
+   ],
+   "ammonomicon_pos": [
+    52,
+    51
+   ]
+  },
+  "Tombstoner": {
+   "game_guid": [
+    "c4cf0620f71c4678bb8d77929fd4feff",
+    "cf27dd464a504a428d87a8b2560ad40a"
+   ],
+   "ammonomicon_pos": [
+    77,
+    78
+   ]
+  },
+  "Interdimensional Horror": {
+   "game_guid": [
+    null,
+    "dc3cd41623d447aeba77c77c99598426"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    18
+   ]
+  },
+  "Shotgrub": {
+   "game_guid": [
+    null,
+    "044a9f39712f456597b9762893fbc19c"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    19
+   ]
+  },
+  "Arrowkin": {
+   "game_guid": [
+    null,
+    "05891b158cd542b1a5f3df30fb67a7ff"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    34
+   ]
+  },
+  "Red Shotgun Kin": {
+   "game_guid": [
+    "128db2f0781141bcb505d8f00f9e4d47",
+    "86dfc13486ee4f559189de53cfb84107"
+   ]
+  },
+  "Gigi": {
+   "game_guid": [
+    "4b21a913e8c54056bc05cafecf9da880",
+    "ed37fa13e0fa4fcf8239643957c51293"
+   ],
+   "ammonomicon_pos": [
+    48,
+    49
+   ]
+  },
+  "Cubulead": {
+   "game_guid": [
+    null,
+    "0b547ac6b6fc4d68876a241a88f5ca6a"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    54
+   ]
+  },
+  "Nitra": {
+   "game_guid": [
+    null,
+    "c0260c286c8d4538a697c5bf24976ccf"
+   ],
+   "ammonomicon_pos": [
+    null,
+    33
+   ]
+  },
+  "Hollowpoint": {
+   "game_guid": [
+    null,
+    "4db03291a12144d69fe940d5a01de376"
+   ],
+   "ammonomicon_pos": [
+    null,
+    27
+   ]
+  },
+  "Tazie": {
+   "game_guid": [
+    "226fd90be3a64958a5b13cb0a4f43e97",
+    "98fdf153a4dd4d51bf0bafe43f3c77ff"
+   ],
+   "ammonomicon_pos": [
+    29,
+    30
+   ]
+  },
+  "Tanker": {
+   "game_guid": [
+    "47bdfec22e8e4568a619130a267eab5b",
+    "df7fb62405dc4697b7721862c7b6b3cd"
+   ],
+   "ammonomicon_pos": [
+    -1,
+    3
+   ]
+  },
+  "Gatling Gull": {
+   "game_guid": [
+    null,
+    "ec6b674e0acd4553b47ee94493d66422"
+   ],
+   "collision_damage": [
+    null,
+    1.0
+   ],
+   "effect_resistances": [
+    null,
+    [
+     {
+      "resistType": 2,
+      "resistAmount": 0.75
+     }
+    ]
+   ]
+  },
+  "Lead Maiden": {
+   "game_guid": [
+    "cd4a4b7f612a4ba9a720b9f97c52f38c",
+    "9215d1a221904c7386b481a171e52859"
+   ],
+   "ammonomicon_pos": [
+    89,
+    88
+   ]
+  },
+  "Ashen Shotgun Kin": {
+   "game_guid": [
+    null,
+    "1bd8e49f93614e76b140077ff2e33f2b"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    18
+   ]
+  },
+  "Gun Nut": {
+   "game_guid": [
+    null,
+    "ec8ea75b557d4e7b8ceeaacdf6f8238c"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "signature_enemy": [
+    null,
+    true
+   ],
+   "ammonomicon_pos": [
+    null,
+    81
+   ]
+  },
+  "Cannonbalrog": {
+   "game_guid": [
+    null,
+    "5e0af7f7d9de4755a68d2fd3bbc15df4"
+   ],
+   "collision_damage": [
+    null,
+    1.0
+   ],
+   "ammonomicon_pos": [
+    null,
+    10
+   ]
+  },
+  "Cardinal": {
+   "game_guid": [
+    "5861e5a077244905a8c25c2b7b4d6ebb",
+    "8bb5578fba374e8aae8e10b754e61d62"
+   ]
+  },
+  "Agonizer": {
+   "game_guid": [
+    null,
+    "3f6d6b0c4a7c4690807435c7b37c35a5"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    97
+   ]
+  },
+  "Killithid": {
+   "game_guid": [
+    null,
+    "3e98ccecf7334ff2800188c417e67c15"
+   ],
+   "ammonomicon_pos": [
+    null,
+    92
+   ]
+  },
+  "Pinhead": {
+   "game_guid": [
+    "5f15093e6f684f4fb09d3e7e697216b4",
+    "4d37ce3d666b4ddda8039929225b7ede"
+   ],
+   "ammonomicon_pos": [
+    -1,
+    32
+   ]
+  },
+  "Rubber Kin": {
+   "game_guid": [
+    null,
+    "6b7ef9e5d05b4f96b04f05ef4a0d1b18"
+   ],
+   "ammonomicon_pos": [
+    null,
+    29
+   ]
+  },
+  "Misfire Beast": {
+   "game_guid": [
+    null,
+    "45192ff6d6cb43ed8f1a874ab6bef316"
+   ],
+   "ammonomicon_pos": [
+    null,
+    90
+   ]
+  },
+  "Jammomancer": {
+   "game_guid": [
+    null,
+    "8b4a938cdbc64e64822e841e482ba3d2"
+   ],
+   "ammonomicon_pos": [
+    null,
+    62
+   ]
+  },
+  "Spogre": {
+   "game_guid": [
+    null,
+    "eed5addcc15148179f300cc0d9ee7f94"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    85
+   ],
+   "effect_resistances": [
+    null,
+    [
+     {
+      "resistType": 2,
+      "resistAmount": 1.0
+     }
+    ]
+   ]
+  },
+  "Gat": {
+   "game_guid": [
+    null,
+    "9b4fb8a2a60a457f90dcf285d34143ac"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    72
+   ]
+  },
+  "HS Absolution": {
+   "game_guid": [
+    null,
+    "b98b10fca77d469e80fb45f3c5badec5"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    16
+   ]
+  },
+  "Coaler": {
+   "game_guid": [
+    null,
+    "9d50684ce2c044e880878e86dbada919"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    71
+   ]
+  },
+  "Gunjurer": {
+   "game_guid": [
+    null,
+    "c4fba8def15e47b297865b18e36cbef8"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    56
+   ]
+  },
+  "Gripmaster": {
+   "game_guid": [
+    null,
+    "22fc2c2c45fb47cf9fb5f7b043a70122"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    93
+   ],
+   "effect_resistances": [
+    null,
+    [
+     {
+      "resistType": 4,
+      "resistAmount": 1.0
+     }
+    ]
+   ]
+  },
+  "Flesh Cube": {
+   "game_guid": [
+    null,
+    "3f2026dc3712490289c4658a2ba4a24b"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    88
+   ],
+   "effect_resistances": [
+    null,
+    [
+     {
+      "resistType": 1,
+      "resistAmount": 1.0
+     }
+    ]
+   ]
+  },
+  "Beadie": {
+   "game_guid": [
+    null,
+    "7b0b1b6d9ce7405b86b75ce648025dd6"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    80
+   ]
+  },
+  "Blizzbulon": {
+   "game_guid": [
+    null,
+    "022d7c822bc146b58fe3b0287568aaa2"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    41
+   ],
+   "effect_resistances": [
+    null,
+    [
+     {
+      "resistType": 3,
+      "resistAmount": 1.0
+     }
+    ]
+   ]
+  },
+  "Blockner": {
+   "game_guid": [
+    "edc61b105ddd4ce18302b82efdc47178",
+    "bb73eeeb9e584fbeaf35877ec176de28"
+   ],
+   "ammonomicon_pos": [
+    102,
+    25
+   ]
+  },
+  "Poopulon": {
+   "game_guid": [
+    null,
+    "116d09c26e624bca8cca09fc69c714b3"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    43
+   ]
+  },
+  "Spectral Gun Nut": {
+   "game_guid": [
+    null,
+    "383175a55879441d90933b5c4e60cf6f"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    82
+   ]
+  },
+  "Veteran Bullet Kin": {
+   "game_guid": [
+    null,
+    "70216cae6c1346309d86d4a0b4603045"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    2
+   ]
+  },
+  "Creech": {
+   "game_guid": [
+    null,
+    "37340393f97f41b2822bc02d14654172"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    26
+   ]
+  },
+  "Old King": {
+   "game_guid": [
+    null,
+    "5729c8b5ffa7415bb3d01205663a33ef"
+   ],
+   "collision_damage": [
+    null,
+    1.0
+   ],
+   "ammonomicon_pos": [
+    null,
+    8
+   ],
+   "effect_resistances": [
+    null,
+    [
+     {
+      "resistType": 1,
+      "resistAmount": 1.0
+     }
+    ]
+   ]
+  },
+  "Det": {
+   "game_guid": [
+    "b67ffe82c66742d1985e5888fd8e6a03",
+    "d9632631a18849539333a92332895ebd"
+   ]
+  },
+  "Ashen Bullet Kin": {
+   "game_guid": [
+    null,
+    "1a78cfb776f54641b832e92c44021cf2"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    7
+   ]
+  },
+  "Mutant Bullet Kin": {
+   "game_guid": [
+    null,
+    "d4a9836f8ab14f3fadd0f597438b1f1f"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    8
+   ],
+   "effect_resistances": [
+    null,
+    [
+     {
+      "resistType": 2,
+      "resistAmount": 1.0
+     }
+    ]
+   ]
+  },
+  "Spent": {
+   "game_guid": [
+    "4538456236f64ea79f483784370bc62f",
+    "be0683affb0e41bbb699cb7125fdded6"
+   ]
+  },
+  "Apprentice Gunjurer": {
+   "game_guid": [
+    null,
+    "206405acad4d4c33aac6717d184dc8d4"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    55
+   ]
+  },
+  "Bookllet": {
+   "game_guid": [
+    "216fd3dfb9da439d9bd7ba53e1c76462",
+    "78e0951b097b46d89356f004dda27c42"
+   ]
+  },
+  "Agunim": {
+   "game_guid": [
+    "2ccaa1b7ae10457396a1796decda9cf6",
+    "41ee1c8538e8474a82a74c4aff99c712"
+   ],
+   "ammonomicon_pos": [
+    21,
+    100
+   ]
+  },
+  "Lord of the Jammed": {
+   "game_guid": [
+    null,
+    "0d3f7c641557426fbac8596b61c9fb45"
+   ],
+   "ammonomicon_pos": [
+    null,
+    100
+   ]
+  },
+  "Bullet King": {
+   "game_guid": [
+    null,
+    "ffca09398635467da3b1f4a54bcfda80"
+   ],
+   "collision_damage": [
+    null,
+    1.0
+   ],
+   "ammonomicon_pos": [
+    null,
+    3
+   ],
+   "effect_resistances": [
+    null,
+    [
+     {
+      "resistType": 1,
+      "resistAmount": 1.0
+     }
+    ]
+   ]
+  },
+  "Lich": {
+   "game_guid": [
+    "7c5d5f09911e49b78ae644d2b50ff3bf",
+    "68a238ed6a82467ea85474c595c49c6e"
+   ],
+   "ammonomicon_pos": [
+    23,
+    21
+   ]
+  },
+  "Keybullet Kin": {
+   "game_guid": [
+    null,
+    "699cd24270af4cd183d671090d8323a1"
+   ],
+   "ammonomicon_pos": [
+    null,
+    11
+   ],
+   "ammonomicon": [
+    null,
+    "The Keybullet Kin are impish bullets that have abandoned malevolence for playful whimsy. They taunt Gungeoneers with their shiny casing and key shaped slugs, daring them to chase them during a firefight. If ignored, they will become bored and fade beyond the Curtain. Their lifeless bodies fit the silver locks found throughout the Gungeon."
+   ]
+  },
+  "Gunzookie": {
+   "game_guid": [
+    "80ab6cd15bfc46668a8844b2975c6c26",
+    "6e972cd3b11e4b429b888b488e308551"
+   ],
+   "ammonomicon_pos": [
+    73,
+    74
+   ]
+  },
+  "Poisbuloid": {
+   "game_guid": [
+    null,
+    "fe3fe59d867347839824d5d9ae87f244"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    39
+   ],
+   "effect_resistances": [
+    null,
+    [
+     {
+      "resistType": 2,
+      "resistAmount": 1.0
+     }
+    ]
+   ]
+  },
+  "Door Lord": {
+   "game_guid": [
+    null,
+    "9189f46c47564ed588b9108965f975c9"
+   ],
+   "collision_damage": [
+    null,
+    1.0
+   ],
+   "ammonomicon_pos": [
+    null,
+    24
+   ]
+  },
+  "Mutant Shotgun Kin": {
+   "game_guid": [
+    null,
+    "7f665bd7151347e298e4d366f8818284"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    16
+   ],
+   "effect_resistances": [
+    null,
+    [
+     {
+      "resistType": 2,
+      "resistAmount": 1.0
+     }
+    ]
+   ]
+  },
+  "Lead Cube": {
+   "game_guid": [
+    "ba928393c8ed47819c2c5f593100a5bc",
+    "33b212b856b74ff09252bf4f2e8b8c57"
+   ],
+   "ammonomicon_pos": [
+    84,
+    87
+   ]
+  },
+  "Black Stache": {
+   "game_guid": [
+    null,
+    "8b913eea3d174184be1af362d441910d"
+   ],
+   "collision_damage": [
+    null,
+    1.0
+   ],
+   "ammonomicon_pos": [
+    null,
+    17
+   ]
+  },
+  "Blue Bookllet": {
+   "game_guid": [
+    null,
+    "6f22935656c54ccfb89fca30ad663a64"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    47
+   ]
+  },
+  "Bombshee": {
+   "game_guid": [
+    null,
+    "19b420dec96d4e9ea4aebc3398c0ba7a"
+   ],
+   "ammonomicon_pos": [
+    null,
+    28
+   ]
+  },
+  "Ammoconda": {
+   "game_guid": [
+    null,
+    "da797878d215453abba824ff902e21b4"
+   ],
+   "collision_damage": [
+    null,
+    1.0
+   ],
+   "ammonomicon_pos": [
+    null,
+    7
+   ]
+  },
+  "Bullat": {
+   "game_guid": [
+    null,
+    "2feb50a6a40f4f50982e89fd276f6f15"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    67
+   ]
+  },
+  "The Last Human": {
+   "game_guid": [
+    null,
+    "880bbe4ce1014740ba6b4e2ea521e49d"
+   ],
+   "collision_damage": [
+    null,
+    1.0
+   ],
+   "ammonomicon_pos": [
+    null,
+    20
+   ]
+  },
+  "Shambling Round": {
+   "game_guid": [
+    null,
+    "98ea2fe181ab4323ab6e9981955a9bca"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "signature_enemy": [
+    null,
+    true
+   ],
+   "ammonomicon_pos": [
+    null,
+    95
+   ],
+   "effect_resistances": [
+    null,
+    [
+     {
+      "resistType": 2,
+      "resistAmount": 1.0
+     }
+    ]
+   ]
+  },
+  "Skullmet": {
+   "game_guid": [
+    null,
+    "95ec774b5a75467a9ab05fa230c0c143"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    24
+   ]
+  },
+  "Chance Kin": {
+   "game_guid": [
+    null,
+    "a446c626b56d4166915a4e29869737fd"
+   ],
+   "ammonomicon_pos": [
+    null,
+    10
+   ]
+  },
+  "Shotgat": {
+   "game_guid": [
+    null,
+    "2d4f8b5404614e7d8b235006acde427a"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    68
+   ]
+  },
+  "Blobuloid": {
+   "game_guid": [
+    null,
+    "042edb1dfb614dc385d5ad1b010f2ee3"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    36
+   ]
+  },
+  "Blobulin": {
+   "game_guid": [
+    null,
+    "42be66373a3d4d89b91a35c9ff8adfec"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    35
+   ]
+  },
+  "Aged Gunsinger": {
+   "game_guid": [
+    null,
+    "c50a862d19fc4d30baeba54795e8cb93"
+   ],
+   "ammonomicon_pos": [
+    null,
+    60
+   ]
+  },
+  "Shadow Magician": {
+   "game_guid": [
+    null,
+    "db97e486ef02425280129e1e27c33118"
+   ],
+   "collision_damage": [
+    null,
+    1.0
+   ],
+   "ammonomicon_pos": [
+    null,
+    103
+   ]
+  },
+  "Bandana Bullet Kin": {
+   "game_guid": [
+    null,
+    "88b6b6a93d4b4234a67844ef4728382c"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    1
+   ]
+  },
+  "Professional": {
+   "game_guid": [
+    null,
+    "c5b11bfc065d417b9c4d03a5e385fe2c"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    21
+   ]
+  },
+  "Jamerlengo": {
+   "game_guid": [
+    null,
+    "ba657723b2904aa79f9e51bce7d23872"
+   ],
+   "ammonomicon_pos": [
+    null,
+    63
+   ]
+  },
+  "Fuselier": {
+   "game_guid": [
+    null,
+    "39de9bd6a863451a97906d949c103538"
+   ],
+   "collision_damage": [
+    null,
+    1.0
+   ],
+   "ammonomicon_pos": [
+    null,
+    101
+   ]
+  },
+  "Skullet": {
+   "game_guid": [
+    null,
+    "336190e29e8a4f75ab7486595b700d4a"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    23
+   ],
+   "effect_resistances": [
+    null,
+    [
+     {
+      "resistType": 1,
+      "resistAmount": 1.0
+     },
+     {
+      "resistType": 2,
+      "resistAmount": 1.0
+     }
+    ]
+   ]
+  },
+  "Green Bookllet": {
+   "game_guid": [
+    null,
+    "a400523e535f41ac80a43ff6b06dc0bf"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    48
+   ]
+  },
+  "Blue Shotgun Kin": {
+   "game_guid": [
+    "ddf12a4881eb43cfba04f36dd6377abb",
+    "b54d89f9e802455cbb2b8a96a31e8259"
+   ]
+  },
+  "Gunzockie": {
+   "game_guid": [
+    null,
+    "8a9e9bedac014a829a48735da6daf3da"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    75
+   ]
+  },
+  "Mine Flayer": {
+   "game_guid": [
+    null,
+    "8b0dd96e2fe74ec7bebc1bc689c0008a"
+   ],
+   "collision_damage": [
+    null,
+    1.0
+   ],
+   "ammonomicon_pos": [
+    null,
+    11
+   ]
+  },
+  "Leadbulon": {
+   "game_guid": [
+    null,
+    "ccf6d241dad64d989cbcaca2a8477f01"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    42
+   ]
+  },
+  "Great Bullet Shark": {
+   "game_guid": [
+    null,
+    "b70cbd875fea498aa7fd14b970248920"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    77
+   ]
+  },
+  "Executioner": {
+   "game_guid": [
+    null,
+    "b1770e0f1c744d9d887cc16122882b4f"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    17
+   ]
+  },
+  "Mountain Cube": {
+   "game_guid": [
+    null,
+    "f155fd2759764f4a9217db29dd21b7eb"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    86
+   ],
+   "effect_resistances": [
+    null,
+    [
+     {
+      "resistType": 3,
+      "resistAmount": 1.0
+     },
+     {
+      "resistType": 1,
+      "resistAmount": 1.0
+     }
+    ]
+   ]
+  },
+  "Lore Gunjurer": {
+   "game_guid": [
+    null,
+    "56fb939a434140308b8f257f0f447829"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    58
+   ]
+  },
+  "Gunsinger": {
+   "game_guid": [
+    null,
+    "cf2b7021eac44e3f95af07db9a7c442c"
+   ],
+   "ammonomicon_pos": [
+    null,
+    59
+   ]
+  },
+  "Phaser Spider": {
+   "game_guid": [
+    null,
+    "98ca70157c364750a60f5e0084f9d3e2"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    91
+   ]
+  },
+  "Dr. Wolf's Monster": {
+   "game_guid": [
+    null,
+    "8d441ad4e9924d91b6070d5b3438d066"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    19
+   ]
+  },
+  "Revolvenant": {
+   "game_guid": [
+    null,
+    "d5a7b95774cd41f080e517bea07bf495"
+   ],
+   "collision_damage": [
+    null,
+    1.0
+   ],
+   "signature_enemy": [
+    null,
+    true
+   ],
+   "ammonomicon_pos": [
+    null,
+    98
+   ]
+  },
+  "High Gunjurer": {
+   "game_guid": [
+    null,
+    "9b2cf2949a894599917d4d391a0b7394"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    57
+   ]
+  },
+  "Fungun": {
+   "game_guid": [
+    null,
+    "f905765488874846b7ff257ff81d6d0c"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    84
+   ],
+   "effect_resistances": [
+    null,
+    [
+     {
+      "resistType": 2,
+      "resistAmount": 1.0
+     }
+    ]
+   ]
+  },
+  "Bullet Shark": {
+   "game_guid": [
+    null,
+    "72d2f44431da43b8a3bae7d8a114a46d"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    76
+   ]
+  },
+  "Muzzle Flare": {
+   "game_guid": [
+    null,
+    "d8a445ea4d944cc1b55a40f22821ae69"
+   ],
+   "ammonomicon_pos": [
+    null,
+    51
+   ],
+   "effect_resistances": [
+    null,
+    [
+     {
+      "resistType": 1,
+      "resistAmount": 1.0
+     }
+    ]
+   ]
+  },
+  "Sniper Shell": {
+   "game_guid": [
+    null,
+    "31a3ea0c54a745e182e22ea54844a82d"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    20
+   ]
+  },
+  "Grenat": {
+   "game_guid": [
+    null,
+    "b4666cb6ef4f4b038ba8924fd8adf38f"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    69
+   ]
+  },
+  "King Bullat": {
+   "game_guid": [
+    null,
+    "1a4872dafdb34fd29fe8ac90bd2cea67"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    31
+   ]
+  },
+  "Poisbulon": {
+   "game_guid": [
+    null,
+    "e61cab252cfb435db9172adc96ded75f"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    40
+   ],
+   "effect_resistances": [
+    null,
+    [
+     {
+      "resistType": 2,
+      "resistAmount": 1.0
+     }
+    ]
+   ]
+  },
+  "Confirmed": {
+   "game_guid": [
+    null,
+    "844657ad68894a4facb1b8e1aef1abf9"
+   ],
+   "ammonomicon_pos": [
+    null,
+    12
+   ]
+  },
+  "Blobulord": {
+   "game_guid": [
+    null,
+    "1b5810fafbec445d89921a4efb4e42b7"
+   ],
+   "collision_damage": [
+    null,
+    1.0
+   ],
+   "ammonomicon_pos": [
+    null,
+    4
+   ]
+  },
+  "Shelleton": {
+   "game_guid": [
+    null,
+    "21dd14e5ca2a4a388adab5b11b69a1e1"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "signature_enemy": [
+    null,
+    true
+   ],
+   "ammonomicon_pos": [
+    null,
+    96
+   ],
+   "effect_resistances": [
+    null,
+    [
+     {
+      "resistType": 3,
+      "resistAmount": 1.0
+     }
+    ]
+   ]
+  },
+  "Shroomer": {
+   "game_guid": [
+    null,
+    "e5cffcfabfae489da61062ea20539887"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    6
+   ]
+  },
+  "Tarnisher": {
+   "game_guid": [
+    null,
+    "475c20c1fd474dfbad54954e7cba29c1"
+   ],
+   "ammonomicon_pos": [
+    null,
+    94
+   ],
+   "effect_resistances": [
+    null,
+    [
+     {
+      "resistType": 4,
+      "resistAmount": 1.0
+     }
+    ]
+   ]
+  },
+  "Bloodbulon": {
+   "game_guid": [
+    null,
+    "062b9b64371e46e195de17b6f10e47c8"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    44
+   ]
+  },
+  "Veteran Shotgun Kin": {
+   "game_guid": [
+    null,
+    "2752019b770f473193b08b4005dc781f"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    15
+   ]
+  },
+  "Chancebulon": {
+   "game_guid": [
+    null,
+    "1bc2a07ef87741be90c37096910843ab"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    53
+   ],
+   "effect_resistances": [
+    null,
+    [
+     {
+      "resistType": 1,
+      "resistAmount": 1.0
+     },
+     {
+      "resistType": 2,
+      "resistAmount": 1.0
+     }
+    ]
+   ]
+  },
+  "Spirat": {
+   "game_guid": [
+    null,
+    "7ec3e8146f634c559a7d58b19191cd43"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    70
+   ]
+  },
+  "Ammomancer": {
+   "game_guid": [
+    null,
+    "b1540990a4f1480bbcb3bea70d67f60d"
+   ],
+   "ammonomicon_pos": [
+    null,
+    61
+   ]
+  },
+  "Chain Gunner": {
+   "game_guid": [
+    null,
+    "463d16121f884984abe759de38418e48"
+   ],
+   "collision_damage": [
+    null,
+    1.0
+   ],
+   "signature_enemy": [
+    null,
+    true
+   ],
+   "ammonomicon_pos": [
+    null,
+    83
+   ]
+  },
+  "Muzzle Wisp": {
+   "game_guid": [
+    null,
+    "ffdc8680bdaa487f8f31995539f74265"
+   ],
+   "ammonomicon_pos": [
+    null,
+    50
+   ],
+   "effect_resistances": [
+    null,
+    [
+     {
+      "resistType": 1,
+      "resistAmount": 1.0
+     }
+    ]
+   ]
+  },
+  "Gun Fairy": {
+   "game_guid": [
+    null,
+    "c182a5cb704d460d9d099a47af49c913"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    66
+   ]
+  },
+  "Gunreaper": {
+   "game_guid": [
+    null,
+    "88f037c3f93b4362a040a87b30770407"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    99
+   ]
+  },
+  "Blobulon": {
+   "game_guid": [
+    null,
+    "0239c0680f9f467dbe5c4aab7dd1eca6"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    37
+   ]
+  },
+  "Gun Cultist": {
+   "game_guid": [
+    null,
+    "57255ed50ee24794b7aac1ac3cfb8a95"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    79
+   ]
+  },
+  "Poisbulin": {
+   "game_guid": [
+    null,
+    "b8103805af174924b578c98e95313074"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    38
+   ],
+   "effect_resistances": [
+    null,
+    [
+     {
+      "resistType": 2,
+      "resistAmount": 1.0
+     }
+    ]
+   ]
+  },
+  "Wizbang": {
+   "game_guid": [
+    null,
+    "43426a2e39584871b287ac31df04b544"
+   ],
+   "collision_damage": [
+    null,
+    0.5
+   ],
+   "ammonomicon_pos": [
+    null,
+    64
+   ]
+  }
+ },
+ "chests": 10,
+ "floors": 12
+}
