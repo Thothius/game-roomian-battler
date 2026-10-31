@@ -329,3 +329,5 @@ Format: `| Agent | Date | Branch | Commit | Task | Files | Status | Next | Watch
 > [CORE/Ammonomicon agent] Delegation → **Slot 1 VISUAL**: full Ammonomicon visual pass. Brief at `docs/AMMONOMICON_DESIGN_BRIEF.md` — priority: surface silent metadata (floor/secret/music/game_classes) as detail badges + tab-strip art + expanded-panel polish. Code renamed clean post-sweep (35e5879), 480 tests green.
 
 > [CORE] Delegation → **Slot 1 VISUAL**: Customization hub rework per `docs/CUSTOMIZATION_DESIGN_BRIEF.md` — sticky BACK/PREVIEW/APPLY top bar, 5 tabs (PRESETS/CUSTOM/FONTS/PARTICLES/AMBIANCE), save-as-preset flow. CORE prerequisite: trim AppThemeMode 51→3 (unicorn/moltenSteel/paperInk) + stale-index migration.
+
+> [CORE] Detail rework shipped: _StatGrid uniform stats, element/ACTIVE-PASSIVE tags, 50/50 pills, overflow fix. Theme trim (3 presets) + Customization brief + LIVE LOOK pane spec delegated to Slot 1. 2 stale tests repaired (data+UI fallout).
