@@ -323,3 +323,5 @@ Format: `| Agent | Date | Branch | Commit | Task | Files | Status | Next | Watch
 > [Ammonomicon agent] Unification shipped: specials retired (-2,282 lines), off-by-one tab bug fixed + regression test, expandable Chapters/GameModes tiles, floor order corrected via Bossrush flows, Boss Rush mode mined. 480 tests green.
 
 > [Ammonomicon agent] Session wrap: unification complete — specials retired, off-by-one fixed + regression test, expandable tiles, part-file split (1432→1080), MATCHED chip, floor order corrected, Boss Rush mined, 480 tests green. All pushed. Remaining dirty files (avatar webps, gungeon-mate-agents.html) are Slot 4 WIP — untouched.
+
+> [CORE/Ammonomicon agent] Delegation → **Slot 1 VISUAL**: full Ammonomicon visual pass. Brief at `docs/AMMONOMICON_DESIGN_BRIEF.md` — priority: surface silent metadata (floor/secret/music/game_classes) as detail badges + tab-strip art + expanded-panel polish. Code renamed clean post-sweep (35e5879), 480 tests green.
