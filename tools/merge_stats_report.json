@@ -1,0 +1,8874 @@
+{
+ "guns": {
+  "38 Special": {
+   "id": [
+    681,
+    56
+   ],
+   "quality": [
+    "C",
+    "D"
+   ],
+   "ammo_capacity": [
+    "600",
+    "350"
+   ],
+   "ammonomicon_pos": [
+    null,
+    9
+   ]
+  },
+  "3rd Party Controller": {
+   "content_source": [
+    null,
+    "CONTENT_UPDATE_03"
+   ],
+   "ammonomicon_pos": [
+    null,
+    231
+   ]
+  },
+  "A.W.P.": {
+   "id": [
+    716,
+    5
+   ],
+   "quality": [
+    "S",
+    "A"
+   ],
+   "spread": [
+    "5°",
+    "0°"
+   ],
+   "ammonomicon_pos": [
+    null,
+    97
+   ]
+  },
+  "Abyssal Tentacle": {
+   "fire_rate": [
+    "0.10",
+    "1"
+   ],
+   "game_damage": [
+    null,
+    "22.5"
+   ],
+   "game_shot_speed": [
+    null,
+    "-1"
+   ],
+   "game_reload_time": [
+    null,
+    "0"
+   ],
+   "game_type": [
+    null,
+    "Beam"
+   ],
+   "ammonomicon_pos": [
+    null,
+    215
+   ]
+  },
+  "AC-15": {
+   "game_fire_rate": [
+    null,
+    "0.5"
+   ],
+   "game_spread": [
+    null,
+    "1°"
+   ],
+   "game_damage": [
+    null,
+    "15"
+   ],
+   "game_shot_speed": [
+    null,
+    "50"
+   ],
+   "game_range": [
+    null,
+    "25"
+   ],
+   "game_force": [
+    null,
+    "50"
+   ],
+   "content_source": [
+    null,
+    "CONTENT_UPDATE_02"
+   ],
+   "ammonomicon_pos": [
+    null,
+    90
+   ]
+  },
+  "AK-47": {
+   "quality": [
+    "A",
+    "B"
+   ],
+   "ammonomicon_pos": [
+    null,
+    74
+   ]
+  },
+  "AKEY-47": {
+   "id": [
+    726,
+    95
+   ],
+   "shot_speed": [
+    "15",
+    "23"
+   ],
+   "force": [
+    "11",
+    "9"
+   ],
+   "ammonomicon_pos": [
+    null,
+    76
+   ]
+  },
+  "Alien Engine": {
+   "id": [
+    742,
+    177
+   ],
+   "quality": [
+    "A",
+    "B"
+   ],
+   "fire_rate": [
+    "0.06",
+    "0.02"
+   ],
+   "charge_stages": [
+    null,
+    1
+   ],
+   "ammonomicon_pos": [
+    null,
+    222
+   ]
+  },
+  "Alien Sidearm": {
+   "id": [
+    696,
+    57
+   ],
+   "quality": [
+    "C",
+    "D"
+   ],
+   "ammo_capacity": [
+    "500",
+    "350"
+   ],
+   "charge_stages": [
+    null,
+    2
+   ],
+   "ammonomicon_pos": [
+    null,
+    107
+   ]
+  },
+  "Anvillain": {
+   "charge_stages": [
+    null,
+    1
+   ],
+   "ammonomicon_pos": [
+    null,
+    174
+   ]
+  },
+  "AU Gun": {
+   "ammonomicon_pos": [
+    null,
+    32
+   ]
+  },
+  "Bait Launcher": {
+   "game_damage": [
+    null,
+    "10"
+   ],
+   "game_range": [
+    null,
+    "1000"
+   ],
+   "ammo_capacity": [
+    "50",
+    "60"
+   ],
+   "charge_stages": [
+    null,
+    1
+   ],
+   "ammonomicon_pos": [
+    null,
+    206
+   ]
+  },
+  "Balloon Gun": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "fire_rate": [
+    "0.25",
+    "0.22"
+   ],
+   "game_spread": [
+    null,
+    "5°"
+   ],
+   "type": [
+    "Semiautomatic",
+    "Automatic"
+   ],
+   "content_source": [
+    null,
+    "CONTENT_UPDATE_01"
+   ],
+   "ammonomicon_pos": [
+    null,
+    85
+   ]
+  },
+  "Banana": {
+   "id": [
+    688,
+    478
+   ],
+   "quality": [
+    "B",
+    "C"
+   ],
+   "charge_stages": [
+    null,
+    1
+   ],
+   "ammonomicon_pos": [
+    null,
+    226
+   ]
+  },
+  "Barrel": {
+   "id": [
+    709,
+    7
+   ],
+   "quality": [
+    "B",
+    "C"
+   ],
+   "damage": [
+    "5",
+    "8"
+   ],
+   "shot_speed": [
+    "23",
+    "20"
+   ],
+   "range": [
+    "35",
+    "1000"
+   ],
+   "force": [
+    "10",
+    "13"
+   ],
+   "ammonomicon_pos": [
+    null,
+    185
+   ]
+  },
+  "Bee Hive": {
+   "id": [
+    703,
+    14
+   ],
+   "quality": [
+    "A",
+    "B"
+   ],
+   "ammonomicon_pos": [
+    null,
+    227
+   ]
+  },
+  "Betrayer's Shield": {
+   "ammonomicon_pos": [
+    null,
+    208
+   ]
+  },
+  "Big Iron": {
+   "id": [
+    694,
+    157
+   ],
+   "quality": [
+    "A",
+    "B"
+   ],
+   "fire_rate": [
+    "0.35",
+    "0.07"
+   ],
+   "ammonomicon_pos": [
+    null,
+    33
+   ]
+  },
+  "Big Shotgun": {
+   "quality": [
+    "S",
+    "A"
+   ],
+   "fire_rate": [
+    "0.6",
+    "0.2"
+   ],
+   "game_spread": [
+    null,
+    "0°"
+   ],
+   "charge_stages": [
+    null,
+    1
+   ],
+   "content_source": [
+    null,
+    "CONTENT_UPDATE_02"
+   ],
+   "ammonomicon_pos": [
+    null,
+    41
+   ]
+  },
+  "Black Hole Gun": {
+   "quality": [
+    "S",
+    "A"
+   ],
+   "charge_stages": [
+    null,
+    5
+   ],
+   "ammonomicon_pos": [
+    null,
+    235
+   ]
+  },
+  "Blasphemy": {
+   "id": [
+    813,
+    574
+   ],
+   "infinite_ammo": [
+    null,
+    true
+   ],
+   "ammonomicon_pos": [
+    null,
+    6
+   ]
+  },
+  "Blooper": {
+   "quality": [
+    "A",
+    "B"
+   ],
+   "magazine_size": [
+    "5",
+    "8"
+   ],
+   "game_damage": [
+    null,
+    "7"
+   ],
+   "shot_speed": [
+    "23",
+    "27"
+   ],
+   "force": [
+    "30",
+    "45"
+   ],
+   "ammonomicon_pos": [
+    null,
+    62
+   ]
+  },
+  "Blunderbuss": {
+   "id": [
+    678,
+    122
+   ],
+   "quality": [
+    "C",
+    "D"
+   ],
+   "charge_stages": [
+    null,
+    1
+   ],
+   "ammonomicon_pos": [
+    null,
+    55
+   ]
+  },
+  "Bow": {
+   "game_damage": [
+    null,
+    "22"
+   ],
+   "game_range": [
+    null,
+    "1000"
+   ],
+   "charge_stages": [
+    null,
+    2
+   ],
+   "ammonomicon_pos": [
+    null,
+    63
+   ]
+  },
+  "Boxing Glove": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "game_spread": [
+    null,
+    "0°"
+   ],
+   "charge_stages": [
+    null,
+    2
+   ],
+   "content_source": [
+    null,
+    "CONTENT_UPDATE_02"
+   ],
+   "ammonomicon_pos": [
+    null,
+    16
+   ]
+  },
+  "Brick Breaker": {
+   "game_range": [
+    null,
+    "1000"
+   ],
+   "ammonomicon_pos": [
+    null,
+    207
+   ]
+  },
+  "BSG": {
+   "charge_stages": [
+    null,
+    5
+   ],
+   "ammonomicon_pos": [
+    null,
+    236
+   ]
+  },
+  "Bubble Blaster": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "fire_rate": [
+    "0.10",
+    "0.2"
+   ],
+   "magazine_size": [
+    "100",
+    "15"
+   ],
+   "spread": [
+    "12°",
+    "0°"
+   ],
+   "type": [
+    "Automatic",
+    "Charged"
+   ],
+   "charge_stages": [
+    null,
+    1
+   ],
+   "content_source": [
+    null,
+    "CONTENT_UPDATE_02"
+   ],
+   "ammonomicon_pos": [
+    null,
+    46
+   ]
+  },
+  "Budget Revolver": {
+   "infinite_ammo": [
+    null,
+    true
+   ],
+   "content_source": [
+    null,
+    "CONTENT_UPDATE_03"
+   ],
+   "ammonomicon_pos": [
+    null,
+    3
+   ]
+  },
+  "Bullet": {
+   "id": [
+    577,
+    503
+   ],
+   "quality": [
+    "B",
+    "C"
+   ],
+   "game_spread": [
+    null,
+    "10°"
+   ],
+   "shot_speed": [
+    "21",
+    "12"
+   ],
+   "range": [
+    "20",
+    "100"
+   ],
+   "force": [
+    "6",
+    "13"
+   ],
+   "ammo_capacity": [
+    "180",
+    "250"
+   ],
+   "content_source": [
+    null,
+    "CONTENT_UPDATE_01"
+   ],
+   "ammonomicon_pos": [
+    null,
+    13
+   ]
+  },
+  "Bullet Bore": {
+   "ammonomicon_pos": [
+    null,
+    162
+   ]
+  },
+  "Bundle of Wands": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "ammonomicon_pos": [
+    null,
+    149
+   ]
+  },
+  "Buzzkill": {
+   "spread": [
+    "5°",
+    "4°"
+   ],
+   "ammonomicon_pos": [
+    null,
+    199
+   ]
+  },
+  "Cactus": {
+   "id": [
+    700,
+    124
+   ],
+   "quality": [
+    "B",
+    "C"
+   ],
+   "ammonomicon_pos": [
+    null,
+    234
+   ]
+  },
+  "Camera": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "charge_stages": [
+    null,
+    1
+   ],
+   "ammonomicon_pos": [
+    null,
+    229
+   ]
+  },
+  "Casey": {
+   "id": [
+    616,
+    541
+   ],
+   "quality": [
+    "C",
+    "D"
+   ],
+   "game_spread": [
+    null,
+    "0°"
+   ],
+   "charge_stages": [
+    null,
+    2
+   ],
+   "infinite_ammo": [
+    null,
+    true
+   ],
+   "content_source": [
+    null,
+    "CONTENT_UPDATE_01"
+   ],
+   "ammonomicon_pos": [
+    null,
+    7
+   ]
+  },
+  "Cat Claw": {
+   "game_damage": [
+    null,
+    "2"
+   ],
+   "reload_time": [
+    "1.25s",
+    "1.2"
+   ],
+   "ammonomicon_pos": [
+    null,
+    163
+   ]
+  },
+  "Chamber Gun": {
+   "game_fire_rate": [
+    null,
+    "0.3"
+   ],
+   "game_magazine_size": [
+    null,
+    "22"
+   ],
+   "game_spread": [
+    null,
+    "10°"
+   ],
+   "game_damage": [
+    null,
+    "5.5"
+   ],
+   "game_shot_speed": [
+    null,
+    "23"
+   ],
+   "game_range": [
+    null,
+    "1000"
+   ],
+   "game_force": [
+    null,
+    "9"
+   ],
+   "game_reload_time": [
+    null,
+    "1.3"
+   ],
+   "game_ammo_capacity": [
+    null,
+    "500"
+   ],
+   "charge_stages": [
+    null,
+    1
+   ],
+   "content_source": [
+    null,
+    "CONTENT_UPDATE_03"
+   ],
+   "ammonomicon_pos": [
+    null,
+    111
+   ]
+  },
+  "Charge Shot": {
+   "quality": [
+    "A",
+    "B"
+   ],
+   "fire_rate": [
+    "0.01",
+    "0.05"
+   ],
+   "charge_stages": [
+    null,
+    1
+   ],
+   "ammonomicon_pos": [
+    null,
+    135
+   ]
+  },
+  "Charmed Bow": {
+   "quality": [
+    "A",
+    "B"
+   ],
+   "game_fire_rate": [
+    null,
+    "0"
+   ],
+   "game_spread": [
+    null,
+    "0°"
+   ],
+   "charge_stages": [
+    null,
+    2
+   ],
+   "ammonomicon_pos": [
+    null,
+    64
+   ]
+  },
+  "Cobalt Hammer": {
+   "game_damage": [
+    null,
+    "36"
+   ],
+   "game_range": [
+    null,
+    "1000"
+   ],
+   "charge_stages": [
+    null,
+    2
+   ],
+   "ammonomicon_pos": [
+    null,
+    160
+   ]
+  },
+  "Cold 45": {
+   "quality": [
+    "A",
+    "B"
+   ],
+   "ammonomicon_pos": [
+    null,
+    23
+   ]
+  },
+  "Colt 1851": {
+   "id": [
+    62,
+    50
+   ],
+   "quality": [
+    "C",
+    "B"
+   ],
+   "fire_rate": [
+    "0.21",
+    "0.12"
+   ],
+   "magazine_size": [
+    "12",
+    "6"
+   ],
+   "spread": [
+    "8°",
+    "0°"
+   ],
+   "damage": [
+    "6",
+    "8"
+   ],
+   "game_range": [
+    null,
+    "1000"
+   ],
+   "force": [
+    "10",
+    "14"
+   ],
+   "reload_time": [
+    "1.5s",
+    "0.6"
+   ],
+   "ammo_capacity": [
+    "350",
+    "200"
+   ],
+   "type": [
+    "Burst",
+    "Semiautomatic"
+   ],
+   "ammonomicon_pos": [
+    null,
+    22
+   ]
+  },
+  "Com4nd0": {
+   "id": [
+    723,
+    129
+   ],
+   "quality": [
+    "A",
+    "B"
+   ],
+   "spread": [
+    "5°",
+    "1°"
+   ],
+   "ammonomicon_pos": [
+    null,
+    143
+   ]
+  },
+  "Combined Rifle": {
+   "quality": [
+    "A",
+    "B"
+   ],
+   "game_fire_rate": [
+    null,
+    "0.1"
+   ],
+   "game_magazine_size": [
+    null,
+    "30"
+   ],
+   "game_spread": [
+    null,
+    "7°"
+   ],
+   "type": [
+    "Automatic",
+    "Variable"
+   ],
+   "content_source": [
+    null,
+    "CONTENT_UPDATE_02"
+   ],
+   "ammonomicon_pos": [
+    null,
+    80
+   ]
+  },
+  "Composite Gun": {
+   "magazine_size": [
+    "2",
+    "1"
+   ],
+   "type": [
+    "Charged",
+    "Semiautomatic"
+   ],
+   "ammonomicon_pos": [
+    null,
+    34
+   ]
+  },
+  "Compressed Air Tank": {
+   "quality": [
+    "S",
+    "A"
+   ],
+   "charge_stages": [
+    null,
+    1
+   ],
+   "ammonomicon_pos": [
+    null,
+    237
+   ]
+  },
+  "Corsair": {
+   "spread": [
+    "5°",
+    "0°"
+   ],
+   "game_damage": [
+    null,
+    "22"
+   ],
+   "charge_stages": [
+    null,
+    1
+   ],
+   "ammonomicon_pos": [
+    null,
+    100
+   ]
+  },
+  "Crescent Crossbow": {
+   "quality": [
+    "S",
+    "A"
+   ],
+   "game_fire_rate": [
+    null,
+    "0.2"
+   ],
+   "charge_stages": [
+    null,
+    2
+   ],
+   "ammonomicon_pos": [
+    null,
+    69
+   ]
+  },
+  "Crestfaller": {
+   "game_range": [
+    null,
+    "1000"
+   ],
+   "ammonomicon_pos": [
+    null,
+    132
+   ]
+  },
+  "Crossbow": {
+   "id": [
+    381,
+    12
+   ],
+   "quality": [
+    "B",
+    "D"
+   ],
+   "reload_time": [
+    "0.9",
+    "0.75"
+   ],
+   "ammonomicon_pos": [
+    null,
+    65
+   ]
+  },
+  "Crown of Guns": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "fire_rate": [
+    "0.04",
+    "0.05"
+   ],
+   "spread": [
+    "180°",
+    "4°"
+   ],
+   "content_source": [
+    null,
+    "CONTENT_UPDATE_01"
+   ],
+   "ammonomicon_pos": [
+    null,
+    78
+   ]
+  },
+  "Dark Marker": {
+   "magazine_size": [
+    "12",
+    "20"
+   ],
+   "game_damage": [
+    null,
+    "22"
+   ],
+   "game_range": [
+    null,
+    "1000"
+   ],
+   "reload_time": [
+    "2.0s",
+    "1.5"
+   ],
+   "type": [
+    "Semiautomatic",
+    "Variable"
+   ],
+   "charge_stages": [
+    null,
+    2
+   ],
+   "ammonomicon_pos": [
+    null,
+    136
+   ]
+  },
+  "Dart Gun": {
+   "id": [
+    811,
+    24
+   ],
+   "infinite_ammo": [
+    null,
+    true
+   ],
+   "ammonomicon_pos": [
+    null,
+    4
+   ]
+  },
+  "Deck4rd": {
+   "quality": [
+    "S",
+    "A"
+   ],
+   "ammonomicon_pos": [
+    null,
+    104
+   ]
+  },
+  "Demon Head": {
+   "quality": [
+    "A",
+    "B"
+   ],
+   "fire_rate": [
+    "0.10",
+    "0.5"
+   ],
+   "spread": [
+    "5°",
+    "0°"
+   ],
+   "game_type": [
+    null,
+    "Beam"
+   ],
+   "ammonomicon_pos": [
+    null,
+    165
+   ]
+  },
+  "Derringer": {
+   "reload_time": [
+    "1.25s",
+    "1.2"
+   ],
+   "ammonomicon_pos": [
+    null,
+    10
+   ]
+  },
+  "Devolver": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "content_source": [
+    null,
+    "CONTENT_UPDATE_01"
+   ],
+   "ammonomicon_pos": [
+    null,
+    240
+   ]
+  },
+  "Directional Pad": {
+   "quality": [
+    "A",
+    "B"
+   ],
+   "fire_rate": [
+    "1.0",
+    "0.8"
+   ],
+   "magazine_size": [
+    "30",
+    "12"
+   ],
+   "game_spread": [
+    null,
+    "10°"
+   ],
+   "type": [
+    "Burst",
+    "Semiautomatic"
+   ],
+   "content_source": [
+    null,
+    "CONTENT_UPDATE_01"
+   ],
+   "ammonomicon_pos": [
+    null,
+    230
+   ]
+  },
+  "Disintegrator": {
+   "damage": [
+    "1",
+    "70"
+   ],
+   "game_reload_time": [
+    null,
+    "0"
+   ],
+   "game_type": [
+    null,
+    "Beam"
+   ],
+   "ammonomicon_pos": [
+    null,
+    179
+   ]
+  },
+  "Dragunfire": {
+   "fire_rate": [
+    "0.1",
+    "0.07"
+   ],
+   "game_range": [
+    null,
+    "1000"
+   ],
+   "force": [
+    "27",
+    "21"
+   ],
+   "ammonomicon_pos": [
+    null,
+    95
+   ]
+  },
+  "Dueling Laser": {
+   "quality": [
+    "A",
+    "B"
+   ],
+   "game_spread": [
+    null,
+    "0°"
+   ],
+   "infinite_ammo": [
+    null,
+    true
+   ],
+   "content_source": [
+    null,
+    "CONTENT_UPDATE_01_FINAL"
+   ],
+   "ammonomicon_pos": [
+    null,
+    190
+   ]
+  },
+  "Dueling Pistol": {
+   "id": [
+    675,
+    9
+   ],
+   "quality": [
+    "C",
+    "D"
+   ],
+   "ammonomicon_pos": [
+    null,
+    31
+   ]
+  },
+  "Dungeon Eagle": {
+   "id": [
+    750,
+    23
+   ],
+   "quality": [
+    "B",
+    "C"
+   ],
+   "game_fire_rate": [
+    null,
+    "0.2"
+   ],
+   "charge_stages": [
+    null,
+    2
+   ],
+   "ammonomicon_pos": [
+    null,
+    26
+   ]
+  },
+  "Elephant Gun": {
+   "id": [
+    672,
+    82
+   ],
+   "quality": [
+    "B",
+    "C"
+   ],
+   "magazine_size": [
+    "2",
+    "6"
+   ],
+   "game_damage": [
+    null,
+    "5.5"
+   ],
+   "shot_speed": [
+    "23",
+    "30"
+   ],
+   "force": [
+    "30",
+    "22"
+   ],
+   "ammonomicon_pos": [
+    null,
+    47
+   ]
+  },
+  "Elimentaler": {
+   "charge_stages": [
+    null,
+    1
+   ],
+   "infinite_ammo": [
+    null,
+    true
+   ],
+   "content_source": [
+    null,
+    "CONTENT_UPDATE_02"
+   ],
+   "ammonomicon_pos": [
+    null,
+    12
+   ]
+  },
+  "Evolver": {
+   "id": [
+    484,
+    755
+   ],
+   "quality": [
+    "B",
+    "C"
+   ],
+   "game_fire_rate": [
+    null,
+    "0.4"
+   ],
+   "game_magazine_size": [
+    null,
+    "24"
+   ],
+   "game_spread": [
+    null,
+    "10°"
+   ],
+   "game_damage": [
+    null,
+    "6"
+   ],
+   "game_shot_speed": [
+    null,
+    "22"
+   ],
+   "game_range": [
+    null,
+    "10"
+   ],
+   "game_force": [
+    null,
+    "13"
+   ],
+   "reload_time": [
+    "0.78",
+    "1.5"
+   ],
+   "ammo_capacity": [
+    "100",
+    "300"
+   ],
+   "content_source": [
+    null,
+    "CONTENT_UPDATE_03"
+   ],
+   "ammonomicon_pos": [
+    null,
+    219
+   ]
+  },
+  "Excaliber": {
+   "id": [
+    544,
+    377
+   ],
+   "damage": [
+    "3.799999952316284",
+    "7"
+   ],
+   "shot_speed": [
+    "30",
+    "26"
+   ],
+   "force": [
+    "8",
+    "15"
+   ],
+   "reload_time": [
+    "2",
+    "0.48"
+   ],
+   "ammo_capacity": [
+    "300",
+    "280"
+   ],
+   "burst_count": [
+    null,
+    3
+   ],
+   "ammonomicon_pos": [
+    null,
+    210
+   ]
+  },
+  "Eye of the Beholster": {
+   "quality": [
+    "A",
+    "B"
+   ],
+   "ammonomicon_pos": [
+    null,
+    202
+   ]
+  },
+  "Face Melter": {
+   "magazine_size": [
+    "600",
+    "60"
+   ],
+   "ammonomicon_pos": [
+    null,
+    211
+   ]
+  },
+  "Fightsabre": {
+   "ammonomicon_pos": [
+    null,
+    129
+   ]
+  },
+  "Finished Gun": {
+   "quality": [
+    "D",
+    "S"
+   ],
+   "curse": [
+    0.0,
+    5.0
+   ],
+   "content_source": [
+    null,
+    "CONTENT_UPDATE_03"
+   ],
+   "ammonomicon_pos": [
+    null,
+    241
+   ]
+  },
+  "Flame Hand": {
+   "ammonomicon_pos": [
+    null,
+    168
+   ]
+  },
+  "Flare Gun": {
+   "id": [
+    706,
+    275
+   ],
+   "quality": [
+    "C",
+    "D"
+   ],
+   "ammonomicon_pos": [
+    null,
+    35
+   ]
+  },
+  "Flash Ray": {
+   "id": [
+    383,
+    657
+   ],
+   "magazine_size": [
+    "8",
+    "10"
+   ],
+   "damage": [
+    "7.5",
+    "10"
+   ],
+   "shot_speed": [
+    "600",
+    "15"
+   ],
+   "force": [
+    "4",
+    "11"
+   ],
+   "reload_time": [
+    "1.2s",
+    "1.5"
+   ],
+   "content_source": [
+    null,
+    "CONTENT_UPDATE_03"
+   ],
+   "ammonomicon_pos": [
+    null,
+    88
+   ]
+  },
+  "Fossilized Gun": {
+   "quality": [
+    "C",
+    "D"
+   ],
+   "fire_rate": [
+    "0.10",
+    "1"
+   ],
+   "game_type": [
+    null,
+    "Beam"
+   ],
+   "ammonomicon_pos": [
+    null,
+    175
+   ]
+  },
+  "Freeze Ray": {
+   "fire_rate": [
+    "0.10",
+    "1"
+   ],
+   "game_type": [
+    null,
+    "Beam"
+   ],
+   "content_source": [
+    null,
+    "CONTENT_UPDATE_02"
+   ],
+   "ammonomicon_pos": [
+    null,
+    161
+   ]
+  },
+  "Frost Giant": {
+   "fire_rate": [
+    "0.001",
+    "0.01"
+   ],
+   "magazine_size": [
+    "12",
+    "8"
+   ],
+   "ammonomicon_pos": [
+    null,
+    161
+   ]
+  },
+  "Gamma Ray": {
+   "fire_rate": [
+    "0.10",
+    "1"
+   ],
+   "game_damage": [
+    null,
+    "16"
+   ],
+   "game_shot_speed": [
+    null,
+    "-1"
+   ],
+   "force": [
+    "10",
+    "20"
+   ],
+   "game_reload_time": [
+    null,
+    "0"
+   ],
+   "game_type": [
+    null,
+    "Beam"
+   ],
+   "ammonomicon_pos": [
+    null,
+    176
+   ]
+  },
+  "Gilded Hydra": {
+   "game_magazine_size": [
+    null,
+    "8"
+   ],
+   "game_damage": [
+    null,
+    "7.5"
+   ],
+   "shot_speed": [
+    "23",
+    "20"
+   ],
+   "force": [
+    "30",
+    "12"
+   ],
+   "ammonomicon_pos": [
+    null,
+    54
+   ]
+  },
+  "Glacier": {
+   "game_damage": [
+    null,
+    "8"
+   ],
+   "ammonomicon_pos": [
+    null,
+    195
+   ]
+  },
+  "Glass Cannon": {
+   "id": [
+    819,
+    540
+   ],
+   "quality": [
+    "B",
+    "C"
+   ],
+   "reload_time": [
+    "2.4",
+    "2"
+   ],
+   "charge_stages": [
+    null,
+    1
+   ],
+   "content_source": [
+    null,
+    "CONTENT_UPDATE_03"
+   ],
+   "ammonomicon_pos": [
+    null,
+    204
+   ]
+  },
+  "Grasschopper": {
+   "quality": [
+    "S",
+    "A"
+   ],
+   "game_fire_rate": [
+    null,
+    "0.07"
+   ],
+   "ammonomicon_pos": [
+    null,
+    147
+   ]
+  },
+  "Grenade Launcher": {
+   "quality": [
+    "A",
+    "B"
+   ],
+   "ammonomicon_pos": [
+    null,
+    140
+   ]
+  },
+  "Grey Mauser": {
+   "id": [
+    537,
+    182
+   ],
+   "quality": [
+    "A",
+    "B"
+   ],
+   "damage": [
+    "5",
+    "8"
+   ],
+   "reload_time": [
+    "1",
+    "1.5"
+   ],
+   "ammo_capacity": [
+    "250",
+    "100"
+   ],
+   "ammonomicon_pos": [
+    null,
+    27
+   ]
+  },
+  "Gunbow": {
+   "id": [
+    693,
+    210
+   ],
+   "quality": [
+    "S",
+    "A"
+   ],
+   "game_fire_rate": [
+    null,
+    "0.001"
+   ],
+   "charge_stages": [
+    null,
+    2
+   ],
+   "ammonomicon_pos": [
+    null,
+    70
+   ]
+  },
+  "Gunderfury": {
+   "game_fire_rate": [
+    null,
+    "0.05"
+   ],
+   "game_magazine_size": [
+    null,
+    "100"
+   ],
+   "game_spread": [
+    null,
+    "11°"
+   ],
+   "game_damage": [
+    null,
+    "8"
+   ],
+   "game_shot_speed": [
+    null,
+    "26"
+   ],
+   "game_range": [
+    null,
+    "1000"
+   ],
+   "game_force": [
+    null,
+    "9"
+   ],
+   "game_reload_time": [
+    null,
+    "1"
+   ],
+   "game_ammo_capacity": [
+    null,
+    "200"
+   ],
+   "game_type": [
+    null,
+    "Automatic"
+   ],
+   "content_source": [
+    null,
+    "CONTENT_UPDATE_03"
+   ],
+   "ammonomicon_pos": [
+    null,
+    116
+   ]
+  },
+  "Gungeon Ant": {
+   "id": [
+    739,
+    176
+   ],
+   "quality": [
+    "B",
+    "C"
+   ],
+   "fire_rate": [
+    "0.15",
+    "0"
+   ],
+   "magazine_size": [
+    "6",
+    "1"
+   ],
+   "damage": [
+    "20",
+    "22"
+   ],
+   "shot_speed": [
+    "40",
+    "26"
+   ],
+   "range": [
+    "90",
+    "1000"
+   ],
+   "force": [
+    "10",
+    "25"
+   ],
+   "type": [
+    "Semiautomatic",
+    "Variable"
+   ],
+   "charge_stages": [
+    null,
+    1
+   ],
+   "ammonomicon_pos": [
+    null,
+    220
+   ]
+  },
+  "Gungine": {
+   "reload_time": [
+    "1.25s",
+    "1.14"
+   ],
+   "ammonomicon_pos": [
+    null,
+    93
+   ]
+  },
+  "GuNNER": {
+   "quality": [
+    "A",
+    "B"
+   ],
+   "content_source": [
+    null,
+    "CONTENT_UPDATE_03"
+   ],
+   "ammonomicon_pos": [
+    null,
+    39
+   ]
+  },
+  "Gunslinger's Ashes": {
+   "game_damage": [
+    null,
+    "12"
+   ],
+   "shot_speed": [
+    "1",
+    "1.8"
+   ],
+   "ammonomicon_pos": [
+    null,
+    156
+   ]
+  },
+  "Gunther": {
+   "game_damage": [
+    null,
+    "6"
+   ],
+   "game_ammo_capacity": [
+    null,
+    "400"
+   ],
+   "infinite_ammo": [
+    null,
+    true
+   ],
+   "ammonomicon_pos": [
+    null,
+    158
+   ]
+  },
+  "Gunzheng": {
+   "quality": [
+    "A",
+    "B"
+   ],
+   "ammonomicon_pos": [
+    null,
+    232
+   ]
+  },
+  "H4mmer": {
+   "id": [
+    715,
+    91
+   ],
+   "quality": [
+    "A",
+    "B"
+   ],
+   "damage": [
+    "3.799999952316284",
+    "3.8"
+   ],
+   "ammonomicon_pos": [
+    null,
+    122
+   ]
+  },
+  "Heck Blaster": {
+   "fire_rate": [
+    "0.07",
+    "0.05"
+   ],
+   "ammonomicon_pos": [
+    null,
+    88
+   ]
+  },
+  "Hegemony Carbine": {
+   "ammonomicon_pos": [
+    null,
+    125
+   ]
+  },
+  "Hegemony Rifle": {
+   "ammonomicon_pos": [
+    null,
+    128
+   ]
+  },
+  "Helix": {
+   "fire_rate": [
+    "0.30",
+    "0.07"
+   ],
+   "magazine_size": [
+    "12",
+    "22"
+   ],
+   "game_spread": [
+    null,
+    "7°"
+   ],
+   "game_damage": [
+    null,
+    "9"
+   ],
+   "ammonomicon_pos": [
+    null,
+    130
+   ]
+  },
+  "Heroine": {
+   "charge_stages": [
+    null,
+    3
+   ],
+   "ammonomicon_pos": [
+    null,
+    166
+   ]
+  },
+  "Hexagun": {
+   "game_fire_rate": [
+    null,
+    "0.001"
+   ],
+   "reload_time": [
+    "1.25s",
+    "1.02"
+   ],
+   "ammonomicon_pos": [
+    null,
+    152
+   ]
+  },
+  "High Kaliber": {
+   "game_magazine_size": [
+    null,
+    "66"
+   ],
+   "game_ammo_capacity": [
+    null,
+    "666"
+   ],
+   "content_source": [
+    null,
+    "CONTENT_UPDATE_03"
+   ],
+   "ammonomicon_pos": [
+    null,
+    29
+   ]
+  },
+  "Huntsman": {
+   "game_damage": [
+    null,
+    "6"
+   ],
+   "range": [
+    "15",
+    "50"
+   ],
+   "ammonomicon_pos": [
+    null,
+    61
+   ]
+  },
+  "Hyper Light Blaster": {
+   "fire_rate": [
+    "0.15",
+    "0.12"
+   ],
+   "game_spread": [
+    null,
+    "4°"
+   ],
+   "content_source": [
+    null,
+    "CONTENT_UPDATE_01_FINAL"
+   ],
+   "ammonomicon_pos": [
+    null,
+    15
+   ]
+  },
+  "Ice Breaker": {
+   "id": [
+    745,
+    225
+   ],
+   "quality": [
+    "A",
+    "B"
+   ],
+   "magazine_size": [
+    "3",
+    "8"
+   ],
+   "game_damage": [
+    null,
+    "2"
+   ],
+   "shot_speed": [
+    "23",
+    "22"
+   ],
+   "force": [
+    "30",
+    "8"
+   ],
+   "ammonomicon_pos": [
+    null,
+    59
+   ]
+  },
+  "JK-47": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "content_source": [
+    null,
+    "CONTENT_UPDATE_03"
+   ],
+   "ammonomicon_pos": [
+    null,
+    62
+   ]
+  },
+  "Jolter": {
+   "ammonomicon_pos": [
+    null,
+    25
+   ]
+  },
+  "Klobbe": {
+   "id": [
+    690,
+    31
+   ],
+   "quality": [
+    "C",
+    "D"
+   ],
+   "ammonomicon_pos": [
+    null,
+    71
+   ]
+  },
+  "Knight's Gun": {
+   "fire_rate": [
+    "0.4",
+    "0.6"
+   ],
+   "magazine_size": [
+    "6",
+    "4"
+   ],
+   "game_spread": [
+    null,
+    "10°"
+   ],
+   "game_damage": [
+    null,
+    "8"
+   ],
+   "content_source": [
+    null,
+    "CONTENT_UPDATE_03"
+   ],
+   "ammonomicon_pos": [
+    null,
+    38
+   ]
+  },
+  "Kruller Glaive": {
+   "game_spread": [
+    null,
+    "0°"
+   ],
+   "charge_stages": [
+    null,
+    1
+   ],
+   "content_source": [
+    null,
+    "CONTENT_UPDATE_03"
+   ],
+   "ammonomicon_pos": [
+    null,
+    214
+   ]
+  },
+  "Laser Lotus": {
+   "damage": [
+    "16",
+    "18"
+   ],
+   "game_range": [
+    null,
+    "1000"
+   ],
+   "ammonomicon_pos": [
+    null,
+    127
+   ]
+  },
+  "Laser Rifle": {
+   "id": [
+    676,
+    54
+   ],
+   "quality": [
+    "B",
+    "C"
+   ],
+   "fire_rate": [
+    "0.50",
+    "0.4"
+   ],
+   "burst_count": [
+    null,
+    3
+   ],
+   "ammonomicon_pos": [
+    null,
+    131
+   ]
+  },
+  "Life Orb": {
+   "quality": [
+    "S",
+    "A"
+   ],
+   "game_fire_rate": [
+    null,
+    "0.1"
+   ],
+   "magazine_size": [
+    "600",
+    "200"
+   ],
+   "game_spread": [
+    null,
+    "0°"
+   ],
+   "game_type": [
+    null,
+    "Beam"
+   ],
+   "content_source": [
+    null,
+    "CONTENT_UPDATE_02"
+   ],
+   "ammonomicon_pos": [
+    null,
+    221
+   ]
+  },
+  "Light Gun": {
+   "game_damage": [
+    null,
+    "7"
+   ],
+   "ammonomicon_pos": [
+    null,
+    189
+   ]
+  },
+  "Lil' Bomber": {
+   "game_damage": [
+    null,
+    "13"
+   ],
+   "game_range": [
+    null,
+    "1000"
+   ],
+   "charge_stages": [
+    null,
+    1
+   ],
+   "ammonomicon_pos": [
+    null,
+    146
+   ]
+  },
+  "Lower Case r": {
+   "id": [
+    738,
+    340
+   ],
+   "quality": [
+    "C",
+    "D"
+   ],
+   "magazine_size": [
+    "36",
+    "8"
+   ],
+   "type": [
+    "Burst",
+    "Semiautomatic"
+   ],
+   "ammonomicon_pos": [
+    null,
+    209
+   ]
+  },
+  "Luxin Cannon": {
+   "game_damage": [
+    null,
+    "4.5"
+   ],
+   "game_range": [
+    null,
+    "1000"
+   ],
+   "ammonomicon_pos": [
+    null,
+    157
+   ]
+  },
+  "M1": {
+   "ammonomicon_pos": [
+    null,
+    98
+   ]
+  },
+  "M16": {
+   "quality": [
+    "S",
+    "A"
+   ],
+   "game_magazine_size": [
+    null,
+    "30"
+   ],
+   "type": [
+    "Burst",
+    "Variable"
+   ],
+   "burst_count": [
+    null,
+    3
+   ],
+   "ammonomicon_pos": [
+    null,
+    79
+   ]
+  },
+  "M1911": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "game_fire_rate": [
+    null,
+    "0.15"
+   ],
+   "spread": [
+    "4°",
+    "6°"
+   ],
+   "ammonomicon_pos": [
+    null,
+    19
+   ]
+  },
+  "MAC10": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "burst_count": [
+    null,
+    4
+   ],
+   "ammonomicon_pos": [
+    null,
+    86
+   ]
+  },
+  "Machine Fist": {
+   "id": [
+    673,
+    186
+   ],
+   "game_magazine_size": [
+    null,
+    "50"
+   ],
+   "game_damage": [
+    null,
+    "4"
+   ],
+   "game_range": [
+    null,
+    "1000"
+   ],
+   "reload_time": [
+    "1.2",
+    "1"
+   ],
+   "ammo_capacity": [
+    "600",
+    "500"
+   ],
+   "type": [
+    "Automatic",
+    "Variable"
+   ],
+   "ammonomicon_pos": [
+    null,
+    170
+   ]
+  },
+  "Machine Pistol": {
+   "id": [
+    673,
+    43
+   ],
+   "quality": [
+    "C",
+    "D"
+   ],
+   "ammonomicon_pos": [
+    null,
+    72
+   ]
+  },
+  "Magic Lamp": {
+   "id": [
+    null,
+    0
+   ],
+   "game_damage": [
+    null,
+    "8"
+   ],
+   "game_range": [
+    null,
+    "1000"
+   ],
+   "ammonomicon_pos": [
+    null,
+    154
+   ]
+  },
+  "Magnum": {
+   "game_fire_rate": [
+    null,
+    "0.15"
+   ],
+   "content_source": [
+    null,
+    "CONTENT_UPDATE_03"
+   ],
+   "ammonomicon_pos": [
+    null,
+    19
+   ]
+  },
+  "Mahoguny": {
+   "magazine_size": [
+    "10",
+    "4"
+   ],
+   "ammonomicon_pos": [
+    null,
+    192
+   ]
+  },
+  "Mailbox": {
+   "quality": [
+    "C",
+    "D"
+   ],
+   "ammonomicon_pos": [
+    null,
+    187
+   ]
+  },
+  "Makarov": {
+   "quality": [
+    "C",
+    "D"
+   ],
+   "ammonomicon_pos": [
+    null,
+    17
+   ]
+  },
+  "Makeshift Cannon": {
+   "fire_rate": [
+    "0.50",
+    "0.6"
+   ],
+   "game_damage": [
+    null,
+    "50"
+   ],
+   "charge_stages": [
+    null,
+    1
+   ],
+   "ammonomicon_pos": [
+    null,
+    239
+   ]
+  },
+  "Marine Sidearm": {
+   "id": [
+    809,
+    86
+   ],
+   "game_spread": [
+    null,
+    "5°"
+   ],
+   "infinite_ammo": [
+    null,
+    true
+   ],
+   "ammonomicon_pos": [
+    null,
+    1
+   ]
+  },
+  "Mass Shotgun": {
+   "magazine_size": [
+    "1",
+    "8"
+   ],
+   "game_damage": [
+    null,
+    "30"
+   ],
+   "shot_speed": [
+    "23",
+    "10"
+   ],
+   "range": [
+    "60",
+    "5"
+   ],
+   "ammonomicon_pos": [
+    null,
+    50
+   ]
+  },
+  "Mega Douser": {
+   "quality": [
+    "C",
+    "D"
+   ],
+   "fire_rate": [
+    "0.10",
+    "1"
+   ],
+   "game_type": [
+    null,
+    "Beam"
+   ],
+   "ammonomicon_pos": [
+    null,
+    181
+   ]
+  },
+  "Megahand": {
+   "game_damage": [
+    null,
+    "6"
+   ],
+   "game_range": [
+    null,
+    "1000"
+   ],
+   "charge_stages": [
+    null,
+    2
+   ],
+   "ammonomicon_pos": [
+    null,
+    164
+   ]
+  },
+  "Mine Cutter": {
+   "magazine_size": [
+    "12",
+    "6"
+   ],
+   "game_damage": [
+    null,
+    "10"
+   ],
+   "shot_speed": [
+    "23",
+    "600"
+   ],
+   "range": [
+    "60",
+    "1000"
+   ],
+   "force": [
+    "30",
+    "4"
+   ],
+   "type": [
+    "Semiautomatic",
+    "Variable"
+   ],
+   "ammonomicon_pos": [
+    null,
+    118
+   ]
+  },
+  "Molotov Launcher": {
+   "game_damage": [
+    null,
+    "6"
+   ],
+   "range": [
+    "35",
+    "25"
+   ],
+   "ammonomicon_pos": [
+    null,
+    203
+   ]
+  },
+  "Moonscraper": {
+   "id": [
+    713,
+    20
+   ],
+   "quality": [
+    "B",
+    "C"
+   ],
+   "fire_rate": [
+    "0.10",
+    "1"
+   ],
+   "spread": [
+    "5°",
+    "0°"
+   ],
+   "game_type": [
+    null,
+    "Beam"
+   ],
+   "ammonomicon_pos": [
+    null,
+    184
+   ]
+  },
+  "Mourning Star": {
+   "fire_rate": [
+    "0.3",
+    "1"
+   ],
+   "game_spread": [
+    null,
+    "7°"
+   ],
+   "game_shot_speed": [
+    null,
+    "-1"
+   ],
+   "game_range": [
+    null,
+    "50"
+   ],
+   "game_force": [
+    null,
+    "0"
+   ],
+   "game_reload_time": [
+    null,
+    "1"
+   ],
+   "game_type": [
+    null,
+    "Beam"
+   ],
+   "content_source": [
+    null,
+    "CONTENT_UPDATE_01_FINAL"
+   ],
+   "ammonomicon_pos": [
+    null,
+    106
+   ]
+  },
+  "Mr. Accretion Jr.": {
+   "fire_rate": [
+    "0.7",
+    "0.1"
+   ],
+   "magazine_size": [
+    "20",
+    "30"
+   ],
+   "spread": [
+    "0°",
+    "5°"
+   ],
+   "game_damage": [
+    null,
+    "5"
+   ],
+   "game_force": [
+    null,
+    "20"
+   ],
+   "type": [
+    "Semiautomatic",
+    "Automatic"
+   ],
+   "content_source": [
+    null,
+    "CONTENT_UPDATE_02"
+   ],
+   "ammonomicon_pos": [
+    null,
+    83
+   ]
+  },
+  "Mutation": {
+   "spread": [
+    "5°",
+    "0°"
+   ],
+   "game_damage": [
+    null,
+    "45"
+   ],
+   "game_reload_time": [
+    null,
+    "0"
+   ],
+   "game_type": [
+    null,
+    "Beam"
+   ],
+   "ammonomicon_pos": [
+    null,
+    167
+   ]
+  },
+  "Nail Gun": {
+   "id": [
+    692,
+    26
+   ],
+   "quality": [
+    "C",
+    "D"
+   ],
+   "ammonomicon_pos": [
+    null,
+    188
+   ]
+  },
+  "Old Goldie": {
+   "game_damage": [
+    null,
+    "3.5"
+   ],
+   "shot_speed": [
+    "23",
+    "22"
+   ],
+   "force": [
+    "30",
+    "13"
+   ],
+   "ammonomicon_pos": [
+    null,
+    42
+   ]
+  },
+  "Origuni": {
+   "id": [
+    744,
+    477
+   ],
+   "quality": [
+    "B",
+    "C"
+   ],
+   "game_fire_rate": [
+    null,
+    "0.2"
+   ],
+   "magazine_size": [
+    "8",
+    "1"
+   ],
+   "game_spread": [
+    null,
+    "0°"
+   ],
+   "ammonomicon_pos": [
+    null,
+    196
+   ]
+  },
+  "Particulator": {
+   "game_damage": [
+    null,
+    "30"
+   ],
+   "ammonomicon_pos": [
+    null,
+    137
+   ]
+  },
+  "Patriot": {
+   "game_range": [
+    null,
+    "1000"
+   ],
+   "ammonomicon_pos": [
+    null,
+    89
+   ]
+  },
+  "Pea Shooter": {
+   "id": [
+    740,
+    197
+   ],
+   "quality": [
+    "B",
+    "D"
+   ],
+   "game_fire_rate": [
+    null,
+    "0.15"
+   ],
+   "shot_speed": [
+    "10",
+    "20"
+   ],
+   "range": [
+    "1000",
+    "20"
+   ],
+   "force": [
+    "10",
+    "3"
+   ],
+   "reload_time": [
+    "1.2",
+    "1.5"
+   ],
+   "ammo_capacity": [
+    "350",
+    "1000"
+   ],
+   "ammonomicon_pos": [
+    null,
+    8
+   ]
+  },
+  "Phoenix": {
+   "id": [
+    736,
+    384
+   ],
+   "quality": [
+    "C",
+    "D"
+   ],
+   "ammonomicon_pos": [
+    null,
+    153
+   ]
+  },
+  "Pitchfork": {
+   "id": [
+    722,
+    336
+   ],
+   "quality": [
+    "B",
+    "C"
+   ],
+   "ammonomicon_pos": [
+    null,
+    218
+   ]
+  },
+  "Plague Pistol": {
+   "spread": [
+    "5°",
+    "4°"
+   ],
+   "damage": [
+    "4",
+    "5"
+   ],
+   "ammonomicon_pos": [
+    null,
+    92
+   ]
+  },
+  "Plunger": {
+   "fire_rate": [
+    "0.10",
+    "1"
+   ],
+   "game_damage": [
+    null,
+    "7"
+   ],
+   "game_reload_time": [
+    null,
+    "0"
+   ],
+   "game_type": [
+    null,
+    "Beam"
+   ],
+   "ammonomicon_pos": [
+    null,
+    182
+   ]
+  },
+  "Polaris": {
+   "id": [
+    718,
+    97
+   ],
+   "quality": [
+    "A",
+    "B"
+   ],
+   "fire_rate": [
+    "0.25",
+    "0.07"
+   ],
+   "ammo_capacity": [
+    "700",
+    "450"
+   ],
+   "type": [
+    "Semiautomatic",
+    "Variable"
+   ],
+   "ammonomicon_pos": [
+    null,
+    24
+   ]
+  },
+  "Poxcannon": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "ammonomicon_pos": [
+    null,
+    224
+   ]
+  },
+  "Proton Backpack": {
+   "id": [
+    720,
+    179
+   ],
+   "quality": [
+    "A",
+    "B"
+   ],
+   "fire_rate": [
+    "0.10",
+    "1"
+   ],
+   "game_type": [
+    null,
+    "Beam"
+   ],
+   "ammonomicon_pos": [
+    null,
+    180
+   ]
+  },
+  "Prototype Railgun": {
+   "game_fire_rate": [
+    null,
+    "0.1"
+   ],
+   "spread": [
+    "0°",
+    "4°"
+   ],
+   "charge_stages": [
+    null,
+    2
+   ],
+   "ammonomicon_pos": [
+    null,
+    102
+   ]
+  },
+  "Pulse Cannon": {
+   "game_damage": [
+    null,
+    "4"
+   ],
+   "shot_speed": [
+    "23",
+    "25"
+   ],
+   "force": [
+    "60",
+    "10"
+   ],
+   "ammonomicon_pos": [
+    null,
+    56
+   ]
+  },
+  "Quad Laser": {
+   "ammonomicon_pos": [
+    null,
+    216
+   ]
+  },
+  "Rad Gun": {
+   "id": [
+    743,
+    566
+   ],
+   "quality": [
+    "A",
+    "B"
+   ],
+   "fire_rate": [
+    "0.15",
+    "0.45"
+   ],
+   "magazine_size": [
+    "12",
+    "8"
+   ],
+   "game_spread": [
+    null,
+    "6°"
+   ],
+   "reload_time": [
+    "1.4",
+    "1.2"
+   ],
+   "type": [
+    "Semiautomatic",
+    "Variable"
+   ],
+   "active_reload": [
+    null,
+    true
+   ],
+   "content_source": [
+    null,
+    "CONTENT_UPDATE_01"
+   ],
+   "ammonomicon_pos": [
+    null,
+    133
+   ]
+  },
+  "Raiden Coil": {
+   "id": [
+    107,
+    712
+   ],
+   "fire_rate": [
+    "0.10",
+    "1"
+   ],
+   "spread": [
+    "5°",
+    "0°"
+   ],
+   "game_reload_time": [
+    null,
+    "0"
+   ],
+   "type": [
+    "Beam",
+    "Variable"
+   ],
+   "content_source": [
+    null,
+    "CONTENT_UPDATE_02"
+   ],
+   "ammonomicon_pos": [
+    null,
+    167
+   ]
+  },
+  "Railgun": {
+   "id": [
+    686,
+    358
+   ],
+   "quality": [
+    "B",
+    "S"
+   ],
+   "game_fire_rate": [
+    null,
+    "0.1"
+   ],
+   "spread": [
+    "0°",
+    "4°"
+   ],
+   "reload_time": [
+    "0.5",
+    "0.6"
+   ],
+   "ammo_capacity": [
+    "200",
+    "40"
+   ],
+   "charge_stages": [
+    null,
+    2
+   ],
+   "ammonomicon_pos": [
+    null,
+    101
+   ]
+  },
+  "Rattler": {
+   "fire_rate": [
+    "0.60",
+    "0.2"
+   ],
+   "magazine_size": [
+    "8",
+    "6"
+   ],
+   "game_damage": [
+    null,
+    "3"
+   ],
+   "shot_speed": [
+    "23",
+    "15"
+   ],
+   "force": [
+    "30",
+    "10"
+   ],
+   "ammonomicon_pos": [
+    null,
+    45
+   ]
+  },
+  "RC Rocket": {
+   "ammonomicon_pos": [
+    null,
+    144
+   ]
+  },
+  "Really Special Lute": {
+   "fire_rate": [
+    "0.5",
+    "0.1"
+   ],
+   "magazine_size": [
+    "75",
+    "60"
+   ],
+   "game_spread": [
+    null,
+    "6°"
+   ],
+   "game_damage": [
+    null,
+    "4"
+   ],
+   "shot_speed": [
+    "9",
+    "15"
+   ],
+   "range": [
+    "10",
+    "15"
+   ],
+   "content_source": [
+    null,
+    "CONTENT_UPDATE_03"
+   ],
+   "ammonomicon_pos": [
+    null,
+    212
+   ]
+  },
+  "Regular Shotgun": {
+   "id": [
+    763,
+    51
+   ],
+   "quality": [
+    "C",
+    "D"
+   ],
+   "shot_speed": [
+    "-1",
+    "20"
+   ],
+   "range": [
+    "30",
+    "15"
+   ],
+   "reload_time": [
+    "0.1",
+    "1.8"
+   ],
+   "ammo_capacity": [
+    "500",
+    "150"
+   ],
+   "ammonomicon_pos": [
+    null,
+    40
+   ]
+  },
+  "Robot's Left Hand": {
+   "fire_rate": [
+    "0.10",
+    "0.07"
+   ],
+   "game_spread": [
+    null,
+    "8°"
+   ],
+   "game_shot_speed": [
+    null,
+    "35"
+   ],
+   "game_range": [
+    null,
+    "1000"
+   ],
+   "game_force": [
+    null,
+    "20"
+   ],
+   "reload_time": [
+    "1.6s",
+    "1.8"
+   ],
+   "type": [
+    "Automatic",
+    "Variable"
+   ],
+   "content_source": [
+    null,
+    "CONTENT_UPDATE_01_FINAL"
+   ],
+   "ammonomicon_pos": [
+    null,
+    171
+   ]
+  },
+  "Robot's Right Hand": {
+   "game_spread": [
+    null,
+    "7°"
+   ],
+   "game_ammo_capacity": [
+    null,
+    "350"
+   ],
+   "infinite_ammo": [
+    null,
+    true
+   ],
+   "ammonomicon_pos": [
+    null,
+    5
+   ]
+  },
+  "Rogue Special": {
+   "infinite_ammo": [
+    null,
+    true
+   ],
+   "content_source": [
+    null,
+    "CONTENT_UPDATE_03"
+   ],
+   "ammonomicon_pos": [
+    null,
+    2
+   ]
+  },
+  "RPG": {
+   "quality": [
+    "A",
+    "B"
+   ],
+   "spread": [
+    "5°",
+    "1°"
+   ],
+   "ammonomicon_pos": [
+    null,
+    139
+   ]
+  },
+  "RUBE-ADYNE MK.II": {
+   "id": [
+    142,
+    128
+   ],
+   "damage": [
+    "7",
+    "10"
+   ],
+   "range": [
+    "60",
+    "35"
+   ],
+   "reload_time": [
+    "0.6",
+    "0.48"
+   ],
+   "ammo_capacity": [
+    "200",
+    "300"
+   ],
+   "ammonomicon_pos": [
+    null,
+    109
+   ]
+  },
+  "RUBE-ADYNE Prototype": {
+   "ammonomicon_pos": [
+    null,
+    108
+   ]
+  },
+  "Rubenstein's Monster": {
+   "fire_rate": [
+    "0.07",
+    "0.05"
+   ],
+   "content_source": [
+    null,
+    "CONTENT_UPDATE_02"
+   ],
+   "ammonomicon_pos": [
+    null,
+    110
+   ]
+  },
+  "Rusty Sidearm": {
+   "id": [
+    810,
+    99
+   ],
+   "game_fire_rate": [
+    null,
+    "0.2"
+   ],
+   "infinite_ammo": [
+    null,
+    true
+   ],
+   "ammonomicon_pos": [
+    null,
+    0
+   ]
+  },
+  "SAA": {
+   "quality": [
+    "A",
+    "B"
+   ],
+   "game_fire_rate": [
+    null,
+    "0.12"
+   ],
+   "ammonomicon_pos": [
+    null,
+    22
+   ]
+  },
+  "Screecher": {
+   "ammonomicon_pos": [
+    null,
+    126
+   ]
+  },
+  "Serious Cannon": {
+   "quality": [
+    "S",
+    "A"
+   ],
+   "charge_stages": [
+    null,
+    1
+   ],
+   "ammonomicon_pos": [
+    null,
+    238
+   ]
+  },
+  "Shades's Revolver": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "ammonomicon_pos": [
+    null,
+    37
+   ]
+  },
+  "Shell": {
+   "id": [
+    756,
+    512
+   ],
+   "fire_rate": [
+    "0.5",
+    "0.2"
+   ],
+   "game_spread": [
+    null,
+    "10°"
+   ],
+   "game_damage": [
+    null,
+    "7"
+   ],
+   "game_shot_speed": [
+    null,
+    "12"
+   ],
+   "game_range": [
+    null,
+    "100"
+   ],
+   "game_force": [
+    null,
+    "13"
+   ],
+   "reload_time": [
+    "1.4 s",
+    "1.5"
+   ],
+   "content_source": [
+    null,
+    "CONTENT_UPDATE_01"
+   ],
+   "ammonomicon_pos": [
+    null,
+    14
+   ]
+  },
+  "Shellegun": {
+   "quality": [
+    "A",
+    "B"
+   ],
+   "game_fire_rate": [
+    null,
+    "0.1"
+   ],
+   "game_magazine_size": [
+    null,
+    "12"
+   ],
+   "spread": [
+    "5°",
+    "2°"
+   ],
+   "type": [
+    "Semiautomatic",
+    "Variable"
+   ],
+   "ammonomicon_pos": [
+    null,
+    30
+   ]
+  },
+  "Shock Rifle": {
+   "game_range": [
+    null,
+    "1000"
+   ],
+   "ammonomicon_pos": [
+    null,
+    205
+   ]
+  },
+  "Shotbow": {
+   "id": [
+    749,
+    126
+   ],
+   "quality": [
+    "A",
+    "B"
+   ],
+   "magazine_size": [
+    "3",
+    "1"
+   ],
+   "ammonomicon_pos": [
+    null,
+    67
+   ]
+  },
+  "Shotgrub": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "game_damage": [
+    null,
+    "5"
+   ],
+   "shot_speed": [
+    "23",
+    "20"
+   ],
+   "range": [
+    "60",
+    "25"
+   ],
+   "force": [
+    "30",
+    "13"
+   ],
+   "ammonomicon_pos": [
+    null,
+    53
+   ]
+  },
+  "Shotgun Full of Hate": {
+   "quality": [
+    "S",
+    "A"
+   ],
+   "game_damage": [
+    null,
+    "6"
+   ],
+   "shot_speed": [
+    "23",
+    "16"
+   ],
+   "range": [
+    "60",
+    "22"
+   ],
+   "force": [
+    "30",
+    "13"
+   ],
+   "ammonomicon_pos": [
+    null,
+    51
+   ]
+  },
+  "Shotgun Full of Love": {
+   "quality": [
+    "S",
+    "A"
+   ],
+   "game_damage": [
+    null,
+    "5"
+   ],
+   "shot_speed": [
+    "23",
+    "25"
+   ],
+   "range": [
+    "60",
+    "1000"
+   ],
+   "force": [
+    "30",
+    "8"
+   ],
+   "ammonomicon_pos": [
+    null,
+    52
+   ]
+  },
+  "Silencer": {
+   "range": [
+    "60",
+    "40"
+   ],
+   "force": [
+    "30",
+    "9"
+   ],
+   "ammonomicon_pos": [
+    null,
+    228
+   ]
+  },
+  "Siren": {
+   "magazine_size": [
+    "6",
+    "8"
+   ],
+   "game_spread": [
+    null,
+    "0°"
+   ],
+   "game_damage": [
+    null,
+    "6"
+   ],
+   "shot_speed": [
+    "23",
+    "25"
+   ],
+   "range": [
+    "60",
+    "1000"
+   ],
+   "force": [
+    "30",
+    "10"
+   ],
+   "ammonomicon_pos": [
+    null,
+    57
+   ]
+  },
+  "Skull Spitter": {
+   "game_range": [
+    null,
+    "1000"
+   ],
+   "ammonomicon_pos": [
+    null,
+    198
+   ]
+  },
+  "Sling": {
+   "quality": [
+    "C",
+    "D"
+   ],
+   "charge_stages": [
+    null,
+    1
+   ],
+   "ammonomicon_pos": [
+    null,
+    233
+   ]
+  },
+  "Slinger": {
+   "game_fire_rate": [
+    null,
+    "0.1"
+   ],
+   "charge_stages": [
+    null,
+    1
+   ],
+   "infinite_ammo": [
+    null,
+    true
+   ],
+   "content_source": [
+    null,
+    "CONTENT_UPDATE_03"
+   ],
+   "ammonomicon_pos": [
+    null,
+    10
+   ]
+  },
+  "Smiley's Revolver": {
+   "quality": [
+    "A",
+    "B"
+   ],
+   "game_fire_rate": [
+    null,
+    "0.1"
+   ],
+   "ammonomicon_pos": [
+    null,
+    36
+   ]
+  },
+  "Snakemaker": {
+   "game_range": [
+    null,
+    "1000"
+   ],
+   "ammonomicon_pos": [
+    null,
+    123
+   ]
+  },
+  "Sniper Rifle": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "ammonomicon_pos": [
+    null,
+    96
+   ]
+  },
+  "Snowballer": {
+   "ammonomicon_pos": [
+    null,
+    172
+   ]
+  },
+  "Staff of Firepower": {
+   "game_magazine_size": [
+    null,
+    "6"
+   ],
+   "game_damage": [
+    null,
+    "7"
+   ],
+   "game_range": [
+    null,
+    "1000"
+   ],
+   "type": [
+    "Semiautomatic",
+    "Variable"
+   ],
+   "ammonomicon_pos": [
+    null,
+    150
+   ]
+  },
+  "Starpew": {
+   "quality": [
+    "S",
+    "A"
+   ],
+   "fire_rate": [
+    "0.2s",
+    "0.22"
+   ],
+   "magazine_size": [
+    "100",
+    "30"
+   ],
+   "game_spread": [
+    null,
+    "0°"
+   ],
+   "charge_stages": [
+    null,
+    3
+   ],
+   "content_source": [
+    null,
+    "CONTENT_UPDATE_01"
+   ],
+   "ammonomicon_pos": [
+    null,
+    201
+   ]
+  },
+  "Stinger": {
+   "id": [
+    369,
+    92
+   ],
+   "range": [
+    "1000",
+    "60"
+   ],
+   "force": [
+    "8",
+    "10"
+   ],
+   "reload_time": [
+    "1",
+    "2"
+   ],
+   "ammo_capacity": [
+    "60",
+    "50"
+   ],
+   "ammonomicon_pos": [
+    null,
+    141
+   ]
+  },
+  "Stone Dome": {
+   "fire_rate": [
+    "0.17",
+    "0.05"
+   ],
+   "spread": [
+    "8°",
+    "4°"
+   ],
+   "damage": [
+    "4.5",
+    "5.5"
+   ],
+   "shot_speed": [
+    "25",
+    "23"
+   ],
+   "range": [
+    "1000",
+    "40"
+   ],
+   "force": [
+    "10",
+    "9"
+   ],
+   "content_source": [
+    null,
+    "CONTENT_UPDATE_02"
+   ],
+   "ammonomicon_pos": [
+    null,
+    77
+   ]
+  },
+  "Strafe Gun": {
+   "fire_rate": [
+    "0.13",
+    "0.11"
+   ],
+   "game_spread": [
+    null,
+    "4°"
+   ],
+   "content_source": [
+    null,
+    "CONTENT_UPDATE_01_FINAL"
+   ],
+   "ammonomicon_pos": [
+    null,
+    75
+   ]
+  },
+  "Sunlight Javelin": {
+   "charge_stages": [
+    null,
+    1
+   ],
+   "content_source": [
+    null,
+    "CONTENT_UPDATE_03"
+   ],
+   "ammonomicon_pos": [
+    null,
+    169
+   ]
+  },
+  "Super Meat Gun": {
+   "quality": [
+    "S",
+    "A"
+   ],
+   "ammonomicon_pos": [
+    null,
+    173
+   ]
+  },
+  "T-Shirt Cannon": {
+   "quality": [
+    "C",
+    "D"
+   ],
+   "ammonomicon_pos": [
+    null,
+    225
+   ]
+  },
+  "Tangler": {
+   "game_damage": [
+    null,
+    "6"
+   ],
+   "shot_speed": [
+    "23",
+    "25"
+   ],
+   "force": [
+    "30",
+    "10"
+   ],
+   "ammonomicon_pos": [
+    null,
+    48
+   ]
+  },
+  "Teapot": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "content_source": [
+    null,
+    "CONTENT_UPDATE_03"
+   ],
+   "ammonomicon_pos": [
+    null,
+    155
+   ]
+  },
+  "Tear Jerker": {
+   "ammonomicon_pos": [
+    null,
+    200
+   ]
+  },
+  "Tetrominator": {
+   "game_damage": [
+    null,
+    "4"
+   ],
+   "content_source": [
+    null,
+    "CONTENT_UPDATE_01"
+   ],
+   "ammonomicon_pos": [
+    null,
+    217
+   ]
+  },
+  "The Emperor": {
+   "fire_rate": [
+    "0.15",
+    "0.3"
+   ],
+   "reload_time": [
+    "1.25s",
+    "1.2"
+   ],
+   "burst_count": [
+    null,
+    4
+   ],
+   "ammonomicon_pos": [
+    null,
+    138
+   ]
+  },
+  "The Exotic": {
+   "fire_rate": [
+    "2.0",
+    "1"
+   ],
+   "game_damage": [
+    null,
+    "25"
+   ],
+   "game_shot_speed": [
+    null,
+    "25"
+   ],
+   "game_range": [
+    null,
+    "60"
+   ],
+   "content_source": [
+    null,
+    "CONTENT_UPDATE_02"
+   ],
+   "ammonomicon_pos": [
+    null,
+    142
+   ]
+  },
+  "The Fat Line": {
+   "game_spread": [
+    null,
+    "5°"
+   ],
+   "content_source": [
+    null,
+    "CONTENT_UPDATE_03"
+   ],
+   "ammonomicon_pos": [
+    null,
+    82
+   ]
+  },
+  "The Judge": {
+   "ammonomicon_pos": [
+    null,
+    105
+   ]
+  },
+  "The Kiln": {
+   "game_damage": [
+    null,
+    "8"
+   ],
+   "ammonomicon_pos": [
+    null,
+    197
+   ]
+  },
+  "The Membrane": {
+   "magazine_size": [
+    "6",
+    "30"
+   ],
+   "game_damage": [
+    null,
+    "4"
+   ],
+   "type": [
+    "Semiautomatic",
+    "Automatic"
+   ],
+   "ammonomicon_pos": [
+    null,
+    60
+   ]
+  },
+  "The Predator": {
+   "content_source": [
+    null,
+    "CONTENT_UPDATE_03"
+   ],
+   "ammonomicon_pos": [
+    null,
+    94
+   ]
+  },
+  "The Scrambler": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "ammonomicon_pos": [
+    null,
+    193
+   ]
+  },
+  "Thompson Sub-Machinegun": {
+   "id": [
+    685,
+    2
+   ],
+   "quality": [
+    "B",
+    "C"
+   ],
+   "spread": [
+    "4°",
+    "10°"
+   ],
+   "force": [
+    "15",
+    "9"
+   ],
+   "ammonomicon_pos": [
+    null,
+    73
+   ]
+  },
+  "Thunderclap": {
+   "damage": [
+    "8",
+    "9"
+   ],
+   "game_range": [
+    null,
+    "1000"
+   ],
+   "reload_time": [
+    "1.7s",
+    "1.5"
+   ],
+   "ammonomicon_pos": [
+    null,
+    134
+   ]
+  },
+  "Trank Gun": {
+   "id": [
+    486,
+    42
+   ],
+   "shot_speed": [
+    "26",
+    "23"
+   ],
+   "range": [
+    "90",
+    "60"
+   ],
+   "force": [
+    "10",
+    "30"
+   ],
+   "reload_time": [
+    "1.8",
+    "0.54"
+   ],
+   "ammo_capacity": [
+    "30",
+    "200"
+   ],
+   "ammonomicon_pos": [
+    null,
+    11
+   ]
+  },
+  "Trashcannon": {
+   "game_range": [
+    null,
+    "1000"
+   ],
+   "ammonomicon_pos": [
+    null,
+    194
+   ]
+  },
+  "Trick Gun": {
+   "game_fire_rate": [
+    null,
+    "0.1"
+   ],
+   "game_spread": [
+    null,
+    "7°"
+   ],
+   "game_damage": [
+    null,
+    "7"
+   ],
+   "game_shot_speed": [
+    null,
+    "30"
+   ],
+   "game_range": [
+    null,
+    "60"
+   ],
+   "game_force": [
+    null,
+    "11"
+   ],
+   "type": [
+    "Semiautomatic",
+    "Variable"
+   ],
+   "ammonomicon_pos": [
+    null,
+    186
+   ]
+  },
+  "Trident": {
+   "quality": [
+    "S",
+    "A"
+   ],
+   "ammonomicon_pos": [
+    null,
+    213
+   ]
+  },
+  "Triple Crossbow": {
+   "fire_rate": [
+    "0.1",
+    "0.6"
+   ],
+   "magazine_size": [
+    "3",
+    "1"
+   ],
+   "game_damage": [
+    null,
+    "22"
+   ],
+   "game_range": [
+    null,
+    "1000"
+   ],
+   "type": [
+    "Semiautomatic",
+    "Variable"
+   ],
+   "ammonomicon_pos": [
+    null,
+    68
+   ]
+  },
+  "Triple Gun": {
+   "id": [
+    518,
+    516
+   ],
+   "quality": [
+    "A",
+    "B"
+   ],
+   "game_fire_rate": [
+    null,
+    "0.5"
+   ],
+   "game_magazine_size": [
+    null,
+    "9"
+   ],
+   "game_spread": [
+    null,
+    "4°"
+   ],
+   "shot_speed": [
+    "75",
+    "30"
+   ],
+   "range": [
+    "50",
+    "1000"
+   ],
+   "force": [
+    "20",
+    "9"
+   ],
+   "ammo_capacity": [
+    "500",
+    "250"
+   ],
+   "content_source": [
+    null,
+    "CONTENT_UPDATE_03"
+   ],
+   "ammonomicon_pos": [
+    null,
+    87
+   ]
+  },
+  "Turbo-Gun": {
+   "game_damage": [
+    null,
+    "7"
+   ],
+   "type": [
+    "Automatic",
+    "Semiautomatic"
+   ],
+   "content_source": [
+    null,
+    "CONTENT_UPDATE_02"
+   ],
+   "ammonomicon_pos": [
+    null,
+    124
+   ]
+  },
+  "Unfinished Gun": {
+   "id": [
+    762,
+    83
+   ],
+   "reload_time": [
+    "0.78",
+    "1.5"
+   ],
+   "ammo_capacity": [
+    "500",
+    "350"
+   ],
+   "ammonomicon_pos": [
+    null,
+    11
+   ]
+  },
+  "Unicorn Horn": {
+   "fire_rate": [
+    "0.10",
+    "1"
+   ],
+   "game_damage": [
+    null,
+    "30"
+   ],
+   "game_reload_time": [
+    null,
+    "0"
+   ],
+   "game_type": [
+    null,
+    "Beam"
+   ],
+   "ammonomicon_pos": [
+    null,
+    159
+   ]
+  },
+  "VertebraeK-47": {
+   "quality": [
+    "A",
+    "B"
+   ],
+   "ammonomicon_pos": [
+    null,
+    84
+   ]
+  },
+  "Void Core Assault Rifle": {
+   "burst_count": [
+    null,
+    3
+   ],
+   "ammonomicon_pos": [
+    null,
+    119
+   ]
+  },
+  "Void Core Cannon": {
+   "game_damage": [
+    null,
+    "10"
+   ],
+   "burst_count": [
+    null,
+    4
+   ],
+   "content_source": [
+    null,
+    "CONTENT_UPDATE_03"
+   ],
+   "ammonomicon_pos": [
+    null,
+    148
+   ]
+  },
+  "Void Marshal": {
+   "ammonomicon_pos": [
+    null,
+    103
+   ]
+  },
+  "Void Shotgun": {
+   "magazine_size": [
+    "4",
+    "8"
+   ],
+   "game_damage": [
+    null,
+    "5"
+   ],
+   "shot_speed": [
+    "23",
+    "17"
+   ],
+   "force": [
+    "30",
+    "13"
+   ],
+   "ammonomicon_pos": [
+    null,
+    49
+   ]
+  },
+  "Vorpal Gun": {
+   "game_damage": [
+    null,
+    "5"
+   ],
+   "game_shot_speed": [
+    null,
+    "32"
+   ],
+   "content_source": [
+    null,
+    "CONTENT_UPDATE_01_FINAL"
+   ],
+   "ammonomicon_pos": [
+    null,
+    28
+   ]
+  },
+  "Vulcan Cannon": {
+   "id": [
+    707,
+    84
+   ],
+   "fire_rate": [
+    "0.05",
+    "0.035"
+   ],
+   "reload_time": [
+    "0.6",
+    "1.5"
+   ],
+   "ammo_capacity": [
+    "1000",
+    "900"
+   ],
+   "ammonomicon_pos": [
+    null,
+    91
+   ]
+  },
+  "Winchester": {
+   "fire_rate": [
+    "0.50",
+    "0.6"
+   ],
+   "game_damage": [
+    null,
+    "4"
+   ],
+   "shot_speed": [
+    "23",
+    "25"
+   ],
+   "force": [
+    "30",
+    "10"
+   ],
+   "ammonomicon_pos": [
+    null,
+    44
+   ]
+  },
+  "Winchester Rifle": {
+   "quality": [
+    "C",
+    "D"
+   ],
+   "ammonomicon_pos": [
+    null,
+    99
+   ]
+  },
+  "Wind Up Gun": {
+   "game_damage": [
+    null,
+    "5"
+   ],
+   "type": [
+    "Semiautomatic",
+    "Automatic"
+   ],
+   "ammonomicon_pos": [
+    null,
+    121
+   ]
+  },
+  "Witch Pistol": {
+   "game_range": [
+    null,
+    "1000"
+   ],
+   "ammonomicon_pos": [
+    null,
+    151
+   ]
+  },
+  "Wood Beam": {
+   "quality": [
+    "A",
+    "B"
+   ],
+   "fire_rate": [
+    "1.0",
+    "0.05"
+   ],
+   "game_spread": [
+    null,
+    "0°"
+   ],
+   "game_type": [
+    null,
+    "Beam"
+   ],
+   "content_source": [
+    null,
+    "CONTENT_UPDATE_02"
+   ],
+   "ammonomicon_pos": [
+    null,
+    191
+   ]
+  },
+  "Zilla Shotgun": {
+   "quality": [
+    "S",
+    "A"
+   ],
+   "charge_stages": [
+    null,
+    1
+   ],
+   "ammonomicon_pos": [
+    null,
+    58
+   ]
+  },
+  "Zorgun": {
+   "quality": [
+    "S",
+    "A"
+   ],
+   "magazine_size": [
+    "30",
+    "20"
+   ],
+   "ammonomicon_pos": [
+    null,
+    81
+   ]
+  }
+ },
+ "items": {
+  "+1 Bullets": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Damage",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.25
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    73
+   ]
+  },
+  "Aged Bell": {
+   "quality": [
+    "S",
+    "A"
+   ],
+   "ammonomicon_pos": [
+    null,
+    46
+   ]
+  },
+  "Air Strike": {
+   "quality": [
+    "A",
+    "B"
+   ],
+   "ammonomicon_pos": [
+    null,
+    24
+   ]
+  },
+  "Alpha Bullet": {
+   "quality": [
+    "S",
+    "A"
+   ],
+   "ammonomicon_pos": [
+    null,
+    84
+   ]
+  },
+  "Ammo Belt": {
+   "quality": [
+    "C",
+    "D"
+   ],
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "AmmoCapacityMultiplier",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.2000000476837158
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    44
+   ]
+  },
+  "Ammo Synthesizer": {
+   "ammonomicon_pos": [
+    null,
+    30
+   ]
+  },
+  "Ancient Hero's Bandana": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "AmmoCapacityMultiplier",
+      "op": "MULTIPLICATIVE",
+      "amount": 4.0
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    229
+   ]
+  },
+  "Antibody": {
+   "ammonomicon_pos": [
+    null,
+    177
+   ]
+  },
+  "Armor of Thorns": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "DodgeRollDamage",
+      "op": "MULTIPLICATIVE",
+      "amount": 7.0
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    154
+   ]
+  },
+  "Armor Synthesizer": {
+   "quality": [
+    "S",
+    "A"
+   ],
+   "ammonomicon_pos": [
+    null,
+    32
+   ]
+  },
+  "Baby Good Mimic": {
+   "ammonomicon_pos": [
+    null,
+    260
+   ]
+  },
+  "Baby Good Shelleton": {
+   "ammonomicon_pos": [
+    null,
+    252
+   ]
+  },
+  "Backpack": {
+   "quality": [
+    "C",
+    "D"
+   ],
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "AdditionalItemCapacity",
+      "op": "ADDITIVE",
+      "amount": 1.0
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    37
+   ]
+  },
+  "Backup Gun": {
+   "quality": [
+    "A",
+    "B"
+   ],
+   "ammonomicon_pos": [
+    null,
+    192
+   ]
+  },
+  "Badge": {
+   "ammonomicon_pos": [
+    null,
+    253
+   ]
+  },
+  "Ballistic Boots": {
+   "quality": [
+    "A",
+    "B"
+   ],
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "MovementSpeed",
+      "op": "ADDITIVE",
+      "amount": 2.0
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    117
+   ]
+  },
+  "Ballot": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Coolness",
+      "op": "ADDITIVE",
+      "amount": 3.0
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    124
+   ]
+  },
+  "Battle Standard": {
+   "quality": [
+    "C",
+    "D"
+   ],
+   "ammonomicon_pos": [
+    null,
+    241
+   ]
+  },
+  "Big Boy": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Curse",
+      "op": "ADDITIVE",
+      "amount": 1.0
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    26
+   ]
+  },
+  "Bionic Leg": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "MovementSpeed",
+      "op": "ADDITIVE",
+      "amount": 1.5
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    114
+   ]
+  },
+  "Blank Companion's Ring": {
+   "ammonomicon_pos": [
+    null,
+    261
+   ]
+  },
+  "Blast Helmet": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "DodgeRollDamage",
+      "op": "MULTIPLICATIVE",
+      "amount": 3.0
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    199
+   ]
+  },
+  "Blood Brooch": {
+   "quality": [
+    "S",
+    "A"
+   ],
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Curse",
+      "op": "ADDITIVE",
+      "amount": 1.0
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    191
+   ]
+  },
+  "Bloodied Scarf": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "ReloadSpeed",
+      "op": "MULTIPLICATIVE",
+      "amount": 0.699999988079071
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    230
+   ]
+  },
+  "Bloody 9mm": {
+   "quality": [
+    "A",
+    "B"
+   ],
+   "ammonomicon_pos": [
+    null,
+    113
+   ]
+  },
+  "Bloody Eye": {
+   "id": [
+    431,
+    167
+   ],
+   "quality": [
+    "S",
+    "B"
+   ],
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "EnemyProjectileSpeedMultiplier",
+      "op": "MULTIPLICATIVE",
+      "amount": 0.8500000238418579
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    145
+   ]
+  },
+  "Blue Guon Stone": {
+   "ammonomicon_pos": [
+    null,
+    185
+   ]
+  },
+  "Bomb": {
+   "quality": [
+    "C",
+    "D"
+   ],
+   "ammonomicon_pos": [
+    null,
+    16
+   ]
+  },
+  "Boomerang": {
+   "quality": [
+    "A",
+    "B"
+   ],
+   "ammonomicon_pos": [
+    null,
+    67
+   ]
+  },
+  "Bottle": {
+   "ammonomicon_pos": [
+    null,
+    15
+   ]
+  },
+  "Bouncy Bullets": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "AdditionalShotBounces",
+      "op": "ADDITIVE",
+      "amount": 2.0
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    81
+   ]
+  },
+  "Box": {
+   "ammonomicon_pos": [
+    null,
+    54
+   ]
+  },
+  "Bracket Key": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Curse",
+      "op": "ADDITIVE",
+      "amount": 1.0
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    266
+   ]
+  },
+  "Brick of Cash": {
+   "ammonomicon_pos": [
+    null,
+    240
+   ]
+  },
+  "Briefcase of Cash": {
+   "ammonomicon_pos": [
+    null,
+    262
+   ]
+  },
+  "Broccoli": {
+   "quality": [
+    "S",
+    "A"
+   ],
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "MovementSpeed",
+      "op": "ADDITIVE",
+      "amount": 1.0
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    141
+   ]
+  },
+  "Bug Boots": {
+   "quality": [
+    "A",
+    "B"
+   ],
+   "damage_immunities": [
+    null,
+    [
+     "Poison"
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    158
+   ]
+  },
+  "Bullet Idol": {
+   "quality": [
+    "A",
+    "B"
+   ],
+   "ammonomicon_pos": [
+    null,
+    264
+   ]
+  },
+  "Bullet Time": {
+   "quality": [
+    "C",
+    "D"
+   ],
+   "ammonomicon_pos": [
+    null,
+    45
+   ]
+  },
+  "Bumbullets": {
+   "ammonomicon_pos": [
+    null,
+    112
+   ]
+  },
+  "Busted Television": {
+   "ammonomicon_pos": [
+    null,
+    226
+   ]
+  },
+  "Cartographer's Ring": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "ammonomicon_pos": [
+    null,
+    129
+   ]
+  },
+  "Cat Bullet King Throne": {
+   "quality": [
+    "A",
+    "B"
+   ],
+   "ammonomicon_pos": [
+    null,
+    198
+   ]
+  },
+  "Chaff Grenade": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "ammonomicon_pos": [
+    null,
+    18
+   ]
+  },
+  "Chance Bullets": {
+   "quality": [
+    "A",
+    "B"
+   ],
+   "ammonomicon_pos": [
+    null,
+    110
+   ]
+  },
+  "Chaos Ammolet": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "AdditionalBlanksPerFloor",
+      "op": "ADDITIVE",
+      "amount": 1.0
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    206
+   ]
+  },
+  "Chaos Bullets": {
+   "quality": [
+    "S",
+    "A"
+   ],
+   "ammonomicon_pos": [
+    null,
+    108
+   ]
+  },
+  "Charm Horn": {
+   "quality": [
+    "A",
+    "B"
+   ],
+   "ammonomicon_pos": [
+    null,
+    168
+   ]
+  },
+  "Charming Rounds": {
+   "ammonomicon_pos": [
+    null,
+    91
+   ]
+  },
+  "Chest Teleporter": {
+   "quality": [
+    "S",
+    "A"
+   ],
+   "ammonomicon_pos": [
+    null,
+    59
+   ]
+  },
+  "Chicken Flute": {
+   "ammonomicon_pos": [
+    null,
+    254
+   ]
+  },
+  "Cigarettes": {
+   "ammonomicon_pos": [
+    null,
+    166
+   ]
+  },
+  "Clear Guon Stone": {
+   "damage_immunities": [
+    null,
+    [
+     "Poison"
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    181
+   ]
+  },
+  "Clone": {
+   "ammonomicon_pos": [
+    null,
+    233
+   ]
+  },
+  "Cloranthy Ring": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "ammonomicon_pos": [
+    null,
+    135
+   ]
+  },
+  "Clown Mask": {
+   "ammonomicon_pos": [
+    null,
+    40
+   ]
+  },
+  "Cluster Mine": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "ammonomicon_pos": [
+    null,
+    20
+   ]
+  },
+  "Cog of Battle": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "ammonomicon_pos": [
+    null,
+    169
+   ]
+  },
+  "Coin Crown": {
+   "ammonomicon_pos": [
+    null,
+    162
+   ]
+  },
+  "Copper Ammolet": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "AdditionalBlanksPerFloor",
+      "op": "ADDITIVE",
+      "amount": 1.0
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    209
+   ]
+  },
+  "Crisis Stone": {
+   "quality": [
+    "S",
+    "A"
+   ],
+   "ammonomicon_pos": [
+    null,
+    69
+   ]
+  },
+  "Crutch": {
+   "quality": [
+    "A",
+    "B"
+   ],
+   "ammonomicon_pos": [
+    null,
+    142
+   ]
+  },
+  "Cursed Bullets": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Curse",
+      "op": "ADDITIVE",
+      "amount": 1.0
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    109
+   ]
+  },
+  "Daruma": {
+   "ammonomicon_pos": [
+    null,
+    71
+   ]
+  },
+  "Decoy": {
+   "id": [
+    438,
+    71
+   ],
+   "quality": [
+    "B",
+    "D"
+   ],
+   "ammonomicon_pos": [
+    null,
+    48
+   ]
+  },
+  "Disarming Personality": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "GlobalPriceMultiplier",
+      "op": "MULTIPLICATIVE",
+      "amount": 0.8500000238418579
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    119
+   ]
+  },
+  "Double Vision": {
+   "quality": [
+    "C",
+    "D"
+   ],
+   "ammonomicon_pos": [
+    null,
+    58
+   ]
+  },
+  "Drill": {
+   "ammonomicon_pos": [
+    null,
+    39
+   ]
+  },
+  "Drum Clip": {
+   "quality": [
+    "A",
+    "B"
+   ],
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "AdditionalClipCapacityMultiplier",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.5
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    189
+   ]
+  },
+  "Duct Tape": {
+   "quality": [
+    "S",
+    "A"
+   ],
+   "ammonomicon_pos": [
+    null,
+    175
+   ]
+  },
+  "Easy Reload Bullets": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "ammonomicon_pos": [
+    null,
+    99
+   ]
+  },
+  "Escape Rope": {
+   "quality": [
+    "C",
+    "D"
+   ],
+   "ammonomicon_pos": [
+    null,
+    195
+   ]
+  },
+  "Explosive Decoy": {
+   "ammonomicon_pos": [
+    null,
+    50
+   ]
+  },
+  "Eyepatch": {
+   "quality": [
+    "S",
+    "A"
+   ],
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Accuracy",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.649999976158142
+     },
+     {
+      "stat": "Damage",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.350000023841858
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    126
+   ]
+  },
+  "Fat Bullets": {
+   "quality": [
+    "S",
+    "A"
+   ],
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "PlayerBulletScale",
+      "op": "MULTIPLICATIVE",
+      "amount": 2.0
+     },
+     {
+      "stat": "Damage",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.2999999523162842
+     },
+     {
+      "stat": "KnockbackMultiplier",
+      "op": "MULTIPLICATIVE",
+      "amount": 2.0
+     },
+     {
+      "stat": "AmmoCapacityMultiplier",
+      "op": "MULTIPLICATIVE",
+      "amount": 0.8999999761581421
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    93
+   ]
+  },
+  "Fortune's Favor": {
+   "quality": [
+    "A",
+    "B"
+   ],
+   "ammonomicon_pos": [
+    null,
+    55
+   ]
+  },
+  "Friendship Cookie": {
+   "ammonomicon_pos": [
+    null,
+    14
+   ]
+  },
+  "Frost Ammolet": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "AdditionalBlanksPerFloor",
+      "op": "ADDITIVE",
+      "amount": 1.0
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    210
+   ]
+  },
+  "Frost Bullets": {
+   "ammonomicon_pos": [
+    null,
+    90
+   ]
+  },
+  "Full Metal Jacket": {
+   "quality": [
+    "A",
+    "B"
+   ],
+   "ammonomicon_pos": [
+    null,
+    155
+   ]
+  },
+  "Galactic Medal of Valor": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Accuracy",
+      "op": "MULTIPLICATIVE",
+      "amount": 0.5
+     },
+     {
+      "stat": "ReloadSpeed",
+      "op": "MULTIPLICATIVE",
+      "amount": 0.5
+     },
+     {
+      "stat": "DamageToBosses",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.2999999523162842
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    263
+   ]
+  },
+  "Gas Mask": {
+   "id": [
+    454,
+    453
+   ],
+   "quality": [
+    "A",
+    "D"
+   ],
+   "damage_immunities": [
+    null,
+    [
+     "Poison"
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    235
+   ]
+  },
+  "Ghost Bullets": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "AdditionalShotPiercing",
+      "op": "ADDITIVE",
+      "amount": 1.0
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    83
+   ]
+  },
+  "Gilded Bullets": {
+   "quality": [
+    "A",
+    "B"
+   ],
+   "ammonomicon_pos": [
+    null,
+    106
+   ]
+  },
+  "Glass Guon Stone": {
+   "shop_price": [
+    null,
+    10
+   ],
+   "ammonomicon_pos": [
+    null,
+    186
+   ]
+  },
+  "Gold Ammolet": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "AdditionalBlanksPerFloor",
+      "op": "ADDITIVE",
+      "amount": 1.0
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    205
+   ]
+  },
+  "Gold Junk": {
+   "ammonomicon_pos": [
+    null,
+    248
+   ]
+  },
+  "Grappling Hook": {
+   "quality": [
+    "C",
+    "D"
+   ],
+   "ammonomicon_pos": [
+    null,
+    65
+   ]
+  },
+  "Green Guon Stone": {
+   "ammonomicon_pos": [
+    null,
+    182
+   ]
+  },
+  "Gun Soul": {
+   "quality": [
+    "S",
+    "A"
+   ],
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Health",
+      "op": "ADDITIVE",
+      "amount": 1.0
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    238
+   ]
+  },
+  "Gunboots": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "MovementSpeed",
+      "op": "ADDITIVE",
+      "amount": 1.0
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    159
+   ]
+  },
+  "Gungeon Blueprint": {
+   "ammonomicon_pos": [
+    null,
+    173
+   ]
+  },
+  "Gungeon Pepper": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "ammonomicon_pos": [
+    null,
+    176
+   ]
+  },
+  "Gunknight Armor": {
+   "quality": [
+    "A",
+    "B"
+   ],
+   "ammonomicon_pos": [
+    null,
+    149
+   ]
+  },
+  "Gunknight Gauntlet": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "ammonomicon_pos": [
+    null,
+    148
+   ]
+  },
+  "Gunknight Greaves": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "ammonomicon_pos": [
+    null,
+    147
+   ]
+  },
+  "Gunknight Helmet": {
+   "quality": [
+    "S",
+    "A"
+   ],
+   "ammonomicon_pos": [
+    null,
+    146
+   ]
+  },
+  "Hazmat Suit": {
+   "damage_immunities": [
+    null,
+    [
+     "Fire",
+     "Electric",
+     "Poison"
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    236
+   ]
+  },
+  "Heart Bottle": {
+   "quality": [
+    "C",
+    "B"
+   ],
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Health",
+      "op": "ADDITIVE",
+      "amount": 1.0
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    222
+   ]
+  },
+  "Heart Holster": {
+   "id": [
+    425,
+    421
+   ],
+   "quality": [
+    "A",
+    "B"
+   ],
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Health",
+      "op": "ADDITIVE",
+      "amount": 1.0
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    219
+   ]
+  },
+  "Heart Locket": {
+   "quality": [
+    "C",
+    "B"
+   ],
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Health",
+      "op": "ADDITIVE",
+      "amount": 1.0
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    221
+   ]
+  },
+  "Heart Lunchbox": {
+   "quality": [
+    "C",
+    "B"
+   ],
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Health",
+      "op": "ADDITIVE",
+      "amount": 1.0
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    220
+   ]
+  },
+  "Heart of Ice": {
+   "quality": [
+    "S",
+    "A"
+   ],
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Health",
+      "op": "ADDITIVE",
+      "amount": 1.0
+     },
+     {
+      "stat": "Coolness",
+      "op": "ADDITIVE",
+      "amount": 2.0
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    228
+   ]
+  },
+  "Heart Purse": {
+   "quality": [
+    "C",
+    "B"
+   ],
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Health",
+      "op": "ADDITIVE",
+      "amount": 1.0
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    223
+   ]
+  },
+  "Heart Synthesizer": {
+   "quality": [
+    "S",
+    "A"
+   ],
+   "ammonomicon_pos": [
+    null,
+    31
+   ]
+  },
+  "Heavy Boots": {
+   "quality": [
+    "C",
+    "D"
+   ],
+   "ammonomicon_pos": [
+    null,
+    157
+   ]
+  },
+  "Heavy Bullets": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Damage",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.25
+     },
+     {
+      "stat": "ProjectileSpeed",
+      "op": "MULTIPLICATIVE",
+      "amount": 0.5
+     },
+     {
+      "stat": "PlayerBulletScale",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.25
+     },
+     {
+      "stat": "KnockbackMultiplier",
+      "op": "MULTIPLICATIVE",
+      "amount": 2.0
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    80
+   ]
+  },
+  "Helix Bullets": {
+   "quality": [
+    "A",
+    "B"
+   ],
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Damage",
+      "op": "MULTIPLICATIVE",
+      "amount": 0.6600000262260437
+     },
+     {
+      "stat": "RangeMultiplier",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.2000000476837158
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    111
+   ]
+  },
+  "Hip Holster": {
+   "quality": [
+    "A",
+    "B"
+   ],
+   "ammonomicon_pos": [
+    null,
+    232
+   ]
+  },
+  "Holey Grail": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Curse",
+      "op": "ADDITIVE",
+      "amount": 1.0
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    190
+   ]
+  },
+  "Homing Bullets": {
+   "quality": [
+    "A",
+    "B"
+   ],
+   "ammonomicon_pos": [
+    null,
+    97
+   ]
+  },
+  "Honeycomb": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "ammonomicon_pos": [
+    null,
+    171
+   ]
+  },
+  "Hot Lead": {
+   "ammonomicon_pos": [
+    null,
+    88
+   ]
+  },
+  "iBomb Companion App": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "ammonomicon_pos": [
+    null,
+    28
+   ]
+  },
+  "Ice Bomb": {
+   "quality": [
+    "C",
+    "D"
+   ],
+   "ammonomicon_pos": [
+    null,
+    17
+   ]
+  },
+  "Ice Cube": {
+   "quality": [
+    "A",
+    "B"
+   ],
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Coolness",
+      "op": "ADDITIVE",
+      "amount": 3.0
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    164
+   ]
+  },
+  "Infuriating Note": {
+   "ammonomicon_pos": [
+    null,
+    271
+   ]
+  },
+  "Iron Coin": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Coolness",
+      "op": "ADDITIVE",
+      "amount": 2.0
+     },
+     {
+      "stat": "GlobalPriceMultiplier",
+      "op": "MULTIPLICATIVE",
+      "amount": 0.800000011920929
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    187
+   ]
+  },
+  "Irradiated Lead": {
+   "ammonomicon_pos": [
+    null,
+    87
+   ]
+  },
+  "Jar of Bees": {
+   "ammonomicon_pos": [
+    null,
+    56
+   ]
+  },
+  "Jetpack": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "ammonomicon_pos": [
+    null,
+    196
+   ]
+  },
+  "Junk": {
+   "id": [
+    641,
+    580
+   ],
+   "quality": [
+    "N",
+    "C"
+   ],
+   "ammonomicon_pos": [
+    null,
+    250
+   ]
+  },
+  "Knife Shield": {
+   "quality": [
+    "C",
+    "D"
+   ],
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Curse",
+      "op": "ADDITIVE",
+      "amount": 1.0
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    64
+   ]
+  },
+  "Lament Configurum": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Curse",
+      "op": "ADDITIVE",
+      "amount": 1.0
+     }
+    ]
+   ],
+   "shop_price": [
+    null,
+    90
+   ],
+   "ammonomicon_pos": [
+    null,
+    200
+   ]
+  },
+  "Laser Sight": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Accuracy",
+      "op": "MULTIPLICATIVE",
+      "amount": 0.5
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    43
+   ]
+  },
+  "Lich's Eye Bullets": {
+   "ammonomicon_pos": [
+    null,
+    122
+   ]
+  },
+  "Lichy Trigger Finger": {
+   "quality": [
+    "C",
+    "D"
+   ],
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "RateOfFire",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.25
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    121
+   ]
+  },
+  "Lies": {
+   "ammonomicon_pos": [
+    null,
+    249
+   ]
+  },
+  "Liquid Valkyrie": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "EnemyProjectileSpeedMultiplier",
+      "op": "MULTIPLICATIVE",
+      "amount": 0.800000011920929
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    144
+   ]
+  },
+  "Lodestone Ammolet": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "AdditionalBlanksPerFloor",
+      "op": "ADDITIVE",
+      "amount": 1.0
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    207
+   ]
+  },
+  "Loot Bag": {
+   "ammonomicon_pos": [
+    null,
+    38
+   ]
+  },
+  "Macho Brace": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "ammonomicon_pos": [
+    null,
+    35
+   ]
+  },
+  "Magazine Rack": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "ammonomicon_pos": [
+    null,
+    167
+   ]
+  },
+  "Magic Bullets": {
+   "quality": [
+    "A",
+    "B"
+   ],
+   "ammonomicon_pos": [
+    null,
+    92
+   ]
+  },
+  "Magic Sweet": {
+   "quality": [
+    "S",
+    "A"
+   ],
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "MovementSpeed",
+      "op": "ADDITIVE",
+      "amount": 1.5
+     },
+     {
+      "stat": "Health",
+      "op": "ADDITIVE",
+      "amount": 1.0
+     },
+     {
+      "stat": "Damage",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.149999976158142
+     },
+     {
+      "stat": "Coolness",
+      "op": "ADDITIVE",
+      "amount": 1.0
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    118
+   ]
+  },
+  "Map": {
+   "quality": [
+    "C",
+    "D"
+   ],
+   "ammonomicon_pos": [
+    null,
+    172
+   ]
+  },
+  "Master of Unlocking": {
+   "quality": [
+    "A",
+    "B"
+   ],
+   "ammonomicon_pos": [
+    null,
+    33
+   ]
+  },
+  "Meatbun": {
+   "quality": [
+    "C",
+    "D"
+   ],
+   "ammonomicon_pos": [
+    null,
+    10
+   ]
+  },
+  "Medkit": {
+   "id": [
+    412,
+    63
+   ],
+   "quality": [
+    "B",
+    "C"
+   ],
+   "ammonomicon_pos": [
+    null,
+    11
+   ]
+  },
+  "Melted Rock": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "ammonomicon_pos": [
+    null,
+    51
+   ]
+  },
+  "Metronome": {
+   "quality": [
+    "A",
+    "B"
+   ],
+   "ammonomicon_pos": [
+    null,
+    170
+   ]
+  },
+  "Military Training": {
+   "id": [
+    494,
+    354
+   ],
+   "quality": [
+    "A",
+    "C"
+   ],
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Accuracy",
+      "op": "MULTIPLICATIVE",
+      "amount": 0.8299999833106995
+     },
+     {
+      "stat": "ReloadSpeed",
+      "op": "MULTIPLICATIVE",
+      "amount": 0.800000011920929
+     },
+     {
+      "stat": "ChargeAmountMultiplier",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.2000000476837158
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    127
+   ]
+  },
+  "Mimic Tooth Necklace": {
+   "quality": [
+    "S",
+    "A"
+   ],
+   "ammonomicon_pos": [
+    null,
+    194
+   ]
+  },
+  "Monster Blood": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Health",
+      "op": "ADDITIVE",
+      "amount": 1.0
+     }
+    ]
+   ],
+   "damage_immunities": [
+    null,
+    [
+     "Poison"
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    201
+   ]
+  },
+  "Muscle Relaxant": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Accuracy",
+      "op": "MULTIPLICATIVE",
+      "amount": 0.33000001311302185
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    231
+   ]
+  },
+  "Mustache": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "ammonomicon_pos": [
+    null,
+    120
+   ]
+  },
+  "Nanomachines": {
+   "quality": [
+    "A",
+    "B"
+   ],
+   "ammonomicon_pos": [
+    null,
+    202
+   ]
+  },
+  "Napalm Strike": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "ammonomicon_pos": [
+    null,
+    25
+   ]
+  },
+  "Number 2": {
+   "quality": [
+    "S",
+    "A"
+   ],
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "MovementSpeed",
+      "op": "ADDITIVE",
+      "amount": 2.0
+     },
+     {
+      "stat": "Damage",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.409999966621399
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    204
+   ]
+  },
+  "Oiled Cylinder": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "ReloadSpeed",
+      "op": "MULTIPLICATIVE",
+      "amount": 0.5
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    163
+   ]
+  },
+  "Old Crest": {
+   "quality": [
+    "N",
+    "B"
+   ],
+   "ammonomicon_pos": [
+    null,
+    153
+   ]
+  },
+  "Old Knight's Flask": {
+   "ammonomicon_pos": [
+    null,
+    152
+   ]
+  },
+  "Old Knight's Helm": {
+   "quality": [
+    "C",
+    "D"
+   ],
+   "ammonomicon_pos": [
+    null,
+    151
+   ]
+  },
+  "Old Knight's Shield": {
+   "quality": [
+    "C",
+    "D"
+   ],
+   "ammonomicon_pos": [
+    null,
+    150
+   ]
+  },
+  "Omega Bullets": {
+   "quality": [
+    "S",
+    "A"
+   ],
+   "ammonomicon_pos": [
+    null,
+    85
+   ]
+  },
+  "Orange": {
+   "quality": [
+    "A",
+    "B"
+   ],
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Coolness",
+      "op": "ADDITIVE",
+      "amount": 2.0
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    13
+   ]
+  },
+  "Orange Guon Stone": {
+   "ammonomicon_pos": [
+    null,
+    180
+   ]
+  },
+  "Orbital Bullets": {
+   "quality": [
+    "S",
+    "A"
+   ],
+   "ammonomicon_pos": [
+    null,
+    96
+   ]
+  },
+  "Owl": {
+   "ammonomicon_pos": [
+    null,
+    245
+   ]
+  },
+  "Partially-Eaten Cheese": {
+   "ammonomicon_pos": [
+    null,
+    72
+   ]
+  },
+  "Pig": {
+   "quality": [
+    "S",
+    "A"
+   ],
+   "ammonomicon_pos": [
+    null,
+    256
+   ]
+  },
+  "Pink Guon Stone": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Health",
+      "op": "ADDITIVE",
+      "amount": 1.0
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    183
+   ]
+  },
+  "Planar Lead": {
+   "ammonomicon_pos": [
+    null,
+    7
+   ]
+  },
+  "Platinum Bullets": {
+   "ammonomicon_pos": [
+    null,
+    107
+   ]
+  },
+  "Poison Vial": {
+   "id": [
+    432,
+    205
+   ],
+   "quality": [
+    "B",
+    "D"
+   ],
+   "ammonomicon_pos": [
+    null,
+    61
+   ]
+  },
+  "Portable Table Device": {
+   "ammonomicon_pos": [
+    null,
+    70
+   ]
+  },
+  "Portable Turret": {
+   "quality": [
+    "A",
+    "B"
+   ],
+   "ammonomicon_pos": [
+    null,
+    63
+   ]
+  },
+  "Potion of Gun Friendship": {
+   "quality": [
+    "C",
+    "D"
+   ],
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "RateOfFire",
+      "op": "MULTIPLICATIVE",
+      "amount": 2.0
+     },
+     {
+      "stat": "KnockbackMultiplier",
+      "op": "MULTIPLICATIVE",
+      "amount": 10.0
+     },
+     {
+      "stat": "ReloadSpeed",
+      "op": "MULTIPLICATIVE",
+      "amount": 0.30000001192092896
+     },
+     {
+      "stat": "Damage",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.2999999523162842
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    62
+   ]
+  },
+  "Potion of Lead Skin": {
+   "ammonomicon_pos": [
+    null,
+    57
+   ]
+  },
+  "Prime Primer": {
+   "shop_price": [
+    null,
+    110
+   ],
+   "ammonomicon_pos": [
+    null,
+    5
+   ]
+  },
+  "Proximity Mine": {
+   "quality": [
+    "C",
+    "D"
+   ],
+   "ammonomicon_pos": [
+    null,
+    19
+   ]
+  },
+  "R2G2": {
+   "ammonomicon_pos": [
+    null,
+    251
+   ]
+  },
+  "Rat Boots": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "MovementSpeed",
+      "op": "ADDITIVE",
+      "amount": 1.5
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    161
+   ]
+  },
+  "Ration": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "ammonomicon_pos": [
+    null,
+    12
+   ]
+  },
+  "Red Guon Stone": {
+   "ammonomicon_pos": [
+    null,
+    184
+   ]
+  },
+  "Relodestone": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "ReloadSpeed",
+      "op": "MULTIPLICATIVE",
+      "amount": 0.5
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    60
+   ]
+  },
+  "Remote Bullets": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Damage",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.100000023841858
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    102
+   ]
+  },
+  "Resourceful Sack": {
+   "id": [
+    316,
+    663
+   ],
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "AdditionalItemCapacity",
+      "op": "ADDITIVE",
+      "amount": 3.0
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    178
+   ]
+  },
+  "Riddle of Lead": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "MovementSpeed",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.100000023841858
+     },
+     {
+      "stat": "Health",
+      "op": "ADDITIVE",
+      "amount": 1.0
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    265
+   ]
+  },
+  "Ring of Chest Friendship": {
+   "quality": [
+    "A",
+    "B"
+   ],
+   "ammonomicon_pos": [
+    null,
+    136
+   ]
+  },
+  "Ring of Chest Vampirism": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "ammonomicon_pos": [
+    null,
+    134
+   ]
+  },
+  "Ring of Ethereal Form": {
+   "ammonomicon_pos": [
+    null,
+    139
+   ]
+  },
+  "Ring of Fire Resistance": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "damage_immunities": [
+    null,
+    [
+     "Fire"
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    131
+   ]
+  },
+  "Ring of Mimic Friendship": {
+   "quality": [
+    "C",
+    "D"
+   ],
+   "ammonomicon_pos": [
+    null,
+    137
+   ]
+  },
+  "Ring of Miserly Protection": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Health",
+      "op": "ADDITIVE",
+      "amount": 2.0
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    132
+   ]
+  },
+  "Ring of the Resourceful Rat": {
+   "ammonomicon_pos": [
+    null,
+    128
+   ]
+  },
+  "Ring of Triggers": {
+   "ammonomicon_pos": [
+    null,
+    138
+   ]
+  },
+  "Rocket-Powered Bullets": {
+   "quality": [
+    "A",
+    "B"
+   ],
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "ProjectileSpeed",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.5
+     },
+     {
+      "stat": "Damage",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.100000023841858
+     },
+     {
+      "stat": "RateOfFire",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.100000023841858
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    74
+   ]
+  },
+  "Roll Bomb": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "ammonomicon_pos": [
+    null,
+    27
+   ]
+  },
+  "Rolling Eye": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "ammonomicon_pos": [
+    null,
+    165
+   ]
+  },
+  "Ruby Bracelet": {
+   "quality": [
+    "C",
+    "D"
+   ],
+   "ammonomicon_pos": [
+    null,
+    224
+   ]
+  },
+  "Scattershot": {
+   "quality": [
+    "A",
+    "B"
+   ],
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Damage",
+      "op": "MULTIPLICATIVE",
+      "amount": 0.550000011920929
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    86
+   ]
+  },
+  "Scope": {
+   "quality": [
+    "C",
+    "D"
+   ],
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Accuracy",
+      "op": "MULTIPLICATIVE",
+      "amount": 0.4000000059604645
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    41
+   ]
+  },
+  "Scouter": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Curse",
+      "op": "ADDITIVE",
+      "amount": 1.0
+     },
+     {
+      "stat": "Accuracy",
+      "op": "MULTIPLICATIVE",
+      "amount": 0.8999999761581421
+     },
+     {
+      "stat": "Damage",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.100000023841858
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    42
+   ]
+  },
+  "Sense of Direction": {
+   "quality": [
+    "C",
+    "D"
+   ],
+   "ammonomicon_pos": [
+    null,
+    174
+   ]
+  },
+  "Seven-Leaf Clover": {
+   "ammonomicon_pos": [
+    null,
+    203
+   ]
+  },
+  "Shadow Clone": {
+   "ammonomicon_pos": [
+    null,
+    49
+   ]
+  },
+  "Shelleton Key": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Curse",
+      "op": "ADDITIVE",
+      "amount": 1.0
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    239
+   ]
+  },
+  "Shield of the Maiden": {
+   "ammonomicon_pos": [
+    null,
+    68
+   ]
+  },
+  "Shotga Cola": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "MovementSpeed",
+      "op": "ADDITIVE",
+      "amount": 1.5
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    116
+   ]
+  },
+  "Shotgun Coffee": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "MovementSpeed",
+      "op": "ADDITIVE",
+      "amount": 1.2000000476837158
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    115
+   ]
+  },
+  "Silver Bullets": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "DamageToBosses",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.25
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    105
+   ]
+  },
+  "Singularity": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "ammonomicon_pos": [
+    null,
+    47
+   ]
+  },
+  "Sixth Chamber": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Curse",
+      "op": "ADDITIVE",
+      "amount": 2.0
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    225
+   ]
+  },
+  "Smoke Bomb": {
+   "ammonomicon_pos": [
+    null,
+    53
+   ]
+  },
+  "Snowballets": {
+   "quality": [
+    "S",
+    "A"
+   ],
+   "ammonomicon_pos": [
+    null,
+    101
+   ]
+  },
+  "Space Friend": {
+   "id": [
+    249,
+    232
+   ],
+   "quality": [
+    "A",
+    "B"
+   ],
+   "ammonomicon_pos": [
+    null,
+    255
+   ]
+  },
+  "Spice": {
+   "quality": [
+    "S",
+    "A"
+   ],
+   "ammonomicon_pos": [
+    null,
+    143
+   ]
+  },
+  "Sponge": {
+   "damage_immunities": [
+    null,
+    [
+     "Poison"
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    234
+   ]
+  },
+  "Springheel Boots": {
+   "ammonomicon_pos": [
+    null,
+    160
+   ]
+  },
+  "Sprun": {
+   "quality": [
+    "S",
+    "A"
+   ],
+   "ammonomicon_pos": [
+    null,
+    259
+   ]
+  },
+  "Stout Bullets": {
+   "quality": [
+    "A",
+    "B"
+   ],
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "ProjectileSpeed",
+      "op": "MULTIPLICATIVE",
+      "amount": 0.699999988079071
+     },
+     {
+      "stat": "PlayerBulletScale",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.5
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    100
+   ]
+  },
+  "Stuffed Star": {
+   "quality": [
+    "A",
+    "B"
+   ],
+   "ammonomicon_pos": [
+    null,
+    66
+   ]
+  },
+  "Sunglasses": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Coolness",
+      "op": "ADDITIVE",
+      "amount": 2.0
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    193
+   ]
+  },
+  "Super Hot Watch": {
+   "ammonomicon_pos": [
+    null,
+    188
+   ]
+  },
+  "Super Space Turtle": {
+   "id": [
+    299,
+    301
+   ],
+   "ammonomicon_pos": [
+    null,
+    246
+   ]
+  },
+  "Supply Drop": {
+   "quality": [
+    "C",
+    "D"
+   ],
+   "ammonomicon_pos": [
+    null,
+    29
+   ]
+  },
+  "Table Tech Blanks": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "ammonomicon_pos": [
+    null,
+    217
+   ]
+  },
+  "Table Tech Heat": {
+   "ammonomicon_pos": [
+    null,
+    215
+   ]
+  },
+  "Table Tech Money": {
+   "quality": [
+    "C",
+    "D"
+   ],
+   "shop_price": [
+    null,
+    50
+   ],
+   "ammonomicon_pos": [
+    null,
+    212
+   ]
+  },
+  "Table Tech Rage": {
+   "quality": [
+    "C",
+    "D"
+   ],
+   "ammonomicon_pos": [
+    null,
+    216
+   ]
+  },
+  "Table Tech Rocket": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "ammonomicon_pos": [
+    null,
+    213
+   ]
+  },
+  "Table Tech Shotgun": {
+   "id": [
+    666,
+    633
+   ],
+   "quality": [
+    "C",
+    "D"
+   ],
+   "ammonomicon_pos": [
+    null,
+    214
+   ]
+  },
+  "Table Tech Sight": {
+   "quality": [
+    "C",
+    "D"
+   ],
+   "ammonomicon_pos": [
+    null,
+    211
+   ]
+  },
+  "Table Tech Stun": {
+   "ammonomicon_pos": [
+    null,
+    218
+   ]
+  },
+  "Teleporter Prototype": {
+   "quality": [
+    "A",
+    "B"
+   ],
+   "ammonomicon_pos": [
+    null,
+    268
+   ]
+  },
+  "Ticket": {
+   "ammonomicon_pos": [
+    null,
+    156
+   ]
+  },
+  "Turkey": {
+   "id": [
+    664,
+    632
+   ],
+   "quality": [
+    "A",
+    "C"
+   ],
+   "ammonomicon_pos": [
+    null,
+    257
+   ]
+  },
+  "Turtle Problem": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "ammonomicon_pos": [
+    null,
+    258
+   ]
+  },
+  "Unity": {
+   "ammonomicon_pos": [
+    null,
+    133
+   ]
+  },
+  "Uranium Ammolet": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "AdditionalBlanksPerFloor",
+      "op": "ADDITIVE",
+      "amount": 1.0
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    208
+   ]
+  },
+  "Utility Belt": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "AdditionalItemCapacity",
+      "op": "ADDITIVE",
+      "amount": 1.0
+     },
+     {
+      "stat": "AdditionalGunCapacity",
+      "op": "ADDITIVE",
+      "amount": 1.0
+     },
+     {
+      "stat": "AmmoCapacityMultiplier",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.2000000476837158
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    34
+   ]
+  },
+  "Wax Wings": {
+   "ammonomicon_pos": [
+    null,
+    197
+   ]
+  },
+  "Weird Egg": {
+   "ammonomicon_pos": [
+    null,
+    22
+   ]
+  },
+  "White Guon Stone": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "AdditionalBlanksPerFloor",
+      "op": "ADDITIVE",
+      "amount": 1.0
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    179
+   ]
+  },
+  "Wingman": {
+   "quality": [
+    "S",
+    "A"
+   ],
+   "ammonomicon_pos": [
+    null,
+    242
+   ]
+  },
+  "Wolf": {
+   "ammonomicon_pos": [
+    null,
+    243
+   ]
+  },
+  "Yellow Chamber": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Curse",
+      "op": "ADDITIVE",
+      "amount": 2.0
+     },
+     {
+      "stat": "RateOfFire",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.149999976158142
+     },
+     {
+      "stat": "Health",
+      "op": "ADDITIVE",
+      "amount": 1.0
+     },
+     {
+      "stat": "Health",
+      "op": "ADDITIVE",
+      "amount": 1.0
+     }
+    ]
+   ],
+   "ammonomicon_pos": [
+    null,
+    269
+   ]
+  },
+  "Zombie Bullets": {
+   "quality": [
+    "B",
+    "C"
+   ],
+   "ammonomicon_pos": [
+    null,
+    103
+   ]
+  }
+ },
+ "synergies": {
+  "Bacon and Eggs": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "ProjectileSpeed",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.5
+     }
+    ]
+   ],
+   "activation": [
+    null,
+    "ACTIVE_UNBOOSTED"
+   ]
+  },
+  "Barrage Shot": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "ChargeAmountMultiplier",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.3333333730697632
+     },
+     {
+      "stat": "ReloadSpeed",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.5
+     },
+     {
+      "stat": "PlayerBulletScale",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.2000000476837158
+     }
+    ]
+   ],
+   "activation": [
+    null,
+    "ACTIVE_UNBOOSTED"
+   ]
+  },
+  "BEES": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "RateOfFire",
+      "op": "MULTIPLICATIVE",
+      "amount": 0.6600000262260437
+     },
+     {
+      "stat": "Damage",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.25
+     },
+     {
+      "stat": "PlayerBulletScale",
+      "op": "MULTIPLICATIVE",
+      "amount": 2.0
+     }
+    ]
+   ],
+   "activation": [
+    null,
+    "ACTIVE_UNBOOSTED"
+   ]
+  },
+  "Block Party": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Damage",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.25
+     },
+     {
+      "stat": "PlayerBulletScale",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.5
+     }
+    ]
+   ],
+   "activation": [
+    null,
+    "ACTIVE_UNBOOSTED"
+   ]
+  },
+  "Blunderbrace": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "ProjectileSpeed",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.5
+     },
+     {
+      "stat": "PlayerBulletScale",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.25
+     }
+    ]
+   ]
+  },
+  "Bomberpal": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "ChargeAmountMultiplier",
+      "op": "MULTIPLICATIVE",
+      "amount": 2.0
+     },
+     {
+      "stat": "ReloadSpeed",
+      "op": "MULTIPLICATIVE",
+      "amount": 0.6000000238418579
+     }
+    ]
+   ]
+  },
+  "Breakfast Club": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "ReloadSpeed",
+      "op": "MULTIPLICATIVE",
+      "amount": 0.5
+     },
+     {
+      "stat": "RateOfFire",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.600000023841858
+     },
+     {
+      "stat": "Damage",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.5
+     },
+     {
+      "stat": "AdditionalClipCapacityMultiplier",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.2999999523162842
+     }
+    ]
+   ],
+   "activation": [
+    null,
+    "ACTIVE_UNBOOSTED"
+   ]
+  },
+  "Bullet or the Egg": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "PlayerBulletScale",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.5
+     }
+    ]
+   ]
+  },
+  "Chest High is the Best High": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Damage",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.25
+     }
+    ]
+   ],
+   "active_when_gun_unequipped": [
+    null,
+    true
+   ]
+  },
+  "Chicken Arise": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "PlayerBulletScale",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.5
+     },
+     {
+      "stat": "MovementSpeed",
+      "op": "ADDITIVE",
+      "amount": 0.0
+     }
+    ]
+   ]
+  },
+  "Clawntlet": {
+   "active_when_gun_unequipped": [
+    null,
+    true
+   ]
+  },
+  "Cold 1896": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "AdditionalClipCapacityMultiplier",
+      "op": "MULTIPLICATIVE",
+      "amount": 2.0
+     }
+    ]
+   ]
+  },
+  "Crestfallen Soul": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "DodgeRollSpeedMultiplier",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.2000000476837158
+     }
+    ]
+   ]
+  },
+  "Dead Cell": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "ChargeAmountMultiplier",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.2000000476837158
+     },
+     {
+      "stat": "DamageToBosses",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.2999999523162842
+     }
+    ]
+   ],
+   "activation": [
+    null,
+    "ACTIVE_UNBOOSTED"
+   ]
+  },
+  "Dead Place": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Damage",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.25
+     }
+    ]
+   ],
+   "activation": [
+    null,
+    "ACTIVE_UNBOOSTED"
+   ]
+  },
+  "Decoy Octorok": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "AdditionalClipCapacityMultiplier",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.0
+     }
+    ]
+   ]
+  },
+  "Diazepam": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Damage",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.5
+     }
+    ]
+   ],
+   "activation": [
+    null,
+    "ACTIVE_UNBOOSTED"
+   ]
+  },
+  "Don't Worry About The Vase": {
+   "active_when_gun_unequipped": [
+    null,
+    true
+   ]
+  },
+  "Double Double Helix": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Damage",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.25
+     },
+     {
+      "stat": "ProjectileSpeed",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.5
+     }
+    ]
+   ]
+  },
+  "The Ecstasy Of Gold": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Damage",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.25
+     }
+    ]
+   ]
+  },
+  "Emergency Help": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "ReloadSpeed",
+      "op": "MULTIPLICATIVE",
+      "amount": 0.3330000042915344
+     },
+     {
+      "stat": "Damage",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.5
+     }
+    ]
+   ]
+  },
+  "Fairy Bow": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "DamageToBosses",
+      "op": "ADDITIVE",
+      "amount": 0.20000000298023224
+     }
+    ]
+   ],
+   "activation": [
+    null,
+    "INACTIVE"
+   ]
+  },
+  "Fear the Old Blood": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "ReloadSpeed",
+      "op": "MULTIPLICATIVE",
+      "amount": 0.6666666865348816
+     },
+     {
+      "stat": "RateOfFire",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.2000000476837158
+     }
+    ]
+   ],
+   "activation": [
+    null,
+    "ACTIVE_UNBOOSTED"
+   ]
+  },
+  "Flat Stanley": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "AdditionalClipCapacityMultiplier",
+      "op": "MULTIPLICATIVE",
+      "amount": 0.5
+     },
+     {
+      "stat": "ReloadSpeed",
+      "op": "MULTIPLICATIVE",
+      "amount": 0.6666666865348816
+     }
+    ]
+   ],
+   "activation": [
+    null,
+    "ACTIVE_UNBOOSTED"
+   ]
+  },
+  "Ghost With The Most": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "ReloadSpeed",
+      "op": "MULTIPLICATIVE",
+      "amount": 0.800000011920929
+     },
+     {
+      "stat": "PlayerBulletScale",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.5
+     }
+    ]
+   ]
+  },
+  "Greener Guon Stone": {
+   "active_when_gun_unequipped": [
+    null,
+    true
+   ]
+  },
+  "Gunnerang": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "ThrownGunDamage",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.5
+     }
+    ]
+   ],
+   "activation": [
+    null,
+    "ACTIVE_UNBOOSTED"
+   ]
+  },
+  "Hail To The King": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "AdditionalClipCapacityMultiplier",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.5
+     },
+     {
+      "stat": "Damage",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.2000000476837158
+     }
+    ]
+   ]
+  },
+  "Hammer and Nail": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "AmmoCapacityMultiplier",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.5
+     }
+    ]
+   ]
+  },
+  "Heavy Jolt": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "KnockbackMultiplier",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.2999999523162842
+     }
+    ]
+   ]
+  },
+  "Heavy Metal": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Damage",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.2000000476837158
+     },
+     {
+      "stat": "ProjectileSpeed",
+      "op": "MULTIPLICATIVE",
+      "amount": 0.75
+     }
+    ]
+   ],
+   "activation": [
+    null,
+    "ACTIVE_UNBOOSTED"
+   ]
+  },
+  "http://merch.devolverdigital.com": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Damage",
+      "op": "MULTIPLICATIVE",
+      "amount": 2.0
+     }
+    ]
+   ]
+  },
+  "Hydro Pump": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Damage",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.5
+     },
+     {
+      "stat": "PlayerBulletScale",
+      "op": "MULTIPLICATIVE",
+      "amount": 2.5
+     },
+     {
+      "stat": "ProjectileSpeed",
+      "op": "MULTIPLICATIVE",
+      "amount": 3.0
+     },
+     {
+      "stat": "KnockbackMultiplier",
+      "op": "MULTIPLICATIVE",
+      "amount": 3.0
+     }
+    ]
+   ]
+  },
+  "Ice Water": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "PlayerBulletScale",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.5
+     },
+     {
+      "stat": "Damage",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.2999999523162842
+     }
+    ]
+   ]
+  },
+  "In The Mood!": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "MovementSpeed",
+      "op": "ADDITIVE",
+      "amount": 1.0
+     },
+     {
+      "stat": "ProjectileSpeed",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.25
+     }
+    ]
+   ],
+   "activation": [
+    null,
+    "ACTIVE_UNBOOSTED"
+   ]
+  },
+  "Iroquois": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "ReloadSpeed",
+      "op": "MULTIPLICATIVE",
+      "amount": 0.6666666865348816
+     },
+     {
+      "stat": "AdditionalClipCapacityMultiplier",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.5
+     },
+     {
+      "stat": "KnockbackMultiplier",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.5
+     }
+    ]
+   ],
+   "activation": [
+    null,
+    "ACTIVE_UNBOOSTED"
+   ]
+  },
+  "J am": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "ReloadSpeed",
+      "op": "MULTIPLICATIVE",
+      "amount": 0.6666666865348816
+     }
+    ]
+   ],
+   "activation": [
+    null,
+    "ACTIVE_UNBOOSTED"
+   ]
+  },
+  "Jotun Time": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "ThrownGunDamage",
+      "op": "MULTIPLICATIVE",
+      "amount": 2.799999952316284
+     }
+    ]
+   ]
+  },
+  "Lumberjacked": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Damage",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.25
+     }
+    ]
+   ],
+   "activation": [
+    null,
+    "ACTIVE_UNBOOSTED"
+   ]
+  },
+  "M1 Multi-Tool": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "MovementSpeed",
+      "op": "ADDITIVE",
+      "amount": 2.0
+     },
+     {
+      "stat": "ReloadSpeed",
+      "op": "MULTIPLICATIVE",
+      "amount": 0.800000011920929
+     }
+    ]
+   ]
+  },
+  "Mak Pak": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "AmmoCapacityMultiplier",
+      "op": "ADDITIVE",
+      "amount": 0.30000001192092896
+     }
+    ]
+   ]
+  },
+  "Meltdown": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "PlayerBulletScale",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.5
+     }
+    ]
+   ]
+  },
+  "Mmmmmmmmm MMMMmm!": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Damage",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.25
+     },
+     {
+      "stat": "RateOfFire",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.25
+     },
+     {
+      "stat": "AmmoCapacityMultiplier",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.25
+     },
+     {
+      "stat": "Accuracy",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.25
+     }
+    ]
+   ],
+   "activation": [
+    null,
+    "ACTIVE_UNBOOSTED"
+   ]
+  },
+  "Over Dose": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "ProjectileSpeed",
+      "op": "MULTIPLICATIVE",
+      "amount": 2.0
+     }
+    ]
+   ],
+   "active_when_gun_unequipped": [
+    null,
+    true
+   ]
+  },
+  "Pandemic Pistol": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "PlayerBulletScale",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.25
+     }
+    ]
+   ]
+  },
+  "Pinker Guon Stone": {
+   "active_when_gun_unequipped": [
+    null,
+    true
+   ]
+  },
+  "Praise the Gun": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "DodgeRollSpeedMultiplier",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.2000000476837158
+     }
+    ]
+   ]
+  },
+  "Pretty Good": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Accuracy",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.25
+     },
+     {
+      "stat": "Coolness",
+      "op": "ADDITIVE",
+      "amount": 2.0
+     }
+    ]
+   ],
+   "activation": [
+    null,
+    "ACTIVE_UNBOOSTED"
+   ]
+  },
+  "Regular Old Guns": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "RateOfFire",
+      "op": "MULTIPLICATIVE",
+      "amount": 4.0
+     },
+     {
+      "stat": "Damage",
+      "op": "MULTIPLICATIVE",
+      "amount": 0.75
+     }
+    ]
+   ]
+  },
+  "Reload Roll": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "DodgeRollDistanceMultiplier",
+      "op": "ADDITIVE",
+      "amount": 0.20000000298023224
+     }
+    ]
+   ]
+  },
+  "Resourceful Indeed,": {
+   "activation": [
+    null,
+    "ACTIVE_UNBOOSTED"
+   ],
+   "active_when_gun_unequipped": [
+    null,
+    true
+   ]
+  },
+  "Revolution": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Damage",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.25
+     },
+     {
+      "stat": "AdditionalShotBounces",
+      "op": "ADDITIVE",
+      "amount": 4.0
+     }
+    ]
+   ],
+   "activation": [
+    null,
+    "ACTIVE_UNBOOSTED"
+   ]
+  },
+  "Savior of the Universe": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "AdditionalShotBounces",
+      "op": "ADDITIVE",
+      "amount": 1.0
+     }
+    ]
+   ]
+  },
+  "Shadow Warrior": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Accuracy",
+      "op": "MULTIPLICATIVE",
+      "amount": 0.4000000059604645
+     }
+    ]
+   ]
+  },
+  "Shredder": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Accuracy",
+      "op": "MULTIPLICATIVE",
+      "amount": 2.0
+     }
+    ]
+   ],
+   "activation": [
+    null,
+    "ACTIVE_UNBOOSTED"
+   ]
+  },
+  "Sniper Woof": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "ReloadSpeed",
+      "op": "MULTIPLICATIVE",
+      "amount": 0.699999988079071
+     }
+    ]
+   ]
+  },
+  "Special Delivery": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "AdditionalShotBounces",
+      "op": "ADDITIVE",
+      "amount": 1.0
+     }
+    ]
+   ],
+   "activation": [
+    null,
+    "ACTIVE_UNBOOSTED"
+   ]
+  },
+  "Spicy D-Boys": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Coolness",
+      "op": "ADDITIVE",
+      "amount": 2.0
+     }
+    ]
+   ]
+  },
+  "Spengbab": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "KnockbackMultiplier",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.5
+     },
+     {
+      "stat": "RangeMultiplier",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.5
+     }
+    ]
+   ],
+   "activation": [
+    null,
+    "ACTIVE_UNBOOSTED"
+   ]
+  },
+  "Square Brace": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Damage",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.2000000476837158
+     }
+    ]
+   ]
+  },
+  "Super Bomberpal": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "ChargeAmountMultiplier",
+      "op": "MULTIPLICATIVE",
+      "amount": 2.0
+     },
+     {
+      "stat": "ReloadSpeed",
+      "op": "MULTIPLICATIVE",
+      "amount": 0.800000011920929
+     }
+    ]
+   ]
+  },
+  "Super Serum": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Accuracy",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.5
+     },
+     {
+      "stat": "AdditionalClipCapacityMultiplier",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.5
+     },
+     {
+      "stat": "PlayerBulletScale",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.5
+     },
+     {
+      "stat": "AdditionalShotBounces",
+      "op": "ADDITIVE",
+      "amount": 1.0
+     }
+    ]
+   ]
+  },
+  "Sweetness and Light": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Damage",
+      "op": "MULTIPLICATIVE",
+      "amount": 0.25
+     }
+    ]
+   ]
+  },
+  "Swift Sloop": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "ProjectileSpeed",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.5
+     },
+     {
+      "stat": "ChargeAmountMultiplier",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.5
+     },
+     {
+      "stat": "ReloadSpeed",
+      "op": "MULTIPLICATIVE",
+      "amount": 0.800000011920929
+     }
+    ]
+   ]
+  },
+  "Telefrag": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "AdditionalItemCapacity",
+      "op": "ADDITIVE",
+      "amount": 1.0
+     }
+    ]
+   ]
+  },
+  "The Return": {
+   "active_when_gun_unequipped": [
+    null,
+    true
+   ]
+  },
+  "Three Sheets": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Damage",
+      "op": "ADDITIVE",
+      "amount": 1.0
+     },
+     {
+      "stat": "ProjectileSpeed",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.2000000476837158
+     },
+     {
+      "stat": "MovementSpeed",
+      "op": "ADDITIVE",
+      "amount": 1.5
+     }
+    ]
+   ]
+  },
+  "To Serve Android": {
+   "activation": [
+    null,
+    "ACTIVE_UNBOOSTED"
+   ],
+   "active_when_gun_unequipped": [
+    null,
+    true
+   ]
+  },
+  "Trigger Twins": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "AmmoCapacityMultiplier",
+      "op": "MULTIPLICATIVE",
+      "amount": 2.0
+     },
+     {
+      "stat": "AdditionalClipCapacityMultiplier",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.5
+     }
+    ]
+   ]
+  },
+  "Vegetables": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Damage",
+      "op": "MULTIPLICATIVE",
+      "amount": 3.0
+     },
+     {
+      "stat": "AdditionalShotPiercing",
+      "op": "ADDITIVE",
+      "amount": 2.0
+     },
+     {
+      "stat": "AdditionalShotBounces",
+      "op": "ADDITIVE",
+      "amount": 1.0
+     },
+     {
+      "stat": "PlayerBulletScale",
+      "op": "MULTIPLICATIVE",
+      "amount": 2.0
+     }
+    ]
+   ],
+   "activation": [
+    null,
+    "ACTIVE_UNBOOSTED"
+   ]
+  },
+  "Vulcan Raving": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "KnockbackMultiplier",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.5
+     }
+    ]
+   ],
+   "activation": [
+    null,
+    "ACTIVE_UNBOOSTED"
+   ]
+  },
+  "Whale of a Time": {
+   "active_when_gun_unequipped": [
+    null,
+    true
+   ]
+  },
+  "what engine do you use": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "RateOfFire",
+      "op": "MULTIPLICATIVE",
+      "amount": 0.20000000298023224
+     }
+    ]
+   ]
+  },
+  "Whiter Guon Stone": {
+   "active_when_gun_unequipped": [
+    null,
+    true
+   ]
+  },
+  "Wound Up": {
+   "stat_modifiers": [
+    null,
+    [
+     {
+      "stat": "Damage",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.25
+     },
+     {
+      "stat": "PlayerBulletScale",
+      "op": "MULTIPLICATIVE",
+      "amount": 1.25
+     }
+    ]
+   ]
+  }
+ },
+ "notes": [],
+ "unjoinable": [
+  [
+   "gun",
+   "Microtransaction Gun",
+   476,
+   null
+  ],
+  [
+   "gun",
+   "Sawed-Off",
+   202,
+   null
+  ],
+  [
+   "gun",
+   "Science Cannon",
+   331,
+   null
+  ],
+  [
+   "gun",
+   "Sticky Crossbow",
+   4,
+   null
+  ],
+  [
+   "gun",
+   "Yari Launcher",
+   16,
+   null
+  ],
+  [
+   "item",
+   "Amulet of the Pit Lord",
+   158,
+   null
+  ],
+  [
+   "item",
+   "Angry Bullets",
+   323,
+   null
+  ],
+  [
+   "item",
+   "Arcane Gunpowder",
+   351,
+   null
+  ],
+  [
+   "item",
+   "Battery Bullets",
+   410,
+   null
+  ],
+  [
+   "item",
+   "Blank Bullets",
+   579,
+   null
+  ],
+  [
+   "item",
+   "Book of Chest Anatomy",
+   487,
+   null
+  ],
+  [
+   "item",
+   "C4 (Item)",
+   null,
+   null
+  ],
+  [
+   "item",
+   "Coolant Leak",
+   411,
+   null
+  ],
+  [
+   "item",
+   "Devolver Rounds",
+   638,
+   null
+  ],
+  [
+   "item",
+   "Dog",
+   492,
+   "Wolf"
+  ],
+  [
+   "item",
+   "Elder Blank",
+   499,
+   null
+  ],
+  [
+   "item",
+   "Enraging Photo",
+   353,
+   null
+  ],
+  [
+   "item",
+   "Explosive Rounds",
+   304,
+   null
+  ],
+  [
+   "item",
+   "Flak Bullets",
+   531,
+   null
+  ],
+  [
+   "item",
+   "Gundromeda Strain",
+   159,
+   null
+  ],
+  [
+   "item",
+   "Hidden Compartment",
+   473,
+   null
+  ],
+  [
+   "item",
+   "Hungry Bullets",
+   655,
+   null
+  ],
+  [
+   "item",
+   "Katana Bullets",
+   822,
+   null
+  ],
+  [
+   "item",
+   "Live Ammo",
+   414,
+   null
+  ],
+  [
+   "item",
+   "Master Round I",
+   null,
+   null
+  ],
+  [
+   "item",
+   "Master Round II",
+   null,
+   null
+  ],
+  [
+   "item",
+   "Master Round III",
+   null,
+   null
+  ],
+  [
+   "item",
+   "Master Round IV",
+   null,
+   null
+  ],
+  [
+   "item",
+   "Master Round V",
+   null,
+   null
+  ],
+  [
+   "item",
+   "Molotov",
+   366,
+   null
+  ],
+  [
+   "item",
+   "Obsidian Shell Casing",
+   350,
+   null
+  ],
+  [
+   "item",
+   "Ser Junkan 1",
+   null,
+   null
+  ],
+  [
+   "item",
+   "Shadow Bullets",
+   352,
+   null
+  ],
+  [
+   "item",
+   "Shock Rounds",
+   298,
+   null
+  ],
+  [
+   "item",
+   "Trusty Lockpicks",
+   356,
+   null
+  ],
+  [
+   "item",
+   "Vorpal Bullets",
+   640,
+   null
+  ]
+ ]
+}
