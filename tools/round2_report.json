@@ -1,0 +1,168 @@
+{
+ "sources": {
+  "guns": 229,
+  "items": 250
+ },
+ "ammonomicon": {
+  "guns": 238,
+  "items": 262
+ },
+ "gungeoneers": {
+  "The Bullet": {
+   "guns": [
+    "Blasphemy"
+   ],
+   "actives": [],
+   "passives": [
+    "Live Ammo"
+   ],
+   "max_guns": 8,
+   "max_items": 1,
+   "ours_guns": [
+    "Blasphemy"
+   ],
+   "ours_items": [
+    "Live Ammo"
+   ]
+  },
+  "The Convict": {
+   "guns": [
+    "Budget Revolver",
+    "Sawed-Off"
+   ],
+   "actives": [
+    "Molotov"
+   ],
+   "passives": [
+    "Enraging Photo"
+   ],
+   "max_guns": 8,
+   "max_items": 1,
+   "ours_guns": [
+    "Budget Revolver",
+    "Sawed-Off"
+   ],
+   "ours_items": [
+    "Molotov",
+    "Enraging Photo"
+   ]
+  },
+  "The Pilot": {
+   "guns": [
+    "Rogue Special"
+   ],
+   "actives": [
+    "Trusty Lockpicks"
+   ],
+   "passives": [
+    "Disarming Personality",
+    "Hidden Compartment"
+   ],
+   "max_guns": 8,
+   "max_items": 1,
+   "ours_guns": [
+    "Unfinished Gun"
+   ],
+   "ours_items": [
+    "Lichy Trigger Finger",
+    "Blood Brooch"
+   ]
+  },
+  "The Gunslinger": {
+   "guns": [
+    "Slinger"
+   ],
+   "actives": [],
+   "passives": [
+    "Lich's Eye Bullets"
+   ],
+   "max_guns": 8,
+   "max_items": 1,
+   "ours_guns": [
+    "Slinger"
+   ],
+   "ours_items": [
+    "Lich's Eye Bullets"
+   ]
+  },
+  "The Hunter": {
+   "guns": [
+    "Rusty Sidearm",
+    "Crossbow"
+   ],
+   "actives": [],
+   "passives": [
+    "Dog"
+   ],
+   "max_guns": 8,
+   "max_items": 1,
+   "ours_guns": [
+    "Rusty Sidearm",
+    "Crossbow"
+   ],
+   "ours_items": [
+    "Dog"
+   ]
+  },
+  "The Cultist": {
+   "guns": [
+    "Dart Gun"
+   ],
+   "actives": [
+    "Friendship Cookie"
+   ],
+   "passives": [
+    "Number 2"
+   ],
+   "max_guns": 8,
+   "max_items": 1,
+   "ours_guns": [
+    "Dart Gun"
+   ],
+   "ours_items": [
+    "Friendship Cookie",
+    "Number 2"
+   ]
+  },
+  "The Marine": {
+   "guns": [
+    "Marine Sidearm"
+   ],
+   "actives": [
+    "Supply Drop"
+   ],
+   "passives": [
+    "Military Training"
+   ],
+   "max_guns": 8,
+   "max_items": 1,
+   "ours_guns": [
+    "Marine Sidearm"
+   ],
+   "ours_items": [
+    "Supply Drop",
+    "Military Training"
+   ]
+  },
+  "The Robot": {
+   "guns": [
+    "Robot's Right Hand"
+   ],
+   "actives": [
+    "Coolant Leak"
+   ],
+   "passives": [
+    "Battery Bullets"
+   ],
+   "max_guns": 8,
+   "max_items": 1,
+   "ours_guns": [
+    "Robot's Right Hand"
+   ],
+   "ours_items": [
+    "Battery Bullets",
+    "Coolant Leak"
+   ]
+  }
+ }
+}
