@@ -84,8 +84,8 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 | Slot | Assigned Agent | Status | Working On | Last Heartbeat |
 | :--- | :--- | :--- | :--- | :--- |
 | **Slot 1** | **DESIGNER (Devin)** | `DONE` | DESIGN.md contract + design-lab/ landed `bcc1e8d` (merge `ee698c9`), worktree+branch cleaned. Slot released | 2026-10-31 |
-| **Slot 2** | **CORE (Devin A1)** | `DONE` | **Audit housekeeping swept** `8d0b95b` — unbundled 3 dead JSONs (chests/floors/changelog); corrected audit: enableDemo = live test hook, sessionEvents = test-pinned (both kept). Slot released | 2026-10-31 |
-| **Slot 3** | **PARALLEL (Devin A2)** | `DONE` | **Polish gaps shipped** `5b11632`+`1b4400d` (merge `d4b83be`, worktree+branch cleaned) — run-title input, connect visual pass, ⋮ Timer/Signal toggles (dead Effects removed), item-detail ammonomicon/wiki/back-refs. APK build in flight. Slot released | 2026-10-31 |
+| **Slot 2** | **CORE (Devin A1)** | `DONE` | Housekeeping `8d0b95b` + verification pass — mojibake scan CLEAN (0 `�` in data JSONs/lib — already fixed); browse ≤500px overflow: row chrome + meta pills already Expanded/Wrap'd, `7000ca6` fixed syn-row today — needs ≤500px visual verify (WQ-2 will surface it). Slot released | 2026-10-31 |
+| **Slot 3** | **PARALLEL (Devin A2)** | `ACTIVE` | **Browse ≤500px row overflow (~15px, High)** then mojibake sweep (P3) if clean. Sole active — master, no worktree | 2026-10-31 |
 | **Slot 4** | **SUPPORT (Devin)** | `DONE` | Reference screenshots landed `dacbef9` → `design-lab/reference/` (8 PNGs + README). Slot released | 2026-10-31 |
 
 ### Slot Details
