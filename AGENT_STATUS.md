@@ -83,7 +83,7 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 
 | Slot | Assigned Agent | Status | Working On | Last Heartbeat |
 | :--- | :--- | :--- | :--- | :--- |
-| **Slot 1** | **VISUAL (Devin)** | `DONE` | Neo-Skeuo R4: Skeuo.inkIf collapse — 164 chromatic sites ink-ified `49fe494` | 2026-10-31 |
+| **Slot 1** | **VISUAL (Devin)** | `DONE` | Neo-Skeuo R5: app-wide ink collapse — GoopText flip + ~600 inkIf sites `028b276` | 2026-10-31 |
 | **Slot 2** | **CORE (Devin A1)** | `DONE` | All committed — see session log | 2026-10-31 |
 | **Slot 3** | **PARALLEL (Devin A2)** | `DONE` | **4-way polish** `b2ad1a3` + badge icon → double-chevron `8213c14` (matches game's synergy marker). Effects strip ~50% shorter, detail tag pills removed, synergies compact rows, color-coded glow → uniform blue badge. ⚠️ `main_menu_test` still open (hub owner). Slot released | 2026-10-31 |
 | **Slot 4** | **SUPPORT (Devin)** | `DONE` | Reference screenshots landed `dacbef9` → `design-lab/reference/` (8 PNGs + README). Slot released | 2026-10-31 |
@@ -96,7 +96,7 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 | **Branch** | `master` (sole agent) |
 | **Session started** | 2026-10-31 (polish round 2) |
 | **Last board update** | 2026-10-31 |
-| **Last commit** | app `49fe494` — skeuo ink-collapse sweep (item_detail) |
+| **Last commit** | app `028b276` — app-wide ink collapse |
 | **Files in progress** | — |
 | **Uncommitted changes** | — |
 | **Worktree** | — |
