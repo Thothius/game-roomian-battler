@@ -33,14 +33,18 @@
   the mechanism for saved palettes, not a preset.
 - Entry labels: Settings tile + main-menu entry → "Customization".
 
-### Layout — sticky action bar on TOP
+### Layout — sticky action bar + draggable preview pane
 ```
 ┌─────────────────────────────────────────┐
 │  ← BACK      👁 PREVIEW      ✓ APPLY    │  ← sticky, always on top
 ├─────────────────────────────────────────┤
 │  PRESETS │ CUSTOM │ FONTS │ PARTICLES │ AMBIANCE │  ← tab strip
 ├─────────────────────────────────────────┤
-│  (scrollable tab content — see §C)      │
+│  LIVE LOOK pane — compact mini-UI       │  ← ~1/3 of screen
+│  rendered with the staged picks         │
+│  ──────────── ═══ (handle) ═══ ───────  │  ← drag handle
+├─────────────────────────────────────────┤
+│  (scrollable options — see §C)          │
 └─────────────────────────────────────────┘
 ```
 - The action bar lives **inside** the customization screen, pinned
@@ -50,14 +54,44 @@
   particles, glow, ambience in one shot) and shows confirm feedback.
 - **PREVIEW** — the tricky part, **built last**. See §E.
 
+### The LIVE LOOK pane (user-specified, core UX)
+A compact preview rendering **the app's own UI elements** with the
+currently-staged picks — the user must actually *see* what each color
+role does:
+
+- Content: a mini mock of real UI — a panel card with a title row
+  (prime accent), body text, a stat highlight, a button — showing
+  canvas/panel/prime/second/stat colors + active font + glow tint.
+- **Drag handle**: a bottom-sheet-style grab handle on the pane's
+  bottom edge. Drag up/down resizes it live:
+  - default ≈ **1/3 of the screen**
+  - expandable up to **≈75%** (for a really good look)
+  - collapsible small (≈15%?) so options get room when editing
+  - animate the resize (AnimatedContainer or fractionalSizedBox
+    driven by drag delta); remember the last height per session.
+- It updates **live** as the user changes any pick (tap a swatch →
+  pane re-renders immediately — no Apply needed for the pane).
+
+### Option rows + color popups
+- Options list below the pane: **one row per color role**
+  (CANVAS · PANEL · PRIME · SECOND · STAT · GLOW + extras).
+- Each row: role name + current color swatch chip → **tap opens a
+  color-picker popup**. The app already has a ColorPicker widget
+  (see `test/widget/color_picker_test.dart` — SV panel, hue slider,
+  hex input, presets) — reuse it, don't rebuild.
+- Non-color options stay as the existing tiles/sliders/chips.
+
 ### Tabs (order: importance)
 1. **PRESETS** — the 3 theme cards (Unicorn, Molten Steel, Paper &
    Ink) + **SAVED PALETTES** section (user's custom saves with their
    names + default icon). Each card keeps the existing 5-swatch
    strip (CANVAS·PANEL·PRIME·SECOND·STAT).
-2. **CUSTOM** — color pickers for each UI role (canvas, panel,
-   prime, second, stat + extras like glow). This is where a user
-   *builds* their own palette — feeds the Save flow below.
+2. **CUSTOM** — option-row list per §B: each UI color role (canvas,
+   panel, prime, second, stat, glow + extras) is a name+swatch row →
+   tap opens the existing ColorPicker popup. Extras below the color
+   rows (border style? accent intensity?) at designer's discretion.
+   The LIVE LOOK pane above shows every change instantly. Feeds the
+   Save flow below.
 3. **FONTS** — family tiles (existing: Enter the Gungeon, Megrim,
    Russo One, Fredoka, DM Sans, JetBrains Mono), size slider,
    weight bias, letter spacing. Keep the live sample text
