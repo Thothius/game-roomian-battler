@@ -86,7 +86,7 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 | **Slot 1** | **DESIGNER (Devin)** | `DONE` | DESIGN.md contract + design-lab/ landed `bcc1e8d` (merge `ee698c9`), worktree+branch cleaned. Slot released | 2026-10-31 |
 | **Slot 2** | **CORE (Devin — me)** | `IDLE` | Game-data program COMPLETE through `6033eab` — game_icon wired into model loaders (guns/items/enemies/bosses render real sprites), ammonomicon lore surfaced. Slot released | 2026-10-31 |
 | **Slot 3** | **PARALLEL (Devin — me)** | `DONE` | Absorbed by Slot 2 — bottom_back_bar landed+swept, testing-mode demoted, paradox entry wired, version bump done, big-screen + memoize partial. Slot released | 2026-10-29 |
-| **Slot 4** | **_(none)_** | `IDLE` | Released — avatar border strip landed (app `663e161`, tool `19fdf9a`) | 2026-10-31 |
+| **Slot 4** | **SUPPORT (Devin)** | `ACTIVE` | Reference screenshots: `flutter build web` → Playwright tour of main views → `design-lab/reference/` for 1:1 design comparison. Sole active agent — master | 2026-10-31 |
 
 ### Slot Details
 
@@ -317,6 +317,8 @@ Format: `| Agent | Date | Branch | Commit | Task | Files | Status | Next | Watch
 | SUPPORT | 2026-10-30 | master | fb69eb8 | Solo-domain sweep: theme_enums 2456→2 + theme_models 1554→3 parts; run_stats + peer_snapshots mixins (run_provider 2166→1120) | lib/services/theme/, lib/providers/ | DONE | — | Ammonomicon agent owns codex/data; run_provider still has applyShrine/log* tail |
 | SUPPORT | 2026-10-30 | master | 7f1868f | Final review pass: perf memoization on getActiveSynergiesCombined + glow/potential getters; all gates green | lib/providers/ | DONE | — | Device-verify: MP race+host-gone fixes |
 | CORE (Slot 2) | 2026-10-31 | master | `59ec542` (app) + `fc418fc` (root) | Game-data extraction program: stats, sources, lore, loadouts, sprites, enemy extras, chests/floors — all merged + wired | tools/{dump_gungeon,merge_stats,merge_round2,merge_round3,extract_sprites,probe_more_data,probe2_deep}.py + gungeon_mate/{assets/data/*.json, assets/images/game/, lib/models/{gun,item,codex_entry}.dart, pubspec.yaml} | DONE | Possible next: code-created items have no prefab data (21 ceiling reached); BehaviorSpeculator/dungeons remain unmined | Quality enum was off-by-one app-wide — recheck if any old merges resurface; SAA/Colt 1851 is a real data dup (id 50); `9unis.jpg` untracked in root (not mine) | 4 rounds, ~11 commits. dnfile-verified enums from Assembly-CSharp.dll. 247 quality fixes, 73 canonical rejoins, 623 sprites extracted (game_icon), Pilot loadout fix, 160 enemy extras, sources on 479, lore on 500+. Unjoinables 36→21 (5 no-prefab, 15 code-created, 1 Wolf-prefab collision). Nav test stale-index fix. flutter analyze clean, 480/480 tests + 4 skipped. |
+
+| CORE (Slot 2) | 2026-10-31 | master | `0f44b0e` (app) + `80ee833` (root) | Sprite bughunt: mask detection, synergy icon double-prefix fix | gungeon_mate/{lib/screens/codex_screen.dart, assets/images/game/bosses/, assets/data/*.json}, tools/extract_sprites.py | DONE | — | Boss ammonomicon defs are runtime-tinted masks (unique-px ≤3 detector) | 10 flat-silhouette sprites purged (8 bosses + GuNNER + Mustache) → curated fallback; 12 bosses recovered real color art via idle-sprite fallback; synergy anchor icons fixed; integrity tests green |
 
 > [Ammonomicon agent] Unification shipped: specials retired (-2,282 lines), off-by-one tab bug fixed + regression test, expandable Chapters/GameModes tiles, floor order corrected via Bossrush flows, Boss Rush mode mined. 480 tests green.
 
