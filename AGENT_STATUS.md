@@ -84,8 +84,8 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 | Slot | Assigned Agent | Status | Working On | Last Heartbeat |
 | :--- | :--- | :--- | :--- | :--- |
 | **Slot 1** | **DESIGNER (Devin)** | `DONE` | DESIGN.md contract + design-lab/ landed `bcc1e8d` (merge `ee698c9`), worktree+branch cleaned. Slot released | 2026-10-31 |
-| **Slot 2** | **CORE (Devin A1)** | `DONE` | **P0 blockers shipped** `c5ba8db` (FF merge, worktree+branch cleaned) — all 3 verified: assets in build/web, modal suppressed on-run, 88/88 ids have webps. Slot released | 2026-10-31 |
-| **Slot 3** | **PARALLEL (Devin A2)** | `ACTIVE` | **Polish gaps** — MP lobby run-title input, mp_connect_screen visual pass, dead Effects toggle in MP ⋮ menu, reconnect chip toggles, item-detail ammonomicon_entry/wiki sections. Branch `slot3-a2/polish-gaps` + AC5d worktree | 2026-10-31 |
+| **Slot 2** | **CORE (Devin A1)** | `ACTIVE` | **Audit housekeeping sweep** (master, sole agent) — enableDemo dead flag, sessionEvents write-only, dead bundled JSONs, stale comments | 2026-10-31 |
+| **Slot 3** | **PARALLEL (Devin A2)** | `DONE` | **Polish gaps shipped** `5b11632`+`1b4400d` (merge `d4b83be`, worktree+branch cleaned) — run-title input, connect visual pass, ⋮ Timer/Signal toggles (dead Effects removed), item-detail ammonomicon/wiki/back-refs. APK build in flight. Slot released | 2026-10-31 |
 | **Slot 4** | **SUPPORT (Devin)** | `DONE` | Reference screenshots landed `dacbef9` → `design-lab/reference/` (8 PNGs + README). Slot released | 2026-10-31 |
 
 ### Slot Details
@@ -142,13 +142,12 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 #### Slot 3 — PARALLEL (Devin A2)
 | Field | Value |
 |-------|-------|
-| **Branch** | `slot3-a2/polish-gaps` — worktree `X:\GungeonMate\.worktrees\slot3-a2\gungeon_mate` (AC5d, A1 active) |
+| **Branch** | `slot3-a2/polish-gaps` → merged to master + deleted (AC5d worktree removed) |
 | **Session started** | 2026-10-31 |
 | **Last board update** | 2026-10-31 |
-| **Last commit** | — (in progress) |
-| **Files in progress** | `lib/screens/mp_lobby_screen.dart`, `lib/screens/mp_connect_screen.dart`, `lib/widgets/paradox/paradox_player_panel.dart`, `lib/widgets/paradox/paradox_bar.dart`, `lib/screens/item_detail_screen.dart` |
+| **Last commit** | `1b4400d` — feat(detail): surface ammonomicon entry, item wiki sections, back-refs |
+| **Files in progress** | — |
 | **Uncommitted changes** | — |
-| **AC4 shared-file flags** | `mp_reconnect_banner.dart` is A1's — chip toggles wired only if state lives outside that file; will flag on board before touching shared files |
 
 > **Slot restructured 2026-08-25.** Formerly Planner-Architect-Mockupper, then Coder #2. Now PARALLEL — a free second coder for parallel feature work. Planning duties merged into Slot 2 (CORE).
 
@@ -236,6 +235,7 @@ Format: `| Agent | Date | Branch | Commit | Task | Files | Status | Next | Watch
 
 | Agent | Date | Branch | Commit | Task | Files | Status | Next | Watch out for |
 |-------|------|--------|--------|------|-------|--------|------|---------------|
+| PARALLEL (Devin A2) | 2026-10-31 | `slot3-a2/polish-gaps` → merged (AC5d worktree) | app `5b11632`+`1b4400d` + merge `d4b83be` | **Polish gaps (5/5) + APK** — lobby RUN TITLE field (host-only → `startAsMain(runTitle:)` — was plumbed but unreachable); mp_connect_screen visual pass (AmbientGlow + per-phase accent card shell + AnimatedSwitcher + run-title chip); dead ⋮ 'Effects' toggle removed (`showEffectsPanel` was write-only) → replaced w/ working Timer+Signal toggles for `ParadoxBar.showTimer`/`showHealth` chips + ListenableBuilder wrap; item-detail: AmmonomiconCard + buildWikiSlivers now render for ITEMS too (was gun-gated) + ReferencedBySection wired for first time (back_refs 430 keys loaded but unused) | mp_lobby, mp_connect, paradox_player_panel, paradox_bar, item_detail, lobby test | DONE | APK v3.3.0+162 (93.6MB) built post-sweep → `app-releases/gungeon-mate-v3.3.0.apk`. Visual verify on device: connect card at 320dp, ⋮ toggles live-update bar | `showEffectsPanel` pref still lives in theme_flair_prefs (dead but harmless — cleanup candidate). Timer/Signal prefs are session-static, not persisted. dart format reindented touched files — diffs look bigger than they are. `MpReconnectBanner.runBarVisible` (A1) untouched — merged clean |
 | CORE (Devin A1) | 2026-10-31 | `slot2-a1/p0-blockers` → merged (AC5d worktree) | app `c5ba8db` | **P0 pre-APK blockers** — WQ-1: pubspec declares chapters/game_modes.json + `_loadData` per-file `loadOr`+try/catch (verified in build/web output); reconnect two-bars killed via `runBarVisible` gating (modal suppressed while ParadoxBar on screen, persistent banner covers other tabs/routes); 38 dead `kAvatarIds` pruned to disk (126→88, grey tiles gone) | pubspec, ammonomicon_screen, mp_reconnect_banner, home_screen, asset_paths | DONE | APK build pending A2's polish sweep; A2 note: `MpReconnectBanner` now takes `runBarVisible` (HomeScreen feeds tab index) — merge cleanly | Old peers can still wire a pruned avatar id → person-icon fallback (graceful, intended). Persisted pruned ids same path. `session.cancel()` from banner is fire-and-forget — unchanged semantics |
 | PARALLEL (Devin) | 2026-10-31 | `slot3-devin/char-select` → merged (AC5d worktree) | app `6f9354b` + merge `4606833` | **Character select rework** — tile grid → icon tab-strip + swipeable PageView + sticky PICK bar; pages show sprite/name/armor/GUNS+ITEMS loadout chips (real icons via localGunIcon/localItemIcon) + short_desc+playstyle; detail-screen long-press removed per user | character_select_screen.dart, char_select test | DONE | Visual pass on device (320dp + 1.3× scale); design-lab mirror update pending | FontSizes has no bodySmall — use labelMedium. MP-pick contract (pop(char)) preserved — lobby depends on it. Root repo has uncommitted avatar-webp deletions + AGENT_STATUS edits from CORE's active session — not ours |
 | SUPPORT (Devin) | 2026-10-31 | master (sole agent) | app `dacbef9` | **Reference screenshots** — `flutter build web --release` + Playwright tour at 390x844: home, character select, active run, browse, item detail, quiz, settings captured → `design-lab/reference/` + README table | design-lab/reference/ (9 files) | DONE | Compare lab mocks 1:1 vs refs; reshoot remaining views if wanted | **Ammonomicon tab never loads on web** — skeleton shimmer persists >10s (`ref-06`). Worth investigating before web testing of codex. nearby_connections plugin errors expected on web. Flutter is now 3.47.9 |
