@@ -8,6 +8,7 @@ Adds `game_icon` (relative asset path) to each matched JSON entry.
 """
 import json, os, re, io
 import UnityPy
+from PIL import Image
 
 TOOLS = r"X:\GungeonMate\tools"
 DATA = r"X:\GungeonMate\gungeon_mate\assets\data"
@@ -120,6 +121,25 @@ def sprite_png(name):
     return buf.getvalue()
 
 
+def _is_mask(png_bytes):
+    """Boss ammonomicon icons are runtime-tinted silhouette masks —
+    they crop as a single flat color + transparent. Detect by palette
+    size."""
+    im = Image.open(io.BytesIO(png_bytes)).convert("RGBA")
+    return len(set(im.get_flattened_data() if hasattr(
+        im, "get_flattened_data") else im.getdata())) <= 3
+
+
+def _fallback_names(name):
+    """boss_icon_gatling_gull_001 -> gatling_gull; yield idle-ish
+    index candidates containing that base."""
+    base = re.sub(r"^boss_icon_", "", name)
+    base = re.sub(r"_\d+$", "", base)
+    cands = [n for n in index if base and base in n]
+    cands.sort(key=lambda n: ("idle" not in n, len(n)))
+    return cands
+
+
 def slug(name):
     s = re.sub(r"[^a-z0-9]+", "_", name.lower()).strip("_")
     return s + ".png"
@@ -134,6 +154,13 @@ def save_for(kind, entries, sprite_for):
         if not spr:
             continue
         png = sprite_png(spr)
+        if png is not None and _is_mask(png):
+            for alt in _fallback_names(spr):
+                png = sprite_png(alt)
+                if png is not None and not _is_mask(png):
+                    break
+            else:
+                png = None
         if png is None:
             continue
         fn = slug(e["name"])
