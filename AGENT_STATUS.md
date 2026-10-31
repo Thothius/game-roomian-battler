@@ -85,7 +85,7 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 | :--- | :--- | :--- | :--- | :--- |
 | **Slot 1** | **DESIGNER (Devin)** | `DONE` | DESIGN.md contract + design-lab/ landed `bcc1e8d` (merge `ee698c9`), worktree+branch cleaned. Slot released | 2026-10-31 |
 | **Slot 2** | **CORE (Devin A1)** | `DONE` | **Customization hub rework shipped** `6ecec5c` — unified 5-tab hub (sticky BACK/PREVIEW/APPLY, PRESETS/CUSTOM/FONTS/PARTICLES/AMBIANCE, draggable LIVE LOOK pane, CUSTOM color-rows→picker + Unicorn + glow + save). Verified web-render screenshots + analyze + theme tests. Slot released | 2026-10-31 |
-| **Slot 3** | **PARALLEL (Devin A2)** | `DONE` | **Doc debt refresh** — v3.x delta section added to TECHNICAL_REFERENCE §0 (MP unification, 3-tab nav, Ammonomicon, version/test counts) + GUNGEONMATE header/version patched. Slot released | 2026-10-31 |
+| **Slot 3** | **PARALLEL (Devin A2)** | `DONE` | **Ammonomicon metadata surfacing** `5ed90cd` — AmmonomiconEntry gains floor/secret/bundle/music/gameClasses (auto-parsed by generic fromJson); detail badge row FLOOR/SECRET/HUB/bundle/N MODIFIERS; expanded-panel F1..F6/SECRET/HUB + N MODS chips. Dead JSONs deleted, orphan worktrees cleared (`aab6ab9`). Slot released | 2026-10-31 |
 | **Slot 4** | **SUPPORT (Devin)** | `DONE` | Reference screenshots landed `dacbef9` → `design-lab/reference/` (8 PNGs + README). Slot released | 2026-10-31 |
 
 ### Slot Details
