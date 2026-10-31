@@ -85,7 +85,7 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 | :--- | :--- | :--- | :--- | :--- |
 | **Slot 1** | **DESIGNER (Devin)** | `DONE` | DESIGN.md contract + design-lab/ landed `bcc1e8d` (merge `ee698c9`), worktree+branch cleaned. Slot released | 2026-10-31 |
 | **Slot 2** | **CORE (Devin A1)** | `DONE` | Hub rework `6ecec5c` + polish `f813e5c` — shared `buildBackdropParticleField` fixes dead particle options (preview + LIVE LOOK show typed particles), glow → custom picker + animated style chips (ORBIT/EMBER/HALO/DRIP) + compact row, `VisualPrefs.glowCustomColor`/`glowStyleIndex`. Verified rendered screenshots. Slot released | 2026-10-31 |
-| **Slot 3** | **PARALLEL (Devin A2)** | `DONE` | **Ammonomicon metadata surfacing** `5ed90cd` — AmmonomiconEntry gains floor/secret/bundle/music/gameClasses (auto-parsed by generic fromJson); detail badge row FLOOR/SECRET/HUB/bundle/N MODIFIERS; expanded-panel F1..F6/SECRET/HUB + N MODS chips. Dead JSONs deleted, orphan worktrees cleared (`aab6ab9`). Slot released | 2026-10-31 |
+| **Slot 3** | **PARALLEL (Devin A2)** | `DONE` | **Ammonomicon metadata complete** `5ed90cd`+`8e0d1bb` — model fields (floor/secret/bundle/music/gameClasses) + detail badges (FLOOR/SECRET/HUB/bundle/MUSIC/N MODIFIERS) + MODIFIERS name list (prettified) + member chips. Dead JSONs cleared `aab6ab9`. Slot released | 2026-10-31 |
 | **Slot 4** | **SUPPORT (Devin)** | `DONE` | Reference screenshots landed `dacbef9` → `design-lab/reference/` (8 PNGs + README). Slot released | 2026-10-31 |
 
 ### Slot Details
