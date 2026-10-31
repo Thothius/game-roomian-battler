@@ -83,7 +83,7 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 
 | Slot | Assigned Agent | Status | Working On | Last Heartbeat |
 | :--- | :--- | :--- | :--- | :--- |
-| **Slot 1** | **VISUAL (Devin)** | `DONE` | Neo-Skeuo R7: motion polish — drawDelay stagger (menu cascade), disableAnimations gate `ef42f0f` | 2026-10-31 |
+| **Slot 1** | **VISUAL (Devin)** | `DONE` | Neo-Skeuo R8+Phase B step 1: SkeuoNavBar replaces M3 nav `caa9c92` | 2026-10-31 |
 | **Slot 2** | **CORE (Devin A1)** | `DONE` | All committed — see session log | 2026-10-31 |
 | **Slot 3** | **PARALLEL (Devin A2)** | `DONE` | **4-way polish** `b2ad1a3` + badge icon → double-chevron `8213c14` (matches game's synergy marker). Effects strip ~50% shorter, detail tag pills removed, synergies compact rows, color-coded glow → uniform blue badge. ⚠️ `main_menu_test` still open (hub owner). Slot released | 2026-10-31 |
 | **Slot 4** | **SUPPORT (Devin)** | `DONE` | Reference screenshots landed `dacbef9` → `design-lab/reference/` (8 PNGs + README). Slot released | 2026-10-31 |
@@ -96,7 +96,7 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 | **Branch** | `master` (sole agent) |
 | **Session started** | 2026-10-31 (polish round 2) |
 | **Last board update** | 2026-10-31 |
-| **Last commit** | app `ef42f0f` — drawDelay stagger + a11y gate |
+| **Last commit** | app `caa9c92` — Phase B started: SkeuoNavBar |
 | **Files in progress** | — |
 | **Uncommitted changes** | — |
 | **Worktree** | — |
