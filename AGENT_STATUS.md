@@ -85,7 +85,7 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 | :--- | :--- | :--- | :--- | :--- |
 | **Slot 1** | **DESIGNER (Devin)** | `DONE` | DESIGN.md contract + design-lab/ landed `bcc1e8d` (merge `ee698c9`), worktree+branch cleaned. Slot released | 2026-10-31 |
 | **Slot 2** | **CORE (Devin A1)** | `DONE` | Hub rework `6ecec5c` + polish `f813e5c` + fonts `25ee147` — shared `buildBackdropParticleField` fixes dead particle options, glow picker + animated style chips (ORBIT/EMBER/HALO/DRIP), all 29 fonts by category + dashboard-text slider. Verified rendered + analyze + theme tests. Slot released | 2026-10-31 |
-| **Slot 3** | **PARALLEL (Devin A2)** | `DONE` | **Ammonomicon rework complete** `233f705`+`9437a62`+`5ed90cd`+`8e0d1bb`+`86a0af0` — grid medallions, member rows, all silent metadata surfaced, modifier names + music badge, query-aware empty states + search counts. Slot released | 2026-10-31 |
+| **Slot 3** | **PARALLEL (Devin A2)** | `DONE` | **Ammonomicon rework + UX polish** `233f705`,`9437a62`,`5ed90cd`,`8e0d1bb`,`86a0af0`,`f744699` — grid medallions + entry counts, member rows + meta chips, ALL silent metadata surfaced (floor/secret/bundle/music/modifiers), query-aware empties, search group counts. Slot released | 2026-10-31 |
 | **Slot 4** | **SUPPORT (Devin)** | `DONE` | Reference screenshots landed `dacbef9` → `design-lab/reference/` (8 PNGs + README). Slot released | 2026-10-31 |
 
 ### Slot Details
