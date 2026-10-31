@@ -361,6 +361,58 @@
    }
   },
   {
+   "gunName": "Sticky Crossbow",
+   "id": 4,
+   "quality": "C",
+   "gunClass": 45,
+   "maxAmmo": 100,
+   "ammo": 100,
+   "reloadTime": 0.699999988079071,
+   "module": {
+    "cooldownTime": 0.4000000059604645,
+    "burstShotCount": 3,
+    "burstCooldownTime": 0.20000000298023224,
+    "numberOfShotsInClip": 6,
+    "angleVariance": 0.0,
+    "ammoCost": 1,
+    "shootStyle": "SemiAutomatic",
+    "ammoType": "ARROW",
+    "sequenceStyle": "Random",
+    "maxChargeTime": 0.0,
+    "projectiles": [
+     {
+      "damage": 5.0,
+      "speed": 25.0,
+      "range": 1000.0,
+      "force": 8.0,
+      "spread": null,
+      "accuracy": null,
+      "knockback": null,
+      "stunChance": null,
+      "damagesWalls": null,
+      "dampedFalloff": null
+     }
+    ]
+   },
+   "statModifiers": [],
+   "contentSource": "BASE",
+   "ammonomiconPos": 66,
+   "activeReload": false,
+   "infiniteAmmo": false,
+   "projectile": {
+    "damage": 5.0,
+    "speed": 25.0,
+    "range": 1000.0,
+    "force": 8.0,
+    "spread": null,
+    "accuracy": null,
+    "knockback": null,
+    "stunChance": null,
+    "damagesWalls": null,
+    "dampedFalloff": null
+   }
+  },
+  {
    "gunName": "AWP",
    "id": 5,
    "quality": "A",
@@ -845,6 +897,32 @@
    "statModifiers": [],
    "contentSource": "BASE",
    "ammonomiconPos": 74,
+   "activeReload": false,
+   "infiniteAmmo": false
+  },
+  {
+   "gunName": "Yari Rocket Launcher",
+   "id": 16,
+   "quality": "S",
+   "gunClass": 45,
+   "maxAmmo": 140,
+   "ammo": 140,
+   "reloadTime": 1.5,
+   "module": {
+    "cooldownTime": 0.03999999910593033,
+    "burstShotCount": 3,
+    "burstCooldownTime": 0.20000000298023224,
+    "numberOfShotsInClip": 20,
+    "angleVariance": 45.0,
+    "ammoCost": 1,
+    "shootStyle": "Automatic",
+    "ammoType": "CUSTOM",
+    "sequenceStyle": "Random",
+    "maxChargeTime": 0.0
+   },
+   "statModifiers": [],
+   "contentSource": "BASE",
+   "ammonomiconPos": 145,
    "activeReload": false,
    "infiniteAmmo": false
   },
@@ -2039,6 +2117,58 @@
    }
   },
   {
+   "gunName": "Magnum",
+   "id": 38,
+   "quality": "B",
+   "gunClass": 1,
+   "maxAmmo": 140,
+   "ammo": 140,
+   "reloadTime": 1.0,
+   "module": {
+    "cooldownTime": 0.15000000596046448,
+    "burstShotCount": 3,
+    "burstCooldownTime": 0.20000000298023224,
+    "numberOfShotsInClip": 6,
+    "angleVariance": 7.0,
+    "ammoCost": 1,
+    "shootStyle": "SemiAutomatic",
+    "ammoType": "MEDIUM_BULLET",
+    "sequenceStyle": "Random",
+    "maxChargeTime": 0.0,
+    "projectiles": [
+     {
+      "damage": 13.0,
+      "speed": 23.0,
+      "range": 60.0,
+      "force": 30.0,
+      "spread": null,
+      "accuracy": null,
+      "knockback": null,
+      "stunChance": null,
+      "damagesWalls": null,
+      "dampedFalloff": null
+     }
+    ]
+   },
+   "statModifiers": [],
+   "contentSource": "BASE",
+   "ammonomiconPos": 20,
+   "activeReload": false,
+   "infiniteAmmo": false,
+   "projectile": {
+    "damage": 13.0,
+    "speed": 23.0,
+    "range": 60.0,
+    "force": 30.0,
+    "spread": null,
+    "accuracy": null,
+    "knockback": null,
+    "stunChance": null,
+    "damagesWalls": null,
+    "dampedFalloff": null
+   }
+  },
+  {
    "gunName": "RPG",
    "id": 39,
    "quality": "B",
@@ -2082,6 +2212,58 @@
     "damage": 20.0,
     "speed": 40.0,
     "range": 90.0,
+    "force": 10.0,
+    "spread": null,
+    "accuracy": null,
+    "knockback": null,
+    "stunChance": null,
+    "damagesWalls": null,
+    "dampedFalloff": null
+   }
+  },
+  {
+   "gunName": "Freeze Ray",
+   "id": 40,
+   "quality": "A",
+   "gunClass": 35,
+   "maxAmmo": 500,
+   "ammo": 500,
+   "reloadTime": 0.0,
+   "module": {
+    "cooldownTime": 1.0,
+    "burstShotCount": 3,
+    "burstCooldownTime": 0.20000000298023224,
+    "numberOfShotsInClip": -1,
+    "angleVariance": 0.0,
+    "ammoCost": 10,
+    "shootStyle": "Beam",
+    "ammoType": "BEAM",
+    "sequenceStyle": "Random",
+    "maxChargeTime": 0.0,
+    "projectiles": [
+     {
+      "damage": 20.0,
+      "speed": 60.0,
+      "range": 30.0,
+      "force": 10.0,
+      "spread": null,
+      "accuracy": null,
+      "knockback": null,
+      "stunChance": null,
+      "damagesWalls": null,
+      "dampedFalloff": null
+     }
+    ]
+   },
+   "statModifiers": [],
+   "contentSource": "BASE",
+   "ammonomiconPos": 177,
+   "activeReload": false,
+   "infiniteAmmo": false,
+   "projectile": {
+    "damage": 20.0,
+    "speed": 60.0,
+    "range": 30.0,
     "force": 10.0,
     "spread": null,
     "accuracy": null,
@@ -3408,6 +3590,58 @@
    }
   },
   {
+   "gunName": "Colt 1851",
+   "id": 62,
+   "quality": "C",
+   "gunClass": 1,
+   "maxAmmo": 350,
+   "ammo": 350,
+   "reloadTime": 1.5,
+   "module": {
+    "cooldownTime": 0.20999999344348907,
+    "burstShotCount": 2,
+    "burstCooldownTime": 0.05999999865889549,
+    "numberOfShotsInClip": 12,
+    "angleVariance": 8.0,
+    "ammoCost": 1,
+    "shootStyle": "Burst",
+    "ammoType": "MEDIUM_BULLET",
+    "sequenceStyle": "Random",
+    "maxChargeTime": 0.0,
+    "projectiles": [
+     {
+      "damage": 6.0,
+      "speed": 25.0,
+      "range": 1000.0,
+      "force": 10.0,
+      "spread": null,
+      "accuracy": null,
+      "knockback": null,
+      "stunChance": null,
+      "damagesWalls": null,
+      "dampedFalloff": null
+     }
+    ]
+   },
+   "statModifiers": [],
+   "contentSource": "BASE",
+   "ammonomiconPos": 21,
+   "activeReload": false,
+   "infiniteAmmo": false,
+   "projectile": {
+    "damage": 6.0,
+    "speed": 25.0,
+    "range": 1000.0,
+    "force": 10.0,
+    "spread": null,
+    "accuracy": null,
+    "knockback": null,
+    "stunChance": null,
+    "damagesWalls": null,
+    "dampedFalloff": null
+   }
+  },
+  {
    "gunName": "Makarov",
    "id": 79,
    "quality": "D",
@@ -3451,6 +3685,58 @@
     "damage": 5.0,
     "speed": 23.0,
     "range": 60.0,
+    "force": 10.0,
+    "spread": null,
+    "accuracy": null,
+    "knockback": null,
+    "stunChance": null,
+    "damagesWalls": null,
+    "dampedFalloff": null
+   }
+  },
+  {
+   "gunName": "Budget Revolver",
+   "id": 80,
+   "quality": "SPECIAL",
+   "gunClass": 55,
+   "maxAmmo": 350,
+   "ammo": 350,
+   "reloadTime": 0.8999999761581421,
+   "module": {
+    "cooldownTime": 0.15000000596046448,
+    "burstShotCount": 3,
+    "burstCooldownTime": 0.20000000298023224,
+    "numberOfShotsInClip": 5,
+    "angleVariance": 10.0,
+    "ammoCost": 1,
+    "shootStyle": "SemiAutomatic",
+    "ammoType": "SMALL_BULLET",
+    "sequenceStyle": "Random",
+    "maxChargeTime": 0.0,
+    "projectiles": [
+     {
+      "damage": 6.0,
+      "speed": 23.0,
+      "range": 18.0,
+      "force": 10.0,
+      "spread": null,
+      "accuracy": null,
+      "knockback": null,
+      "stunChance": null,
+      "damagesWalls": null,
+      "dampedFalloff": null
+     }
+    ]
+   },
+   "statModifiers": [],
+   "contentSource": "BASE",
+   "ammonomiconPos": 3,
+   "activeReload": false,
+   "infiniteAmmo": true,
+   "projectile": {
+    "damage": 6.0,
+    "speed": 23.0,
+    "range": 18.0,
     "force": 10.0,
     "spread": null,
     "accuracy": null,
@@ -3971,6 +4257,58 @@
     "speed": 25.0,
     "range": 20.0,
     "force": 10.0,
+    "spread": null,
+    "accuracy": null,
+    "knockback": null,
+    "stunChance": null,
+    "damagesWalls": null,
+    "dampedFalloff": null
+   }
+  },
+  {
+   "gunName": "Rogue Special",
+   "id": 89,
+   "quality": "SPECIAL",
+   "gunClass": 55,
+   "maxAmmo": 350,
+   "ammo": 350,
+   "reloadTime": 1.2000000476837158,
+   "module": {
+    "cooldownTime": 0.25,
+    "burstShotCount": 3,
+    "burstCooldownTime": 0.20000000298023224,
+    "numberOfShotsInClip": 8,
+    "angleVariance": 10.0,
+    "ammoCost": 1,
+    "shootStyle": "SemiAutomatic",
+    "ammoType": "CUSTOM",
+    "sequenceStyle": "Random",
+    "maxChargeTime": 0.0,
+    "projectiles": [
+     {
+      "damage": 5.0,
+      "speed": 22.0,
+      "range": 13.0,
+      "force": 6.0,
+      "spread": null,
+      "accuracy": null,
+      "knockback": null,
+      "stunChance": null,
+      "damagesWalls": null,
+      "dampedFalloff": null
+     }
+    ]
+   },
+   "statModifiers": [],
+   "contentSource": "BASE",
+   "ammonomiconPos": 2,
+   "activeReload": false,
+   "infiniteAmmo": true,
+   "projectile": {
+    "damage": 5.0,
+    "speed": 22.0,
+    "range": 13.0,
+    "force": 6.0,
     "spread": null,
     "accuracy": null,
     "knockback": null,
@@ -5051,6 +5389,58 @@
     "speed": 30.0,
     "range": 30.0,
     "force": 45.0,
+    "spread": null,
+    "accuracy": null,
+    "knockback": null,
+    "stunChance": null,
+    "damagesWalls": null,
+    "dampedFalloff": null
+   }
+  },
+  {
+   "gunName": "Maximum Purple",
+   "id": 107,
+   "quality": "A",
+   "gunClass": 50,
+   "maxAmmo": 500,
+   "ammo": 500,
+   "reloadTime": 0.0,
+   "module": {
+    "cooldownTime": 1.0,
+    "burstShotCount": 3,
+    "burstCooldownTime": 0.20000000298023224,
+    "numberOfShotsInClip": -1,
+    "angleVariance": 0.0,
+    "ammoCost": 10,
+    "shootStyle": "Beam",
+    "ammoType": "CUSTOM",
+    "sequenceStyle": "Random",
+    "maxChargeTime": 0.0,
+    "projectiles": [
+     {
+      "damage": 17.5,
+      "speed": -1.0,
+      "range": 30.0,
+      "force": 10.0,
+      "spread": null,
+      "accuracy": null,
+      "knockback": null,
+      "stunChance": null,
+      "damagesWalls": null,
+      "dampedFalloff": null
+     }
+    ]
+   },
+   "statModifiers": [],
+   "contentSource": "BASE",
+   "ammonomiconPos": 183,
+   "activeReload": false,
+   "infiniteAmmo": false,
+   "projectile": {
+    "damage": 17.5,
+    "speed": -1.0,
+    "range": 30.0,
+    "force": 10.0,
     "spread": null,
     "accuracy": null,
     "knockback": null,
@@ -8371,6 +8761,154 @@
    "infiniteAmmo": false
   },
   {
+   "gunName": "Sawed-Off Shotgun",
+   "id": 202,
+   "quality": "D",
+   "gunClass": 5,
+   "maxAmmo": 150,
+   "ammo": 150,
+   "reloadTime": 1.2000000476837158,
+   "module": {
+    "cooldownTime": 0.5,
+    "burstShotCount": 3,
+    "burstCooldownTime": 0.20000000298023224,
+    "numberOfShotsInClip": 8,
+    "angleVariance": 13.0,
+    "ammoCost": 1,
+    "shootStyle": "SemiAutomatic",
+    "ammoType": "SMALL_BULLET",
+    "sequenceStyle": "Random",
+    "maxChargeTime": 0.0
+   },
+   "statModifiers": [],
+   "contentSource": "BASE",
+   "ammonomiconPos": 43,
+   "activeReload": false,
+   "infiniteAmmo": false,
+   "volley": {
+    "modules": [
+     {
+      "cooldownTime": 0.6000000238418579,
+      "burstShotCount": 3,
+      "burstCooldownTime": 0.20000000298023224,
+      "numberOfShotsInClip": 6,
+      "angleVariance": 15.0,
+      "ammoCost": 1,
+      "shootStyle": "SemiAutomatic",
+      "ammoType": "SHOTGUN",
+      "sequenceStyle": "Random",
+      "maxChargeTime": 0.0,
+      "projectiles": [
+       {
+        "damage": 4.0,
+        "speed": 23.0,
+        "range": 8.0,
+        "force": 12.0,
+        "spread": null,
+        "accuracy": null,
+        "knockback": null,
+        "stunChance": null,
+        "damagesWalls": null,
+        "dampedFalloff": null
+       }
+      ]
+     },
+     {
+      "cooldownTime": 0.6000000238418579,
+      "burstShotCount": 3,
+      "burstCooldownTime": 0.20000000298023224,
+      "numberOfShotsInClip": 6,
+      "angleVariance": 20.0,
+      "ammoCost": 0,
+      "shootStyle": "SemiAutomatic",
+      "ammoType": "SMALL_BULLET",
+      "sequenceStyle": "Random",
+      "maxChargeTime": 0.0,
+      "projectiles": [
+       {
+        "damage": 4.0,
+        "speed": 23.0,
+        "range": 8.0,
+        "force": 12.0,
+        "spread": null,
+        "accuracy": null,
+        "knockback": null,
+        "stunChance": null,
+        "damagesWalls": null,
+        "dampedFalloff": null
+       }
+      ]
+     },
+     {
+      "cooldownTime": 0.6000000238418579,
+      "burstShotCount": 3,
+      "burstCooldownTime": 0.20000000298023224,
+      "numberOfShotsInClip": 6,
+      "angleVariance": 20.0,
+      "ammoCost": 0,
+      "shootStyle": "SemiAutomatic",
+      "ammoType": "SMALL_BULLET",
+      "sequenceStyle": "Random",
+      "maxChargeTime": 0.0,
+      "projectiles": [
+       {
+        "damage": 4.0,
+        "speed": 23.0,
+        "range": 8.0,
+        "force": 12.0,
+        "spread": null,
+        "accuracy": null,
+        "knockback": null,
+        "stunChance": null,
+        "damagesWalls": null,
+        "dampedFalloff": null
+       }
+      ]
+     },
+     {
+      "cooldownTime": 0.6000000238418579,
+      "burstShotCount": 3,
+      "burstCooldownTime": 0.20000000298023224,
+      "numberOfShotsInClip": 6,
+      "angleVariance": 10.0,
+      "ammoCost": 0,
+      "shootStyle": "SemiAutomatic",
+      "ammoType": "SMALL_BULLET",
+      "sequenceStyle": "Random",
+      "maxChargeTime": 0.0,
+      "projectiles": [
+       {
+        "damage": 4.0,
+        "speed": 23.0,
+        "range": 8.0,
+        "force": 12.0,
+        "spread": null,
+        "accuracy": null,
+        "knockback": null,
+        "stunChance": null,
+        "damagesWalls": null,
+        "dampedFalloff": null
+       }
+      ]
+     }
+    ],
+    "modulesAreTiers": false,
+    "shotgunVelocity": true
+   },
+   "projectile": {
+    "damage": 4.0,
+    "speed": 23.0,
+    "range": 8.0,
+    "force": 12.0,
+    "spread": null,
+    "accuracy": null,
+    "knockback": null,
+    "stunChance": null,
+    "damagesWalls": null,
+    "dampedFalloff": null
+   }
+  },
+  {
    "gunName": "Plague Gun",
    "id": 207,
    "quality": "D",
@@ -8531,6 +9069,58 @@
     "speed": 26.0,
     "range": 1000.0,
     "force": 25.0,
+    "spread": null,
+    "accuracy": null,
+    "knockback": null,
+    "stunChance": null,
+    "damagesWalls": null,
+    "dampedFalloff": null
+   }
+  },
+  {
+   "gunName": "AK-47",
+   "id": 221,
+   "quality": "SPECIAL",
+   "gunClass": 10,
+   "maxAmmo": 350,
+   "ammo": 350,
+   "reloadTime": 0.6000000238418579,
+   "module": {
+    "cooldownTime": 0.10000000149011612,
+    "burstShotCount": 3,
+    "burstCooldownTime": 0.20000000298023224,
+    "numberOfShotsInClip": 30,
+    "angleVariance": 5.0,
+    "ammoCost": 1,
+    "shootStyle": "Automatic",
+    "ammoType": "SMALL_BULLET",
+    "sequenceStyle": "Ordered",
+    "maxChargeTime": 0.0,
+    "projectiles": [
+     {
+      "damage": 2.5,
+      "speed": 23.0,
+      "range": 1000.0,
+      "force": 9.0,
+      "spread": null,
+      "accuracy": null,
+      "knockback": null,
+      "stunChance": null,
+      "damagesWalls": null,
+      "dampedFalloff": null
+     }
+    ]
+   },
+   "statModifiers": [],
+   "contentSource": "BASE",
+   "ammonomiconPos": -1,
+   "activeReload": false,
+   "infiniteAmmo": false,
+   "projectile": {
+    "damage": 2.5,
+    "speed": 23.0,
+    "range": 1000.0,
+    "force": 9.0,
     "spread": null,
     "accuracy": null,
     "knockback": null,
@@ -9935,6 +10525,58 @@
     "speed": 20.0,
     "range": 50.0,
     "force": 10.0,
+    "spread": null,
+    "accuracy": null,
+    "knockback": null,
+    "stunChance": null,
+    "damagesWalls": null,
+    "dampedFalloff": null
+   }
+  },
+  {
+   "gunName": "Disintegrator",
+   "id": 331,
+   "quality": "B",
+   "gunClass": 20,
+   "maxAmmo": 500,
+   "ammo": 500,
+   "reloadTime": 0.0,
+   "module": {
+    "cooldownTime": 1.0,
+    "burstShotCount": 3,
+    "burstCooldownTime": 0.20000000298023224,
+    "numberOfShotsInClip": -1,
+    "angleVariance": 0.0,
+    "ammoCost": 10,
+    "shootStyle": "Beam",
+    "ammoType": "BEAM",
+    "sequenceStyle": "Random",
+    "maxChargeTime": 0.0,
+    "projectiles": [
+     {
+      "damage": 26.0,
+      "speed": 90.0,
+      "range": 500.0,
+      "force": 35.0,
+      "spread": null,
+      "accuracy": null,
+      "knockback": null,
+      "stunChance": null,
+      "damagesWalls": null,
+      "dampedFalloff": null
+     }
+    ]
+   },
+   "statModifiers": [],
+   "contentSource": "BASE",
+   "ammonomiconPos": 178,
+   "activeReload": false,
+   "infiniteAmmo": false,
+   "projectile": {
+    "damage": 26.0,
+    "speed": 90.0,
+    "range": 500.0,
+    "force": 35.0,
     "spread": null,
     "accuracy": null,
     "knockback": null,
@@ -12630,6 +13272,58 @@
    }
   },
   {
+   "gunName": "Retro Special",
+   "id": 383,
+   "quality": "D",
+   "gunClass": 1,
+   "maxAmmo": 350,
+   "ammo": 350,
+   "reloadTime": 1.2000000476837158,
+   "module": {
+    "cooldownTime": 0.20000000298023224,
+    "burstShotCount": 3,
+    "burstCooldownTime": 0.20000000298023224,
+    "numberOfShotsInClip": 8,
+    "angleVariance": 10.0,
+    "ammoCost": 1,
+    "shootStyle": "SemiAutomatic",
+    "ammoType": "CUSTOM",
+    "sequenceStyle": "Random",
+    "maxChargeTime": 0.0,
+    "projectiles": [
+     {
+      "damage": 7.5,
+      "speed": 600.0,
+      "range": 1000.0,
+      "force": 4.0,
+      "spread": null,
+      "accuracy": null,
+      "knockback": null,
+      "stunChance": null,
+      "damagesWalls": null,
+      "dampedFalloff": null
+     }
+    ]
+   },
+   "statModifiers": [],
+   "contentSource": "BASE",
+   "ammonomiconPos": 120,
+   "activeReload": false,
+   "infiniteAmmo": false,
+   "projectile": {
+    "damage": 7.5,
+    "speed": 600.0,
+    "range": 1000.0,
+    "force": 4.0,
+    "spread": null,
+    "accuracy": null,
+    "knockback": null,
+    "stunChance": null,
+    "damagesWalls": null,
+    "dampedFalloff": null
+   }
+  },
+  {
    "gunName": "Phoenix",
    "id": 384,
    "quality": "D",
@@ -13677,6 +14371,58 @@
    }
   },
   {
+   "gunName": "Blasphemy",
+   "id": 417,
+   "quality": "B",
+   "gunClass": 50,
+   "maxAmmo": 350,
+   "ammo": 350,
+   "reloadTime": 1.0,
+   "module": {
+    "cooldownTime": 0.20000000298023224,
+    "burstShotCount": 3,
+    "burstCooldownTime": 0.20000000298023224,
+    "numberOfShotsInClip": 6,
+    "angleVariance": 10.0,
+    "ammoCost": 0,
+    "shootStyle": "SemiAutomatic",
+    "ammoType": "CUSTOM",
+    "sequenceStyle": "Random",
+    "maxChargeTime": 0.0,
+    "projectiles": [
+     {
+      "damage": 14.0,
+      "speed": 26.0,
+      "range": 1000.0,
+      "force": 10.0,
+      "spread": null,
+      "accuracy": null,
+      "knockback": null,
+      "stunChance": null,
+      "damagesWalls": null,
+      "dampedFalloff": null
+     }
+    ]
+   },
+   "statModifiers": [],
+   "contentSource": "BASE",
+   "ammonomiconPos": 6,
+   "activeReload": false,
+   "infiniteAmmo": true,
+   "projectile": {
+    "damage": 14.0,
+    "speed": 26.0,
+    "range": 1000.0,
+    "force": 10.0,
+    "spread": null,
+    "accuracy": null,
+    "knockback": null,
+    "stunChance": null,
+    "damagesWalls": null,
+    "dampedFalloff": null
+   }
+  },
+  {
    "gunName": "Trident",
    "id": 444,
    "quality": "A",
@@ -13900,6 +14646,58 @@
    }
   },
   {
+   "gunName": "Klobbe",
+   "id": 472,
+   "quality": "EXCLUDED",
+   "gunClass": 10,
+   "maxAmmo": 1000,
+   "ammo": 1000,
+   "reloadTime": 0.36000001430511475,
+   "module": {
+    "cooldownTime": 0.03999999910593033,
+    "burstShotCount": 3,
+    "burstCooldownTime": 0.20000000298023224,
+    "numberOfShotsInClip": 32,
+    "angleVariance": 15.0,
+    "ammoCost": 1,
+    "shootStyle": "Automatic",
+    "ammoType": "SMALL_BULLET",
+    "sequenceStyle": "Ordered",
+    "maxChargeTime": 0.0,
+    "projectiles": [
+     {
+      "damage": 1.0,
+      "speed": 14.0,
+      "range": 1000.0,
+      "force": 1.0,
+      "spread": null,
+      "accuracy": null,
+      "knockback": null,
+      "stunChance": null,
+      "damagesWalls": null,
+      "dampedFalloff": null
+     }
+    ]
+   },
+   "statModifiers": [],
+   "contentSource": "BASE",
+   "ammonomiconPos": -1,
+   "activeReload": false,
+   "infiniteAmmo": false,
+   "projectile": {
+    "damage": 1.0,
+    "speed": 14.0,
+    "range": 1000.0,
+    "force": 1.0,
+    "spread": null,
+    "accuracy": null,
+    "knockback": null,
+    "stunChance": null,
+    "damagesWalls": null,
+    "dampedFalloff": null
+   }
+  },
+  {
    "gunName": "Maximum Tentacle",
    "id": 474,
    "quality": "A",
@@ -13997,6 +14795,234 @@
     "speed": 1.0,
     "range": 15.0,
     "force": 32.0,
+    "spread": null,
+    "accuracy": null,
+    "knockback": null,
+    "stunChance": null,
+    "damagesWalls": null,
+    "dampedFalloff": null
+   }
+  },
+  {
+   "gunName": "Microtransaction Gun",
+   "id": 476,
+   "quality": "A",
+   "gunClass": 1,
+   "maxAmmo": 400,
+   "ammo": 400,
+   "reloadTime": 0.30000001192092896,
+   "module": {
+    "cooldownTime": 0.20000000298023224,
+    "burstShotCount": 3,
+    "burstCooldownTime": 0.20000000298023224,
+    "numberOfShotsInClip": 30,
+    "angleVariance": 8.0,
+    "ammoCost": 0,
+    "shootStyle": "Automatic",
+    "ammoType": "CUSTOM",
+    "sequenceStyle": "Ordered",
+    "maxChargeTime": 0.0,
+    "projectiles": [
+     {
+      "damage": 15.0,
+      "speed": 18.0,
+      "range": 1000.0,
+      "force": 15.0,
+      "spread": null,
+      "accuracy": null,
+      "knockback": null,
+      "stunChance": null,
+      "damagesWalls": null,
+      "dampedFalloff": null
+     }
+    ]
+   },
+   "statModifiers": [],
+   "contentSource": "BASE",
+   "ammonomiconPos": 223,
+   "activeReload": false,
+   "infiniteAmmo": false,
+   "volley": {
+    "modules": [
+     {
+      "cooldownTime": 0.20000000298023224,
+      "burstShotCount": 6,
+      "burstCooldownTime": 0.07999999821186066,
+      "numberOfShotsInClip": 30,
+      "angleVariance": 8.0,
+      "ammoCost": 1,
+      "shootStyle": "SemiAutomatic",
+      "ammoType": "CUSTOM",
+      "sequenceStyle": "Random",
+      "maxChargeTime": 0.0,
+      "projectiles": [
+       {
+        "damage": 15.0,
+        "speed": 18.0,
+        "range": 1000.0,
+        "force": 15.0,
+        "spread": null,
+        "accuracy": null,
+        "knockback": null,
+        "stunChance": null,
+        "damagesWalls": null,
+        "dampedFalloff": null
+       },
+       {
+        "damage": 2.0,
+        "speed": 18.0,
+        "range": 1000.0,
+        "force": 15.0,
+        "spread": null,
+        "accuracy": null,
+        "knockback": null,
+        "stunChance": null,
+        "damagesWalls": null,
+        "dampedFalloff": null
+       },
+       {
+        "damage": 15.0,
+        "speed": 18.0,
+        "range": 1000.0,
+        "force": 15.0,
+        "spread": null,
+        "accuracy": null,
+        "knockback": null,
+        "stunChance": null,
+        "damagesWalls": null,
+        "dampedFalloff": null
+       },
+       {
+        "damage": 15.0,
+        "speed": 18.0,
+        "range": 1000.0,
+        "force": 15.0,
+        "spread": null,
+        "accuracy": null,
+        "knockback": null,
+        "stunChance": null,
+        "damagesWalls": null,
+        "dampedFalloff": null
+       },
+       {
+        "damage": 20.0,
+        "speed": 18.0,
+        "range": 1000.0,
+        "force": 15.0,
+        "spread": null,
+        "accuracy": null,
+        "knockback": null,
+        "stunChance": null,
+        "damagesWalls": null,
+        "dampedFalloff": null
+       },
+       {
+        "damage": 15.0,
+        "speed": 18.0,
+        "range": 1000.0,
+        "force": 15.0,
+        "spread": null,
+        "accuracy": null,
+        "knockback": null,
+        "stunChance": null,
+        "damagesWalls": null,
+        "dampedFalloff": null
+       },
+       {
+        "damage": 15.0,
+        "speed": 18.0,
+        "range": 1000.0,
+        "force": 15.0,
+        "spread": null,
+        "accuracy": null,
+        "knockback": null,
+        "stunChance": null,
+        "damagesWalls": null,
+        "dampedFalloff": null
+       },
+       {
+        "damage": 15.0,
+        "speed": 18.0,
+        "range": 1000.0,
+        "force": 15.0,
+        "spread": null,
+        "accuracy": null,
+        "knockback": null,
+        "stunChance": null,
+        "damagesWalls": null,
+        "dampedFalloff": null
+       },
+       {
+        "damage": 2.0,
+        "speed": 18.0,
+        "range": 1000.0,
+        "force": 15.0,
+        "spread": null,
+        "accuracy": null,
+        "knockback": null,
+        "stunChance": null,
+        "damagesWalls": null,
+        "dampedFalloff": null
+       },
+       {
+        "damage": 20.0,
+        "speed": 18.0,
+        "range": 1000.0,
+        "force": 15.0,
+        "spread": null,
+        "accuracy": null,
+        "knockback": null,
+        "stunChance": null,
+        "damagesWalls": null,
+        "dampedFalloff": null
+       },
+       {
+        "damage": 15.0,
+        "speed": 18.0,
+        "range": 1000.0,
+        "force": 15.0,
+        "spread": null,
+        "accuracy": null,
+        "knockback": null,
+        "stunChance": null,
+        "damagesWalls": null,
+        "dampedFalloff": null
+       },
+       {
+        "damage": 8.0,
+        "speed": 18.0,
+        "range": 1000.0,
+        "force": 15.0,
+        "spread": null,
+        "accuracy": null,
+        "knockback": null,
+        "stunChance": null,
+        "damagesWalls": null,
+        "dampedFalloff": null
+       },
+       {
+        "damage": 8.0,
+        "speed": 18.0,
+        "range": 1000.0,
+        "force": 15.0,
+        "spread": null,
+        "accuracy": null,
+        "knockback": null,
+        "stunChance": null,
+        "damagesWalls": null,
+        "dampedFalloff": null
+       }
+      ]
+     }
+    ],
+    "modulesAreTiers": false,
+    "shotgunVelocity": false
+   },
+   "projectile": {
+    "damage": 15.0,
+    "speed": 18.0,
+    "range": 1000.0,
+    "force": 15.0,
     "spread": null,
     "accuracy": null,
     "knockback": null,
@@ -28800,6 +29826,15 @@
    "ArmorToGive": 2
   },
   {
+   "class": "SilencerItem",
+   "itemName": "Blank",
+   "id": 224,
+   "quality": "COMMON",
+   "statModifiers": [],
+   "damageTypeModifiers": [],
+   "ammonomiconPos": 9
+  },
+  {
    "class": "PlayerOrbitalItem",
    "itemName": "Space Friend",
    "id": 232,
@@ -29583,6 +30618,15 @@
   {
    "class": "CompanionItem",
    "itemName": "Dog",
+   "id": 300,
+   "quality": "D",
+   "statModifiers": [],
+   "damageTypeModifiers": [],
+   "ammonomiconPos": 244
+  },
+  {
+   "class": "CompanionItem",
+   "itemName": "Dog",
    "id": 301,
    "quality": "B",
    "type": null,
@@ -29970,6 +31014,33 @@
    "excludedFromShops": false
   },
   {
+   "class": "ObsidianShellItem",
+   "itemName": "Obsidian Shell Casing",
+   "id": 350,
+   "quality": "SPECIAL",
+   "statModifiers": [],
+   "damageTypeModifiers": [],
+   "ammonomiconPos": 8
+  },
+  {
+   "class": "ArcaneGunpowderItem",
+   "itemName": "Arcane Gunpowder",
+   "id": 351,
+   "quality": "SPECIAL",
+   "statModifiers": [],
+   "damageTypeModifiers": [],
+   "ammonomiconPos": 6
+  },
+  {
+   "class": "RagePassiveItem",
+   "itemName": "Rage",
+   "id": 353,
+   "quality": "D",
+   "statModifiers": [],
+   "damageTypeModifiers": [],
+   "ammonomiconPos": 123
+  },
+  {
    "class": "BasicStatPickup",
    "itemName": "Military Training",
    "id": 354,
@@ -29999,6 +31070,15 @@
    "excludedFromShops": false
   },
   {
+   "class": "LockpicksItem",
+   "itemName": "Lockpicks",
+   "id": 356,
+   "quality": "D",
+   "statModifiers": [],
+   "damageTypeModifiers": [],
+   "ammonomiconPos": 52
+  },
+  {
    "class": "SpawnProjectileOnDamagedItem",
    "itemName": "Heart of Ice",
    "id": 364,
@@ -30021,6 +31101,15 @@
    "canBeDropped": true,
    "canBeSold": true,
    "excludedFromShops": false
+  },
+  {
+   "class": "SpawnObjectPlayerItem",
+   "itemName": "Molotov",
+   "id": 366,
+   "quality": "D",
+   "statModifiers": [],
+   "damageTypeModifiers": [],
+   "ammonomiconPos": 23
   },
   {
    "class": "BasicStatPickup",
@@ -30207,6 +31296,30 @@
    "numberOfUses": 1
   },
   {
+   "class": "BulletStatusEffectItem",
+   "itemName": "",
+   "id": 410,
+   "quality": "D",
+   "statModifiers": [
+    {
+     "stat": "Accuracy",
+     "op": "MULTIPLICATIVE",
+     "amount": 0.5
+    }
+   ],
+   "damageTypeModifiers": [],
+   "ammonomiconPos": 89
+  },
+  {
+   "class": "DirectionalAttackActiveItem",
+   "itemName": "Coolant Leak",
+   "id": 411,
+   "quality": "SPECIAL",
+   "statModifiers": [],
+   "damageTypeModifiers": [],
+   "ammonomiconPos": 227
+  },
+  {
    "class": "HealPlayerItem",
    "itemName": "Medkit",
    "id": 412,
@@ -30220,6 +31333,30 @@
    "excludedFromShops": false,
    "consumable": 1,
    "numberOfUses": 1
+  },
+  {
+   "class": "HeroSwordItem",
+   "itemName": "Hero's Sword",
+   "id": 413,
+   "quality": "EXCLUDED",
+   "statModifiers": [],
+   "damageTypeModifiers": [],
+   "ammonomiconPos": 183
+  },
+  {
+   "class": "LiveAmmoItem",
+   "itemName": "",
+   "id": 414,
+   "quality": "SPECIAL",
+   "statModifiers": [
+    {
+     "stat": "DodgeRollDamage",
+     "op": "MULTIPLICATIVE",
+     "amount": 5.0
+    }
+   ],
+   "damageTypeModifiers": [],
+   "ammonomiconPos": 125
   },
   {
    "class": "RobotArmItem",
@@ -30246,6 +31383,16 @@
    "canBeDropped": false,
    "canBeSold": false,
    "excludedFromShops": false
+  },
+  {
+   "class": "ItemBlueprintItem",
+   "itemName": "Ooze Blueprint",
+   "id": 418,
+   "quality": "SPECIAL",
+   "statModifiers": [],
+   "damageTypeModifiers": [],
+   "ammonomiconPos": -1,
+   "customCost": 10
   },
   {
    "class": "BasicStatPickup",
@@ -30379,6 +31526,16 @@
    "canBeDropped": true,
    "canBeSold": true,
    "excludedFromShops": false
+  },
+  {
+   "class": "ItemBlueprintItem",
+   "itemName": "Ooze Blueprint",
+   "id": 429,
+   "quality": "SPECIAL",
+   "statModifiers": [],
+   "damageTypeModifiers": [],
+   "ammonomiconPos": -1,
+   "customCost": 10
   },
   {
    "class": "EnemyBulletSpeedItem",
@@ -30874,6 +32031,15 @@
    "numberOfUses": 1
   },
   {
+   "class": "ChestBrokenImprovementItem",
+   "itemName": "ChestAnatomyBook",
+   "id": 487,
+   "quality": "C",
+   "statModifiers": [],
+   "damageTypeModifiers": [],
+   "ammonomiconPos": 237
+  },
+  {
    "class": "ChestBrokenItem",
    "itemName": "RingOfChestVampirism",
    "id": 488,
@@ -31000,6 +32166,16 @@
    "excludedFromShops": false
   },
   {
+   "class": "ItemBlueprintItem",
+   "itemName": "Yari Blueprint",
+   "id": 497,
+   "quality": "SPECIAL",
+   "statModifiers": [],
+   "damageTypeModifiers": [],
+   "ammonomiconPos": -1,
+   "customCost": 30
+  },
+  {
    "class": "FireOnReloadItem",
    "itemName": "Hip Holster",
    "id": 500,
@@ -31011,6 +32187,25 @@
    "canBeDropped": true,
    "canBeSold": true,
    "excludedFromShops": false
+  },
+  {
+   "class": "ItemBlueprintItem",
+   "itemName": "Yari Blueprint",
+   "id": 501,
+   "quality": "SPECIAL",
+   "statModifiers": [],
+   "damageTypeModifiers": [],
+   "ammonomiconPos": -1,
+   "customCost": 30
+  },
+  {
+   "class": "DoNothingActiveItem",
+   "itemName": "",
+   "id": 502,
+   "quality": "SPECIAL",
+   "statModifiers": [],
+   "damageTypeModifiers": [],
+   "ammonomiconPos": -1
   },
   {
    "class": "ProjectileRandomizerItem",
@@ -31390,6 +32585,16 @@
    "canBeSold": true,
    "excludedFromShops": false,
    "numberOfUses": 1
+  },
+  {
+   "class": "ItemBlueprintItem",
+   "itemName": "Ooze Blueprint",
+   "id": 575,
+   "quality": "SPECIAL",
+   "statModifiers": [],
+   "damageTypeModifiers": [],
+   "ammonomiconPos": -1,
+   "customCost": 10
   },
   {
    "class": "SprenOrbitalItem",

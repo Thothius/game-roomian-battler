@@ -24,6 +24,22 @@ for o in env.objects:
         except Exception:
             pass
 
+def load_bundle(path):
+    """Rebind indexes to another bundle (update-era pickups live in
+    shared_auto_*)."""
+    global env, by_pid, script_names
+    env = UnityPy.load(path)
+    by_pid = {o.path_id: o for o in env.objects}
+    script_names = {}
+    for o in env.objects:
+        if o.type.name == "MonoScript":
+            try:
+                script_names[o.path_id] = o.read_typetree().get(
+                    "m_ClassName")
+            except Exception:
+                pass
+    return env.objects
+
 def script_of(tree):
     s = tree.get("m_Script") or {}
     return script_names.get(s.get("m_PathID", 0), "")
@@ -268,6 +284,81 @@ for o in env.objects:
         items.append(it)
     elif cls in ("AdvancedSynergyDatabase", "PickupObjectDatabase"):
         synergy_db = {"class": cls, "keys": list(t.keys())[:40]}
+
+# ── update-era pickups in shared_auto_* bundles ─────────────────────
+_base = os.path.join(ETG, r"EtG_Data\StreamingAssets\Assets")
+_gun_ids = {g["id"] for g in guns}
+_item_ids = {i["id"] for i in items}
+for extra in ("shared_auto_001", "shared_auto_002"):
+    objs = load_bundle(os.path.join(_base, extra))
+    for o in objs:
+        if o.type.name != "MonoBehaviour":
+            continue
+        try:
+            t = o.read_typetree()
+        except Exception:
+            continue
+        cls = script_of(t)
+        if cls == "Gun":
+            if t.get("PickupObjectId") in _gun_ids:
+                continue
+            sm = module_stats(t.get("singleModule"))
+            g = {
+                "gunName": t.get("gunName"),
+                "id": t.get("PickupObjectId"),
+                "quality": QUALITY.get(t.get("quality"), t.get("quality")),
+                "gunClass": t.get("gunClass"),
+                "maxAmmo": t.get("maxAmmo"),
+                "ammo": t.get("ammo"),
+                "reloadTime": t.get("reloadTime"),
+                "module": sm,
+                "statModifiers": stat_mods(
+                    (t.get("passiveStatModifiers") or []) +
+                    (t.get("currentGunStatModifiers") or [])),
+                "contentSource": CONTENT_SOURCE.get(
+                    t.get("contentSource"), t.get("contentSource")),
+                "ammonomiconPos": t.get("ForcedPositionInAmmonomicon"),
+                "activeReload": bool(t.get("LocalActiveReload") or
+                                     (t.get("activeReloadData") or {})
+                                     .get("ActiveReloadStacks")),
+                "infiniteAmmo": bool(t.get("LocalInfiniteAmmo")),
+            }
+            if t.get("UsesCustomCost"):
+                g["customCost"] = t.get("CustomCost")
+            vol = volley_modules(t.get("rawVolley"))
+            if vol:
+                g["volley"] = vol
+            alt = volley_modules(t.get("alternateVolley"))
+            if alt:
+                g["alternateVolley"] = alt
+            projs = (sm or {}).get("projectiles") or \
+                ((vol["modules"][0].get("projectiles")) if vol
+                 else None) or []
+            if projs:
+                g["projectile"] = projs[0]
+                if len(projs) > 1:
+                    g["projectileCount"] = len(projs)
+            guns.append(g)
+            _gun_ids.add(g["id"])
+        elif cls and cls.endswith("Item"):
+            if t.get("PickupObjectId") in _item_ids:
+                continue
+            it = {
+                "class": cls,
+                "itemName": t.get("itemName"),
+                "id": t.get("PickupObjectId"),
+                "quality": QUALITY.get(t.get("quality"),
+                                       t.get("quality")),
+                "statModifiers": stat_mods(
+                    (t.get("passiveStatModifiers") or []) +
+                    (t.get("modifiers") or [])),
+                "damageTypeModifiers": damage_mods(t),
+                "ammonomiconPos": t.get("ForcedPositionInAmmonomicon"),
+            }
+            if t.get("UsesCustomCost"):
+                it["customCost"] = t.get("CustomCost")
+            items.append(it)
+            _item_ids.add(it["id"])
 
 guns.sort(key=lambda g: g["id"] or 0)
 items.sort(key=lambda i: i["id"] or 0)
