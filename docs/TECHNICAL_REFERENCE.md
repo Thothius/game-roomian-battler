@@ -3,7 +3,23 @@
 > **READ THIS BEFORE ANY WORK.** This is the canonical technical reference.
 > Every agent must know these facts at all times. No exceptions.
 >
-> Last updated: 2026-08-28 (v2.1.0)
+> Last updated: 2026-10-31 (v3.3.0+162) — **v3.3 delta below supersedes v2-era sections where they conflict.**
+
+---
+
+## 0. v3.x Delta (read first — v2 sections below kept for history)
+
+**Current version:** `3.3.0+162` · **Flutter 3.47.9** / Dart 3.13.7 · **Test suite:** ~477 tests (was 199).
+
+**What's actually current (post-v2.1.0):**
+
+- **Multiplayer (v3 unified).** One co-op protocol on a single Nearby serviceId `mp.v2` — classic and Paradox modes merged (`170e70b`). Paradox is a *character pick* (blank-start inventory), not a mode. `mp_session.dart` facade + `mp/` services (`mp_link`, `mp_sync`, `mp_recovery`, `mp_store`, `mp_foreground_service`, `mp_transport`) + `session/mp_handlers.dart` part file. Screens: `mp_lobby_screen.dart` (3-stage flow: role → gungeoneer → identity w/ host-only RUN TITLE field) + `mp_connect_screen.dart` (themed card shell, per-phase accents). `multiplayer_lobby_screen.dart` deleted. Chat deleted; `paradox/` widgets serve ALL MP (ParadoxBar unified top bar w/ runTitle, ParadoxPlayerPanel ⋮ menu, SurpriseSheet). `MpReconnectBanner` gated by `runBarVisible` (two-bars fix `c5ba8db`).
+- **Bottom nav = 3 tabs** (Inventory / Browse / Ammonomicon) + gear sheet in active-run header owns Settings/Quiz/run tools (`49e1f25`..`f46a361`). The v2 "4 tabs + Settings screen" description is stale.
+- **Ammonomicon** (renamed from Codex): `ammonomicon_screen.dart` 12-tab picker w/ expandable Chapters/GameModes panels, `ammonomicon_widgets.dart` (part), `ammonomicon_detail_screen.dart`, `widgets/ammonomicon/ammonomicon_tabs.dart`, `synergy_detail_screen.dart`. Data: `chapters.json`, `game_modes.json`, `back_refs.json` all declared+loaded.
+- **Item detail** surfaces `ammonomicon_entry` (AmmonomiconCard), wiki sections (guns AND items), and ReferencedBySection back-refs (`1b4400d`).
+- **Run title:** `MpSession.runTitle` set from lobby, shown in ParadoxBar + connect chip.
+- **Still accurate below:** repo structure (§1), git/push workflow (§2), build commands (§3), release checklist (§4), PowerShell gotchas (§7), board protocol (§8-§10), platform quirks (§12).
+- **Stale below:** §5 architecture tables (v2-era — see delta), §6 file locations (line counts/mode tables), §6.5 test counts, version fields throughout.
 
 ---
 

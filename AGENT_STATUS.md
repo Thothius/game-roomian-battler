@@ -85,7 +85,7 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 | :--- | :--- | :--- | :--- | :--- |
 | **Slot 1** | **DESIGNER (Devin)** | `DONE` | DESIGN.md contract + design-lab/ landed `bcc1e8d` (merge `ee698c9`), worktree+branch cleaned. Slot released | 2026-10-31 |
 | **Slot 2** | **CORE (Devin A1)** | `ACTIVE` | **CUSTOMIZATION HUB FULL REWORK** (master, sole agent) — per docs/CUSTOMIZATION_DESIGN_BRIEF.md: unified hub (kill dual-UI), sticky BACK/PREVIEW/APPLY bar, 5 tabs PRESETS/CUSTOM/FONTS/PARTICLES/AMBIANCE, draggable LIVE LOOK pane (1/3→75%), 3 presets + saved + Unicorn variants, CUSTOM color-role rows→ColorPicker, fold PaletteMakerScreen, save flow, "Customization" labels. User: "UX nightmare, full rework" | 2026-10-31 |
-| **Slot 3** | **PARALLEL (Devin A2)** | `DONE` | **Ammonomicon rework pass 1** `233f705`+`9437a62` — grid tiles (gradient + glow medallion), expanded-panel member rows (gradient + icon chip). More passes needed (see log). Slot released | 2026-10-31 |
+| **Slot 3** | **PARALLEL (Devin A2)** | `DONE` | **Doc debt refresh** — v3.x delta section added to TECHNICAL_REFERENCE §0 (MP unification, 3-tab nav, Ammonomicon, version/test counts) + GUNGEONMATE header/version patched. Slot released | 2026-10-31 |
 | **Slot 4** | **SUPPORT (Devin)** | `DONE` | Reference screenshots landed `dacbef9` → `design-lab/reference/` (8 PNGs + README). Slot released | 2026-10-31 |
 
 ### Slot Details

@@ -1,7 +1,7 @@
 # GungeonMate — The Definitive Reference
 
 > **One doc to rule them all.** App infrastructure, tech stack, features, every view, every option.
-> Last updated: 2026-08-25 (v2.0.3+143)
+> Last updated: 2026-10-31 (v3.3.0+162) — see **v3.x delta** in `TECHNICAL_REFERENCE.md` §0: unified MP `mp.v2`, 3-tab nav + gear sheet, Ammonomicon rename, item-detail wiki/back-refs surfacing. Feature descriptions below are v2-era; where they conflict with the delta, the delta wins.
 >
 > **Companion docs:**
 > - `TECHNICAL_REFERENCE.md` — agent operations (git, build commands, release checklist, PowerShell gotchas)
@@ -15,9 +15,9 @@
 
 A high-performance, dark-neon companion app for *Enter the Gungeon*. Built in Flutter/Dart. Tracks runs, inventory, synergies, stats. Multiplayer co-op via Nearby Connections. Customizable themes, particles, fonts, shaders.
 
-**Current version:** 2.0.3+143
+**Current version:** 3.3.0+162
 **Target platforms:** Android (primary), Windows (desktop), iOS (builds but not actively tested)
-**Flutter SDK:** 3.29.0 stable / Dart 3.7.0+
+**Flutter SDK:** 3.47.9 stable / Dart 3.13.7
 
 ---
 
