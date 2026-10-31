@@ -206,6 +206,28 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 
 ---
 
+## Work Queue (next session — claimed by no one yet)
+
+Detailed plans for open items. Claim a slot, pick one, work it.
+
+### WQ-1 · FIX Ammonomicon blank screen (P0 — app-breaking)
+- **Root cause (verified via web console 404s):** `lib/screens/ammonomicon_screen.dart` `_loadData()` (~line 187) loads 8 JSONs in one `Future.wait` — `assets/data/chapters.json` and `assets/data/game_modes.json` are NOT declared in `pubspec.yaml` assets list (~lines 92-106). `loadString` fails → wait throws (no try/catch) → `_loaded` stays false → skeletons forever. **Affects ALL platforms**, not just web.
+- **Fix:** (a) add `- assets/data/chapters.json` + `- assets/data/game_modes.json` to pubspec assets after `floors.json`; (b) wrap `_loadData` in try/catch — per-file fallback or error state so one bad asset degrades to an empty category instead of a dead screen.
+- **Verify:** `flutter build web` → Playwright Ammonomicon tab renders category grid (was skeleton-stuck); `flutter analyze`; codex tests. Full plan: `C:\Users\saare\.devin\plans\plan-f0011ef773ed3b88.md`.
+
+### WQ-2 · Codex reference screenshots (unblocked by WQ-1)
+- After WQ-1: rebuild web, Playwright 390×844, capture Ammonomicon grid + category + detail → `gungeon_mate/design-lab/reference/ref-09..11-*.png`, update that folder's README table. Method: enable `flt-semantics-placeholder` via `browser_evaluate` click, then snapshot refs (see prior session for technique).
+
+### WQ-3 · Character-select visual pass
+- New `_GungeoneerPicker` landed untested visually. Check 320dp/390dp + 1.3× text scale on device or web build: tab strip scroll sync, chip wrapping, PICK label shrink, page scroll on short phones. Update `design-lab/` with a `views/character-select.html` mirror next lab pass.
+
+### WQ-4 · Design-lab 1:1 unification pass
+- Compare `design-lab/reference/*.png` vs matching lab views; adjust `tokens.css`/`base.css` where the mock diverges from real (logo font, button shapes, page-frame). A separate agent is authoring written design instructions — coordinate so they don't overlap.
+
+### WQ-5 · Housekeeping (low)
+- Root repo: foreign uncommitted files at close — avatar `.webp` deletions (in-flight agent work, likely theirs to commit), `AGENT_STATUS.md` live edits. Don't sweep.
+- design-lab supports Minimalist only; theme packs deferred indefinitely.
+
 ## Session Log (append-only, structured handoff)
 
 Format: `| Agent | Date | Branch | Commit | Task | Files | Status | Next | Watch out for |`
