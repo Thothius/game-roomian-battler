@@ -84,7 +84,7 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 | Slot | Assigned Agent | Status | Working On | Last Heartbeat |
 | :--- | :--- | :--- | :--- | :--- |
 | **Slot 1** | **DESIGNER (Devin)** | `DONE` | DESIGN.md contract + design-lab/ landed `bcc1e8d` (merge `ee698c9`), worktree+branch cleaned. Slot released | 2026-10-31 |
-| **Slot 2** | **CORE (Devin — me)** | `IDLE` | **MP unification shipped** `170e70b`+`91cba51` — one co-op protocol (mp.v2), Paradox=character (blank inventory), chat deleted, avatar→surprise sheet w/ fx composer, compact bar (no #N, 11pt title). Analyze clean, suite green | 2026-10-31 |
+| **Slot 2** | **CORE (Devin A1)** | `ACTIVE` | **P0 pre-APK blockers** — (1) WQ-1 Ammonomicon pubspec assets + try/catch, (2) reconnect two-bars (modal+inline both fire), (3) ~38 kAvatarIds without webps → grey tiles. Branch `slot2-a1/p0-blockers` + AC5d worktree — A2 child session runs polish gaps in parallel | 2026-10-31 |
 | **Slot 3** | **PARALLEL (Devin)** | `DONE` | Character select rework landed `6f9354b` (merge `4606833`), worktree+branch cleaned. Slot released | 2026-10-31 |
 | **Slot 4** | **SUPPORT (Devin)** | `DONE` | Reference screenshots landed `dacbef9` → `design-lab/reference/` (8 PNGs + README). Slot released | 2026-10-31 |
 
@@ -115,16 +115,16 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 
 > **Session ended 2026-08-18 13:48.** Task: Q2 Synergy Predictor (genius audit v0.0.7). Three-file implementation: (1) `RunProvider.synergiesCompletedBy(itemName, {slot})` — returns synergy names that would activate if the item were added to the target slot's loadout. Core logic: `!matchesItems(owned) && matchesItems(owned + item)`. Slot-aware for coop browse. (2) `completesPill` — gold/amber metaPill with link icon, shows "COMPLETES: <name>" or "COMPLETES N". Follows existing pill pattern. (3) `GunMeta` + `ItemMeta` — new optional `completesSynergies` param, renders pill before synergy count. (4) `browse_screen _gunRow + _itemRow` — calls predictor with targetSlot, passes to meta. Version bumped to v1.9.50+126 with full release checklist (pubspec, changelog.json, VERSION_HISTORY.md, main_menu_screen, asset_paths). flutter analyze clean on all 5 files. Sole active agent — no worktree needed.
 
-#### Slot 2 — CORE (Devin)
+#### Slot 2 — CORE (Devin A1)
 | Field | Value |
 |-------|-------|
-| **Branch** | `master` (sole active agent — Slot 4 released, AC5d exception) |
-| **Session started** | 2026-10-30 |
+| **Branch** | `slot2-a1/p0-blockers` — worktree `X:\GungeonMate\.worktrees\slot2-a1\gungeon_mate` (AC5d, A2 parallel) |
+| **Session started** | 2026-10-31 |
 | **Last board update** | 2026-10-31 |
-| **Last commit** | `59ec542` — test: nav index fix; full suite green 480/480 + 4 skipped |
-| **Files in progress** | `tools/` (root repo — merge_stats.py + dump extensions) |
-| **Uncommitted changes** | NONE of mine — `gungeoneer_header.dart` (M) + `lib/widgets/gungeoneer_header/` (untracked) are **SLOT 4's WIP — do not touch/commit** |
-| **AC4 shared-file flags** | `codex_screen.dart` (Slot 4 synced test label in `6a50556`), `item_detail/header.dart` (theirs — BUG-051), `main_menu_screen.dart` (both touched) |
+| **Last commit** | — (in progress) |
+| **Files in progress** | `pubspec.yaml`, `lib/screens/ammonomicon_screen.dart`, `lib/widgets/mp_reconnect_banner.dart`, `lib/utils/asset_paths.dart` |
+| **Uncommitted changes** | — |
+| **AC4 shared-file flags** | Reconnect UI files border A2's polish lane (mp_connect look / bar chips) — A1 keeps diff inside `mp_reconnect_banner.dart` where possible |
 
 > **Attribution map (for Slot 4 / other agent):**
 > - **MINE this session:** `b6d05b0` data merge, `8550c0a` Ammonomicon cats+labels, `1fc4f9b` SynergyDetailScreen, `eeb52de` _GunDeepStats, `bf027f8` EN string tables + synergy joins. Root repo: `tools/` (dump_gungeon.py, merge_*.py, gungeon_dump.json, en_*.txt, *_report.json).
@@ -210,7 +210,7 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 
 Detailed plans for open items. Claim a slot, pick one, work it.
 
-### WQ-1 · FIX Ammonomicon blank screen (P0 — app-breaking)
+### WQ-1 · FIX Ammonomicon blank screen (P0 — app-breaking) — **CLAIMED by CORE (A1), in progress on `slot2-a1/p0-blockers`**
 - **Root cause (verified via web console 404s):** `lib/screens/ammonomicon_screen.dart` `_loadData()` (~line 187) loads 8 JSONs in one `Future.wait` — `assets/data/chapters.json` and `assets/data/game_modes.json` are NOT declared in `pubspec.yaml` assets list (~lines 92-106). `loadString` fails → wait throws (no try/catch) → `_loaded` stays false → skeletons forever. **Affects ALL platforms**, not just web.
 - **Fix:** (a) add `- assets/data/chapters.json` + `- assets/data/game_modes.json` to pubspec assets after `floors.json`; (b) wrap `_loadData` in try/catch — per-file fallback or error state so one bad asset degrades to an empty category instead of a dead screen.
 - **Verify:** `flutter build web` → Playwright Ammonomicon tab renders category grid (was skeleton-stuck); `flutter analyze`; codex tests. Full plan: `C:\Users\saare\.devin\plans\plan-f0011ef773ed3b88.md`.
