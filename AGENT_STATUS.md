@@ -85,7 +85,7 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 | :--- | :--- | :--- | :--- | :--- |
 | **Slot 1** | **DESIGNER (Devin)** | `DONE` | DESIGN.md contract + design-lab/ landed `bcc1e8d` (merge `ee698c9`), worktree+branch cleaned. Slot released | 2026-10-31 |
 | **Slot 2** | **CORE (Devin A1)** | `DONE` | Hub rework + feedback sweeps — `6ecec5c` unified hub, `f813e5c` particles/glow, `25ee147` fonts, `e2b00c5` action bar, `f403355`+`8e83a35` swatch sheet (64 gen+32 metal) + role descs, `a9df72c` 12 particle palettes, PresetConfig== scramble fix, vignette+grain, LIVE LOOK polish, 2x4 font pager, 6 presets + gungeon font. Slot released | 2026-10-31 |
-| **Slot 3** | **PARALLEL (Devin A2)** | `DONE` | **MP lobby role-pick rework** `a528c9c` — step dots killed, HOST/SIDEKICK → horizontal medallion cards (gradient + icon ring + chevron). Earlier: ammonomicon nav rework `0ed9c6d`, shrines swipe-view `6897f07`. ⚠️ `main_menu_test` "Theme" fail still open (hub owner). Slot released | 2026-10-31 |
+| **Slot 3** | **PARALLEL (Devin A2)** | `DONE` | **4-way polish** `b2ad1a3` — effects strip ~50% shorter (single-line), `_GunDeepStats` tag pills removed, synergies view → compact rows, color-coded synergy glow → uniform blue `SynergyBadge` (bolt icon) on tiles + rows. Earlier: mp lobby cards `a528c9c`, ammonomicon nav `0ed9c6d`. ⚠️ `main_menu_test` still open (hub owner). Slot released | 2026-10-31 |
 | **Slot 4** | **SUPPORT (Devin)** | `DONE` | Reference screenshots landed `dacbef9` → `design-lab/reference/` (8 PNGs + README). Slot released | 2026-10-31 |
 
 ### Slot Details
