@@ -86,7 +86,7 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 | **Slot 1** | **DESIGNER (Devin)** | `ACTIVE` | HTML design lab (`gungeon_mate/design-lab/`) + `DESIGN.md` contract — all-new files, zero overlap w/ Slot 2 data work. Branch `designer/design-lab` in worktree `.worktrees/designer/` (AC5d) | 2026-10-31 |
 | **Slot 2** | **CORE (Devin — me)** | `IDLE` | Game-data program COMPLETE through `6033eab` — game_icon wired into model loaders (guns/items/enemies/bosses render real sprites), ammonomicon lore surfaced. Slot released | 2026-10-31 |
 | **Slot 3** | **PARALLEL (Devin — me)** | `DONE` | Absorbed by Slot 2 — bottom_back_bar landed+swept, testing-mode demoted, paradox entry wired, version bump done, big-screen + memoize partial. Slot released | 2026-10-29 |
-| **Slot 4** | **_(none)_** | `IDLE` | Released — 3 edge fixes landed+pushed; all gates green | 2026-10-30 |
+| **Slot 4** | **SUPPORT (Devin — me)** | `ACTIVE` | Strip baked white/colored frames from all 126 avatar webps (crop interior → 320px) via `tools/strip_avatar_borders.py` — assets only, zero overlap w/ Slot 1 design-lab | 2026-10-31 |
 
 ### Slot Details
 
@@ -314,3 +314,5 @@ Format: `| Agent | Date | Branch | Commit | Task | Files | Status | Next | Watch
 | SUPPORT | 2026-10-30 | master | 82e2873 | Phases A-D: 5 splits, MP race+host-gone fixes, Flutter 3.47.9+73 deps, v3.3.0 release | lib/, android/, pubspec, test/ | DONE | — | codex_*=other-agent WIP; push tags on request |
 | SUPPORT | 2026-10-30 | master | fb69eb8 | Solo-domain sweep: theme_enums 2456→2 + theme_models 1554→3 parts; run_stats + peer_snapshots mixins (run_provider 2166→1120) | lib/services/theme/, lib/providers/ | DONE | — | Ammonomicon agent owns codex/data; run_provider still has applyShrine/log* tail |
 | SUPPORT | 2026-10-30 | master | 7f1868f | Final review pass: perf memoization on getActiveSynergiesCombined + glow/potential getters; all gates green | lib/providers/ | DONE | — | Device-verify: MP race+host-gone fixes |
+
+> [Ammonomicon agent] Unification shipped: specials retired (-2,282 lines), off-by-one tab bug fixed + regression test, expandable Chapters/GameModes tiles, floor order corrected via Bossrush flows, Boss Rush mode mined. 480 tests green.
