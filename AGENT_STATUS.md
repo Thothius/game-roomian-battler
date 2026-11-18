@@ -84,7 +84,7 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 | Slot | Assigned Agent | Status | Working On | Last Heartbeat |
 | :--- | :--- | :--- | :--- | :--- |
 | **Slot 1** | **VISUAL (Devin)** | `DONE` | Neo-Skeuo PARKED per user — `kNeoSkeuoEnabled=false` in `7eb0c0b`. Bad sweep reverted `05ce61f` (was `d220062`). To resume: flip flag true, re-run collapse sweep carefully. | 2026-10-31 |
-| **Slot 2** | **CORE (Devin)** | `DONE` | LEB synergy test coverage — app `a268bbf` (13 tests). Slot released | 2026-11-18 |
+| **Slot 2** | **CORE (Devin)** | `ACTIVE` | LEB synergy expansion built + committed `29bb853` (pager ALL/P1/P2/LEB, ghost rows, EXTRA REQ, explainer, items all-list, browse LEB toggle/badges, sweep tests — 521 tests green). Awaiting user review of `X:\Mole\leb-review\leb-review.html` before v3.4.0 bump | 2026-11-18 |
 | **Slot 3** | **PARALLEL (Devin A2)** | `DONE` | **4-way polish** `b2ad1a3` + badge icon → double-chevron `8213c14` (matches game's synergy marker). Effects strip ~50% shorter, detail tag pills removed, synergies compact rows, color-coded glow → uniform blue badge. ⚠️ `main_menu_test` still open (hub owner). Slot released | 2026-10-31 |
 | **Slot 4** | **SUPPORT (Devin)** | `DONE` | Reference screenshots landed `dacbef9` → `design-lab/reference/` (8 PNGs + README). Slot released | 2026-10-31 |
 
@@ -119,11 +119,13 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 | Field | Value |
 |-------|-------|
 | **Branch** | `master` (sole agent) |
-| **Session started** | 2026-11-18 (tests round) |
+| **Session started** | 2026-11-18 (LEB expansion) |
 | **Last board update** | 2026-11-18 |
-| **Last commit** | app `a268bbf` — test(guns): LEB synergy display coverage |
+| **Last commit** | app `29bb853` — feat(synergies): LEB pager + grouped all-list + browse/codex LEB states |
 | **Files in progress** | — |
 | **Uncommitted changes** | — |
+
+> **Session note 2026-11-18 (LEB expansion):** Full implementation landed in app `29bb853` — `GunSynergiesTab` is now a swipeable ALL/P1/P2/LEB pager (LEB ghost/dashed rows, EXTRA REQ heuristic chips, info-button explainer sheet pulling LEB effect+wiki from items.json); `EntitySynergiesView` shared grouped COMPLETE/PARTIAL/LOCKED list now used by guns (ALL/P1/P2 pages) AND items (flat, no LEB — game-accurate); `LebViewScope` propagates resolved mode through in-detail nav; browse has independent `browseShowLichEyeBullets` pref + LEB badges on gun rows; context rule = explicit param > ownerSlot(run) > global pref. Tests: 24 LEB/detail tests incl. all-guns×3-slice partition sweep; full suite 521 pass. Visual review artifact: `X:\Mole\leb-review\leb-review.html` (+ PNGs, Playwright-driven web build). NEXT: user approves visuals → v3.4.0 release checklist (5 files) + APK. Watch: `EXTRA REQ` is a text heuristic (no structured flag in JSON); P1/P2 pages only exist in co-op (widget-tested, not screenshotted).
 
 > **Attribution map (for Slot 4 / other agent):**
 > - **MINE this session:** `b6d05b0` data merge, `8550c0a` Ammonomicon cats+labels, `1fc4f9b` SynergyDetailScreen, `eeb52de` _GunDeepStats, `bf027f8` EN string tables + synergy joins. Root repo: `tools/` (dump_gungeon.py, merge_*.py, gungeon_dump.json, en_*.txt, *_report.json).
