@@ -86,7 +86,7 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 | Slot | Assigned Agent | Status | Working On | Last Heartbeat |
 | :--- | :--- | :--- | :--- | :--- |
 | **Slot 1** | **VISUAL (Devin)** | `DONE` | Custom-theme wallpaper BG shipped `8836ab1` (merged to master, worktree removed). Preset pick-or-create spec `docs/PRESET_FLOW_BRIEF.md` still PENDING — claim next session. Neo-Skeuo stays PARKED (`kNeoSkeuoEnabled=false`). Slot released. | 2026-11-18 |
-| **Slot 2** | **CORE (Devin)** | `ACTIVE` | LEB synergy expansion built + committed `29bb853` (pager ALL/P1/P2/LEB, ghost rows, EXTRA REQ, explainer, items all-list, browse LEB toggle/badges, sweep tests — 521 tests green). Awaiting user review of `X:\Mole\leb-review\leb-review.html` before v3.4.0 bump | 2026-11-18 |
+| **Slot 2** | **CORE (Devin)** | `ACTIVE` | MVP wrap for user build: assets landed `f56bfcf` (11 avatars + 46 wallpapers), preset-flow spec delegated `2522647`, all feature work committed through `fffbb3f` (LEB synergies `0e17baa`/`a268bbf`/`29bb853`, gun-detail tabs + avatar/lobby polish `5060cc8`, wallpaper picker `8836ab1`, lobby test fix). APK building. v3.4.0 bump still pending user approval | 2026-11-18 |
 | **Slot 3** | **PARALLEL (Devin A2)** | `DONE` | **4-way polish** `b2ad1a3` + badge icon → double-chevron `8213c14` (matches game's synergy marker). Effects strip ~50% shorter, detail tag pills removed, synergies compact rows, color-coded glow → uniform blue badge. ⚠️ `main_menu_test` still open (hub owner). Slot released | 2026-10-31 |
 | **Slot 4** | **SUPPORT (Devin)** | `DONE` | Reference screenshots landed `dacbef9` → `design-lab/reference/` (8 PNGs + README). Slot released | 2026-10-31 |
 
