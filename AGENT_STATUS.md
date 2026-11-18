@@ -84,7 +84,7 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 | Slot | Assigned Agent | Status | Working On | Last Heartbeat |
 | :--- | :--- | :--- | :--- | :--- |
 | **Slot 1** | **VISUAL (Devin)** | `DONE` | Neo-Skeuo PARKED per user — `kNeoSkeuoEnabled=false` in `7eb0c0b`. Bad sweep reverted `05ce61f` (was `d220062`). To resume: flip flag true, re-run collapse sweep carefully. | 2026-10-31 |
-| **Slot 2** | **CORE (Devin A1)** | `DONE` | All committed — see session log | 2026-10-31 |
+| **Slot 2** | **CORE (Devin)** | `DONE` | Lich's Eye Bullets synergy display + gun detail synergy fix — app `0e17baa`. Slot released | 2026-11-18 |
 | **Slot 3** | **PARALLEL (Devin A2)** | `DONE` | **4-way polish** `b2ad1a3` + badge icon → double-chevron `8213c14` (matches game's synergy marker). Effects strip ~50% shorter, detail tag pills removed, synergies compact rows, color-coded glow → uniform blue badge. ⚠️ `main_menu_test` still open (hub owner). Slot released | 2026-10-31 |
 | **Slot 4** | **SUPPORT (Devin)** | `DONE` | Reference screenshots landed `dacbef9` → `design-lab/reference/` (8 PNGs + README). Slot released | 2026-10-31 |
 
@@ -115,13 +115,13 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 
 > **Session ended 2026-08-18 13:48.** Task: Q2 Synergy Predictor (genius audit v0.0.7). Three-file implementation: (1) `RunProvider.synergiesCompletedBy(itemName, {slot})` — returns synergy names that would activate if the item were added to the target slot's loadout. Core logic: `!matchesItems(owned) && matchesItems(owned + item)`. Slot-aware for coop browse. (2) `completesPill` — gold/amber metaPill with link icon, shows "COMPLETES: <name>" or "COMPLETES N". Follows existing pill pattern. (3) `GunMeta` + `ItemMeta` — new optional `completesSynergies` param, renders pill before synergy count. (4) `browse_screen _gunRow + _itemRow` — calls predictor with targetSlot, passes to meta. Version bumped to v1.9.50+126 with full release checklist (pubspec, changelog.json, VERSION_HISTORY.md, main_menu_screen, asset_paths). flutter analyze clean on all 5 files. Sole active agent — no worktree needed.
 
-#### Slot 2 — CORE (Devin A1)
+#### Slot 2 — CORE (Devin)
 | Field | Value |
 |-------|-------|
-| **Branch** | `slot2-a1/p0-blockers` → merged to master + deleted (AC5d worktree removed) |
-| **Session started** | 2026-10-31 (polish round 2) |
-| **Last board update** | 2026-10-31 |
-| **Last commit** | `c5ba8db` — fix: pre-APK P0 blockers (Ammonomicon assets, two-bars, avatar registry) |
+| **Branch** | `master` (sole agent) |
+| **Session started** | 2026-11-18 |
+| **Last board update** | 2026-11-18 |
+| **Last commit** | app `0e17baa` — feat(guns): Lich's Eye Bullets simulated synergies + full gun synergy list |
 | **Files in progress** | — |
 | **Uncommitted changes** | — |
 
@@ -235,6 +235,7 @@ Format: `| Agent | Date | Branch | Commit | Task | Files | Status | Next | Watch
 
 | Agent | Date | Branch | Commit | Task | Files | Status | Next | Watch out for |
 |-------|------|--------|--------|------|-------|--------|------|---------------|
+| CORE (Devin) | 2026-11-18 | master (sole agent) | app `0e17baa` | **LEB synergy display + gun detail synergy fix** — new persisted `VisualPrefs.showLichEyeBulletsSynergies` (default ON, Settings→Gameplay→Synergies). `GunSynergiesTab` rewritten: ON = LEB simulated view (all gun synergies as active rows under LICH'S EYE BULLETS header); OFF = COMPLETE/PARTIAL/LOCKED groups covering every synergy — fixes guns rendering "No synergies to show". Matching semantics untouched (display-only). Gated 2 live Neo-Skeuo test groups behind `kNeoSkeuoEnabled` (parked feature, tests were red on master). Analyze clean; full suite green (neo_skeuo groups skip) | theme_flair_prefs, settings_tab, gun_synergies_tab, _smoke_detail_test, neo_skeuo_test, changelog.json | DONE | Version bump + release checklist when user cuts next build (changelog entry already has feature notes under 3.3.0/2026-11) | changelog.json also carried a pre-existing `Unreleased`→`3.3.0` rename — committed along since file was touched anyway. Guns with zero direct synergy entries (21 guns) still show "No synergies to show" — game-accurate, LEB gives them nothing. Item details unchanged (SynergiesSection) |
 | VISUAL (Devin) | 2026-10-31 | master (sole agent) | app `f13ecd3` | **Neo-Skeuo Phase A** — `AppThemeMode.neoSkeuo` (cream paper + ink kit look): enum+flair+kVisibleThemes (toggle-only, NOT kPickerThemes), bundled ShantellSans, ColorScheme.light gate, enter/exitSkeuo prev-mode+font restore. `lib/widgets/skeuo/` kit (tokens, SkeuoSurface w/ hatched offset shadow + press physics, SkeuoButton, SkeuoPaperBackdrop). Menu reskin + pencil toggle top-right + 'Style Demo' → spec-sheet lab screen. Overlay suppresses ambiance per-mode; customization locked (menu/run-tools/settings/studio guard); run-tools NEO-SKEUO row. Fixed Contrast.luminance /255-on-normalized bug | app_theme*, app_theme_modes, theme_data_tables, contrast, theme_overlay, main_menu, experience_studio, active_run_helpers, settings_tab, skeuo/ (3), neo_skeuo_lab, neo_skeuo_test, pubspec, font ttf, DESIGN.md | DONE — Phase A | User visual review of demo lab → iterate skeuo kit; Phase B = roll SkeuoSurface into real screens (browse rows, detail, dashboards, dialogs, nav) | Another agent had WIP in tree mid-session (mp_*, item_detail, gun/item models, format reflows) — committed explicit paths only. `neoSkeuo` must stay OUT of kPickerThemes (studio locked). ShantellSans TTF is the OFL variable font (Light→ExtraBold) |
 | VISUAL (Devin) | 2026-10-31 | master | app `7eb0c0b` (park), `05ce61f` (revert of bad `d220062`) | **Neo-Skeuo PARKED per user request** — `kNeoSkeuoEnabled=false` hides home chip + run-tools row + `enterSkeuo()` no-op. The round-3 hex/white/black `Skeuo.collapse` sweep went bad (const→final repair spiraled ~70 files, 54 errors) — full batch reverted; `collapse()` method re-added to tokens to fix the surviving call sites it orphaned. Analyze clean. All good work kept: inkIf sweep `028b276`, SkeuoNavBar `caa9c92`, motion pass `ef42f0f` | skeuo_tokens, app_theme, main_menu, active_run_helpers | DONE — parked | Resume: flip flag true → redo hex sweep in SMALL batches (guard `final`-in-expression, exclude palette-data files ALWAYS). `collapse()` already correct | The reverted `d220062` was `git add -A` — violated AC rule, swept other-agent WIP; revert restored them. ~500 wrap sites are GONE (not saved — redo cleanly) |
 | VISUAL (Devin) | 2026-10-31 | master | app `49fe494` | **Skeuo ink-collapse sweep** — `Skeuo.inkIf(c)`: skeuo-active luminance>0.3 colors fold to ink (neon chrome → pencil shading); wrapped 164 `Colors.*` sites across item_detail; fixed part-of import damage + const-eval violations + `limeAccent` truncation. Verified: 507 tests green, analyze clean. Phase B = item detail now ink-only |
