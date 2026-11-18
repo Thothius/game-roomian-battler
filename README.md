@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <img alt="Version" src="https://img.shields.io/badge/version-1.8.0-00E5FF?style=flat-square&logo=flutter">
+  <img alt="Version" src="https://img.shields.io/badge/version-3.4.1-00E5FF?style=flat-square&logo=flutter">
   <img alt="Platform" src="https://img.shields.io/badge/platform-Android-FF007F?style=flat-square">
   <img alt="Data" src="https://img.shields.io/badge/wiki_data-509_verified-E040FB?style=flat-square">
 </p>
@@ -20,8 +20,8 @@
 ## 📥 DOWNLOAD
 
 <p align="center">
-  <a href="https://github.com/Thothius/GungeonMate/releases/latest/download/GungeonMate-v1.8.0.apk">
-    <img src="https://img.shields.io/badge/⬇_DOWNLOAD_APK-v1.8.0-FF007F?style=for-the-badge&labelColor=1E1E22&color=FF007F" height="72" alt="Download APK">
+  <a href="https://github.com/Thothius/GungeonMate/releases/latest/download/GungeonMate-v3.4.1.apk">
+    <img src="https://img.shields.io/badge/⬇_DOWNLOAD_APK-v3.4.1-FF007F?style=for-the-badge&labelColor=1E1E22&color=FF007F" height="72" alt="Download APK">
   </a>
 </p>
 
@@ -49,13 +49,15 @@
 - **Local Co-Op** — Add a second player with character's default loadout, long-press to transfer items between players
 - **Gunfortuna Dice** — Multiplayer dice game with sparkle particles and decline protocol
 
-### 🎨 Style Lab & Themes
-- **12+ Themes** — Forge Master, Robot's Core, Unicorn (7 palettes: Rainbow, Aurora, Galaxy, etc.), Custom color editor with 6 slots and 24 curated Gungeon colors per slot
+### 🎨 Customization Studio
+- **Preset Flow** — Browse official + your saved presets (list or card gallery) or build new from scratch / copy an existing look; 3 quick slots for one-tap favorites
+- **Full Editor** — DETAILS / COLORS & BG / TYPE / PARTICLES / AMBIANCE / SAVE tabs with a live fullscreen mock preview
+- **Grouped Palettes** — Every color picker has base, metallic, pink & purple, blue & cyan, green & minty collections; global panel chrome styles cards, run tiles and the bottom nav
+- **Particle Engine** — 7 shape types, 18 color palettes, physics toggles, size/opacity/speed — or float 12 real game items (blanks, hearts, bombs...)
+- **Ambiance** — Glow, vignette, film grain, FOG/RAIN shaders, tap sparkles + haptics; 4 background modes (gradient, solid, none, 46 wallpapers)
 - **Goopian Language Mode** — Toggle between English and animated Goopian alien text across the entire app
+- **22 Themes** — Forge Master, Robot's Core, Unicorn (7 palettes), Bullet Hell, Resourceful Rat, Lord Jammed, custom color editor
 - **Animated Dashboard Border** — Every theme paints its signature accent color as a slow breathing glow around the player dashboard
-- **Particle Engine** — 15+ presets including Bullet Kin Parade, Heart Containers, Cursed Skulls, Master Rounds, Jam Swarm, Unicorn Sparkles, Cosmic Dust, Golden Sparkle, Rainbow Confetti
-- **Custom Wallpapers** — 10 curated WebP backgrounds, gyro parallax, font controls, text scaling
-- **Immersive Theme Picker** — Full-screen swipe-to-preview with live rendering, palette tags, and one-tap apply
 
 ### 🔧 Utilities
 - **Run Log** — Full chronological event log with category colors, curse/coolness tracking, legend
