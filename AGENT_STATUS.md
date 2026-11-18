@@ -86,7 +86,7 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 | Slot | Assigned Agent | Status | Working On | Last Heartbeat |
 | :--- | :--- | :--- | :--- | :--- |
 | **Slot 1** | **VISUAL (Devin)** | `DONE` | Settings reorg shipped `804fc84`; MP/char-select/avatar views assessed polished. Customization files untouched — other agent mid-refactor. Slot released. | 2026-11-18 | (LEB shared ticker + hoisted row body + neutral LOCKED rows). Customization files untouched — other agent's `studio_flow.dart` WIP seen in main WD. Slot released. | 2026-11-18 |
-| **Slot 2** | **CORE (Devin)** | `ACTIVE` | Preset pick-or-create MVP shipped `d99209c` (choose → gallery/source → wizard DETAILS/COLORS&BG/TYPE/PARTICLES/AMBIANCE/SAVE + mock preview) + TAP FX ambiance row (tapSparkles pref + haptics chips). Full suite 531/~9 green, analyze clean. v3.4.0 bump still pending user approval | 2026-11-18 |
+| **Slot 2** | **CORE (Devin)** | `ACTIVE` | Preset pick-or-create MVP shipped `d99209c` + bg-mode chips/full-ambiance mock preview `6e44cd7` (SOLID/WALLPAPER row, glow/vignette/grain in preview). TAP FX ambiance row (tapSparkles pref + haptics chips). Full suite 531/~9 green, analyze clean. v3.4.0 bump still pending user approval | 2026-11-18 |
 | **Slot 3** | **PARALLEL (Devin A2)** | `DONE` | **4-way polish** `b2ad1a3` + badge icon → double-chevron `8213c14` (matches game's synergy marker). Effects strip ~50% shorter, detail tag pills removed, synergies compact rows, color-coded glow → uniform blue badge. ⚠️ `main_menu_test` still open (hub owner). Slot released | 2026-10-31 |
 | **Slot 4** | **SUPPORT (Devin)** | `DONE` | Reference screenshots landed `dacbef9` → `design-lab/reference/` (8 PNGs + README). Slot released | 2026-10-31 |
 
