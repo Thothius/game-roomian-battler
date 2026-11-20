@@ -59,6 +59,11 @@ Key invariants to preserve:
 
 ## 3. Workstream status
 
+> **ALL SESSIONS SHIPPED 2026-11-20 — v3.6.0+166** (`0df69ee`).
+> S1 `4a2cd69` · S2 `7877b45`+`51c2ab5` · S3 `e6cd8cb` ·
+> S4 `c48df52` · S5 `37890ba` · S6 `0df69ee` (+`db9a488` preview shield).
+> Full analyze clean, 603 tests pass.
+
 ### A. Studio core ✅
 
 - Sprite orientation fix (WEBP fallback) — shipped `246ddfb`.
@@ -73,59 +78,53 @@ Key invariants to preserve:
 - Remaining polish (⬜): consider a tiny "session seed" label; verify
   MP-only widgets never appear (MpSession.isActive=false path already).
 
-### C. Particles — final form 🟡
+### C. Particles — final form ✅ (`4a2cd69`)
 
-Done this session:
-- `ParticleLook` record typedef + `kParticleLooks` — **12 curated
-  configs** (shape × palette × count/size/opacity × speed × glow ×
-  physics × optional sprite) in `theme_data_tables.dart`.
-- `VisualPrefs.particleSpritePath` — full persistence + JSON round-trip.
-- `VisualPrefs.applyParticleLook()` (one persist) +
-  `matchesParticleLook()` (tile highlight).
+All items landed: `ItemIconField` path refactor, overlay sprite branch,
+LOOKS row (12 tiles), ANY SPRITE picker over all gun/item WEBPs,
+mutual-exclusion taps, tests. Plus 10 new `ParticleType`s appended
+(star/bolt/heart/skull/paw/crescent/hexagon/smoke/scale/triangle —
+persisted indices untouched) and all 11 glow effects exposed.
 
-Remaining (⬜):
-1. `ItemIconField`: swap `iconIndex` → `iconPath` (single call site).
-2. `buildBackdropParticleField`: `particleSpritePath` branch before
-   `particleItemIcon`.
-3. Studio UI: LOOKS row (12 tiles w/ palette-dot previews + active
-   highlight) at top of PARTICLES tab; "ANY SPRITE…" picker row under
-   ITEM ICONS; `_SpritePickerSheet` (rootBundle guns/items JSON → name +
-   `localGunIcon`/`localItemIcon` path, searchable grid, tap=pick).
-4. OFF/curated-icon taps must clear `particleSpritePath` (and vice
-   versa) to keep the three modes mutually exclusive.
-5. Tests: 12-look round-trip, spritePath persist, matcher correctness.
+### D. Color system ✅ (`7877b45`)
 
-### D. Color system ⬜
+- **6 favorite slots** shipped as `ColorFavorites` service
+  (`vp.color_favorites` key) — stable indices, start empty, tap
+  filled = use / tap empty = fill / long-press = change-or-clear.
+  Lives inside `_PaletteColorSheet` so every color control gets it.
+- **Inline role mocks**: live composite app-slice (stat, card, prime
+  button, bullet glyph, secondary text) in COLORS & BG repaints all
+  six roles at once.
+- **Panel-chrome mock**: card + nav-pill rendered from resolved
+  `flairFor` output inside the PANELS section.
 
-- **6 favorite slots** in `_PaletteColorSheet`: `studio.favoriteColors.v1`
-  JSON list, -1=empty, stable indices, start empty. Tap filled = pick;
-  long-press or tap-empty = arm slot → next swatch tap writes it.
-- **Inline role mocks**: `_colorRoleRow` gains a `mock` widget —
-  scaffold=mini screen, card=panel, primary=button, secondary=text,
-  headline=big stat, bullet=glyph — all live from `_draft`.
-- **Panel-chrome mock**: mini UI (nav bar + card) inside the existing
-  `ValueListenableBuilder` showing panelColor/opacity/border/radius live.
+### E. Wallpaper immersion ✅ (`e6cd8cb`)
 
-### E. Wallpaper immersion ⬜
+- `VisualPrefs.wallpaperImmersive` (bool, persist + theme JSON,
+  `vp.wallpaper_immersive_v1`).
+- `CustomWallpaper` is now stateful: 18s breathing zoom
+  (1.18× overscan → 1.23× peak) + tilt parallax (±16px) off the
+  shared `ThemeOverlay.tiltNotifier`; scrim stays frame-locked.
+- Toggle = IMMERSIVE chip in the wallpaper picker sheet.
+- Reduced-motion renders a static composed frame.
 
-- `VisualPrefs.wallpaperImmersive` (bool, persist + preset JSON).
-- `CustomWallpaper` layer: subtle slow zoom (scale 1.0→1.06 loop,
-  ~20s, reduced-motion aware) + accelerometer/gyroscope parallax
-  (±6px translate, lerped). Toggle row in AMBIANCE or COLORS & BG.
-- Fallback: no sensors → zoom only.
+### F. MP polish ✅ (`c48df52` + `37890ba`)
 
-### F. MP polish ⬜ (bigger — its own sessions)
-
-1. **Name beside avatar**: MP player panel — name inline right of
-   avatar; cool/curse/synergy cluster right-aligned.
-2. **Avatar idle life**: custom avatars get subtle idle motion
-   (breathing scale 1.0↔1.02, occasional blink/squash, parallax tilt
-   on device motion) — `AvatarAura`-adjacent wrapper, reduced-motion safe.
-3. **Connect handshake + splash**: lobby flow gains explicit CONNECT
-   confirm on main; while pending, splash screen = both players' names
-   + avatars huge in bg, slight ken-burns/float animation, VS-style
-   split. Requires MpSession state additions (`handshakePending`) —
-   protocol-safe (UI-only until handshake ack exists).
+1. **Name beside avatar** ✅ — `ParadoxPlayerPanel` shows nickname +
+   YOU/PARTNER tag inline right of the avatar; COOL/CURSE/SYN pinned
+   right via scale-down FittedBox.
+2. **Avatar idle life** ✅ — `FramedAvatar(idle: true)` wraps portraits
+   in a 4s breathing/sway/bob loop, phase-offset per avatar id,
+   reduced-motion safe. Enabled on run panel, player tab header,
+   lobby, connect.
+3. **Connect handshake + splash** ✅ — `MpConnectScreen` connected
+   state is now a VS splash (108sf portraits, pulsing VS medallion,
+   drifting player-color glows). Fresh pairings: host taps READY →
+   `session.sendStartRun()` fires the existing `MpStartRun` wire
+   message; sidekick enters via `onStartRun` callback; both run timers
+   arm on receipt (`_startRunTimer` wired into both onStartRun paths).
+   Reconnects/restores/demo skip the gate and auto-enter, followed by
+   an ENTERING THE GUNGEON beat. Protocol-safe — no wire changes.
 
 ---
 
