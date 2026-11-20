@@ -57,3 +57,39 @@
 - **Findings:** picker `_GungeoneerPage._loadout` guesses icons via `localGunIcon/localItemIcon` slug (never verifies asset exists, no quality ring, 'Random' → broken-image fallback); detail `_LoadoutPage` mixes guns+items+armor into ONE unlabeled Wrap (indistinguishable), resolves via provider but `showRing:false`/size 22 vs picker's ring/size 30 — the two views disagree visually.
 - **Severity:** Low-Medium (UX polish)
 - **Status:** Fixed in app `a6f4336` — detail LOADOUT split into labeled GUNS/ITEMS + armor; picker resolves via provider (quality rings, Random shuffle, dim+strikethrough on misses); both views now identical.
+
+### U-006 — Applying a saved preset silently toggles IMMERSIVE wallpaper mode
+- **Reported:** 2026-11-25 — found in Slot 4 QA/code-review pass over the customization + MP batch (`246ddfb..HEAD`)
+- **Root cause:** `wallpaperImmersive` lives in `VisualPrefs` (app-level pref) but was serialized into every saved preset's `prefs.toJson()`. All three preset-restore sites (`_previewGalleryEntry`, `_applyEntry`, `_seedFromEntry` in `experience_studio_screen.dart`) swapped the whole snapshot, so applying/seeding/previewing a preset flipped the user's immersive toggle to whatever it was when the preset was saved.
+- **Severity:** Medium (silent app-wide setting change; contradicts the in-code "app-level pref, not part of the theme draft" contract)
+- **Status:** Fixed (uncommitted, QA pass) — new `VisualPrefs.preserveAppLevel()` wraps all three restore sites; `wallpaperImmersive` removed from preset `toJson`; `custom_wallpaper_test.dart` updated to pin the new contract.
+
+### U-007 — Avatar idle animation burns vsync under reduced-motion
+- **Reported:** 2026-11-25 — found in Slot 4 QA/code-review pass
+- **Root cause:** `_AvatarIdle` (avatar_frame.dart) started its 4s `AnimationController.repeat()` unconditionally; `build` returned the static child under `MediaQuery.disableAnimationsOf`, but the controller kept ticking every frame for every idle avatar (lobby, player panel, MP portraits).
+- **Severity:** Low (battery/perf; no visual defect)
+- **Status:** Fixed (uncommitted, QA pass) — controller now starts/stops via `didChangeDependencies` on the reduced-motion flag.
+
+### U-008 — Multi-word Google Fonts silently fall back to default typeface
+- **Reported:** 2026-11-25 — found during google_fonts 6→9 upgrade assessment
+- **Root cause:** `app_theme.dart` built the bundled family as `'GoogleFonts.${selectedFont.label}'` where `label` keeps spaces ('DM Sans', 'Press Start 2P', 'JetBrains Mono'…). Pubspec declares the space-stripped names ('GoogleFonts.DMSans', 'GoogleFonts.PressStart2P'…). ~14 of 29 pickable fonts never matched a declared family → silent fallback to system font. Same class of bug in `AppFont.textStyle`/`textTheme` (used `GoogleFonts.getFont`/`getTextTheme`, which return runtime-fetch family names that also don't match bundled assets — the v6 code comment already documented this failure mode).
+- **Severity:** Medium (wrong typeface for roughly half the font picker, offline AND online)
+- **Status:** Fixed (uncommitted) — new `AppFont.bundledFontFamily` getter is the single source of truth (`label.replaceAll(' ', '')` for Google fonts); `app_theme.dart`, `textStyle`, `textTheme`, studio TYPE header, and the Neo-Skeuo clean theme all route through it. google_fonts v9 `TextTheme` type incompatibility resolved by dropping the package calls entirely.
+
+### U-009 — Co-op "active synergy" counted pieces split across both players
+- **Reported:** 2026-11-20 — synergy/LEB correctness audit (Slot 4, Gemini-verified game mechanics)
+- **Root cause:** `RunProvider.getActiveSynergiesCombined()`, the gun-detail ALL pager page, and `ItemDetailScreen` all computed `active` against `runState.allItemNames` — the UNION of P1+P2 inventories. Enter the Gungeon evaluates synergies strictly per `PlayerController` (no cross-player union), so a synergy whose pieces were split across the two players displayed COMPLETE / counted in run stats while never actually triggering in-game.
+- **Severity:** High (actively misleading co-op status + synergy-count stats)
+- **Status:** Fixed (uncommitted) — combined query now counts a synergy only when ONE player's own inventory satisfies it; ALL page and item detail pass per-player `active` while keeping combined inventory for missing-piece display. `test/coop_synergy_per_player_test.dart` pins the semantics (4 tests).
+
+### U-010 — LEB simulated view listed game-excluded synergies
+- **Reported:** 2026-11-20 — same audit
+- **Root cause:** the LEB ghost page rendered every synergy containing the viewed gun, including entries the game flags `IgnoreLichEyeBullets` (verified: Rubenstein's Monster — prevents instant floor-1 RUBE-ADY fusion).
+- **Severity:** Low-Medium (simulated view over-promised)
+- **Status:** Fixed (uncommitted) — `kLebExcludedSynergies` filter + `_LebBlockedNote` footnote naming excluded synergies.
+
+### U-011 — `any_of` synergy data can't express multi-pick optional pools
+- **Reported:** 2026-11-20 — same audit
+- **Root cause:** game requirements are mandatory lists + optional pools gated by `NumberObjectsRequired`; our JSON only models "all items + ≥1 anyOf". Known-wrong entries: `360 Yes Scope` (anchor/pool inverted — misses the scope/accuracy pool), `Smart Bombs`, `Unbelievably Charming`, `Tea for Two` (incomplete pools). Also `Resourceful Indeed,` trailing-comma name typo.
+- **Severity:** High (data correctness — wrong active/missing states)
+- **Status:** Open — needs schema extension or curated overrides; see `docs/SYNERGY_AUDIT_2026.md`.
