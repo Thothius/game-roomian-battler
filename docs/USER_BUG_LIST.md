@@ -93,3 +93,21 @@
 - **Root cause:** game requirements are mandatory lists + optional pools gated by `NumberObjectsRequired`; our JSON only models "all items + ≥1 anyOf". Known-wrong entries: `360 Yes Scope` (anchor/pool inverted — misses the scope/accuracy pool), `Smart Bombs`, `Unbelievably Charming`, `Tea for Two` (incomplete pools). Also `Resourceful Indeed,` trailing-comma name typo.
 - **Severity:** High (data correctness — wrong active/missing states)
 - **Status:** Open — needs schema extension or curated overrides; see `docs/SYNERGY_AUDIT_2026.md`.
+
+### U-012 — `assets/images/game/` is ~97% bundled dead weight
+- **Reported:** 2026-11-25 — full asset inventory pass (Slot 4)
+- **Root cause:** 614 raw game PNGs (237 guns, 262 items, 103 enemies, 12 bosses) ship in the APK, but code references only 13 gun sprites — 12 in `home_backdrop.dart` `driftGuns` (menu flock) + 1 in `neo_skeuo_lab_screen.dart`. The rest are never loaded.
+- **Severity:** Low (≈900 KB APK weight; no user-facing defect)
+- **Status:** Open — either delete the unused tree or document it as a deliberate sprite source. If deleted, keep the 13 referenced files.
+
+### U-013 — 12 theme splash slugs point at missing artwork
+- **Reported:** 2026-11-25 — asset inventory pass
+- **Root cause:** `AppThemeMode.splashSlug` maps 26 themes but `assets/images/themes/splash/` only has 14 JPGs. Missing: `the_cultist`, `the_gunslinger`, `the_convict`, `the_hunter`, `the_pilot`, `the_rat`, `the_breach`, `lead_lord_keep`, `the_oubliette`, `black_powder_mine`, `bullet_hell`, `rg_department`. `themeSplashPath()` still returns a path → studio theme panel silently shows gradient fallback.
+- **Severity:** Low (cosmetic inconsistency in studio/gallery previews)
+- **Status:** Open — generate or source the 12 splash JPGs, or trim the slug map.
+
+### U-014 — Wallpaper set is 40% of image payload (12 MB / 46 files)
+- **Reported:** 2026-11-25 — asset inventory pass
+- **Root cause:** `assets/images/wallpapers/custom/wp_01–46.webp` average ~270 KB each — full-res sources kept as-is. Already on the deferred list as "wallpaper re-encode pipeline" (normalize ≥1200px, consistent crop).
+- **Severity:** Low (APK/download size only)
+- **Status:** Open — re-encode pass; est. large savings since these are photographic-style wallpapers.
