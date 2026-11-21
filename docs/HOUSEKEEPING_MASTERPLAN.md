@@ -15,10 +15,10 @@ Legend: **[bug]** correctness · **[perf]** performance ·
 | # | Task | Ref | Effort |
 |---|------|-----|--------|
 | ~~H1~~ | **any_of multi-pick pools** — DONE: `groups` AND-of-OR schema added; Smart Bombs/Unbelievably Charming/Super Serum regrouped, Tea for Two pool completed, `Resourceful Indeed` typo fixed, `360 Yes Scope` verified correct | U-011 | M |
-| H2 | **TIERS test regression** — `browse_synergies` test-side failure noted since v3.2.x | deferred | S |
-| H3 | **Browse row overflow ≤500px** — narrow-width layout overflow in browse rows | deferred | S |
-| H4 | **MP first-endpoint mis-pair race** — edge case in endpoint pairing | deferred | M |
-| H5 | **Host-gone hint/watchdog polish** — beyond current implementation | deferred | S |
+| ~~H2~~ | **TIERS test** — already fixed (`bfd8c36`/`df06981` stale expectations); test green in full suite | deferred | S |
+| ~~H3~~ | **Browse row overflow ≤500px** — fixed `5cbf7c6` (pill ellipsis + drop prototypeItem); 500px test green | deferred | S |
+| ~~H4~~ | **MP mis-pair race** — fixed `7be7537` (`_initiatedIds` handshake guard in mp_link.dart, verified present) | deferred | M |
+| ~~H5~~ | **Host-gone hint** — shipped `7be7537` (`onDisconnectElapsed` → banner/paradox bar, mp_recovery.dart) | deferred | S |
 | H6 | **12 missing theme splash JPGs** — generate/source art for the_cultist, gunslinger, convict, hunter, pilot, rat, breach, lead_lord_keep, oubliette, black_powder_mine, bullet_hell, rg_department — or trim slug map | U-013 | M |
 
 ## Tier 2 — Data & asset hygiene
@@ -29,7 +29,7 @@ Legend: **[bug]** correctness · **[perf]** performance ·
 | H8 | **Wallpaper re-encode** — normalize 46 custom webps (≥1200px, consistent crop, recompress); ~12 MB → est. large savings | U-014 | M |
 | H9 | **`synergy_meta.json` coverage** — only 110/395 synergies classified; second pass would make CO-OP/TEAM/ONE-PLAYER tags + fx chips honest for the rest | audit F5 | L |
 | H10 | **Expand `kLebExcludedSynergies`** — add confirmed `IgnoreLichEyeBullets` cases (unlock/quest-gated synergies) as verified | audit | S |
-| H11 | **JSON mojibake sweep** — `�` characters in data JSONs | deferred | S |
+| ~~H11~~ | **JSON mojibake** — sweep found zero `�` in assets/data/*.json | deferred | S |
 | H12 | **U-001 screenshot recapture** — `08_char_select.png` white/blank | U-001 | S |
 
 ## Tier 3 — Performance
