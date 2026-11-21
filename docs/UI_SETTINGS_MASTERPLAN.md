@@ -265,11 +265,11 @@ Files: `main_menu_screen.dart`, `settings_tab.dart`, `settings_sections.dart`,
 - Remove `kHomeGalaxyAsset`, delete/neutralize the dead menu base layer +
   stale comments, keep `currentScreenIndex` sparkle gating.
 
-### WP-5 — Skeuo coverage pass — ASSESSED, deferred
-MP/quiz/char-select screens are already flair-driven (`flair.scaffold` scrims,
-`flair.primary` buttons, GoopText ink-collapse). Remaining gap: raw accent
-`Icon`/`Color()` literals aren't `Skeuo.inkIf`-wrapped — cosmetic polish debt,
-not breakage. Revisit if skeuo-on-MP screenshots look off.
+### WP-5 — Skeuo coverage pass ✅ SHIPPED `9a3e2df`
+MP/char-select/ammonomicon confirmed flair-driven (paper/ink flair under
+skeuo + GoopText collapse) — no changes needed. Fixed the real gaps:
+quiz streak/flawless/hint golds + correct/wrong colors and stats cool/curse
+pair now `Skeuo.inkIf`/`collapse` wrapped.
 - Enumerate pushed screens with own dark surfaces: mp_connect, mp_lobby,
   quiz/*, cool_curse (fixed by WP-3), character_select.
 - For each: confirm `GoopText` ink-collapse covers text; wrap accent colors
