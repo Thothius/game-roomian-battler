@@ -58,3 +58,16 @@ mechanic, cross-checked against our `synergies.json` /
 - `synergy_meta.json` covers only 110/395 synergies — unclassified
   default to BOTH; a second classification pass would improve tag
   honesty.
+
+
+## Addendum 2026-11-25 — full pool cross-validation vs `tools/gungeon_dump.json`
+
+All 343 synergies with `game_name_key` were compared against the UnityPy
+dump's `mandatoryGuns/Items` + `optionalGuns/Items` pools. **17 entries had
+wrong/incomplete pools** — corrected in app `9e48e86` (Pea Cannon,
+Plant Power, Alternative Rock, Natural Selection, Paperwork, Full Circle,
+Lotus Bloom, I need scissors! 61!, What A Thrill, Sniper Woof, Relodestar,
+Tile Match, The Void Corps, BEES, Deadly/Frosty Distraction, Blade Runner).
+Notable: `required=2` in the dump is NOT total-pickups — Resourceful Indeed
+confirmed all-4 via wiki; `Junk` id 580 collides with SackKnightBoon (U-015).
+LEB exclusions expanded per official wiki (The Submachinist, Detective Mode).

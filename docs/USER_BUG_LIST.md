@@ -94,6 +94,12 @@
 - **Severity:** High (data correctness — wrong active/missing states)
 - **Status:** Fixed — new `groups` field (AND-of-OR pools) on `Synergy`; `Smart Bombs` = (Bomb|Ice Bomb)+(Crutch|Homing Bullets), `Unbelievably Charming` = (Charmed Bow|Shotgun Full of Love)+(Charming Rounds|Pink Guon Stone), `Super Serum` = (Plague Pistol|Plunger)+(Gas Mask|Hazmat Suit); `Tea for Two` pool expanded to all 12 valid companions (Dog/Turtle Problem excluded per wiki); `Resourceful Indeed,` renamed (fixes broken item cross-links). `360 Yes Scope` verified CORRECT as-is (Scope + A.W.P./Sniper Rifle — audit's "inverted" claim was wrong). Name-based hardcodes in `matchesOwnedSet` removed. Tests: `synergy_logic_test.dart` groups coverage.
 
+### U-015 — `items.json` id collision: `Junk` claims id 580 (dump: SackKnightBoon companion)
+- **Reported:** 2026-11-25 — dump cross-validation pass (Slot 4)
+- **Root cause:** our `Junk` passive ("often spawned by destroying chests") carries `id: 580`, but the game dump resolves 580 to `SackKnightBoon` (CompanionItem). Either Junk's id is wrong or two objects share the slot. `Ser Junkan 1` has `id: null` — the real Ser Junkan id is unset.
+- **Severity:** Low — no synergy references Junk by id; only affects game_ids joins/provenance.
+- **Status:** Open — assign correct ids or null Junk's id pending provenance check.
+
 ### U-012 — `assets/images/game/` is ~97% bundled dead weight
 - **Reported:** 2026-11-25 — full asset inventory pass (Slot 4)
 - **Root cause:** 614 raw game PNGs (237 guns, 262 items, 103 enemies, 12 bosses) ship in the APK, but code references only 13 gun sprites — 12 in `home_backdrop.dart` `driftGuns` (menu flock) + 1 in `neo_skeuo_lab_screen.dart`. The rest are never loaded.
