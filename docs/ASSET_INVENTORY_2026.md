@@ -34,7 +34,7 @@ Snapshot of everything under `gungeon_mate/assets/` and its consumers.
 | `images/themes/splash/` | 14 jpg | 1.6 MB | theme splash art (12 slugs missing → U-013) |
 | `images/wallpapers/custom/` | 46 webp | **12 MB** | wallpaper picker (~270 KB each → U-014) |
 | `images/wallpapers/animated/` | 1 mp4 | 2.4 MB | home galaxy vortex (`kHomeGalaxyAsset`) |
-| `images/game/` | 614 png | 911 KB | **mostly dead** — only 13 gun sprites used (U-012) |
+| `images/game/` **(culled `edf7b77`: 614→12 PNGs — only `guns/` remains, 76KB)** | 614 png | 911 KB | **mostly dead** — only 13 gun sprites used (U-012) |
 
 ## Other dirs
 
@@ -47,6 +47,6 @@ Snapshot of everything under `gungeon_mate/assets/` and its consumers.
 
 ## Open findings
 
-- **U-012** — `images/game/` ~97% unused (13 of 614 referenced).
+- **U-012** — `images/game/` **(culled `edf7b77`: 614→12 PNGs — only `guns/` remains, 76KB)** ~97% unused (13 of 614 referenced).
 - **U-013** — 12 theme splash slugs lack JPGs (see USER_BUG_LIST for list).
 - **U-014** — wallpapers = 40% of image payload; re-encode deferred.

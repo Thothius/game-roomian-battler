@@ -25,7 +25,7 @@ Legend: **[bug]** correctness · **[perf]** performance ·
 
 | # | Task | Ref | Effort |
 |---|------|-----|--------|
-| H7 | **`images/game/` dead weight** — delete ~600 unused PNGs, keep the 13 referenced by `home_backdrop.dart`/`neo_skeuo_lab_screen.dart` (or document as intentional sprite source) | U-012 | S |
+| ~~H7~~ | ~~`images/game/` dead weight~~ — **DONE `edf7b77`**: 602 PNGs deleted, 12 live icons kept, pubspec trimmed | U-012 | S |
 | ~~H8~~ | **Wallpaper re-encode** — DONE `968fe55`: dims already ≤1200px; uniform q80/method=6 → 12.1→10.1 MB (~2 MB APK saved). q75 would save ~5 MB but risks banding on dark art — held at safe quality | U-014 | M |
 | H9 | **`synergy_meta.json` coverage** — only 110/395 synergies classified; second pass would make CO-OP/TEAM/ONE-PLAYER tags + fx chips honest for the rest | audit F5 | L |
 | ~~H10~~ | **Expand `kLebExcludedSynergies`** — DONE `9e48e86`: +The Submachinist (dual-wield) +Detective Mode (needs Badge) per official LEB wiki exception list | audit | S |

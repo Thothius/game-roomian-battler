@@ -98,13 +98,13 @@
 - **Reported:** 2026-11-25 — dump cross-validation pass (Slot 4)
 - **Root cause:** our `Junk` passive ("often spawned by destroying chests") carries `id: 580`, but the game dump resolves 580 to `SackKnightBoon` (CompanionItem). Either Junk's id is wrong or two objects share the slot. `Ser Junkan 1` has `id: null` — the real Ser Junkan id is unset.
 - **Severity:** Low — no synergy references Junk by id; only affects game_ids joins/provenance.
-- **Status:** Open — assign correct ids or null Junk's id pending provenance check.
+- **Status:** Fixed — `edf7b77` deleted all 602 unreferenced PNGs (bosses/enemies/items dirs + 225 guns), kept the 12 live icons; pubspec asset dirs trimmed
 
 ### U-012 — `assets/images/game/` is ~97% bundled dead weight
 - **Reported:** 2026-11-25 — full asset inventory pass (Slot 4)
 - **Root cause:** 614 raw game PNGs (237 guns, 262 items, 103 enemies, 12 bosses) ship in the APK, but code references only 13 gun sprites — 12 in `home_backdrop.dart` `driftGuns` (menu flock) + 1 in `neo_skeuo_lab_screen.dart`. The rest are never loaded.
 - **Severity:** Low (≈900 KB APK weight; no user-facing defect)
-- **Status:** Open — either delete the unused tree or document it as a deliberate sprite source. If deleted, keep the 13 referenced files.
+- **Status:** Fixed — `edf7b77` removed all 602 unreferenced `images/game/` PNGs (bosses/enemies/items dirs deleted entirely, 225 dead guns culled); the 12 live icons kept; pubspec asset dirs trimmed to `guns/` only.
 
 ### U-013 — 12 theme splash slugs point at missing artwork
 - **Reported:** 2026-11-25 — asset inventory pass
