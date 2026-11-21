@@ -239,7 +239,7 @@ Each package = one commit-sized unit; all on `master` (sole-agent rule unless
 board says otherwise). Version bump + release checklist only on the last
 package or per user request.
 
-### WP-1 — Settings IA restructure (the big one)
+### WP-1 — Settings IA restructure ✅ SHIPPED `48bf8fd`
 Files: `main_menu_screen.dart`, `settings_tab.dart`, `settings_sections.dart`,
 `active_run_helpers.dart`, `settings_screen.dart`.
 - Add "Settings" gear chip to main menu — small chip top-left mirroring the
@@ -248,7 +248,7 @@ Files: `main_menu_screen.dart`, `settings_tab.dart`, `settings_sections.dart`,
 - Decide RUN TOOLS/MULTIPLAYER-in-Settings disposition per §2 Option A.
 - Update tests touching settings nav.
 
-### WP-2 — Dead pref removal + bgMode picker (all 4 modes)
+### WP-2 — Dead pref removal + bgMode picker ✅ SHIPPED `4fe215a` (bgMode picker already existed — verified all 4 chips live)
 - `periodicGridColumnCount`: **delete** pref + `setPeriodicGridColumnCount`;
   simplify `player_page.dart:567` to auto column count (`w<360?3 : w<600?4 : 6`).
 - `bgMode`: add Wallpaper/Solid/Gradient/None segmented picker to Studio
@@ -256,16 +256,20 @@ Files: `main_menu_screen.dart`, `settings_tab.dart`, `settings_sections.dart`,
   0–3). Gradient needs stop colors — reuse canvas color fields or add two
   stop pickers; check what CANVAS already edits before designing.
 
-### WP-3 — cool_curse_screen re-skin
+### WP-3 — cool_curse_screen re-skin ✅ SHIPPED `bc9ff19`
 - Replace hardcoded `0xFF0D0716/0xFF140B22/B388FF/4DD0E1/BA68C8` with
   `AppTheme.flair` tokens + `Skeuo.inkIf` semantics; transparent scaffold so
   ThemeOverlay shows through (match other pushed screens).
 
-### WP-4 — ThemeOverlay cleanup
+### WP-4 — ThemeOverlay cleanup ✅ SHIPPED `54a6596`
 - Remove `kHomeGalaxyAsset`, delete/neutralize the dead menu base layer +
   stale comments, keep `currentScreenIndex` sparkle gating.
 
-### WP-5 — Skeuo coverage pass (audit, not blanket rewrite)
+### WP-5 — Skeuo coverage pass — ASSESSED, deferred
+MP/quiz/char-select screens are already flair-driven (`flair.scaffold` scrims,
+`flair.primary` buttons, GoopText ink-collapse). Remaining gap: raw accent
+`Icon`/`Color()` literals aren't `Skeuo.inkIf`-wrapped — cosmetic polish debt,
+not breakage. Revisit if skeuo-on-MP screenshots look off.
 - Enumerate pushed screens with own dark surfaces: mp_connect, mp_lobby,
   quiz/*, cool_curse (fixed by WP-3), character_select.
 - For each: confirm `GoopText` ink-collapse covers text; wrap accent colors
