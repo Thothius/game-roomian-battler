@@ -110,7 +110,7 @@
 - **Reported:** 2026-11-25 — asset inventory pass
 - **Root cause:** `AppThemeMode.splashSlug` maps 26 themes but `assets/images/themes/splash/` only has 14 JPGs. Missing: `the_cultist`, `the_gunslinger`, `the_convict`, `the_hunter`, `the_pilot`, `the_rat`, `the_breach`, `lead_lord_keep`, `the_oubliette`, `black_powder_mine`, `bullet_hell`, `rg_department`. `themeSplashPath()` still returns a path → studio theme panel silently shows gradient fallback.
 - **Severity:** Low (cosmetic inconsistency in studio/gallery previews)
-- **Status:** Open — generate or source the 12 splash JPGs, or trim the slug map.
+- **Status:** Fixed — all 12 missing slugs now have dedicated 1200×1200 sigil splash JPGs generated procedurally (palette-matched emblem + motif per theme, name set in its curated font; real painted art can replace the files later without code changes). Generator script kept at `tools/gen_sigil_splashes.py`. Splash-integrity tests assert every advertised `splashSlug` resolves to a file on disk and vice versa (no orphans). Ambience-mud guard shipped alongside: `VisualPrefs.ambienceLoad` counts heavy backdrop layers, studio shows an ATMOSPHERE LOAD meter with a THIN STACK escape hatch at BUSY+, and the overlay drops the disposable foreground dust field at max load.
 
 ### U-014 — Wallpaper set is 40% of image payload (12 MB / 46 files)
 - **Reported:** 2026-11-25 — asset inventory pass
