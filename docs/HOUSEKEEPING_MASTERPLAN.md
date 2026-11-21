@@ -37,7 +37,7 @@ Legend: **[bug]** correctness · **[perf]** performance ·
 
 | # | Task | Ref | Effort |
 |---|------|-----|--------|
-| H13 | **Synergy-scan recompute-per-build** — `getSynergiesFor`/`synergyCountFor` caches exist but scan still runs on inventory change paths; profile and memoize harder if needed | deferred | M |
+| ~~H13~~ | ~~Synergy-scan recompute-per-build~~ — **DONE `a69b56a`**: piece→synergy index + identity-guarded caches, `matchesOwnedSet` everywhere, group-aware count/partial caches | deferred | M |
 | H14 | **Ambience-mud guidance** — atmosphere + liquid + shader + particles can stack into visual mud; add intensity hint or mutual-exclusion nudge in studio | board | S |
 | ~~H15~~ | **`CustomWallpaper._syncMotion` in build** — DONE `257888c`: prefs/MediaQuery listener + didChangeDependencies drive the gate; build is side-effect free | QA obs | S |
 | ~~H16~~ | **Consolidate `onStartRun` wiring** — DONE `257888c`: shared `_onPeerStartRun`/`_onPeerSurprise`/`_onRecoveryElapsed` handlers; also fixed latent bug — `updateRunProvider` was dropping `onDisconnectElapsed` (host-gone hint lost after provider swap) | QA obs | S |
