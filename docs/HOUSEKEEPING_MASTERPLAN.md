@@ -14,7 +14,7 @@ Legend: **[bug]** correctness · **[perf]** performance ·
 
 | # | Task | Ref | Effort |
 |---|------|-----|--------|
-| H1 | **any_of multi-pick pools** — JSON can't express `NumberObjectsRequired`; fix schema or add curated overrides. Start with confirmed-bad: `360 Yes Scope` (inverted anchor/pool), `Smart Bombs`, `Unbelievably Charming`, `Tea for Two`; fix `Resourceful Indeed,` name typo | U-011 | M |
+| ~~H1~~ | **any_of multi-pick pools** — DONE: `groups` AND-of-OR schema added; Smart Bombs/Unbelievably Charming/Super Serum regrouped, Tea for Two pool completed, `Resourceful Indeed` typo fixed, `360 Yes Scope` verified correct | U-011 | M |
 | H2 | **TIERS test regression** — `browse_synergies` test-side failure noted since v3.2.x | deferred | S |
 | H3 | **Browse row overflow ≤500px** — narrow-width layout overflow in browse rows | deferred | S |
 | H4 | **MP first-endpoint mis-pair race** — edge case in endpoint pairing | deferred | M |

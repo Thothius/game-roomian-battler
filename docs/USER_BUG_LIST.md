@@ -92,7 +92,7 @@
 - **Reported:** 2026-11-20 — same audit
 - **Root cause:** game requirements are mandatory lists + optional pools gated by `NumberObjectsRequired`; our JSON only models "all items + ≥1 anyOf". Known-wrong entries: `360 Yes Scope` (anchor/pool inverted — misses the scope/accuracy pool), `Smart Bombs`, `Unbelievably Charming`, `Tea for Two` (incomplete pools). Also `Resourceful Indeed,` trailing-comma name typo.
 - **Severity:** High (data correctness — wrong active/missing states)
-- **Status:** Open — needs schema extension or curated overrides; see `docs/SYNERGY_AUDIT_2026.md`.
+- **Status:** Fixed — new `groups` field (AND-of-OR pools) on `Synergy`; `Smart Bombs` = (Bomb|Ice Bomb)+(Crutch|Homing Bullets), `Unbelievably Charming` = (Charmed Bow|Shotgun Full of Love)+(Charming Rounds|Pink Guon Stone), `Super Serum` = (Plague Pistol|Plunger)+(Gas Mask|Hazmat Suit); `Tea for Two` pool expanded to all 12 valid companions (Dog/Turtle Problem excluded per wiki); `Resourceful Indeed,` renamed (fixes broken item cross-links). `360 Yes Scope` verified CORRECT as-is (Scope + A.W.P./Sniper Rifle — audit's "inverted" claim was wrong). Name-based hardcodes in `matchesOwnedSet` removed. Tests: `synergy_logic_test.dart` groups coverage.
 
 ### U-012 — `assets/images/game/` is ~97% bundled dead weight
 - **Reported:** 2026-11-25 — full asset inventory pass (Slot 4)
