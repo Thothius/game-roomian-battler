@@ -179,3 +179,44 @@ tracking." — accurate and reassuring.
 - Include screenshot button in v1? (share_plus makes it ~free; mailto
   can't attach — would need share-sheet path instead. Recommend: skip
   v1, add in BR4.)
+
+---
+
+## Implementation status (BR1–BR3 shipped)
+
+**App side (gungeon_mate repo):**
+- `lib/models/bug_report.dart` — `BugReportContext` (kind/screen/entity).
+- `lib/services/bug_report.dart` — `BugReport` service: pipe-delimited
+  subject `GM-BUG v<ver>|<Kind>|<Screen>|<Entity>`, mailto to
+  `faaremets.fristjan@gmail.com`, 10s launch timeout, clipboard fallback.
+- `lib/widgets/bug_report/bug_report_sheet.dart` — bottom sheet: read-only
+  SCREEN/ITEM context rows, kind chips (Bug / Content error / Suggestion /
+  Other), notes field, SEND + COPY. Neo-Skeuo aware.
+- `lib/widgets/bug_report/bug_report_button.dart` — accent bug icon button.
+- Entry points: run-tools sheet row (before Settings, deep-orange icon),
+  Item/Gun detail headers (next to favourite), synergy + gungeoneer +
+  ammonomicon detail AppBars, Ammonomicon list AppBar, Cool & Curse AppBar,
+  Stats detail AppBar, Settings AppBar, Quiz home header, dice roller
+  dialog header, Experience Studio menubar, main-menu corner chip.
+- Tests: `test/bug_report_test.dart` — 9 tests (subject/body/URI encoding,
+  sheet context autofill, empty-notes guard, clipboard fallback).
+
+**Pipeline side (root repo):**
+- `tools/bug_report_pipeline.gs` — Apps Script: 1-min trigger scans the
+  `bug-reports` Gmail label, parses subject + `---` metadata block,
+  dedupes (24h window), appends to Google Sheet.
+
+### One-time setup (user, ~10 min, all free)
+
+1. Create Google Sheet "GungeonMate Bug Reports", header row:
+   `received_at | kind | screen | entity | app_version | platform | notes | status | fixed_in`
+2. script.google.com → New project → paste `tools/bug_report_pipeline.gs`
+   → Save.
+3. Project Settings → Script Properties → `SHEET_ID` = the `/d/<id>/` part
+   of the sheet URL.
+4. Run `installTrigger` once in the editor (authorizes + creates trigger).
+5. In the report Gmail: create label `bug-reports`; Settings → Filters →
+   `to:faaremets.fristjan@gmail.com` (or `subject:"GM-BUG"`) → apply label.
+
+Sheet `status` column is the triage board: NEW → TRIAGED → FIXED →
+SHIPPED (fill `fixed_in` with the version).
