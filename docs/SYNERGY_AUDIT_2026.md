@@ -71,3 +71,20 @@ Tile Match, The Void Corps, BEES, Deadly/Frosty Distraction, Blade Runner).
 Notable: `required=2` in the dump is NOT total-pickups — Resourceful Indeed
 confirmed all-4 via wiki; `Junk` id 580 collides with SackKnightBoon (U-015).
 LEB exclusions expanded per official wiki (The Submachinist, Detective Mode).
+
+---
+
+## Re-audit pass 2 — 2026-11-25 (LEB eligibility deep-dive)
+
+Second full pass over all 395 synergies focused on LEB simulation fidelity,
+verified against the official Lich's Eye Bullets wiki page:
+
+| Finding | Disposition |
+|---------|-------------|
+| Pure dual-wield synergies were ghost-listed as LEB-simulable | FIXED — `isLebExcludedSynergy` excludes every synergy whose effect is "guns are dual-wielded" (11 more beyond The Submachinist); Trigger Twins kept per wiki (non-wield bonuses still granted) |
+| 3+-component synergies shown as LEB-only | FIXED — `lebNeedsRealPieces`/`lebSlotsNeeded`: Behold! (6 slots→+5), Cormorant (+3), In The Mood! (+2), Mmmmmmmmm MMMMmm! (+2), Resourceful Indeed (+3) now render in a "LEB counts as one piece" note instead of ghost rows |
+| Run-context detail forced `lebView=false` even with real LEB | FIXED — resolves `playerHasLeb(slot) && showLichEyeBulletsSynergies`; toggle stays live |
+| LEB prefs never auto-enabled on acquisition | FIXED — `_autoEnableLebViewsIfHeld` latch in RunProvider (startNewRun/startCoopPlayer/clearInventory/addItem/removeItem/transferItem/applyPeerSnapshot/endRun); flips both prefs once per acquisition, manual off respected until LEB leaves + returns |
+
+Pool/structure/meta/icon audits from pass 1 remain valid — no data changes
+this pass (all fixes are display/logic layer).

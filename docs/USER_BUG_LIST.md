@@ -142,3 +142,10 @@
 - **Root cause:** `localSynergyIcon()` returned an asset path unconditionally, so `iconPath.isEmpty` was never true and the first-component-icon fallback in `gun_synergies_tab`/`entity_synergies_view` was dead code. ~290 of 395 synergies (only 108 have dedicated webp art) rendered `Icons.hub_outlined`.
 - **Severity:** Low (cosmetic)
 - **Status:** Fixed — app `236778c`, `localSynergyIcon` now gated by `kSynergyIconSlugs`; integrity test pins the set to the directory.
+
+### U-020 — LEB view ignored real LEB ownership; ghost list over-promised
+- **Reported:** 2026-11-25 — synergy/LEB re-audit
+- **Root cause (a):** `ItemDetailScreen` forced `lebView = false` whenever `ownerSlot != null`, so in-run detail never showed the simulation even when the player actually held Lich's Eye Bullets; nothing auto-enabled the pref on acquisition either.
+- **Root cause (b):** the LEB ghost list only excluded 3 named synergies — all 11 other pure dual-wield synergies (Blammo!, Assault and Battery, etc.) were shown as simulable though the game can't dual-wield under LEB, and the five 3+-component synergies (Behold!, Cormorant, In The Mood!, Mmmmmmmmm MMMMmm!, Resourceful Indeed) were shown as LEB-only though LEB counts as just one component there.
+- **Severity:** Medium (incorrect game-mechanics display)
+- **Status:** Fixed — run-context detail now resolves `playerHasLeb(slot) && pref`; `_autoEnableLebViewsIfHeld` flips both LEB prefs on once per acquisition (starter/pickup/coop/snapshot/reset) with a latch that respects manual toggle-off; `isLebExcludedSynergy` covers all dual-wield except Trigger Twins; `lebNeedsRealPieces` routes 3+-piece synergies to a needs-real-items note. Tests: `leb_auto_enable_test.dart` (11).
