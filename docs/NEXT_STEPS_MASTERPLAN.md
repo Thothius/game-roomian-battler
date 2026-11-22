@@ -1,10 +1,11 @@
-# Next Steps Masterplan — README relaunch + Online Co-op bridge
+# Next Steps Masterplan — README relaunch (+ parked: Online Co-op bridge)
 
 > Authored 2026-11-25 (CORE / Slot 2). Planning doc only — nothing here is
-> committed to build yet. Two workstreams: **A) GitHub/README relaunch**
-> (Reddit + sideload push) and **B) GungeonOnlineCoOpMod companion plugin**
-> (PC overlay idea). Both feed the same goal: get GungeonMate in front of
-> players discovering it.
+> committed to build yet. **Active workstream: A) GitHub/README relaunch**
+> (Reddit + sideload push). **PARKED — future plans only: B)
+> GungeonOnlineCoOpMod companion plugin** — researched and specced below,
+> explicitly NOT scheduled; revisit when the README/release push is done
+> or the user asks.
 
 ---
 
@@ -95,6 +96,10 @@ time; it should read as a drawer, not a peer section.
 ---
 
 ## B. GungeonOnlineCoOpMod companion — "party overlay" plugin
+
+> **STATUS: PARKED / FUTURE PLANS — do not build unless the user asks.**
+> Research is complete and the read path is proven cheap; this section is
+> kept so the idea isn't lost. Nothing here is scheduled.
 
 ### What the mod actually is (researched 2026-11-25)
 
@@ -221,14 +226,12 @@ Harmony work.
 
 ---
 
-## Recommended order
+## Recommended order (current)
 
-1. **README rework first** (R1–R3) — it's the funnel for the Reddit post;
-   everything else benefits from it. Art capture can happen alongside.
-2. **P0 research spike** for the co-op plugin — cheap, informs whether the
-   overlay is a weekend plugin or a bigger build. Do BEFORE promising it
-   publicly.
-3. Reddit post draft once README + (optionally) plugin teaser exist.
+1. **README rework only** (R1–R3) — the funnel for the Reddit post.
+   Art capture can happen alongside.
+2. Reddit post draft once README lands.
+3. Workstream B stays parked until explicitly revived.
 
 ## Risks / honest notes
 
