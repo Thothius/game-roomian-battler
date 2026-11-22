@@ -31,7 +31,7 @@ Legend: **[bug]** correctness · **[perf]** performance ·
 | ~~H10~~ | **Expand `kLebExcludedSynergies`** — DONE `9e48e86`: +The Submachinist (dual-wield) +Detective Mode (needs Badge) per official LEB wiki exception list | audit | S |
 | ~~H21~~ | **Synergy pool audit vs game dump** — all 343 keyed synergies cross-validated vs `tools/gungeon_dump.json`; 17 pool corrections shipped `9e48e86` | audit addendum | M |
 | ~~H11~~ | **JSON mojibake** — sweep found zero `�` in assets/data/*.json | deferred | S |
-| H12 | **U-001 screenshot recapture** — `08_char_select.png` white/blank | U-001 | S |
+| ~~H12~~ | ~~U-001 screenshot recapture~~ — **CLOSED obsolete**: artifact not in repo; char-select covered by `ref-02-character-select.png` | U-001 | S |
 
 ## Tier 3 — Performance
 
@@ -46,8 +46,8 @@ Legend: **[bug]** correctness · **[perf]** performance ·
 
 | # | Task | Ref | Effort |
 |---|------|-----|--------|
-| H17 | **Android toolchain migration** — Gradle 8.14→9.1, AGP 8.13→9.0.1, Kotlin 2.2.20→2.3.20 (all now warn); needs dedicated session + release-build verify, plugin compat check (nearby_connections, media_kit, permission_handler) | build warnings | L |
-| H18 | **Push backlog** — app repo ~59 commits ahead of origin/master; push when remote reachable | git | S |
+| ~~H17~~ | ~~Android toolchain migration~~ — **DONE `e4b7fba`**: Gradle 9.3.1 + AGP 9.1.0 + built-in Kotlin; debug APK green. KGP 2.2.20 kept declared (apply false) for plugins; Kotlin 2.3.x N/A under built-in Kotlin | build warnings | L |
+| H18 | **Push backlog** — app repo ~65+ commits ahead of origin/master; push when remote reachable | git | S |
 | H19 | **Release decision** — v3.7.0 shipped menu+ambiance; protocol v4 + synergy fixes argue for v3.7.1 or fold into next feature release; run full release checklist (5 lockstep files) if bumping | release rule | S |
 | H20 | **Font swap fallout check** — in-flight font TTF swap (26 deleted / 6 added uncommitted) needs pubspec family audit + font-picker verify once landed | tree state | S |
 
