@@ -83,6 +83,68 @@ user-facing · Claims table updated · slot released.
 
 ---
 
+## Coverage Trajectory (the ratchet pulls UP, not just holds)
+
+| Checkpoint | Line coverage target | Driver |
+|---|---|---|
+| Baseline (now) | 47.5% | — |
+| After S1 | ~50% | 7 logic files tested |
+| After S2 | ~60% | widgets 34%→60%+ |
+| After S3 | ~62% | data-integrity tests |
+| After S4 | ~65% | MP edge-path tests |
+| After S5 | **≥65% final** | golden/a11y additions |
+
+Rule: `test/coverage_baseline.txt` updates ONLY upward, in the same
+commit that earns it. CI fails on any drop.
+
+## Risk Register (decisions made BEFORE they're needed)
+
+| Risk | Likelihood | Pre-decided fallback |
+|---|---|---|
+| CI Flutter pin wrong → red CI day one | Medium | Pin exact local version (`flutter --version`); if pub.dev resolution differs on Linux, add `flutter-version` + `flutter-channel` explicitly and test the workflow on a throwaway branch first |
+| S4 mis-pair race not reproducible | Medium | Timebox repro to 2h; if not found, add instrumentation/logging behind a debug flag, ship the flag, log U-021 as "needs device repro" — do NOT guess-fix protocol code |
+| S2 balloons (484-line files are hard to test) | High | Per-file rule: smoke render test counts as done; deep interaction coverage is bonus. Never let one file block the session |
+| Golden tests flaky on CI (font rendering differs Linux vs Windows) | High | Run goldens Linux-only in CI OR mark them `skip` on CI with local-run docs — decide in S5.1, don't discover it mid-session |
+| Coverage gate blocks a legit refactor | Low | Baseline file is the escape hatch — lower it ONLY with a session-log note explaining why |
+| Foreign WIP collides mid-session | Medium | Explicit `git add` paths always; if a conflict appears, STOP and check AGENT_STATUS.md before resolving |
+
+## Scope-Creep Rule (every session will find bugs — here's what to do)
+
+- **Trivial** (<15 min, obvious fix, same file you're in): fix it,
+  mention it in the commit message.
+- **Real but off-task**: log to `docs/USER_BUG_LIST.md` as `Reported`
+  with repro notes, add to Claims table under "Found, not fixed" —
+  do NOT fix inline. Sessions stay scoped; nothing is lost.
+- **Critical/data-loss**: stop the session, fix it, everything else
+  waits. There is no other category.
+
+## The Missing Piece — Visual Regression Spike (folds into S5)
+
+Widget tests prove *behavior*; they can't prove the app still *looks*
+right. For a polish-driven app this is the last unguarded surface.
+
+- [ ] **S5.0 (NEW, do FIRST in S5)** Golden-test spike: pick the 3
+      highest-value screens — `main_menu_screen`, `active_run` player
+      page, `experience_studio` preview. `matchesGoldenFile` on a
+      fixed surface size. Expect font-rendering differences — that's
+      what the risk register's golden fallback is for. If goldens
+      prove too flaky in the timebox (half session), fall back to
+      **screenshot-diff smoke tests**: pump screen, `takeException()`
+      null + key `find.byType` anchors present — cheap, stable,
+      catches blank-screen regressions (the U-001 bug class).
+
+## "Superb" Scorecard (what done actually looks like)
+
+- [ ] Coverage ≥65% AND ratchet enforced in CI
+- [ ] Zero 0%-coverage files >200 lines
+- [ ] All 5 MP suspect spots resolved or documented-accepted
+- [ ] All open USER_BUG_LIST items closed or scheduled-with-owner
+- [ ] Golden or screenshot-diff net exists for top-3 screens
+- [ ] `flutter analyze` 0 · `flutter test` green · CI green on master
+- [ ] Every session left the Claims table honest
+
+---
+
 ## SESSION 1 — "Prove the core" (test infrastructure)
 
 **Size: M · Depends on: nothing · Blocks: everything (CI protects all later work)**
