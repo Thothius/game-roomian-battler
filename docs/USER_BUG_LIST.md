@@ -135,3 +135,10 @@
 - **Root cause:** `valueIndicatorColor` follows the ink-collapsed stat color (ink under Neo-Skeuo) while `valueIndicatorTextStyle` stayed `Colors.black` — unreadable label.
 - **Severity:** Low (Neo-Skeuo only, transient drag label)
 - **Status:** Fixed — app `c8aadb8`, label flips to `Skeuo.paper` when `AppTheme.isSkeuo`.
+
+
+### U-019 — Artless synergies showed generic hub icon despite piece-icon fallback
+- **Reported:** 2026-11-25 — synergy verification pass
+- **Root cause:** `localSynergyIcon()` returned an asset path unconditionally, so `iconPath.isEmpty` was never true and the first-component-icon fallback in `gun_synergies_tab`/`entity_synergies_view` was dead code. ~290 of 395 synergies (only 108 have dedicated webp art) rendered `Icons.hub_outlined`.
+- **Severity:** Low (cosmetic)
+- **Status:** Fixed — app `236778c`, `localSynergyIcon` now gated by `kSynergyIconSlugs`; integrity test pins the set to the directory.
