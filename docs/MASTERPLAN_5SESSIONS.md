@@ -3,11 +3,19 @@
 > Goal: take GungeonMate from "feature-complete ~85–90%, proof thin" to
 > verified, hardened, release-ready. **APK build/release is explicitly
 > OUT of scope** — this plan ends at "everything proven and polished".
+> NOTE: by S5 the tree will sit ~15+ commits past v3.7.0 — when the
+> user green-lights the build, bump the version FIRST per
+> `.windsurf/rules/release-checklist.md` (all 5 files in lockstep),
+> THEN build.
 >
-> Baseline at plan time: 686 tests green, analyze 0 issues, **47.5%
-> line coverage** (14,375/30,290), v3.7.0 committed, ~4 commits unpushed,
+> Baseline at plan time: **726 tests green** (was 686 — Slot 4's
+> synergy pass `7f629dd` + bug-report hardening `e45a2e3` landed since),
+> analyze 0 issues, **~47.5% line coverage** (14,375/30,290 — recompute
+> in S1, expect slight drift), v3.7.0 committed, **7 commits unpushed**,
 > Gradle 9.3.1 / AGP 9.1.0 toolchain landed (`e4b7fba`).
-> All file paths below verified on disk 2026-11-25.
+> All file paths below verified on disk 2026-11-25; **state refreshed
+> after Slot 4's synergy pass-3 (`7f629dd`) — U-015 closed, `any_of_min`
+> + `activation` schema fields live.**
 
 ## RULE — claims leave a trace
 
@@ -128,7 +136,7 @@ a rebase nightmare.
 | **S2.6 ↔ S4.6** | `paradox_player_panel.dart`, `surprise_overlay.dart` | Already flagged — first claimer writes tests, other reviews for protocol correctness. Claims table decides. |
 | **S4.4/S4.5 ↔ existing mp tests** | `multiplayer_messages.dart`, `mp_sync.dart` | Wire-contract changes (toJson cleanup, spriteKey dual-write) can break existing `test/mp_*` suites. After ANY S4 wire change: run the FULL mp test suite before committing, not just focused tests. |
 | **S3.1 ↔ data tests** | `assets/data/items.json` | Any JSON data change → `python tools/data_integrity.py` + full suite. Id fixes can silently change lookup results app-wide. |
-| **H ↔ S4 (Slot 4 live)** | `synergies.json`, `synergy.dart`, `synergy_queries.dart`, `gun_synergies_tab.dart` | **Slot 4 is mid-flight on a synergy hole-fix pass (anyOfMin, activation, pool corrections) as of 2026-11-25.** Session H's L1 data audit MUST exclude `synergies.json`/synergy files entirely — that surface is owned. Check AGENT_STATUS.md before starting H; if Slot 4 is still active, L1 covers guns/items/shrines/bosses/enemies/gungeoners/chapters ONLY. |
+| ~~H ↔ S4 (Slot 4 live)~~ | `synergies.json`, `synergy.dart`, `synergy_queries.dart`, `gun_synergies_tab.dart` | **RESOLVED 2026-11-25** — Slot 4 shipped pass-3 (`7f629dd`) and released. Synergy surface got 3 audit passes; H-L1 may now include `synergies.json` for a *fourth-pass verification* (spot-check Slot 4's 15 corrections against the dump) but should not re-audit from scratch — diminishing returns. Still check AGENT_STATUS.md before starting H in case new synergy work lands. |
 | **H ↔ all sessions** | read-only by design | H produces a findings report, not fixes. Only trivial (<15min, obvious) fixes inline per scope-creep rule; everything else routes to USER_BUG_LIST tagged with the owning session (S3 data / S4 MP / S5 polish / new U-XXX). This is what keeps H parallel-safe with everything. |
 | **S5.x ↔ everything** | cosmetic sweeps touch many files | S5 runs LAST precisely because it touches files every other session tested. If S5 finds a real bug, log it — don't fix-and-expand; it's the gate. |
 
@@ -146,7 +154,7 @@ the slice that still counts as progress.
 | S1 | 4–6h | S1.1 push + S1.2 CI workflow only — everything else is bonus until CI exists |
 | **H** | **4–6h** | **H-L5 honesty hunt + H-L3 dead surface — highest bug-yield-per-hour lenses** |
 | S2 | 8–12h | S2.4 periodic_tile + S2.5 dice_roll (most-tapped widgets) — skip the 400-line files if time is short |
-| S3 | 3–5h | S3.1 U-015 (real bug) + S3.3 mojibake proof (10 min) |
+| S3 | 2–4h (was 3–5h) | ~~S3.1 U-015~~ now verify-only · S3.3 mojibake proof (10 min) · S3.4 item fields is the real work |
 | S4 | 4–6h | S4.4/S4.5 suspect-spot cleanup (bounded) — S4.1 race is the wildcard |
 | S5 | 3–5h | S5.7 final gate + S5.2 ticker audit — the rest is polish |
 
@@ -234,11 +242,11 @@ right. For a polish-driven app this is the last unguarded surface.
 
 ### Work items
 - [ ] **S1.1 Push pending commits** — `git log origin/master..HEAD` in
-      app repo; push with explicit paths if foreign WIP is dirty.
-      *Mistake-proofing:* run `git status` first; if Slot 2's
-      bug-report files are modified, do NOT sweep them — push only
-      commits already made (`git push` pushes commits, not working tree,
-      so this is safe as long as you don't commit their files).
+      app repo (**7 commits** as of 2026-11-25 — includes Slot 4's
+      synergy pass + bug-report system). Push with explicit paths if
+      foreign WIP is dirty. *Mistake-proofing:* run `git status` first;
+      `git push` ships commits not working tree, so it's safe as long
+      as you don't commit their files.
 - [ ] **S1.2 CI workflow** — create `.github/workflows/test.yml`:
       ```yaml
       name: test
@@ -349,16 +357,12 @@ covered · widgets dir coverage ≥60% · no new `skip:` tests added.
   bidirectional) — same pattern: assert invariant over the dataset.
 
 ### Work items
-- [ ] **S3.1 U-015 — items.json id collision.** `Junk` claims id 580
-      (dump says SackKnightBoon); `Ser Junkan 1` id is null.
-      Steps: (a) dump `tools/gungeon_dump.json` is authoritative for
-      game ids — check what id 580 actually is; (b) fix `items.json`
-      provenance; (c) add integrity test asserting unique non-null ids
-      (allow the known-null exception ONLY if the schema requires it —
-      check how `id` is consumed first via grep). *Pitfall:* AGENTS.md
-      warns dump `required=2` is NOT total-pickups and our id2name map
-      is authoritative for display names — don't "fix" names to match
-      dump internals.
+- [ ] **S3.1 ~~U-015~~ — RESOLVED by Slot 4 (`7f629dd`).** `Junk`→127,
+      `Ser Junkan 1`→580. **Verify, don't redo:** confirm the integrity
+      test Slot 4 added actually guards id uniqueness app-wide (their
+      commit says "+8 logic tests" — check whether a *uniqueness*
+      invariant test exists; if not, add one — that's the remaining
+      hole). Then mark U-015 verified-closed in the bug list.
 - [ ] **S3.2 U-001 — re-capture `08_char_select.png`.** Cosmetic;
       needs clean Playwright session (`.devin/workflows/` or manual).
       *Pitfall:* it's a screenshot asset, not a code bug — verify the
@@ -519,12 +523,17 @@ This is the difference between a hole-hunt and a scope bomb.
       `tools/gungeon_dump.json`. Diff counts, names, ids, stats.
       *Pitfall:* dump `required=2` is NOT total-pickups; our id2name
       map is authoritative for display names — verify before "fixing".
-- [ ] **H-L2 Schema/persistence backward-compat** — NEW fields just
-      landed or are landing: `any_of_min`, `activation` (Slot 4),
-      `ambienceLoad`, wallpaper names, `StatColors`. For each: does an
-      OLD persisted JSON (prefs, preset store, run_state autosave)
-      still parse? Does `fromJson` have a default? Write a migration
-      test for each new field — this is where silent data loss lives.
+- [ ] **H-L2 Schema/persistence backward-compat** — NEW fields landed
+      2026-11-25: `any_of_min`, `activation` (Slot 4 `7f629dd`),
+      plus earlier `ambienceLoad`, wallpaper names. `Synergy.fromJson`
+      already defaults both (`?? 'ACTIVE'`, nullable `anyOfMin`) —
+      verify by inspection + one round-trip test rather than assuming.
+      For each field: does an OLD persisted JSON (prefs, preset store,
+      run_state autosave) still parse? Write a migration test per new
+      field — this is where silent data loss lives. Also cover the NEW
+      bug-report system (`bug_report.dart`, `BugReportContext`) — its
+      context JSON isn't persisted, but the mailto/clipboard paths
+      deserve an error-path look under H-L6.
 - [ ] **H-L3 Dead surface hunt** — (a) assets referenced nowhere:
       grep asset filenames in lib/; (b) lib functions never called:
       `dart analyze` won't catch public-but-unused — spot-check
