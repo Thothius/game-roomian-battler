@@ -208,14 +208,16 @@ tracking." — accurate and reassuring.
 
 ### One-time setup (user, ~10 min, all free)
 
-1. Create Google Sheet "GungeonMate Bug Reports", header row:
+1. Create Google Sheet **ETG-BUGS** (name the spreadsheet or the tab
+   ETG-BUGS), header row:
    `received_at | kind | screen | entity | app_version | platform | notes | status | fixed_in`
-2. script.google.com → New project → paste `tools/bug_report_pipeline.gs`
-   → Save.
-3. Project Settings → Script Properties → `SHEET_ID` = the `/d/<id>/` part
-   of the sheet URL.
-4. Run `installTrigger` once in the editor (authorizes + creates trigger).
-5. In the report Gmail: create label `bug-reports`; Settings → Filters →
+2. **Easiest:** open the ETG-BUGS sheet → Extensions → Apps Script →
+   paste `tools/bug_report_pipeline.gs` → Save. Container-bound = no
+   SHEET_ID needed; the script finds the ETG-BUGS tab itself.
+   (Standalone script.google.com project also works — then set script
+   property `SHEET_ID` = the `/d/<id>/` part of the sheet URL.)
+3. Run `installTrigger` once in the editor (authorizes + creates trigger).
+4. In the report Gmail: create label `bug-reports`; Settings → Filters →
    `to:faaremets.fristjan@gmail.com` (or `subject:"GM-BUG"`) → apply label.
 
 Sheet `status` column is the triage board: NEW → TRIAGED → FIXED →

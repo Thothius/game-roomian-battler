@@ -3,15 +3,22 @@
  *
  * SETUP (one-time, ~10 min, all free):
  *
- * 1. Create a Google Sheet (e.g. "GungeonMate Bug Reports") with columns:
+ * 1. Create a Google Sheet named "ETG-BUGS" (or rename the tab inside
+ *    it to ETG-BUGS) with header row:
  *      A: received_at   B: kind   C: screen   D: entity
  *      E: app_version   F: platform   G: notes   H: status   I: fixed_in
  *
- * 2. Go to https://script.google.com → New project → paste this file → Save.
+ * 2. EASIEST: open the ETG-BUGS sheet → Extensions → Apps Script →
+ *    delete the default code → paste this file → Save. Being bound to
+ *    the sheet means NO SHEET_ID needed — it finds the ETG-BUGS tab
+ *    automatically.
+ *    (Standalone script.google.com project also works — then set the
+ *    SHEET_ID script property per step 3.)
  *
  * 3. Project Settings (gear icon) → Script Properties → add:
  *      SHEET_ID = the spreadsheet ID from its URL
  *        (https://docs.google.com/spreadsheets/d/<THIS_PART>/edit)
+ *    Only needed for the standalone-project route.
  *
  * 4. Run `installTrigger` once from the editor (authorizes + creates the
  *    1-minute inbox trigger). Or Deploy → New deployment → Web app is NOT
@@ -28,6 +35,7 @@
  */
 
 const LABEL_NAME = 'bug-reports';
+const SHEET_TAB_NAME = 'ETG-BUGS';
 const SUBJECT_PREFIX = 'GM-BUG';
 const LOOKBACK_MINUTES = 30; // trigger runs every 1 min; overlap is safe (dedupe below)
 const DEDUPE_HOURS = 24;
@@ -120,8 +128,26 @@ function parseMeta_(body) {
 }
 
 function getSheet_() {
+  // Resolution order: ETG-BUGS tab in a bound spreadsheet → SHEET_ID
+  // script property → active sheet of a bound spreadsheet.
+  try {
+    const bound = SpreadsheetApp.getActiveSpreadsheet();
+    if (bound) {
+      const byName = bound.getSheetByName(SHEET_TAB_NAME);
+      if (byName) return byName;
+      if (bound.getSheets().length === 1) return bound.getActiveSheet();
+    }
+  } catch (_) {}
   const props = PropertiesService.getScriptProperties();
   const id = props.getProperty('SHEET_ID');
-  if (!id) throw new Error('Set SHEET_ID script property first.');
-  return SpreadsheetApp.openById(id).getActiveSheet();
+  if (id) {
+    const ss = SpreadsheetApp.openById(id);
+    const byName = ss.getSheetByName(SHEET_TAB_NAME);
+    if (byName) return byName;
+    return ss.getActiveSheet();
+  }
+  throw new Error(
+    'No ETG-BUGS tab found and SHEET_ID script property is not set. ' +
+    'Bind the script to the sheet (Extensions → Apps Script) or set SHEET_ID.'
+  );
 }
