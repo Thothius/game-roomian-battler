@@ -116,7 +116,7 @@
 - **Reported:** 2026-11-25 — asset inventory pass
 - **Root cause:** `assets/images/wallpapers/custom/wp_01–46.webp` average ~270 KB each — full-res sources kept as-is. Already on the deferred list as "wallpaper re-encode pipeline" (normalize ≥1200px, consistent crop).
 - **Severity:** Low (APK/download size only)
-- **Status:** Open — re-encode pass; est. large savings since these are photographic-style wallpapers.
+- **Status:** Fixed — app `8e30e5b` (on top of Slot 4's `968fe55`): all 46 webp normalized to ≤1600px side + q75 re-encode; set went 12.1→10.1→**7.0 MB** (-42% total). Wallpapers sit under a ~62% scrim so q75 is visually safe. Reproducible via `tools/reencode_wallpapers.py`.
 
 ### U-016 — Run-tools sheet could overflow short viewports
 - **Reported:** 2026-11-25 — CORE self-bughunt (Slot 2) after Settings IA ship
