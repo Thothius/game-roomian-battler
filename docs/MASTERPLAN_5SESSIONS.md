@@ -81,6 +81,11 @@ Files-in-progress as you go (AC2), release + Session Log row at end
 `flutter test` all green · focused new tests pass · changelog entry if
 user-facing · Claims table updated · slot released.
 
+**Review rule:** protocol/wire changes (S4.1, S4.4, S4.5) and
+persistence/schema changes (S3.1, S1.4 baseline) get a **second-slot
+review before merge** — these are the changes that corrupt silently.
+Everything else: self-bughunt per S6 is sufficient.
+
 ---
 
 ## Coverage Trajectory (the ratchet pulls UP, not just holds)
@@ -96,6 +101,70 @@ user-facing · Claims table updated · slot released.
 
 Rule: `test/coverage_baseline.txt` updates ONLY upward, in the same
 commit that earns it. CI fails on any drop.
+
+### Automation — `tools/coverage_report.py` (build in S1)
+
+Don't compute coverage by hand (I did it with a throwaway python
+one-liner — don't repeat that). S1.4 should ship a script that:
+1. Runs `flutter test --coverage`
+2. Parses `coverage/lcov.info` → per-directory + total line %
+3. Prints the trajectory table above with pass/fail vs baseline
+4. Optionally `--update-baseline` writes the new floor
+
+~40 lines. Lives in `gungeon_mate/tools/` next to
+`data_integrity.py`. CI calls it; humans call it before committing
+test work. This is what makes the trajectory *enforced*, not aspirational.
+
+## Cross-Session Conflict Matrix (who must wait for whom)
+
+Sessions look parallel-safe but three pairs share files. Check this
+before claiming — it's the difference between smooth parallelism and
+a rebase nightmare.
+
+| Pair | Shared surface | Rule |
+|---|---|---|
+| **S2.1/S2.2 ↔ S3.4** | `item_body_sections.dart`, `gun_stats_sections.dart`, `item_detail_screen.dart` | **ORDER MATTERS.** S3.4 adds UI (ammonomicon_entry/effect fields) → S2 tests written first will break when it lands. If parallel: S3.4 lands FIRST, then S2.1/S2.2 write tests against final UI. If S2 first: S3.4 must re-run S2's item-detail tests after merging. Never both mid-flight on the same file. |
+| **S2.6 ↔ S4.6** | `paradox_player_panel.dart`, `surprise_overlay.dart` | Already flagged — first claimer writes tests, other reviews for protocol correctness. Claims table decides. |
+| **S4.4/S4.5 ↔ existing mp tests** | `multiplayer_messages.dart`, `mp_sync.dart` | Wire-contract changes (toJson cleanup, spriteKey dual-write) can break existing `test/mp_*` suites. After ANY S4 wire change: run the FULL mp test suite before committing, not just focused tests. |
+| **S3.1 ↔ data tests** | `assets/data/items.json` | Any JSON data change → `python tools/data_integrity.py` + full suite. Id fixes can silently change lookup results app-wide. |
+| **S5.x ↔ everything** | cosmetic sweeps touch many files | S5 runs LAST precisely because it touches files every other session tested. If S5 finds a real bug, log it — don't fix-and-expand; it's the gate. |
+
+**Parallel-safe pairs (verified disjoint):** S1 ∥ S3 (infra vs data),
+S2-core (non-item widgets) ∥ S3, S4 ∥ S2-non-MP-widgets.
+
+## Effort Estimates + Minimum Viable Slice
+
+Sizes lie; here's the honest range so sessions can be planned around
+real calendars. "MVS" = if you only have one focused hour, this is
+the slice that still counts as progress.
+
+| Session | Est. effort | MVS (1 hour) |
+|---|---|---|
+| S1 | 4–6h | S1.1 push + S1.2 CI workflow only — everything else is bonus until CI exists |
+| S2 | 8–12h | S2.4 periodic_tile + S2.5 dice_roll (most-tapped widgets) — skip the 400-line files if time is short |
+| S3 | 3–5h | S3.1 U-015 (real bug) + S3.3 mojibake proof (10 min) |
+| S4 | 4–6h | S4.4/S4.5 suspect-spot cleanup (bounded) — S4.1 race is the wildcard |
+| S5 | 3–5h | S5.7 final gate + S5.2 ticker audit — the rest is polish |
+
+**Overrun rule:** if a session exceeds estimate by >50%, STOP, update
+the Claims table with what's done/not-done, and hand off. A half-done
+session with an honest claims row beats a finished session that ate
+the next session's slot.
+
+## Session Handoff Template (paste into Claims table / session log)
+
+```
+Session: S<N> — <name>
+Agent: <slot/agent>
+Status: DONE | BLOCKED | STALE
+Commit(s): <SHA(s)>
+Done: <work item IDs completed>
+Not done: <work item IDs remaining + why>
+Found-not-fixed: <U-XXX bugs logged>
+In hand: <uncommitted files / half-done sub-items, or "clean">
+Next: <recommended first item for whoever picks up>
+Watch out for: <anything the next agent must know>
+```
 
 ## Risk Register (decisions made BEFORE they're needed)
 
