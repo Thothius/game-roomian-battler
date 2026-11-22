@@ -117,3 +117,21 @@
 - **Root cause:** `assets/images/wallpapers/custom/wp_01–46.webp` average ~270 KB each — full-res sources kept as-is. Already on the deferred list as "wallpaper re-encode pipeline" (normalize ≥1200px, consistent crop).
 - **Severity:** Low (APK/download size only)
 - **Status:** Open — re-encode pass; est. large savings since these are photographic-style wallpapers.
+
+### U-016 — Run-tools sheet could overflow short viewports
+- **Reported:** 2026-11-25 — CORE self-bughunt (Slot 2) after Settings IA ship
+- **Root cause:** `_RunToolsSheet` body was a fixed `Column(mainAxisSize: min)`; the WP-1 additions (Add/Remove Co-op, Save Run, Leave MP) pushed row count to ~14 — overflow risk on short screens / large text scale.
+- **Severity:** Medium (layout crash on small devices)
+- **Status:** Fixed — app `c8aadb8`, sheet body wrapped in `SingleChildScrollView`.
+
+### U-017 — Neo-Skeuo chrome whites invisible on paper (quiz/stats/Cool & Curse)
+- **Reported:** 2026-11-25 — CORE self-bughunt (Slot 2), WP-5 follow-up
+- **Root cause:** WP-5 wrapped semantic accents in `Skeuo.inkIf` but left raw `Colors.white*` chrome (card borders, fills, dim states, slider track/thumb) in `quiz_session_screen`, `quiz_home_screen`, `stats_detail_screen`, `cool_curse_screen`. On cream paper these render invisible; the inactive quiz streak also lost its dim-vs-active distinction (GoopText collapsed both states to full ink).
+- **Severity:** Low-Medium (cosmetic — Neo-Skeuo only)
+- **Status:** Fixed — app `c8aadb8`, all white chrome routed through `Skeuo.collapse` (alpha-preserving pencil washes / dim ink; no-op outside the skin).
+
+### U-018 — Stats slider value bubble black-on-ink under Neo-Skeuo
+- **Reported:** 2026-11-25 — CORE self-bughunt (Slot 2)
+- **Root cause:** `valueIndicatorColor` follows the ink-collapsed stat color (ink under Neo-Skeuo) while `valueIndicatorTextStyle` stayed `Colors.black` — unreadable label.
+- **Severity:** Low (Neo-Skeuo only, transient drag label)
+- **Status:** Fixed — app `c8aadb8`, label flips to `Skeuo.paper` when `AppTheme.isSkeuo`.
