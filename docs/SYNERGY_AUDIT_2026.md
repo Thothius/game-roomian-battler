@@ -88,3 +88,72 @@ verified against the official Lich's Eye Bullets wiki page:
 
 Pool/structure/meta/icon audits from pass 1 remain valid — no data changes
 this pass (all fixes are display/logic layer).
+
+---
+
+## Re-audit pass 3 — 2026-11-25 (structural K-of-N + activation correctness)
+
+Third pass diffed every synergy against `tools/gungeon_dump.json` (440 raw
+records, incl. duplicate/variant `#VOIDCORE`/`#SYNTHESIZERS*`/`#ZELDA`/
+`#HOMINGBOMBS*` entries) **and** `tools/en_synergies.txt` (nameKey→localized
+name cross-check, e.g. `#MERMAIDFISH` = すばらしい新世界 = "Brave New World",
+`#PLASMARIFLE_ENCNAME` = "Thunderclap" confirming dump-internal names).
+
+### Data fixes (app commit pending)
+
+| Synergy | Was | Now (dump-verified) |
+|---------|-----|---------------------|
+| Smart Bombs | `Bomb` + anyOf[Crutch, Homing] — **Ice Bomb lost in the 9e48e86 pool pass** | groups `[[Bomb,Ice Bomb],[Crutch,Homing Bullets]]` (#HOMINGBOMBS2/3) |
+| Deadly Distraction | Explosive Decoy + Monster Blood | **Decoy**(71) + Monster Blood → `#BLOODDECOY` |
+| Deadlier Distraction | Explosive Decoy + Monster Blood, no key | `#BLOODEXPLOSIVEDECOY` |
+| Frosty Distraction | Explosive Decoy + Heart of Ice | **Decoy**(71) + Heart of Ice → `#ICEDECOY` |
+| Frostier Distraction | Explosive Decoy + Heart of Ice, no key | `#ICEEXPLOSIVEDECOY` |
+| Blade Runner | exact duplicate of Running Blades (Deck4rd+Knife Shield, `#BLADESRUNNER`) | real `#BLADERUNNER` = Deck4rd+Origuni, ACTIVE_UNBOOSTED |
+| In The Mood! | all 3 guns required | `any_of` 3 guns + **`any_of_min: 2`** (#QUAKE) |
+| Chief Master | Alien Sidearm + 1-of-5 rounds | `any_of_min: 2` → +2 of 5 (#MASTER_CHIEF) |
+| Synthetic Shield | Armor+Heart pair only | `any_of` 3 synthesizers + `any_of_min: 2` (#SYNTHESIZERS1/2/3) |
+| The Void Corps | Cannon+Shotgun pair only | `any_of` 3 Void Core guns + `any_of_min: 2` (all 3 `#VOIDCORE` pairings = one synergy) |
+| The Elephant in the Room | anyOf [Pig, Turkey, Owl] | + Chicken Flute, Super Space Turtle, Compressed Air Tank, Bait Launcher → `#ELEPHANTGUN` (7-piece pool) |
+| Grouch | no key | `#GARBAGE` (Trash Gun 154 + Junk 127) |
+| Klobbering Time | no key | `#KLOBBETIME` (already correct shape: Klobbe + anyOf[AU Gun, Moonscraper]) |
+| Brave New World | no key, treated as needing all 3 | `#MERMAIDFISH` — already correct shape (Siren + anyOf[Trident, Bionic Leg]); Japanese string confirms name |
+| Fairy Bow | `activation: INACTIVE` | `ACTIVE_UNBOOSTED` — dump has a live #ZELDA entry |
+
+### Schema additions
+
+- **`any_of_min`** (`Synergy.anyOfMin`, `requiredAnyOfCount`) — K-of-N pools.
+  `matchesOwnedSet` counts owned pool members; `missingFor` reports the pick
+  deficit ("any 2 of: …"); `prettyEffect` says "any N of"; detail screen labels
+  the section `ANY N OF`; `lebSlotsNeeded` counts the pool as N slots.
+- **`activation`** now parsed (`isGameInactive`) — `INACTIVE` entries are
+  filtered out of active/partial/combined/predictor queries and the piece
+  index. Post-fix zero INACTIVE synergies remain in the catalog; the guard is
+  regression-proofing.
+
+### LEB impact
+
+- In The Mood! / The Void Corps are now 2 slots → gun + LEB satisfies them
+  (previously misreported as needing real pieces).
+- Chief Master = 3 slots → LEB + 2 real Master Rounds still needed.
+- Item-only K-of-N synergies (Synthetic Shield, Smart Bombs) never reach gun
+  LEB pages — unchanged.
+
+### Provenance fixes (`items.json`)
+
+- `Junk` id 580 → **127** (dump: 127=Junk, 580=SackKnightBoon) — resolves U-015's
+  id collision.
+- `Ser Junkan 1` id null → **580** (SackKnightBoon — the item that summons
+  Ser Junkan; also explains the inactive `#TRASHJUNKAN` variant).
+- `Master Round I–V` remain id-less — they have no dump item rows at all
+  (ids 467–471 appear only inside `#MASTER_CHIEF.optionalItems`).
+
+### Verified non-issues
+
+- Dump `gunName`/`itemName` are **internal class names**, not display names —
+  e.g. `Plasma Rifle`=Thunderclap, `Mermaid Gun`=Siren, `Trash Gun`=Trashcannon,
+  `Wood Bow`=Bow, `Tiger`=Bait Launcher, `Cucco`=Chicken Flute, `Dog`(301)=
+  Super Space Turtle, `Space Friend`(249)=Owl. All resolved via `en_items.txt`
+  ENCNAME strings and id alignment — no catalog renames needed.
+- `#HOMINGBOMBS4`, `#ELEPHANTGUN2`, `#GARBAGECOLLECTION` — first two absent
+  from the dump (stale loc keys); GARBAGECOLLECTION already mapped to
+  'Garbage Collecting'.

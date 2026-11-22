@@ -149,3 +149,16 @@
 - **Root cause (b):** the LEB ghost list only excluded 3 named synergies — all 11 other pure dual-wield synergies (Blammo!, Assault and Battery, etc.) were shown as simulable though the game can't dual-wield under LEB, and the five 3+-component synergies (Behold!, Cormorant, In The Mood!, Mmmmmmmmm MMMMmm!, Resourceful Indeed) were shown as LEB-only though LEB counts as just one component there.
 - **Severity:** Medium (incorrect game-mechanics display)
 - **Status:** Fixed — run-context detail now resolves `playerHasLeb(slot) && pref`; `_autoEnableLebViewsIfHeld` flips both LEB prefs on once per acquisition (starter/pickup/coop/snapshot/reset) with a latch that respects manual toggle-off; `isLebExcludedSynergy` covers all dual-wield except Trigger Twins; `lebNeedsRealPieces` routes 3+-piece synergies to a needs-real-items note. Tests: `leb_auto_enable_test.dart` (11).
+
+### U-021 — Synergy data holes vs game dump (15 entries) + dead `activation` field
+- **Reported:** 2026-11-25 — third synergy audit pass (dump + wiki + JP loc strings)
+- **Root causes:**
+  - Smart Bombs lost its `groups`/Ice Bomb arm in the `9e48e86` pool pass (regression).
+  - Deadly/Frosty Distraction used `Explosive Decoy` — that's Deadlier/Frostier; Deadly/Frosty pair with plain `Decoy` (dump items 71 vs 438).
+  - `Blade Runner` was an exact duplicate of `Running Blades`; the real `#BLADERUNNER` (Deck4rd + Origuni) was missing.
+  - `In The Mood!`, `Chief Master`, `Synthetic Shield`, `The Void Corps` encode "pick N of M" requirements the schema couldn't express — all were effectively all-of or wrong-pair.
+  - `The Elephant in the Room` pool truncated (missing Chicken Flute, Super Space Turtle, Compressed Air Tank, Bait Launcher).
+  - `Grouch`, `Klobbering Time`, `Brave New World` lacked `game_name_key`; `Fairy Bow` was marked INACTIVE though dump `#ZELDA` has a live `ACTIVE_UNBOOSTED` entry; `activation` was never parsed anyway.
+  - `Junk`/`Ser Junkan 1` item ids collided with dump ids 127/580 (U-015 resolved).
+- **Severity:** High (wrong activation results + wrong displayed requirements)
+- **Status:** Fixed — `any_of_min` + `activation` schema fields added; 15 synergies corrected; query layer filters `INACTIVE`; LEB slot math counts K-of-N picks. Tests: `synergy_logic_test` +8, `leb_auto_enable_test` updated.
