@@ -29,7 +29,7 @@
 
 const LABEL_NAME = 'bug-reports';
 const SUBJECT_PREFIX = 'GM-BUG';
-const LOOKBACK_MINUTES = 10; // trigger runs every 1 min; overlap is safe (dedupe below)
+const LOOKBACK_MINUTES = 30; // trigger runs every 1 min; overlap is safe (dedupe below)
 const DEDUPE_HOURS = 24;
 
 function installTrigger() {
