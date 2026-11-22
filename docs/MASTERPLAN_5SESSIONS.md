@@ -23,6 +23,7 @@ plan; `AGENT_STATUS.md` remains the live agent board.
 | Session / Task | Claimed by | Status | Commit | In hand right now |
 |---|---|---|---|---|
 | S1 CI + logic tests | _unclaimed_ | PENDING | — | — |
+| **H Detective hole-hunt** | _unclaimed_ | PENDING | — | — |
 | S2 widget coverage | _unclaimed_ | PENDING | — | — |
 | S3 data truth | _unclaimed_ | PENDING | — | — |
 | S4 MP hardening | _unclaimed_ | PENDING | — | — |
@@ -127,6 +128,8 @@ a rebase nightmare.
 | **S2.6 ↔ S4.6** | `paradox_player_panel.dart`, `surprise_overlay.dart` | Already flagged — first claimer writes tests, other reviews for protocol correctness. Claims table decides. |
 | **S4.4/S4.5 ↔ existing mp tests** | `multiplayer_messages.dart`, `mp_sync.dart` | Wire-contract changes (toJson cleanup, spriteKey dual-write) can break existing `test/mp_*` suites. After ANY S4 wire change: run the FULL mp test suite before committing, not just focused tests. |
 | **S3.1 ↔ data tests** | `assets/data/items.json` | Any JSON data change → `python tools/data_integrity.py` + full suite. Id fixes can silently change lookup results app-wide. |
+| **H ↔ S4 (Slot 4 live)** | `synergies.json`, `synergy.dart`, `synergy_queries.dart`, `gun_synergies_tab.dart` | **Slot 4 is mid-flight on a synergy hole-fix pass (anyOfMin, activation, pool corrections) as of 2026-11-25.** Session H's L1 data audit MUST exclude `synergies.json`/synergy files entirely — that surface is owned. Check AGENT_STATUS.md before starting H; if Slot 4 is still active, L1 covers guns/items/shrines/bosses/enemies/gungeoners/chapters ONLY. |
+| **H ↔ all sessions** | read-only by design | H produces a findings report, not fixes. Only trivial (<15min, obvious) fixes inline per scope-creep rule; everything else routes to USER_BUG_LIST tagged with the owning session (S3 data / S4 MP / S5 polish / new U-XXX). This is what keeps H parallel-safe with everything. |
 | **S5.x ↔ everything** | cosmetic sweeps touch many files | S5 runs LAST precisely because it touches files every other session tested. If S5 finds a real bug, log it — don't fix-and-expand; it's the gate. |
 
 **Parallel-safe pairs (verified disjoint):** S1 ∥ S3 (infra vs data),
@@ -141,6 +144,7 @@ the slice that still counts as progress.
 | Session | Est. effort | MVS (1 hour) |
 |---|---|---|
 | S1 | 4–6h | S1.1 push + S1.2 CI workflow only — everything else is bonus until CI exists |
+| **H** | **4–6h** | **H-L5 honesty hunt + H-L3 dead surface — highest bug-yield-per-hour lenses** |
 | S2 | 8–12h | S2.4 periodic_tile + S2.5 dice_roll (most-tapped widgets) — skip the 400-line files if time is short |
 | S3 | 3–5h | S3.1 U-015 (real bug) + S3.3 mojibake proof (10 min) |
 | S4 | 4–6h | S4.4/S4.5 suspect-spot cleanup (bounded) — S4.1 race is the wildcard |
@@ -209,6 +213,8 @@ right. For a polish-driven app this is the last unguarded surface.
 - [ ] All 5 MP suspect spots resolved or documented-accepted
 - [ ] All open USER_BUG_LIST items closed or scheduled-with-owner
 - [ ] Golden or screenshot-diff net exists for top-3 screens
+- [ ] `docs/HOLE_REPORT_*.md` exists — every lens checked, zero
+      un-routed findings
 - [ ] `flutter analyze` 0 · `flutter test` green · CI green on master
 - [ ] Every session left the Claims table honest
 
@@ -483,20 +489,108 @@ APK go-ahead.
 
 ---
 
+## SESSION H — "Detective Hole-Hunt" (audit from different angles)
+
+**Size: M · Depends on: S1 merged (CI exists to verify any fix) ·
+Parallel-safe with S2/S3/S4 BY DESIGN — read-only audit, findings
+route to the owning session. Run it EARLY so S2–S5 inherit the findings.**
+
+### The contract (what makes H safe to run alongside everything)
+
+H is a **read-only audit that produces a findings report**. It does NOT
+fix bugs — it finds them, classifies them, and routes them. Fixes happen
+in the owning session (or inline only if trivial per scope-creep rule).
+This is the difference between a hole-hunt and a scope bomb.
+
+### Prep kit
+- Deliverable: `docs/HOLE_REPORT_<date>.md` (root repo) — findings table:
+  `| # | Lens | Severity | File/line | Repro/evidence | Suggested fix | Route to |`
+- Route codes: `S3` (data truth), `S4` (MP), `S5` (polish/gate),
+  `FIX-NOW` (trivial inline), `U-XXX` (log to USER_BUG_LIST, unscheduled).
+- Evidence standard: every finding needs a file:line or command output.
+  "Looks suspicious" is not a finding — "grep shows X called nowhere"
+  is.
+
+### The lenses (each is a different angle of attack)
+
+- [ ] **H-L1 Data truth vs dump** — Slot 4 owns `synergies.json`;
+      you take everything else: `guns.json`, `items.json`, `shrines`,
+      `bosses`, `enemies`, `gungeoneers`, `chapters` vs
+      `tools/gungeon_dump.json`. Diff counts, names, ids, stats.
+      *Pitfall:* dump `required=2` is NOT total-pickups; our id2name
+      map is authoritative for display names — verify before "fixing".
+- [ ] **H-L2 Schema/persistence backward-compat** — NEW fields just
+      landed or are landing: `any_of_min`, `activation` (Slot 4),
+      `ambienceLoad`, wallpaper names, `StatColors`. For each: does an
+      OLD persisted JSON (prefs, preset store, run_state autosave)
+      still parse? Does `fromJson` have a default? Write a migration
+      test for each new field — this is where silent data loss lives.
+- [ ] **H-L3 Dead surface hunt** — (a) assets referenced nowhere:
+      grep asset filenames in lib/; (b) lib functions never called:
+      `dart analyze` won't catch public-but-unused — spot-check
+      suspicious exports; (c) dead prefs: prefs fields with no UI
+      setter or no consumer; (d) unreachable screens: routes pushed
+      nowhere; (e) JSON fields written but never read (grep each key).
+      Prior art: WP-2 dead-pref sweep, H7 asset cull — extend, don't
+      repeat.
+- [ ] **H-L4 Lifecycle/async hunt** — `grep -rn "AnimationController"
+      lib/` → every one has `dispose()`; `Timer(`/`StreamSubscription`/
+      `Future.delayed` → cancelled/handled; `await` followed by
+      `context.` without `context.mounted` check; `setState` after
+      dispose. We fixed 3 ticker bugs manually — find the rest
+      systematically.
+- [ ] **H-L5 Honesty hunt** — places where UI *claims* mechanics the
+      code doesn't deliver (the LEB ghost-list bug class). Check:
+      every displayed formula vs its computation (jam %, cooldown
+      speed, DPS in damage_calculator vs displayed DPS, reward
+      multiplier text); every "X% chance" label vs the actual roll;
+      every explainer text vs live math. CoolCurseScreen was just
+      fixed for exactly this — sweep for siblings.
+- [ ] **H-L6 Error-path hunt** — what happens when: a JSON asset is
+      missing/corrupt/empty array; an asset file referenced in code
+      doesn't exist; first run with zero data; MP peer on old app
+      version sends unknown message type; SharedPreferences returns
+      garbage. For each: crash, graceful empty state, or silent wrong
+      answer? Silent-wrong is the worst outcome.
+- [ ] **H-L7 Perf hunt** — `build()` doing heavy work (JSON parse,
+      list scan, regex); missing `const`; animated layers without
+      `RepaintBoundary`; images decoded without `cacheWidth`/
+      `cacheHeight`; non-lazy lists of game assets. Prior art: H13
+      synergy index, H15 wallpaper _syncMotion — same pattern.
+- [ ] **H-L8 Docs/changelog honesty** — do docs reference deleted
+      files (`stat_sheets.dart` was deleted — grep docs for it)?
+      Does changelog.json claim features that were cut or never
+      shipped? Does TECHNICAL_REFERENCE match reality (file sizes,
+      architecture map)? Does VERSION_HISTORY match changelog?
+- [ ] **H-L9 Test-blindspot ranking** — formalize what the coverage
+      audit eyeballed: rank 0%-coverage files by (lines × user
+      visibility). Output feeds S2 prioritization if S2 hasn't run yet.
+
+### Done when
+- `docs/HOLE_REPORT_<date>.md` exists with every lens checked
+- Every finding has evidence + route code
+- Trivial fixes committed; real bugs in USER_BUG_LIST
+- Claims table updated; slot released
+
+---
+
 ## Execution order
 
 ```
-S1 (CI) ──► S2 (widget tests) ──┐
-         └─► S3 (data truth) ──┼──► S5 (polish gate)
-              S4 (MP) ─────────┘
+S1 (CI) ──► H (hole-hunt, read-only) ──► S2 (widget tests) ──┐
+         │                        └──► S3 (data truth) ──┼──► S5 (polish gate)
+         │                        └──► S4 (MP) ─────────┘
+         └──────────────────────────────────────────────────── (S1 also ∥ S3 data fixes that don't need CI)
 ```
 
 - **S1 first, always** — CI makes every later session verifiable.
-- **S2 ∥ S3** — tests vs data, disjoint files, safe in parallel (two
-  agents: one takes S2, other takes S3).
-- **S4** needs MP context fresh; good pair with S2's MP widget overlap
-  or a dedicated session.
-- **S5 last** — it's the gate.
+- **H right after S1** — it's read-only so it can overlap S2/S3/S4,
+  but running it early means its findings *feed* those sessions
+  instead of arriving after they've closed.
+- **S2 ∥ S3** — tests vs data, disjoint files, safe in parallel.
+- **S4** needs MP context fresh; good pair with S2's MP widget overlap.
+- **S5 last** — it's the gate, and it should inherit H's polish-route
+  findings.
 
 ## Session kickoff checklist (copy per session)
 
