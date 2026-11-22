@@ -49,7 +49,7 @@ Legend: **[bug]** correctness · **[perf]** performance ·
 | ~~H17~~ | ~~Android toolchain migration~~ — **DONE `e4b7fba`**: Gradle 9.3.1 + AGP 9.1.0 + built-in Kotlin; debug APK green. KGP 2.2.20 kept declared (apply false) for plugins; Kotlin 2.3.x N/A under built-in Kotlin | build warnings | L |
 | H18 | **Push backlog** — app repo ~65+ commits ahead of origin/master; push when remote reachable | git | S |
 | H19 | **Release decision** — v3.7.0 shipped menu+ambiance; protocol v4 + synergy fixes argue for v3.7.1 or fold into next feature release; run full release checklist (5 lockstep files) if bumping | release rule | S |
-| H20 | **Font swap fallout check** — in-flight font TTF swap (26 deleted / 6 added uncommitted) needs pubspec family audit + font-picker verify once landed | tree state | S |
+| ~~H20~~ | ~~Font swap fallout check~~ — **VERIFIED**: swap landed `5618722`; all 13 declared font assets exist on disk, picker/TYPE tab/tests green | tree state | S |
 
 ## Tier 5 — Nice-to-have / polish backlog
 
