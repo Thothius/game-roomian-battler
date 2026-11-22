@@ -157,3 +157,79 @@ name cross-check, e.g. `#MERMAIDFISH` = すばらしい新世界 = "Brave New Wo
 - `#HOMINGBOMBS4`, `#ELEPHANTGUN2`, `#GARBAGECOLLECTION` — first two absent
   from the dump (stale loc keys); GARBAGECOLLECTION already mapped to
   'Garbage Collecting'.
+
+## Pass 4 — Deep Gemini verification (2026-11-22)
+
+Batched audits run through Gemini web (gun stats ×239, item effects ×270,
+synergy effects ×395 across 7 files, world/chapters/bosses/gungeoners,
+catalog completeness). Raw Q&A saved in `.playwright-mcp/gemini_batches_v2/`.
+**Every Gemini claim was re-verified against `tools/gungeon_dump.json` and/or
+the official wiki before touching data — Gemini was wrong more often than
+right.**
+
+### Verified CORRECT (no change needed)
+
+- All pass-3 synergy fixes re-confirmed vs dump records:
+  - `#MASTER_CHIEF` = Alien Sidearm + **any 2 of 5** Master Rounds
+    (`required:3`, optionalItems 467–471) — Gemini's "any ONE" claim was wrong.
+  - `#KLOBBETIME` = Klobbe + (AU Gun | Moonscraper Laser) — "Cog of Battle"
+    claim was wrong.
+  - `#HOMINGBOMBS2/3` = (Bomb|Ice Bomb) + (Crutch|Homing Bullets) — Remote
+    Bullets is NOT a valid third option.
+  - `#GARBAGE` = Trashcannon + Junk(127) only — Lies/Ser Junkan alternatives
+    unsupported by dump.
+  - `#ZELDA` active record = Bow + Bomb only.
+  - `#SYNTHESIZERS1/2/3` = three ACTIVE pairwise records = 2-of-3
+    {Heart, Armor, Ammo Synthesizer(116, internal name 'Bullet Bait' —
+    wiki.gg confirms display name Ammo Synthesizer, item ID 116)}.
+  - `#ELEPHANTGUN` = Elephant Gun + any 1 of 7 (dump optionalGuns 359/369 +
+    optionalItems 249/301/632/451/572 — ID-aligned to our Pig/Turkey/Owl/
+    Chicken Flute/Super Space Turtle/Compressed Air Tank/Bait Launcher).
+  - `#QUAKE` = any 2 of 3 guns; `#VOIDCORE` ×3 pairwise = 2-of-3;
+    `#MERMAIDFISH` = Siren + (Trident|Bionic Leg); all four Distraction
+    pairings; `#BLADERUNNER`/`#BLADESRUNNER`.
+- **LEB semantics (official wiki)**: "Makes all guns act as if they have all
+  of their synergies." 2-component synergies fully simulated; **3+
+  component synergies count LEB as exactly ONE component** (Resourceful
+  Indeed needs Elimentaler + 2 others). Dual-wield excluded except
+  Trigger Twins; Rubenstein's Monster, Detective Mode (needs Badge),
+  Jolter/There Is Only War special cases. **Our implementation already
+  matches this** — K-of-N slot counting from pass 3 is correct.
+- Boss HPs all match wiki infoboxes exactly (Mine Flayer 1760,
+  Kill Pillars 555×4=2220, Lich 1995/2100/2100, Agunim, Interdimensional
+  Horror) — Gemini's alternate values were wrong.
+- syn_adv 1–4 (228 synergies): only flag was Chief Master — Gemini's own
+  note contradicted it; wiki confirms our record is correct.
+
+### Fixes applied from this pass
+
+- `items.json`: Omega Bullets effect "final two shots"→"final shot"
+  (wiki: final shot of magazine); Resourceful Sack type Passive→**Active**
+  (wiki infobox + 3s recharge); Mustache effect — removed "Bello's shop
+  15% cheaper" (that discount is **XtG-only** per wiki).
+- `enemies.json`: removed exact-duplicate Chancellor row; Old Chancellor
+  location Bullet Hell→**Gungeon Proper** (Old King is the floor-2 boss).
+- `gungeoneers.json`: The Pilot `max_items` 1→**2** (starts with Hidden
+  Compartment = +1 active slot; his own tips say "carry two actives").
+
+### Rejected Gemini claims (verified wrong)
+
+- syn_adv 5–7 adversarial pass flagged 55 synergies — nearly all false
+  positives contradicting the dump (e.g. "Smart Bombs needs only Bomb +
+  Homing Bullets", "Running Blades should be Excaliber + Knife Shield",
+  "Tea for Two needs only one companion"). Adversarial prompting produced
+  hallucinated "corrections"; dump structure wins.
+- Gun stats: 30 flags, mostly dubious ("infinite ammo" claims vs wiki
+  Ammonomicon stats, per-pellet vs total damage confusion). Left as
+  `gun_stats_flags.txt` for optional future wiki spot-checks — none applied.
+- Item flags Trusty Lockpicks ("can't open Rat Chests" — wiki says it CAN,
+  uniquely among key items) and Vorpal Bullets (ours matches wiki verbatim)
+  rejected.
+- Catalog: "Glocktopus"/"Grygor"/"Shadow Magician"/"Fuselier" "missing
+  bosses" are hallucinations; "missing guns" Armor/Heart Container/Rat Key/
+  Old Crest are pickups not items; "Master Round VI" doesn't exist;
+  "Sheathed Sword" is cut content; Com4nd0/Deck4rd stylizations are correct;
+  "Ser Junkan 1" name is correct (Ser Junkan 1/2/3 are distinct items and
+  the icon asset is `ser_junkan_1.webp`).
+- Chapter floor:null+secret:true for secret floors is our schema, not an
+  error; Marine max_guns:8 is a UI convention (no hard game cap).
