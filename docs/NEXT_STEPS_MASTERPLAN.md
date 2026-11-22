@@ -119,27 +119,22 @@ A companion that shows **all party members' inventories** — auto-filled
 from the game, so our effort goes into PC-tailored features instead of
 data plumbing. Hotkey-toggled overlay.
 
-### Approach options
+### Approach options (post-research ranking)
 
-1. **Separate BepInEx plugin (recommended start)** — our own plugin DLL
-   installed alongside theirs. Harmony-patches the game's player/inventory
-   APIs (or reads the mod's replicated state on clients). Renders an
-   in-game IMGUI/overlay panel toggled by a hotkey (e.g. F9). No upstream
-   dependency beyond the game itself — works with or without their mod,
-   but shines with it (remote players' inventories).
-   - Pros: self-contained, MIT-compatible, we control release cadence.
-   - Cons: needs EtG game-assembly reversing (Assembly-CSharp hooks);
-     their mod already solves desync so we only need *read* access.
-2. **Upstream contribution / coordination** — open an issue/PR to
-   Hero88go adding an overlay or a state-export hook (e.g. JSON dump of
-   party inventories to a local socket/file per tick). Pros: canonical
-   data path, maintainer goodwill, cross-promotion. Cons: dependent on
-   their roadmap; 1.0 beta means APIs will churn.
-3. **Hybrid**: plugin writes a localhost feed (JSON over TCP/UDP or a
-   file) → our existing Flutter Windows/Linux app (or a tiny overlay
-   exe) renders it. Reuses GungeonMate's whole UI/theme stack.
-   - Pros: richest UI (our actual app, themes, Ammonomicon lookups,
-     synergy predictions!). Cons: two processes, packaging complexity.
+1. **Standalone BepInEx plugin (confirmed best fit)** — own DLL,
+   references only game assemblies. Enumerate players via
+   `GameManager.AllPlayers`, read inventories directly, render IMGUI
+   overlay on a configurable hotkey. Works in vanilla couch co-op AND
+   with GungeonOnlineCoOpMod (remote replicas are real PlayerControllers
+   with reconciled inventories). Optional reflection layer adds their
+   roster names/session info when the assembly is present.
+   - Pros: zero upstream dependency, works today without their mod,
+     future-proof vs their churn, MIT-clean.
+   - Cons: needs item-name/quality DB lookup confirmed (P0 spike).
+2. **Upstream contribution** — still worth an issue/PR later for a
+   first-party state hook or cross-promotion, but no longer blocking.
+3. **Hybrid localhost feed → Flutter app** — deferred to P3; only if the
+   in-game IMGUI overlay proves too limiting.
 
 ### PC-tailored feature ideas (the fun part — data is free)
 
@@ -152,30 +147,77 @@ data plumbing. Hotkey-toggled overlay.
   existing MP event-log patterns).
 - **Draft assistant**: shop restock alerts, "Alex needs a blast shield".
 
-### Phases (when approved)
+### Phases (P0 research done — see findings above)
 
-- **P0 — research spike**: clone the mod, map where party inventory state
-  lives (Replication/ inventory sync + Game/ player slots), confirm read
-  path on host AND client. Output: short tech note + go/no-go.
-- **P1 — minimal overlay**: BepInEx plugin, hotkey toggles a panel listing
-  local + remote player inventories (names/characters/items). Proves the
-  pipeline end-to-end.
-- **P2 — polish**: quality-tier colors, collapsible sections, config for
-  hotkey/position, compatibility check vs their 4-player dev builds.
-- **P3 — GungeonMate integration (optional)**: localhost feed → Flutter
-  desktop overlay reusing theme/flair stack; or upstream PR for a
-  first-party hook.
-- **P4 — distribution**: r2modman package + mention in our README/docs;
-  cross-link from their repo if they engage.
+- **P0 — research spike** ✅ DONE 2026-11-25: repo mapped; read path is
+  `GameManager.AllPlayers` → per-player inventory objects, no internal
+  deps. Remaining P0 loose end: confirm item name/quality DB lookup API
+  + EtG Unity/BepInEx target framework (30-min check in a decompiled
+  Assembly-CSharp or their csproj references).
+- **P1 — minimal overlay**: new BepInEx plugin project (netstandard2.0
+  or match their net35), hotkey (default F9, configurable) toggles an
+  IMGUI panel: per-player card with character name, HP hearts, guns
+  (name+ammo+quality color), actives/passives. Test in couch co-op.
+- **P2 — polish + online verification**: quality-tier colors, collapsible
+  sections, position/scale config; verify remote-player data shows
+  correctly inside a GungeonOnlineCoOpMod session (host AND client).
+- **P3 — GungeonMate integration (optional)**: localhost JSON feed →
+  Flutter desktop overlay reusing theme/flair stack; synergy radar.
+- **P4 — distribution**: r2modman package + README/docs mention;
+  optional upstream PR/issue for cross-promotion.
 
-### Open questions to resolve in P0
+### P0 research findings (done 2026-11-25 — repo cloned to `.research/GungeonOnlineCoOpMod`)
 
-- Does client-side replicated inventory include *item quality*, gun
-  details, and actives — or just names? (Affects overlay fidelity.)
-- Hotkey conflicts: their mod uses F8/Back+Start; pick a free default.
-- License: MIT both sides — fine; still credit upstream in our plugin.
-- EtG EAC/anti-cheat: EtG has none (single-player game) — mods are
-  normal; verify no online-service ToS issue (there is none; it's P2P).
+Cloned and mapped. ~21k lines C#, `net35` target, BepInEx 5.4 + Harmony,
+references the game's `Assembly-CSharp.dll` directly (Steam/GOG/Epic
+identical). Version `1.2.19`.
+
+**Player enumeration — the key unlock:**
+- Vanilla API `GameManager.AllPlayers` already returns every
+  `PlayerController` — their codebase has 168 call sites for it
+  (`docs/COOP-INTERACTIONS.md`). Remote players spawned by the mod are
+  real `PlayerController`s in the scene.
+- Fallback: `Object.FindObjectsOfType<PlayerController>()`.
+- **Zero dependency on their assembly internals** — `PlayerSlots` is
+  `internal`, but we don't need it. `AllPlayers` covers vanilla couch
+  co-op AND their online co-op AND future 4-player builds.
+
+**Inventory data per player (all local, no netcode needed):**
+- `p.inventory.AllGuns` → `Gun` objects: `PickupObjectId`, `CurrentAmmo`,
+  quality tier, display name (resolve via game's item DB — exact API
+  to confirm in P0; their `InventorySync` works in raw `PickupObjectId`s).
+- `p.passiveItems`, `p.activeItems` → `Item`/`ActiveItem` lists.
+- `p.CurrentGun`, health (`healthHats`), character identity
+  (`characterID` → name/portrait via game DB).
+- Their `Replication/InventorySync.cs` proves the shape: it serializes
+  exactly these fields for all players every 0.25s — we read the same
+  objects post-reconcile, so data is already correct on every machine.
+
+**UI/rendering precedent (copy, don't invent):**
+- IMGUI `OnGUI` panels — proven in `Session/OnlineMenu.cs`,
+  `Session/Toasts.cs`, `Game/PartnerUI.cs`, `Game/MapPing.cs`.
+- Hotkey toggle precedent: `NetConfig.OverlayKey` ConfigEntry +
+  `Input.GetKeyDown` in `OnlineMenu` update loop.
+- Config pattern: BepInEx `Config.Bind` entries (`Session/NetConfig.cs`).
+- Plugin structure: `Plugin.cs` `BaseUnityPlugin` + per-feature
+  `Install(harmony)` statics — copy this modular layout.
+- Target framework `net35` (they chose max compat); we can likely use
+  `netstandard2.0`/`net48` — verify against BepInEx 5.4 + EtG's Unity
+  version in P0.
+
+**Names/roster caveat:** player display names live in their
+`Session/Lobby` roster (per-machine `PlayerName` config), not on
+`PlayerController`. v1 labels players by character name + P1/P2 slot;
+names can come later via optional reflection into `GungeonOnline`
+assembly when present (graceful fallback to character names).
+
+**Testing:** they ship a `Dev/` harness (`GO_SAVE_DIR` env) for offline
+sim — worth checking if it can spawn fake remote players for dev.
+Otherwise couch co-op locally exercises the same `AllPlayers` path.
+
+**Docs goldmine:** `docs/COOP-INTERACTIONS.md` — decompiled-game
+knowledge of every per-screen/per-person assumption; read before any
+Harmony work.
 
 ---
 
