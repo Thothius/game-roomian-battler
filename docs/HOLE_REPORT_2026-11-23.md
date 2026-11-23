@@ -198,6 +198,42 @@ against post-v3.7.0 commits.
   **stale worktree**, likely leftover; route to housekeeping prune
   (verify no unmerged work first).
 
+## H-L2 — Schema backward-compat
+
+Method: traced every persisted/wire schema touched in recent sessions —
+`Synergy` (`any_of`, `any_of_min`, `groups`, `activation`,
+`effect_tokens`), `VisualPrefs` (liquid/ambient/shader/wallpaper fields),
+`SavedCustomTheme`/`CustomThemeStore`, `RunState` (incl. legacy format),
+`MpMessage` wire protocol (v3 + `spriteKey`/`fx` additions), bug-report
+pipeline, `mp_store` recovery JSONs.
+
+### Verdict: the persistence layer is well-armored — better than expected
+
+| Surface | Compat mechanism | Status |
+|---|---|---|
+| `Synergy.fromJson` | Every new field defaulted: `anyOfMin`→null (→1 via `requiredAnyOfCount`), `activation`→'ACTIVE', `groups`→[], `any_of`→[]. Old JSON parses cleanly. | **CLEAN** |
+| `VisualPrefs.fromJson` | Every field `?? default` + `.clamp()` to setter range (preset JSON is user-importable — out-of-range can't assert-crash sliders). `AppFontLabel.migrate()` maps stale font indices onto live fonts. | **CLEAN — exemplary** |
+| `CustomThemeStore.load` | Per-item try/catch — one malformed preset is skipped, gallery survives (comment documents the prior nuke-the-gallery bug). | **CLEAN** |
+| `RunState.fromJson` | Explicit legacy branch for pre-0.4.0 shape (`selected_character`/`active_guns`/`active_items`). | **CLEAN** |
+| MP wire `decode` | Unknown `type` → `FormatException` → caught + dropped silently at `mp_link.dart:657`. New message types can't crash old peers. | **CLEAN** |
+| `MpSurprise` old→new | `spriteKey: (j['spriteKey'] ?? j['sprite'])` — reads both wire keys. | **CLEAN** |
+| `fx` field | Wire-additive; old peers' `fromJson` ignores unknown keys. | **CLEAN** |
+| Bug report | Stateless — composes mailto/clipboard at send time, zero persistence. No compat surface. | **CLEAN** |
+| `mp_store` recovery JSONs | `RunState.fromJson` handles them (same legacy path). | **CLEAN** |
+
+### Residual findings (all LOW)
+
+| # | Finding | Route |
+|---|---------|-------|
+| L2-1 | **New→old peer skew:** a *new* build sending `spriteKey` to an *old* build — old `fromJson` only reads `'sprite'`, so custom-surprise sprites silently drop on version skew. `fx` degrades gracefully (ignored). Only affects custom surprises between mismatched installs; both devices must run Nearby-discovered builds, so skew windows are small. | **S4** — already on the protocol-skew test list; add explicit old-peer fixture test |
+| L2-2 | Presets saved before the `prefs` field existed in `SavedCustomTheme` are silently dropped by the per-item catch (graceful, but lossy). Likely theoretical — `prefs` shipped with the store. Verify store introduction commit if it ever matters. | INFO — no action |
+| L2-3 | `particleSpritePath` / custom wallpaper file persisted by name — if a future asset cull removes the file, consumers must degrade silently. Wallpaper already has `errorBuilder → SizedBox.shrink()` (blank bg, no crash — acceptable). Particles path unverified — spot-check in S5 asset audit. | **S5** — fold into asset-cull checklist: "grep persisted-path fields before deleting assets" |
+
+### Not covered
+
+- `gungeon_dump.json` merge tooling schemas (offline pipeline, not shipped)
+- `back_refs.json`/`synergy_meta.json` consumers beyond fromJson (H-L1 territory)
+
 ## Claims trace
 
 - Slot 3 ACTIVE on this slice → release on commit of this report.
