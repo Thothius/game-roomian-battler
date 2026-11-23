@@ -87,8 +87,8 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 | :--- | :--- | :--- | :--- | :--- |
 | **Slot 1** | **VISUAL (Devin)** | `DONE` | Settings reorg shipped `804fc84`; MP/char-select/avatar views assessed polished. Customization files untouched — other agent mid-refactor. Slot released. | 2026-11-18 | (LEB shared ticker + hoisted row body + neutral LOCKED rows). Customization files untouched — other agent's `studio_flow.dart` WIP seen in main WD. Slot released. | 2026-11-18 |
 | **Slot 2** | **CORE (Devin)** | `DONE` | Ammonomicon codex rework — user: "very basic UI and depth wise". Items 1-3 shipped: overview landing + favorites/recents `87e7f63`+`fc608e7`, card meta hints `f366480`, shrine/combat depth `73552a8`. Remaining: item 4 enemy/boss stat blocks, item 5 cross-links. Session ended at context limit — slot released. Files: `ammonomicon_screen.dart`, `ammonomicon_detail_screen.dart`, `item_detail_screen.dart`, `synergy_detail_screen.dart`, `gungeoneer_detail_screen.dart`, `widgets/ammonomicon/`. Prior: bug-report system + hardening `35c6c9c`/`e45a2e3`/`ed3220a`. | (21 tests total: subject/body/URI encoding edge cases, kind-switch e2e, no-entity variant, whitespace guards, skeuo render, button wiring; whitespace-entity fix in service+sheet), pipeline `18c5491` (30min lookback). Full suite 718 pass, analyze 0. Slot released. Prior: bug report system `35c6c9c`/`c34b59e`. BugReportContext model + BugReport service (mailto→faaremets.fristjan@gmail.com, pipe-delimited subject, 10s timeout, clipboard fallback), BugReportSheet (context chips + kind picker + notes, skeuo-aware), BugReportButton; entry sweep: run-tools row before Settings, item/gun/synergy/gungeoneer/ammonomicon details, Ammonomicon+Cool&Curse+Stats+Settings AppBars, quiz home, dice dialog, studio menubar, main-menu chip. `tools/bug_report_pipeline.gs` + setup steps in BUG_REPORT_AND_STORE_STRATEGY.md. 9 new tests, analyze 0, targeted suites green. Slot released. Prior: U-014 wallpaper re-encode `8e30e5b`; masterplan WP-1..5 (`48bf8fd`..`9a3e2df`) + bughunt `c8aadb8`. | 2026-11-25 |
-| **Slot 3** | **PARALLEL (Devin)** | `ACTIVE` | Masterplan S3 — data truth (U-015 verify, U-001 shot, mojibake, item fields, XtG filter, synergy perf) | 2026-11-23 |
-| **Slot 4** | **SUPPORT (Devin)** | `DONE` | UI consistency sweep shipped: 56 raw Text()→GoopText `e40a88a`, 74 bare fontSize→FontSizes `171707d`. Slot released. | 2026-11-23 |
+| **Slot 3** | **_(none)_** | `DONE` | Masterplan S3 data truth shipped — U-015 verified-closed (id guard now covers guns+items), U-001 closed (screenshot superseded), mojibake clean, item fields pinned, XtG filter verified, synergy perf proven (873 tests green). Slot released. | 2026-11-23 |
+| **Slot 4** | **SUPPORT (Devin)** | `ACTIVE` | README relaunch continuation — branch `slot4-support/readme-relaunch` (`48a4bd9` README+media committed), Android SDK installed to `X:\dev-cache\android-sdk` (junctioned), APK build in flight → v3.7.0 release. Re-claimed after stale takeover. | 2026-11-23 |
 
 ### Slot Details
 
@@ -150,8 +150,8 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 |-------|-------|
 | **Branch** | `master` (sole active agent — AC5d worktree not required) |
 | **Session started** | 2026-11-23 (masterplan S3) |
-| **Last board update** | 2026-11-23 07:41 |
-| **Last commit** | app `d546bb6` — fix: clamp negative-curse bonuses + stale widget-test labels |
+| **Last board update** | 2026-11-23 08:05 |
+| **Last commit** | app `e07a927` — style: perf-test interpolation; series `4a4eff3`/`69c79fc`/`fdede54`/`e07a927` + root `419acd5`/`2f501b5` |
 | **Files in progress** | — |
 | **Uncommitted changes** | — |
 
@@ -162,11 +162,11 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 #### Slot 4 — SUPPORT
 | Field | Value |
 |-------|-------|
-| **Branch** | `master` |
-| **Session started** | 2026-11-23 (stale takeover of prior `slot4-support/readme-relaunch` session) |
+| **Branch** | `slot4-support/readme-relaunch` (app worktree `.worktrees/slot4-support/gungeon_mate`) |
+| **Session started** | 2026-11-23 (README relaunch; re-claimed after stale takeover) |
 | **Last board update** | 2026-11-23 |
-| **Last commit** | app `171707d` — fontSize→FontSizes tokens |
-| **Files in progress** | — |
+| **Last commit** | app `48a4bd9` — docs(readme): storefront rewrite + media (on branch, unmerged) |
+| **Files in progress** | app: `README.md`, `docs/media/*`, `web/index.html` (all committed on branch) |
 | **Uncommitted changes** | — |
 
 > **Slot restructured 2026-08-25.** Formerly UNIVERSAL WORKER. Now SUPPORT — owns the cleanup-and-doc niche via `/cleanup` command. Use for dead code sweeps, doc consistency checks, stale reference cleanup, Playwright testing, and general cross-slot assistance.
@@ -429,3 +429,4 @@ Format: `| Agent | Date | Branch | Commit | Task | Files | Status | Next | Watch
 | SUPPORT (Devin) | 2026-11-23 | master | app `d546bb6` | 9-lens verification audit — all claims verified; full suite caught 4 L5-regressions (stale labels + negative-curse '+-'), fixed + retested | cool_curse_math, 2 widget tests | DONE | Audit verdict: lenses hold; release cut remains | — |
 | SUPPORT (Devin) | 2026-11-23 | master | — | UI consistency audit (labels/paddings/spacing) — EdgeInsets CLEAN; fontSize 456 raw literals + Text() 56 raw uses catalogued by file; no edits (Slot 3 active on data-truth files) | — | DONE | Punch list delivered to user — per-owner fix batches recommended | Slot 3 owns ammonomicon/codex files — excluded from fix scope |
 | SUPPORT (Devin) | 2026-11-23 | master | app `e40a88a`+`171707d` | UI consistency sweep — 56 raw Text()→GoopText (GoopText.build recursion bug caught+reverted pre-commit), 74 bare fontSize→FontSizes tokens (exact-value matches only, ammonomicon/item-detail excluded per Slot 3); analyze 0 issues, widget suite 266/266 | 26+20 lib files | DONE | Slot released. Remaining uncommitted: `test/widget/item_detail_sections_test.dart` = Slot 3 WIP — untouched | FontSizes sweep skipped non-token sizes + `N*sf` scaled values (intentional) |
+| PARALLEL (Devin) | 2026-11-23 | master (both repos) | app `4a4eff3`,`69c79fc`,`fdede54`,`e07a927`; root `419acd5`,`2f501b5` | **Masterplan S3 — data truth** — (1) U-015 verified-closed: `gun_id_integrity_test`→`entity_id_integrity_test` now guards id uniqueness on BOTH id-bearing files (guns+items; scanned all assets/data — no other file uses `id`). (2) U-001 closed: `08_char_select.png` artifact no longer exists anywhere; successor `design-lab/reference/ref-02-character-select.png` verified non-blank (42KB, lum 18.2). (3) Mojibake: zero U+FFFD across all assets — deferred-list note dropped. (4) Feedback item 5 already shipped (`25bbcd9` effect header + `1b4400d` AmmonomiconCard) — pinned by new ItemDetailScreen widget test (lazy slivers need scroll-before-assert). (5) Feedback item 6 already shipped — `rich_text.dart` XtG filter + `rich_text_xtg_filter_test` + clean data. (6) S3.6 perf proof: 120-entry inventory — getActiveSynergies 507µs cold/9µs warm, getPartialSynergies 912/92µs, combined 71/11µs, getSynergiesByInventory 4.2ms/304µs, synergiesCompletedBy ×509 names 49ms cold sweep/2.6ms warm. Memoization confirmed real. Suite **873 green**, analyze **0** | test/entity_id_integrity_test, test/synergy_perf_test, test/widget/item_detail_sections_test, AGENTS.md, USER_BUG_LIST, MASTERPLAN claims | DONE — slot released | Next: **S4 MP hardening** (only remaining unblocked session; S5 gated behind it) | Foreign WIP in app tree (~27 files, user's Text→GoopText sweep) — untouched, compiles clean; unmerged `slot4-support/readme-relaunch` branch+worktree still pending decision; both repos ahead of origin (app +16, root +14) — push on request only |
