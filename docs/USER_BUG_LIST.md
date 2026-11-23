@@ -98,7 +98,7 @@
 - **Reported:** 2026-11-25 — dump cross-validation pass (Slot 4)
 - **Root cause:** our `Junk` passive ("often spawned by destroying chests") carries `id: 580`, but the game dump resolves 580 to `SackKnightBoon` (CompanionItem). Either Junk's id is wrong or two objects share the slot. `Ser Junkan 1` has `id: null` — the real Ser Junkan id is unset.
 - **Severity:** Low — no synergy references Junk by id; only affects game_ids joins/provenance.
-- **Status:** Fixed — `edf7b77` deleted all 602 unreferenced PNGs (bosses/enemies/items dirs + 225 guns), kept the 12 live icons; pubspec asset dirs trimmed
+- **Status:** Verified closed (S3, 2026-11-23) — fixed in `7f629dd` (Junk→127, Ser Junkan 1→580). App-wide id-uniqueness invariant now enforced by `test/entity_id_integrity_test.dart` covering BOTH `guns.json` and `items.json` (the only files carrying `id`); guns-only guard was `gun_id_integrity_test` before S3.1 generalized it. Both files currently have zero duplicate non-null ids.
 
 ### U-012 — `assets/images/game/` is ~97% bundled dead weight
 - **Reported:** 2026-11-25 — full asset inventory pass (Slot 4)
