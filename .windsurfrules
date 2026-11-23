@@ -43,7 +43,6 @@ We are designing with the mechanics, feature sets, and general design philosophy
 ---
 
 ## 3. The Changelog System
-We maintain a dynamic, easily editable Changelog:
-- **Location:** The structured logs are kept in `assets/data/changelog.json`.
-- **Display:** Loaded dynamically at startup or via the main menu's Changelog dialog.
-- **Updating:** When any feature is added or updated, document the changes immediately in `assets/data/changelog.json` and keep `gungeon_mate/VERSION_HISTORY.md` in sync.
+`gungeon_mate/VERSION_HISTORY.md` is the changelog of record:
+- **Location:** Newest-first sections at the top of `VERSION_HISTORY.md`.
+- **Updating:** When any feature is added or updated, prepend a matching entry immediately. (`assets/data/changelog.json` was removed 2026-11-23 — no runtime consumer; `version_lockstep_test` pins VERSION_HISTORY's top heading to `kAppVersion`.)

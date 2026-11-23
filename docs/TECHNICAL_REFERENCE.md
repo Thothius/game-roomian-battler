@@ -141,7 +141,6 @@ When bumping the version, ALL of these files must be updated in lockstep:
 |------|----------------|
 | `gungeon_mate/pubspec.yaml` | `version: X.Y.Z+BUILD` |
 | `gungeon_mate/lib/utils/asset_paths.dart` | `const String kAppVersion = 'X.Y.Z';` |
-| `gungeon_mate/assets/data/changelog.json` | New entry at top of array |
 | `gungeon_mate/VERSION_HISTORY.md` | New section at top |
 | `gungeon_mate/lib/screens/main_menu_screen.dart` | Imports `kAppVersion` from `asset_paths.dart` — no hardcoded version string |
 

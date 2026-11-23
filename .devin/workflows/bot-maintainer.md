@@ -89,9 +89,9 @@ You may fix **trivial issues** directly (1-3 line changes) without full handoff:
 ## Release Build Process
 When asked to build a release, execute the `/release-build` workflow:
 1. Bump `pubspec.yaml` version
-2. Prepend `changelog.json` entry matching version
+2. Prepend `VERSION_HISTORY.md` entry matching version
 3. Prepend `VERSION_HISTORY.md` entry matching version + build number
-4. Update `main_menu_screen.dart` changelog button label
+4. Verify `main_menu_screen.dart` has no stale version literals
 5. Build APK non-blocking with polling (blocking calls on long flutter builds have hung before)
 6. Copy APK to `app-releases/` and user's Desktop
 7. Git commit + push (PowerShell uses `;` not `&&`)

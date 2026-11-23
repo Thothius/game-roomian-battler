@@ -22,10 +22,10 @@ version: X.Y.Z+N
 ```
 
 ## 3. Add a changelog entry
-Prepend a new entry to the top of `gungeon_mate/assets/data/changelog.json`
-(newest first). Use a short emoji title and concise bullet items describing
-root cause + fix for each change — this is user-facing, shown in the
-in-app Changelog dialog.
+Prepend a new entry to the top of `gungeon_mate/VERSION_HISTORY.md`
+(newest first). Use a short title and concise bullet items describing
+root cause + fix for each change — this is the changelog of record
+(`changelog.json` was removed; no in-app changelog UI exists).
 
 ## 4. Sync VERSION_HISTORY.md
 Prepend a matching entry to `gungeon_mate/VERSION_HISTORY.md` with the same
@@ -36,9 +36,8 @@ detailed log.
 ## 5. Update ALL version strings in main_menu_screen.dart
 In `gungeon_mate/lib/screens/main_menu_screen.dart`, search for every `vX.Y.Z`
 literal and update them ALL to match the new version:
-- The `'Changelog (vX.Y.Z)'` button label string.
-- The home screen version `Text` widget (e.g. `'vX.Y.Z'`).
-- The changelog dialog header subtitle (e.g. `'vX.Y.Z — Title'`).
+- The home screen version `Text` widget reads `kAppVersion` dynamically —
+  verify no stale `vX.Y.Z` literals remain.
 Never leave a stale version string in this file.
 
 ## 6. Build the release APK

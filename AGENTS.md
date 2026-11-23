@@ -348,7 +348,7 @@ Four principles anchor all UI/UX decisions. Every animation, layout, and state c
 - `lib/utils/` — utility functions (asset_paths, bug_reporter, format)
 - `lib/widgets/` — all UI widgets (avatar_aura, gungeoneer_header, periodic_tile, theme_overlay, theme_engines, quality_badge, etc.)
 - `lib/screens/` — all screens (active_run, browse, character_select, effects_summary, favourites, home, item_detail, main_menu, multiplayer_lobby, settings, shrine_picker, stats_detail, synergies_overview, theme_picker)
-- `assets/data/*.json` — game data files (guns, items, synergies, shrines, gungeoneers, concepts, npc_dialogues, back_refs, themes, changelog)
+- `assets/data/*.json` — game data files (guns, items, synergies, shrines, gungeoneers, concepts, npc_dialogues, back_refs, themes)
 - `gungeon_mate/tools/` — data pipeline Python scripts (data_integrity, audit_stats, scrape_infobox, etc.)
 - `scripts/` — validation and scraping scripts (validate_db, parse_wiki_data, enrich_from_wikigg, crawl_wiki, etc.)
 - `gungeon_mate/pubspec.yaml` — dependencies and version
@@ -493,7 +493,7 @@ Maintainer may fix **trivial issues** directly (1-3 line changes) without full h
 - This is enforced by `.windsurf/rules/release-checklist.md`.
 
 ### C8. Release protocol
-- Version bumps in `pubspec.yaml` must come with matching `changelog.json` + `VERSION_HISTORY.md` + `main_menu_screen.dart` label updates in the same commit.
+- Version bumps in `pubspec.yaml` must come with matching `VERSION_HISTORY.md` + `asset_paths.dart`/`main_menu_screen.dart` version updates in the same commit.
 - This is enforced by `.windsurf/rules/release-checklist.md`.
 - Maintainer owns the full release build process via `/release-build` workflow.
 
@@ -503,8 +503,7 @@ Before starting any task, check `docs/` for an existing spec. If one exists, fol
 - When creating new plans, place them in `docs/` with a descriptive filename and add them to this registry.
 
 ### C10. Changelog discipline
-- When any feature is added or updated, document in `assets/data/changelog.json` under a new version entry.
-- Keep `gungeon_mate/builds/VERSION_HISTORY.md` in sync with the changelog.
+- When any feature is added or updated, document in `gungeon_mate/VERSION_HISTORY.md` under a new version entry.
 - Update the main GitHub `README.md` to reflect significant new features.
 
 ### C11. PowerShell syntax
@@ -579,7 +578,6 @@ Run when you need a visual check of a screen.
 #### `/version-bump` — 4-file version bump without full APK
 Run when you need to bump the version for a minor release.
 1. `pubspec.yaml`: bump `version: X.Y.Z+build`
-2. `assets/data/changelog.json`: add new entry at top of array
 3. `lib/utils/asset_paths.dart`: update `kAppVersion`
 4. `lib/screens/main_menu_screen.dart`: reads `kAppVersion` dynamically — no change needed
 5. Commit all 4 files together
@@ -622,7 +620,7 @@ Run when the codebase needs a hygiene pass. Combines dead code detection, doc co
 2. **Doc consistency:** Check every doc in `docs/` — does it reference files that still exist? Does it reference widgets/screens that were renamed or deleted? List broken references.
 3. **Stale docs:** Check for docs older than 30 days that describe completed work (assessments, plans, audits). List candidates for archiving to `docs/archive/`.
 4. **AGENTS.md drift:** Check if slot names, commands, or file paths in AGENTS.md match the actual codebase structure. Flag mismatches.
-5. **Changelog sync:** Check if `assets/data/changelog.json` latest entry matches the latest commit message. Flag desync.
+5. **Changelog sync:** Check if `VERSION_HISTORY.md` top entry matches `kAppVersion`. Flag desync.
 6. **Asset references:** Grep for `Image.asset('assets/...')` calls → verify the asset paths exist in `pubspec.yaml` and on disk. List missing.
 7. Report: "Dead code: [N imports, M functions, K TODOs]. Broken doc refs: [list]. Stale docs: [list]. AGENTS.md drift: [list]. Changelog desync: [yes/no]. Missing assets: [list]."
 
