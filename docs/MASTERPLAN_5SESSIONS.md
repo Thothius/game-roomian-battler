@@ -32,7 +32,7 @@ plan; `AGENT_STATUS.md` remains the live agent board.
 |---|---|---|---|---|
 | S1 CI + logic tests | PARALLEL (Devin, Slot 3) | DONE | app `ddb6d4f` + `54bb84a` | S1.1–S1.5 complete: 753 tests, analyze 0, coverage baseline 48.1%, CI workflow + coverage_report.py committed. **PUSHED** after gh `workflow`-scope refresh; first CI run green (run 45093492984, 3m16s — analyze + tests + coverage gate all pass). tile_logic/dice_roll_logic/mp_handlers/run_lifecycle are widget mixins → deferred to S2. |
 | **H Detective hole-hunt** | _unclaimed_ | PENDING | — | — |
-| S2 widget coverage | _unclaimed_ | PENDING | — | — |
+| S2 widget coverage | PARALLEL (Devin, Slot 3) | DONE | app `1d1ae9e`..`fce513d` | 87 widget tests, all 6 priority batches. Coverage 48.1→62.3% overall (widgets 56.5%). 2 test-found bugs fixed. Residual deep-coverage gaps noted in session log |
 | S3 data truth | _unclaimed_ | PENDING | — | — |
 | S4 MP hardening | _unclaimed_ | PENDING | — | — |
 | S5 release readiness | _unclaimed_ | PENDING | — | — |

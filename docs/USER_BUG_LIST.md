@@ -162,3 +162,15 @@
   - `Junk`/`Ser Junkan 1` item ids collided with dump ids 127/580 (U-015 resolved).
 - **Severity:** High (wrong activation results + wrong displayed requirements)
 - **Status:** Fixed — `any_of_min` + `activation` schema fields added; 15 synergies corrected; query layer filters `INACTIVE`; LEB slot math counts K-of-N picks. Tests: `synergy_logic_test` +8, `leb_auto_enable_test` updated.
+
+### U-022 — Dice roll dialog header overflows 76px on the right
+- **Reported:** 2026-11-23 — found by new S2.5 widget test (`DiceRollDialog renders as dialog`)
+- **Root cause:** header `Row` (dice_roll.dart) had no `Flexible` — the "GUNFORTUNA'S DUEL" title + action icons could exceed the 440px dialog on wide fonts/narrow screens.
+- **Severity:** Low-Medium (visual overflow in a user-facing dialog)
+- **Status:** Fixed in app `46230c4` — title wrapped in `Flexible` + `maxLines:1`/`ellipsis`.
+
+### U-023 — FramedAvatar crashes when avatar asset fails to load
+- **Reported:** 2026-11-23 — found by new S2.6 widget test (`ParadoxPlayerPanel renders`)
+- **Root cause:** `avatar_frame.dart` errorBuilder used `size * 0.6` — callers pass `size: double.infinity`, producing an infinite Icon fontSize (`fontSize.isFinite` assertion) whenever the avatar asset 404s.
+- **Severity:** Medium (crash on missing/corrupt avatar asset)
+- **Status:** Fixed in app `451cf80` — errorBuilder falls back to `(w ?? 40) * 0.6`.
