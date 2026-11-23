@@ -358,9 +358,11 @@ The old `multiplayer_session.dart` / `multiplayer_service.dart` / `paired_partne
 
 ---
 
-## 6.5. Test Suite (v2.1.0)
+## 6.5. Test Suite
 
-199 tests across 15 files, all passing. CI runs on every push via GitHub Actions.
+919 tests across ~50 files, all passing (verified 2026-11-25, post-S5). Line coverage **65.1%** — baseline pinned in `test/coverage_baseline.txt`, ratchet-only. CI runs on every push via GitHub Actions.
+
+Per-file table below is historical (v2.1.0 era); for current per-file/dir coverage run `python tools/coverage_report.py` after `flutter test --coverage`.
 
 | File | Tests | Coverage |
 |------|-------|----------|
