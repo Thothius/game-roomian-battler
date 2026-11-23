@@ -357,7 +357,7 @@ All 9 lenses executed across 7 slices. Findings routed:
 | **FIX-NOW (done)** | L4-1..3 mounted guards — shipped `dfc7770` |
 | **S3 data truth** | L1-1/L1-2/L1-3 id invariants+provenance, L7-1/L7-2 synergy memoization (L6-1 silent JSON DONE — assetLoadFailures + logging + test) (L5-1/L5-2/L5-5 cool-curse honesty DONE — shared cool_curse_math.dart + tests) |
 | **S4 MP** | L2-1 spriteKey old-peer skew fixture |
-| **S5 polish/release** | L3 dead assets+screens cull, L8-2/L8-3/L8-4 docs+changelog sync, L2-3 persisted-path asset check, L5-4 spice-table qualifier, L6-2 save-corruption notice |
+| **S5 polish/release** | L3 dead assets+screens cull, L8-2/L8-3/L8-4 docs+changelog sync, L2-3 persisted-path asset check, L5-4 spice-table qualifier (L6-2 save notice DONE — saveWasCorrupt flag) |
 | **Unscheduled** | L8-1 `data_integrity.py` missing — FIX-NOW candidate (restore from git history or repoint docs) |
 
 **Zero unrouted findings.** The two highest-value catches: the
