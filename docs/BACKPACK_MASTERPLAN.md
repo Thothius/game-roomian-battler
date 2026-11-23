@@ -99,8 +99,8 @@ Layout (dark neon, theme tokens, `Sliver`/`GridView` per conventions):
   - *Decision:* capacity is mixed (any item takes any slot); display groups GUNS / ITEMS inside the bag for scannability.
 - **Empty slots** — dashed outlines filling remaining capacity so 12-ness is visible.
 - **Empty state** — "Bag's empty — long-press gear and hit STASH" hint.
-- **Long-press stored tile** → same quick-action pill pattern: TAKE OUT / DELETE / SEND (send = existing transfer-to-partner flow, partner's *open* inventory only).
-- **Tap stored tile** → TAKE OUT immediately (superset of the long-press spec — fast path; long-press still offers delete/send).
+- **Tap stored tile** → opens the **full item/gun detail view** (`ItemDetailScreen`/gun detail — same destination as the open inventory, so wiki text, stats, synergies, LEB toggle all work identically). Consistent with inventory tap behavior; retrieval is one long-press away.
+- **Long-press stored tile** → quick-action pill: TAKE OUT / DELETE / SEND (send = existing transfer-to-partner flow, partner's *open* inventory only). TAKE OUT returns it to the open grid instantly.
 - Capacity full state is informational only (no add path inside backpack).
 
 ### 3. Open-inventory filtering
@@ -147,7 +147,7 @@ Layout (dark neon, theme tokens, `Sliver`/`GridView` per conventions):
 ## Test plan
 
 - Provider: stash/unstash round-trip, capacity block at 12, Backpack-item stash block, key cleanup on removeItem/removeGun, toJson/fromJson round-trip, `_buildPlayerFor` grants item for main + coop.
-- Widget: long-press pill shows STASH; stash → item leaves grid, appears in backpack; backpack screen renders n/12 + tiles; tap retrieves; long-press DELETE removes; full-backpack toast; Backpack item tap opens screen; narrow viewport no overflow.
+- Widget: long-press pill shows STASH; stash → item leaves grid, appears in backpack; backpack screen renders n/12 + tiles; tap opens detail view; long-press TAKE OUT retrieves / DELETE removes / SEND transfers; full-backpack toast; Backpack item tap opens screen; narrow viewport no overflow.
 - Regression: synergy count unchanged after stash (everything-counts proof), OWNED tag still shows for stashed item in quick-add.
 
 ## Verification
