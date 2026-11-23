@@ -85,7 +85,7 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 
 | Slot | Assigned Agent | Status | Working On | Last Heartbeat |
 | :--- | :--- | :--- | :--- | :--- |
-| **Slot 1** | **_(none)_** | `DONE` | MP/UI bug-tail batch shipped — app `4705729`. U-038 banner END label, U-039 MP cool/curse long-press explainer, U-040 quick-add mounted guards, U-041 request-dialog back=deny, U-043 wontfix-by-design (kill-switch). U-035..037+U-044..046 remain Slot 2. Slot released. | 2026-11-25 |
+| **Slot 1** | **Devin A2** | `IN_PROGRESS` | UI polish pass (user): codex, shrines view, special panels for items/guns — audit weak UI + rework. | 2026-11-25 |
 | **Slot 2** | **CORE (Devin)** | `DONE` | Fix pass shipped: U-044/045/046 + U-035/036/037 all fixed in app `eb1ea7c` — 949 tests green, analyze 0. Slot released. | 2026-11-25 |
 | **Slot 3** | **_(none)_** | `DONE` | Dice system rework shipped — app `3aabe50`. Single d6 per round, auto-stop spin, co-op ties auto-reroll via `MpDiceResult.round` (stale rounds ignored). U-042 artifact fixed. 944 tests green, analyze 0. Slot released. | 2026-11-25 |
 | **Slot 4** | **_(none)_** | `DONE` | Bug-list verification complete — all U-0xx resolved (U-043 wontfix-by-design). Verified `4705729` + `eb1ea7c` diffs match root causes; analyze 0, full suite 949 green. Both repos confirmed pushed to origin (agents self-pushed). Slot released. | 2026-11-25 |
