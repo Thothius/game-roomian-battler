@@ -88,7 +88,7 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 | **Slot 1** | **Devin A2** | `IN_PROGRESS` | MP/UI bug-tail batch ONLY: U-038 reconnect banner, U-039 MP explainer path, U-040 quick-add dispose guard, U-041 request-dialog back, U-043 dead emote code. U-035..037 + U-044..046 belong to Slot 2 (claimed same window). | 2026-11-25 |
 | **Slot 2** | **CORE (Devin)** | `IN_PROGRESS` | Fix pass: U-044/045/046 dashboards + U-035/036/037 studio pills (user: 'finish') | 2026-11-25 |
 | **Slot 3** | **_(none)_** | `DONE` | Dice system rework shipped — app `3aabe50`. Single d6 per round, auto-stop spin, co-op ties auto-reroll via `MpDiceResult.round` (stale rounds ignored). U-042 artifact fixed. 944 tests green, analyze 0. Slot released. | 2026-11-25 |
-| **Slot 4** | **_(none)_** | `DONE` | Quick-add sheet test batch shipped — app `a997996`. New `test/widget/quick_add_sheet_test.dart` (11 tests: discovery view, search filter, tap-to-add gun/item, OWNED state, 38px/48px header metrics, 320px viewport, dismiss/clear/reopen lifecycle). Sheet content extracted to `_QuickAddSheet` StatefulWidget — fixes disposed-controller/FocusNode race (whenComplete fired while route still animating). Unused manual FocusNode dropped. 939 tests green, analyze 0. Slot released. | 2026-11-25 |
+| **Slot 4** | **SUPPORT (Devin)** | `IN_PROGRESS` | Bug-list verification standby (user request) — Slot 1 owns U-038..043 MP/UI fixes, Slot 2 owns U-044..046 + U-035..037. I verify their commits when they land: diff review vs bug-list root causes, focused widget tests, full suite + analyze. No code edits unless a fix needs a test seam. | 2026-11-25 |
 
 ### Slot Details
 
