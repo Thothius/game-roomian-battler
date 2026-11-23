@@ -9,20 +9,6 @@
 ## Open
 
 
-### U-033 — ItemDetailHeader shows two competing "favorite" systems + crowded action cluster
-- **Reported:** 2026-11-25 — item/gun detail top-panel review (Slot 3)
-- **Root cause:** `item_detail/header.dart` top-right cluster renders `CodexFavButton` (Ammonomicon bookmark, `CodexPrefs`) AND a heart `IconButton` (`RunProvider.isFavourite`) AND `BugReportButton.iconButton` — three icons where two are both "favorites" doing different things (codex bookmark vs run favourites list). Users can't tell which star counts where; the cluster also feeds the U-025 narrow-width overflow.
-- **Severity:** Low-Medium (UX confusion + overflow contributor)
-- **Status:** OPEN — `header.dart` under Slot 2's active WIP; fold into their header rework or follow up after it lands. Candidates: merge the two fav systems, demote bug-report into the bottom bar, or collapse the cluster into a single overflow menu.
-
-### U-034 — Gun vs item detail header hierarchy is inverted
-- **Reported:** 2026-11-25 — item/gun detail top-panel review (Slot 3)
-- **Root cause:** `item_detail/header.dart` — gun path renders badge row → NAME → icon → effect line; item path renders badge row → ICON → name → tag Wrap. Same screen, two different reading orders; on items the thing you tapped (the name) sits below the artwork. Also: mojibake `â€"` in doc comments (~lines 384/410) to sweep.
-- **Severity:** Low (visual consistency)
-- **Status:** OPEN — same file/constraint as U-025/U-033; unify to name-first (gun order) for both entity types.
-
-
-
 ## Resolved
 
 ### U-001 — 08_char_select.png is a white/blank screenshot
@@ -247,3 +233,16 @@
 - **Root cause:** `BrowseRow` hardcoded `contains` lists for GOD TIER / CONVERTS TO ARMOR / DEAD WEIGHT.
 - **Severity:** Low
 - **Status:** Fixed in app `921399d` — lists centralized into `_RobotTier` const map (single source). Explicit `robot_tier` data field remains a possible future data-pass improvement.
+
+### U-033 — ItemDetailHeader shows two competing "favorite" systems + crowded action cluster
+- **Reported:** 2026-11-25 — item/gun detail top-panel review (Slot 3)
+- **Root cause:** `item_detail/header.dart` top-right cluster rendered `CodexFavButton` (Ammonomicon bookmark, `CodexPrefs`) AND a heart `IconButton` (`RunProvider.isFavourite`) AND `BugReportButton.iconButton` — three icons where two are both "favorites" doing different things.
+- **Severity:** Low-Medium (UX confusion + overflow contributor)
+- **Status:** Fixed in app `11b78e7` — cluster collapsed into a single `_DetailActionsMenu` overflow menu with explicit labels (Save to Codex Favorites / Add to Favourites / Report a Bug); state shown via filled icons. Both fav systems preserved, now self-describing.
+
+### U-034 — Gun vs item detail header hierarchy is inverted
+- **Reported:** 2026-11-25 — item/gun detail top-panel review (Slot 3)
+- **Root cause:** item path rendered badge row → ICON → name → tags; gun path badge row → NAME → icon → effect.
+- **Severity:** Low (visual consistency)
+- **Status:** Fixed in app `11b78e7` — item variant reordered to name-first (badge row → name → icon → tags), matching the gun variant; corrected the copy-pasted `_TagChip` doc comment. (The reported `â€"` mojibake was a console-encoding artifact — file comments are clean UTF-8 em-dashes.)
+
