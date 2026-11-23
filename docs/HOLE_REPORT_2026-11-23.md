@@ -321,6 +321,50 @@ for eager vs lazy children, all `Image.asset` for missing
 - `particle_engine.dart` inner-loop efficiency (1,315 lines — a dedicated
   perf pass would need profiling, not grep)
 
+## H-L1 — Data vs dump (spot-check, non-synergy)
+
+Scope note: Slot 4's Gemini pass already deep-verified synergies +
+item/gun catalog completeness. This lens spot-checked the *structural*
+invariants instead: global ID uniqueness (the U-015 bug class),
+id↔dump consistency, and app↔dump coverage by id-join.
+
+Method: parsed `tools/gungeon_dump.json` (379 guns / 279 items raw
+entries incl. per-level variants) vs `assets/data/*.json`; compared by
+**id-join** (reliable — name normalization produces false mismatches:
+dump 'Comm4nd0' vs app 'Com4nd0', renamed items, etc.).
+
+### Findings
+
+| # | Finding | Severity | Route |
+|---|---------|----------|-------|
+| L1-1 | **Live duplicate gun id — the U-015 bug class is NOT fully closed.** `guns.json` id `50` is claimed by both **Colt 1851** and **SAA**. `data_integrity_test.dart` checks duplicate *names* only — no id-uniqueness invariant exists for guns (S3.1 predicted exactly this gap). Impact is currently nil (`gun.id` has zero consumers — name-resolution everywhere), but the invariant hole is real. | LOW (latent) | **S3** — extend integrity test to assert global id uniqueness per file; decide whether SAA gets renumbered or the field is documented as app-local |
+| L1-2 | **`guns.json` `id` field is unreliable provenance.** Only **56/239** app gun ids match the dump's ids for the same gun; 52 outright mismatches (e.g. app Colt 1851 id 50 vs dump 62, app AK-47 id 15 vs dump 221). Items were normalized to dump ids during U-015; guns were not. Nothing consumes `gun.id` today, but the field *looks* like dump provenance and mostly isn't — a trap for the next data merge. | LOW-MED | **S3** — either renumber guns to dump ids (big diff, needs care) or rename/repurpose the field honestly (e.g. `app_id`) |
+| L1-3 | **14 app-only item ids** (Amulet of the Pit Lord, Gundromeda Strain, Shock/Explosive/Shadow/Vorpal/Flak/Hungry/Katana/Blank/Devolver Rounds, Hidden Compartment, Elder Blank, Angry Bullets) — none collide with dump ids; they're app-assigned ids for wiki-sourced items the memory dump lacks. Bullet-family cluster. Safe today; note for future dump merges. | INFO | **S3** — fold into the id-semantics decision (L1-2) |
+| L1-4 | **Coverage by id-join is clean:** 0 app-only gun ids, items consistent post-U-015. The dump's 141 "missing" gun entries are per-level/evolution/cut variants the app intentionally curates out — not missing content. | PASS | none |
+
+### Verified clean
+
+- Zero cross-file id collisions (guns↔items↔enemies↔etc.)
+- `app-only` gun ids: **0** — every app gun maps to a real dump entity
+- Duplicate *names*: none in any entity file (integrity test covers this)
+
+## Hole-hunt complete — final scoreboard
+
+All 9 lenses executed across 7 slices. Findings routed:
+
+| Route | Items |
+|---|---|
+| **FIX-NOW (done)** | L4-1..3 mounted guards — shipped `dfc7770` |
+| **S3 data truth** | L5-1/L5-2/L5-5 cool-curse honesty, L1-1/L1-2/L1-3 id invariants+provenance, L6-1 silent JSON degradation, L7-1/L7-2 synergy memoization |
+| **S4 MP** | L2-1 spriteKey old-peer skew fixture |
+| **S5 polish/release** | L3 dead assets+screens cull, L8-2/L8-3/L8-4 docs+changelog sync, L2-3 persisted-path asset check, L5-3/L5-4 estimate labels, L6-2 save-corruption notice |
+| **Unscheduled** | L8-1 `data_integrity.py` missing — FIX-NOW candidate (restore from git history or repoint docs) |
+
+**Zero unrouted findings.** The two highest-value catches: the
+cool/curse screen contradiction (L5-1, user-facing wrong numbers) and
+the missing mandatory data-integrity tool (L8-1, broken documented
+workflow).
+
 ## Claims trace
 
 - Slot 3 ACTIVE on this slice → release on commit of this report.
