@@ -225,7 +225,7 @@ pipeline, `mp_store` recovery JSONs.
 
 | # | Finding | Route |
 |---|---------|-------|
-| L2-1 | **New→old peer skew:** a *new* build sending `spriteKey` to an *old* build — old `fromJson` only reads `'sprite'`, so custom-surprise sprites silently drop on version skew. `fx` degrades gracefully (ignored). Only affects custom surprises between mismatched installs; both devices must run Nearby-discovered builds, so skew windows are small. | **S4** — already on the protocol-skew test list; add explicit old-peer fixture test |
+| L2-1 | **New→old peer skew:** a *new* build sending `spriteKey` to an *old* build — old `fromJson` only reads `'sprite'`, so custom-surprise sprites silently drop on version skew. `fx` degrades gracefully (ignored). Only affects custom surprises between mismatched installs; both devices must run Nearby-discovered builds, so skew windows are small. | **DONE** — `mp_spritekey_compat_test.dart` pins old-peer decode (spriteKey drops, text/preset survive), legacy `sprite` read, key precedence, fx wire-additivity |
 | L2-2 | Presets saved before the `prefs` field existed in `SavedCustomTheme` are silently dropped by the per-item catch (graceful, but lossy). Likely theoretical — `prefs` shipped with the store. Verify store introduction commit if it ever matters. | INFO — no action |
 | L2-3 | `particleSpritePath` / custom wallpaper file persisted by name — if a future asset cull removes the file, consumers must degrade silently. Wallpaper already has `errorBuilder → SizedBox.shrink()` (blank bg, no crash — acceptable). Particles path unverified — spot-check in S5 asset audit. | **S5** — fold into asset-cull checklist: "grep persisted-path fields before deleting assets" |
 
@@ -356,7 +356,7 @@ All 9 lenses executed across 7 slices. Findings routed:
 |---|---|
 | **FIX-NOW (done)** | L4-1..3 mounted guards — shipped `dfc7770` |
 | **S3 data truth** | (L1-1 dup id FIXED + uniqueness test; L1-2/L1-3 documented-accepted) — remaining:  synergy memoization DONE — e988f92+046c3e0; L6-1/L6-2 honesty DONE; L5 cool-curse DONE) |
-| **S4 MP** | L2-1 spriteKey old-peer skew fixture |
+| **S4 MP** | ~~L2-1 spriteKey old-peer skew fixture~~ DONE |
 | **S5 polish/release** | L3 dead assets+screens cull, L8-2/L8-3/L8-4 docs+changelog sync, L2-3 persisted-path asset check, L5-4 spice-table qualifier (L6-2 save notice DONE — saveWasCorrupt flag) |
 | **Unscheduled** | L8-1 `data_integrity.py` missing — FIX-NOW candidate (restore from git history or repoint docs) |
 
