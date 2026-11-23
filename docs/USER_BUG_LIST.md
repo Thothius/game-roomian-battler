@@ -103,7 +103,7 @@
 - **Reported:** 2026-11-25 — detail-view UI audit (Slot 3 PARALLEL)
 - **Root cause:** `item_body_sections.dart` (103 hardcoded `Colors.*`, e.g. `Colors.amber` panels) and `gun_stats_sections.dart` (74) use raw Material colors — panels stay amber/white regardless of selected palette/flair, unlike the rest of the themed UI.
 - **Severity:** Low (theming gap)
-- **Status:** Fixed in app `dfe70d8`
+- **Status:** Fixed in app `dfe70d8` (neutral sweep) + `a7b8c09` (accent tail) — `_panelAccent()` derives each panel's signature hue from `AppTheme.flair.primary` lightness/saturation; only neutral white/black/transparent literals remain.
 
 ### U-056 — Dead header params + mojibake comment
 - **Reported:** 2026-11-25 — detail-view UI audit (Slot 3 PARALLEL)
