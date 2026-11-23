@@ -8,7 +8,11 @@
 
 ## Open
 
-*(none — U-001 verified superseded 2026-11-23, see Resolved)*
+### U-025 — Duplicate switch arm in `AppFontLabel.migrate` (dead code + analyzer warning)
+- **Reported:** 2026-11-23 — S5.1′ post-excision audit (Slot 2 CORE)
+- **Root cause:** `lib/services/theme/app_theme_modes.dart` ~line 2139 — the arm `AppFont.shantellSans || AppFont.architectsDaughter || AppFont.patrickHand => AppFont.fjallaOne` appears twice verbatim; `dart analyze` flags `unreachable_switch_case` (warning). Zero behavior impact — the second arm is dead.
+- **Severity:** Trivial (dead code; analyze warning)
+- **Status:** Reported — **fix blocked by foreign WIP**: the file has uncommitted changes from another batch (hand-lettered font family removal in `bundledFontFamily`). Fix = delete the duplicated arm; do it after that WIP commits to avoid sweeping it into an unrelated commit.
 
 ---
 
@@ -189,3 +193,9 @@
 - **Root cause:** `_detectSavedPreset()` only matched session-flow state (`_presetName`/`_editingPresetId`), which is empty when the studio opens fresh on an already-applied preset — no EDIT PRESET card, and SAVE minted a same-name duplicate instead of updating.
 - **Severity:** High (core customization loop broken — couldn't tweak the live preset)
 - **Status:** Fixed in app `fa25ef8` (+merge `f39dcc9`) — detection falls back to the live `CustomThemeData.name` (saved presets persist their name app-wide); theme panel shows preset name + SAVED PRESET badge; SAVE tab offers UPDATE PRESET; `_onSavePreset` resolves the same target so edits overwrite the existing preset id. Tests: `experience_studio_test.dart` "Active preset editing" group (3).
+
+### U-025 — ItemDetailHeader top row overflows ~47px at ≤~390px width
+- **Reported:** 2026-11-25 — found by new char-select widget test tapping a starting item at 400px viewport
+- **Root cause:** `item_detail/header.dart:232` — the spaceBetween Row packs QualityBadge + SellBadge + ACTIVE/PASSIVE chip (left) against CodexFavButton + BugReportButton + favourite IconButton (right); at ~344px content width the row exceeds constraints by 47px (yellow/black stripe in tests).
+- **Severity:** Medium (visual overflow on narrow phones — content clipped/invisible, not a crash)
+- **Status:** OPEN — `header.dart` carries foreign uncommitted WIP; fix routed to whoever owns it (wrap left cluster in Flexible/FittedBox or move chips). Repro: open any item detail at ≤400dp width.
