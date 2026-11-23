@@ -19,7 +19,7 @@ Legend: **[bug]** correctness · **[perf]** performance ·
 | ~~H3~~ | **Browse row overflow ≤500px** — fixed `5cbf7c6` (pill ellipsis + drop prototypeItem); 500px test green | deferred | S |
 | ~~H4~~ | **MP mis-pair race** — fixed `7be7537` (`_initiatedIds` handshake guard in mp_link.dart, verified present) | deferred | M |
 | ~~H5~~ | **Host-gone hint** — shipped `7be7537` (`onDisconnectElapsed` → banner/paradox bar, mp_recovery.dart) | deferred | S |
-| H6 | **12 missing theme splash JPGs** — generate/source art for the_cultist, gunslinger, convict, hunter, pilot, rat, breach, lead_lord_keep, oubliette, black_powder_mine, bullet_hell, rg_department — or trim slug map | U-013 | M |
+| ~~H6~~ | **Theme splash JPGs** — DONE `7c9f2e4` (sigil emblems, palette-matched); VERIFIED Session B: all 26 splashSlug arms resolve to real files, zero missing | U-013 |
 
 ## Tier 2 — Data & asset hygiene
 
@@ -38,7 +38,7 @@ Legend: **[bug]** correctness · **[perf]** performance ·
 | # | Task | Ref | Effort |
 |---|------|-----|--------|
 | ~~H13~~ | ~~Synergy-scan recompute-per-build~~ — **DONE `a69b56a`**: piece→synergy index + identity-guarded caches, `matchesOwnedSet` everywhere, group-aware count/partial caches | deferred | M |
-| H14 | **Ambience-mud guidance** — atmosphere + liquid + shader + particles can stack into visual mud; add intensity hint or mutual-exclusion nudge in studio | board | S |
+| ~~H14~~ | **Ambience-mud guidance** — DONE `7c9f2e4`: `VisualPrefs.ambienceLoad` counts heavy layers, studio shows ATMOSPHERE LOAD meter + THIN STACK chip at BUSY+, overlay drops dust at max load. VERIFIED live in studio_ambiance.dart | board |
 | ~~H15~~ | **`CustomWallpaper._syncMotion` in build** — DONE `257888c`: prefs/MediaQuery listener + didChangeDependencies drive the gate; build is side-effect free | QA obs | S |
 | ~~H16~~ | **Consolidate `onStartRun` wiring** — DONE `257888c`: shared `_onPeerStartRun`/`_onPeerSurprise`/`_onRecoveryElapsed` handlers; also fixed latent bug — `updateRunProvider` was dropping `onDisconnectElapsed` (host-gone hint lost after provider swap) | QA obs | S |
 
@@ -58,7 +58,7 @@ Legend: **[bug]** correctness · **[perf]** performance ·
 | ~~H21~~ | **Wallpaper display names** — VERIFIED DONE: `kWallpaperNames` map (30 mood-matched names) + `wallpaperDisplayName()` already wired as `_WallpaperTile.label` in the studio picker | Session A verify |
 | ~~H22~~ | **`uni_5` grid verify** — `9unis.jpg` source no longer on disk (was untracked, gone). Asset itself verified healthy: uni_5.webp 320×320, 22k unique colors, non-blank | Session A verify |
 | ~~H23~~ | **Preview session-seed label** — DONE: `_startSession` re-seeds `_rng` per session (`_sessionSeed`), tiny `#seed` label beside LIVE PREVIEW header; reroll gets a fresh seed | Session A |
-| H24 | S7 LIVE LOOK mini-slice (optional) | masterplan deferred |
+| ~~H24~~ | **S7 LIVE LOOK mini-slice** — VERIFIED already shipped: draggable LIVE LOOK pane (~1/3→75%) with mini-UI mock + drag handle in experience_studio_screen.dart (`_buildLiveLook`/`_buildLiveLookMock`) | Session B verify |
 | ~~H25~~ | **Browse LEB discoverability** — DONE: browse chip keeps its compact form; added "Browse LEB badges" toggle row to Settings → SYNERGY READOUT panel so the browse-local pref is discoverable + controllable outside the filter bar | Session A |
 
 ---
