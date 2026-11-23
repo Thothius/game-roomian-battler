@@ -41,3 +41,7 @@ Thumbs.db
 
 # Git worktrees (parallel agent isolation — see AGENTS.md AC5d)
 .worktrees/
+
+# Local research clones + scratch artifacts (not project content)
+.research/
+wp_sheet.jpg
