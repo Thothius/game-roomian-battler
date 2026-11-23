@@ -288,7 +288,7 @@ persistence.
 
 | # | Finding | Severity | Route |
 |---|---------|----------|-------|
-| L6-1 | **Secondary JSON failures are silent.** If `synergies.json`/`shrines.json`/`gungeoneers.json`/`back_refs.json`/`synergy_meta.json` fails to load *or parse*, the app boots normally with empty data — browse shows no synergies, no shrines, no characters — with **zero logging and zero user signal**. A corrupt bundled asset (bad merge, truncated write) produces a plausibly-normal-looking app missing whole features. `catch (_)` swallows even the error object. | MED — silent wrong answer | **S3** — add `debugPrint`/crash-log at minimum; consider a non-blocking "some data failed to load" banner when `_allSynergies`/`_allShrines`/`_allGungeoneers` end up empty *while their JSON was non-empty* (distinguishes "file missing" from "parsed to zero") |
+| L6-1 | **Secondary JSON failures are silent.** If `synergies.json`/`shrines.json`/`gungeoneers.json`/`back_refs.json`/`synergy_meta.json` fails to load *or parse*, the app boots normally with empty data — browse shows no synergies, no shrines, no characters — with **zero logging and zero user signal**. A corrupt bundled asset (bad merge, truncated write) produces a plausibly-normal-looking app missing whole features. `catch (_)` swallows even the error object. | MED — silent wrong answer | **FIXED** — `_loadOptionalAsset` + `_recordAssetFailure` log+record every secondary-asset load/parse failure; exposed via `assetLoadFailures`; `asset_load_failures_test` pins zero failures on shipped data |
 | L6-2 | **Double-corruption of run save is silent data loss.** If both `current_run` and `current_run_backup` fail to parse, user gets a fresh run with no notice. Rare (needs two corrupt writes) and arguably correct UX (better than crash), but a one-line run-log entry "save data was unreadable — started fresh" would close the honesty gap. | LOW | **S5** polish sweep |
 
 ## H-L7 — Performance
@@ -355,7 +355,7 @@ All 9 lenses executed across 7 slices. Findings routed:
 | Route | Items |
 |---|---|
 | **FIX-NOW (done)** | L4-1..3 mounted guards — shipped `dfc7770` |
-| **S3 data truth** | L1-1/L1-2/L1-3 id invariants+provenance, L6-1 silent JSON degradation, L7-1/L7-2 synergy memoization (L5-1/L5-2/L5-5 cool-curse honesty DONE — shared cool_curse_math.dart + tests) |
+| **S3 data truth** | L1-1/L1-2/L1-3 id invariants+provenance, L7-1/L7-2 synergy memoization (L6-1 silent JSON DONE — assetLoadFailures + logging + test) (L5-1/L5-2/L5-5 cool-curse honesty DONE — shared cool_curse_math.dart + tests) |
 | **S4 MP** | L2-1 spriteKey old-peer skew fixture |
 | **S5 polish/release** | L3 dead assets+screens cull, L8-2/L8-3/L8-4 docs+changelog sync, L2-3 persisted-path asset check, L5-4 spice-table qualifier, L6-2 save-corruption notice |
 | **Unscheduled** | L8-1 `data_integrity.py` missing — FIX-NOW candidate (restore from git history or repoint docs) |
