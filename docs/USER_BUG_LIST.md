@@ -8,35 +8,47 @@
 
 ## Open
 
-### U-028 — Duplicate switch arm in `AppFontLabel.migrate` (dead code + analyzer warning)
-- **Reported:** 2026-11-23 — S5.1′ post-excision audit (Slot 2 CORE)
-- **Root cause:** `lib/services/theme/app_theme_modes.dart` ~line 2139 — the arm `AppFont.shantellSans || AppFont.architectsDaughter || AppFont.patrickHand => AppFont.fjallaOne` appears twice verbatim; `dart analyze` flags `unreachable_switch_case` (warning). Zero behavior impact — the second arm is dead.
-- **Severity:** Trivial (dead code; analyze warning)
-- **Status:** Reported — **fix blocked by foreign WIP**: the file has uncommitted changes from another batch (hand-lettered font family removal in `bundledFontFamily`). Fix = delete the duplicated arm; do it after that WIP commits to avoid sweeping it into an unrelated commit.
-
-### U-029 — LEB ghost-row "marching ants" ticker ignores reduced-motion
-- **Reported:** 2026-11-23 — S5.2 ticker/reduced-motion audit (Slot 2 CORE)
-- **Root cause:** `lib/widgets/item_detail/gun_synergies_tab.dart` `_LebPageState._march` — `AnimationController.repeat()` started unconditionally in field initializer; no `ReduceMotion`/`disableAnimations` gate anywhere in the file. The marching-ants animation on LEB ghost rows keeps animating for reduced-motion users.
-- **Severity:** Low (decorative animation only; no functional impact)
-- **Status:** Reported — **fix deferred**: file carries foreign uncommitted WIP; fix = add `_still` + `didChangeDependencies` stop/start (same pattern as `mp_connect_screen.dart`). Do after that WIP commits.
-
 ### U-025 — ItemDetailHeader top row overflows ~47px at ≤~390px width
 - **Reported:** 2026-11-25 — found by new char-select widget test tapping a starting item at 400px viewport
-- **Root cause:** `item_detail/header.dart:232` — the spaceBetween Row packs QualityBadge + SellBadge + ACTIVE/PASSIVE chip (left) against CodexFavButton + BugReportButton + favourite IconButton (right); at ~344px content width the row exceeds constraints by 47px (yellow/black stripe in tests).
+- **Root cause:** `item_detail/header.dart` — the spaceBetween Row packs QualityBadge + SellBadge + ACTIVE/PASSIVE chip (left) against CodexFavButton + BugReportButton + favourite IconButton (right); at ~344px content width the row exceeds constraints by 47px (yellow/black stripe in tests).
 - **Severity:** Medium (visual overflow on narrow phones — content clipped/invisible, not a crash)
-- **Status:** OPEN — `header.dart` carries foreign uncommitted WIP; fix routed to whoever owns it (wrap left cluster in Flexible/FittedBox or move chips). Repro: open any item detail at ≤400dp width.
+- **Status:** OPEN — Slot 2 actively fixing (U-025 in their bug-fix batch). See also U-033 — the 3-button action cluster is a major contributor.
+
+### U-033 — ItemDetailHeader shows two competing "favorite" systems + crowded action cluster
+- **Reported:** 2026-11-25 — item/gun detail top-panel review (Slot 3)
+- **Root cause:** `item_detail/header.dart` top-right cluster renders `CodexFavButton` (Ammonomicon bookmark, `CodexPrefs`) AND a heart `IconButton` (`RunProvider.isFavourite`) AND `BugReportButton.iconButton` — three icons where two are both "favorites" doing different things (codex bookmark vs run favourites list). Users can't tell which star counts where; the cluster also feeds the U-025 narrow-width overflow.
+- **Severity:** Low-Medium (UX confusion + overflow contributor)
+- **Status:** OPEN — `header.dart` under Slot 2's active WIP; fold into their header rework or follow up after it lands. Candidates: merge the two fav systems, demote bug-report into the bottom bar, or collapse the cluster into a single overflow menu.
+
+### U-034 — Gun vs item detail header hierarchy is inverted
+- **Reported:** 2026-11-25 — item/gun detail top-panel review (Slot 3)
+- **Root cause:** `item_detail/header.dart` — gun path renders badge row → NAME → icon → effect line; item path renders badge row → ICON → name → tag Wrap. Same screen, two different reading orders; on items the thing you tapped (the name) sits below the artwork. Also: mojibake `â€"` in doc comments (~lines 384/410) to sweep.
+- **Severity:** Low (visual consistency)
+- **Status:** OPEN — same file/constraint as U-025/U-033; unify to name-first (gun order) for both entity types.
 
 ### U-030 — Ammonomicon carries 12 flat categories; world-object cats blur into inventory cats
 - **Reported:** 2026-11-25 — multi-view composition audit (Slot 3)
-- **Root cause:** `_categories` in `ammonomicon_screen.dart:102-185` lists Gungeoneers, NPCs, Enemies, Bosses, Pickups, Objects, Guns, Items, Synergies, Shrines, Chapters, Game Modes as one flat tab strip. Pickups (17 dump entries) and Objects (42) are game-world entities, while Guns/Items are inventory entities — four item-adjacent categories with overlapping icon art (`Ammonomicon_Tab_Items` serves both Pickups and Items; `Ammonomicon_Tab_Guns` serves both Objects and Guns) and no visual grouping between "codex lore" and "gear" categories.
+- **Root cause:** `_categories` in `ammonomicon_screen.dart` lists Gungeoneers, NPCs, Enemies, Bosses, Pickups, Objects, Guns, Items, Synergies, Shrines, Chapters, Game Modes as one flat tab strip. Pickups and Objects are game-world entities while Guns/Items are inventory entities — four item-adjacent categories with overlapping icon art and no visual grouping between "codex lore" and "gear".
 - **Severity:** Low (navigation clutter / category confusion — data itself is real, not fabricated)
-- **Status:** OPEN — candidates: group tabs (LIVING WORLD vs ARMORY) or collapse Pickups+Objects under one expandable "WORLD" cat; defer to a design pass.
+- **Status:** OPEN — Slot 2's batch includes `ammonomicon_screen.dart` (possible overlap — coordinate before editing). Candidates: group tabs (LIVING WORLD vs ARMORY) or collapse Pickups+Objects under one expandable "WORLD" cat.
 
 ### U-032 — Browse Robot-tier badges classify items by fragile name substrings
 - **Reported:** 2026-11-25 — multi-view composition audit (Slot 3)
-- **Root cause:** `BrowseRow` (`browse_row.dart:39-77`) hardcodes `name.toLowerCase().contains(...)` lists for GOD TIER / CONVERTS TO ARMOR / DEAD WEIGHT. A JSON rename or rewording silently removes the badge with no error; `'vampire'` substring can false-positive on unrelated names; 'riddle of lead'/'pink guon stone' partial matches are brittle.
+- **Root cause:** `BrowseRow` (`browse_row.dart:39-77`) hardcodes `name.toLowerCase().contains(...)` lists for GOD TIER / CONVERTS TO ARMOR / DEAD WEIGHT. A JSON rename or rewording silently removes the badge with no error; `'vampire'` substring can false-positive on unrelated names.
 - **Severity:** Low (silent mislabel risk, no crash)
-- **Status:** OPEN — better: add an explicit Robot-relevance field to items.json during a data pass, or at minimum centralize the lists in one const map.
+- **Status:** OPEN — Slot 2's batch includes `browse_row.dart` (possible overlap — coordinate). Better fix: explicit Robot-relevance field in items.json during a data pass, or centralize the lists in one const map.
+
+### U-029 — LEB ghost-row "marching ants" ticker ignores reduced-motion
+- **Reported:** 2026-11-23 — S5.2 ticker/reduced-motion audit (Slot 2 CORE)
+- **Root cause:** `lib/widgets/item_detail/gun_synergies_tab.dart` `_LebPageState._march` — `AnimationController.repeat()` started unconditionally; no `ReduceMotion`/`disableAnimations` gate anywhere in the file.
+- **Severity:** Low (decorative animation only; no functional impact)
+- **Status:** OPEN — Slot 2's batch includes `gun_synergies_tab.dart` (possible overlap — coordinate). Fix = add `_still` + `didChangeDependencies` stop/start (same pattern as `mp_connect_screen.dart`).
+
+### U-028 — Duplicate switch arm in `AppFontLabel.migrate` (dead code + analyzer warning)
+- **Reported:** 2026-11-23 — S5.1′ post-excision audit (Slot 2 CORE)
+- **Root cause:** `lib/services/theme/app_theme_modes.dart` — a `shantellSans || architectsDaughter || patrickHand => fjallaOne` arm duplicated verbatim; `dart analyze` flags `unreachable_switch_case`. Zero behavior impact — second arm is dead.
+- **Severity:** Trivial (dead code; analyze warning)
+- **Status:** OPEN — Slot 2's batch includes `app_theme_modes.dart` (possible overlap — coordinate). Fix = delete the duplicated arm.
 
 ---
 
