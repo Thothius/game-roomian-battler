@@ -51,6 +51,66 @@
 
 
 
+### U-047 — Item detail shows sell price twice
+- **Reported:** 2026-11-25 — detail-view UI audit (Slot 3 PARALLEL)
+- **Root cause:** `lib/widgets/item_detail/header.dart` — item variant renders `_SellBadge` in the top-left badge row AND a `Sell` `MetadataChip` in the tag Wrap. Gun variant shows it once (badge only).
+- **Severity:** Low (cosmetic redundancy)
+- **Status:** Open
+
+### U-048 — `gun.type` (fire mode) rendered nowhere; dead branch chain in GunStats
+- **Reported:** 2026-11-25 — detail-view UI audit (Slot 3 PARALLEL)
+- **Root cause:** `item_detail_screen.dart` passes `gun.type` as `subtitle`, but the gun branch of `ItemDetailHeader` never renders it. `gun_stats.dart:330-335` has an if/else chain on `typeLower` with all-empty branches (leftover from removed feature). BUG-048/050 type normalization feeds a field no UI displays.
+- **Severity:** Low-Medium (invisible game data)
+- **Status:** Open
+
+### U-049 — Gun header dropped metadata items still show
+- **Reported:** 2026-11-25 — detail-view UI audit (Slot 3 PARALLEL)
+- **Root cause:** Gun variant of `ItemDetailHeader` renders no tag Wrap — no chest color, curse/coolness chips, or synergy count. Item variant shows all. Stat grid covers CHEST/CURSE/COOL as rows but synergy count only appears inside the collapsed SYNERGIES tab.
+- **Severity:** Low (consistency)
+- **Status:** Open
+
+### U-050 — Elemental properties rendered in 4 different visual languages
+- **Reported:** 2026-11-25 — detail-view UI audit (Slot 3 PARALLEL)
+- **Root cause:** header `_ElementDot` (28px icon circles, guns top-left), `_ElementTagRow` (9.5px uppercase pills below card, guns), `ElementDot`/`elementDots` (8px plain dots, browse rows), `_ElementDot` (8px dots, inventory_list_row). Gun detail shows elements twice in two styles.
+- **Severity:** Low (design consistency)
+- **Status:** Open
+
+### U-051 — Gun detail body lacks card chrome (item body is card-contained)
+- **Reported:** 2026-11-25 — detail-view UI audit (Slot 3 PARALLEL)
+- **Root cause:** `GunStats` returns bare `Padding` — stat grid + special panels float on scaffold background. Item path renders `ItemBody` INSIDE the header card container. Different page rhythm for the two entity types.
+- **Severity:** Low (design consistency)
+- **Status:** Open
+
+### U-052 — Three tappable surfaces missed the ScaleButton press-feedback sweep
+- **Reported:** 2026-11-25 — detail-view UI audit (Slot 3 PARALLEL)
+- **Root cause:** `_DetailTabHeader` (`item_detail_screen.dart:651`) raw `GestureDetector` accordion headers; `_chip` filter chips + `_LebTogglePill` (`gun_synergies_tab.dart:254,1023`) raw `GestureDetector` — haptics present, no press scale.
+- **Severity:** Low (dead-feeling taps, same class fixed in `f15eaa2`)
+- **Status:** Open
+
+### U-053 — `synergies_section.dart` is 415 lines of dead code
+- **Reported:** 2026-11-25 — detail-view UI audit (Slot 3 PARALLEL)
+- **Root cause:** `SynergiesSection`/`SynergyCard`/`SynergyChip` have zero references in lib/ or test/ — superseded by `EntitySynergiesView`. Only consumer of its `Navigator.push` drill-in was itself.
+- **Severity:** Trivial (dead code)
+- **Status:** Open
+
+### U-054 — Synergy rows in detail view are dead-ends (not tappable)
+- **Reported:** 2026-11-25 — detail-view UI audit (Slot 3 PARALLEL)
+- **Root cause:** `entity_synergies_view.dart` `_SynergyRow` has no onTap — users can't drill into a missing piece or synergy member from the SYNERGIES tab, unlike browse rows which navigate to detail. The only row-level `Navigator.push` lived in the dead `synergies_section.dart`.
+- **Severity:** Low-Medium (UX dead-end)
+- **Status:** Open
+
+### U-055 — Special item/gun panels ignore theme tokens (~180 raw Colors.* literals)
+- **Reported:** 2026-11-25 — detail-view UI audit (Slot 3 PARALLEL)
+- **Root cause:** `item_body_sections.dart` (103 hardcoded `Colors.*`, e.g. `Colors.amber` panels) and `gun_stats_sections.dart` (74) use raw Material colors — panels stay amber/white regardless of selected palette/flair, unlike the rest of the themed UI.
+- **Severity:** Low (theming gap)
+- **Status:** Open
+
+### U-056 — Dead header params + mojibake comment
+- **Reported:** 2026-11-25 — detail-view UI audit (Slot 3 PARALLEL)
+- **Root cause:** `ItemDetailHeader.quote` unused by both variants; `subtitle`/`isActive` dead for guns; `â€"` mojibake in comment at `header.dart:446`.
+- **Severity:** Trivial (cosmetic)
+- **Status:** Open
+
 ## Resolved
 
 ### U-035 — Studio pills/tabs: type sizes below readable floor + touch targets under minimum
