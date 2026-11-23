@@ -170,6 +170,34 @@ write-only/read-only literals.
 - Dead functions/methods inside live files (only screens audited)
 - Unreachable *routes* beyond screen classes (deep-link surface is nil)
 
+## H-L8 — Docs honesty
+
+Method: extracted every `lib/…`, `test/…`, `docs/…`, `tools/…` path
+reference from `AGENTS.md`, `AGENT_STATUS.md`, `docs/TECHNICAL_REFERENCE.md`,
+`docs/REWORK_LESSONS_LEARNED.md`, `gungeon_mate/AGENTS.md`,
+`.windsurfrules` and checked existence on disk. Verified version
+lockstep across the 5 canonical files. Cross-checked changelog recency
+against post-v3.7.0 commits.
+
+### Findings
+
+| # | Finding | Severity | Route |
+|---|---------|----------|-------|
+| L8-1 | **`tools/data_integrity.py` does not exist.** Referenced as mandatory by `gungeon_mate/AGENTS.md` (C7 data protocol), `.windsurf` rules (`verify-data` workflow), `docs/MASTERPLAN_5SESSIONS.md` (S1.4/S3.1/CI spec), `docs/AMMONOMICON_DESIGN_BRIEF.md`. Only `tools/coverage_report.py` exists in `gungeon_mate/tools/`. The JSON-integrity checks live in `test/data_integrity_test.dart` (flutter test) — the .py script is gone or was never committed. **Every agent following the documented data-change protocol runs a missing file.** | **HIGH** — broken mandatory workflow | **FIX-NOW or S3** — either restore/write the script or update all 4 doc references to point at `flutter test test/data_integrity_test.dart` |
+| L8-2 | `docs/TECHNICAL_REFERENCE.md` — the canonical doc every agent must read — has **~14 stale `lib/` paths** describing pre-reorg architecture: `widgets/active_run/modes/*` (theme_signature_mode, codex_book_mode, compact_run_mode, run_display_mode_bar, mode_picker_onboarding — dir doesn't exist), `services/multiplayer_service.dart`, `services/multiplayer_session.dart`, `services/mp/mp_pairing.dart`, `models/paired_partner.dart`, `screens/multiplayer_lobby_screen.dart`, `widgets/settings/{run,gameplay,theme_visuals}_tab.dart`, `widgets/backgrounds/{animated_wallpaper,gungeon_matrix_rain}.dart`, `widgets/active_run/depth_tile.dart`, `test/widget/codex_screen_test.dart`. Architecture section needs a rewrite to current layout (mp_session/mp_sync/mp_link, mp_lobby_screen, dashboards/). | MED | **S5 docs sync** (already scoped there — now with a concrete punch list) |
+| L8-3 | Root `AGENTS.md` references 6 missing docs: `animation_architecture_assessment.md`, `reorg_plan.md`, `mp_auto_reconnect_plan.md`, `MULTIPLAYER_PLAN.md`, `APP_FEATURES_MAP.md`, `SYSTEM_SUMMARY.md`, `TECHNICAL_STACK.md` (some may be intentionally archived — verify before pruning references) | LOW | S5 docs sync |
+| L8-4 | **Changelog drift:** ~15 commits landed post-v3.7.0 including user-facing features (bug-report system `35c6c9c`/`e45a2e3`/`ed3220a`, LEB auto-enable `1bd2a5f`, Cool & Curse `2281592`, Gradle 9 migration `e4b7fba`) with **no changelog.json/VERSION_HISTORY entries** — C10 violation in flight. Version still `3.7.0+167`. Masterplan already flags the 5-file bump before APK; the changelog gap is bigger than the version gap. | MED | **S5 docs sync** — fold into release-prep; entries can be written retroactively |
+| L8-5 | `AGENT_STATUS.md` session-log rows reference ~30 deleted/moved files — **expected, not a defect**: session logs are history, not living docs. Noted so future audits don't re-flag them. | INFO | none |
+
+### Verified clean
+
+- **Version lockstep:** pubspec `3.7.0+167` = `kAppVersion '3.7.0'` =
+  VERSION_HISTORY head `v3.7.0 build 167` = changelog[0] `3.7.0` —
+  the 5-file invariant currently holds.
+- `.worktrees/webcheck` (detached HEAD `25bbcd9`) exists in app repo —
+  **stale worktree**, likely leftover; route to housekeeping prune
+  (verify no unmerged work first).
+
 ## Claims trace
 
 - Slot 3 ACTIVE on this slice → release on commit of this report.
