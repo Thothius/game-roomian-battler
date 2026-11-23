@@ -8,11 +8,6 @@
 
 ## Open
 
-### U-025 — ItemDetailHeader top row overflows ~47px at ≤~390px width
-- **Reported:** 2026-11-25 — found by new char-select widget test tapping a starting item at 400px viewport
-- **Root cause:** `item_detail/header.dart` — the spaceBetween Row packs QualityBadge + SellBadge + ACTIVE/PASSIVE chip (left) against CodexFavButton + BugReportButton + favourite IconButton (right); at ~344px content width the row exceeds constraints by 47px (yellow/black stripe in tests).
-- **Severity:** Medium (visual overflow on narrow phones — content clipped/invisible, not a crash)
-- **Status:** OPEN — Slot 2 actively fixing (U-025 in their bug-fix batch). See also U-033 — the 3-button action cluster is a major contributor.
 
 ### U-033 — ItemDetailHeader shows two competing "favorite" systems + crowded action cluster
 - **Reported:** 2026-11-25 — item/gun detail top-panel review (Slot 3)
@@ -26,31 +21,6 @@
 - **Severity:** Low (visual consistency)
 - **Status:** OPEN — same file/constraint as U-025/U-033; unify to name-first (gun order) for both entity types.
 
-### U-030 — Ammonomicon carries 12 flat categories; world-object cats blur into inventory cats
-- **Reported:** 2026-11-25 — multi-view composition audit (Slot 3)
-- **Root cause:** `_categories` in `ammonomicon_screen.dart` lists Gungeoneers, NPCs, Enemies, Bosses, Pickups, Objects, Guns, Items, Synergies, Shrines, Chapters, Game Modes as one flat tab strip. Pickups and Objects are game-world entities while Guns/Items are inventory entities — four item-adjacent categories with overlapping icon art and no visual grouping between "codex lore" and "gear".
-- **Severity:** Low (navigation clutter / category confusion — data itself is real, not fabricated)
-- **Status:** OPEN — Slot 2's batch includes `ammonomicon_screen.dart` (possible overlap — coordinate before editing). Candidates: group tabs (LIVING WORLD vs ARMORY) or collapse Pickups+Objects under one expandable "WORLD" cat.
-
-### U-032 — Browse Robot-tier badges classify items by fragile name substrings
-- **Reported:** 2026-11-25 — multi-view composition audit (Slot 3)
-- **Root cause:** `BrowseRow` (`browse_row.dart:39-77`) hardcodes `name.toLowerCase().contains(...)` lists for GOD TIER / CONVERTS TO ARMOR / DEAD WEIGHT. A JSON rename or rewording silently removes the badge with no error; `'vampire'` substring can false-positive on unrelated names.
-- **Severity:** Low (silent mislabel risk, no crash)
-- **Status:** OPEN — Slot 2's batch includes `browse_row.dart` (possible overlap — coordinate). Better fix: explicit Robot-relevance field in items.json during a data pass, or centralize the lists in one const map.
-
-### U-029 — LEB ghost-row "marching ants" ticker ignores reduced-motion
-- **Reported:** 2026-11-23 — S5.2 ticker/reduced-motion audit (Slot 2 CORE)
-- **Root cause:** `lib/widgets/item_detail/gun_synergies_tab.dart` `_LebPageState._march` — `AnimationController.repeat()` started unconditionally; no `ReduceMotion`/`disableAnimations` gate anywhere in the file.
-- **Severity:** Low (decorative animation only; no functional impact)
-- **Status:** OPEN — Slot 2's batch includes `gun_synergies_tab.dart` (possible overlap — coordinate). Fix = add `_still` + `didChangeDependencies` stop/start (same pattern as `mp_connect_screen.dart`).
-
-### U-028 — Duplicate switch arm in `AppFontLabel.migrate` (dead code + analyzer warning)
-- **Reported:** 2026-11-23 — S5.1′ post-excision audit (Slot 2 CORE)
-- **Root cause:** `lib/services/theme/app_theme_modes.dart` — a `shantellSans || architectsDaughter || patrickHand => fjallaOne` arm duplicated verbatim; `dart analyze` flags `unreachable_switch_case`. Zero behavior impact — second arm is dead.
-- **Severity:** Trivial (dead code; analyze warning)
-- **Status:** OPEN — Slot 2's batch includes `app_theme_modes.dart` (possible overlap — coordinate). Fix = delete the duplicated arm.
-
----
 
 
 ## Resolved
@@ -247,3 +217,33 @@
 - **Root cause:** Customization/Quiz/Report a Bug/Settings sat unlabeled after RESET; End Run had no DANGER label.
 - **Severity:** Low
 - **Status:** Fixed in app `1748b80` — every action row gained a subtitle; groups are now RUN → RESET → APP → DANGER. Widget test pins labels + order.
+
+### U-025 — ItemDetailHeader top row overflows ~47px at ≤~390px width
+- **Reported:** 2026-11-25 — found by new char-select widget test tapping a starting item at 400px viewport
+- **Root cause:** `item_detail/header.dart` spaceBetween Row packed QualityBadge + SellBadge + ACTIVE/PASSIVE chip against CodexFavButton + BugReportButton + favourite IconButton.
+- **Severity:** Medium
+- **Status:** Fixed in app `921399d` — badge cluster wrapped in `Flexible` + `FittedBox(scaleDown)` on both gun and item variants; 360px regression test added (`item_detail_sections_test`).
+
+### U-028 — Duplicate switch arm in `AppFontLabel.migrate` (dead code + analyzer warning)
+- **Reported:** 2026-11-23 — S5.1′ post-excision audit (Slot 2 CORE)
+- **Root cause:** `app_theme_modes.dart` ~line 2139 — `shantellSans || architectsDaughter || patrickHand => fjallaOne` appeared twice; second arm unreachable.
+- **Severity:** Trivial
+- **Status:** Fixed in app `921399d` — duplicate arm deleted; `flutter analyze` now reports 0 issues project-wide.
+
+### U-029 — LEB ghost-row "marching ants" ticker ignores reduced-motion
+- **Reported:** 2026-11-23 — S5.2 ticker/reduced-motion audit (Slot 2 CORE)
+- **Root cause:** `_LebPageState._march` `AnimationController.repeat()` unconditional.
+- **Severity:** Low
+- **Status:** Fixed in app `921399d` — `didChangeDependencies` gates on `ReduceMotion.of(context)`; stops under disableAnimations, restarts when cleared.
+
+### U-030 — Ammonomicon carries 12 flat categories; world-object cats blur into inventory cats
+- **Reported:** 2026-11-25 — multi-view composition audit (Slot 3)
+- **Root cause:** 12 categories in one flat strip; Pickups/Objects (world) vs Guns/Items (inventory) visually indistinguishable.
+- **Severity:** Low
+- **Status:** Fixed in app `921399d` — `AmmonomiconTab.group` field + eyebrows LIVING WORLD / ARMORY / CODEX / STRUCTURE in overview grid and jump strip. Indices/section mapping unchanged (display-only).
+
+### U-032 — Browse Robot-tier badges classify items by fragile name substrings
+- **Reported:** 2026-11-25 — multi-view composition audit (Slot 3)
+- **Root cause:** `BrowseRow` hardcoded `contains` lists for GOD TIER / CONVERTS TO ARMOR / DEAD WEIGHT.
+- **Severity:** Low
+- **Status:** Fixed in app `921399d` — lists centralized into `_RobotTier` const map (single source). Explicit `robot_tier` data field remains a possible future data-pass improvement.
