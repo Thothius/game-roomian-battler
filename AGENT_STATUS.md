@@ -38,6 +38,7 @@ When done, mark status as `DONE` and move to Session Log.
 | 23 | **Session A — Hygiene & docs consolidation** (MASTERPLAN_3SESSIONS): foreign WIP disposition (~9 dirty files), doc archival (MASTERPLAN_5SESSIONS + verify CUSTOMIZATION/QA plans), GUNGEONMATE.md refresh (stale v3.3.0), .windsurfrules→AGENTS.md pointer, H21–H23/H25 tail | SUPPORT (Devin) — AWAITING USER GO | PENDING | user signal |
 | 24 | **Session B — Depth pass** (MASTERPLAN_3SESSIONS): quick-add MP seam test, coverage ratchet ~68%, H6 theme-splash audit, H14 ambience-mud nudge, optional H24 | _(open — any agent)_ | PENDING | prefer after Session A lands (clean diffs) |
 | 25 | **Session C — Release cut v3.8.0** (MASTERPLAN_3SESSIONS): version lockstep, full gate, APK build, push+tag | _(open — any agent)_ | BLOCKED | user go-ahead for version bump + APK; ideally after A+B |
+| 26 | **MP hardening session** (docs/MP_HARDENING_PLAN.md — 12-Q interview decisions locked): MP-1 Android-only platform gate, MP-2 shared-secret session token (hello→snapshot validation, legacy-peer compat), MP-3 dead-code cut (sessionEvents+sendPeerRemove), MP-4 reconnect banner Leave MP button, MP-5 docs/threat model | _(open — any agent)_ | PENDING | — |
 
 ### 10-Item Rework (2026-08-25) — see `docs/REWORK_PLAN_10_ITEMS.md` for full details
 
