@@ -86,7 +86,7 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 | Slot | Assigned Agent | Status | Working On | Last Heartbeat |
 | :--- | :--- | :--- | :--- | :--- |
 | **Slot 1** | **_(none)_** | `DONE` | Studio UX batch MERGED to master `ec73e88` (clean ort merge over Slot 4's `6d4f1d8` excision — different hunks). Studio tests 54/54 green post-merge; analyze 0 on merged files (1 foreign WIP warning elsewhere). WD copies stashed pre-merge (stash@{0} holds UX dupes + foreign format noise — safe to drop). Slot released. | 2026-11-23 |
-| **Slot 2** | **CORE (Devin)** | `DONE` | Ammonomicon codex rework — user: "very basic UI and depth wise". Items 1-3 shipped: overview landing + favorites/recents `87e7f63`+`fc608e7`, card meta hints `f366480`, shrine/combat depth `73552a8`. Remaining: item 4 enemy/boss stat blocks, item 5 cross-links. Session ended at context limit — slot released. Files: `ammonomicon_screen.dart`, `ammonomicon_detail_screen.dart`, `item_detail_screen.dart`, `synergy_detail_screen.dart`, `gungeoneer_detail_screen.dart`, `widgets/ammonomicon/`. Prior: bug-report system + hardening `35c6c9c`/`e45a2e3`/`ed3220a`. | (21 tests total: subject/body/URI encoding edge cases, kind-switch e2e, no-entity variant, whitespace guards, skeuo render, button wiring; whitespace-entity fix in service+sheet), pipeline `18c5491` (30min lookback). Full suite 718 pass, analyze 0. Slot released. Prior: bug report system `35c6c9c`/`c34b59e`. BugReportContext model + BugReport service (mailto→faaremets.fristjan@gmail.com, pipe-delimited subject, 10s timeout, clipboard fallback), BugReportSheet (context chips + kind picker + notes, skeuo-aware), BugReportButton; entry sweep: run-tools row before Settings, item/gun/synergy/gungeoneer/ammonomicon details, Ammonomicon+Cool&Curse+Stats+Settings AppBars, quiz home, dice dialog, studio menubar, main-menu chip. `tools/bug_report_pipeline.gs` + setup steps in BUG_REPORT_AND_STORE_STRATEGY.md. 9 new tests, analyze 0, targeted suites green. Slot released. Prior: U-014 wallpaper re-encode `8e30e5b`; masterplan WP-1..5 (`48bf8fd`..`9a3e2df`) + bughunt `c8aadb8`. | 2026-11-25 |
+| **Slot 2** | **CORE (Devin)** | `ACTIVE` | Masterplan S5 release readiness — golden/smoke net, post-excision audit, ticker/reduced-motion sweep, asset verify, coverage batch to >=65%, lockstep+docs sync, final gate. Files: `test/widget/`, `test/coverage_baseline.txt`, docs sync targets. | 2026-11-23 |
 | **Slot 3** | **_(none)_** | `DONE` | Continue Run feature shipped app `d1017c4` — `runRestoredFromSave` flag on launch-restore, HomeScreen menu gate (MP session still wins), MainMenuScreen SAVED RUN card (hero Continue + END SAVED RUN via shared confirm). 6 provider + 4 widget tests; 900 green, analyze 0 (1 foreign WIP warning). Slot released. | 2026-11-25 |
 | **Slot 4** | **_(none)_** | `DONE` | Neo-Skeuo full excision shipped `6d4f1d8` (92 files, -5293/+1332): mode enum + enter/exit/persist machinery, widgets/skeuo kit, lab screen + test, 3 hand-lettered fonts (assets+pubspec, persisted picks→fjallaOne), ~780 Skeuo.* call sites, studio/settings lockouts, DESIGN.md §9 + README refs. analyze 0, full suite 862 pass (verified on staged tree via stash). Slot released. | 2026-11-23 |
 
@@ -121,8 +121,8 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 | Field | Value |
 |-------|-------|
 | **Branch** | `master` (sole agent) |
-| **Session started** | 2026-11-25 (UI/settings audit + masterplan + WP execution) |
-| **Last board update** | 2026-11-25 |
+| **Session started** | 2026-11-23 (masterplan S5 release readiness — final gate) |
+| **Last board update** | 2026-11-23 |
 | **Last commit** | app `8e30e5b` — chore(assets): wallpaper re-encode; series `48bf8fd`/`4fe215a`/`bc9ff19`/`54a6596`/`9a3e2df`/`c8aadb8`/`8e30e5b` |
 | **Files in progress** | — |
 | **Uncommitted changes** | — |
