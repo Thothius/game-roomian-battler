@@ -34,7 +34,7 @@ plan; `AGENT_STATUS.md` remains the live agent board.
 | **H Detective hole-hunt** | PARALLEL (Devin, Slot 3) | DONE | `docs/HOLE_REPORT_2026-11-23.md` + app `dfc7770`/`fb4b1ea`/`5e1e033`/`e342b1c`/`e988f92`+`046c3e0`/`56505a0`/`73552a8` + `gun_id_integrity_test` | All 9 lenses done across 7 slices, zero unrouted findings. All routes resolved: FIX-NOW guards `dfc7770`; S3/S4/S5-routed items landed via `56614ab` S5 sweep (L3 dead cull, L8 docs sync, L2-3 verified), `7e9b011` L6-1, L6-2 save-corruption flag; L8-1 `data_integrity.py` repoint landed in root `7cee067` doc sync. Only remaining: release cut (S5 gate / user go-ahead) |
 | S2 widget coverage | PARALLEL (Devin, Slot 3) | DONE | app `1d1ae9e`..`fce513d` | 87 widget tests, all 6 priority batches. Coverage 48.1→62.3% overall (widgets 56.5%). 2 test-found bugs fixed. Residual deep-coverage gaps noted in session log |
 | S3 data truth | PARALLEL (Devin, Slot 3) | DONE | app `4a4eff3`/`69c79fc`/`fdede54`/`e07a927` + root `419acd5`/`2f501b5` | S3.1 id-uniqueness now covers guns+items (`entity_id_integrity_test`); U-015 verified-closed. S3.2 U-001 closed — artifact gone, `ref-02-character-select.png` verified non-blank. S3.3 mojibake re-verified zero U+FFFD. S3.4 already shipped — pinned by new widget test. S3.5 already shipped — XtG filter + regression test + clean data. S3.6 perf proof recorded (memoized queries µs-scale @120-entry inventory). Suite 873 green, analyze 0 |
-| S4 MP hardening | PARALLEL (Devin, Slot 3) | IN_PROGRESS | — | S4.1–S4.6 claimed 2026-11-25. Pre-audit: fix `7be7537` present but untested; wire contract + spritekey-compat tests already exist; fx sender + toJson cleanup already landed. Remaining: handshake regression test, sprite dual-write, :key: sprite sender decision, host-gone/reconnect test gaps |
+| S4 MP hardening | PARALLEL (Devin, Slot 3) | DONE | app `1b929fa`/`56ab297`/`b80b56e`/`b971fd7`/`639d67e` | S4.1 mis-pair: fix `7be7537` verified, extracted `MpHandshakeGate` + 14 decision tests. S4.2 host-gone: all disconnect paths funnel through elapsed feed (verified); 3 hint/latch tests via `debugFeedRecoveryElapsed`. S4.3 reconnect UX: 6 banner/dialog state tests. S4.4 spriteKey dual-write shipped (sprite+spriteKey). S4.5 wire cleanup: toJson/fx-sender already landed; added shared `surprise_presets.dart` (kills picker/card drift) + `:key:`→spriteKey sender w/ 4 catalog tests. S4.6 already claimed by S2. Suite 890 green, analyze 0 (1 foreign WIP warning in app_theme_modes) |
 | S5 release readiness | _unclaimed_ | PENDING | — | — |
 
 ---
@@ -417,28 +417,28 @@ verified · items 5–6 resolved-or-closed · perf claim has numbers.
      tuple list in `SurpriseSheet` (`surprise_sheet.dart`) — drift risk.
 
 ### Work items
-- [ ] **S4.1 First-endpoint mis-pair race** — last open MP protocol
+- [x] **S4.1 First-endpoint mis-pair race** — last open MP protocol
       bug. Repro first (two devices/emulators or FakeMpLink simulating
       rapid connect), find the race in `mp_sync.dart`/`mp_link.dart`,
       fix, regression test. *Pitfall:* this has been deferred twice —
       read git log for prior attempts before designing a fix.
-- [ ] **S4.2 Host-gone hint coverage** — H16 deduped handlers
+- [x] **S4.2 Host-gone hint coverage** — H16 deduped handlers
       (`257888c`). Verify "partner may have left" fires on ALL paths:
       timeout, kill, airplane-mode disconnect, app backgrounded.
       Add missing-path tests.
-- [ ] **S4.3 Reconnect UX audit** — `mp_reconnect_banner.dart`,
+- [x] **S4.3 Reconnect UX audit** — `mp_reconnect_banner.dart`,
       blank-view guards, 2-min partner-left hint: widget-test each
       state a user actually sees.
-- [ ] **S4.4 Protocol version skew decision** — for suspect #1: either
+- [x] **S4.4 Protocol version skew decision** — for suspect #1: either
       (a) accept + document as known limitation, or (b) dual-write
       both `sprite` and `spriteKey` for one release. Recommend (b) —
       cheap insurance. Test old↔new handling either way.
-- [ ] **S4.5 Wire contract cleanup** — suspects #2/#3/#4/#5:
+- [x] **S4.5 Wire contract cleanup** — suspects #2/#3/#4/#5:
       `toJson` contract fix (remove `'type'`, omit empty fields),
       either wire an `fx` sender or remove the field, parse `:icon:` in
       surprise hints or fix the hint copy, unify the two preset lists
       into one source of truth.
-- [ ] **S4.6 Paradox/surprise widget tests** — if S2.6 hasn't claimed
+- [x] **S4.6 Paradox/surprise widget tests** — if S2.6 hasn't claimed
       them, do them here (see overlap note).
 
 **Done when:** mis-pair race fixed + regression test · all 5 suspect
