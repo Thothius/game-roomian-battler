@@ -30,7 +30,7 @@ plan; `AGENT_STATUS.md` remains the live agent board.
 
 | Session / Task | Claimed by | Status | Commit | In hand right now |
 |---|---|---|---|---|
-| S1 CI + logic tests | PARALLEL (Devin, Slot 3) | DONE (push blocked) | app `ddb6d4f` | S1.1–S1.5 complete: 753 tests, analyze 0, coverage baseline 48.1%, CI workflow + coverage_report.py committed. **BLOCKED:** push rejected — gh token lacks `workflow` scope. User must run `gh auth refresh -h github.com -s workflow` then `git push`. |
+| S1 CI + logic tests | PARALLEL (Devin, Slot 3) | DONE | app `ddb6d4f` + `54bb84a` | S1.1–S1.5 complete: 753 tests, analyze 0, coverage baseline 48.1%, CI workflow + coverage_report.py committed. **PUSHED** after gh `workflow`-scope refresh; first CI run green (run 45093492984, 3m16s — analyze + tests + coverage gate all pass). tile_logic/dice_roll_logic/mp_handlers/run_lifecycle are widget mixins → deferred to S2. |
 | **H Detective hole-hunt** | _unclaimed_ | PENDING | — | — |
 | S2 widget coverage | _unclaimed_ | PENDING | — | — |
 | S3 data truth | _unclaimed_ | PENDING | — | — |
