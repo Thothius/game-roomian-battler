@@ -92,7 +92,7 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 | **Slot 1** | **Devin A2** | `DONE` | Foreign WIP adopted + landed per user request — app `ef66270`: audited all 9 dirty files (~95% dart_style reformat; one real change = unoffered fonts drop bundled TTF claims, matching migrate(); resolves U-028 dup arm). Root `6a9d5cd`: `.research/`+`wp_sheet.jpg` gitignored. analyze 0, 949 tests green. BOTH REPOS NOW FULLY CLEAN. Slot released. | 2026-11-23 |
 | **Slot 2** | **CORE (Devin)** | `DONE` | Customization effects + load-time optimization SHIPPED — app `23da206`. Audit verdict: codebase already well-optimized (parallel JSON+isolates, wallpaper cacheWidth:1080 on-demand, grain gated >0.005, RM respected, preview rebuild = the feature itself). Fixes: touch-sparkle ticker idle-stops when particle list empties (was 60fps wakeup for app lifetime); 6 startup SharedPreferences hydrations now `Future.wait` parallel. analyze 0, FULL SUITE 949 green. Slot released. | 2026-11-23 |
 | **Slot 3** | **_(none)_** | `DONE` | Dice system rework shipped — app `3aabe50`. Single d6 per round, auto-stop spin, co-op ties auto-reroll via `MpDiceResult.round` (stale rounds ignored). U-042 artifact fixed. 944 tests green, analyze 0. Slot released. | 2026-11-25 |
-| **Slot 4** | **_(none)_** | `DONE` | Bug-list verification complete — all U-0xx resolved (U-043 wontfix-by-design). Verified `4705729` + `eb1ea7c` diffs match root causes; analyze 0, full suite 949 green. Both repos confirmed pushed to origin (agents self-pushed). Slot released. | 2026-11-25 |
+| **Slot 4** | **SUPPORT (Devin)** | `IN_PROGRESS` | MP polish: custom avatars always in MP + remove avatar tap speech/text + verify emotes gone | 2026-11-25 |
 
 ### Slot Details
 
