@@ -30,7 +30,7 @@ plan; `AGENT_STATUS.md` remains the live agent board.
 
 | Session / Task | Claimed by | Status | Commit | In hand right now |
 |---|---|---|---|---|
-| S1 CI + logic tests | _unclaimed_ | PENDING | — | — |
+| S1 CI + logic tests | PARALLEL (Devin, Slot 3) | IN_PROGRESS | — | pushing commits, then CI workflow + logic tests + coverage ratchet |
 | **H Detective hole-hunt** | _unclaimed_ | PENDING | — | — |
 | S2 widget coverage | _unclaimed_ | PENDING | — | — |
 | S3 data truth | _unclaimed_ | PENDING | — | — |
