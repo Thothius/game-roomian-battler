@@ -311,8 +311,8 @@ for eager vs lazy children, all `Image.asset` for missing
 
 | # | Finding | Severity | Route |
 |---|---------|----------|-------|
-| L7-1 | **Synergy re-classification per rebuild — confirmed still open.** `all_synergies_screen.dart:15-30` re-buckets all ~395 synergies (active/partial/locked via `matchesItems`) on *every* `RunProvider` notify; `item_detail_screen.dart:82` and `gun_synergies_tab.dart:412` do similar per-build owned-set rebuilds. During an active run, provider notifies on every state tick — 395 × set-lookups × N rebuilds/sec is the known "synergy-scan recompute-per-build" deferred item (bug list + masterplan S3). Not a new bug — **this audit confirms it's still live and quantifies the surface**. | MED (known) | **S3** — already scoped ("verify memoization holds under real navigation"); L7 adds: the fix should memoize the owned-set + classification, not just the scan |
-| L7-2 | **`ownedList.map().toSet()` recomputed in multiple build()s.** `all_synergies_screen`, `item_detail_screen`, `browse_screen` each rebuild the lowercase owned set per build — trivial cost alone, but it's the same recomputation L7-1 multiplies. A `RunProvider.ownedNamesLower` cached getter would serve all three. | LOW | **S3** — fold into the same memoization fix |
+| L7-1 | **Synergy re-classification per rebuild — confirmed still open.** `all_synergies_screen.dart:15-30` re-buckets all ~395 synergies (active/partial/locked via `matchesItems`) on *every* `RunProvider` notify; `item_detail_screen.dart:82` and `gun_synergies_tab.dart:412` do similar per-build owned-set rebuilds. During an active run, provider notifies on every state tick — 395 × set-lookups × N rebuilds/sec is the known "synergy-scan recompute-per-build" deferred item (bug list + masterplan S3). Not a new bug — **this audit confirms it's still live and quantifies the surface**. | MED (known) | **FIXED** — `_ownedLowerFor` sig-keyed owned sets + result caches on set/`_allSynergies` identity in synergy_queries.dart |
+| L7-2 | **`ownedList.map().toSet()` recomputed in multiple build()s.** `all_synergies_screen`, `item_detail_screen`, `browse_screen` each rebuild the lowercase owned set per build — trivial cost alone, but it's the same recomputation L7-1 multiplies. A `RunProvider.ownedNamesLower` cached getter would serve all three. | LOW | **FIXED** — same memoization covers combined/per-slot paths; `currentOwnedLower`/`getSynergiesByInventory` reuse cached sets |
 
 ### Not covered
 
@@ -355,7 +355,7 @@ All 9 lenses executed across 7 slices. Findings routed:
 | Route | Items |
 |---|---|
 | **FIX-NOW (done)** | L4-1..3 mounted guards — shipped `dfc7770` |
-| **S3 data truth** | L1-1/L1-2/L1-3 id invariants+provenance, L7-1/L7-2 synergy memoization (L6-1 silent JSON DONE — assetLoadFailures + logging + test) (L5-1/L5-2/L5-5 cool-curse honesty DONE — shared cool_curse_math.dart + tests) |
+| **S3 data truth** | L1-1/L1-2/L1-3 id invariants+provenance (L7-1/L7-2 synergy memoization DONE — e988f92+046c3e0; L6-1/L6-2 honesty DONE; L5 cool-curse DONE) |
 | **S4 MP** | L2-1 spriteKey old-peer skew fixture |
 | **S5 polish/release** | L3 dead assets+screens cull, L8-2/L8-3/L8-4 docs+changelog sync, L2-3 persisted-path asset check, L5-4 spice-table qualifier (L6-2 save notice DONE — saveWasCorrupt flag) |
 | **Unscheduled** | L8-1 `data_integrity.py` missing — FIX-NOW candidate (restore from git history or repoint docs) |
