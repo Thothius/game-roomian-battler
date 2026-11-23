@@ -14,6 +14,12 @@
 - **Severity:** Trivial (dead code; analyze warning)
 - **Status:** Reported — **fix blocked by foreign WIP**: the file has uncommitted changes from another batch (hand-lettered font family removal in `bundledFontFamily`). Fix = delete the duplicated arm; do it after that WIP commits to avoid sweeping it into an unrelated commit.
 
+### U-026 — LEB ghost-row "marching ants" ticker ignores reduced-motion
+- **Reported:** 2026-11-23 — S5.2 ticker/reduced-motion audit (Slot 2 CORE)
+- **Root cause:** `lib/widgets/item_detail/gun_synergies_tab.dart` `_LebPageState._march` — `AnimationController.repeat()` started unconditionally in field initializer; no `ReduceMotion`/`disableAnimations` gate anywhere in the file. The marching-ants animation on LEB ghost rows keeps animating for reduced-motion users.
+- **Severity:** Low (decorative animation only; no functional impact)
+- **Status:** Reported — **fix deferred**: file carries foreign uncommitted WIP; fix = add `_still` + `didChangeDependencies` stop/start (same pattern as `mp_connect_screen.dart`). Do after that WIP commits.
+
 ---
 
 
@@ -199,3 +205,17 @@
 - **Root cause:** `item_detail/header.dart:232` — the spaceBetween Row packs QualityBadge + SellBadge + ACTIVE/PASSIVE chip (left) against CodexFavButton + BugReportButton + favourite IconButton (right); at ~344px content width the row exceeds constraints by 47px (yellow/black stripe in tests).
 - **Severity:** Medium (visual overflow on narrow phones — content clipped/invisible, not a crash)
 - **Status:** OPEN — `header.dart` carries foreign uncommitted WIP; fix routed to whoever owns it (wrap left cluster in Flexible/FittedBox or move chips). Repro: open any item detail at ≤400dp width.
+
+### U-026 — RESET DATA never restarts, leaves stale in-memory state, strands user on char select
+- **Reported:** 2026-11-25 — settings/prefs audit (Slot 3)
+- **Root cause:** `_confirmResetAppData` (`settings_tab.dart:45-89`) does `prefs.clear()` then `pushAndRemoveUntil(fastRoute(CharacterSelectScreen()), (_) => false)`.
+  1. Dialog promises "The app will restart" — nothing restarts. `VisualPrefs.notifier`, `RunProvider._runState`, `MpSession`, favourites all keep stale in-memory values while disk is wiped (theme/prefs resurrect wrong until next launch; any `_scheduleSave` can rewrite cleared keys).
+  2. Navigation strands the user: char select becomes the ONLY route. `onPick` → `startNewRun` → `Navigator.canPop` is false → can't pop → run starts in the provider but HomeScreen (the run-tabs router) was removed from the tree — user sits on the picker with no way into the run.
+- **Severity:** Critical (data-reset flow is broken end-to-end; only recovery is force-close → relaunch → Continue Run offer)
+- **Status:** OPEN — fix: after `prefs.clear()`, call `p.endRun()` (+ reset VisualPrefs notifier if a reset API exists) and land on `HomeScreen` as root instead of `CharacterSelectScreen` — HomeScreen routes to the menu with no run, user picks normally.
+
+### U-027 — Settings "Dev Tools" tile is a dead end without an active run
+- **Reported:** 2026-11-25 — settings/prefs audit (Slot 3)
+- **Root cause:** Settings is reachable from the main menu with no run, but the DEV TOOLS card's only tile (`SpecialItemsGridScreen`) just shows a snackbar "Start a run first" — a visible control that can't act. Also the card is labelled DEV TOOLS containing a tile also labelled "Dev Tools" (stutter), and the whole collapsible card wraps a single action.
+- **Severity:** Low (UX dead end + redundant chrome)
+- **Status:** OPEN — candidates: hide the card when `!hasRun`, or merge the tile into DANGER ZONE / a flat list (the collapsible-card-for-one-tile pattern also applies to the STUDIO section).
