@@ -291,6 +291,36 @@ persistence.
 | L6-1 | **Secondary JSON failures are silent.** If `synergies.json`/`shrines.json`/`gungeoneers.json`/`back_refs.json`/`synergy_meta.json` fails to load *or parse*, the app boots normally with empty data — browse shows no synergies, no shrines, no characters — with **zero logging and zero user signal**. A corrupt bundled asset (bad merge, truncated write) produces a plausibly-normal-looking app missing whole features. `catch (_)` swallows even the error object. | MED — silent wrong answer | **S3** — add `debugPrint`/crash-log at minimum; consider a non-blocking "some data failed to load" banner when `_allSynergies`/`_allShrines`/`_allGungeoneers` end up empty *while their JSON was non-empty* (distinguishes "file missing" from "parsed to zero") |
 | L6-2 | **Double-corruption of run save is silent data loss.** If both `current_run` and `current_run_backup` fail to parse, user gets a fresh run with no notice. Rare (needs two corrupt writes) and arguably correct UX (better than crash), but a one-line run-log entry "save data was unreadable — started fresh" would close the honesty gap. | LOW | **S5** polish sweep |
 
+## H-L7 — Performance
+
+Method: scanned all `build()` methods for expensive calls (sort,
+jsonDecode, RegExp allocation, compute, asset loads), all scrollables
+for eager vs lazy children, all `Image.asset` for missing
+`cacheWidth`/`cacheHeight`, and per-frame allocation patterns.
+
+### Verdict: no egregious perf bugs — the codebase is disciplined
+
+| Check | Result |
+|---|---|
+| Heavy calls in `build()` | 25 flagged sites triaged — all benign: `Image.asset` constructors are cheap (framework-cached), sorts run over bounded collections (≤395 synergies, log entries), RegExp allocs are per-build not per-frame |
+| Eager vs lazy lists | All `ListView(children:)` sites are small bounded sets (category groups, single-shrine detail, stat cards). No unbounded eager lists found — browse/grid paths already use builders/slivers |
+| `cacheWidth`/`cacheHeight` | 29 `Image.asset` without explicit cache size — triaged the large-image candidates (wallpaper already has `cacheWidth: 1080`; avatars/icons are cell-bounded ≤~100px). Remaining are small icons where decode size ≈ display size. **No real waste** |
+| Per-frame allocations | Particle engine + tickers already audited under L4; `Transform.scale`/`ClipRect` in avatar grid is intentional (gridline bleed fix, documented) |
+
+### Findings
+
+| # | Finding | Severity | Route |
+|---|---------|----------|-------|
+| L7-1 | **Synergy re-classification per rebuild — confirmed still open.** `all_synergies_screen.dart:15-30` re-buckets all ~395 synergies (active/partial/locked via `matchesItems`) on *every* `RunProvider` notify; `item_detail_screen.dart:82` and `gun_synergies_tab.dart:412` do similar per-build owned-set rebuilds. During an active run, provider notifies on every state tick — 395 × set-lookups × N rebuilds/sec is the known "synergy-scan recompute-per-build" deferred item (bug list + masterplan S3). Not a new bug — **this audit confirms it's still live and quantifies the surface**. | MED (known) | **S3** — already scoped ("verify memoization holds under real navigation"); L7 adds: the fix should memoize the owned-set + classification, not just the scan |
+| L7-2 | **`ownedList.map().toSet()` recomputed in multiple build()s.** `all_synergies_screen`, `item_detail_screen`, `browse_screen` each rebuild the lowercase owned set per build — trivial cost alone, but it's the same recomputation L7-1 multiplies. A `RunProvider.ownedNamesLower` cached getter would serve all three. | LOW | **S3** — fold into the same memoization fix |
+
+### Not covered
+
+- Frame-time profiling (needs device/emulator traces — out of scope for
+  static audit)
+- `particle_engine.dart` inner-loop efficiency (1,315 lines — a dedicated
+  perf pass would need profiling, not grep)
+
 ## Claims trace
 
 - Slot 3 ACTIVE on this slice → release on commit of this report.
