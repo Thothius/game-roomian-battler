@@ -8,23 +8,6 @@
 
 ## Open
 
-### U-035 — Studio pills/tabs: type sizes below readable floor + touch targets under minimum
-- **Reported:** 2026-11-25 — customization pills/tabs assessment (Slot 2 CORE)
-- **Root cause:** `experience_studio_screen.dart` + `studio_*.dart` — tab pills render at 9px; `_GlowStyleRow` cells at 8px in a 7-wide `Expanded` Row with no maxLines/overflow (PRISM/RIPPLE likely clip); `_LookTile` name 7.5px / blurb 6.5px; `_FontTile` role tag 8px. `_GlowQuickRow` color dots are 26×26px in a fixed 26px row — half the 48dp guidance and the only picker for 12 glow colors. Most chip bodies ~33px tall.
-- **Severity:** Medium (legibility + a11y on the app's flagship customization surface)
-- **Status:** OPEN — assessment only, no fix yet. Fix direction: floor ~10.5px tabs / 9px+ elsewhere with overflow guards, 44px hit areas on color dots.
-
-### U-036 — Studio pickers: zero semantics/screen-reader labels on non-text controls
-- **Reported:** 2026-11-25 — customization pills/tabs assessment (Slot 2 CORE)
-- **Root cause:** `_GlowQuickRow` 12 identical color dots expose nothing (no Semantics/tooltip/label); 4-dot atmosphere meter is decorative-only; icon-only pickers lack tooltips. Text chips are fine via GoopText.
-- **Severity:** Low-Medium (a11y)
-- **Status:** OPEN — add `Semantics(label:)`/`Tooltip` on dot pickers and the meter.
-
-### U-037 — Studio chip recipe duplicated 7× with drifted params, mixed animation, uneven haptics/press feedback
-- **Reported:** 2026-11-25 — customization pills/tabs assessment (Slot 2 CORE)
-- **Root cause:** `_GlowFxChip`, `_ShaderChip`, `_PhysicsToggle`, `_HapticsChips` cells, `_GlowStyleRow` cells, `_SchemaChip`, `_AtmosphereLoadRow` THIN STACK, and the 6 tab pills each hand-roll the selected/unselected container — fill alpha 0.16 vs 0.18, border 1.4/1.5/1.6, radius sm/8/10/12, padding varies; some `AnimatedContainer` (140–200ms), some static; haptics live in caller `onTap` so `_setBgMode` chips have none; pills use raw `GestureDetector` (no press-scale) while the action bar uses `ScaleButton`.
-- **Severity:** Low (consistency/maintainability — ~200 lines collapsible into one `_SelectChip`)
-- **Status:** OPEN — extract shared chip, normalize recipe, unify animation + haptics + press feedback.
 
 
 
@@ -65,25 +48,35 @@
 - **Status:** Won't fix (by design, 2026-11-25) — the dead code IS the disable mechanism: `kMpSocialEnabled` is a const kill-switch documented as 'flip to re-enable'; excising would break that contract. Reachability is gated at `mpTabTap` + dispatch, so nothing user-facing is broken.
 
 
+
+
+
+## Resolved
+
+### U-035 — Studio pills/tabs: type sizes below readable floor + touch targets under minimum
+- **Reported:** 2026-11-25 — customization pills/tabs assessment (Slot 2 CORE)
+- **Status:** Fixed in app `eb1ea7c` — tab pills 9→10.5px, glow-style labels 8→9px inside FittedBox, look-tile name/blurb 7.5/6.5→9/8px, font role tag 8→9px; glow color dots gained 30×40 hit areas (visual stays 26px). Regression tests in `experience_studio_test.dart`.
+
+### U-036 — Studio pickers: zero semantics/screen-reader labels on non-text controls
+- **Reported:** 2026-11-25 — same assessment
+- **Status:** Fixed in app `eb1ea7c` — glow dots carry Tooltip + Semantics(button/selected/label), atmosphere meter dots labeled per-layer active/inactive, THIN STACK chip gets button semantics.
+
+### U-037 — Studio chip recipe duplicated 7x with drifted params, mixed animation, uneven haptics/press feedback
+- **Reported:** 2026-11-25 — same assessment
+- **Status:** Fixed in app `eb1ea7c` — `_GlowFxChip`, `_ShaderChip`, `_PhysicsToggle`, `_HapticsChips` cells, `_GlowStyleRow` cells, `_SchemaChip` all delegate to one `_SelectChip` (shared 0.16/0.04 fill, 1.5/1.0 border, radius 10, 140ms AnimatedContainer, Semantics). Haptics verified at every call site; border-mode chip gap patched. Intentional variants (tiles, THIN STACK amber warning, tab strip) left as-is.
+
 ### U-044 — Huntress dashboard reads P1 inventory in co-op (slot ignored)
 - **Reported:** 2026-11-25 — special-panels subsystem assessment (Slot 2 CORE)
-- **Root cause:** `huntress_dashboard.dart:24` — `p.runState.main.items` unconditionally; every other dashboard takes `PlayerSlot slot` and resolves `runState.coop` for P2. P2's Huntress panel computes dig chance / Baby Good Mimic detection from the MAIN player's items.
-- **Severity:** Medium (wrong data shown to P2 in co-op)
-- **Status:** OPEN — give HuntressDashboardSliver a `slot` param like the rest; check Robot dashboard for the same class of issue (its trackers are RunProvider-global — verify intended).
+- **Status:** Fixed in app `eb1ea7c` — `HuntressDashboardSliver` takes `PlayerSlot` and resolves `runState.coop` for P2. Robot trackers confirmed RunProvider-global by design. Regression test pins slot propagation.
 
 ### U-045 — `hasSpecialDashboards` hand-mirrors `buildDashboardTabs` + fragile name matching
 - **Reported:** 2026-11-25 — same assessment
-- **Root cause:** `dashboard_swiper.dart` — the Settings PANELS toggle's "has panels" probe duplicates all 17 tab conditions by hand; any future tab added to `buildDashboardTabs` but not the probe silently desyncs (toggle warns "No panels" while panels exist, or vice versa). Matching is also inconsistent: 'ser junkan' uses `.any(contains)` while everything else is exact-set `contains`; `charName.contains('robot'/'hunter')` is substring matching (U-032 class fragility).
-- **Severity:** Low-Medium (maintenance + wrong-toggle risk)
-- **Status:** OPEN — derive `hasSpecialDashboards` from `buildDashboardTabs(player, slot).isNotEmpty` (needs a Player, or extract the predicate); centralize name matching.
+- **Status:** Fixed in app `eb1ea7c` — probe deleted entirely; `buildDashboardTabs` is the single source and the Settings SPECIAL PANELS toggle is unconditional. Character names verified against data ('The Hunter'/'The Robot').
 
 ### U-046 — Dashboard swiper state duplicated; nested double-collapse UX
 - **Reported:** 2026-11-25 — same assessment
-- **Root cause:** `DashboardSwiper` (sliver path) and `DashboardSwiperCard` (embedded path) each own identical `_selectedIndex`/`_collapsed` + `onSelect` logic (~40 duplicated lines); `DashboardSwiperCardBody` is shared but state isn't. Also `RobotDashboardSliverState._collapsed` adds a SECOND collapse layer inside the pill-collapse — two stacked expand/collapse affordances on one panel.
-- **Severity:** Low (consistency/maintainability + mild UX confusion)
-- **Status:** OPEN — hoist selection/collapse into one controller or shared state; consider removing the inner header collapse where the pill already collapses.
+- **Status:** Fixed in app `eb1ea7c` — selection/collapse consolidated into stateful `DashboardSwiperCardBody` shared by sliver + embedded paths; `DashboardSwiper`/`DashboardSwiperCard` are thin stateless wrappers; Robot HUD's inner collapse removed (pill chevron is the single affordance). Widget test covers select/collapse.
 
-## Resolved
 
 ### U-001 — 08_char_select.png is a white/blank screenshot
 - **Reported:** 2026-08-25
