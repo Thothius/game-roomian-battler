@@ -8,6 +8,13 @@
 
 ## Open
 
+*(none — U-001 verified superseded 2026-11-23, see Resolved)*
+
+---
+
+
+## Resolved
+
 ### U-001 — 08_char_select.png is a white/blank screenshot
 - **Reported:** 2026-08-25
 - **Source:** Playwright screenshot session
@@ -16,12 +23,14 @@
   redirect issue. Not a real app bug; the screenshot should be re-captured
   in a clean session.
 - **Severity:** Low (cosmetic — screenshot only)
-- **Status:** Reported
-
----
-
-
-## Resolved
+- **Status:** Closed (S3, 2026-11-23) — the named artifact no longer exists
+  anywhere in either repo (it was an uncommitted Playwright session output).
+  Its successor already landed: `gungeon_mate/design-lab/reference/
+  ref-02-character-select.png` — captured 2026-10-31 in a clean
+  `flutter build web` session at 390×844 per that folder's README. Verified
+  non-blank: 42 KB PNG, mean luminance 18.2 (dark neon UI, not a white
+  page). No re-capture needed — the underlying need (valid char-select
+  reference shot) is already met.
 
 ### U-002 — White button labels hard to read on light-colored buttons
 - **Reported:** 2026-08-25
