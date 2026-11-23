@@ -26,31 +26,11 @@
 - **Severity:** Medium (visual overflow on narrow phones — content clipped/invisible, not a crash)
 - **Status:** OPEN — `header.dart` carries foreign uncommitted WIP; fix routed to whoever owns it (wrap left cluster in Flexible/FittedBox or move chips). Repro: open any item detail at ≤400dp width.
 
-### U-026 — RESET DATA never restarts, leaves stale in-memory state, strands user on char select
-- **Reported:** 2026-11-25 — settings/prefs audit (Slot 3)
-- **Root cause:** `_confirmResetAppData` (`settings_tab.dart:45-89`) does `prefs.clear()` then `pushAndRemoveUntil(fastRoute(CharacterSelectScreen()), (_) => false)`.
-  1. Dialog promises "The app will restart" — nothing restarts. `VisualPrefs.notifier`, `RunProvider._runState`, `MpSession`, favourites all keep stale in-memory values while disk is wiped (theme/prefs resurrect wrong until next launch; any `_scheduleSave` can rewrite cleared keys).
-  2. Navigation strands the user: char select becomes the ONLY route. `onPick` → `startNewRun` → `Navigator.canPop` is false → can't pop → run starts in the provider but HomeScreen (the run-tabs router) was removed from the tree — user sits on the picker with no way into the run.
-- **Severity:** Critical (data-reset flow is broken end-to-end; only recovery is force-close → relaunch → Continue Run offer)
-- **Status:** OPEN — fix: after `prefs.clear()`, call `p.endRun()` (+ reset VisualPrefs notifier if a reset API exists) and land on `HomeScreen` as root instead of `CharacterSelectScreen` — HomeScreen routes to the menu with no run, user picks normally.
-
-### U-027 — Settings "Dev Tools" tile is a dead end without an active run
-- **Reported:** 2026-11-25 — settings/prefs audit (Slot 3)
-- **Root cause:** Settings is reachable from the main menu with no run, but the DEV TOOLS card's only tile (`SpecialItemsGridScreen`) just shows a snackbar "Start a run first" — a visible control that can't act. Also the card is labelled DEV TOOLS containing a tile also labelled "Dev Tools" (stutter), and the whole collapsible card wraps a single action.
-- **Severity:** Low (UX dead end + redundant chrome)
-- **Status:** OPEN — candidates: hide the card when `!hasRun`, or merge the tile into DANGER ZONE / a flat list (the collapsible-card-for-one-tile pattern also applies to the STUDIO section).
-
 ### U-030 — Ammonomicon carries 12 flat categories; world-object cats blur into inventory cats
 - **Reported:** 2026-11-25 — multi-view composition audit (Slot 3)
 - **Root cause:** `_categories` in `ammonomicon_screen.dart:102-185` lists Gungeoneers, NPCs, Enemies, Bosses, Pickups, Objects, Guns, Items, Synergies, Shrines, Chapters, Game Modes as one flat tab strip. Pickups (17 dump entries) and Objects (42) are game-world entities, while Guns/Items are inventory entities — four item-adjacent categories with overlapping icon art (`Ammonomicon_Tab_Items` serves both Pickups and Items; `Ammonomicon_Tab_Guns` serves both Objects and Guns) and no visual grouping between "codex lore" and "gear" categories.
 - **Severity:** Low (navigation clutter / category confusion — data itself is real, not fabricated)
 - **Status:** OPEN — candidates: group tabs (LIVING WORLD vs ARMORY) or collapse Pickups+Objects under one expandable "WORLD" cat; defer to a design pass.
-
-### U-031 — Run-tools sheet bottom is an unlabeled grab-bag between RESET and End Run
-- **Reported:** 2026-11-25 — multi-view composition audit (Slot 3)
-- **Root cause:** `_RunToolsSheet` (`active_run_helpers.dart:563-671`) groups RUN TOOLS and RESET, but Customization, Quiz, Report a Bug, and Settings — none of which are run tools — sit unlabeled after RESET, then a bare divider and End Run with no DANGER label. Sheet's own doc comment claims "groups: tools → reset → danger" which the bottom half doesn't implement.
-- **Severity:** Low (mild clutter / dishonest grouping)
-- **Status:** OPEN — add an APP/LINKS label for the four global actions and a DANGER label above End Run; file carries foreign WIP so fix is routed.
 
 ### U-032 — Browse Robot-tier badges classify items by fragile name substrings
 - **Reported:** 2026-11-25 — multi-view composition audit (Slot 3)
@@ -237,3 +217,21 @@
 - **Root cause:** `_detectSavedPreset()` only matched session-flow state (`_presetName`/`_editingPresetId`), which is empty when the studio opens fresh on an already-applied preset — no EDIT PRESET card, and SAVE minted a same-name duplicate instead of updating.
 - **Severity:** High (core customization loop broken — couldn't tweak the live preset)
 - **Status:** Fixed in app `fa25ef8` (+merge `f39dcc9`) — detection falls back to the live `CustomThemeData.name` (saved presets persist their name app-wide); theme panel shows preset name + SAVED PRESET badge; SAVE tab offers UPDATE PRESET; `_onSavePreset` resolves the same target so edits overwrite the existing preset id. Tests: `experience_studio_test.dart` "Active preset editing" group (3).
+
+### U-026 — RESET DATA never restarts, leaves stale in-memory state, strands user on char select
+- **Reported:** 2026-11-25 — settings/prefs audit (Slot 3)
+- **Root cause:** `_confirmResetAppData` did `prefs.clear()` then `pushAndRemoveUntil(CharacterSelectScreen)` — no restart, stale `VisualPrefs`/`RunProvider`/`MpSession` in-memory state, and char select became the only route so the run couldn't be entered.
+- **Severity:** Critical
+- **Status:** Fixed in app `1748b80` — new `AppDataReset` service: MP teardown → in-memory defaults across RunProvider/VisualPrefs/AppTheme/CustomThemeStore/CodexPrefs/ColorFavorites/Haptics/HomeCustomization → `prefs.clear()` → rehydrate; lands on the existing Home route. Regression test in `settings_screen_test.dart`.
+
+### U-027 — Settings "Dev Tools" tile is a dead end without an active run
+- **Reported:** 2026-11-25 — settings/prefs audit (Slot 3)
+- **Root cause:** DEV TOOLS card offered `SpecialItemsGridScreen` with no run — a snackbar dead end.
+- **Severity:** Low
+- **Status:** Fixed in app `1748b80` — DEV TOOLS section only renders while `hasRun`; the grid is retitled "Special Items & Guns" and is responsive. Widget tests pin both states.
+
+### U-031 — Run-tools sheet bottom is an unlabeled grab-bag between RESET and End Run
+- **Reported:** 2026-11-25 — multi-view composition audit (Slot 3)
+- **Root cause:** Customization/Quiz/Report a Bug/Settings sat unlabeled after RESET; End Run had no DANGER label.
+- **Severity:** Low
+- **Status:** Fixed in app `1748b80` — every action row gained a subtitle; groups are now RUN → RESET → APP → DANGER. Widget test pins labels + order.
