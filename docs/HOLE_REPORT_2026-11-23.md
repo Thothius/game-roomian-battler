@@ -116,6 +116,60 @@ baseline). Ranked by **uncovered lines** — this is S2's priority queue.
 screen — recommend documenting it as intentionally untested rather than
 spending S2 hours on it.
 
+## H-L3 — Dead surface (assets, screens, prefs)
+
+Method: cross-referenced every file under `assets/images/` (1,157) against
+(a) literal path/stem references in `lib/`, (b) asset filenames declared
+in `assets/data/*.json` (icon fields etc.), (c) slug-resolution rules
+(`slugForAssetName` → `localGunIcon`/`localItemIcon`/etc.), (d) registry
+patterns (`custom_*`, `uni_*`, `gN_M`, `wp_*` avatars/wallpapers),
+(e) pubspec declarations. Then public widget classes in `lib/screens/`
+checked for zero external references. Prefs keys scanned for
+write-only/read-only literals.
+
+### Confirmed dead assets (~3.4MB reclaimable)
+
+| File | Size | Evidence |
+|---|---|---|
+| `images/wallpapers/animated/gungeonmate-animation-02.mp4` | **2.4MB** | Zero refs; nothing reads `wallpapers/animated/` at all |
+| `images/ammonomicon/{Bullethell,Challenge,Drake,Rat}_header.png` | ~930KB | Zero refs in lib/ or data JSONs — likely pre-redesign leftovers |
+| `images/enemies/Blockner%27s_Ghost.png` | 210B | URL-encoded filename artifact; Blockner's icon is `Blockner.png` |
+| `images/enemies/Chancellor.png` | 258B | enemies.json maps Chancellor→`Chancellor_Revenge.png`, Old Chancellor→`Old_Chancellor.png` |
+| `images/home/enter_the_gungeon_logo.png` | 53KB | No code ref — main menu renders logo via painter/text. **VERIFY** before delete: may be intentional source asset |
+
+### Confirmed dead code
+
+| Symbol | File | Evidence |
+|---|---|---|
+| `PaletteMakerScreen` | `lib/screens/palette_maker_screen.dart` | Zero references in lib/ or test/ — entry point removed at some point |
+| `SynergiesOverviewScreen` | `lib/screens/synergies_overview_screen.dart` | Zero references — superseded by browse synergy mode |
+
+### Verified LIVE (false positives avoided — do NOT cull)
+
+- `images/app_icon.png` — pubspec `flutter_launcher_icons` source (:70,:72)
+- `images/gungeoneers/the_*_map.png` ×9 — resolved at runtime by
+  `gungeoneerMapIconPath()` (`asset_paths.dart:91`) called from
+  `player_header.dart:139`; pattern-based, invisible to literal grep
+- All 13 `assets/fonts/*.ttf` — pubspec-declared; GoogleFonts families
+  resolve dynamically via `AppFont.bundledFontFamily`
+  (`'GoogleFonts.${label}'`) and are assigned per-theme in
+  `app_theme_modes.dart`
+- All `avatars/` + `wallpapers/custom/` files — registry-driven ids
+- SharedPreferences keys — no write-only or read-only orphans found
+
+### Route
+
+- Dead assets + dead screens → **S5 asset/code cull** (bundle-size win
+  ~3.4MB; screens need a git-history check before deletion to confirm
+  the entry points were intentionally removed, not accidentally lost)
+- `enter_the_gungeon_logo.png` → verify-then-decide inside that cull
+
+### Not covered (remaining L3 surface)
+
+- Write-only JSON *fields* (schema-level, deeper than icon paths)
+- Dead functions/methods inside live files (only screens audited)
+- Unreachable *routes* beyond screen classes (deep-link surface is nil)
+
 ## Claims trace
 
 - Slot 3 ACTIVE on this slice → release on commit of this report.
