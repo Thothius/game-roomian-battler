@@ -19,9 +19,6 @@ echo.
 echo   --- BUILD / INSTALL ---
 echo   4. Build release APK  -^> app-releases\
 echo   5. Emulator launcher  (boots AVD + installs latest APK)
-echo.
-echo   --- TOOLS ---
-echo   6. Design Lab  (http://localhost:8619/design-lab/)
 echo   0. Exit
 echo.
 set /p CHOICE="Pick: "
@@ -31,7 +28,6 @@ if "%CHOICE%"=="2" goto ANDROID
 if "%CHOICE%"=="3" goto CHROME
 if "%CHOICE%"=="4" goto APK
 if "%CHOICE%"=="5" goto EMU
-if "%CHOICE%"=="6" goto LAB
 if "%CHOICE%"=="0" exit /b 0
 goto MENU
 
@@ -67,11 +63,6 @@ if errorlevel 1 (
 ) else (
     echo Done -^> %RELEASES%\gungeon-mate-v%VERNAME%.apk
 )
-goto DONE
-
-:LAB
-start "" http://localhost:8619/design-lab/
-cd /d "%APP%" && python -m http.server 8619
 goto DONE
 
 :EMU
