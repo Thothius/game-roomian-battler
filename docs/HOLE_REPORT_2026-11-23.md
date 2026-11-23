@@ -263,6 +263,34 @@ same-stat claims across surfaces for consistency.
   internally consistent with its own table (the *other* screen is the
   outlier).
 
+## H-L6 — Error paths
+
+Method: traced failure handling for (a) bundled JSON loads in
+`RunProvider.loadData`, (b) persisted prefs/run-state corruption,
+(c) missing image assets, (d) malformed MP payloads, (e) quiz/progress
+persistence.
+
+### Verdict: core paths are hardened; secondary paths degrade silently
+
+| Path | Behavior | Verdict |
+|---|---|---|
+| `guns.json`/`items.json` load or parse failure | No per-file catch → `Future.wait` throws → `_error` set → `home_screen.dart:75` renders `ErrorState` with retry | **CORRECT — fatal is surfaced** |
+| `synergies`/`shrines`/`gungeoneers`/`back_refs`/`synergy_meta` JSON fail | `.catchError((_) => '')` → empty string → parse skipped → empty lists/maps | **SILENT DEGRADATION** — see L6-1 |
+| `current_run` prefs corruption | Double-buffered: falls back to `current_run_backup`; both fail → silent fresh run | Acceptable; backup makes it rare |
+| `CustomThemeStore` bad preset | Per-item try/catch skips bad entry | **CORRECT** |
+| `VisualPrefs`/`RunState` malformed fields | `??` defaults + clamps + legacy branch | **CORRECT** |
+| Missing gungeoneer gif/anim | Fallback chain animPath→gifPath→icon (`mp_connect_screen:1093`, `mp_lobby_screen:482`) | **CORRECT** |
+| Missing wallpaper file | `errorBuilder → SizedBox.shrink()` | Acceptable (blank bg, no crash) |
+| Malformed/unknown MP message | `decode` throws → caught + dropped at `mp_link.dart:657` | **CORRECT** |
+| `BackRefs` parse failure | → `BackRefs.empty` | Acceptable |
+
+### Findings
+
+| # | Finding | Severity | Route |
+|---|---------|----------|-------|
+| L6-1 | **Secondary JSON failures are silent.** If `synergies.json`/`shrines.json`/`gungeoneers.json`/`back_refs.json`/`synergy_meta.json` fails to load *or parse*, the app boots normally with empty data — browse shows no synergies, no shrines, no characters — with **zero logging and zero user signal**. A corrupt bundled asset (bad merge, truncated write) produces a plausibly-normal-looking app missing whole features. `catch (_)` swallows even the error object. | MED — silent wrong answer | **S3** — add `debugPrint`/crash-log at minimum; consider a non-blocking "some data failed to load" banner when `_allSynergies`/`_allShrines`/`_allGungeoneers` end up empty *while their JSON was non-empty* (distinguishes "file missing" from "parsed to zero") |
+| L6-2 | **Double-corruption of run save is silent data loss.** If both `current_run` and `current_run_backup` fail to parse, user gets a fresh run with no notice. Rare (needs two corrupt writes) and arguably correct UX (better than crash), but a one-line run-log entry "save data was unreadable — started fresh" would close the honesty gap. | LOW | **S5** polish sweep |
+
 ## Claims trace
 
 - Slot 3 ACTIVE on this slice → release on commit of this report.
