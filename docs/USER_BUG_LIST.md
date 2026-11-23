@@ -56,7 +56,7 @@
 - **Reported:** 2026-11-25 — UI/MP bughunt (Slot 3 PARALLEL)
 - **Root cause:** `lib/widgets/active_run/dice_roll.dart:51-53` — three stacked `@override` annotations on `build()` plus three orphaned comments where fields moved into `_DiceRollLogic`. Committed merge/refactor artifact; legal but sloppy.
 - **Severity:** Trivial (cosmetic)
-- **Status:** OPEN — collapse to one `@override`, drop dead comments.
+- **Status:** Fixed in dice-system rework — file rewritten for single-die flow; artifact gone.
 
 ### U-043 — Emote menu + 'End MP Session' unreachable while `kMpSocialEnabled=false`
 - **Reported:** 2026-11-25 — UI/MP bughunt (Slot 3 PARALLEL)
