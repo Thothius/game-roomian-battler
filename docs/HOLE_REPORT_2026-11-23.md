@@ -289,7 +289,7 @@ persistence.
 | # | Finding | Severity | Route |
 |---|---------|----------|-------|
 | L6-1 | **Secondary JSON failures are silent.** If `synergies.json`/`shrines.json`/`gungeoneers.json`/`back_refs.json`/`synergy_meta.json` fails to load *or parse*, the app boots normally with empty data — browse shows no synergies, no shrines, no characters — with **zero logging and zero user signal**. A corrupt bundled asset (bad merge, truncated write) produces a plausibly-normal-looking app missing whole features. `catch (_)` swallows even the error object. | MED — silent wrong answer | **FIXED** — `_loadOptionalAsset` + `_recordAssetFailure` log+record every secondary-asset load/parse failure; exposed via `assetLoadFailures`; `asset_load_failures_test` pins zero failures on shipped data |
-| L6-2 | **Double-corruption of run save is silent data loss.** If both `current_run` and `current_run_backup` fail to parse, user gets a fresh run with no notice. Rare (needs two corrupt writes) and arguably correct UX (better than crash), but a one-line run-log entry "save data was unreadable — started fresh" would close the honesty gap. | LOW | **S5** polish sweep |
+| L6-2 | **Double-corruption of run save is silent data loss.** If both `current_run` and `current_run_backup` fail to parse, user gets a fresh run with no notice. Rare (needs two corrupt writes) and arguably correct UX (better than crash), but a one-line run-log entry "save data was unreadable — started fresh" would close the honesty gap. | LOW | **FIXED** — `_saveWasCorrupt` flag + debugPrint when primary+backup both fail; `save_corruption_test` pins all three cases |
 
 ## H-L7 — Performance
 
