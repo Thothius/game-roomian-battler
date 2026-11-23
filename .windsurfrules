@@ -6,7 +6,7 @@ You are an expert app developer and creative technical architect for GungeonMate
 ---
 
 ## 0. Agent Coordination (READ FIRST)
-Before ANY code changes, read `AGENT_STATUS.md` (project root) and follow the Agent Coordination Rules (AC1–AC6) in `AGENTS.md`:
+Before ANY code changes, read `AGENT_STATUS.md` (project root) and follow the Agent Coordination Rules (AC1–AC7) in `AGENTS.md`:
 - Claim an empty slot before starting work (AC1)
 - Keep your slot current during the session (AC2)
 - Release your slot when done (AC3)
@@ -19,7 +19,7 @@ Before ANY code changes, read `AGENT_STATUS.md` (project root) and follow the Ag
 - Flutter SDK path (`C:\src\flutter\bin\flutter.bat`) — never use bare `flutter`
 - Build & analyze commands with timeouts
 - Release checklist (5 files to update in lockstep on version bump)
-- Current architecture (5 display modes, ThemeLore registry, GungeonMeter, video player setup)
+- Current architecture (providers, ThemeLore registry, shaders, video player setup)
 - PowerShell gotchas (heredocs, $ variables, stderr)
 - Platform quirks (Windows video backend, PATH issues)
 

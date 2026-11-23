@@ -1,5 +1,10 @@
 # Customization Masterplan — Final Form
 
+> **STATUS: COMPLETE (2026-11-25, Session A).** Every section shipped except the
+> "session seed" label polish — tracked as H23 in `HOUSEKEEPING_MASTERPLAN.md`.
+> Archived to `docs/archive/` — kept for design rationale, not active work.
+
+
 > Technical roadmap for taking the Experience Studio (customization) and
 > its surrounding surfaces (preview, particles, avatars, MP connect)
 > to their finished state. Written 2026-11 by Slot 2 (CORE).

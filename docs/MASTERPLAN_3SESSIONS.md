@@ -20,8 +20,8 @@ Goal: zero uncommitted limbo, one source of truth per concern.
    (item_detail/mp_connect/stats_detail/theme/codex/gun_synergies/
    bug_report/paradox tests). Identify owner intent → commit, stash
    with label, or archive. Nothing stays dirty >48h after this.
-2. **Doc archival** — `MASTERPLAN_5SESSIONS.md` (DONE) → `docs/archive/`;
-   verify `CUSTOMIZATION_MASTERPLAN.md` + `QA_REMEDIATION_PLAN.md`
+2. **Doc archival** — `docs/archive/MASTERPLAN_5SESSIONS.md` (DONE) → archived;
+   verify `docs/archive/CUSTOMIZATION_MASTERPLAN.md` + `docs/archive/QA_REMEDIATION_PLAN.md`
    complete → archive or mark superseded.
 3. **`GUNGEONMATE.md` refresh** — still claims v3.3.0+162 and references
    removed `changelog.json`; update version/features or fold into

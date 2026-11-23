@@ -55,11 +55,11 @@ Legend: **[bug]** correctness · **[perf]** performance ·
 
 | # | Task | Ref |
 |---|------|-----|
-| H21 | Wallpaper display names (picker shows raw `wp_07.webp`-style labels?) | board deferred |
-| H22 | `uni_5` grid cell verify vs `9unis.jpg` source | board deferred |
-| H23 | Preview session-seed diagnostic label | summary deferred |
+| ~~H21~~ | **Wallpaper display names** — VERIFIED DONE: `kWallpaperNames` map (30 mood-matched names) + `wallpaperDisplayName()` already wired as `_WallpaperTile.label` in the studio picker | Session A verify |
+| ~~H22~~ | **`uni_5` grid verify** — `9unis.jpg` source no longer on disk (was untracked, gone). Asset itself verified healthy: uni_5.webp 320×320, 22k unique colors, non-blank | Session A verify |
+| ~~H23~~ | **Preview session-seed label** — DONE: `_startSession` re-seeds `_rng` per session (`_sessionSeed`), tiny `#seed` label beside LIVE PREVIEW header; reroll gets a fresh seed | Session A |
 | H24 | S7 LIVE LOOK mini-slice (optional) | masterplan deferred |
-| H25 | Browse LEB toggle discoverability pass (prefs/settings/browse all work — verify UX coherence) | this audit |
+| ~~H25~~ | **Browse LEB discoverability** — DONE: browse chip keeps its compact form; added "Browse LEB badges" toggle row to Settings → SYNERGY READOUT panel so the browse-local pref is discoverable + controllable outside the filter bar | Session A |
 
 ---
 

@@ -1,7 +1,7 @@
 # GungeonMate — The Definitive Reference
 
 > **One doc to rule them all.** App infrastructure, tech stack, features, every view, every option.
-> Last updated: 2026-10-31 (v3.3.0+162) — see **v3.x delta** in `TECHNICAL_REFERENCE.md` §0: unified MP `mp.v2`, 3-tab nav + gear sheet, Ammonomicon rename, item-detail wiki/back-refs surfacing. Feature descriptions below are v2-era; where they conflict with the delta, the delta wins.
+> Last updated: 2026-11-25 (v3.7.0+167) — MP protocol is now **v4**, nav is multi-tab with Codex/Quiz/Settings, dice is single-die duels, `changelog.json` was removed (VERSION_HISTORY.md is the changelog of record). Feature descriptions below are v2-era; where they conflict with the code, the code wins.
 >
 > **Companion docs:**
 > - `TECHNICAL_REFERENCE.md` — agent operations (git, build commands, release checklist, PowerShell gotchas)
@@ -15,7 +15,7 @@
 
 A high-performance, dark-neon companion app for *Enter the Gungeon*. Built in Flutter/Dart. Tracks runs, inventory, synergies, stats. Multiplayer co-op via Nearby Connections. Customizable themes, particles, fonts, shaders.
 
-**Current version:** 3.3.0+162
+**Current version:** 3.7.0+167
 **Target platforms:** Android (primary), Windows (desktop), iOS (builds but not actively tested)
 **Flutter SDK:** 3.47.9 stable / Dart 3.13.7
 
@@ -98,9 +98,9 @@ gungeon_mate/
 │       ├── format.dart              — number/text formatting
 │       └── fast_route.dart          — route transition helper
 ├── assets/
-│   ├── data/                        — JSON data (guns, items, synergies, changelog)
+│   ├── data/                        — JSON data (guns, items, synergies, …)
 │   └── images/themes/splash/        — 14 theme splash JPGs
-├── test/                            — 105 tests (see §7)
+├── test/                            — ~950 tests
 ├── .github/workflows/ci.yml         — GitHub Actions CI
 └── pubspec.yaml
 ```
@@ -122,8 +122,8 @@ gungeon_mate/
 | Screen | File | Purpose |
 |--------|------|---------|
 | **HomeScreen** | `home_screen.dart` | Routes to MainMenu (no run) or ActiveRunScreen (active run). Tabbed: Run / Browse / Settings |
-| **MainMenuScreen** | `main_menu_screen.dart` | New run gateway. Character select panel, changelog dialog, version info |
-| **CharacterSelectScreen** | `character_select_screen.dart` | Sliding roster of 8 Gungeoneers with starting gear and stats |
+| **MainMenuScreen** | `main_menu_screen.dart` | New run gateway. Character select panel, version info |
+| **CharacterSelectScreen** | `character_select_screen.dart` | Sliding roster of 9 Gungeoneers (incl. Paradox) with starting gear and stats |
 
 ### 4.2 Active Run
 
@@ -460,7 +460,7 @@ Custom-painted horizontal fill bar for coolness/curse:
 
 1. **Host:** Enter nickname → select character → tap HOST → auto-generated 4-digit PIN → starts advertising `nickname#PIN`
 2. **Joiner:** Enter nickname → enter host's PIN → tap CONNECT → discovers endpoints → auto-connects to matching PIN
-3. **Handshake:** Hello message validates role (main vs sidekick), PIN, protocol version (2), app version
+3. **Handshake:** Hello message validates role (main vs sidekick), PIN, protocol version (4), app version
 4. **Snapshot exchange:** Both sides exchange character/loadout → `applyPeerSnapshot` routes to correct slot
 5. **Connected:** Both devices show the active run. Host in main slot, joiner in coop slot.
 
@@ -480,11 +480,11 @@ Custom-painted horizontal fill bar for coolness/curse:
 | `MpDiceAccept` | `diceAccept` | Accept dice challenge |
 | `MpDiceDecline` | `diceDecline` | Decline dice challenge |
 | `MpDiceCancel` | `diceCancel` | Cancel dice challenge |
-| `MpDiceResult` | `diceResult` | Dice roll result (score + dice values) |
+| `MpDiceResult` | `diceResult` | Dice roll result (single die + round counter for tie rerolls) |
 | `MpEmote` | `emote` | Emote (kiss, slap, etc.) |
 | `MpSharedStateDelta` | `sharedStateDelta` | Signed coolness/curse delta + optional shrine name |
 
-**Protocol version:** 2
+**Protocol version:** 4
 **Service ID:** `com.saare.gungeon_mate.mp.v2`
 **Heartbeat:** 5 seconds
 **Reconnect cadence:** 5s on / 5s off (50% duty cycle)

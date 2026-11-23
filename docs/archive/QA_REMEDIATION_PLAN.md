@@ -1,5 +1,12 @@
 # QA Remediation Plan — v3.6.0 Customization/MP Batch
 
+> **STATUS: EXECUTED (2026-11-25, Session A).** All batches landed:
+> A1–A9 `9da9adc`, B1+C7 `f77b700`, C-honesty `38e7e15`, perf `336aa4a`/`79be0de`.
+> Documented deferrals only: B3 partial (dust halved), B4 skipped (assessed),
+> TickerMode gating unnecessary. Residuals live in `HOUSEKEEPING_MASTERPLAN.md`.
+> Archived to `docs/archive/` — kept for rationale, not active work.
+
+
 > Produced 2026-11-25 by CORE (Slot 2) after the post-release audit:
 > `flutter analyze` 0 issues · `flutter test` 603 pass / 0 fail / 9 skip
 > (5 earlier failures confirmed load-flakes). Two parallel deep reviews
