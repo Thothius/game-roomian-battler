@@ -88,7 +88,8 @@ core.autocrlf=true
 
 | Property | Value |
 |----------|-------|
-| **Flutter path** | `C:\src\flutter\bin\flutter.bat` |
+| **Flutter path** | `C:\src\flutter\bin\flutter.bat` — **junction** to `X:\dev-cache\flutter` (moved off C: 2026-11-23; path unchanged, real bytes on X:) |
+| **Dev caches on X:** | `X:\dev-cache\flutter` (SDK) · `X:\dev-cache\gradle` (`.gradle`) · `X:\dev-cache\pub-cache` (`Pub\Cache`) — all junctioned back to original C: paths |
 | **Flutter version** | 3.47.9 (stable, 2026-10-30 upgrade) |
 | **Dart version** | 3.13.7 |
 | **Android toolchain** | Gradle 8.14 · AGP 8.13.0 · Kotlin 2.2.20 · compileSdk 37 · NDK 28.2.13676358 |
