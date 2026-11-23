@@ -65,6 +65,24 @@
 - **Status:** OPEN — either excise with the social layer or leave documented until re-enable.
 
 
+### U-044 — Huntress dashboard reads P1 inventory in co-op (slot ignored)
+- **Reported:** 2026-11-25 — special-panels subsystem assessment (Slot 2 CORE)
+- **Root cause:** `huntress_dashboard.dart:24` — `p.runState.main.items` unconditionally; every other dashboard takes `PlayerSlot slot` and resolves `runState.coop` for P2. P2's Huntress panel computes dig chance / Baby Good Mimic detection from the MAIN player's items.
+- **Severity:** Medium (wrong data shown to P2 in co-op)
+- **Status:** OPEN — give HuntressDashboardSliver a `slot` param like the rest; check Robot dashboard for the same class of issue (its trackers are RunProvider-global — verify intended).
+
+### U-045 — `hasSpecialDashboards` hand-mirrors `buildDashboardTabs` + fragile name matching
+- **Reported:** 2026-11-25 — same assessment
+- **Root cause:** `dashboard_swiper.dart` — the Settings PANELS toggle's "has panels" probe duplicates all 17 tab conditions by hand; any future tab added to `buildDashboardTabs` but not the probe silently desyncs (toggle warns "No panels" while panels exist, or vice versa). Matching is also inconsistent: 'ser junkan' uses `.any(contains)` while everything else is exact-set `contains`; `charName.contains('robot'/'hunter')` is substring matching (U-032 class fragility).
+- **Severity:** Low-Medium (maintenance + wrong-toggle risk)
+- **Status:** OPEN — derive `hasSpecialDashboards` from `buildDashboardTabs(player, slot).isNotEmpty` (needs a Player, or extract the predicate); centralize name matching.
+
+### U-046 — Dashboard swiper state duplicated; nested double-collapse UX
+- **Reported:** 2026-11-25 — same assessment
+- **Root cause:** `DashboardSwiper` (sliver path) and `DashboardSwiperCard` (embedded path) each own identical `_selectedIndex`/`_collapsed` + `onSelect` logic (~40 duplicated lines); `DashboardSwiperCardBody` is shared but state isn't. Also `RobotDashboardSliverState._collapsed` adds a SECOND collapse layer inside the pill-collapse — two stacked expand/collapse affordances on one panel.
+- **Severity:** Low (consistency/maintainability + mild UX confusion)
+- **Status:** OPEN — hoist selection/collapse into one controller or shared state; consider removing the inner header collapse where the pill already collapses.
+
 ## Resolved
 
 ### U-001 — 08_char_select.png is a white/blank screenshot
