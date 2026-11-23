@@ -52,6 +52,12 @@
 - **Severity:** Low (mild clutter / dishonest grouping)
 - **Status:** OPEN — add an APP/LINKS label for the four global actions and a DANGER label above End Run; file carries foreign WIP so fix is routed.
 
+### U-032 — Browse Robot-tier badges classify items by fragile name substrings
+- **Reported:** 2026-11-25 — multi-view composition audit (Slot 3)
+- **Root cause:** `BrowseRow` (`browse_row.dart:39-77`) hardcodes `name.toLowerCase().contains(...)` lists for GOD TIER / CONVERTS TO ARMOR / DEAD WEIGHT. A JSON rename or rewording silently removes the badge with no error; `'vampire'` substring can false-positive on unrelated names; 'riddle of lead'/'pink guon stone' partial matches are brittle.
+- **Severity:** Low (silent mislabel risk, no crash)
+- **Status:** OPEN — better: add an explicit Robot-relevance field to items.json during a data pass, or at minimum centralize the lists in one const map.
+
 ---
 
 
