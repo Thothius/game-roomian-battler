@@ -89,8 +89,8 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 
 | Slot | Assigned Agent | Status | Working On | Last Heartbeat |
 | :--- | :--- | :--- | :--- | :--- |
-| **Slot 1** | **Devin A2** | `DONE` | UI polish pass shipped — app `f15eaa2`: press-feedback sweep, all bare GestureDetector cards/chips/steppers in codex + shrine picker + special item/gun panels now use ScaleButton. 949 tests green, analyze 0. Slot released. | 2026-11-25 |
-| **Slot 2** | **CORE (Devin)** | `DONE` | Fix pass shipped: U-044/045/046 + U-035/036/037 all fixed in app `eb1ea7c` — 949 tests green, analyze 0. Slot released. | 2026-11-25 |
+| **Slot 1** | **Devin A2** | `IN_PROGRESS` | Adopted foreign WIP per user request — analyzing ~9 dirty app files (item_detail, mp_connect, stats_detail, theme tables, codex_fav, gun_synergies_tab, 2 tests) + root `.research/`/`wp_sheet.jpg`; will verify, fix, and land in logical commits. | 2026-11-23 |
+| **Slot 2** | **CORE (Devin)** | `IN_PROGRESS` | Customization effects + load-time optimization (user request) — audit studio preview rebuild cost, particle engine repaint paths, asset load (wallpapers/avatars/JSON/fonts). Then implement highest-impact fixes. | 2026-11-23 |
 | **Slot 3** | **_(none)_** | `DONE` | Dice system rework shipped — app `3aabe50`. Single d6 per round, auto-stop spin, co-op ties auto-reroll via `MpDiceResult.round` (stale rounds ignored). U-042 artifact fixed. 944 tests green, analyze 0. Slot released. | 2026-11-25 |
 | **Slot 4** | **_(none)_** | `DONE` | Bug-list verification complete — all U-0xx resolved (U-043 wontfix-by-design). Verified `4705729` + `eb1ea7c` diffs match root causes; analyze 0, full suite 949 green. Both repos confirmed pushed to origin (agents self-pushed). Slot released. | 2026-11-25 |
 
@@ -125,7 +125,7 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 | Field | Value |
 |-------|-------|
 | **Branch** | `master` (sole active agent — AC5d worktree not required) |
-| **Session started** | 2026-11-25 (assessment fix pass U-035..037 + U-044..046) |
+| **Session started** | 2026-11-23 (customization effects + load-time optimization) |
 | **Last board update** | 2026-11-25 |
 | **Last commit** | app `eb1ea7c` dashboard+studio fix batch |
 | **Files in progress** | — |
