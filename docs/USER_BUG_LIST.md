@@ -8,6 +8,25 @@
 
 ## Open
 
+### U-035 — Studio pills/tabs: type sizes below readable floor + touch targets under minimum
+- **Reported:** 2026-11-25 — customization pills/tabs assessment (Slot 2 CORE)
+- **Root cause:** `experience_studio_screen.dart` + `studio_*.dart` — tab pills render at 9px; `_GlowStyleRow` cells at 8px in a 7-wide `Expanded` Row with no maxLines/overflow (PRISM/RIPPLE likely clip); `_LookTile` name 7.5px / blurb 6.5px; `_FontTile` role tag 8px. `_GlowQuickRow` color dots are 26×26px in a fixed 26px row — half the 48dp guidance and the only picker for 12 glow colors. Most chip bodies ~33px tall.
+- **Severity:** Medium (legibility + a11y on the app's flagship customization surface)
+- **Status:** OPEN — assessment only, no fix yet. Fix direction: floor ~10.5px tabs / 9px+ elsewhere with overflow guards, 44px hit areas on color dots.
+
+### U-036 — Studio pickers: zero semantics/screen-reader labels on non-text controls
+- **Reported:** 2026-11-25 — customization pills/tabs assessment (Slot 2 CORE)
+- **Root cause:** `_GlowQuickRow` 12 identical color dots expose nothing (no Semantics/tooltip/label); 4-dot atmosphere meter is decorative-only; icon-only pickers lack tooltips. Text chips are fine via GoopText.
+- **Severity:** Low-Medium (a11y)
+- **Status:** OPEN — add `Semantics(label:)`/`Tooltip` on dot pickers and the meter.
+
+### U-037 — Studio chip recipe duplicated 7× with drifted params, mixed animation, uneven haptics/press feedback
+- **Reported:** 2026-11-25 — customization pills/tabs assessment (Slot 2 CORE)
+- **Root cause:** `_GlowFxChip`, `_ShaderChip`, `_PhysicsToggle`, `_HapticsChips` cells, `_GlowStyleRow` cells, `_SchemaChip`, `_AtmosphereLoadRow` THIN STACK, and the 6 tab pills each hand-roll the selected/unselected container — fill alpha 0.16 vs 0.18, border 1.4/1.5/1.6, radius sm/8/10/12, padding varies; some `AnimatedContainer` (140–200ms), some static; haptics live in caller `onTap` so `_setBgMode` chips have none; pills use raw `GestureDetector` (no press-scale) while the action bar uses `ScaleButton`.
+- **Severity:** Low (consistency/maintainability — ~200 lines collapsible into one `_SelectChip`)
+- **Status:** OPEN — extract shared chip, normalize recipe, unify animation + haptics + press feedback.
+
+
 
 ## Resolved
 
