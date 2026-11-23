@@ -68,28 +68,27 @@ time; it should read as a drawer, not a peer section.
 
 ### TODO — header banners & art assets
 
-- [ ] **Hero banner** (~1600×400 or 1200×300 WebP): key art — gungeon
-      hallway + drifting gun/item sprites echoing the new menu backdrop.
-      Could composite from existing `wp_*` wallpapers + sprite assets,
-      or generate fresh.
+- [x] **Hero banner** — DONE 2026-11-23: `gungeon_mate/docs/media/hero.webp`
+      (1600×400, PIL composite: bullet_hell splash + app_icon + 14 sprites).
 - [ ] **Section dividers** (optional, ~1200×60): thin ornament strips
       between OVERVIEW / FEATURES / REFERENCE.
 - [ ] **Feature card icons** (optional): 6 small glyphs matching feature
       bullets — or skip and use emoji/text only (Ponytail: prefer skip).
-- [ ] **OG/social preview image**: GitHub repo social preview setting —
-      reuse hero banner (1200×630 crop) so Reddit link unfurls nicely.
-- [ ] **Screenshots** (6–8): capture list above; name `docs/media/*.webp`.
-- [ ] Tools: image gen via existing asset pipeline or PIL composites;
-      store sources in `tools/` or `design-lab/`.
+- [x] **OG/social preview image** — DONE: `docs/media/og-image.jpg`
+      (1200×630). **MANUAL STEP REMAINING:** upload at repo
+      Settings → General → Social preview (no API exists).
+- [x] **Screenshots** (8): real v3.7.0 captures via `flutter build web` +
+      Playwright at 390×844 → `gungeon_mate/docs/media/shot-*.webp`.
+- [x] Tools: PIL composites + Playwright MCP (no external gen needed).
 
 ### Work packages
 
-- **R1**: capture/produce all art (banners + screenshots) — needs a debug
-  build or design-lab renders.
-- **R2**: rewrite `gungeon_mate/README.md` per structure above.
-- **R3**: repo hygiene for discovery — topics/tags on GitHub repo
-  (`enter-the-gungeon`, `gungeon`, `flutter`, `multiplayer`, `companion-app`),
-  About section blurb, social preview image, maybe pin README topics.
+- **R1**: DONE 2026-11-23 — hero.webp + og-image.jpg + 8 screenshots.
+- **R2**: DONE 2026-11-23 — README rewritten (hero/OVERVIEW/FEATURES/
+  GETTING STARTED & REFERENCE), dynamic version badge, stable APK link.
+- **R3**: DONE 2026-11-23 — topics set (7), description/homepage already
+  good, **v3.7.0 released** with stable `GungeonMate.apk` asset;
+  social-preview upload is the only manual remainder.
 - **R4**: Reddit post draft (separate doc when ready) — lead with the
   online-co-op angle if B lands first.
 

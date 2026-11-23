@@ -92,7 +92,9 @@ core.autocrlf=true
 | **Dev caches on X:** | `X:\dev-cache\flutter` (SDK) · `X:\dev-cache\gradle` (`.gradle`) · `X:\dev-cache\pub-cache` (`Pub\Cache`) — all junctioned back to original C: paths |
 | **Flutter version** | 3.47.9 (stable, 2026-10-30 upgrade) |
 | **Dart version** | 3.13.7 |
-| **Android toolchain** | Gradle 8.14 · AGP 8.13.0 · Kotlin 2.2.20 · compileSdk 37 · NDK 28.2.13676358 |
+| **Android SDK** | `X:\dev-cache\android-sdk` — **junction** at `C:\Users\saare\AppData\Local\Android\Sdk` (installed 2026-11-23; cmdline-tools + platform-tools + platforms 34/35/36/37.0 + build-tools 36/37 + NDK 28.2 auto-installed by AGP). `platforms\android-37` junction → `android-37.0` exists because AGP 9.1 looks for hash `android-37` but sdkmanager ships `android-37.0` — **do not delete** |
+| **Android toolchain** | Gradle **9.8.0** (wrapper bumped from 9.3.1 — its kotlin-dsl fails to compile any .gradle.kts here, upstream regression gradle/gradle#36483 class) · AGP 9.1.0 · Kotlin 2.2.20 · compileSdk 37 · NDK 28.2 |
+| **JDK for Gradle** | **Required:** `JAVA_HOME=C:\Program Files\Android\Android Studio\jbr` (Java 21) before `flutter build apk` — system Java is 1.8 and Gradle 9.x refuses it |
 | **App repo working dir** | `X:\GungeonMate\gungeon_mate` |
 
 ### All agents MUST use the full path to flutter:
