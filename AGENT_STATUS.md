@@ -38,7 +38,7 @@ When done, mark status as `DONE` and move to Session Log.
 | 23 | **Session A — Hygiene & docs consolidation** — DONE: docs archived (5SESSIONS/CUSTOMIZATION/QA plans → docs/archive/ + banners), GUNGEONMATE.md refreshed to v3.7.0+167/protocol v4, .windsurfrules deduped, H21 verified shipped, H22 verified healthy, H23 seed label + H25 settings LEB row shipped (app `1784167`) | PARALLEL (Devin, Slot 3) | DONE | app `1784167` + `865f370` |
 | 24 | **Session B — Depth pass** — DONE: quick-add MP seam test (`2be653c`), coverage 68.4→69.6% (`865f370`), H6 verified all 26 splash slugs resolve (`7c9f2e4` art), H14 verified ambienceLoad meter+THIN STACK live, H24 verified LIVE LOOK draggable pane shipped | PARALLEL (Devin, Slot 3) | DONE | app `865f370` |
 | 25 | **Session C — Release cut v3.8.0** (MASTERPLAN_3SESSIONS): version lockstep, full gate, APK build, push+tag | _(open — any agent)_ | BLOCKED | user go-ahead for version bump + APK; ideally after A+B |
-| 27 | **Backpack feature** (`docs/BACKPACK_MASTERPLAN.md`): 12-slot mixed storage via `Player.backpackKeys` flag-set (everything still counts — zero reader changes), app-only Backpack item granted at run start, redesigned long-press pill (+STASH), BackpackScreen with long-press TAKE OUT/DELETE/SEND. 8 decisions locked — see doc | _(open — any agent)_ | PENDING | user GO to build |
+| 27 | **Backpack feature** (`docs/BACKPACK_MASTERPLAN.md`): 12-slot mixed storage via `Player.backpackKeys` flag-set (everything still counts — zero reader changes), app-only Backpack item granted at run start, redesigned long-press pill (+STASH), BackpackScreen with tap→detail / long-press TAKE OUT/DELETE/SEND. 8 decisions locked — see doc | SUPPORT (Devin, Slot 4) | IN_PROGRESS | user GO given 2026-11-25 |
 | 26 | **MP hardening session** (docs/MP_HARDENING_PLAN.md — 12-Q interview decisions locked): MP-1 Android-only platform gate, MP-2 shared-secret session token (hello→snapshot validation, legacy-peer compat), MP-3 dead-code cut (sessionEvents+sendPeerRemove), MP-4 reconnect banner Leave MP button, MP-5 docs/threat model | _(open — any agent)_ | PENDING | — |
 
 ### 10-Item Rework (2026-08-25) — see `docs/REWORK_PLAN_10_ITEMS.md` for full details
@@ -94,7 +94,7 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 | **Slot 1** | **Devin A2** | `DONE` | Foreign WIP adopted + landed per user request — app `ef66270`: audited all 9 dirty files (~95% dart_style reformat; one real change = unoffered fonts drop bundled TTF claims, matching migrate(); resolves U-028 dup arm). Root `6a9d5cd`: `.research/`+`wp_sheet.jpg` gitignored. analyze 0, 949 tests green. BOTH REPOS NOW FULLY CLEAN. Slot released. | 2026-11-23 |
 | **Slot 2** | **CORE (Devin)** | `DONE` | Customization effects + load-time optimization SHIPPED — app `23da206`. Audit verdict: codebase already well-optimized (parallel JSON+isolates, wallpaper cacheWidth:1080 on-demand, grain gated >0.005, RM respected, preview rebuild = the feature itself). Fixes: touch-sparkle ticker idle-stops when particle list empties (was 60fps wakeup for app lifetime); 6 startup SharedPreferences hydrations now `Future.wait` parallel. analyze 0, FULL SUITE 949 green. Slot released. | 2026-11-23 |
 | **Slot 3** | **PARALLEL (Devin)** | `IN_PROGRESS` | MP hardening session (queue #26, user GO): MP-1 Android gate, MP-2 session token, MP-3 dead-code cut, MP-4 reconnect Leave button, MP-5 docs. Masterplan first, then execute | 2026-11-25 |
-| **Slot 4** | **SUPPORT (Devin)** | `DONE` | Header dash capsules SHIPPED — app `1fc4b04`: COOL/CURSE fixed + "+" picker (ACTIONS STEAL/USE SHRINE, INFO SYN/DPS), up to 3 pins per slot persisted; new DamageBreakdownScreen (live form-aware per-gun DPS via new RunProvider.gunDps + EffectTagger damage modifiers by source). Real bug caught by tests: picker sheet kept stale pinned list (parent setState can't rebuild open modal) → StatefulBuilder local state. 963 tests green, analyze clean. Slot released. | 2026-11-25 |
+| **Slot 4** | **SUPPORT (Devin)** | `IN_PROGRESS` | Backpack feature (queue #27, user GO): worktree `slot4-devin/backpack`. Files: player.dart, run_provider.dart, player_page.dart, backpack_screen.dart (new), damage_breakdown_screen.dart, run_log_entry.dart, backpack_test.dart (new), VERSION_HISTORY.md | 2026-11-25 |
 
 ### Slot Details
 
@@ -168,12 +168,12 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 #### Slot 4 — SUPPORT
 | Field | Value |
 |-------|-------|
-| **Branch** | master (sole-agent exception; README branch merged earlier) |
-| **Session started** | 2026-11-25 (quick-add sheet test batch) |
+| **Branch** | `slot4-devin/backpack` (worktree `X:\GungeonMate\.worktrees\slot4-devin\gungeon_mate` — Slot 3 active, AC5d) |
+| **Session started** | 2026-11-25 (Backpack feature — queue #27) |
 | **Last board update** | 2026-11-25 |
-| **Last commit** | app `a997996` — quick-add sheet tests + lifecycle-safe sheet content |
-| **Files in progress** | — |
-| **Uncommitted changes** | — (foreign WIP still dirty in main WD — codex/item-detail/theme batch + studio swiper-removal now committed `719cafb`; remaining dirty files are theirs, do not sweep) |
+| **Last commit** | — |
+| **Files in progress** | `lib/models/player.dart`, `lib/providers/run_provider.dart`, `lib/widgets/active_run/player_page.dart`, `lib/screens/backpack_screen.dart` (new), `lib/screens/damage_breakdown_screen.dart`, `lib/models/run_log_entry.dart`, `test/widget/backpack_test.dart` (new), `VERSION_HISTORY.md` |
+| **Uncommitted changes** | — |
 
 > **Slot restructured 2026-08-25.** Formerly UNIVERSAL WORKER. Now SUPPORT — owns the cleanup-and-doc niche via `/cleanup` command. Use for dead code sweeps, doc consistency checks, stale reference cleanup, Playwright testing, and general cross-slot assistance.
 
