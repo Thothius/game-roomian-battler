@@ -95,13 +95,13 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 #### Slot 1 — VISUAL (Devin)
 | Field | Value |
 |-------|-------|
-| **Branch** | `master` (sole UI slot; Slot 4 on release build in app repo — different files) |
-| **Session started** | 2026-11-23 (customization studio UI/UX audit) |
-| **Last board update** | 2026-11-23 07:57 |
-| **Last commit** | — |
-| **Files in progress** | — (read-only audit first) |
-| **Uncommitted changes** | — |
-| **Worktree** | — |
+| **Branch** | `slot1-visual/studio-active-preset` → merged to `master` (`fa25ef8` + merge) |
+| **Session started** | 2026-11-23 (customization studio UI/UX audit → active-preset edit bugfix) |
+| **Last board update** | 2026-11-23 |
+| **Last commit** | `fa25ef8` fix: active saved preset is always editable + updates in place |
+| **Files in progress** | — |
+| **Uncommitted changes** | — (main WD has FOREIGN FontSizes sweep WIP — uncompilable mid-edit, not mine) |
+| **Worktree** | `.worktrees/slot1-visual/gungeon_mate` (kept until full suite green) |
 
 > **3-way split (user 2026-10-29):** DEVIN=Slot2 CORE, DESIGNER=Slot1 VISUAL, GENERAL=Slot3 PARALLEL. Shared deps: DEVIN lands `run_lifecycle.dart` early; GENERAL lands `bottom_back_bar.dart` early. Merge order: DEVIN → DESIGNER → GENERAL. Surprise-fx WIP in main WD (unclaimed, pre-existing) likely folds into my batch — TBD at GO.
 

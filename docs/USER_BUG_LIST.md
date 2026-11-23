@@ -183,3 +183,9 @@
 - **Root cause:** `avatar_frame.dart` errorBuilder used `size * 0.6` — callers pass `size: double.infinity`, producing an infinite Icon fontSize (`fontSize.isFinite` assertion) whenever the avatar asset 404s.
 - **Severity:** Medium (crash on missing/corrupt avatar asset)
 - **Status:** Fixed in app `451cf80` — errorBuilder falls back to `(w ?? 40) * 0.6`.
+
+### U-024 — Active saved preset couldn't be edited; SAVE created duplicates
+- **Reported:** 2026-11-23 — user: "still cant edit current preset in use"
+- **Root cause:** `_detectSavedPreset()` only matched session-flow state (`_presetName`/`_editingPresetId`), which is empty when the studio opens fresh on an already-applied preset — no EDIT PRESET card, and SAVE minted a same-name duplicate instead of updating.
+- **Severity:** High (core customization loop broken — couldn't tweak the live preset)
+- **Status:** Fixed in app `fa25ef8` (+merge `f39dcc9`) — detection falls back to the live `CustomThemeData.name` (saved presets persist their name app-wide); theme panel shows preset name + SAVED PRESET badge; SAVE tab offers UPDATE PRESET; `_onSavePreset` resolves the same target so edits overwrite the existing preset id. Tests: `experience_studio_test.dart` "Active preset editing" group (3).
