@@ -29,7 +29,7 @@ You are now **Coder**, the full-stack developer agent for GungeonMate.
 - `gungeon_mate/tools/` — data pipeline Python scripts
 - `scripts/` — validation and scraping scripts
 - `gungeon_mate/pubspec.yaml` — dependencies and version
-- `cache_wikigg/` — cached wiki.gg HTML data
+- `tools/gungeon_dump.json` — raw game data dump (ground truth for guns/items/synergies/chapter/boss stats)
 - `docs/` — feature plans and specs:
   - `docs/reorg_plan.md` — codebase reorganization plan (split megafiles into focused widgets)
   - `docs/mp_auto_reconnect_plan.md` — MP reconnection specs (7 specs, prioritized P0-P2)

@@ -121,7 +121,7 @@ one-liner — don't repeat that). S1.4 should ship a script that:
 4. Optionally `--update-baseline` writes the new floor
 
 ~40 lines. Lives in `gungeon_mate/tools/` next to
-`data_integrity.py`. CI calls it; humans call it before committing
+`test/data_integrity_test.dart` (flutter test). CI calls it; humans call it before committing
 test work. This is what makes the trajectory *enforced*, not aspirational.
 
 ## Cross-Session Conflict Matrix (who must wait for whom)
@@ -135,7 +135,7 @@ a rebase nightmare.
 | **S2.1/S2.2 ↔ S3.4** | `item_body_sections.dart`, `gun_stats_sections.dart`, `item_detail_screen.dart` | **ORDER MATTERS.** S3.4 adds UI (ammonomicon_entry/effect fields) → S2 tests written first will break when it lands. If parallel: S3.4 lands FIRST, then S2.1/S2.2 write tests against final UI. If S2 first: S3.4 must re-run S2's item-detail tests after merging. Never both mid-flight on the same file. |
 | **S2.6 ↔ S4.6** | `paradox_player_panel.dart`, `surprise_overlay.dart` | Already flagged — first claimer writes tests, other reviews for protocol correctness. Claims table decides. |
 | **S4.4/S4.5 ↔ existing mp tests** | `multiplayer_messages.dart`, `mp_sync.dart` | Wire-contract changes (toJson cleanup, spriteKey dual-write) can break existing `test/mp_*` suites. After ANY S4 wire change: run the FULL mp test suite before committing, not just focused tests. |
-| **S3.1 ↔ data tests** | `assets/data/items.json` | Any JSON data change → `python tools/data_integrity.py` + full suite. Id fixes can silently change lookup results app-wide. |
+| **S3.1 ↔ data tests** | `assets/data/items.json` | Any JSON data change → `python test/data_integrity_test.dart` + full suite. Id fixes can silently change lookup results app-wide. |
 | ~~H ↔ S4 (Slot 4 live)~~ | `synergies.json`, `synergy.dart`, `synergy_queries.dart`, `gun_synergies_tab.dart` | **RESOLVED 2026-11-25** — Slot 4 shipped pass-3 (`7f629dd`) and released. Synergy surface got 3 audit passes; H-L1 may now include `synergies.json` for a *fourth-pass verification* (spot-check Slot 4's 15 corrections against the dump) but should not re-audit from scratch — diminishing returns. Still check AGENT_STATUS.md before starting H in case new synergy work lands. |
 | **H ↔ all sessions** | read-only by design | H produces a findings report, not fixes. Only trivial (<15min, obvious) fixes inline per scope-creep rule; everything else routes to USER_BUG_LIST tagged with the owning session (S3 data / S4 MP / S5 polish / new U-XXX). This is what keeps H parallel-safe with everything. |
 | **S5.x ↔ everything** | cosmetic sweeps touch many files | S5 runs LAST precisely because it touches files every other session tested. If S5 finds a real bug, log it — don't fix-and-expand; it's the gate. |
@@ -350,7 +350,7 @@ covered · widgets dir coverage ≥60% · no new `skip:` tests added.
 ### Prep kit
 - Bug tracker: `docs/USER_BUG_LIST.md` (root repo) — update statuses per
   B1–B4 when fixing.
-- Data integrity tool exists: `python gungeon_mate/tools/data_integrity.py`
+- Data integrity tool exists: `cd gungeon_mate && C:/src/flutter/bin/flutter.bat test test/data_integrity_test.dart`
   (see `.devin/workflows/verify-data`) — run it after ANY json edit.
 - Reference for id-collision test: existing integrity tests in
   `test/` (avatar file-existence, wallpaper-name coverage, splash

@@ -13,7 +13,7 @@ You are the creator-verifier separation. Coder builds; you check. You don't grad
 - **Test infrastructure**: own and maintain `gungeon_mate/test/` directory
 - **Static analysis**: run `flutter analyze`, fix or flag warnings, eliminate unused imports
 - **Release management**: execute `/release-build` workflow (version bump, changelog, VERSION_HISTORY, APK build, copy, commit, push)
-- **Data verification**: execute `/verify-data` workflow (data_integrity.py, audit_stats.py, validate_db.py)
+- **Data verification**: execute `/verify-data` workflow (flutter test test/data_integrity_test.dart + related data tests)
 - **Convention enforcement**: AGENTS.md rules, Ponytail Rules, dispose() checks, context.mounted checks
 - **Git hygiene**: commit safety, stash protocols, branch management
 - **Build verification**: `flutter build apk --release` compilation checks
@@ -99,9 +99,8 @@ When asked to build a release, execute the `/release-build` workflow:
 
 ## Data Verification Process
 When asked to verify data, execute the `/verify-data` workflow:
-1. Run `gungeon_mate/tools/data_integrity.py` — structural sweep
-2. Run `gungeon_mate/tools/audit_stats.py` — completeness audit
-3. Run `scripts/validate_db.py` — diffs guns.json/items.json against cached wiki.gg infobox HTML
+1. Run `gungeon_mate/test/data_integrity_test.dart` — structural sweep
+2. Run `flutter test test/data_integrity_test.dart` (from `gungeon_mate/`) — structural + completeness checks (the old audit_stats.py/validate_db.py scripts were retired; ground truth is now tools/gungeon_dump.json + official wiki)
 4. Report discrepancies with severity tags (CRITICAL, WARNING, INFO)
 5. If `--repair` flag is available and user approves, run repair mode
 

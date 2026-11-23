@@ -79,7 +79,7 @@ Guns/Items have `assetIcon` today.
 - Other agent's dirty files: ~35 deleted `assets/images/avatars/*.webp`
   in the working tree are Slot 4 WIP — **do not stage/commit them**;
   use explicit `git add` paths
-- After JSON edits: run `python tools/data_integrity.py` if present +
+- After JSON edits: run `python test/data_integrity_test.dart` if present +
   `flutter test test/data_integrity_test.dart`
 - Push app repo to `origin master`; board updates in root repo
 - Known deferred: `ammonomicon_screen.dart` still ~1,080 lines (fine),

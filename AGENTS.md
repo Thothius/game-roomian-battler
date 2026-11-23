@@ -329,7 +329,7 @@ Four principles anchor all UI/UX decisions. Every animation, layout, and state c
 
 ### Animation Performance Rules (2026 standard)
 - **GPU-composited properties only:** Animate `Transform.translate`, `Transform.scale`, `Transform.rotate`, and `Opacity`. NEVER animate layout constraints (`width`, `height`, `padding`) — they force CPU-bound re-layouts.
-- **RepaintBoundary for CustomPainter:** Wrap every `CustomPaint` widget in `RepaintBoundary` so animated regions don't trigger full-tree repaints. See `docs/animation_architecture_assessment.md` for the gap audit.
+- **RepaintBoundary for CustomPainter:** Wrap every `CustomPaint` widget in `RepaintBoundary` so animated regions don't trigger full-tree repaints. (The referenced gap-audit doc was retired; current perf rules live here and in `docs/TECHNICAL_REFERENCE.md`.
 - **Prefer declarative over manual:** Use `flutter_animate` (`.fadeIn().slideX()`) or `TweenAnimationBuilder` over manual `AnimationController` when the animation doesn't need pause/reverse/seek. Reduces disposal boilerplate.
 - **Spring curves for organic feel:** Use `Curves.easeOutBack` (card entrances), `Curves.fastOutSlowIn` (drawers/panels), `Curves.elasticOut` (playful bounces). Avoid `Curves.linear` and `Curves.easeInOut` for interactive elements.
 - **Particle engine budget:** 60fps at count=32 on web. If increasing max count above 64, switch line-link O(n²) to spatial hashing.
@@ -413,7 +413,7 @@ If you found a bug with a generalizable root cause, add to memory:
 - Test infrastructure: own and maintain `test/` directory, write regression tests
 - Static analysis: run `flutter analyze`, fix or flag warnings, eliminate unused imports/variables
 - Release management: execute `/release-build` workflow (version bump, changelog, VERSION_HISTORY, APK build, copy, commit, push)
-- Data verification: execute `/verify-data` workflow (data_integrity.py, audit_stats.py, validate_db.py)
+- Data verification: execute `/verify-data` workflow (flutter test test/data_integrity_test.dart + related data tests)
 - Convention enforcement: AGENTS.md rules, Ponytail Rules, dispose() checks, context.mounted checks, Gungeon aesthetic compliance
 - Git hygiene: commit safety, stash protocols, branch management
 - Build verification: `flutter build apk --release` compilation checks
@@ -499,12 +499,7 @@ Maintainer may fix **trivial issues** directly (1-3 line changes) without full h
 
 ### C9. Plan & Spec Registry
 Before starting any task, check `docs/` for an existing spec. If one exists, follow it.
-- `docs/reorg_plan.md` — Codebase reorganization plan (5 phases, split 3 megafiles into ~40 focused files). Execute one phase per session, commit per phase, run `/playwright-smoke` after each.
-- `docs/mp_auto_reconnect_plan.md` — MP reconnection specs (7 specs, P0-P2). P0: Connection Restored popup + app-kill RunState recovery. P1: Block mutations during disconnect + full reconnect cycle on FIX. P2: Live attempt count + peer unreachable notice.
-- `docs/MULTIPLAYER_PLAN.md` — Original MP architecture overview (wire protocol, transport, conflict policy).
-- `docs/APP_FEATURES_MAP.md` — Feature inventory.
-- `docs/SYSTEM_SUMMARY.md` — System overview.
-- `docs/TECHNICAL_STACK.md` — Tech stack reference.
+- Historical plans (executed, docs retired): `reorg_plan.md` (codebase split — done), `mp_auto_reconnect_plan.md` (P0–P2 shipped in mp_session/mp_recovery), `MULTIPLAYER_PLAN.md`, `APP_FEATURES_MAP.md`, `SYSTEM_SUMMARY.md`, `TECHNICAL_STACK.md`. Current architecture reference: `docs/TECHNICAL_REFERENCE.md`.
 - When creating new plans, place them in `docs/` with a descriptive filename and add them to this registry.
 
 ### C10. Changelog discipline

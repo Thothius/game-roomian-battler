@@ -110,7 +110,7 @@ core.autocrlf=true
 & 'C:\src\flutter\bin\flutter.bat' analyze lib/
 
 # Analyze specific files:
-& 'C:\src\flutter\bin\flutter.bat' analyze lib/widgets/active_run/modes/theme_signature_mode.dart
+& 'C:\srclutterinlutter.bat' analyze
 
 # Get dependencies (after pubspec.yaml changes):
 & 'C:\src\flutter\bin\flutter.bat' pub get
@@ -233,7 +233,7 @@ Key fields:
 
 **Init:** `VideoPlayerMediaKit.ensureInitialized(windows: true)` in `main.dart` before `runApp`.
 
-**Usage:** `AnimatedWallpaperBackground` widget in `lib/widgets/backgrounds/animated_wallpaper.dart`. Plays `gungeonmate-animation-02.mp4` on the home screen. Falls back to `_VortexFallbackPainter` (CustomPaint) if video init fails. The unused `wp_anim_01_galaxy.mp4` was deleted in v2.1.0 (8.9MB dead asset).
+**Deleted:** `AnimatedWallpaperBackground` + `gungeonmate-animation-02.mp4` — the video wallpaper feature was removed; home backdrop is now `custom_wallpaper.dart`/`page_frame.dart` + theme particles. (L3 cull 2026-11-23.)
 
 ### GungeonMeter (Interactive Coolness/Curse Meter)
 
@@ -241,8 +241,7 @@ Key fields:
 |------|---------|
 | `lib/widgets/active_run/gungeon_meter.dart` | Custom-painted horizontal fill bar |
 | `lib/screens/stats_detail_screen.dart` | Used in stats detail (replaces LinearProgressIndicator) |
-| `lib/widgets/active_run/modes/codex_book_mode.dart` | Used in Codex Book left page |
-| `lib/widgets/active_run/modes/theme_signature_mode.dart` | Used in Theme Signature mode |
+
 
 **Threshold:** 10.0 = Lord of the Jammed (curse) / max effective (coolness). Provider clamps to -100..100. Visual range 0..15.
 
@@ -250,9 +249,7 @@ Key fields:
 
 | File | Purpose |
 |------|---------|
-| `lib/widgets/active_run/modes/mode_picker_onboarding.dart` | Fullscreen dialog with animated mode previews |
-
-**Trigger:** Was triggered after `startNewRun` in `character_select_screen.dart`, but user removed the trigger (2026-08-18). `showModePickerOnNewRun` default is now `false`. The dialog widget still exists and can be re-wired if needed.
+| `lib/widgets/active_run/modes/mode_picker_onboarding.dart` | **Deleted** (v2.0.2) — mode picker onboarding removed with the modes reorg |
 
 ### Settings Screen (v2.1.0)
 

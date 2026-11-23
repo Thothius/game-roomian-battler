@@ -16,44 +16,30 @@ All commands run from the repo root `x:\GungeonMate`.
 ## 1. Structural integrity sweep
 // turbo
 ```
-python gungeon_mate/tools/data_integrity.py
+cd gungeon_mate && C:/src/flutter/bin/flutter.bat test test/data_integrity_test.dart
 ```
 Checks: JSON parses, unique names, synergy refs resolve, back_refs resolve,
 icon files exist, required fields present, rich-token refs resolve.
 **Must exit 0 (no hard errors) before continuing.**
 
 ## 2. Completeness audit
-// turbo
-```
-python gungeon_mate/tools/audit_stats.py
-```
-Reports empty critical fields (damage/dps/etc on guns, effect/recharge on items),
-missing icons, synergies with only 1 required item (possibly incomplete).
+> **REMOVED** — `tools/audit_stats.py` no longer exists. Empty-field and
+> icon checks are covered by `test/data_integrity_test.dart` (step 1);
+> manual review of `assets/data/*.json` covers the rest.
 
-## 3. Diff guns.json / items.json against cached wiki infobox data
-```
-python scripts/validate_db.py --verbose
-```
+## 3. Diff guns.json / items.json against game data
+> **REMOVED** — `scripts/validate_db.py` and the `cache_wikigg/` pipeline
+> no longer exist. Ground truth is now `tools/gungeon_dump.json` (raw game
+> data) + the official wiki. Compare fields manually or via ad-hoc python.
 Compares dps, damage, fire_rate, magazine_size, ammo_capacity, reload_time,
 shot_speed, range, force, spread, class, quality (guns) and quality, type,
 recharge_time (items) against `cache_wikigg/*.html`.
 
-Review the mismatch report manually first. Only add `--repair` once you've
-confirmed the reported wiki values are correct (not vice versa) — repair
-overwrites `guns.json`/`items.json` in place:
-```
-python scripts/validate_db.py --repair
-```
-
-## 4. Diff synergies.json against the wiki's master Synergies.html table
-If `scripts/validate_synergies.py` does not exist yet, it needs to be built
-first (see `docs/SYNERGIES_FIX_PLAN.md` for context) — it should reuse
-`parse_wiki_data.py::parse_synergies()` to re-parse `cache_wikigg/Synergies.html`
-into ground truth, then diff each synergy's `items` + `any_of` sets against
-the current `assets/data/synergies.json` by matching `name`.
-```
-python scripts/validate_synergies.py --verbose
-```
+## 4. Diff synergies.json against game data
+> **REMOVED** — the wiki-scrape pipeline (`scripts/validate_synergies.py`,
+> `cache_wikigg/`) is gone. Ground truth: `tools/gungeon_dump.json`
+> synergy records (matched via `game_name_key`) + official wiki. The last
+> full pass is documented in `docs/SYNERGY_AUDIT_2026.md`.
 
 ## 5. Review and decide
 - If mismatches are found in steps 3/4, read each one — confirm the wiki
@@ -66,6 +52,6 @@ python scripts/validate_synergies.py --verbose
 ## 6. Re-run structural sweep after any repair
 // turbo
 ```
-python gungeon_mate/tools/data_integrity.py
+cd gungeon_mate && C:/src/flutter/bin/flutter.bat test test/data_integrity_test.dart
 ```
 Confirms no repair introduced a broken reference or duplicate.
