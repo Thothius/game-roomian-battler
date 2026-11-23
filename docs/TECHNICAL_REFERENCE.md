@@ -349,6 +349,13 @@ The old `multiplayer_session.dart` / `multiplayer_service.dart` / `paired_partne
 - Connection timeout (45s) prevents infinite spinner
 - Discovery loop pauses during connection request (race condition fix)
 
+**MP hardening (2026-11, `docs/MP_HARDENING_PLAN.md`):**
+- **Android-only scope.** Nearby Connections has no desktop/web backend; `isMpSupported` (`mp_link.dart`) gates the Main Menu Multiplayer button — off-Android renders disabled with an "ANDROID ONLY" hint. iOS/desktop/web transport is deferred, not planned.
+- **No host migration.** If the host leaves, the session ends — there is no host promotion. The peer restores their own run. This is a deliberate scope cut, not a missing feature.
+- **Session token (injector hygiene, NOT auth).** Each `MpSync` generates a random token (`Random.secure()`, 16 bytes hex) sent in `MpHello.sessionToken` and echoed on every `MpSnapshot.sessionToken`. The receiver stores the peer's token at hello and drops snapshots echoing a different token; ≥3 consecutive mismatches surface a sync error. Absent token = legacy peer, validation skipped entirely (wire-compatible). Threat model: Nearby Connections is plaintext and any accepted peer can read/inject — the token only stops *stray/stale senders* from polluting state, it does not authenticate. Real protection remains physical proximity + user accept.
+- **Reconnect UX.** Persistent banner escalates copy at 120s ("partner may have left") and the leave action strengthens END → "LEAVE MP"; both call `session.cancel()`.
+- **Peer-edit trust.** Full mutual inventory editing retained by decision — peers can add/remove each other's items. Accepted risk for a couch-co-op companion.
+
 **Deleted files (v2.0.2):**
 - `lib/services/multiplayer_service.dart`
 - `lib/services/multiplayer_session.dart`

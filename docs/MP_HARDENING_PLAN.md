@@ -1,7 +1,8 @@
 # MP Hardening Plan — decisions & work items
 
 > Source: 12-question user interview (2026-11-25) after the full MP audit.
-> Status: **APPROVED — awaiting session claim.** New dedicated MP session
+> Status: **IMPLEMENTED 2026-11 (Slot 3 / PARALLEL).** Executed as a
+> dedicated session per plan. Deviations noted inline below.
 > (not folded into Session A/B/C).
 
 ## Locked decisions
@@ -47,12 +48,13 @@
   mismatch drops, absent-token legacy peer still works.
 
 ### MP-3 — Dead code cut (small)
-- Remove `MpSession.sessionEvents` + `logEvent` + call sites
-  (`player_page._transferDirect`, `mp_session` internal logs ~518/653/750).
-- Remove `sendPeerRemove` (zero callers). Keep `sendPeerClear` (used).
-- Remove `MpEvent` class + `mp_session_experience_test` event-log group IF
-  nothing else uses `MpEvent` — verify with grep first.
-- `mp.is_paired` stays in `MpStore` cleanup list (hygiene for old installs).
+- **DONE (partial):** `sendPeerRemove` removed (zero callers verified).
+  `sendPeerClear` kept (used).
+- **DEFERRED:** `sessionEvents`/`logEvent`/`MpEvent` excision is blocked by
+  AC4 — `player_page.dart` (2 `logEvent` call sites in the gift/request
+  transfer path) is on Slot 4's in-progress file list for the Backpack
+  feature. The infra stays alive solely for that caller; revisit after
+  Slot 4 lands. `mp.is_paired` cleanup untouched as planned.
 
 ### MP-4 — Reconnect banner Leave MP (small)
 - `lib/widgets/mp_reconnect_banner.dart`: after elapsed ≥ threshold
