@@ -35,6 +35,10 @@ When done, mark status as `DONE` and move to Session Log.
 | 20 | BUG-055: stats_detail_screen large stat value (fontSize 52) not responsive — no FittedBox or scaling. File: `stats_detail_screen.dart:196-205`. | Coder | DONE | — |
 | 21 | Feature: Device Pairing — "Pair Partner" option for automatic MP run connecting. Paired devices get elevated privileges: auto-reconnect priority, seamless character swap, and "Reset Run with New Gungeoneer" from menu/prefs without re-pairing. Eliminates the multi-step PIN/handshake flow for regular co-op partners (e.g. user + girlfriend). Pairs via Nearby Connections proximity detection, persists pairing across sessions. See user request 2026-08-18. | UNIVERSAL WORKER | DONE | — |
 
+| 23 | **Session A — Hygiene & docs consolidation** (MASTERPLAN_3SESSIONS): foreign WIP disposition (~9 dirty files), doc archival (MASTERPLAN_5SESSIONS + verify CUSTOMIZATION/QA plans), GUNGEONMATE.md refresh (stale v3.3.0), .windsurfrules→AGENTS.md pointer, H21–H23/H25 tail | SUPPORT (Devin) — AWAITING USER GO | PENDING | user signal |
+| 24 | **Session B — Depth pass** (MASTERPLAN_3SESSIONS): quick-add MP seam test, coverage ratchet ~68%, H6 theme-splash audit, H14 ambience-mud nudge, optional H24 | _(open — any agent)_ | PENDING | prefer after Session A lands (clean diffs) |
+| 25 | **Session C — Release cut v3.8.0** (MASTERPLAN_3SESSIONS): version lockstep, full gate, APK build, push+tag | _(open — any agent)_ | BLOCKED | user go-ahead for version bump + APK; ideally after A+B |
+
 ### 10-Item Rework (2026-08-25) — see `docs/REWORK_PLAN_10_ITEMS.md` for full details
 
 > Split into 4 parallel parts (A/B/C/D). All parts are independent — no file overlap.

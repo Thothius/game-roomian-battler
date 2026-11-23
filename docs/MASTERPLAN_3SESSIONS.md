@@ -4,6 +4,11 @@
 > This is the runway to "everything proven and polished" + a release
 > decision. Each session has a green gate: analyze 0, full suite green,
 > board released, docs synced.
+>
+> **Claimable by any agent** — sessions are in the AGENT_STATUS Task
+> Queue (#23 A, #24 B, #25 C). Session A is reserved for SUPPORT
+> (Devin) on user signal; B is open; C is blocked on user go-ahead
+> for the version bump + APK.
 
 ---
 
