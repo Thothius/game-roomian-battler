@@ -31,7 +31,7 @@ plan; `AGENT_STATUS.md` remains the live agent board.
 | Session / Task | Claimed by | Status | Commit | In hand right now |
 |---|---|---|---|---|
 | S1 CI + logic tests | PARALLEL (Devin, Slot 3) | DONE | app `ddb6d4f` + `54bb84a` | S1.1–S1.5 complete: 753 tests, analyze 0, coverage baseline 48.1%, CI workflow + coverage_report.py committed. **PUSHED** after gh `workflow`-scope refresh; first CI run green (run 45093492984, 3m16s — analyze + tests + coverage gate all pass). tile_logic/dice_roll_logic/mp_handlers/run_lifecycle are widget mixins → deferred to S2. |
-| **H Detective hole-hunt** | _unclaimed_ | PENDING | — | — |
+| **H Detective hole-hunt** | PARALLEL (Devin, Slot 3) | DONE | `docs/HOLE_REPORT_2026-11-23.md` + app `dfc7770`/`fb4b1ea`/`5e1e033`/`e342b1c`/`e988f92`+`046c3e0`/`56505a0`/`73552a8` + `gun_id_integrity_test` | All 9 lenses done across 7 slices, zero unrouted findings. All routes resolved: FIX-NOW guards `dfc7770`; S3/S4/S5-routed items landed via `56614ab` S5 sweep (L3 dead cull, L8 docs sync, L2-3 verified), `7e9b011` L6-1, L6-2 save-corruption flag; L8-1 `data_integrity.py` repoint covered by in-flight doc edits (uncommitted). Only remaining: release cut (S5 gate / user go-ahead) |
 | S2 widget coverage | PARALLEL (Devin, Slot 3) | DONE | app `1d1ae9e`..`fce513d` | 87 widget tests, all 6 priority batches. Coverage 48.1→62.3% overall (widgets 56.5%). 2 test-found bugs fixed. Residual deep-coverage gaps noted in session log |
 | S3 data truth | _unclaimed_ | PENDING | — | — |
 | S4 MP hardening | _unclaimed_ | PENDING | — | — |

@@ -88,7 +88,7 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 | **Slot 1** | **VISUAL (Devin)** | `DONE` | Settings reorg shipped `804fc84`; MP/char-select/avatar views assessed polished. Customization files untouched — other agent mid-refactor. Slot released. | 2026-11-18 | (LEB shared ticker + hoisted row body + neutral LOCKED rows). Customization files untouched — other agent's `studio_flow.dart` WIP seen in main WD. Slot released. | 2026-11-18 |
 | **Slot 2** | **CORE (Devin)** | `DONE` | Ammonomicon codex rework — user: "very basic UI and depth wise". Items 1-3 shipped: overview landing + favorites/recents `87e7f63`+`fc608e7`, card meta hints `f366480`, shrine/combat depth `73552a8`. Remaining: item 4 enemy/boss stat blocks, item 5 cross-links. Session ended at context limit — slot released. Files: `ammonomicon_screen.dart`, `ammonomicon_detail_screen.dart`, `item_detail_screen.dart`, `synergy_detail_screen.dart`, `gungeoneer_detail_screen.dart`, `widgets/ammonomicon/`. Prior: bug-report system + hardening `35c6c9c`/`e45a2e3`/`ed3220a`. | (21 tests total: subject/body/URI encoding edge cases, kind-switch e2e, no-entity variant, whitespace guards, skeuo render, button wiring; whitespace-entity fix in service+sheet), pipeline `18c5491` (30min lookback). Full suite 718 pass, analyze 0. Slot released. Prior: bug report system `35c6c9c`/`c34b59e`. BugReportContext model + BugReport service (mailto→faaremets.fristjan@gmail.com, pipe-delimited subject, 10s timeout, clipboard fallback), BugReportSheet (context chips + kind picker + notes, skeuo-aware), BugReportButton; entry sweep: run-tools row before Settings, item/gun/synergy/gungeoneer/ammonomicon details, Ammonomicon+Cool&Curse+Stats+Settings AppBars, quiz home, dice dialog, studio menubar, main-menu chip. `tools/bug_report_pipeline.gs` + setup steps in BUG_REPORT_AND_STORE_STRATEGY.md. 9 new tests, analyze 0, targeted suites green. Slot released. Prior: U-014 wallpaper re-encode `8e30e5b`; masterplan WP-1..5 (`48bf8fd`..`9a3e2df`) + bughunt `c8aadb8`. | 2026-11-25 |
 | **Slot 3** | **PARALLEL (Devin)** | `DONE` | Masterplan S2 widget coverage shipped — 87 new widget tests, coverage 48.1→62.3%, 2 real bugs fixed (dice header overflow, avatar_frame infinite-size crash). Slot released. | 2026-11-23 |
-| **Slot 4** | **SUPPORT (Devin)** | `ACTIVE` | S5 polish sweep — L2-3 persisted paths, L3 dead assets, L8 docs sync | 2026-11-23 |
+| **Slot 4** | **SUPPORT (Devin)** | `ACTIVE` | Board hygiene — stale-slot takeover (AC6) + masterplan claims sync | 2026-11-23 |
 
 ### Slot Details
 
@@ -162,11 +162,11 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 #### Slot 4 — SUPPORT
 | Field | Value |
 |-------|-------|
-| **Branch** | `slot4-support/readme-relaunch` (app-repo worktree `.worktrees/slot4-support/gungeon_mate`) |
-| **Session started** | 2026-11-23 |
-| **Last board update** | 2026-11-23 |
-| **Last commit** | — |
-| **Files in progress** | app: `README.md`, `docs/media/*` (new dir) |
+| **Branch** | `master` (root-repo-only work) |
+| **Session started** | 2026-11-23 (stale takeover of prior `slot4-support/readme-relaunch` session) |
+| **Last board update** | 2026-11-23 07:39 |
+| **Last commit** | prior agent: app `48a4bd9` — docs(readme): storefront rewrite (branch `slot4-support/readme-relaunch`, UNMERGED) |
+| **Files in progress** | — |
 | **Uncommitted changes** | — |
 
 > **Slot restructured 2026-08-25.** Formerly UNIVERSAL WORKER. Now SUPPORT — owns the cleanup-and-doc niche via `/cleanup` command. Use for dead code sweeps, doc consistency checks, stale reference cleanup, Playwright testing, and general cross-slot assistance.
@@ -424,3 +424,4 @@ Format: `| Agent | Date | Branch | Commit | Task | Files | Status | Next | Watch
 | SUPPORT (Devin) | 2026-11-23 | master | app pending | L1 gun ids — fixed dup id 50 (Colt→62, SAA→null), +uniqueness test, documented provenance drift | guns.json, gun_id_integrity_test, changelog, HOLE_REPORT | DONE | Remaining: L2-1 MP fixture, L5-4, L2-3/L3/L8 polish, release | — |
 | SUPPORT (Devin) | 2026-11-23 | master | app pending | L2-1 MP spriteKey compat fixture — 4 tests pin old/new peer decode both directions | mp_spritekey_compat_test, HOLE_REPORT | DONE | Remaining: L5-4 spice qualifier, L2-3/L3/L8 polish, release | — |
 | SUPPORT (Devin) | 2026-11-23 | master | app `e342b1c` | L5-4 spice table — added 'approximate' qualifier to tracker note | item_body_sections.dart, HOLE_REPORT | DONE | Hole report fully burned down — remaining: L2-3/L3/L8 S5 polish + release cut | — |
+| SUPPORT (Devin) | 2026-11-23 | master | app `56614ab` | S5 sweep — L3 dead cull (~3.4MB: mp4, headers, stray icons, logo, 2 dead screens), L8-1/2/3/4 docs+changelog sync, L2-3 verified | cull files, pubspec, changelog, AGENTS.md, TECHNICAL_REFERENCE, verify-data, HOLE_REPORT | DONE | HOLE REPORT COMPLETE — only release cut remains | Ammonomicon/codex WIP in tree is user's — untouched |
