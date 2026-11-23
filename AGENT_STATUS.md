@@ -87,8 +87,8 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 | :--- | :--- | :--- | :--- | :--- |
 | **Slot 1** | **VISUAL (Devin)** | `DONE` | Settings reorg shipped `804fc84`; MP/char-select/avatar views assessed polished. Customization files untouched — other agent mid-refactor. Slot released. | 2026-11-18 | (LEB shared ticker + hoisted row body + neutral LOCKED rows). Customization files untouched — other agent's `studio_flow.dart` WIP seen in main WD. Slot released. | 2026-11-18 |
 | **Slot 2** | **CORE (Devin)** | `DONE` | Ammonomicon codex rework — user: "very basic UI and depth wise". Items 1-3 shipped: overview landing + favorites/recents `87e7f63`+`fc608e7`, card meta hints `f366480`, shrine/combat depth `73552a8`. Remaining: item 4 enemy/boss stat blocks, item 5 cross-links. Session ended at context limit — slot released. Files: `ammonomicon_screen.dart`, `ammonomicon_detail_screen.dart`, `item_detail_screen.dart`, `synergy_detail_screen.dart`, `gungeoneer_detail_screen.dart`, `widgets/ammonomicon/`. Prior: bug-report system + hardening `35c6c9c`/`e45a2e3`/`ed3220a`. | (21 tests total: subject/body/URI encoding edge cases, kind-switch e2e, no-entity variant, whitespace guards, skeuo render, button wiring; whitespace-entity fix in service+sheet), pipeline `18c5491` (30min lookback). Full suite 718 pass, analyze 0. Slot released. Prior: bug report system `35c6c9c`/`c34b59e`. BugReportContext model + BugReport service (mailto→faaremets.fristjan@gmail.com, pipe-delimited subject, 10s timeout, clipboard fallback), BugReportSheet (context chips + kind picker + notes, skeuo-aware), BugReportButton; entry sweep: run-tools row before Settings, item/gun/synergy/gungeoneer/ammonomicon details, Ammonomicon+Cool&Curse+Stats+Settings AppBars, quiz home, dice dialog, studio menubar, main-menu chip. `tools/bug_report_pipeline.gs` + setup steps in BUG_REPORT_AND_STORE_STRATEGY.md. 9 new tests, analyze 0, targeted suites green. Slot released. Prior: U-014 wallpaper re-encode `8e30e5b`; masterplan WP-1..5 (`48bf8fd`..`9a3e2df`) + bughunt `c8aadb8`. | 2026-11-25 |
-| **Slot 3** | **PARALLEL (Devin)** | `DONE` | Masterplan S2 widget coverage shipped — 87 new widget tests, coverage 48.1→62.3%, 2 real bugs fixed (dice header overflow, avatar_frame infinite-size crash). Slot released. | 2026-11-23 |
-| **Slot 4** | **SUPPORT (Devin)** | `_(none)_` | 9-lens verification audit — DONE, found+fixed 4 regressions `d546bb6` | 2026-11-23 |
+| **Slot 3** | **PARALLEL (Devin)** | `ACTIVE` | Masterplan S3 — data truth (U-015 verify, U-001 shot, mojibake, item fields, XtG filter, synergy perf) | 2026-11-23 |
+| **Slot 4** | **SUPPORT (Devin)** | `_(none)_` | UI consistency audit — DONE, findings reported (no changes) | 2026-11-23 |
 
 ### Slot Details
 
@@ -148,10 +148,10 @@ Agent-to-agent delegations (AC7). Receiving slot claims at session start.
 #### Slot 3 — PARALLEL (Devin A2)
 | Field | Value |
 |-------|-------|
-| **Branch** | `slot3-a2/polish-gaps` → merged to master + deleted (AC5d worktree removed) |
-| **Session started** | 2026-10-31 (polish round 2) |
-| **Last board update** | 2026-10-31 |
-| **Last commit** | `1b4400d` — feat(detail): surface ammonomicon entry, item wiki sections, back-refs |
+| **Branch** | `master` (sole active agent — AC5d worktree not required) |
+| **Session started** | 2026-11-23 (masterplan S3) |
+| **Last board update** | 2026-11-23 07:41 |
+| **Last commit** | app `d546bb6` — fix: clamp negative-curse bonuses + stale widget-test labels |
 | **Files in progress** | — |
 | **Uncommitted changes** | — |
 
@@ -427,3 +427,4 @@ Format: `| Agent | Date | Branch | Commit | Task | Files | Status | Next | Watch
 | SUPPORT (Devin) | 2026-11-23 | master | app `56614ab` | S5 sweep — L3 dead cull (~3.4MB: mp4, headers, stray icons, logo, 2 dead screens), L8-1/2/3/4 docs+changelog sync, L2-3 verified | cull files, pubspec, changelog, AGENTS.md, TECHNICAL_REFERENCE, verify-data, HOLE_REPORT | DONE | HOLE REPORT COMPLETE — only release cut remains | Ammonomicon/codex WIP in tree is user's — untouched |
 | SUPPORT (Devin) | 2026-11-23 | master | root `6b38604` | **Board hygiene — STALE takeover + masterplan claims sync** — prior Slot 4 session (9-lens verification audit claim, heartbeat stale) taken over per AC6; all its work was already landed (`56614ab` S5 sweep = hole report complete). Masterplan Claims table: H hole-hunt → DONE with report + fix-commit refs; S3/S4/S5 remain PENDING/unclaimed | AGENT_STATUS.md, docs/MASTERPLAN_5SESSIONS.md | DONE — slot released | Next: S3 data truth (only unblocked masterplan session; S4/S5 gated behind it) | **Unmerged branch `slot4-support/readme-relaunch` + worktree `.worktrees/slot4-support/gungeon_mate` still exist** (app `48a4bd9` README storefront rewrite + media) — merge-or-discard decision pending, worktree has only generated-plugin-registrant noise. Root repo has foreign uncommitted doc WIP (AGENTS.md, .devin/workflows, TECHNICAL_REFERENCE, AMMONOMICON_DESIGN_BRIEF) + untracked `.research/`, `wp_sheet.jpg` — do not sweep |
 | SUPPORT (Devin) | 2026-11-23 | master | app `d546bb6` | 9-lens verification audit — all claims verified; full suite caught 4 L5-regressions (stale labels + negative-curse '+-'), fixed + retested | cool_curse_math, 2 widget tests | DONE | Audit verdict: lenses hold; release cut remains | — |
+| SUPPORT (Devin) | 2026-11-23 | master | — | UI consistency audit (labels/paddings/spacing) — EdgeInsets CLEAN; fontSize 456 raw literals + Text() 56 raw uses catalogued by file; no edits (Slot 3 active on data-truth files) | — | DONE | Punch list delivered to user — per-owner fix batches recommended | Slot 3 owns ammonomicon/codex files — excluded from fix scope |
