@@ -8,13 +8,13 @@
 
 ## Open
 
-### U-025 — Duplicate switch arm in `AppFontLabel.migrate` (dead code + analyzer warning)
+### U-028 — Duplicate switch arm in `AppFontLabel.migrate` (dead code + analyzer warning)
 - **Reported:** 2026-11-23 — S5.1′ post-excision audit (Slot 2 CORE)
 - **Root cause:** `lib/services/theme/app_theme_modes.dart` ~line 2139 — the arm `AppFont.shantellSans || AppFont.architectsDaughter || AppFont.patrickHand => AppFont.fjallaOne` appears twice verbatim; `dart analyze` flags `unreachable_switch_case` (warning). Zero behavior impact — the second arm is dead.
 - **Severity:** Trivial (dead code; analyze warning)
 - **Status:** Reported — **fix blocked by foreign WIP**: the file has uncommitted changes from another batch (hand-lettered font family removal in `bundledFontFamily`). Fix = delete the duplicated arm; do it after that WIP commits to avoid sweeping it into an unrelated commit.
 
-### U-026 — LEB ghost-row "marching ants" ticker ignores reduced-motion
+### U-029 — LEB ghost-row "marching ants" ticker ignores reduced-motion
 - **Reported:** 2026-11-23 — S5.2 ticker/reduced-motion audit (Slot 2 CORE)
 - **Root cause:** `lib/widgets/item_detail/gun_synergies_tab.dart` `_LebPageState._march` — `AnimationController.repeat()` started unconditionally in field initializer; no `ReduceMotion`/`disableAnimations` gate anywhere in the file. The marching-ants animation on LEB ghost rows keeps animating for reduced-motion users.
 - **Severity:** Low (decorative animation only; no functional impact)
