@@ -234,6 +234,35 @@ pipeline, `mp_store` recovery JSONs.
 - `gungeon_dump.json` merge tooling schemas (offline pipeline, not shipped)
 - `back_refs.json`/`synergy_meta.json` consumers beyond fromJson (H-L1 territory)
 
+## H-L5 — Honesty (displayed claims vs actual math)
+
+Method: hunted every UI surface that presents a *number* as game-derived —
+Cool & Curse screens, stats detail effects, item-detail authored effect
+text, damage calculator, dice/gun stat displays — then cross-checked
+same-stat claims across surfaces for consistency.
+
+### Findings
+
+| # | Finding | Severity | Route |
+|---|---------|----------|-------|
+| L5-1 | **Cool & Curse screens contradict each other on jammed-enemy/boss chances.** `cool_curse_screen.dart:38-39` computes `jamChance = curse>=10 ? 100% : curse*4` and `bossJamChance = curse>=10 ? 100% : curse*2` — at curse 5 it shows **20% enemy / 10% boss**. `stats_detail/effects.dart` `curseTable` shows **5% enemy / 0% boss** at curse 5, non-linear values (9→25%/30%), and a footnote explicitly claiming "jam chances **cap at 50%**". Same app, same stat, 4× different numbers, different caps (100% vs 50%). The screen's own comment claims "same formulas EtG uses" — at least one surface is wrong vs the game AND vs itself. | **HIGH** — user-facing stat displays disagree | **FIX-NOW → S3** — pick the wiki-accurate table (effects.dart looks dump-derived), fix cool_curse_screen formulas + explainers, add a consistency test asserting both surfaces read one source of truth |
+| L5-2 | **`cool_curse_screen` fuse claim may describe a different mechanic than `effects.dart`.** Screen: "Chest fuse auto-defuse — chance a mimicked/unmimicked chest **resets its fuse**" (`cool*2.5` cap 10%). Effects tab: "Chest fuse **chance reduction**" (same `c*2.5` cap 10%). Same formula, two different claimed effects — defuse-on-spawn vs reduced-fuse-chance are not the same thing. One description is wrong. | MED | **S3** — verify vs ETG wiki which mechanic coolness actually does; unify wording |
+| L5-3 | **`stats_detail_screen` meter labels use invented conversions.** `value*5`→"Active Cooldown Speedup %" and `value*10`→"Bullet Hell Threat Level %" (`stats_detail_screen.dart:123-126`). The `*5` matches the coolness cooldown claim (consistency good), but "Bullet Hell Threat Level" has no named in-game equivalent — it's a fabricated derived stat presented in the same visual language as real ones. | MED-LOW | **S3/S5** — either ground it in a real mechanic or relabel as estimate/flavor |
+| L5-4 | **Spice stacking table is authored approximation presented as exact cumulative totals.** `item_body_sections.dart:344-374` shows "N Uses Applied: +55% Damage, -34% Spread…" — precise-looking totals from a hardcoded table. `spiceUsageCount` is display-only (does NOT feed `DamageCalculator` or cool/curse math — verified: only consumers are this widget + `dash_items`). Descriptive wiki-style info, but the precision implies simulation the app doesn't do. | LOW | **S5** — consider "(approx.)" qualifier or verify numbers vs wiki; not a computation bug |
+| L5-5 | **Coolness formulas themselves need wiki verification.** `cool*5` cooldown (cap 50%), `cool*2.5` fuse (cap 10%), `1+cool-curse` room reward — used consistently across `cool_curse_screen` + `effects.dart`, but "same formulas EtG uses" is asserted, not proven. If any is invented, BOTH surfaces lie consistently (worse than L5-1 — no internal contradiction to catch it). | MED | **S3** — one wiki check settles all three formulas at once |
+
+### What checked out honest
+
+- `DamageCalculator` — unquantifiable sources return `percent: 0` and are
+  *listed for transparency* rather than silently skipped; aggregation is
+  simple sum, no hidden math. Best-effort wiki-text extraction is
+  documented as such in the class doc.
+- Cool/curse breakdown (`base`/`fromItems`) — traces to real
+  `Gun.curse`/`Item.curse` JSON fields, not invented.
+- `effects.dart` footnote correctly describes the 10+ curse cap —
+  internally consistent with its own table (the *other* screen is the
+  outlier).
+
 ## Claims trace
 
 - Slot 3 ACTIVE on this slice → release on commit of this report.
