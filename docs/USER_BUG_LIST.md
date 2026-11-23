@@ -28,6 +28,43 @@
 
 
 
+### U-038 — MP reconnect banner X button silently kills the whole session
+- **Reported:** 2026-11-25 — UI/MP bughunt (Slot 3 PARALLEL)
+- **Root cause:** `lib/widgets/mp_reconnect_banner.dart` `_PersistentBanner` — the small ✕ at the row's right edge calls `session.cancel()` (full MP teardown), while the banner body tap only re-opens the dialog. Doc comment even says "tap to cancel" but the affordance reads as "dismiss banner". User tapping ✕ expecting to hide the banner loses the entire co-op session.
+- **Severity:** Medium (destructive action behind ambiguous affordance)
+- **Status:** OPEN — fix: swap ✕ for explicit "END" label or move cancel into the reopened dialog only.
+
+### U-039 — MP players lost the path to the full Cool & Curse explainer
+- **Reported:** 2026-11-25 — UI/MP bughunt (Slot 3 PARALLEL); regression from `654fbed`
+- **Root cause:** `paradox_player_panel.dart` `_PanelStat` has no `onLongPress` — solo header capsules long-press → `CoolCurseScreen` (full mechanics explainer), but MP tap now opens only the quick sheet. No MP surface reaches the explainer anymore.
+- **Severity:** Low-Medium (feature access regression)
+- **Status:** OPEN — add `onLongPress` to `_PanelStat` → `CoolCurseScreen`, or an info affordance inside `CoolCurseSheet`.
+
+### U-040 — Quick-add sheet: unguarded async toast can fire after dispose
+- **Reported:** 2026-11-25 — UI/MP bughunt (Slot 3 PARALLEL); file is foreign WIP (`active_run_screen.dart` `_QuickAddSheet`)
+- **Root cause:** `_addIt` MP-peer path: `mpSession.sendAddToPeer(...).then((_) => _showToast(...))` — no `mounted`/disposed guard. If the sheet closes before the Nearby send completes, `_showToast` writes `_addedToast.value` on an already-disposed `ValueNotifier` → async FlutterError.
+- **Severity:** Low (narrow race, self-inflicted crash only)
+- **Status:** OPEN — guard with `if (!mounted) return;` inside `.then`/`.catchError`.
+
+### U-041 — MP request dialog can be dismissed by system back without answering
+- **Reported:** 2026-11-25 — UI/MP bughunt (Slot 3 PARALLEL)
+- **Root cause:** `mp_request_listener.dart` `_maybeShowIncomingRequest` — `showDialog(barrierDismissible: false)` still lets Android system-back pop the route (no `PopScope`). The peer's request is never answered → sender waits the full 30s timeout before seeing a denial.
+- **Severity:** Low (edge case; denial arrives anyway, just slow)
+- **Status:** OPEN — wrap dialog in `PopScope(canPop: false)` or treat pop as deny.
+
+### U-042 — `dice_roll.dart` triple `@override` + orphaned field comments
+- **Reported:** 2026-11-25 — UI/MP bughunt (Slot 3 PARALLEL)
+- **Root cause:** `lib/widgets/active_run/dice_roll.dart:51-53` — three stacked `@override` annotations on `build()` plus three orphaned comments where fields moved into `_DiceRollLogic`. Committed merge/refactor artifact; legal but sloppy.
+- **Severity:** Trivial (cosmetic)
+- **Status:** OPEN — collapse to one `@override`, drop dead comments.
+
+### U-043 — Emote menu + 'End MP Session' unreachable while `kMpSocialEnabled=false`
+- **Reported:** 2026-11-25 — UI/MP bughunt (Slot 3 PARALLEL)
+- **Root cause:** `mp_handlers.dart` `_showEmoteMenu` is only invoked from `mpTabTap` behind `kMpSocialEnabled` — with the flag off the whole sheet (kiss/slap buttons AND its 'End MP Session' row) is dead code. Run-tools 'Leave MP' covers teardown, so no functional loss — just ~100 lines of unreachable UI.
+- **Severity:** Trivial (dead code)
+- **Status:** OPEN — either excise with the social layer or leave documented until re-enable.
+
+
 ## Resolved
 
 ### U-001 — 08_char_select.png is a white/blank screenshot
