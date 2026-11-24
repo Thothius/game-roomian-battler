@@ -113,9 +113,9 @@
 
 ### U-057 — "Neo-Skeuo" still visible after excision
 - **Reported:** 2026-11-25 — v3.8.0 APK user test
-- **Root cause:** TBD — code excision verified complete (`6d4f1d8`, zero `skeuo` refs in lib/assets). Likely a user-saved preset in the studio gallery whose persisted `name` is "Neo-Skeuo" (preset names live in SharedPreferences JSON and survive code removal; `SavedCustomTheme.fromJson` only clamps `baseMode` index). Needs user to confirm where it appears (theme picker vs preset gallery card).
-- **Severity:** TBD
-- **Status:** Open — investigating
+- **Root cause:** RESOLVED — not a code bug. Code excision verified complete (`6d4f1d8`, zero `skeuo` refs in lib/). `neoSkeuo` was the LAST `AppThemeMode` member, so persisted mode indexes don't shift — a user persisted ON it falls out of bounds at `init()` and lands on `kVisibleThemes.first` (paperInk, dark — cannot look like neo-skeuo). What survives is **user data**: a preset the user saved while Neo-Skeuo was active lives in `CustomThemeStore` (`custom.themes.v1` SharedPreferences JSON). `SavedCustomTheme.name` is free-text and `baseMode` only clamps its index — so a gallery card literally named "Neo-Skeuo" persists forever by design. Fix on device: Customization → gallery → delete the preset (or overwrite it).
+- **Severity:** Low (stale user data, expected persistence)
+- **Status:** Closed — explained to user; no code change warranted. If it still shows as the ACTIVE theme label in Settings, that means a saved preset with `customData` carrying the neo-skeuo palette is applied — same fix: pick another preset/theme.
 
 ### U-058 — Settings/prefs menu is packed full
 - **Reported:** 2026-11-25 — v3.8.0 APK user test
