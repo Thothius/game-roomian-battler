@@ -1,6 +1,6 @@
 # Backpack — Masterplan
 
-> Status: **PLANNED — awaiting build GO**
+> Status: **SHIPPED** — app `c81e711` (2026-11-25, Slot 4 / SUPPORT). All 8 locked decisions implemented as specced; deviations: none functional. Post-merge note: `session.logEvent` calls dropped during rebase (MP-3 excised `MpEvent`/`logEvent` upstream).
 > Decisions locked via 8-question interview (2026-11-25). See "Locked decisions" below — do not re-litigate.
 
 ## Vision
