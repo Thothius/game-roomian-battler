@@ -141,6 +141,12 @@
 - **Severity:** High (flagship feature invisible to returning players)
 - **Status:** Fixed in app `1f40c72` — `_refreshAgainstData` + both snapshot paths re-grant the Backpack when the resolved loadout lacks it (character-present guard). Regression test strips the item from a save, reloads, asserts it's back. Full suite 1016 green.
 
+### U-062 — App-only "Backpack" shadowed the real in-game Backpack item
+- **Reported:** 2026-11-25 — user request ("there is item called backpack! can we make our backpack a MIMIC chest instead")
+- **Root cause:** The synthetic storage item was named 'Backpack' and resolved ahead of items.json in `itemByName`, so the real Backpack (D-tier Passive, +1 active item slot, id 133) was unreachable anywhere a name lookup ran — quick-add, browse detail, MP wire names. The synthetic also had no icon.
+- **Severity:** Medium (data shadowing; feature worked but real item was invisible)
+- **Status:** Fixed in app `6e156e4` — renamed to **Mimic Storage** (animated `glitched_chest.gif` icon, mimic effect text), real Backpack resolves from items.json again. Save migration: pre-rename saves held the bag as an S-tier 'Backpack' item; `_refreshAgainstData` upgrades those (quality discriminates vs the real D-tier). All stash/storage copy updated. Regression test covers both migration arms. Suite 1017 green.
+
 ## Resolved
 
 ### U-035 — Studio pills/tabs: type sizes below readable floor + touch targets under minimum
