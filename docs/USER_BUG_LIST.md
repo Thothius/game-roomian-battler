@@ -135,6 +135,12 @@
 - **Severity:** Medium (orientation, not data loss — U-059 covered the save bug)
 - **Status:** Fixed — landing reordered per user spec: ACTIVE PRESET card (live `AppTheme.mode`, saved presets resolve by gallery name) → PRESETS → YOUR SLOTS (3 quick slots) → NEW PRESET. Source cards renamed CLONE EXISTING PRESET / START BLANK with explicit subtitles; quick-slot pill labels scale-to-fit instead of ellipsizing. Regression test pins the order.
 
+### U-061 — Backpack missing on continued runs
+- **Reported:** 2026-11-25 — v3.8.0 APK user test ("did not see backpack")
+- **Root cause:** The Backpack was granted only in `_buildPlayerFor` at `startNewRun`. Save restore (`_loadSavedRun` → `_refreshAgainstData`) re-resolves existing items by name but never *adds* missing ones — so a run saved before v3.8.0 (exactly what Continue Run offers) came back bagless. Same gap in MP: `applyPartnerSnapshot`/`applyPeerSnapshot` rebuild the slot from wire item names, so a peer on a pre-backpack build would strip it.
+- **Severity:** High (flagship feature invisible to returning players)
+- **Status:** Fixed in app `1f40c72` — `_refreshAgainstData` + both snapshot paths re-grant the Backpack when the resolved loadout lacks it (character-present guard). Regression test strips the item from a save, reloads, asserts it's back. Full suite 1016 green.
+
 ## Resolved
 
 ### U-035 — Studio pills/tabs: type sizes below readable floor + touch targets under minimum
