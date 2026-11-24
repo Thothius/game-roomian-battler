@@ -119,15 +119,21 @@
 
 ### U-058 — Settings/prefs menu is packed full
 - **Reported:** 2026-11-25 — v3.8.0 APK user test
-- **Root cause:** TBD — settings screen grew through rework (status strip, RUN DISPLAY panels, STUDIO shortcut, DEV TOOLS, DANGER ZONE, wallpaper picker, etc.). Needs density audit + grouping pass.
+- **Root cause:** The in-run tools sheet (`_RunToolsSheet`) accreted to 14 rows / 5 groups (RUN/RESET/APP/DANGER + MP conditionals). The Settings screen itself was already tidy (status strip + collapsible RUN DISPLAY panels).
 - **Severity:** Low-Medium (UX clutter)
-- **Status:** Open
+- **Status:** Fixed — user supplied the keep-list (END RUN, PAUSE RUN, SHRINES, RESET P1/P2, DICE, QUIZ). Sheet now shows RUN (Shrines/Dice/Quiz + MP-gated Pause-Resume) → RESET → DANGER only; cut rows remain reachable elsewhere (Ammonomicon on main menu, MP actions in Paradox panel ⋮, app rows in Settings). Tests updated: `active_run_widgets_test` keep-list pin + `settings_screen_test` group labels.
 
 ### U-059 — Customization new-preset flow: APPLY doesn't save, name discarded on saved-source copy
 - **Reported:** 2026-11-25 — v3.8.0 APK user test
 - **Root cause:** Two compounding bugs in `experience_studio_screen.dart`: (1) the dashboard hero APPLY commits the look but never saves the preset — the only save path was the buried SAVE AS NEW card, which re-prompted for the name the user already typed at NEW PRESET, reading as "can't apply/save". (2) `_seedFromEntry`'s saved-preset branch overwrote `_presetName`/`_editingPresetId` with the SOURCE preset's identity — NEW PRESET "My Copy" → COPY EXISTING "Base Look" discarded "My Copy" and armed SAVE as an in-place overwrite of "Base Look".
 - **Severity:** Medium-High (silent data-loss path on user presets)
 - **Status:** Fixed — SAVE "<staged name>" card saves directly (name consumed after save, card reverts); `_seedFromEntry` no longer claims source identity (edit-pencil path unaffected — `_onEditPreset` pre-sets id/name); regression test pins typed-name survival + source untouched. 57 studio tests green.
+
+### U-060 — Customization landing IA: no active-preset visibility, redundant stages, cryptic source choice
+- **Reported:** 2026-11-25 — v3.8.0 APK user test ("first view sucks, another similar view, can't tell clone vs new")
+- **Root cause:** The CHOOSE stage led with bare quick slots and two unlabeled doors; nothing showed which preset was actually live; the source stage offered "COPY EXISTING / START FROM SCRATCH" without saying which was "clone" vs "new".
+- **Severity:** Medium (orientation, not data loss — U-059 covered the save bug)
+- **Status:** Fixed — landing reordered per user spec: ACTIVE PRESET card (live `AppTheme.mode`, saved presets resolve by gallery name) → PRESETS → YOUR SLOTS (3 quick slots) → NEW PRESET. Source cards renamed CLONE EXISTING PRESET / START BLANK with explicit subtitles; quick-slot pill labels scale-to-fit instead of ellipsizing. Regression test pins the order.
 
 ## Resolved
 
