@@ -111,6 +111,24 @@
 - **Severity:** Trivial (cosmetic)
 - **Status:** Fixed in app `9fb8759`
 
+### U-057 — "Neo-Skeuo" still visible after excision
+- **Reported:** 2026-11-25 — v3.8.0 APK user test
+- **Root cause:** TBD — code excision verified complete (`6d4f1d8`, zero `skeuo` refs in lib/assets). Likely a user-saved preset in the studio gallery whose persisted `name` is "Neo-Skeuo" (preset names live in SharedPreferences JSON and survive code removal; `SavedCustomTheme.fromJson` only clamps `baseMode` index). Needs user to confirm where it appears (theme picker vs preset gallery card).
+- **Severity:** TBD
+- **Status:** Open — investigating
+
+### U-058 — Settings/prefs menu is packed full
+- **Reported:** 2026-11-25 — v3.8.0 APK user test
+- **Root cause:** TBD — settings screen grew through rework (status strip, RUN DISPLAY panels, STUDIO shortcut, DEV TOOLS, DANGER ZONE, wallpaper picker, etc.). Needs density audit + grouping pass.
+- **Severity:** Low-Medium (UX clutter)
+- **Status:** Open
+
+### U-059 — Customization new-preset flow: second similar-looking view, APPLY unreachable
+- **Reported:** 2026-11-25 — v3.8.0 APK user test
+- **Root cause:** TBD — CHOOSE → NEW PRESET → name → source picker → wizard; user reports landing on a view similar to the first and no tappable APPLY. Likely the editor/dashboard stage confusion documented in studio notes (APPLY only exists on dashboard/editor stages; wizard DETAILS may lack it, or NEW PRESET path skips dashboard).
+- **Severity:** Medium (blocks preset saving UX)
+- **Status:** Open
+
 ## Resolved
 
 ### U-035 — Studio pills/tabs: type sizes below readable floor + touch targets under minimum
