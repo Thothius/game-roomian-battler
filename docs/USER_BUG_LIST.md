@@ -123,11 +123,11 @@
 - **Severity:** Low-Medium (UX clutter)
 - **Status:** Open
 
-### U-059 — Customization new-preset flow: second similar-looking view, APPLY unreachable
+### U-059 — Customization new-preset flow: APPLY doesn't save, name discarded on saved-source copy
 - **Reported:** 2026-11-25 — v3.8.0 APK user test
-- **Root cause:** TBD — CHOOSE → NEW PRESET → name → source picker → wizard; user reports landing on a view similar to the first and no tappable APPLY. Likely the editor/dashboard stage confusion documented in studio notes (APPLY only exists on dashboard/editor stages; wizard DETAILS may lack it, or NEW PRESET path skips dashboard).
-- **Severity:** Medium (blocks preset saving UX)
-- **Status:** Open
+- **Root cause:** Two compounding bugs in `experience_studio_screen.dart`: (1) the dashboard hero APPLY commits the look but never saves the preset — the only save path was the buried SAVE AS NEW card, which re-prompted for the name the user already typed at NEW PRESET, reading as "can't apply/save". (2) `_seedFromEntry`'s saved-preset branch overwrote `_presetName`/`_editingPresetId` with the SOURCE preset's identity — NEW PRESET "My Copy" → COPY EXISTING "Base Look" discarded "My Copy" and armed SAVE as an in-place overwrite of "Base Look".
+- **Severity:** Medium-High (silent data-loss path on user presets)
+- **Status:** Fixed — SAVE "<staged name>" card saves directly (name consumed after save, card reverts); `_seedFromEntry` no longer claims source identity (edit-pencil path unaffected — `_onEditPreset` pre-sets id/name); regression test pins typed-name survival + source untouched. 57 studio tests green.
 
 ## Resolved
 
