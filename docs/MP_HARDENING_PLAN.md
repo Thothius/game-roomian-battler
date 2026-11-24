@@ -50,11 +50,14 @@
 ### MP-3 — Dead code cut (small)
 - **DONE (partial):** `sendPeerRemove` removed (zero callers verified).
   `sendPeerClear` kept (used).
-- **DEFERRED:** `sessionEvents`/`logEvent`/`MpEvent` excision is blocked by
-  AC4 — `player_page.dart` (2 `logEvent` call sites in the gift/request
-  transfer path) is on Slot 4's in-progress file list for the Backpack
-  feature. The infra stays alive solely for that caller; revisit after
-  Slot 4 lands. `mp.is_paired` cleanup untouched as planned.
+- **DONE (follow-up `56b3ecf`, user-approved AC4 override):** full
+  `MpEvent`/`sessionEvents`/`logEvent` excision — all call sites in
+  `mp_session`, `mp_handlers`, `mp_connect_screen`, `player_page`
+  transfer path; `MpEvent` class; `wipeSessionActivity` + 3 callers;
+  dead `_peerGoneHinted` latch. `mp.is_paired` cleanup untouched.
+  **Merge note for Slot 4:** `player_page.dart` + `VERSION_HISTORY.md`
+  were edited on master while the backpack branch is in flight —
+  expect small conflicts around the transfer path / changelog head.
 
 ### MP-4 — Reconnect banner Leave MP (small)
 - `lib/widgets/mp_reconnect_banner.dart`: after elapsed ≥ threshold
